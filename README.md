@@ -1,4 +1,3 @@
-![](https://earth.callutheran.edu/images/profile_photos/full/163.jpg)
 
 Hello. I’m a professor of political science at California Lutheran University.   I specialize in studying the role that social media plays in restructuring democracy and political life.  To see the books and academic articles I've written, follow [this link](publications.md).  To read my essays and public talks/podcasts, follow [this link](essays.md).  To find out what research projects I'm working on, follow [this link](projects.md). 
 
