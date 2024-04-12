@@ -1,7 +1,4 @@
----
-lauout: page
-title: projects
----
+
 
 ### Here is a list of projects that I'm working on.  Contact me @ marichal@callutheran.edu if you're a CLU student and you'd like to be part of the research team.
 
