@@ -1,4 +1,4 @@
-# josemarichal
+![](https://earth.callutheran.edu/images/profile_photos/full/163.jpg)
 
 Hello. I’m a professor of political science at California Lutheran University.   I specialize in studying the role that social media plays in restructuring political behavior and institutions.  I published a book entitled Facebook Democracy (Routledge Press) which looks at the role that the popular social network played on the formation of political identity across different countries.  My most recent work (with CLU colleagues Richard Neve and Brian Collins) looks at they ways in which social media platforms encourage antagonistic political discourse and how they could be regulated.  In addition, I (with collaborators) am using computational social science methods on a number of projects including using machine learning to predict support or opposition to fracking on Twitter, a study of how and individuals censor themselves when discussing politics on Facebook, and a project on uncovering the topic structure of Reddit comments on WallStreetBets.  In 2018,  I organized a mini-conference on Algorithmic Politics for the Western Political Science Association.  Currently, I am working on a book that looks at the effect of the “Algorithmic Age” on political citizenship.  I also write about diversity, multiculturalism and citizenship and I’m a massive US soccer fan.  You can here me talk about both on a recent podcast.  
 
@@ -8,9 +8,10 @@ Here is a list of my publications and talks
 
 In Progress. You are an Algorithmic Problem: Factory Farmed Citizenship in the Age of AI.  Under Contract: Bristol University Press.
 
-2012.  Facebook Democracy: The Architecture of Disclosure and the Threat to Public Life. Routledge.[link here] (https://www.routledge.com/Facebook-Democracy-The-Architecture-of-Disclosure-and-the-Threat-to-Public/Marichal/p/book/9781138274662)
+2012.  Facebook Democracy: The Architecture of Disclosure and the Threat to Public Life. Routledge. [link here](https://www.routledge.com/Facebook-Democracy-The-Architecture-of-Disclosure-and-the-Threat-to-Public/Marichal/p/book/9781138274662)
 
 ![](https://m.media-amazon.com/images/I/51pGKQ4QtML._AC_UF1000,1000_QL80_.jpg)
+
 # Scholarly Articles
 
 2024. Why Do Some Shout and Others Stay Silent? Communication Context Consistency in Political Discourse Offline and on Facebook" International Journal of Communication with Don Waisenan and Carrie Anne Platt.
