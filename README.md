@@ -3,7 +3,13 @@ Hello. I’m a professor of political science at California Lutheran University.
 
 I published a book entitled Facebook Democracy (Routledge Press) which looks at the role that the popular social network played on the formation of political identity across different countries.  My most recent work (with CLU colleagues Richard Neve and Brian Collins) looks at they ways in which social media platforms encourage antagonistic political discourse and how they could be regulated.  In addition, I (with collaborators) am using computational social science methods on a number of projects including using machine learning to predict support or opposition to fracking on Twitter, a study of how and individuals censor themselves when discussing politics on Facebook, and a project on uncovering the topic structure of Reddit comments on WallStreetBets.  In 2018,  I organized a mini-conference on Algorithmic Politics for the Western Political Science Association.  Currently, I am working on a book that looks at the effect of the “Algorithmic Age” on political citizenship.  I also write about diversity, multiculturalism and citizenship and I’m a massive US soccer fan.  You can here me talk about both on a recent podcast.  
 
-Here is a list of my publications and talks
+Follow me on: 
+[Twitter](https://twitter.com/marichal)
+[Mastodon](https://sciences.social/@marichal)
+[Threads](https://www.threads.net/@profjosemarichal)
+[Bluesky](https://bsky.app/profile/marichal.bsky.social)
+[YouTube](https://www.youtube.com/channel/UCvVQq8u13E8xM7wv1_a_BaA)
+[TikTok](https://www.tiktok.com/@profjosemarichal)
 
 
 
