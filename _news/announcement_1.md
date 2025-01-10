@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-A simple inline announcement.
+I'll be at the Conference on World Affairs at the University of Colorado-Boulder April 8-10 2025
