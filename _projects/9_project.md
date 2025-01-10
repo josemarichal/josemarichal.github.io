@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 9
-description: another project with an image 🎉
+title: Synthetic Politics
+description: How do we govern a world that is increasingly artificial?
 img: assets/img/6.jpg
 importance: 4
 category: fun
