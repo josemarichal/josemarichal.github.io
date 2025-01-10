@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 3 with very long name
-description: a project that redirects to another website
+title: Civic Quitting
+description: Have we given up on trying to convince each other of our version of the good?
 img: assets/img/7.jpg
 redirect: https://unsplash.com
 importance: 3
