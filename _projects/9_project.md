@@ -2,7 +2,7 @@
 layout: page
 title: Synthetic Politics
 description: How do we govern a world that is increasingly artificial?
-img: assets/img/6.jpg
+img: assets/img/5.jpg
 importance: 4
 category: fun
 ---
