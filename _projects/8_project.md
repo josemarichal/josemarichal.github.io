@@ -1,6 +1,6 @@
 ---
-layout: Posting Past Power
-title: project 8
+layout: page
+title: Posting Past Power
 description: Have words lost their power in the social media age?
 img: assets/img/9.jpg
 importance: 2
