@@ -1,8 +1,8 @@
 ---
 layout: page
-title: project 6
-description: a project with no image
-img:
+title: Platform Rights
+description: what does it mean to have rights in the algorithmic age?
+img: assets/img/6.jpg
 importance: 4
 category: fun
 ---
