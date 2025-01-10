@@ -1,8 +1,8 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
+title: Digital Immmanence
+description: Does AI Re-enchant the World?
+img: assets/img/4.jpg
 importance: 3
 category: fun
 ---
