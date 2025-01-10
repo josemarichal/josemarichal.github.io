@@ -2,7 +2,7 @@
 layout: page
 title: Algorithmic Obligation
 description: What do Algorithms Owe Society?
-img: /assets/img/4.jpg
+img: /assets/img/8.jpg
 importance: 1
 category: work
 related_publications: true
