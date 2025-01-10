@@ -1,7 +1,7 @@
 ---
 layout: post
-title: A long announcement with details
-date: 2015-11-07 16:11:00-0400
+title: Presenting at the Western Political Science Annual Conference
+date: 2025-04-17 16:11:00-0400
 inline: false
 related_posts: false
 ---
