@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: Posting Past Power
 title: project 8
-description: an other project with a background image and giscus comments
+description: Have words lost their power in the social media age?
 img: assets/img/9.jpg
 importance: 2
 category: work
