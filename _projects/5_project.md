@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Fuzzy Citizenship
-description: have engagement algorithms made us too "crisp" in our identities?
+description: have engagement algorithms made us too crisp in our identities?
 img: /assets/img/1.jpg
 importance: 3
 category: fun
