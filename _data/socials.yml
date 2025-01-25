@@ -2,15 +2,12 @@
 # the commented lines are the default social media links supported by the template
 # the socials will be displayed in the order they are defined here
 
-# acm_id: # your dl.acm.org/profile/id
-# blogger_url: # your blogger URL
-# bluesky_url: # your bluesky URL
-# dblp_url: # your DBLP profile url
-# discord_id: # your discord id (18-digit unique numerical identifier)
-email: you@example.com # your email address
+# blogger_url: # https://www.blogger.com/profile/15360942768698150797
+bluesky_url: https://bsky.app/profile/josemarichal.bsky.social
+email: jfmarichal@gmail.com # your email address
 # facebook_id: # your facebook id
 # flickr_id: # your flickr id
-# github_username: # your GitHub user name
+github_username: josemarichal # your GitHub user name
 # gitlab_username: # your GitLab user name
 # ieee_id: # your ieeexplore.ieee.org/author/id
 inspirehep_id: 1010907 # Inspire HEP author ID
@@ -21,9 +18,9 @@ inspirehep_id: 1010907 # Inspire HEP author ID
 # lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 # leetcode_id: # your LeetCode id
 # linkedin_username: # your LinkedIn user name
-# mastodon_username: # your mastodon instance+username in the format instance.tld/@username
-# medium_username: # your Medium username
-# orcid_id: # your ORCID ID
+mastodon_username: https://mastodon.social/@JoseMarichal # your mastodon instance+username in the format instance.tld/@username
+# medium_username: https://medium.com/@marichal # your Medium username
+orcid_id: 0000-0002-8699-8814 # your ORCID ID
 # osf_id: # your OSF ID
 # pinterest_id: # your pinterest id
 # publons_id: # your ID on Publons
