@@ -1,7 +1,7 @@
 ---
 layout: profiles
 permalink: /people/
-title: Books
+title: books
 description: Published or in Process Books
 nav: true
 nav_order: 7
