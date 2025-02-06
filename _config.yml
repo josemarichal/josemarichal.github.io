@@ -123,12 +123,11 @@ disqus_shortname: al-folio # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: codecapitalculture.wordpress.com/
+  - name: codecapitalculture (Wordpress)
     rss_url: codecapitalculture.wordpress.com/feed
-  - name: Code|Capital|Culture
-    posts: Algorithms of Love
-      - url: https://josemarichal.substack.com/p/algorithms-of-love
-        published_date: 2023-08-09
+  - name: You Must Become an Algorithmic problem (Substack)
+    rss_url: https://algorithmicproblem.substack.com/feed
+    
 
 # -----------------------------------------------------------------------------
 # Newsletter
