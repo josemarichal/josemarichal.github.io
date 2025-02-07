@@ -1,7 +1,8 @@
 ---
 layout: about
 title: about
-subtitle: Professor of Political Science at California Lutheran University
+permalink: /
+subtitle: Professor of Political Science at California Lutheran University.
 
 profile:
   align: right
