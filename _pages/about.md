@@ -1,7 +1,7 @@
 ---
 layout: about
 title: about
-subtitle: "&lt;a href='https://www.callutheran.edu/'&gt; Professor of Political Science: California Lutheran University&lt;/a&gt;"
+subtitle: Professor of Political Science at California Lutheran University
 
 profile:
   align: right
