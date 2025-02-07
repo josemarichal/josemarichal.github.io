@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <a href='https://www.callutheran.edu/'>Professor of Political Science: California Lutheran University</a>.
 
 profile:
   align: right
@@ -18,4 +18,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a professor of political science at California Lutheran University. I specialize in studying the role that algorithms and AI play in restructuring social and political institutions. I am currently writing a book entitled "You Must Remain an Algorithmic Problem" that will come out in 2025 with Bristol University Press (UK). The book explores the unwritten social contract we have with the algorithms that shape what we see, hear and think. I have a number of projects with collaborators looking at how social media shapes political discourse.
+I specialize in studying the role that algorithms and AI play in restructuring social and political institutions. I am currently writing a book entitled "You Must Remain an Algorithmic Problem" that will come out in 2025 with Bristol University Press (UK). The book explores the unwritten social contract we have with the algorithms that shape what we see, hear and think. I have a number of projects with collaborators looking at how social media shapes political discourse.
