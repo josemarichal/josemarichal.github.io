@@ -1,7 +1,7 @@
 ---
 layout: about
 title: about
-permalink: /
+permalink: 
 subtitle: <a href='https://www.callutheran.edu/'>Professor of Political Science: California Lutheran University</a>.
 
 profile:
