@@ -35,7 +35,7 @@ type: time_table
 contents:
   - title: Books
     items:
-      - 2025. "You Must Become an Algorithmic Problem: Renegotiating the Socio-Technical Contract." Bristol University Press.
+      - "You Must Become an Algorithmic Problem: Renegotiating the Socio-Technical Contract." Bristol University Press.
       - "Facebook Democracy: The Architecture of Disclosure and the Threat to Public Life." Ashgate Press.
   - title: Journal Articles
     items:
@@ -46,7 +46,7 @@ contents:
       - "The social media commons: Public sphere, agonism, and algorithmic obligation." Journal of Information Technology and Politics.
   - title: Book Chapters
     items:
-      - 2016. "Networked Representation: Latina Legislators on Twitter." In "Latinas in American Politics." Rowman and Littlefield.
+      - "Networked Representation: Latina Legislators on Twitter." In "Latinas in American Politics." Rowman and Littlefield.
       - "Profile Politics: Examining Polarization through Congressional Member Facebook Pages." In "Politics to the Extreme: American Political Institutions in the 21st Century." Palgrave McMillan.
       - "Facebook's Impact on American Politics." In "The Social Side of Politics." W.W. Norton Press.
   - title: Articles and Essays
