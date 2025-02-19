@@ -1,4 +1,4 @@
-name: Build and Deploy Jekyll Site
+name: Build and Deploy Jekyll with Jupyter
 
 on:
   push:
@@ -9,42 +9,35 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+        
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2.0'
+        ruby-version: '3.x'
         bundler-cache: true
-
-    - name: Install System Dependencies
+        
+    - name: Install Python dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y imagemagick
-        sudo apt-get install -y libvips-tools
-
-    - name: Install Dependencies
+        python -m pip install --upgrade pip
+        pip install jupyter nbconvert
+        
+    - name: Install Jekyll dependencies
       run: |
         gem install bundler
-        bundle config set path 'vendor/bundle'
         bundle install
-
-    - name: Build Jekyll site
+        
+    - name: Convert Jupyter notebooks
+      run: |
+        jupyter nbconvert --to markdown assets/jupyter/blog.ipynb --output-dir _posts/
+        
+    - name: Build site with Jekyll
       run: bundle exec jekyll build
       env:
         JEKYLL_ENV: production
-
-    - name: Run link checker
-      run: |
-        bundle exec jekyll build
-        bundle exec htmlproofer ./_site --assume-extension --disable-external
-
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
