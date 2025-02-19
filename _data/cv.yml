@@ -44,3 +44,37 @@
         - "Fracking Twitter: Utilizing Machine Learning and Natural Language Processing Tools for Identifying Coalition and Causal Narratives (Politics & Policy)"
         - "The Devil We Know & The Angel that Did Not Fly: An Examination of Devil/Angel Shift in Twitter Fracking Debates (Review of Policy Research)"
         - "The social media commons: Public sphere, agonism, and algorithmic obligation (Journal of Information Technology and Politics)"
+    - title: Book Chapters
+      items:
+        - "Networked Representation: Latina Legislators on Twitter (In: Latinas in American Politics, Rowman and Littlefield)"
+        - "Profile Politics: Examining Polarization through Congressional Member Facebook Pages (In: Politics to the Extreme: American Political Institutions in the 21st Century, Palgrave McMillan)"
+        - "Facebook's Impact on American Politics (In: The Social Side of Politics, W.W. Norton Press)"
+
+- title: Other Publications
+  type: nested_list
+  contents:
+    - title: Articles and Essays
+      items:
+        - "On Disorganizing Students (Times Higher Education)"
+        - "The Real Danger of AI to Democracy (Democracy Paradox)"
+        - "Regulating Misinformation on Twitter is a Problem, But There Are Bigger Ones on the Horizon (Tech Policy Press)"
+
+- title: Professional Presentations
+  type: time_table
+  contents:
+    - title: "The Promise of Large Language Model Classification in Expanding Narrative Policy Analysis"
+      institution: Monash University, Australia
+      year: 2024
+    - title: "The Importance of Thinking Small: Incorporating Case Study and Fuzzy Set Methodology to the Study of Social Media"
+      institution: University of Liverpool, UK
+      year: 2024
+    - title: "Fracking Twitter: Machine Learning and Natural Language Processing Tools for Identification of Coalition and Causal Narratives"
+      institution: Midwest Political Science Association Annual Conference
+      year: 2022
+    - title: "Jamming the Algorithm"
+      institution: Stanford's Digital Assembly Research Network
+      year: 2021
+      description: Online discussion with Albert Fox Cahn
+    - title: "Factory Farmed Citizens: Social Media, the Public Sphere, and Algorithmic Obligation"
+      institution: Loyola University
+      year: 2018
