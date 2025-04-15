@@ -1,0 +1,282 @@
+/* --- Base Styles & Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif; /* Sans-serif for body text */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    padding-top: 80px; /* Add padding to prevent content from hiding behind fixed header */
+}
+
+/* --- Google Fonts Import (Add to top of CSS) --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Serif for headings */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 3rem; /* Large main title */
+    margin-bottom: 0.5rem;
+}
+
+h2.page-title { /* Style for main titles on subpages */
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem; /* Space below header */
+    color: #555;
+}
+
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #007bff; /* A standard link blue, change if desired */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Layout --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add side padding */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    position: fixed; /* Make header sticky */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px; /* Adjust height as needed */
+}
+
+.logo a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+/* Optional: If using an image logo */
+/*
+.logo img {
+    height: 40px;
+    width: auto;
+}
+*/
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px; /* Spacing between menu items */
+}
+
+nav ul li a {
+    color: #555;
+    text-decoration: none;
+    font-weight: 400; /* Lighter weight for nav */
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active { /* Style for active page link */
+    color: #000;
+    border-bottom: 2px solid #007bff; /* Simple indicator */
+}
+
+/* --- Main Content Sections --- */
+main {
+    padding: 3rem 0; /* Vertical padding for content */
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+/* --- Home Page Specific Styles --- */
+.home-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Adjust ratio as needed */
+    gap: 3rem;
+    align-items: center;
+}
+
+.home-text h1 {
+    font-size: 2.8rem; /* Slightly smaller than default H1 if needed */
+    color: #222;
+}
+.home-text h2.tagline {
+    font-size: 2rem;
+    font-weight: 400; /* Less bold tagline */
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+.home-text h3.why-labs {
+     font-family: 'Lato', sans-serif; /* Use body font for this question */
+     font-weight: bold;
+     font-size: 1.1rem;
+     margin-top: 2rem;
+     margin-bottom: 0.5rem;
+}
+
+
+.home-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 600px; /* Limit image height */
+    object-fit: cover; /* Ensure image covers space well */
+    border-radius: 4px; /* Optional subtle rounding */
+}
+
+/* --- Projects Page Specific Styles --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: #f9f9f9; /* Very light background for cards */
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden; /* Ensure image corners conform to border-radius */
+    transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    object-fit: cover; /* Crop images nicely */
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.project-content p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* --- Basic Page Styles (CV, Teaching, Books, Mediatry) --- */
+.content-page p {
+    max-width: 800px; /* Limit text width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+.content-page ul { /* Basic styling for lists */
+     max-width: 800px;
+     margin: 1rem auto 1rem 2rem; /* Indent lists */
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .home-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        text-align: center;
+    }
+    .home-image {
+        margin-top: 2rem; /* Add space when stacked */
+         order: -1; /* Optional: Move image above text */
+    }
+    .home-image img {
+        max-height: 400px;
+    }
+     .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Adjust for smaller header */
+    }
+    header .container {
+        height: 60px;
+        flex-direction: column; /* Stack logo and nav */
+        height: auto;
+        padding-bottom: 10px;
+    }
+    .logo {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    nav ul {
+        justify-content: center; /* Center nav items */
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        padding: 0 10px;
+    }
+    nav ul li {
+        margin: 0 10px; /* Adjust spacing */
+    }
+
+     h1 { font-size: 2.5rem; }
+     h2.page-title { font-size: 2rem; }
+     .home-text h2.tagline { font-size: 1.5rem; }
+
+     .projects-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+         gap: 1.5rem;
+    }
+    .project-card img {
+        height: 200px;
+    }
+}
