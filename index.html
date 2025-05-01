@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Marichal, Ph.D. - Projects</title>
+    <title>Your Name - Professional Site</title> <!-- CHANGE Your Name -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,19 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Jose Marichal, Ph.D.</a>
+                 <!-- Logo now links back to this index page -->
+                <a href="index.html">Your Name</a> <!-- CHANGE Your Name -->
+                 <!-- Or keep ICED Labs text if preferred: <a href="index.html">ICED Labs</a> -->
             </div>
             <nav>
                 <ul>
+                    <!-- No 'active' class needed here unless you add a specific "Home" link -->
+                    <li><a href="about.html">About ICED Labs</a></li> <!-- Link to the renamed page -->
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li> <!-- Active link -->
+                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="books.html">Books</a></li>
-                    <li><a href="essays.html">Mediatry</a></li>
+                    <li><a href="mediatry.html">Mediatry</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,49 +33,32 @@
 
     <main>
         <div class="container">
-            <h2 class="page-title">Projects</h2>
-            <section id="projects">
-                <div class="projects-grid">
-                    <!-- Project Card 1 -->
-                    <div class="project-card">
-                        <img src="images/analog_politics.jpg" alt="Analog Politics">
-                        <div class="project-content">
-                            <h3>Analog Politics</h3>
-                            <p>Investigating the prospects for refusing the digital world as an act of resistance.</p>
-                            <!-- Optional: Add a link -->
-                            <!-- <a href="#">Learn More →</a> -->
-                        </div>
+            <section id="bio">
+                 <!-- Using a new grid class for flexibility -->
+                <div class="bio-grid">
+                    <div class="bio-image">
+                        <!-- Add your profile picture here -->
+                        <img src="images/profile.jpg" alt="Your Name - Profile Picture">
                     </div>
-
-                    <!-- Project Card 2 -->
-                    <div class="project-card">
-                        <img src="images/machine_liberalism.jpg" alt="Machine Liberalism">
-                        <div class="project-content">
-                            <h3>Machine Liberalism</h3>
-                            <p>An investigation into how AI changes our sense of what it means to be free in a liberal society.</p>
-                        </div>
+                    <div class="bio-text">
+                        <h1>Your Name</h1> <!-- CHANGE Your Name -->
+                        <h2>Your Title / Affiliation</h2> <!-- e.g., Assistant Professor, University of Florida -->
+                        <p>
+                            Welcome! This is where your professional biography goes. Briefly introduce yourself,
+                            your research interests, expertise, and current roles. Keep it concise but informative
+                            for a landing page.
+                        </p>
+                        <p>
+                            You might want to mention your focus areas, such as technology infrastructure, policy,
+                            community impacts, or specific methodologies you employ in your work, connecting it
+                            perhaps to the themes of ICED Labs.
+                        </p>
+                        <p>
+                            Feel free to explore my <a href="projects.html">projects</a>, <a href="teaching.html">teaching activities</a>,
+                            or view my full <a href="cv.html">Curriculum Vitae</a>. The work of ICED Labs, which I convene,
+                            can be found on the <a href="about.html">About ICED Labs</a> page.
+                        </p>
                     </div>
-
-                    <!-- Project Card 3 -->
-                    <div class="project-card">
-                        <img src="images/techno_pessimism.jpg" alt="Techno Pessimism">
-                         <div class="project-content">
-                             <h3>Techno Pessimism</h3>
-                             <p>Exploring whether it is worth resisting AI and it's ultimate power.</p>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 4 (Placeholder) -->
-                    <div class="project-card">
-                        <img src="images/synthetic_citizen.jpg" alt="The Synthetic Citizen">
-                        <div class="project-content">
-                            <h3>The Synthetic Citizen</h3>
-                            <p>Description of what it means to live in an increasingly synthetic world.</p>
-                        </div>
-                    </div>
-
-                     <!-- Add more project cards as needed -->
-
                 </div>
             </section>
         </div>
@@ -79,7 +66,8 @@
 
     <footer>
         <div class="container">
-            <p>© 2024 Jose Marichal, Ph.D. All rights reserved.</p>
+            <!-- Update copyright if desired -->
+            <p>© 2024 Your Name. All rights reserved.</p>
         </div>
     </footer>
 </body>
