@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICED Labs - CV</title> <!-- CHANGE TITLE -->
+    <title>Your Name - Books</title> <!-- CHANGE Your Name -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,15 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Your Name</a> <!-- Or ICED Labs text -->
+                <a href="index.html">Your Name</a> <!-- CHANGE Your Name -->
             </div>
             <nav>
                 <ul>
-                    <li><a href="about.html">About ICED Labs</a></li> <!-- Added link -->
-                    <li><a href="books.html" class="active">books</a></li> <!-- Active link is correct -->
+                    <li><a href="about.html">About ICED Labs</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="cv.html">Books</a></li>
+                    <li><a href="books.html" class="active">Books</a></li> <!-- Active link -->
                     <li><a href="mediatry.html">Mediatry</a></li>
                 </ul>
             </nav>
@@ -30,29 +30,57 @@
 
     <main>
         <div class="container">
-             <!-- Use content-page class for simple text pages -->
+             <!-- Keep content-page class for consistent padding/margins -->
             <div class="content-page">
-                 <h2 class="page-title">Curriculum Vitae</h2> <!-- CHANGE HEADING -->
+                <h2 class="page-title">Books</h2>
 
-                 <!-- ADD YOUR CV CONTENT HERE -->
-                 <p>You can add your CV details here. Use standard HTML tags like `<h3>` for sections, `<p>` for text, and `<ul>` or `<ol>` for lists.</p>
+                <!-- Book Entry 1 -->
+                <div class="book-entry">
+                    <div class="book-grid">
+                        <div class="book-cover">
+                            <!-- Make sure 'algorithmic-problem.jpg' is in your images folder -->
+                            <img src="images/ymrapjpg" alt="Book Cover: You Must Become an Algorithmic Problem">
+                        </div>
+                        <div class="book-details">
+                            <h3>You Must Become an Algorithmic Problem: Renegotiating the Socio-Technical Contract</h3>
+                            <p class="book-meta">Bristol University Press (2025)</p>
+                            <p> <!-- Optional: Add a short description here if you like -->
+                                In the age of AI, where personal data fuels corporate profits and state surveillance, what are the implications for democracy?
 
-                 <h3>Education</h3>
-                 <ul>
-                    <li>PhD, Institution Name, Year</li>
-                    <li>MA, Institution Name, Year</li>
-                    <li>BA, Institution Name, Year</li>
-                 </ul>
+This incisive book explores the unspoken agreement we have with tech companies. In exchange for reducing the anxiety of an increasingly complex online world, we submit to algorithmic classification and predictability. This reduces incentives for us to become “algorithmic problems” with dire consequences for liberal democracy. He calls for a movement to demand that algorithms promote play, creativity and potentiality rather than conformity.
 
-                 <h3>Experience</h3>
-                 <p><strong>Current Position</strong><br>Title, Department, University<br>Year - Present</p>
-                 <p><strong>Previous Position</strong><br>Title, Department, University<br>Year - Year</p>
+This is a must-read for anyone navigating the intersection of technology, politics and identity in an increasingly data-driven world.
+                            </p>
+                            <p class="book-link">
+                                <a href="https://bristoluniversitypress.co.uk/you-must-become-an-algorithmic-problem" target="_blank" rel="noopener noreferrer">
+                                    View on Bristol University Press →
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-                 <!-- Add Publications, Presentations, Grants, etc. -->
-
-                 <p style="text-align: center; margin-top: 2rem;">
-                     <a href="link/to/your/cv.pdf" download>Download Full CV (PDF)</a>
-                 </p>
+                <!-- Book Entry 2 -->
+                <div class="book-entry">
+                    <div class="book-grid">
+                        <div class="book-cover">
+                             <!-- Make sure 'facebook-democracy.jpg' is in your images folder -->
+                            <img src="images/fb.jpg" alt="Book Cover: Facebook Democracy">
+                        </div>
+                        <div class="book-details">
+                            <h3>Facebook Democracy: The Architecture of Disclosure and the Threat to Public Life</h3>
+                            <p class="book-meta">Routledge (2012)</p>
+                             <p> <!-- Optional: Add a short description here if you like -->
+                                In July 2010, Facebook had over 500 million subscribers worldwide and the rapid rise of the site prompted Time magazine to name Facebook's founder Mark Zuckerberg its person of the year for 2010. This novel book advances our understanding of how democratic citizens are transformed by the "Facebook revolution". Despite increasing interest in politics and popular media, there has been little academic work on the impact of Facebook on politics in general, and on democratic processes in particular. The work that does exist has been limited to Facebook's impact on politics as a mobilization tool used by social movement activists. In this book, José Marichal argues that understanding Facebook's impact on political processes requires an understanding of how Facebook's architecture of disclosure shapes the construction of individuals' political identities by drawing users further into their pre-selected social networks. Drawing on a number of disciplines and an ethnographic analysis of 250 Facebook political groups, Marichal explores how Facebook's emphasis on social connection impacts key dimensions of political participation: e.g., mobilization, deliberation, and attitude formation.
+                             </p>
+                            <p class="book-link">
+                                <a href="https://www.routledge.com/Facebook-Democracy-The-Architecture-of-Disclosure-and-the-Threat-to-Public-Life/Marichal/p/book/9781138274662" target="_blank" rel="noopener noreferrer">
+                                    View on Routledge →
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
             </div> <!-- End content-page -->
         </div>
@@ -60,7 +88,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2024 ICED Labs. All rights reserved.</p>
+             <p>© 2024 Your Name. All rights reserved.</p> <!-- CHANGE Your Name -->
         </div>
     </footer>
 </body>
