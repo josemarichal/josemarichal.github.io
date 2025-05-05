@@ -311,6 +311,51 @@ footer {
     color: #777;
 }
 
+/* --- CV Page Specific Styles --- */
+.content-page h2 { /* Style for main CV sections like Publications, Affiliations */
+    margin-top: 2.5rem; /* More space above major sections */
+    margin-bottom: 1rem;
+    font-size: 1.8rem; /* Slightly smaller than page title h2 */
+    color: #333;
+    /* Optional: Add a border */
+    /* border-bottom: 1px solid #ddd; */
+    /* padding-bottom: 0.5rem; */
+}
+/* First H2 after the main title might need less top margin */
+.content-page .page-title + h2 {
+    margin-top: 1rem;
+}
+
+
+.content-page h3 { /* Style for sub-sections like Books, Articles */
+    margin-top: 1.8rem; /* Space above sub-section titles */
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem; /* Control subsection title size */
+    color: #444; /* Slightly darker subheading */
+    font-weight: 700; /* Ensure it's bold */
+}
+
+.content-page ul {
+    list-style: disc; /* Explicitly set bullet points */
+    margin-left: 2rem; /* Standard indentation for lists */
+    margin-bottom: 1rem; /* Space below each list block */
+}
+
+.content-page li {
+    margin-bottom: 0.7rem; /* Space between individual CV entries */
+    line-height: 1.55; /* Improve readability of multi-line entries */
+    padding-left: 0.5rem; /* Add a little space between bullet and text */
+}
+
+/* Ensure emphasis (used for titles) renders as italics */
+.content-page em {
+    font-style: italic;
+}
+
+/* Ensure strong (used for years) renders as bold */
+.content-page strong {
+    font-weight: bold;
+
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     .home-grid {
