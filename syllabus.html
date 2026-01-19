@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLS 200 - Global Politics Syllabus | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Syllabus Specific Styles */
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-header .course-meta {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .syllabus-week {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .day-entry .date {
+            font-weight: 700;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 60px;
+        }
+
+        .day-entry .topic {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 60px;
+            margin-top: 0.5rem;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .readings-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--secondary-color);
+            transition: color 0.2s ease;
+        }
+
+        .readings-list a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+
+        .assignment-box {
+            background-color: var(--bg-color-alt);
+            /* Assuming this variable exists or light gray */
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0 1.5rem 60px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .assignment-box h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .readings-list {
+                padding-left: 0;
+            }
+
+            .assignment-box {
+                margin-left: 0;
+            }
+
+            .day-entry .date {
+                display: block;
+                margin-bottom: 0.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">PAI-L</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <div class="syllabus-header">
+                    <h1>Global Politics (POLS 200)</h1>
+                    <div class="course-meta">
+                        <p>Spring 2026 | MWF Schedule | 16 Weeks</p>
+                        <p>Course Dates: January 22 - May 15, 2026</p>
+                    </div>
+                </div>
+
+                <!-- Instructor Info -->
+                <section class="syllabus-unit">
+                    <h2>Instructor information</h2>
+                    <p><strong>Dr. José Marichal</strong> (he/him/his)<br>
+                        Professor of Political Science<br>
+                        Office Hours: SWEN 228: MWF 11:45 to 12:45 or by appointment<br>
+                        Contact: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a><br>
+                        Time and Place: HUM 119</p>
+
+                    <h3>About the Instructor</h3>
+                    <p>José Marichal is a professor of political science at California Lutheran University. His research
+                        specializes in the role that algorithms and AI play in restructuring social and political
+                        institutions. He is the author of <em>You Must Become an Algorithmic Problem</em> (2023) and
+                        <em>Facebook Democracy</em>. His upcoming book, <em>Machine Liberalism: Reconceptualizing Rights
+                            in the Age of AI</em>, is slated for 2027.</p>
+                </section>
+
+                <!-- Course Goals -->
+                <section class="syllabus-unit">
+                    <h2>Course Goals</h2>
+                    <p>The course aims to build a "global affairs toolkit" to help students understand the complex and
+                        uncertain international landscape. It covers fundamental lenses of global politics, political
+                        and economic systems, globalization vs. nationalism, and the impact of AI and technology.</p>
+                </section>
+
+                <!-- Class Rules -->
+                <section class="syllabus-unit">
+                    <h2>Class Environment & Rules</h2>
+                    <ul>
+                        <li><strong>Respectful Discourse:</strong> The class is a "safe place" where rude interruptions,
+                            insults, or personal attacks will not be tolerated.</li>
+                        <li><strong>Attendance & Participation:</strong> Students are expected to complete readings
+                            before class and engage in active learning.</li>
+                        <li><strong>Late Policy:</strong> No make-ups or re-writes are offered for quizzes or exams.
+                            Late take-home assignments are generally not graded without emergency documentation.</li>
+                        <li><strong>AI Usage Policy:</strong> AI is not banned but must be used responsibly. Students
+                            must disclose when and how AI was used. Improper usage (e.g., submitting AI-generated work
+                            without revision) may result in the work being marked incomplete.</li>
+                    </ul>
+                </section>
+
+                <!-- Assignments Description -->
+                <section class="syllabus-unit">
+                    <h2>Course Assignments</h2>
+                    <p><strong>Global Affairs Toolkit Portfolio (30 points):</strong> A weekly reflective portfolio
+                        (300-400 words per entry) connecting "lived experiences" on campus to global political concepts
+                        like rights, power, and inclusion.</p>
+                    <p><strong>Exams (40 points):</strong> Two exams (20 points each) consisting of key concept
+                        identifications and an analytical essay based on a case study.</p>
+                    <p><strong>Debate Project (30 points):</strong> A step-by-step project focusing on "empathetic
+                        argumentation" and "steel-manning" opposing views, culminating in an in-class debate focused on
+                        understanding rather than just "winning."</p>
+                </section>
+
+                <!-- University Policies -->
+                <section class="syllabus-unit">
+                    <h2>University Policies</h2>
+                    <p><em>(Refer to standard university policies for Title IX, Disability Support Services, Academic
+                            Honesty, and Veteran Resources.)</em></p>
+                </section>
+
+                <!-- Intro -->
+                <section class="syllabus-unit">
+                    <h2>Schedule</h2>
+                    <h3>Introduction</h3>
+
+                    <div class="day-entry">
+                        <span class="date">1-21</span>
+                        <span class="topic">Syllabus and let’s get to know each other</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">1-23</span>
+                        <span class="topic">Introduction of “How to Argue” Project</span>
+                        <ul class="readings-list">
+                            <li><a href="https://psyche.co/guides/how-to-have-arguments-that-change-minds-including-your-own"
+                                    target="_blank">How to have better arguments | Psyche Guides</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vRnCQu-jj7PYq3tPt1_dcbSMZqlTaU-_VBG8Wenodz-aou-9eed7pPKcm2alUU_QDknZ57IHRQa0CUu/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Unit 1 -->
+                <section class="syllabus-unit">
+                    <h2>Unit 1: Theories of Global Politics</h2>
+
+                    <div class="day-entry">
+                        <span class="date">1-26</span>
+                        <span class="topic">Theories in Global Politics</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.ufsm.br/app/uploads/sites/497/2021/01/Stephen-Walt-1998.pdf"
+                                    target="_blank">Walt - One World, Many Theories</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSKUXhbza2OJ7c7wmQVUAK0KUhUsmYeugf4NhBJqmvgTaM_0srVbu_i8aAG1F_Fa1JIE_Xj67hvROHV/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">1-28</span>
+                        <span class="topic">Traditional Theories</span>
+                        <ul class="readings-list">
+                            <li><a href="https://cuny.manifoldapp.org/read/introduction-to-international-relations/section/ceef6ace-0d87-48d1-927c-283247e3d968"
+                                    target="_blank">“Realism, Liberalism, and Constructivism” in “Introduction to
+                                    International Relations”</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vR6ohNHuaFGn2qdJiLeEjNkas7ul8BZFWR7xhW2hSnVtM1GQP8br1i9_fGYh8kBGiqIj4iu4-5IGVOD/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">1-30</span>
+                        <span class="topic">Critical Perspectives</span>
+                        <ul class="readings-list">
+                            <li><a href="https://cuny.manifoldapp.org/read/introduction-to-international-relations/section/deaf2bba-1099-4eb8-9d17-ba252c792874"
+                                    target="_blank">“Marxism, Feminism, and Post-Colonialism” in “Introduction to
+                                    International Relations”</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/1ZyQ5jUaubbAQzopNMgGagynZTQCXiSTUF_B7t6tYPo0/edit?usp=drivesdk"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Unit 2 -->
+                <section class="syllabus-unit">
+                    <h2>Unit 2: Is (US) Liberal Democracy the Best form of Government?</h2>
+
+                    <div class="day-entry">
+                        <span class="date">2-2</span>
+                        <span class="topic">Which is the best form of Government?</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.bu.edu/washington/files/2015/01/Schmitter-and-Lynn-What-Democracy-Is-and-Is-Not.pdf"
+                                    target="_blank">What Democracy is...and is Not</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vRdTew-pGgO2zo1MoyOmQ60_H8Nbs_QOTufkLWSYpiLlpVrPIICb7A5rwWuiCcNqeFUSn8cWtE9iTMk/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-4</span>
+                        <span class="topic">Why has liberal democracy become unpopular?</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.theguardian.com/us-news/commentisfree/2018/jan/21/this-is-how-democracies-die"
+                                    target="_blank">Levitsky & Ziblatt, "How Democracies Die"</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSzL1ja1L6kKa1fDrCF4Uay7vEKwPUMSRe0_jeaMPqaMVC7TAXxN0DSFf5Oi_O-1DsBCDdls2cWdc9N/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-6</span>
+                        <span class="topic">Alternatives to Democracy (Case Study 1)</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.vox.com/2018/7/23/17581394/against-democracy-book-epistocracy-jason-brennan"
+                                    target="_blank">Against Democracy: political philosopher Jason Brennan on the case
+                                    for epistocracy - Vox</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/1AByFhtT3DyDG75padHWl6CRAGrj0b4VIhm8BPSNjfdA/edit?usp=drivesdk"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-9</span>
+                        <span class="topic">Can we make democracy better?</span>
+                        <ul class="readings-list">
+                            <li><a href="https://archive.ph/xhJPb" target="_blank">Two eminent political scientists: The
+                                    problem with democracy is voters - Vox</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-11</span>
+                        <span class="topic">Competitive Authoritarianism</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.youtube.com/watch?v=h4FgK1YkeNc" target="_blank">Steven Levitsky &
+                                    Lucan Way: Is America on the Path to Authoritarianism? (Video)</a></li>
+                            <li><a href="https://americanaffairsjournal.org/2025/08/authoritarianism-reform-or-capture-democracy-in-trumps-america/"
+                                    target="_blank">Authoritarianism, Reform, or Capture?: Democracy in Trump’s
+                                    America</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTGZO4c8PM7emVw7IhbZ4JDdEU4LEpPPdzFVcddhoiB4GMdhmrw91Px18i4F9yvwRauYTA00ogg7c_O/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-13</span>
+                        <span class="topic">Is There a Case for Authoritarianism?</span>
+                        <span class="topic"
+                            style="font-size: 0.9em; font-weight: 400; color: var(--secondary-color);">(Braver Angels
+                            Assignment 1 Due)</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.youtube.com/watch?v=s0YjL9rZyR0" target="_blank">Eric X. Li: A tale
+                                    of two political systems (Video)</a></li>
+                            <li><a href="https://www.vox.com/the-big-idea/2017/1/9/14207302/authoritarian-states-boring-tolerable-fascism-trump"
+                                    target="_blank">Life in authoritarian states is mostly boring and tolerable -
+                                    Vox</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vT1ue4EXqwyMeR6I9dVgf9-OhqrZbzE-r9koLrIzjlFHtMJPvl-q2nhKbCmwET-Y0mYSH7fzrV4PQzt/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Unit 3 -->
+                <section class="syllabus-unit">
+                    <h2>Unit 3: Is there an alternative to capitalism?</h2>
+
+                    <div class="day-entry">
+                        <span class="date">2-16</span>
+                        <span class="topic">President’s Day: No Class</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-18</span>
+                        <span class="topic">The Case for Capitalism</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.youtube.com/watch?v=TrN7LWbESl4" target="_blank">Capitalism vs.
+                                    Socialism - A Debate (Video)</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQJAcZm7KyAFTEdRPze93eyXhcD40cPNMWCqLPxUiV00xLSMP_hNDTavL-fkLpEcvJugP8AVyoXXiyp/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-20</span>
+                        <span class="topic">The Capitalism Cheerleaders</span>
+                        <ul class="readings-list">
+                            <li><a href="https://mises.org/what-austrian-economics" target="_blank">What is Austrian
+                                    Economics?</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQMpkiPVO_ifNLsPwWKfMWJL416hDb1_jIzGBnVZF8q95p0k916wdiYy4mq-I85edJv_K-sKlUO7xEH/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+
+                        <div class="assignment-box">
+                            <h4>Assignment 1: Right to Resources & Inequality</h4>
+                            <p><strong>Task:</strong> Map where money visibly flows on campus versus where it does not.
+                            </p>
+                            <p><strong>Prompt:</strong> Who benefits from campus capitalism, and who is rendered
+                                invisible?</p>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-23</span>
+                        <span class="topic">The Critique of Capitalism and the Case for Socialism</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.pbs.org/wgbh/commandingheights/shared/minitext/ess_marxsanalysis.html"
+                                    target="_blank">Marx - Critique of Capitalism</a></li>
+                            <li><a href="https://www.bbc.co.uk/programmes/p003k9jg" target="_blank">In Our Time Podcast
+                                    on Marx</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTI_N1uD99c_JaezbBQPbAs2WMAG3D4zKpAV9vTsLdne_KqRRlLMd4UhysgKUDBoJVMbws41iJ5v9vt/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-25</span>
+                        <span class="topic">No Class</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">2-27</span>
+                        <span class="topic">Capitalism and Social Democracy</span>
+                        <ul class="readings-list">
+                            <li><a href="https://warwick.ac.uk/newsandevents/features/polanyi" target="_blank">Karl
+                                    Polanyi, The Great Transformation...</a></li>
+                            <li><a href="https://www.cfr.org/article/susanna-fellman-nordic-model-capitalism-historical-perspective-past-successes-and-future"
+                                    target="_blank">The Nordic Model</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQ_SaB60IYdSaY-iRN1RntanrIVJSyOnndkjDhxY_U5zF_shExdykM2uQ-BDRbooRS68g233S-ZuMav/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Assignment 2: Capitalism and Social Democracy</h4>
+                            <p><strong>Task:</strong> Audit campus “safety nets”.</p>
+                            <p><strong>Prompt:</strong> What risks are socialized on campus, and which are
+                                individualized?</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Unit 4 -->
+                <section class="syllabus-unit">
+                    <h2>Unit 4: Is Globalization Good for Humanity?</h2>
+
+                    <div class="day-entry">
+                        <span class="date">3-2</span>
+                        <span class="topic">Exam #1</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-4</span>
+                        <span class="topic">What is Globalization?</span>
+                        <ul class="readings-list">
+                            <li><a href="https://pages.mtu.edu/~jdslack/readings/CSReadings/Appadurai_Arjun_Disjuncture_and_Difference_in_the_Global_Cultural_Economy.pdf"
+                                    target="_blank">Appadurai - Disjuncture and Difference</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-6</span>
+                        <span class="topic">The Triumph of Liberal Internationalism?</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.youtube.com/watch?v=7YH4iAqG6rM" target="_blank">Fukuyama - The End
+                                    of History? (Video)</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/1_R74bS4hr2w2IVrk3IwbRa7sW5d2Xar_N3asC90Wy4E/edit?usp=drivesdk"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Assignment 3: Right to Participation & Voice</h4>
+                            <p><strong>Task:</strong> Analyze how students can (or cannot) influence campus decisions.
+                            </p>
+                            <p><strong>Prompt:</strong> Is the campus “post-political,” or are conflicts simply managed
+                                out of sight?</p>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-9</span>
+                        <span class="topic">Clash of Civilizations?</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.guillaumenicaise.com/wp-content/uploads/2013/10/huntington_clash-of-civlizations.pdf"
+                                    target="_blank">Huntington - The clash of civilizations?</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTRekmvOOImdlcqVFut-qmozxa2nJj8JyydglKSOQ1JCwum4IXLC9j1dwnuoXBWbXOcKaRkdAAny9QC/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-11</span>
+                        <span class="topic">Anderson - Imagined Communities</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-13</span>
+                        <span class="topic">The Myth of the Clash of Civilizations</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.mediaed.org/transcripts/Edward-Said-The-Myth-of-Clash-Civilizations-Transcript.pdf"
+                                    target="_blank">Said - The Myth of the Clash of Civilizations</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vRL5EPp-SvSCnkRmjxwU0t1IVTySI_WaX_u7DHJWgYAxBS2U-_XmwOx_FmGk2ih7HYPbj5DFnjbamS4/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Assignment 4: Right to Belonging</h4>
+                            <p><strong>Task:</strong> Document symbolic boundaries on campus.</p>
+                            <p><strong>Prompt:</strong> Whose culture is treated as “neutral,” and whose is marked as
+                                different?</p>
+                        </div>
+                    </div>
+
+                    <div class="day-entry"
+                        style="text-align: center; font-style: italic; color: var(--secondary-color);">
+                        <span class="date">3-16 to 3-20</span>
+                        <span>Spring Break</span>
+                    </div>
+                </section>
+
+                <!-- Unit 5 -->
+                <section class="syllabus-unit">
+                    <h2>Unit 5: Is Nationalism Bad for Humanity?</h2>
+
+                    <div class="day-entry">
+                        <span class="date">3-23</span>
+                        <span class="topic">Nationalism and Internationalism</span>
+                        <ul class="readings-list">
+                            <li><a href="https://deepblue.lib.umich.edu/bitstream/handle/2027.42/51028/256.pdf"
+                                    target="_blank">Tilly - War Making and the State as Organized Crime</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vRXiQPzWYmyf0L10jWn2sEEFtOxWwDjISX3VMYKSywesR-wDH2QA67l8I6N8p3-kkCgQwu24n0iL4b6/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-25</span>
+                        <span class="topic">Tragedy of Great Power Politics</span>
+                        <ul class="readings-list">
+                            <li><a href="https://bxscience.edu/ourpages/auto/2015/12/17/46553148/Mearsheimer%20-%20Tragedy%20of%20Great%20Power%20Politics.pdf"
+                                    target="_blank">Mearsheimer - The Tragedy of Great Power Politics</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-27</span>
+                        <span class="topic">Politics Among Nations</span>
+                        <ul class="readings-list">
+                            <li><a href="https://saldanha.pbworks.com/f/Morgenthau.Politics+Among+Nations.pdf"
+                                    target="_blank">Morgenthau - Politics Among Nations</a></li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Assignment 5: Right to Security vs. Freedom</h4>
+                            <p><strong>Task:</strong> Examine surveillance and security on campus.</p>
+                            <p><strong>Prompt:</strong> When does protection become control?</p>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">3-30</span>
+                        <span class="topic">Rethinking the Nation-State</span>
+                        <ul class="readings-list">
+                            <li><a href="https://drive.google.com/file/d/1EsEtWh-A9_PUoonqzOBJyORp8645xgNy/view?usp=sharing"
+                                    target="_blank">Rethinking the Nation-State: The Many</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vQ4KEpbVHtxpUk1hGiKVvOdwItmroKMtL_wSDs8cDEc2Eu2fmeYAVAgRcS1_3-g-exBF4ztukW76_oe/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-1</span>
+                        <span class="topic">No Class (watch video lecture)</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.carnegiecouncil.org/media/series/39/20190603-how-lose-country-7-steps-democracy-dictatorship-ece-temelkuran"
+                                    target="_blank">How to Lose a Country... (Podcast)</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSdZ_NZPFsqe_Hy5dH5cj9gnhg4hhY8jY_llhV3QFLIfmoWJS_kmiZueWNjrAORXB9P2-brFnspUMzO/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-3</span>
+                        <span class="topic">No Class (watch video lecture)</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.pbs.org/show/dismantling-democracy/" target="_blank">PBS-
+                                    Dismantling Democracy</a></li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Assignment 6: Right to Dissent</h4>
+                            <p><strong>Task:</strong> Analyze protest rules on campus.</p>
+                            <p><strong>Prompt:</strong> How is dissent managed without appearing to suppress it?</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Unit 6 -->
+                <section class="syllabus-unit">
+                    <h2>Unit 6: IS AI a Threat to the International Order?</h2>
+
+                    <div class="day-entry">
+                        <span class="date">4-6</span>
+                        <span class="topic">Techno-Optimism</span>
+                        <ul class="readings-list">
+                            <li><a href="https://www.youtube.com/watch?v=xoVJKj8lcNQ" target="_blank">The AI Dilemma
+                                    (Video)</a></li>
+                            <li><a href="https://docs.google.com/presentation/d/1agzQo6PtedNhAukPOv_MyKzjQp44OgISYotZThjKqVk/edit?usp=drivesdk"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-8</span>
+                        <span class="topic">The Techno-Optimist Manifesto</span>
+                        <ul class="readings-list">
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vR0ohuLFgJC-cXARfBdCo0FzpzCND4E4bS7En3sU8lXFEnj0jt7F-tXrNzGL34S1w9p4bjXVRSdLt9v/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Class Slides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-10</span>
+                        <span class="topic">Machines of Loving Grace (Case Study #5)</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-13</span>
+                        <span class="topic">Tech Competition with China</span>
+                        <ul class="readings-list">
+                            <li>Beyond the AI Arms Race: America, China, and the Dangers of Zero-Sum Thinking (Foreign
+                                Affairs)</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-15</span>
+                        <span class="topic">Dan Wang, "Chapter Two: Tech Power"</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-17</span>
+                        <span class="topic">Chips, China, and a Lot of Money</span>
+                        <div class="assignment-box">
+                            <h4>Assignment 7: Right to Knowledge</h4>
+                            <p><strong>Task:</strong> Investigate how AI tools are governed on campus.</p>
+                            <p><strong>Prompt:</strong> Who decides how technology reshapes learning—and how openly?</p>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-20</span>
+                        <span class="topic">AI at War</span>
+                        <ul class="readings-list">
+                            <li>Dan Hendrycks, Eric Schmidt and Alexandr Wang, Super-Intelligence Strategy: Expert
+                                Version</li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="date">4-22</span>
+                        <span class="topic">The Government Knows AGI Is Coming</span>
+                        <ul class="readings-list">
+                            <li>Ben Buchanan and Ezra Klein (2025), New York Times</li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="date">4-24</span>
+                        <span class="topic">Converting Energy into Intelligence</span>
+                        <ul class="readings-list">
+                            <li>Eric Schmidt (2025)</li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Assignment 8: Right to Infrastructure</h4>
+                            <p><strong>Task:</strong> Map the physical and invisible infrastructures that make campus
+                                “work”.</p>
+                            <p><strong>Prompt:</strong> What global systems does the campus quietly depend on?</p>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-27</span>
+                        <span class="topic">Resource Geo-Politics</span>
+                        <ul class="readings-list">
+                            <li>Kate Crawford (2021), "Chapter 1: Earth," Atlas of AI</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">4-29</span>
+                        <span class="topic">Energy and AI</span>
+                        <ul class="readings-list">
+                            <li>International Energy Agency, 2025</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">5-1</span>
+                        <span class="topic">Managing Extreme AI Risks</span>
+                        <div class="assignment-box">
+                            <h4>Assignment: Right to a Sustainable Planet</h4>
+                            <p><strong>Task:</strong> Assess campus sustainability claims versus practices.</p>
+                            <p><strong>Prompt:</strong> Who bears the ecological costs of “innovation”?</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="syllabus-unit">
+                    <h2>Final Week</h2>
+                    <div class="day-entry">
+                        <span class="date">5-3</span>
+                        <span class="topic">Generative AI and the Digital Commons</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">5-5</span>
+                        <span class="topic">Study Session</span>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">5-7</span>
+                        <span class="topic">Exam #2</span>
+                        <ul class="readings-list">
+                            <li><a href="https://docs.google.com/document/d/e/2PACX-1vQIagqskLwsTZ9Y0BsTQICKY94OzNgxxhMjWHKg3spFNKT63-ei5xhOV0tn3zyNSWmbkds9he3GVWZk/pub"
+                                    target="_blank">Study Guide</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">5-11 to 5-15</span>
+                        <span class="topic">Finals Week: Debates</span>
+                        <ul class="readings-list">
+                            <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTMghkrcA0B3H92kxAhiM6uoAPdujyFxiB-1f-T6bPvZD8oV2AsnaWIGmw66HGfLw/pub?start=false&loop=false&delayms=3000"
+                                    target="_blank">Final Slides</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="syllabus-unit">
+                    <h2>Grades</h2>
+                    <p>Your final grade for semester will be based on total accumulated points as follows:</p>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; background: var(--bg-color-alt); padding: 1rem; border-radius: 8px;">
+                        <div>92 – 100: A</div>
+                        <div>90 – 91: A-</div>
+                        <div>88 – 89: B+</div>
+                        <div>82 – 87: B</div>
+                        <div>80 – 81: B-</div>
+                        <div>78 – 79: C+</div>
+                        <div>72 – 77: C</div>
+                        <div>70 – 71: C-</div>
+                        <div>68 – 69: D+</div>
+                        <div>62 – 67: D</div>
+                        <div>60 – 61: D-</div>
+                        <div>59 or below: F</div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <h3>Assignments Summary</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li>Global Toolkit Portfolio = 30 points</li>
+                            <li>Braver Angels Debate = 30 points</li>
+                            <li>Exams (2 x 20 points) = 40 points</li>
+                            <li><strong>Total = 100 points</strong></li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
