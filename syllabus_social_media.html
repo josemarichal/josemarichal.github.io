@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media and Politics Syllabus | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Syllabus Specific Styles */
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-header .course-meta {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .syllabus-week {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .week-header {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .day-entry .date {
+            font-weight: 700;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 80px;
+        }
+
+        .day-entry .topic {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 80px;
+            margin-top: 0.5rem;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .readings-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--secondary-color);
+            transition: color 0.2s ease;
+        }
+
+        .readings-list a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+
+        @media (max-width: 768px) {
+            .readings-list {
+                padding-left: 0;
+            }
+
+            .day-entry .date {
+                display: block;
+                margin-bottom: 0.25rem;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">PAI-L</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <div class="syllabus-header">
+                    <h1>Social Media and Politics (HNRS 3ST-03)</h1>
+                    <div class="course-meta">
+                        <p>Wednesday, 6-9:30 PM | HUM 107</p>
+                    </div>
+                </div>
+
+                <!-- Instructor Info -->
+                <section class="syllabus-unit">
+                    <h2>Instructor Information</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h3>Dr. Aaron Heresco</h3>
+                            <p>Email: <a href="mailto:aheresco@callutheran.edu">aheresco@callutheran.edu</a><br>
+                                Phone: 814-889-5161<br>
+                                Office: 106 Benson House<br>
+                                Office Hours: M/W 4-6 PM</p>
+                        </div>
+                        <div>
+                            <h3>Dr. José Marichal</h3>
+                            <p>Email: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a><br>
+                                Phone: 805-493-3328<br>
+                                Office: SWEN 228<br>
+                                Office Hours: Monday 12:50-3 PM, Friday 12:50-2:40 PM</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Course Description -->
+                <section class="syllabus-unit">
+                    <h2>Course Description</h2>
+                    <p>This course explores the relationship between new media platforms and shifts in the principles
+                        and practices of citizenship. Combining theories from communication and political science and
+                        other disciplines, we will be considering how social media, algorithms, and web-based
+                        interactivity portend significant changes in the US polity and the articulation of citizenship.
+                    </p>
+                </section>
+
+                <!-- Course Outcomes -->
+                <section class="syllabus-unit">
+                    <h2>Course Outcomes</h2>
+                    <p>Students who successfully complete HNRS 497 should:</p>
+                    <ul>
+                        <li>Gain field-specific knowledge and information literacy, specifically related to the
+                            distribution of political and cultural ideologies and the ways that media influences
+                            political participation.</li>
+                        <li>Practice communication skills (written and oral) by writing about, and discussing, the
+                            relationship of new and emerging communication technologies to practices and processes of
+                            citizenship.</li>
+                        <li>Hone creative and critical thinking skills in the process of dissecting political movements
+                            and shifts.</li>
+                        <li>Develop interpersonal and teamwork skills through class discussion and engagement with
+                            others with whom the student may disagree.</li>
+                    </ul>
+                </section>
+
+                <!-- Course Structure & Grading -->
+                <section class="syllabus-unit">
+                    <h2>Course Structure & Grading</h2>
+                    <p><strong>Course Structure:</strong> Each week you will be responsible for reading the assigned
+                        material and coming to class prepared to discuss it in some detail. Civil discussion is a
+                        requirement of the course. Failure to discuss topics civilly will result in loss of
+                        participation points.</p>
+
+                    <h3>Grading Breakdown (100 Points Total)</h3>
+                    <ul>
+                        <li>Reading Analysis Essays: 75 Points</li>
+                        <li>Participation: 15 Points</li>
+                        <li>Reading Checks: 10 Points</li>
+                    </ul>
+
+                    <h3>Assignments</h3>
+                    <p><strong>Reading Analysis Essays:</strong> At 3 points throughout the semester (Week 5, 10, and
+                        15), students will write an essay synthesizing the materials covered up to that point, using
+                        historical or contemporary data as supporting evidence.</p>
+                    <p><strong>Reading Checks:</strong> Short assessments ensuring students are reading and
+                        comprehending course material.</p>
+                    <p><strong>Participation:</strong> Students are allotted 1 “free” absence. Additional absences
+                        result in losing a letter off your final grade.</p>
+                </section>
+
+                <!-- Schedule -->
+                <section class="syllabus-unit">
+                    <h2>Schedule</h2>
+
+                    <div class="week-header">Week 1 – Introduction to course and overview of social media and the self
+                    </div>
+                    <ul class="readings-list">
+                        <li>Cass Sunstein - The Daily Me</li>
+                        <li>Living Well in a Technosocial World - Shannon Vallor Review</li>
+                        <li><a href="https://www.theguardian.com/technology/2017/oct/05/smartphone-addiction-silicon-valley-dystopia"
+                                target="_blank">The Guardian (2017) Our Minds Can be Hijacked</a></li>
+                        <li><a href="https://medium.com/swlh/how-technology-hijacks-peoples-minds-from-a-magician-and-google-s-design-ethicist-56d62ef5edf3#.2vusishu9"
+                                target="_blank">Harris (2014) How Technology Hijacks People’s Minds</a></li>
+                        <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vRPa0N8Fig2ewfVteiYeFfuwisaZpq6NhVrIDvgh62e0_Cd6ploJaVifSI_C3LkLjKGCZN3nsFZytcB/pub?start=false&loop=false&delayms=3000"
+                                target="_blank">Dr. Marichal’s Whitman College Talk</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 2 – How Knowledgable Are You: Politics and the Pictures in Our Heads
+                    </div>
+                    <ul class="readings-list">
+                        <li>Lippmann, The World Outside and the Pictures in Our Heads (Ch. 1 on Blackboard)</li>
+                        <li>Dewey: The Public and Its Problems (Introduction/Excerpt on Blackboard)</li>
+                        <li>Lippmann/Dewey Debate</li>
+                        <li>Frankfurt - On Bullshit</li>
+                    </ul>
+
+                    <div class="week-header">Week 3 – How Mediated Are You: Media, Markets, and Audiences</div>
+                    <ul class="readings-list">
+                        <li>C. Edwin Baker - Media, Markets, and Democracy (excerpt)</li>
+                        <li>Herman and Chomsky, Web Excerpt</li>
+                        <li><a href="https://pdfs.semanticscholar.org/d97a/3d315ccdfdbb58b645538e3256f363bf5c6b.pdf"
+                                target="_blank">Arvidsson – Prehistory of the Panoptic Sort</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 4 – How Predictable are you? Big Data, Cambridge Analytica and the
+                        Machine Learning Bogeyman</div>
+                    <ul class="readings-list">
+                        <li><a href="https://journals.sagepub.com/doi/pdf/10.1177/2053951719867349" target="_blank">How
+                                Should we Theorize Algorithms</a></li>
+                        <li><a href="https://www.sciencedirect.com/science/article/pii/S0268401214001066"
+                                target="_blank">Beyond the Hype: Big Data Concepts, Methods and Analytics</a></li>
+                        <li><a href="http://davelevy.info/Downloads/cabridgeananalyticafiles%20-theguardian_20180318.pdf"
+                                target="_blank">The Cambridge Analytica Files</a></li>
+                        <li><a href="https://opendri.org/wp-content/uploads/2018/12/181222_WorldBank_DisasterRiskManagement_Ebook_D6.pdf"
+                                target="_blank">World Bank: A Machine Learning Primer</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 5 – How Replaceable are you? Bot Politics, NLP and the Rise of AI
+                    </div>
+                    <p style="margin-left: 1.5rem; font-style: italic;">(Reading Analysis Essay Questions Handed out)
+                    </p>
+                    <ul class="readings-list">
+                        <li><a href="https://www.spglobal.com/marketintelligence/en/documents/sp-global-market-intelligence-nlp-primer-september-2018.pdf"
+                                target="_blank">Natural Language Processing Primer: S&P Global</a></li>
+                        <li><a href="https://www.vice.com/en_us/article/qkzpdm/how-to-think-about-bots"
+                                target="_blank">Vice - How to Think About Bots</a></li>
+                        <li><a href="https://ai100.stanford.edu/sites/g/files/sbiybj9861/f/ai_100_report_0906fnlc_single.pdf"
+                                target="_blank">Artificial Intelligence and Life in 2030: Stanford Standing Panel</a>
+                        </li>
+                    </ul>
+
+                    <div class="week-header">Week 6 – How Marketable are you? Platform Capitalism and the Algorithmic
+                        Problem</div>
+                    <p style="margin-left: 1.5rem; font-style: italic;">(Reading Analysis Essay Questions Due)</p>
+                    <ul class="readings-list">
+                        <li><a href="http://raley.english.ucsb.edu/wp-content/Engl800/Pasquale-blackbox.pdf"
+                                target="_blank">Pasquale - The Black Box Society</a></li>
+                        <li>Srniseck - Platform Capitalism</li>
+                        <li>Zuboff - Big other: surveillance capitalism and the prospects of an information civilization
+                        </li>
+                    </ul>
+
+                    <div class="week-header">Week 7 – How Political Are You: Clicktivism and Politicized Consumption
+                    </div>
+                    <ul class="readings-list">
+                        <li>Project Red, product boycotts, citizens vs consumers</li>
+                    </ul>
+
+                    <div class="week-header">Week 8 – How Individualized Are You: Wisdom, Labor, and Capital of Crowds
+                    </div>
+
+                    <div class="week-header">Week 9 – How Radicalized Are You: Radicalization and Weaponized Irony</div>
+                    <ul class="readings-list">
+                        <li>Hofstadter: The Paranoid Style in American Politics (Link on Blackboard)</li>
+                        <li><a href="https://www.theguardian.com/technology/2017/may/23/alt-right-online-humor-as-a-weapon-facism"
+                                target="_blank">Wilson article on Weaponized Irony</a></li>
+                        <li><a href="https://www.bellingcat.com/news/americas/2018/10/11/memes-infowars-75-fascist-activists-red-pilled/"
+                                target="_blank">Redpilling and integration into fascist web groups</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 10 – How You are You: Big Data, the Internet of Things, and portfolio
+                        selves</div>
+                    <p style="margin-left: 1.5rem; font-style: italic;">(Reading Analysis Essay Questions Handed out)
+                    </p>
+
+                    <div class="week-header">Week 11 – How Controllable are You? The Uses of Platform Capitalism for
+                        State Control</div>
+                    <p style="margin-left: 1.5rem; font-style: italic;">(Reading Analysis Essay Questions Due)</p>
+                    <ul class="readings-list">
+                        <li><a href="https://www.cs.bath.ac.uk/~jjb/ftp/WilsonRauwolfBryson19.pdf"
+                                target="_blank">Evolutionary Psychology and AI: Impact of AI on Human Behaviour</a></li>
+                        <li><a href="https://www.cbsnews.com/news/chinas-social-credit-system-keeps-a-critical-eye-on-everyday-behavior-even-jaywalking-2018-04-24/"
+                                target="_blank">CBS News (2018) China's social credit system</a></li>
+                        <li><a href="http://foreignpolicy.com/2018/04/03/life-inside-chinas-social-credit-laboratory/"
+                                target="_blank">Foreign Policy (2018) Life Inside China’s Social Credit Laboratory</a>
+                        </li>
+                        <li><a href="http://gking.harvard.edu/files/gking/files/50c.pdf" target="_blank">King et al.
+                                (2017) How the Chinese Government Fabricates Social Media Posts</a></li>
+                        <li><a href="http://www.slate.com/articles/technology/future_tense/2012/01/consent_of_the_networked_how_google_facebook_and_other_cyberspace_powerhouses_handle_digital_power_.single.html"
+                                target="_blank">MacKinnon (2012) Consent of the Networked</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 12: How Controllable are you? You as part of a Geo-Political Arena
+                    </div>
+                    <ul class="readings-list">
+                        <li><a href="https://www.foreignaffairs.com/articles/united-states/2014-06-16/age-entropy"
+                                target="_blank">Schweller (2017) The Age of Entropy</a></li>
+                        <li><a href="https://drive.google.com/open?id=0B55HdCqOl7acRU04OFkwNUp4TmM"
+                                target="_blank">Powers and Jablonski (2015) The Real Cyber War: Ch 1</a></li>
+                        <li><a href="https://drive.google.com/open?id=0B55HdCqOl7acQm15UTZvdVdTaVk"
+                                target="_blank">Gunitsky (2015) Corrupting the Cyber Commons</a></li>
+                        <li><a href="https://www.intelligence.senate.gov/sites/default/files/documents/os-cwatts-033017.pdf"
+                                target="_blank">Clint Watts Senate Testimony</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 13: How “Seen” can you be? The challenges of algorithmic bias</div>
+                    <ul class="readings-list">
+                        <li><a href="https://harpers.org/archive/2018/01/the-digital-poorhouse/" target="_blank">Eubanks
+                                (2017) Digital Inequality</a></li>
+                        <li><a href="http://www.publicbooks.org/top-10-2018-invisible-algorithms-invisible-politics/?utm_content=bufferf3af8&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer"
+                                target="_blank">Forano (2018) Invisible Algorithms Invisible Politics</a></li>
+                        <li>Noble - Algorithms of Oppression</li>
+                        <li>A Child Abuse Predicition Model Fails Poor Families</li>
+                    </ul>
+
+                    <div class="week-header">Week 14: How Free can you be? The Challenges of Becoming an Algorithmic
+                        Problem</div>
+                    <ul class="readings-list">
+                        <li>Warner - Algorithms and Human Freedom</li>
+                        <li>Olma - In Defense of Serendipity</li>
+                        <li>Morozov - The Death of the Cyberflaneur</li>
+                    </ul>
+
+                    <div class="week-header">Week 15: How Free can we be? Do Social Media Algorithms Tip the Scales
+                        toward Authoritarianism</div>
+                    <p style="margin-left: 1.5rem; font-style: italic;">(Reading Analysis Essay Questions Handed out)
+                    </p>
+                    <ul class="readings-list">
+                        <li><a href="https://www.scientificamerican.com/article/misinformation-has-created-a-new-world-disorder/"
+                                target="_blank">Misinformation has created a new world disorder</a></li>
+                        <li><a href="https://www.bloomberg.com/news/features/2019-08-08/i-tried-hiding-from-silicon-valley-in-a-pile-of-privacy-gadgets?srnd=businessweek-v2&utm_source=twitter&cmpid=socialflow-twitter-businessweek&utm_medium=social&utm_content=businessweek&utm_campaign=socialflow-organic"
+                                target="_blank">Can you Hide from Silicon Valley?</a></li>
+                        <li><a href="https://www.cogitatiopress.com/mediaandcommunication/article/download/808/808"
+                                target="_blank">Marechal (2017) Networked Authoritarianism and the Geopolitics of
+                                Information</a></li>
+                        <li><a href="https://twq.elliott.gwu.edu/sites/g/files/zaxdzs2121/f/downloads/TWQ_Summer2018_Maurer.pdf"
+                                target="_blank">Mauer (2018) CyberProxies and Their Implications for Liberal
+                                Democracies</a></li>
+                        <li><a href="http://comprop.oii.ox.ac.uk/wp-content/uploads/sites/93/2017/10/Junk-News-on-Military-Affairs-and-National-Security-1.pdf"
+                                target="_blank">Oxford Computational Propaganda Project (2017) Junk News...</a></li>
+                        <li><a href="http://comprop.oii.ox.ac.uk/wp-content/uploads/sites/93/2018/07/ct2018.pdf"
+                                target="_blank">Bradshaw and Howard (2018) Challenging Truth and Trust</a></li>
+                    </ul>
+
+                    <div class="week-header">Week 16: Wrap up: Surrender to our Algorithmic Overlords or “Fight the
+                        Power”</div>
+                    <p style="margin-left: 1.5rem; font-style: italic;">(Reading Analysis Essay Questions Due)</p>
+                    <ul class="readings-list">
+                        <li>Marichal - Factory Farmed Citizens (draft chapter)</li>
+                        <li><a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3F8D7BA2C0FE3A7126A4D9B73A89415D/9781108429092AR.pdf/Stand_out_of_our_Light.pdf?event-type=FTLA"
+                                target="_blank">Williams (2017) Stand out of Our Light (Chapters 2-5)</a></li>
+                    </ul>
+
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
