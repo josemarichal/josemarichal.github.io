@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media as Data Syllabus | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Syllabus Specific Styles */
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-header .course-meta {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .syllabus-week {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .week-header {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .day-entry .date {
+            font-weight: 700;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 150px;
+            /* Adjusted for wider dates like "Wednesday, July 8th" */
+        }
+
+        .day-entry .topic {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 150px;
+            margin-top: 0.5rem;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .readings-list {
+                padding-left: 0;
+            }
+
+            .day-entry .date {
+                display: block;
+                margin-bottom: 0.25rem;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">PAI-L</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <div class="syllabus-header">
+                    <h1>Social Media as Data</h1>
+                    <div class="course-meta">
+                        <p>Summer Skills Program | Online Synchronous</p>
+                    </div>
+                </div>
+
+                <!-- Instructor Info -->
+                <section class="syllabus-unit">
+                    <h2>Instructor Information</h2>
+                    <p><strong>Dr. Jose Marichal</strong> (He/Him)<br>
+                        Email: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a><br>
+                        Office Hours: By appointment via Zoom (preferred after class Wed 12pm)</p>
+                </section>
+
+                <!-- Course Description -->
+                <section class="syllabus-unit">
+                    <h2>Course Description</h2>
+                    <p>In this course, students will learn the different ways in which you can analyze social media
+                        text. Students will learn the VERY basic elements of the Python programming language, how to set
+                        up an integrated developer environment (IDE), how to find source code, how to work with
+                        Application Programming Interfaces (API) to access data, how to prepare text data for analysis
+                        and finally how to analyze and present that data using social network analysis (SNA) and natural
+                        language processing (NLP).</p>
+
+                    <h3>Course Format</h3>
+                    <p>This course is entirely online. There are weekly live chats using Zoom (synchronous online class
+                        meetings). The rest of your learning time will be spent watching pre-recorded video lectures and
+                        doing other assignments related to the content of the course.</p>
+                </section>
+
+                <!-- Course Goals -->
+                <section class="syllabus-unit">
+                    <h2>Course Goals</h2>
+                    <p>Through completing this course, the student will be able to:</p>
+                    <ul>
+                        <li>Have a VERY basic understanding of variables, lists, operations, functions and data frames
+                            in Python.</li>
+                        <li>Understand how to work in the Jupyter notebook IDE, how to download packages in Anaconda,
+                            find source code.</li>
+                        <li>How to interact with a social media platform’s API to extract data.</li>
+                        <li>How to prepare text data.</li>
+                        <li>How to analyze and visually present that data.</li>
+                    </ul>
+                </section>
+
+                <!-- Requirements -->
+                <section class="syllabus-unit">
+                    <h2>Requirements & Technology</h2>
+                    <p><strong>Computer:</strong> Windows 10 or Mac OS X, 3.0 GHz+ processor, 4 GB+ RAM.<br>
+                        <strong>Tools:</strong> Python, Anaconda, Zoom, Blackboard.<br>
+                        <strong>Internet:</strong> Reliable connection (rec. 50 Mbps) for Zoom and tools.
+                    </p>
+                </section>
+
+                <!-- Grading -->
+                <section class="syllabus-unit">
+                    <h2>Grading (100 Points Total)</h2>
+                    <ul>
+                        <li><strong>Datacamp Python Course Modules (50 points):</strong> Completion of learning modules
+                            on CodeAcademy/Datacamp.</li>
+                        <li><strong>Weekly Mini-Assignments (50 points):</strong> Two mini-assignments per week
+                            reflecting competencies in accessing, preparing, and analyzing data.</li>
+                    </ul>
+                    <p><em>(Pre-Recorded Tutorials and Zoom Meetings are required components but not directly
+                            graded.)</em></p>
+                </section>
+
+                <!-- Schedule -->
+                <section class="syllabus-unit">
+                    <h2>Course Schedule</h2>
+
+                    <div class="week-header">Week 1</div>
+                    <div class="day-entry">
+                        <span class="date">Wednesday</span>
+                        <span class="topic">Introduction to Working with Social Media Data</span>
+                        <ul class="readings-list">
+                            <li><strong>Watch:</strong> Video Tutorials 1 & 2</li>
+                            <li><strong>Do:</strong> Mini-assignment 1: Intro to Data Science and NLP</li>
+                            <li><strong>Do:</strong> Week 1 Data Camp Python module</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 2</div>
+                    <div class="day-entry">
+                        <span class="date">Wednesday</span>
+                        <span class="topic">Intro to Concepts of NLP, Machine Learning, Network analysis and Setting up
+                            IDE</span>
+                        <ul class="readings-list">
+                            <li><strong>Watch:</strong> Video Tutorials 3 & 4</li>
+                            <li><strong>Do:</strong> Mini-assignment 2 & 3: Concepts in network analysis and NLP</li>
+                            <li><strong>Do:</strong> Week 2 Data Camp Python modules</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 3</div>
+                    <div class="day-entry">
+                        <span class="date">Wednesday</span>
+                        <span class="topic">Accessing Social Media Data and Network Analysis</span>
+                        <ul class="readings-list">
+                            <li><strong>Watch:</strong> Video Tutorials 5 & 6</li>
+                            <li><strong>Do:</strong> Mini-assignment 4 & 5: Creating a dev environment and accessing
+                                data</li>
+                            <li><strong>Do:</strong> Week 3 Data Camp Python module</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 4</div>
+                    <div class="day-entry">
+                        <span class="date">Wednesday</span>
+                        <span class="topic">Network Pre-processing Data</span>
+                        <ul class="readings-list">
+                            <li><strong>Watch:</strong> Video Tutorial 7</li>
+                            <li><strong>Do:</strong> Mini-assignment 6 & 7: Social Network Analysis and
+                                Pre-processing/tokenizing data</li>
+                            <li><strong>Do:</strong> Week 4 Data Camp Python module</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 5</div>
+                    <div class="day-entry">
+                        <span class="date">Wednesday</span>
+                        <span class="topic">Using NLTK to do basic NLP and advanced methods</span>
+                        <ul class="readings-list">
+                            <li><strong>Watch:</strong> Video Tutorials 8 & 9</li>
+                            <li><strong>Do:</strong> Mini-assignment 8 & 9: NLP analysis strategies</li>
+                            <li><strong>Do:</strong> Week 5 Data Camp Python module</li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 6</div>
+                    <div class="day-entry">
+                        <span class="date">Wednesday</span>
+                        <span class="topic">Visualizing Data</span>
+                        <ul class="readings-list">
+                            <li><strong>Watch:</strong> Video Tutorial 10</li>
+                            <li><strong>Do:</strong> Mini-assignment 10: Visualizing data (Seaborn and Plotly)</li>
+                        </ul>
+                    </div>
+
+                </section>
+
+                <!-- Policies -->
+                <section class="syllabus-unit">
+                    <h2>Policies</h2>
+                    <ul>
+                        <li><strong>Attendance:</strong> Be reflective and honest with yourself about what you need as a
+                            learner.</li>
+                        <li><strong>Late Work:</strong> Please communicate early. Late work without prior communication
+                            may be subject to a 50% reduction.</li>
+                        <li><strong>Academic Honesty:</strong> Standard university policies apply. Plagiarism and
+                            unethical computer use will result in sanctions.</li>
+                        <li><strong>Netiquette:</strong> Be respectful, appropriate, and mindful of others in online
+                            communication.</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
