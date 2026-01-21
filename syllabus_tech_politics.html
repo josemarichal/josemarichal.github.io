@@ -162,7 +162,7 @@
                         Professor of Political Science<br>
                         Office Hours: SWEN 228: MWF 2:00 to 3:00; Zoom Tue 12:00-2:00<br>
                         Contact: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a><br>
-                        Time and Place: Swenson Center (SWEN) 106</p>
+                        Time and Place: (HUM) 110</p>
 
                     <h3>About the Instructor</h3>
                     <p>I am a professor of political science at California Lutheran University. I specialize in studying
@@ -331,7 +331,8 @@
                             references</strong> to points made during our class discussions or Friday Zoom sessions (not
                         just summaries of the readings). You must <strong>bold</strong> these five references in your
                         text. Papers that do not include these bolded, specific in-class references will not be
-                        accepted.</p>
+                        accepted.
+                    </p>
 
                     <h4>Grading Criteria (10 Points Each):</h4>
                     <ul>
@@ -355,81 +356,86 @@
                     </ul>
 
                     <h3>Part 2: Participatory AI Lab Project (40 Points)</h3>
-                    <p><strong>"The Campus Listening Experiment: A Participatory AI Lab Simulation"</strong></p>
                     <p><strong>Format:</strong> Group Project (3–4 Students per Team)</p>
-                    <p><strong>Objective:</strong> In this course, you will act as <strong>inaugural members</strong> of
-                        the new <strong>Participatory AI Lab at CLU</strong>. Your goal is to identify a campus or
-                        community issue, generate raw data (via survey) of
-                        campus/community opinion,
-                        process
-                        it using AI/Machine Learning tools we will learn in class, and then present the
-                        response (and your reflections)
-                        during the last week of class</p>
+                    <p><strong>Objective:</strong> In this course, you will act as researchers for the Participatory AI
+                        Lab. We are flooded with video content where powerful entities (governments, corporations, NGOs)
+                        define what is "good," "safe," or "necessary." Yet, the sheer volume of this content makes it
+                        difficult to critique.</p>
+                    <p>Your goal is to audit a specific Public Discourse Archive. You will ingest Publicly Available
+                        Information (YouTube transcripts), process it using Machine Learning (BERTopic), and then audit
+                        the results to determine how the AI reconstructs the narrative—and what human nuance gets lost
+                        in the optimization.</p>
 
-                    <h4>Phase 1: Data Generation (10 Points)</h4>
+                    <h4>Phase 1: Data Ingestion (10 Points)</h4>
                     <p><strong>Due: Wednesday, Apr 1</strong></p>
                     <ul>
-                        <li><strong>Step A: Select a Topic.</strong> Pick a campus/community issue that generates
-                            "thick"
-                            discourse and affects student life (e.g., The cost of meal plans, Parking enforcement,
-                            Campus safety/policing, Academic Freedom, or DEI initiatives) or a similar community issue.
+                        <li><strong class="step-title">Step A: Select a Public Corpus.</strong> Pick a specific
+                            organization, movement, or policy domain that publishes its proceedings or messaging
+                            publicly on YouTube. You are looking for a "discourse community" trying to define a problem.
+                            <ul>
+                                <li><strong>Option A (Governance):</strong> A City Council, School Board, or UN Agency
+                                    (e.g., "AI for Good" or Climate Summits).</li>
+                                <li><strong>Option B (Corporate/Tech):</strong> A specific Tech Company’s developer
+                                    conferences or product launches (e.g., "How OpenAI defines 'Safety'").</li>
+                                <li><strong>Option C (Culture/Activism):</strong> A specific movement’s channel (e.g.,
+                                    Environmental Advocacy, "Manosphere" podcasts, or Public Health briefings).</li>
+                            </ul>
                         </li>
-                        <li><strong>Step B: The Survey.</strong> Design a Qualtrics survey to capture student sentiment.
-                            <br><em>Constraint:</em> You must include at least two Open-Ended Questions (e.g., "Describe
-                            a specific experience you had with..." or "Why do you feel this way?"). We need text data to
-                            analyze, not just multiple-choice statistics.
+                        <li><strong class="step-title">Step B: The Scrape.</strong> Using the Python script provided in
+                            class (via Google Colab), you will download the transcripts from 10–20 videos related to
+                            your topic.
+                            <br><em>Constraint:</em> You need a sufficient volume of text to generate meaningful
+                            clusters (roughly 2+ hours of spoken audio).
                         </li>
-                        <li><strong>Step C: Collection.</strong> Distribute the survey to your peers.
-                            <br><em>Target:</em> Minimum 30–50 responses per group to generate a sufficient corpus for
-                            analysis.
+                        <li><strong class="step-title">Step C: Cleaning.</strong> Format the raw transcript data into a
+                            clean .csv file, removing timestamps and non-verbal markers.
                         </li>
-                        <li><strong>Deliverable:</strong> A raw .csv file of your survey responses submitted to Canvas.
-                        </li>
+                        <li><strong>Deliverable:</strong> A clean, analysis-ready dataset of public discourse.</li>
                     </ul>
 
                     <h4>Phase 2: The Machine Analysis (15 Points)</h4>
                     <p><strong>Due: Wednesday, Apr 22</strong></p>
                     <ul>
-                        <li><strong>Step A: The Pipeline.</strong> We will learn how to use Google Colab to
-                            analyze your text data through using an AI tools called BERTopic modeling (among others).
-                        </li>
-                        <li><strong>Step B: The Output.</strong> Generate the following artifacts:
+                        <li><strong class="step-title">Step A: The Pipeline.</strong> Using the Google Colab notebook,
+                            run your cleaned data through the BERTopic model.</li>
+                        <li><strong class="step-title">Step B: The Output.</strong> Generate the following artifacts:
                             <ul>
-                                <li>Topic Clusters: A list of the Top 5 themes the AI identified.</li>
-                                <li>Visualization: An "Intertopic Distance Map" showing how the ideas relate spatially.
-                                </li>
+                                <li><strong>Topic Clusters:</strong> A list of the Top 5–10 narrative themes. (e.g.,
+                                    Does the model group "Efficiency" with "Sustainability"? Does it separate "Risk"
+                                    from "Profit"?)</li>
+                                <li><strong>Visualization:</strong> An "Intertopic Distance Map" showing the spatial
+                                    relationship of these concepts.</li>
                             </ul>
                         </li>
-                        <li><strong>Step C: The "Civic Insight Brief."</strong> Write a 2-page report summarizing what
-                            the AI thinks the students/community members care about. Write this as if you were a
-                            consultant delivering a
-                            "neutral" summary to the University Administration. (e.g., "The AI identified 'Cost' as the
-                            primary cluster, with 'Quality' as a distant second.")</li>
+                        <li><strong class="step-title">Step C: The "Narrative Insight Brief."</strong> Write a 2-page
+                            report summarizing the Dominant Narrative identified by the AI. If you were a consultant
+                            analyzing this organization, what would you say are their priorities based only on this map?
+                        </li>
                         <li><strong>Deliverable:</strong> The Colab Notebook output + The 2-Page Brief.</li>
                     </ul>
 
                     <h4>Phase 3: The Human Audit & Reflection (15 Points)</h4>
                     <p><strong>Due: Wednesday, May 13 (Finals Week)</strong></p>
                     <ul>
-                        <li><strong>Step A: The "Human Essentiality" Audit.</strong> Compare your Raw Data (Phase 1) to
-                            the Machine Output (Phase 2). Read the actual comments that the AI summarized.</li>
-                        <li><strong>Step B: The Reflection Paper (3–4 Pages).</strong> Answer the following questions
-                            using the course theory:
+                        <li><strong class="step-title">Step A: The "Human Essentiality" Audit.</strong> Select one
+                            10-minute segment of a video from your corpus. Watch it closely. Compare the human delivery
+                            (tone, hesitation, rhetorical passion) to the AI's textual summary/clustering.</li>
+                        <li><strong class="step-title">Step B: The Reflection Paper (3–4 Pages).</strong> Answer the
+                            following questions using course theory:
                             <ul>
-                                <li><strong>The Erasure Audit:</strong> Who got optimized away? Look at the "outlier"
-                                    comments that didn't fit into a cluster. Did the AI miss sarcasm, emotion, or
-                                    minority viewpoints? (Reference Unit 3: The Epistemic Shift).</li>
-                                <li><strong>The "Vibes" Check:</strong> Did the AI capture the intensity of the
-                                    student sentiment, or just the keywords? Does the summary feel "true"?</li>
-                                <li><strong>The Policy Recommendation:</strong> Based on this experiment, write an AI
-                                    aided "Best
-                                    Practices" statement. Should the University use AI to summarize student feedback? If
-                                    so, what human guardrails are needed to preserve the "Ontological Integrity" of the
-                                    student/community voice?</li>
+                                <li><strong>The Erasure Audit:</strong> What did the model miss? Did the AI flatten a
+                                    controversial ethical debate into a bland bureaucratic topic? Did it miss irony,
+                                    dog-whistles, or resistance?</li>
+                                <li><strong>The "Machine Certainty" Check:</strong> The AI visualization creates a clean
+                                    map of the discourse. Is this map "true," or is it an artifact of optimization? Does
+                                    it make the organization appear more coherent than it actually is?</li>
+                                <li><strong>The Conclusion:</strong> Based on this audit, can we trust AI to "read" the
+                                    public record? If we use these tools to make policy or analyze culture, what Human
+                                    Guardrails are necessary to preserve the context that the algorithm optimizes away?
+                                </li>
                             </ul>
                         </li>
-                        <li><strong>Deliverable:</strong> Final Reflection Paper + Group Presentation Slides (for the
-                            Final Panel).</li>
+                        <li><strong>Deliverable:</strong> Final Reflection Paper + Group Presentation Slides.</li>
                     </ul>
                 </section>
 
