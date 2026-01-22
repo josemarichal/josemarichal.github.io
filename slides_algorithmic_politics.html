@@ -30,6 +30,40 @@
 
         .reveal ul li {
             margin-bottom: 20px;
+            font-size: 0.85em;
+        }
+
+        .reveal p {
+            font-size: 0.9em;
+        }
+
+        .provocation {
+            margin-top: 40px;
+            padding: 20px;
+            border-left: 5px solid #00d4ff;
+            background: rgba(255, 255, 255, 0.05);
+            font-family: 'Inter', sans-serif;
+            font-style: italic;
+            font-size: 1.1em;
+            color: #00d4ff;
+        }
+
+        .slide-image {
+            max-height: 350px;
+            border-radius: 8px;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        .columns {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .column {
+            flex: 1;
         }
     </style>
 </head>
@@ -37,100 +71,153 @@
 <body>
     <div class="reveal">
         <div class="slides">
-            <section data-markdown>
-                <textarea data-template>
-# Lecture Slides: Politics in the Algorithmic Age
-**Course:** Global Politics 101
-**Topic:** The Algorithmic Social Contract
 
----
-
-## Slide 1: The Algorithmic Age
-**Title:** Entering the Algorithmic Age
-**Core Concept:** The transition from understanding to prediction.
-
-*   **Definition:** We live in an "Algorithmic Age" where every digital interaction (likes, swipes, eye movements) is broken down into data points: **Nodes** (things) and **Edges** (attributes).
-*   **The Shift:** Prior to 2010, the goal of data was to *understand* humans. Now, the priority is to *predict* future behavior and create artificial replicas of human thought.
-*   **Key Takeaway:** We are moving from a regime of surveillance for marketing to a regime of predictive modeling for behavioral replication.
-
----
-
-## Slide 2: The Logic of the Social Contract
-**Title:** Political Legitimacy and the Social Contract
-**Core Concept:** Why we submit to authority.
-
-*   **Theory:** A thought experiment to explain why individuals surrender some freedom to a political authority (the State).
-*   **Key Thinkers:**
-    *   **Hobbes:** We cede rights for **protection** (safety from the "nasty, brutish, and short" state of nature).
-    *   **Locke:** We cede power to **preserve rights** (life, liberty, property).
-    *   **Rousseau:** We submit to the "General Will" to find **meaning** and escape the judgment of modernity.
-*   **Relevance:** This framework helps us understand our new relationship with digital platforms.
-
----
-
-## Slide 3: The Algorithmic Social Contract
-**Title:** Terms of the New Deal
-**Core Concept:** Trading autonomy for cognitive comfort.
-
-*   **The Problem:** The internet offers infinite information ("The Anxiety of Choice").
-*   **The Exchange:** We cede our **curational autonomy** (the power to choose what we see) to algorithms.
-*   **The Benefit:** In return, we get relief from anxiety. The algorithm curates a "safe," comfortable world that reinforces our biases and filters out dissonance.
-*   **The Cost:** Massive data extraction and the narrowing of our worldview into consumer clusters.
-
----
-
-## Slide 4: The Paradox of Expression
-**Title:** Voice vs. Reflection
-**Core Concept:** The commodification of communication.
-
-*   **The Promise:** The early internet promised democratization and a platform for the "authentic self."
-*   **The Reality:** To be heard in an attention economy, we must modify our voice to please the algorithm.
-*   **Voice over Thought:**
-    *   **Reflection:** Requires time, silence, and fixed identity. Hard to monetize.
-    *   **Voice:** Immediate, instinctive, reactionary. Easy to monetize.
-*   **Result:** We shift from expressing who we *are* to performing a malleable identity that algorithms will boost.
-
----
-
-## Slide 5: The Economics of Engagement
-**Title:** Opinion as Supply and Demand
-**Core Concept:** Tokenizing human experience.
-
-*   **Datafication:** Human expression is tokenized into data for machine learning models.
-*   **The Market Incentive:** If opinion is a commodity, platforms need a constant supply.
-*   **Habitual Engagement:** Platforms are designed to make the production of opinion (likes, comments, shares) habitual.
-*   **The Intelligence Gap:** It doesn't matter *who* you are talking to (up to 80% of some interactions may be bots); what matters is that you are generating data to train the model.
-
----
-
-## Slide 6: The Outlier Problem
-**Title:** The Gap Between Map and Territory
-**Core Concept:** Parsimony vs. Prediction.
-
-*   **Traditional Science:** We used simplified models (parsimony) to explain the world, acknowledging that models are just abstractions. "Outliers" were expected.
-*   **The AI Revolution:** Machine learning relies on massive parameters (billions of variables) to force the model to fit reality.
-*   **Goal:** The goal is no longer to *explain* why things happen (theory), but to *predict* what will happen next (optimization).
-*   **The Friction:** Humans are sophisticated and contingent; we don't always fit the model.
-
----
-
-## Slide 7: Machine Habitus
-**Title:** Conforming to the Code
-**Core Concept:** Moving towards the "Local Minima."
-
-*   **The Danger:** If the algorithm can't perfectly predict us, the most efficient solution is for *us* to become more predictable.
-*   **Machine Habitus:** We subconsciously begin to sort, classify, and behave in ways that match the algorithm's expectations.
-*   **Conclusion:** Instead of the model adapting to human complexity, humans are adapting to the model's simplicity. We are "classifying ourselves" to fit the algorithmic prediction.
-                    </textarea>
+            <section>
+                <h1>Politics in the Algorithmic Age</h1>
+                <h3>The Algorithmic Social Contract</h3>
+                <p>Course: Global Politics 101</p>
             </section>
+
+            <section>
+                <h2>The Algorithmic Age</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Definition:</strong> We live in an "Algorithmic Age" where every digital
+                                interaction is broken down into <strong>Nodes</strong> (things) and
+                                <strong>Edges</strong> (attributes).</li>
+                            <li><strong>The Shift:</strong> Prior to 2010, the goal was to <em>understand</em> humans.
+                                Now, the priority is to <em>predict</em> future behavior.</li>
+                            <li><strong>Key Takeaway:</strong> Transition from surveillance for marketing to predictive
+                                modeling for behavioral replication.</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_1.png" class="slide-image" alt="Algorithmic Age Network">
+                    </div>
+                </div>
+                <div class="provocation">"If you can be predicted, are you free?"</div>
+            </section>
+
+            <section>
+                <h2>The Logic of the Social Contract</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Theory:</strong> Rational actors surrender freedom to a political authority for
+                                benefits.</li>
+                            <li><strong>Hobbes:</strong> We cede rights for <strong>protection</strong> (security).</li>
+                            <li><strong>Locke:</strong> We cede power to <strong>preserve rights</strong> (life,
+                                liberty).</li>
+                            <li><strong>Rousseau:</strong> We submit to the "General Will" for <strong>meaning</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_2.png" class="slide-image" alt="Social Contract">
+                    </div>
+                </div>
+                <div class="provocation">"What rights did you sign away today?"</div>
+            </section>
+
+            <section>
+                <h2>The Algorithmic Social Contract</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>The Problem:</strong> The internet offers infinite information ("Anxiety of
+                                Choice").</li>
+                            <li><strong>The Exchange:</strong> We cede <strong>curational autonomy</strong> to
+                                algorithms.</li>
+                            <li><strong>The Benefit:</strong> Curated comfort and reduced anxiety.</li>
+                            <li><strong>The Cost:</strong> Data extraction and consumer clustering.</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_3.png" class="slide-image" alt="Filter Bubble">
+                    </div>
+                </div>
+                <div class="provocation">"Is comfort worth the cost of your autonomy?"</div>
+            </section>
+
+            <section>
+                <h2>The Paradox of Expression</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>The Promise:</strong> The internet as a place for the "authentic self."</li>
+                            <li><strong>The Reality:</strong> Modifying our voice to be "heard" by the code.</li>
+                            <li><strong>Reflection vs. Voice:</strong> Reflection is slow and hard to monetize. Voice is
+                                immediate and profitable.</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_4.png" class="slide-image" alt="Identity Performance">
+                    </div>
+                </div>
+                <div class="provocation">"Are you sharing your life, or performing it?"</div>
+            </section>
+
+            <section>
+                <h2>The Economics of Engagement</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Datafication:</strong> Human expression tokenized for AI training.</li>
+                            <li><strong>Supply & Demand:</strong> Platforms need a constant supply of opinion.</li>
+                            <li><strong>Habitual Engagement:</strong> "Voice" becomes a habit, not a thought.</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_5.png" class="slide-image" alt="Opinion Factory">
+                    </div>
+                </div>
+                <div class="provocation">"Who profits from your outrage?"</div>
+            </section>
+
+            <section>
+                <h2>The Outlier Problem</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Traditional Science:</strong> Accepted "outliers" (parsimony).</li>
+                            <li><strong>AI Revolution:</strong> Uses billions of parameters to force the model to fit
+                                reality.</li>
+                            <li><strong>Goal:</strong> Prediction (what happens next) over Explanation (why).</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_6.png" class="slide-image" alt="Outlier Data">
+                    </div>
+                </div>
+                <div class="provocation">"What parts of you don't fit the model?"</div>
+            </section>
+
+            <section>
+                <h2>Machine Habitus</h2>
+                <div class="columns">
+                    <div class="column">
+                        <ul>
+                            <li><strong>The Danger:</strong> If we are unpredictable, the system is inefficient.</li>
+                            <li><strong>Machine Habitus:</strong> We subconsciously sort and classify <em>ourselves</em>
+                                to match the algorithm.</li>
+                            <li><strong>Conclusion:</strong> We adapt to the machine's simplicity instead of it adapting
+                                to our complexity.</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="images/slide_7.png" class="slide-image" alt="Machine Habitus">
+                    </div>
+                </div>
+                <div class="provocation">"Are you training the algorithm, or is it training you?"</div>
+            </section>
+
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
     <script>
         Reveal.initialize({
-            plugins: [RevealMarkdown],
             hash: true,
             center: true,
             transition: 'slide'
