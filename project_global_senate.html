@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Senate Policy Researcher | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>Global Senate Policy Researcher</h1>
+                <p class="project-subtitle">An AI-Powered Tool for Comparative Policy Analysis</p>
+
+                <img src="images/policy_researcher.png" alt="Global Senate Policy Researcher Conceptual Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The <strong>Global Senate Policy Researcher</strong> is an interactive tool designed to break
+                        through "Western-centric" or "local-only" policy biases. It deploys 10 specialized AI agents,
+                        each programmed to identify as a researcher from a distinct global region (e.g., East Asia,
+                        Sub-Saharan Africa, Latin America, Nordic Countries).</p>
+                    <p>When given a policy problem, these agents simultaneously scour their "regions" for best
+                        practices, historical precedents, and unique cultural solutions. The system then aggregates
+                        these findings into a "Comparative Global Report," offering a synthesized world-view of
+                        solutions that a single human researcher might miss.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2>How It Works</h2>
+                    <p>The application uses a "Mixture of Experts" approach, leveraging Large Language Models (LLMs) via
+                        the Hugging Face Inference API. It orchestrates a parallel workflow:</p>
+                    <ol class="instructions-list">
+                        <li><strong>User Input:</strong> You enter a "wicked problem" (e.g., "Combating urban heat
+                            islands" or "Regulating gig economy labor").</li>
+                        <li><strong>Regional Dispatch:</strong> The system sends this prompt to 10 separate agent
+                            personas.</li>
+                        <li><strong>Local Search:</strong> Each agent applies a region-specific lens to find concrete
+                            examples and case studies.</li>
+                        <li><strong>Synthesis:</strong> A final "Editor" agent compiles the results, highlighting
+                            conflicts, consensus, and innovative outliers.</li>
+                    </ol>
+                    <a href="https://huggingface.co/spaces/Jomaric/policy_researcher" target="_blank"
+                        class="action-button">Launch the Tool</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>Usage Instructions</h2>
+                    <p>To use the tool effectively:</p>
+                    <ol class="instructions-list">
+                        <li><strong>Click the "Launch" button</strong> above to open the Hugging Face Space.</li>
+                        <li><strong>Enter your query</strong> in the text box. Be specific for better results (e.g.,
+                            instead of "Education," try "Vocational training programs for at-risk youth").</li>
+                        <li><strong>Wait for the agents.</strong> It may take 30-60 seconds for all 10 agents to report
+                            back.</li>
+                        <li><strong>Review the Report.</strong> The final output will be structured by themes, comparing
+                            how different parts of the world approach your problem.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
