@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Change Maker | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        blockquote {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--secondary-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>Community Change Maker</h1>
+                <p class="project-subtitle">10 Ways to Change the World (That Don't Involve Blowing Up the Death Star)
+                </p>
+
+                <img src="images/community_change.png" alt="Community Change Maker Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The <strong>Community Change Maker</strong> is an AI-powered brainstorming tool designed to help
+                        you find small, actionable ways to improve your local community. Instead of suggesting grand,
+                        impossible gestures, this tool uses 10 distinct "personas" to suggest humble but effective
+                        interventions.</p>
+                    <p>Whether it's becoming a "Public Character" who lends umbrellas to strangers, or an "Onion
+                        Merchant" who finds a simple niche to serve, this tool helps you find the right micro-strategy
+                        for your specific context.</p>
+                    <a href="https://huggingface.co/spaces/Jomaric/community_change_maker" target="_blank"
+                        class="action-button">Launch the Tool</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>The Origin Story</h2>
+                    <p>This project is directly inspired by the insightful blog post <strong>"10 Underrated Ways to
+                            Change the World"</strong> by Adam Mastroianni (author of the <em>Experimental History</em>
+                        newsletter).</p>
+                    <p>Mastroianni argues that we often suffer from "Superhero Syndrome"—waiting for the chance to blow
+                        up the Death Star while ignoring the small, daily actions that actually keep society running. He
+                        outlines 10 alternative archetypes for doing good, including:</p>
+                    <ul>
+                        <li><strong>The Public Character:</strong> Someone who is just present and helpful in public
+                            spaces.</li>
+                        <li><strong>The Social Nucleation Site:</strong> Creating "unreasonable attentiveness" to help
+                            groups bond.</li>
+                        <li><strong>The Hobbit:</strong> Using "hobbitian courage" to make small, non-fatal risks to
+                            improve systems.</li>
+                        <li><strong>The Good Audience:</strong> Supporting creators by simply showing up and paying
+                            attention.</li>
+                    </ul>
+                    <blockquote>
+                        "We do occasionally need someone to shoot torpedos into the exhaust port of a giant doomsday
+                        machine. But most of the time, we need people who sell onions, people who make sure the kids get
+                        to school safely, people who will show up to the comedy gig and laugh." — Adam Mastroianni
+                    </blockquote>
+                    <p>You can read the original full post <a
+                            href="https://www.experimental-history.com/p/10-underrated-ways-to-change-the-world"
+                            target="_blank">here</a>.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2>How to Use It</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Launch the App:</strong> Click the button above to open the Hugging Face Space.</li>
+                        <li><strong>Describe Your Context:</strong> In the text box, describe your current situation
+                            (e.g., "I am a college student living in a dorm," or "I am a retired teacher in a small
+                            town").</li>
+                        <li><strong>Get 10 Ideas:</strong> The AI will dispatch the prompt to 10 different agents, each
+                            embodying one of Mastroianni's archetypes.</li>
+                        <li><strong>Review the Results:</strong> You will receive a list of 10 specific, actionable
+                            ideas tailored to your life. Pick one and start today!</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
