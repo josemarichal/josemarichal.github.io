@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deleuzean Rhizome Assistant | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>Deleuzean Rhizome Assistant</h1>
+                <p class="project-subtitle">A Nomadic Companion for Philosophical Production</p>
+
+                <img src="images/slide_3.png" alt="Rhizomatic Structure">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The <strong>Deleuzean Rhizome Assistant</strong> is an AI experiment in "persona engineering"
+                        designed to disrupt the typical hierarchical Q&A format of Large Language Models. Instead of
+                        providing direct answers, it functions as a <strong>collaborator</strong> that encourages
+                        non-linear, rhizomatic thinking.</p>
+                    <p>Grounded in the texts of Gilles Deleuze (specifically <em>A Thousand Plateaus</em>), this tool
+                        refuses to act as an oracle. Instead, it treats every user question as a "problem" to be
+                        unfolded, connecting disparate concepts like biology, cinema, and politics.</p>
+                    <a href="https://huggingface.co/spaces/Jomaric/deleuze_rhizome" target="_blank"
+                        class="action-button">Launch the Rhizome</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>The Intuition: Why a Rhizome?</h2>
+                    <p>Standard AI models are "arborescent" — they want to find the root of an answer and branch out
+                        logically. But creativity often works differently. It connects point A to point X without
+                        passing through B.</p>
+                    <p>By simulating a Deleuzean persona, we force the AI to:</p>
+                    <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.6;">
+                        <li><strong>Deterritorialize</strong> your assumptions (make the familiar strange).</li>
+                        <li><strong>Connect</strong> seemingly unrelated fields (e.g., explaining a political concept
+                            using a biological metaphor).</li>
+                        <li><strong>Resist Closure:</strong> Instead of "finishing" a task, it opens up new "lines of
+                            flight" or directions for inquiry.</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2>How to Interact</h2>
+                    <p>This is not a search engine. To get the most out of it:</p>
+                    <ol class="instructions-list">
+                        <li><strong>Enter Your Name:</strong> Establish a personal assemblage. The AI becomes your
+                            co-pilot.</li>
+                        <li><strong>Bring a Problem, Not a Query:</strong> Instead of "What is the capital of France?",
+                            ask "How does the concept of the city function as a machine?"</li>
+                        <li><strong>Follow the Lines of Flight:</strong> The AI will likely give you a dense, poetic
+                            response. Pick one thread from it and follow it.</li>
+                        <li><strong>Don't look for "The Answer":</strong> Look for a new way to frame your question.
+                        </li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
