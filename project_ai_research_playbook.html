@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Playbook | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>AI Research Playbook</h1>
+                <p class="project-subtitle">Extracting Rigorous Reasoning from LLMs</p>
+
+                <img src="images/AI_research_assistant.jpg" alt="AI Research Playbook Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The <strong>AI Research Playbook</strong> is an interactive educational tool that demonstrates
+                        how to move beyond simple chat interactions with AI. It implements five specific "Laboratory
+                        Techniques" designed to force Large Language Models (LLMs) to engage in deeper, more rigorous
+                        reasoning.</p>
+                    <p>Instead of treating the AI as a search engine, this tool treats it as a reasoning engine, capable
+                        of breaking down complex logic, cross-pollinating ideas from different fields, and even
+                        stress-testing its own arguments.</p>
+                    <a href="https://huggingface.co/spaces/Jomaric/ai_research_assistant" target="_blank"
+                        class="action-button">Launch the Tool</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>The Intuition: Why "Prompt Engineering" Isn't Enough</h2>
+                    <p>Most students use AI by asking a question and accepting the answer. This is the "oracle" model of
+                        AI use, and it often leads to shallow or hallucinations-prone results.</p>
+                    <p>This playbook is based on the idea that <strong>reasoning is a process, not an output</strong>.
+                        To get good research, you must force the model to show its work, check its own logic, and adopt
+                        critical perspectives. This app operationalizes recent research on "Chain of Thought" and
+                        "Self-Correction" into a simple push-button interface.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2>The 5 Techniques</h2>
+                    <p>The app allows you to toggle between five distinct reasoning modes:</p>
+                    <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.6;">
+                        <li><strong>1. Break It Down (Iterative):</strong> Forces the model to verify each step of a
+                            logical argument before moving to the next.</li>
+                        <li><strong>2. Mix & Match (Cross-Pollination):</strong> Uses analogies from unrelated fields
+                            (e.g., Biology) to solve Political Science problems.</li>
+                        <li><strong>3. Fact-Check (Simulation):</strong> Asks the AI to write Python code to empirically
+                            test a claim, using code execution as a "lie detector."</li>
+                        <li><strong>4. Logic Loop (Neuro-Symbolic):</strong> Combines broad intuition with strict
+                            logical proofs.</li>
+                        <li><strong>5. Reviewer 2 (Adversarial):</strong> Simulates a harsh academic critic to find
+                            holes in your argument.</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2>Usage Instructions</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Launch the App:</strong> Click the button above to open the Hugging Face Space.</li>
+                        <li><strong>Select a Technique:</strong> Click on one of the 5 cards (e.g., "Break It Down" or
+                            "Reviewer 2").</li>
+                        <li><strong>Enter your content:</strong> Paste a draft of your argument or a research question.
+                        </li>
+                        <li><strong>Run Analysis:</strong> See how the specific technique changes the quality and depth
+                            of the AI's feedback.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

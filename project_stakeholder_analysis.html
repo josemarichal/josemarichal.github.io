@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stakeholder Analysis Tool | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>AI Stakeholder Analysis Tool</h1>
+                <p class="project-subtitle">Simulating Multi-Stakeholder Perspectives for Policy Assessment</p>
+
+                <img src="images/slide_1.png" alt="AI Stakeholder Analysis Tool Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The <strong>AI Stakeholder Analysis Tool</strong> helps policy designers uncover the hidden
+                        impacts of proposed policies. Policy failures often happen not because the idea is bad, but
+                        because we fail to anticipate how different groups will react to it. This tool uses AI to
+                        <strong>simulate</strong> those reactions before you even publish a draft.
+                    </p>
+                    <p>It acts as a "Cost-Benefit Analysis Engine" where custom AI agents adopt the personas of specific
+                        interest groups (e.g., small business owners, environmental activists, local residents) to
+                        provide
+                        critical feedback.</p>
+                    <a href="https://huggingface.co/spaces/Jomaric/stakeholder_analysis" target="_blank"
+                        class="action-button">Launch the Tool</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>The Intuition: Why Use AI for This?</h2>
+                    <p>Standard policy analysis often suffers from <strong>blind spots</strong>. As a researcher or
+                        student,
+                        it is difficult to fully step outside your own perspective and imagine the specific grievances
+                        or
+                        incentives of a stakeholder group you don't belong to.</p>
+                    <p>This tool leverages the "Persona" capabilities of Large Language Models to force that perspective
+                        shift.
+                        By explicitly instructing an AI to <em>"think like a small business owner concerned about
+                            regulations,"</em>
+                        we can generate arguments and cost-benefit calculations that might otherwise be overlooked.</p>
+                    <p>It turns the solitary act of writing policy into a <strong>simulated town hall meeting</strong>,
+                        allowing you to see the friction points early.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2>How It Works</h2>
+                    <p>The application deploys a multi-step AI workflow:</p>
+                    <ol class="instructions-list">
+                        <li><strong>Policy Input:</strong> You enter a proposed solution (e.g., "Implement a congestion
+                            pricing zone in downtown").</li>
+                        <li><strong>Stakeholder Identification:</strong> The system analyzes the text to identify 5
+                            distinct groups who would be significantly impacted (positive or negative).</li>
+                        <li><strong>Simulated Analysis:</strong> 5 separate AI agents are instantiated, each adopting
+                            one of these personas. They rigorously analyze the policy from their specific worldview.
+                        </li>
+                        <li><strong>Final Report:</strong> A "Chief Policy Advisor" agent synthesizes these conflicting
+                            viewpoints into a master report, offering a feasibility score and suggested amendments.</li>
+                    </ol>
+                </section>
+
+                <section class="project-section">
+                    <h2>How to Use It</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Launch the App:</strong> Click the button above to open the Hugging Face Space.</li>
+                        <li><strong>Enter your proposed policy</strong> in the text box.</li>
+                        <li><strong>Wait for the simulation.</strong> The system will first identify the stakeholders,
+                            then run the parallel analyses. This usually takes about 45-60 seconds.</li>
+                        <li><strong>Review the Consensus.</strong> The final report will highlight the "Wins" and
+                            "Losses"
+                            across the board, helping you refine your policy proposal so that it is more politically
+                            feasible.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
