@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Narrative Analyst | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>Policy Narrative Analyst</h1>
+                <p class="project-subtitle">Decomposing Political Speech with AI</p>
+
+                <!-- Using a relevant image placeholder -->
+                <img src="images/policy_researcher.png" alt="Policy Narrative Analyst Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The **Policy Narrative Analyst** is an AI-powered tool designed to systematically deconstruct political speeches, reports, and policy documents. It leverages advanced Large Language Models (LLMs) to automate the "Plot in Policy Narratives" framework.</p>
+                    <p>By extracting structured data on narrative elements, this tool helps researchers and students move beyond surface-level reading to uncover the deeper storytelling mechanics used to frame public policy issues.</p>
+                    
+                    <!-- Placeholder link - USER TO UPDATE -->
+                    <a href="https://huggingface.co/spaces/Jomaric/policy-narrative-analyst" target="_blank"
+                        class="action-button">Launch the Tool</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>The Framework: Plot in Policy Narratives</h2>
+                    <p>Based on established narrative policy frameworks, the tool analyzes text across three critical dimensions:</p>
+                    <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.6;">
+                        <li><strong>1. Structure (Sequence):</strong> How is time organized? Where does the story begin and end? What is the overarching plot archetype (e.g., Decline-Crisis-Rebirth)?</li>
+                        <li><strong>2. Valence (Polarity):</strong> How are policy problems defined? What emotional tones (fear, hope, anger) are deployed? How is thick description used to evoke sentiment?</li>
+                        <li><strong>3. Causality (Explanation):</strong> Who are the heroes, villains, and victims? What causal mechanisms are asserted to link problems to solutions?</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2>How It Works</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Paste Your Text:</strong> Input any political speech, policy brief, or article.</li>
+                        <li><strong>Choose Your Model:</strong> Select from powerful open-source models like Qwen 2.5, Llama 3, or Mistral.</li>
+                        <li><strong>Get Instant Analysis:</strong> The AI generates a structured report breaking down the narrative components, complete with citations from the text.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
