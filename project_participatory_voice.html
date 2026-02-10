@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participatory Design Voice Simulator | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>Participatory Design Voice Simulator</h1>
+                <p class="project-subtitle">Interactive Voice Conversations with Simulated Stakeholders</p>
+
+                <!-- Reusing the first image as requested -->
+                <img src="images/participatory_ai.png" alt="Participatory Design Voice Simulator Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>The **Participatory Design Voice Simulator** is an interactive AI tool that allows policy makers,
+                        students, and citizens to "test drive" their ideas against simulated stakeholders. Unlike
+                        text-based tools, this simulator uses voice-to-voice interaction to create a visceral, realistic
+                        town-hall experience.</p>
+                    <p>Users speak their proposals into the microphone, and AI agents—configured with distinct personas
+                        like a "Skeptical Union Rep" or a "Visionary Urban Planner"—respond audibly, raising concerns,
+                        support, or counter-arguments in real-time.</p>
+
+                    <a href="https://huggingface.co/spaces/Jomaric/participatory-stakeholder-simulator" target="_blank"
+                        class="action-button">Launch the Voice Simulator</a>
+                </section>
+
+                <section class="project-section">
+                    <h2>Why Voice?</h2>
+                    <p>Text-based feedback is often abstract and easy to dismiss. Hearing a voice—with intonation,
+                        hesitation, and emotion—triggers a different level of empathy and engagement. This tool
+                        leverages:</p>
+                    <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.6;">
+                        <li><strong>Speech-to-Text (Whisper):</strong> To accurately capture the nuance of your spoken
+                            proposal.</li>
+                        <li><strong>Persona-Based LLMs (Qwen/Llama):</strong> To generate responses that reflect deep,
+                            specific worldviews rather than generic "AI" answers.</li>
+                        <li><strong>Text-to-Speech (MMS/gTTS):</strong> To give those personas a voice, making the
+                            feedback feel immediate and human.</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2>How It Works</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Choose a Stakeholder:</strong> Select who you want to pitch to (e.g., A City Manager
+                            concerned with budget, or a Community Organizer concerned with displacement).</li>
+                        <li><strong>Speak Your Idea:</strong> Use your microphone to explain your policy or project.
+                        </li>
+                        <li><strong>Listen to the Response:</strong> The AI will process your input and "speak back" to
+                            you, offering a critique or perspective from that specific stakeholder's point of view.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
