@@ -4,35 +4,34 @@ import re
 directory = "c:/Users/jfmar/josemarichal/github.io"
 
 def update_nav(content):
-    # Regex to find the PAI-L link and remove it
-    # Pattern looks for <li><a href="about.html"...>PAI-L</a></li>
-    # We use multiline mode just in case, but usually it's one line.
-    content = re.sub(r'\s*<li><a href="about\.html".*?>PAI-L</a></li>', '', content)
-    
-    # Regex to rename "Projects" to "PAI-L Projects"
-    # Pattern looks for ><a href="projects.html"...>Projects</a>
-    content = re.sub(r'(<a href="projects\.html"[^>]*?>)Projects</a>', r'\1PAI-L Projects</a>', content)
-    
-    return content
+    # Check if Internships link already exists
+    if 'href="internships.html"' in content:
+        return content
 
-def update_index_text(content):
-    # Update the text link in index.html Body
-    # "The work of the Participatory AI Lab can be found on the <a href="about.html">About PAI-L</a> page."
-    # Change to point to projects.html
-    content = content.replace('<a href="about.html">About PAI-L</a>', '<a href="projects.html">Participatory AI Lab Projects</a>')
-    return content
+    # Regex to find the Media link and append Internships after it
+    # Pattern looks for <li><a href="media.html">Media</a></li>
+    # We use a capture group to keep the Media link and add the new one
+    pattern = r'(<li><a href="media\.html">Media</a></li>)'
+    replacement = r'\1\n                    <li><a href="internships.html">Internships</a></li>'
+    
+    new_content = re.sub(pattern, replacement, content)
+    
+    return new_content
 
 for filename in os.listdir(directory):
     if filename.endswith(".html"):
         filepath = os.path.join(directory, filename)
+        
+        # Skip if it's the interns page itself (already correct) or index (already done)
+        # primarily to avoid messing up the specific "active" class or other manual edits I made
+        if filename in ["internships.html", "index.html"]:
+            continue
+
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
         
         new_content = update_nav(content)
         
-        if filename == "index.html":
-            new_content = update_index_text(new_content)
-            
         if new_content != content:
             print(f"Updating {filename}...")
             with open(filepath, 'w', encoding='utf-8') as f:
