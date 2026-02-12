@@ -285,6 +285,101 @@
                         </li>
                     </ul>
 
+                    <h3>18. Multimodal AI & Generative Models</h3>
+                    <ul>
+                        <li><strong>Multimodal Search:</strong> Retrieve relevant text/image/audio across heterogeneous
+                            data (e.g., CLIP, BLIP). <br><em>Gradio App:</em> Upload image → return matching
+                            texts/songs;
+                            upload text → return relevant images.</li>
+                        <li><strong>Image-to-Text Generation:</strong> Describe images, transcribe handwriting,
+                            generate alt-text (e.g., BLIP-2, Donut). <br><em>Gradio App:</em> Upload scanned document →
+                            output cleaned transcription + caption + metadata hints.</li>
+                        <li><strong>Text-to-Image Synthesis for Humanities:</strong> Visualize historical “what-ifs”
+                            (e.g., “How might this 1850s Parisian street appear?”). <br><em>Gradio App:</em> Input era +
+                            description → generate plausible image; include ethical disclaimer & provenance.</li>
+                        <li><strong>Audio-to-Video Alignment:</strong> Sync narration to film/image timelines (e.g.,
+                            Whisper + video timestamps). <br><em>Gradio App:</em> Upload audio + silent video → output
+                            aligned timeline + export as SRT.</li>
+                    </ul>
+
+                    <h3>19. Ethical & Responsible AI</h3>
+                    <ul>
+                        <li><strong>Bias Auditing:</strong> Detect demographic bias in outputs (e.g., gendered
+                            occupational associations). <br><em>Gradio App:</em> Run audit pre/post-analysis → visualize
+                            disparities (e.g., by race/gender) with actionable insights.</li>
+                        <li><strong>Model Provenance & Transparency:</strong> Log model versions, training data sources,
+                            hyperparameters. <br><em>Gradio App:</em> Auto-generate “methodology card” (PDF/JSON) as
+                            part of every analysis.</li>
+                        <li><strong>Privacy-Preserving Analysis:</strong> Enable on-device inference (e.g., quantized
+                            ONNX models). <br><em>Gradio App:</em> Toggle “Privacy Mode” → switch to lightweight models
+                            (e.g., DistilBERT), block external APIs.</li>
+                        <li><strong>Explainable AI (XAI):</strong> Show why a decision was made (e.g., attention maps,
+                            SHAP). <br><em>Gradio App:</em> Highlight tokens driving classification/NER; toggle
+                            explainability panel with jargon-free explanations.</li>
+                    </ul>
+
+                    <h3>20. Generative AI for Scholarship & Pedagogy</h3>
+                    <ul>
+                        <li><strong>Critical Prompt Engineering Studio:</strong> Teach prompt crafting to resist
+                            hallucination (e.g., role + constraint + example). <br><em>Gradio App:</em> Drag-and-drop
+                            prompt builder + examples (e.g., “Assume the role of a 1903 labor activist…”), with “prompt
+                            safety” tips.</li>
+                        <li><strong>AI-Supervised Annotation:</strong> Generate weak labels for human review (e.g.,
+                            NER, sentiment). <br><em>Gradio App:</em> Upload corpus → AI pre-labels → human
+                            approves/edit → model retrains (active learning loop).</li>
+                        <li><strong>Scholarly Chatbots (RAG-based):</strong> Chat with course materials or archives—no
+                            hallucinations. <br><em>Gradio App:</em> Upload PDFs → build vector index → chat with docs
+                            in natural language; cite sources.</li>
+                        <li><strong>AI Co-Writing Workspace:</strong> Collaborative editing with guardrails (e.g.,
+                            detect AI-generated text, suggest citations). <br><em>Gradio App:</em> Side-by-side editor
+                            with AI suggestions (toggle on/off) + citation generator and AI-confidence score.</li>
+                    </ul>
+
+                    <h3>21. Specialized Language & Script Analysis</h3>
+                    <ul>
+                        <li><strong>Historical OCR:</strong> Handle Gothic script, degraded prints, early modern
+                            typography (e.g., eScriptorium, Calamari OCR). <br><em>Gradio App:</em> Upload 17th-century
+                            pamphlet → output cleaned modernized text; toggle “restore ligatures” or “expand
+                            abbreviations”.</li>
+                        <li><strong>Multilingual LLM Integration:</strong> Process texts in non-English languages
+                            without translation (e.g., AfroWAV2Vec2, Arabic-ELECTRA). <br><em>Gradio App:</em>
+                            Auto-detect
+                            language → route to appropriate model; support low-resource languages (e.g., Swahili,
+                            Hausa).</li>
+                        <li><strong>Linguistic Typology Explorer:</strong> Compare grammatical features across languages
+                            (e.g., case, word order, head-finality). <br><em>Gradio App:</em> Upload texts → extract
+                            typological features → cluster languages; compare to WALS database.</li>
+                    </ul>
+
+                    <h3>22. Accessibility & Inclusive Design (New Additions)</h3>
+                    <ul>
+                        <li><strong>Real-Time Captioning & Sign Language:</strong> Transcribe video and generate
+                            sign-language representations (e.g., emoji-based ASL summary). <br><em>Gradio App:</em>
+                            Upload
+                            video → output captions + visual sign hints (e.g., 🏛️🗣️⚖️ for “court debate”);
+                            WCAG-compliant layout.</li>
+                        <li><strong>Simplified Text Generation:</strong> Auto-simplify academic texts for ESL
+                            learners or young audiences. <br><em>Gradio App:</em> Toggle “Simplified Mode” → adjust
+                            reading level (Flesch-Kincaid) → compare before/after readability.</li>
+                        <li><strong>Screen-Reader Optimized Outputs:</strong> Ensure visuals/charts are accessible
+                            (e.g., alt-text, ARIA labels). <br><em>Gradio App:</em> After generating chart, auto-add
+                            alt-text and structural labels (e.g., aria-label, role="table").</li>
+                    </ul>
+
+                    <h3>23. Emerging Techniques (For Future Development)</h3>
+                    <ul>
+                        <li><strong>Neurosymbolic AI:</strong> Combine LLMs with symbolic logic (e.g., legal
+                            reasoning, historical causality). <br><em>Gradio App:</em> Build causal queries (e.g., “Did
+                            the 1776 Declaration cause later revolutions?”) with constraint-based validation.</li>
+                        <li><strong>Causal Inference from Text:</strong> Move beyond correlation to causal claims
+                            (e.g., do-why, backdoor adjustments). <br><em>Gradio App:</em> Input text features +
+                            outcome → visualize DAG, estimate treatment effect, simulate counterfactuals.</li>
+                        <li><strong>Quantum Machine Learning for Text:</strong> Explore quantum embeddings for
+                            ultra-high-dim similarity (early stage). <br><em>Gradio App:</em> Use quantum simulator
+                            (e.g.,
+                            PennyLane) → compute embeddings → compare to classical baseline.</li>
+                    </ul>
+
                     <h3>Gradio App Development Tips</h3>
                     <ul>
                         <li><strong>Modular Design:</strong> Build each method as a separate tab or app, so students can
