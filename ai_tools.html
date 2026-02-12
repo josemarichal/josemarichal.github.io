@@ -40,24 +40,23 @@
                 <h1>AI Tools</h1>
 
                 <section class="tools-section">
-                    <h2>Computational Humanities Methods</h2>
+                    <h2>Computational Social Science/Humanities Methods</h2>
                     <p>Here’s a comprehensive list of computational humanities methods, organized by category, with
                         notes on how each could be implemented in a Gradio app for student accessibility. This list is
                         designed to inspire tool development, with a focus on practicality and educational value.</p>
 
-                    <h3>1. Text Analysis & Natural Language Processing (NLP)</h3>
+                    <h3>1. Text Analysis & Natural Language Processing (Expanded)</h3>
                     <ul>
                         <li><strong>Topic Modeling:</strong> Discover abstract topics in large text corpora (e.g., LDA,
                             BERTopic). <br><em>Gradio App:</em> Upload text files, visualize topics as word clouds or
                             bar charts.</li>
                         <li><strong>Sentiment Analysis:</strong> Detect emotional tone in texts (e.g., VADER, TextBlob).
                             <br><em>Gradio App:</em> Input text or upload documents, output sentiment scores and
-                            visualizations.</li>
+                            visualizations.
+                        </li>
                         <li><strong>Named Entity Recognition (NER):</strong> Extract names of people, places, and
                             organizations (e.g., spaCy, NLTK). <br><em>Gradio App:</em> Highlight entities in text,
                             export as CSV or JSON.</li>
-                        <li><strong>Stylometry:</strong> Analyze writing style for authorship attribution.
-                            <br><em>Gradio App:</em> Compare texts, generate similarity scores or dendrograms.</li>
                         <li><strong>Keyword Extraction:</strong> Identify most important words or phrases (e.g., RAKE,
                             TF-IDF). <br><em>Gradio App:</em> Extract and visualize keywords, export as word clouds or
                             lists.</li>
@@ -65,43 +64,157 @@
                             Face Transformers). <br><em>Gradio App:</em> Input text, output summary with adjustable
                             length.</li>
                         <li><strong>Concordance Analysis:</strong> Study word usage and context (e.g., KWIC).
-                            <br><em>Gradio App:</em> Search for words, display contexts in a concordance table.</li>
+                            <br><em>Gradio App:</em> Search for words, display contexts in a concordance table.
+                        </li>
                         <li><strong>Collocation Analysis:</strong> Find words that frequently co-occur (e.g., n-grams).
-                            <br><em>Gradio App:</em> Input text, visualize collocations as networks or tables.</li>
+                            <br><em>Gradio App:</em> Input text, visualize collocations as networks or tables.
+                        </li>
+                        <li><strong>Discourse Analysis:</strong> Analyze argument structure and rhetorical patterns.
+                            <br><em>Gradio App:</em> Input text, visualize discourse trees, identify argument
+                            components.
+                        </li>
+                        <li><strong>Semantic Role Labeling:</strong> Identify who did what to whom.
+                            <br><em>Gradio App:</em> Highlight semantic roles in sentences, export structured data.
+                        </li>
+                        <li><strong>Emotion Detection:</strong> Identify specific emotions beyond basic sentiment.
+                            <br><em>Gradio App:</em> Input text, output emotion distribution with intensity scores.
+                        </li>
+                        <li><strong>Style Transfer:</strong> Apply writing style of one author to another's content.
+                            <br><em>Gradio App:</em> Input source and target texts, generate styled output.
+                        </li>
                     </ul>
 
-                    <h3>2. Network Analysis</h3>
+                    <h3>2. Network Analysis (Advanced)</h3>
                     <ul>
                         <li><strong>Social Network Analysis:</strong> Map relationships in texts (e.g., characters in
                             novels, historical figures). <br><em>Gradio App:</em> Upload CSV/JSON, visualize networks
                             with interactive graphs (e.g., PyVis, NetworkX).</li>
                         <li><strong>Co-occurrence Networks:</strong> Visualize how often words/concepts appear together.
-                            <br><em>Gradio App:</em> Input text, generate and customize co-occurrence networks.</li>
+                            <br><em>Gradio App:</em> Input text, generate and customize co-occurrence networks.
+                        </li>
+                        <li><strong>Dynamic Network Analysis:</strong> Study network evolution over time.
+                            <br><em>Gradio App:</em> Upload time-stamped data, visualize network changes as animations.
+                        </li>
+                        <li><strong>Centrality Analysis:</strong> Identify most influential nodes.
+                            <br><em>Gradio App:</em> Calculate and visualize centrality metrics (betweenness,
+                            eigenvector).
+                        </li>
+                        <li><strong>Community Detection:</strong> Find clusters in networks.
+                            <br><em>Gradio App:</em> Identify and visualize communities with different coloring.
+                        </li>
                     </ul>
 
-                    <h3>3. Geographic Information Systems (GIS) & Spatial Analysis</h3>
+                    <h3>3. Digital Humanities Specific</h3>
                     <ul>
-                        <li><strong>Historical GIS:</strong> Map historical data (e.g., migration, trade routes).
-                            <br><em>Gradio App:</em> Upload geodata (CSV, GeoJSON), display interactive maps (e.g.,
-                            Folium, Leaflet).</li>
-                        <li><strong>Georeferencing:</strong> Link historical maps or texts to real-world locations.
-                            <br><em>Gradio App:</em> Upload images/maps, overlay on modern maps, export georeferenced
-                            data.</li>
+                        <li><strong>Distant Reading:</strong> Large-scale text analysis for pattern discovery.
+                            <br><em>Gradio App:</em> Process entire corpora, visualize macro-level patterns.
+                        </li>
+                        <li><strong>Close Reading Enhancement:</strong> AI-assisted detailed text analysis.
+                            <br><em>Gradio App:</em> Highlight literary devices, annotate with scholarly insights.
+                        </li>
+                        <li><strong>Digital Edition Creation:</strong> Build interactive scholarly editions.
+                            <br><em>Gradio App:</em> Upload manuscripts, create annotated digital editions.
+                        </li>
                     </ul>
 
-                    <h3>4. Data Mining & Machine Learning</h3>
+                    <h3>4. Image & Multimedia (Advanced)</h3>
+                    <ul>
+                        <li><strong>Computer Vision:</strong> Analyze visual art/photographs (e.g., OpenCV, TensorFlow).
+                            <br><em>Gradio App:</em> Upload images, detect objects/faces, extract features, or classify
+                            content.
+                        </li>
+                        <li><strong>Image Similarity:</strong> Find similar images in a dataset (e.g., feature
+                            extraction, cosine similarity). <br><em>Gradio App:</em> Upload images, compare to dataset,
+                            visualize similarities.</li>
+                        <li><strong>Style Transfer for Art:</strong> Apply artistic styles to images.
+                            <br><em>Gradio App:</em> Upload image and style reference, generate styled output.
+                        </li>
+                        <li><strong>Artificial Intelligence Art Analysis:</strong> Analyze composition and style.
+                            <br><em>Gradio App:</em> Upload artwork, identify style, period, and characteristics.
+                        </li>
+                        <li><strong>3D Model Analysis:</strong> Analyze historical artifacts in 3D.
+                            <br><em>Gradio App:</em> Upload 3D models, extract measurements and features.
+                        </li>
+                    </ul>
+
+                    <h3>5. Temporal Analysis</h3>
+                    <ul>
+                        <li><strong>Periodization:</strong> Automatically identify historical periods in text.
+                            <br><em>Gradio App:</em> Input chronological text, identify period boundaries.
+                        </li>
+                        <li><strong>Trend Analysis:</strong> Detect cultural trends over time.
+                            <br><em>Gradio App:</em> Analyze time-series text data, visualize trend evolution.
+                        </li>
+                    </ul>
+
+                    <h3>6. Machine Learning (Specialized)</h3>
                     <ul>
                         <li><strong>Clustering:</strong> Group similar documents or artifacts (e.g., K-means,
                             hierarchical clustering). <br><em>Gradio App:</em> Upload data, visualize clusters in 2D/3D
                             (e.g., PCA, t-SNE).</li>
                         <li><strong>Classification:</strong> Categorize texts/images (e.g., Naive Bayes, SVM).
-                            <br><em>Gradio App:</em> Train custom classifiers, classify new inputs.</li>
+                            <br><em>Gradio App:</em> Train custom classifiers, classify new inputs.
+                        </li>
                         <li><strong>Predictive Modeling:</strong> Use historical data to predict trends (e.g., time
                             series forecasting). <br><em>Gradio App:</em> Upload time-series data, generate forecasts
                             and visualizations.</li>
+                        <li><strong>Stylometry:</strong> Analyze writing style for authorship attribution.
+                            <br><em>Gradio App:</em> Compare texts, generate similarity scores or dendrograms.
+                        </li>
+                        <li><strong>Topic Modeling with Time:</strong> Track topic evolution.
+                            <br><em>Gradio App:</em> Input time-stamped documents, visualize topic trends.
+                        </li>
+                        <li><strong>Author Attribution:</strong> Identify unknown authors.
+                            <br><em>Gradio App:</em> Compare unknown text to known authors, provide probability scores.
+                        </li>
+                        <li><strong>Cultural Trend Prediction:</strong> Forecast cultural phenomena.
+                            <br><em>Gradio App:</em> Input historical trend data, predict future developments.
+                        </li>
                     </ul>
 
-                    <h3>5. Digital Archives & Databases</h3>
+                    <h3>7. Data Integration</h3>
+                    <ul>
+                        <li><strong>Linked Data Analysis:</strong> Work with semantic web data.
+                            <br><em>Gradio App:</em> Import RDF data, visualize relationships, run SPARQL queries.
+                        </li>
+                        <li><strong>Cross-Collection Analysis:</strong> Compare multiple datasets.
+                            <br><em>Gradio App:</em> Upload multiple collections, run comparative analyses.
+                        </li>
+                    </ul>
+
+                    <h3>8. User Experience Enhancements</h3>
+                    <ul>
+                        <li><strong>Natural Language Interface:</strong> Query data with questions.
+                            <br><em>Gradio App:</em> Input natural language questions, generate visualizations.
+                        </li>
+                        <li><strong>Automated Insight Generation:</strong> Suggest research questions.
+                            <br><em>Gradio App:</em> Analyze results, propose interesting patterns to investigate.
+                        </li>
+                    </ul>
+
+                    <h3>9. Accessibility Features</h3>
+                    <ul>
+                        <li><strong>Multilingual Analysis:</strong> Process non-English texts.
+                            <br><em>Gradio App:</em> Support multiple languages for all text analyses.
+                        </li>
+                        <li><strong>Audio Description Generation:</strong> Create descriptions for visual content.
+                            <br><em>Gradio App:</em> Upload images, generate descriptive text.
+                        </li>
+                    </ul>
+
+                    <h3>10. Geographic Information Systems (GIS) & Spatial Analysis</h3>
+                    <ul>
+                        <li><strong>Historical GIS:</strong> Map historical data (e.g., migration, trade routes).
+                            <br><em>Gradio App:</em> Upload geodata (CSV, GeoJSON), display interactive maps (e.g.,
+                            Folium, Leaflet).
+                        </li>
+                        <li><strong>Georeferencing:</strong> Link historical maps or texts to real-world locations.
+                            <br><em>Gradio App:</em> Upload images/maps, overlay on modern maps, export georeferenced
+                            data.
+                        </li>
+                    </ul>
+
+                    <h3>11. Digital Archives & Databases</h3>
                     <ul>
                         <li><strong>Metadata Analysis:</strong> Study patterns in descriptive data (e.g., library
                             catalogs, museum records). <br><em>Gradio App:</em> Upload metadata (CSV, JSON), filter,
@@ -111,7 +224,7 @@
                             text, edit and export.</li>
                     </ul>
 
-                    <h3>6. Visualization</h3>
+                    <h3>12. Visualization</h3>
                     <ul>
                         <li><strong>Timelines:</strong> Represent temporal relationships (e.g., Simile Timeline,
                             TimelineJS). <br><em>Gradio App:</em> Input events (CSV), generate interactive timelines.
@@ -121,36 +234,28 @@
                         </li>
                         <li><strong>Graphs & Charts:</strong> Communicate patterns in data (e.g., Matplotlib, Plotly).
                             <br><em>Gradio App:</em> Upload data, select chart types, customize and export
-                            visualizations.</li>
+                            visualizations.
+                        </li>
                     </ul>
 
-                    <h3>7. Image & Multimedia Analysis</h3>
-                    <ul>
-                        <li><strong>Computer Vision:</strong> Analyze visual art/photographs (e.g., OpenCV, TensorFlow).
-                            <br><em>Gradio App:</em> Upload images, detect objects/faces, extract features, or classify
-                            content.</li>
-                        <li><strong>Image Similarity:</strong> Find similar images in a dataset (e.g., feature
-                            extraction, cosine similarity). <br><em>Gradio App:</em> Upload images, compare to dataset,
-                            visualize similarities.</li>
-                    </ul>
-
-                    <h3>8. Simulation & Modeling</h3>
+                    <h3>13. Simulation & Modeling</h3>
                     <ul>
                         <li><strong>Agent-Based Modeling:</strong> Simulate historical/social processes (e.g., Mesa).
-                            <br><em>Gradio App:</em> Define agents/rules, run simulations, visualize results.</li>
+                            <br><em>Gradio App:</em> Define agents/rules, run simulations, visualize results.
+                        </li>
                         <li><strong>Cultural Evolution Models:</strong> Study how ideas/practices spread (e.g.,
                             epidemiological models). <br><em>Gradio App:</em> Input parameters, simulate spread,
                             visualize as animations or graphs.</li>
                     </ul>
 
-                    <h3>9. Corpus Linguistics</h3>
+                    <h3>14. Corpus Linguistics</h3>
                     <ul>
                         <li><strong>Corpus Comparison:</strong> Compare linguistic features across corpora (e.g.,
                             frequency, diversity). <br><em>Gradio App:</em> Upload corpora, generate comparative
                             statistics and visualizations.</li>
                     </ul>
 
-                    <h3>10. Crowdsourcing & Collaborative Annotation</h3>
+                    <h3>15. Crowdsourcing & Collaborative Annotation</h3>
                     <ul>
                         <li><strong>Collaborative Annotation:</strong> Annotate texts/images as a group (e.g., Brat,
                             Recogito). <br><em>Gradio App:</em> Upload texts/images, annotate, export annotations.</li>
@@ -159,21 +264,25 @@
                         </li>
                     </ul>
 
-                    <h3>11. Audio & Speech Analysis</h3>
+                    <h3>16. Audio & Speech Analysis</h3>
                     <ul>
                         <li><strong>Speech-to-Text:</strong> Transcribe oral history interviews (e.g., Whisper, Vosk).
-                            <br><em>Gradio App:</em> Upload audio, transcribe, edit, and export text.</li>
+                            <br><em>Gradio App:</em> Upload audio, transcribe, edit, and export text.
+                        </li>
                         <li><strong>Audio Feature Extraction:</strong> Analyze speech patterns (e.g., pitch, tone).
                             <br><em>Gradio App:</em> Upload audio, extract features, visualize as spectrograms or
-                            waveforms.</li>
+                            waveforms.
+                        </li>
                     </ul>
 
-                    <h3>12. Miscellaneous</h3>
+                    <h3>17. Miscellaneous</h3>
                     <ul>
                         <li><strong>Data Cleaning:</strong> Clean and preprocess messy data (e.g., OpenRefine).
-                            <br><em>Gradio App:</em> Upload data, apply cleaning rules, export cleaned data.</li>
+                            <br><em>Gradio App:</em> Upload data, apply cleaning rules, export cleaned data.
+                        </li>
                         <li><strong>API Integration:</strong> Connect to cultural heritage APIs (e.g., Europeana, DPLA).
-                            <br><em>Gradio App:</em> Search APIs, fetch data, visualize or analyze results.</li>
+                            <br><em>Gradio App:</em> Search APIs, fetch data, visualize or analyze results.
+                        </li>
                     </ul>
 
                     <h3>Gradio App Development Tips</h3>
