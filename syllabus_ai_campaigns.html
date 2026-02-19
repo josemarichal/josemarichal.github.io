@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Political Campaigns Syllabus | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Syllabus Specific Styles - reusing same system as global politics syllabus */
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-header .course-meta {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .syllabus-week {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .week-header {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .day-entry .date {
+            font-weight: 700;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 80px;
+        }
+
+        .day-entry .topic {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 80px;
+            margin-top: 0.5rem;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .readings-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--secondary-color);
+            transition: color 0.2s ease;
+        }
+
+        .readings-list a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+
+        @media (max-width: 768px) {
+            .readings-list {
+                padding-left: 0;
+            }
+
+            .day-entry .date {
+                display: block;
+                margin-bottom: 0.25rem;
+                width: auto;
+            }
+        }
+
+        .syllabus-unit h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <div class="syllabus-header">
+                    <h1>AI for Political Campaigns</h1>
+                    <div class="course-meta">
+                        <p>Special Topic | Spring 2026</p>
+                    </div>
+                </div>
+
+                <!-- Instructor Info -->
+                <section class="syllabus-unit">
+                    <h2>Instructor information</h2>
+                    <p><strong>Dr. José Marichal</strong> (he/him/his)<br>
+                        Professor of Political Science<br>
+                        Contact: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a></p>
+                </section>
+
+                <!-- Course Description -->
+                <section class="syllabus-unit">
+                    <h2>Course Description: Rise of the APO</h2>
+                    <p>When Joe Rospars wrangled Howard Dean's blog in 2003, the boundary-pushing question was whether
+                        the Internet deserved a seat at the campaign table. Twenty years later, a new generation of
+                        operatives is asking something far more disorienting: <em>which parts of the campaign still need
+                            a human at all?</em></p>
+                    <p>They don't call themselves OPOs (Online Political Operatives) anymore. The emerging shorthand is
+                        <strong>APO: AI Political Operative</strong>. While the first generation fought for a blog, the
+                        APOs are fighting for the right to rewire how campaigns think, persuade, and respond—in real
+                        time, at scale, powered by machines.
+                    </p>
+                    <p>This course profiles this new class of strategist. We will move beyond the "internet as a tool"
+                        paradigm to "AI as a force multiplier." We will learn to use the tools they use—from Large
+                        Language Models for messaging to synthetic media for ad production—while critically examining
+                        the ethical abyss they are walking into.</p>
+                </section>
+
+                <!-- Course Goals -->
+                <section class="syllabus-unit">
+                    <h2>Course Archetypes & Roles</h2>
+                    <p>We will structure the course around the four emerging roles in the APO ecosystem:</p>
+                    <ul>
+                        <li><strong>The Prompt Architect:</strong> Obsessed with "on-voice" drafting and maintaining the
+                            candidate's rhetorical signature.</li>
+                        <li><strong>The Audience Engineer:</strong> Finds "persuadable clusters" using predictive models
+                            and behavioral patterns.</li>
+                        <li><strong>The Synthetic Media Producer:</strong> Generates localized video, imagery, and ad
+                            variants at industrial scale.</li>
+                        <li><strong>The Intelligence Analyst:</strong> Runs the early warning system, tracking
+                            narratives and deploying rapid response.</li>
+                    </ul>
+                </section>
+
+                <!-- Required Texts -->
+                <section class="syllabus-unit">
+                    <h2>Core Texts</h2>
+                    <p>Key texts that anchor our theoretical and practical work:</p>
+                    <ul class="readings-list">
+                        <li><a href="#">Sasha Issenberg, "The Victory Lab: The Secret Science of Winning Campaigns"</a>
+                        </li>
+                        <li><a href="#">Nina Schick, "Deepfakes: The Coming Infocalypse"</a></li>
+                        <li><a href="#">Safiya U. Noble, "Algorithms of Oppression"</a></li>
+                        <li><a href="#">Acemoglu & Johnson, "Power and Progress"</a></li>
+                    </ul>
+                </section>
+
+                <!-- Assignments -->
+                <section class="syllabus-unit">
+                    <h2>Course Assignments</h2>
+                    <p><strong>Total Points: 100</strong></p>
+                    <ul>
+                        <li><strong>Roleplay Portfolio (40 Points):</strong> You will choose one of the four APO
+                            archetypes and build a portfolio of work (e.g., a Prompt Library, a Synthetic Ad Reel, or a
+                            Narrative Tracking Dashboard).</li>
+                        <li><strong>Reflective Ethics Logs (30 Points):</strong> Weekly logs documenting the "lines you
+                            wouldn't cross" as you experiment with these tools.</li>
+                        <li><strong>Final Campaign Simulation (30 Points):</strong> A full-scale simulation where teams
+                            run a "shadow campaign" using only AI tools against a human opposition.</li>
+                    </ul>
+                </section>
+
+                <!-- Schedule -->
+                <section class="syllabus-unit">
+                    <h2>Schedule</h2>
+
+                    <!-- Unit 1 -->
+                    <h3>Unit 1: The New Campaign Machine (History & Context)</h3>
+                    <p>From the "Dean Scream" to Deepfakes. How we got here and who the APOs are.</p>
+
+                    <div class="week-header">Week 1: The Death of the OPO</div>
+                    <div class="day-entry">
+                        <span class="topic">From Dean's Blog to Algorithm</span>
+                        <p>We trace the lineage from the "Netroots" to the "Prompt Engineers."</p>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">Profile of an APO</span>
+                        <p>They are technically fluent, often politically uncredentialed, and obsessed with scale. We
+                            examine the culture clash with traditional consultants.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Naresh/Palonis, "The Prompt Architect's Playbook: 12
+                                    Patterns Defining 2025"</a></li>
+                            <li><a href="#" target="_blank">AI Engineering Community, "Building Agentic AI Systems"</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Unit 2 -->
+                    <h3>Unit 2: The Content Engine (Message & Production)</h3>
+                    <p>Focus: The <em>Prompt Architect</em> and <em>Synthetic Media Producer</em>.</p>
+
+                    <div class="week-header">Week 2: Message Testing & The "On-Voice" Model</div>
+                    <div class="day-entry">
+                        <span class="topic">The Living Library</span>
+                        <p><strong>Topic:</strong> Building a repository of speeches and op-eds to train a style guide.
+                            <br>
+                            <strong>Tool:</strong> Claude / GPT-4o for style mimicry.
+                        </p>
+                        <ul class="readings-list">
+                            <li><a href="https://arxiv.org/abs/2305.14992" target="_blank">ArXiv (2023), "Role-Play with
+                                    Large Language Models"</a> - Simulator vs Simulacra.</li>
+                            <li><a href="#" target="_blank">"Marked Personas: Using Natural Language Prompts to Measure
+                                    Stereotypes"</a></li>
+                            <li><a href="#" target="_blank">"Focused Prefix Tuning for Controllable Text Generation"</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">AI Focus Groups</span>
+                        <p><strong>Use Case:</strong> <em>Message Testing.</em> Running AI-simulated voter panels to
+                            stress-test frames before real focus groups.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Westwood (Dartmouth), "How AI can rig polls" (PNAS
+                                    Study)</a></li>
+                            <li><a href="#" target="_blank">Verasight, "Synthetic Sampling Methodology"</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 3: The Creative Firehose</div>
+                    <div class="day-entry">
+                        <span class="topic">Ad Production at Scale</span>
+                        <p><strong>Use Case:</strong> <em>Ad Production.</em> Generating dozens of creative variants
+                            from one brief. Automatic A/B testing.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Lambda Films, "Sora and the Future of Video Production"</a>
+                            </li>
+                            <li><a href="#" target="_blank">"A Taxonomy of Prompt Modifiers for Text-To-Image
+                                    Generation"</a></li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">Localization & Translation</span>
+                        <p><strong>Use Case:</strong> <em>Localization.</em> Culturally adapted multilingual content,
+                            not just translation. Using ElevenLabs for voice cloning (and the ethics thereof).</p>
+                    </div>
+
+                    <!-- Unit 3 -->
+                    <h3>Unit 3: The Data Machine (Audience & Money)</h3>
+                    <p>Focus: The <em>Audience Engineer</em>.</p>
+
+                    <div class="week-header">Week 4: Hyper-Personalization</div>
+                    <div class="day-entry">
+                        <span class="topic">Micro-Targeting 2.0</span>
+                        <p><strong>Use Case:</strong> <em>Hyper-Personalization.</em> Tuning fundraising appeals to
+                            individual donor behavior and geography. Moving beyond demographics to "persuadable
+                            clusters."</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Sasha Issenberg, "The Victory Lab"</a> - Randomized control
+                                trials in politics.</li>
+                            <li><a href="#" target="_blank">PNAS, "Foreign Election Interference and Digital Voter
+                                    Suppression"</a> - Weaponization of microtargeting.</li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">The Voter File Revolution</span>
+                        <p>Integrating commercial data and social signals. Why the 2012 "Cave" looks like the Stone Age.
+                        </p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Columbia SPS, "Political Analytics"</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Unit 4 -->
+                    <h3>Unit 4: Intelligence & Defense</h3>
+                    <p>Focus: The <em>Intelligence Analyst</em>.</p>
+
+                    <div class="week-header">Week 5: The Glass House</div>
+                    <div class="day-entry">
+                        <span class="topic">Opposition Research</span>
+                        <p><strong>Use Case:</strong> <em>Opposition Research.</em> Document-ingestion AI that
+                            cross-references votes, disclosures, and local press to find the needle in the haystack.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Huang et al., "A Survey on Retrieval-Augmented Text
+                                    Generation"</a> - RAG for Opp Research.</li>
+                            <li><a href="#" target="_blank">"Awesome-OSINT Curated List" (GitHub)</a></li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">Narrative Monitoring</span>
+                        <p><strong>Use Case:</strong> <em>Rapid Response.</em> Near-real-time narrative monitoring.
+                            Drafting responses within minutes of an attack surfacing.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Talkwalker, "Best OSINT Tools for 2025"</a></li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">Debate Prep</span>
+                        <p><strong>Use Case:</strong> <em>Debate Sims.</em> AI simulates opponent arguments trained on
+                            their full public record.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Taubenfeld et al., "Systematic Biases in LLM Simulations of
+                                    Debates"</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Unit 5 -->
+                    <h3>Unit 5: The Field (Boots on the Ground / Bots in the Cloud)</h3>
+                    <p>Where digital meets physical.</p>
+
+                    <div class="week-header">Week 6: Activation</div>
+                    <div class="day-entry">
+                        <span class="topic">The Automated Organizer</span>
+                        <p><strong>Use Case:</strong> <em>Volunteer Activation.</em> AI SMS agents onboard and guide
+                            volunteers without human staff intervention.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Freddy Guevara, "Using AI Now to Improve Movements'
+                                    Effectiveness"</a></li>
+                            <li><a href="#" target="_blank">Safiya U. Noble, "Algorithms of Oppression"</a></li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">Real-Time Canvassing</span>
+                        <p><strong>Use Case:</strong> <em>Voter Contact.</em> Canvassing scripts personalized by door,
+                            in real time, on a phone.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Cell Press, "Co-creating AI Systems with Local
+                                    Communities"</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Unit 6 -->
+                    <h3>Unit 6: The Ethics of "The Room"</h3>
+                    <p>The APO Dilemma: Influence without Authority.</p>
+
+                    <div class="week-header">Week 7: The Compliance Apparatus</div>
+                    <div class="day-entry">
+                        <span class="topic">Legal & Reputational Risk</span>
+                        <p>Disclosures, deepfakes, and the "Black Mirror" scenario. Managing a compliance apparatus that
+                            didn't exist for OPOs.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Nina Schick, "Deepfakes: The Coming Infocalypse"</a></li>
+                            <li><a href="#" target="_blank">Freshfields, "Data law trends 2026"</a></li>
+                        </ul>
+                    </div>
+                    <div class="day-entry">
+                        <span class="topic">The Ethics of Scale</span>
+                        <p>"Every week there's something technically possible we decide not to do." Building internal
+                            ethics guidelines in the absence of law.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Vikram Singh, "AI Governance Must Move from Point-in-Time
+                                    Audits to Living Compliance"</a></li>
+                            <li><a href="#" target="_blank">Acemoglu & Johnson, "Power and Progress"</a></li>
+                        </ul>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
