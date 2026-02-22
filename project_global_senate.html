@@ -148,25 +148,32 @@
 
                 <section class="project-section">
                     <h2>Project Overview</h2>
-                    <p>The <strong>Collaborative Rule Maker</strong> is an interactive tool designed to help communities design, test, and refine rules through case-grounded deliberation. It helps students explore policy boundaries by generating realistic scenarios and suggests revisions based on feedback.</p>
-                    <p>When given a policy problem, the system brainstorms alternative options, generates "allowed/disallowed/ambiguous" cases for stress-testing, and provides structured revisions to improve clarity and fairness.</p>
+                    <p>The <strong>Collaborative Rule Maker</strong> is an interactive tool designed to help communities
+                        design, test, and refine rules through case-grounded deliberation. It helps students explore
+                        policy boundaries by generating realistic scenarios and suggests revisions based on feedback.
+                    </p>
+                    <p>When given a policy problem, the system brainstorms alternative options, generates
+                        "allowed/disallowed/ambiguous" cases for stress-testing, and provides structured revisions to
+                        improve clarity and fairness.</p>
                 </section>
 
                 <section class="project-section">
                     <h2>How It Works</h2>
-                    <p>The application uses a "Mixture of Experts" approach, leveraging Large Language Models (LLMs) via
-                        the Hugging Face Inference API. It orchestrates a parallel workflow:</p>
+                    <p>The application uses an <strong>Agentic Mixture of Experts</strong> approach, leveraging Google
+                        Gemini to simulate a global advisory board. It orchestrates a sophisticated research and design
+                        workflow:</p>
                     <ol class="instructions-list">
                         <li><strong>User Input:</strong> You enter a "wicked problem" (e.g., "Combating urban heat
                             islands" or "Regulating gig economy labor").</li>
-                        <li><strong>Regional Dispatch:</strong> The system sends this prompt to 10 separate agent
-                            personas.</li>
-                        <li><strong>Local Search:</strong> Each agent applies a region-specific lens to find concrete
-                            examples and case studies.</li>
-                        <li><strong>Synthesis:</strong> A final "Editor" agent compiles the results, highlighting
-                            conflicts, consensus, and innovative outliers.</li>
+                        <li><strong>Global Perspective Dispatch:</strong> The system simulates 10 distinct regional
+                            experts (from East Asia to the Nordics) to find concrete success stories.</li>
+                        <li><strong>Agentic Refinement:</strong> The system applies advanced reasoning
+                            techniques—Iterative breakdown, Cross-Pollination (analogies), and Adversarial review—to
+                            stress-test the findings.</li>
+                        <li><strong>Synthesis:</strong> A final report identifies consensus best practices, innovative
+                            outliers, and a "Politics of the Possible" prototype.</li>
                     </ol>
-                    <a href="https://gemini.google.com/gem-labs/1Gg3LoXxWyAtFi7oKMtxKF4MqqsrtRiVl" target="_blank"
+                    <a href="https://gemini.google.com/gem-labs/1Vxd8MG3GtLcIEob-c-MMISAT9duN6Lq4" target="_blank"
                         class="action-button">Launch the Rule Maker Gem</a>
                 </section>
 
@@ -174,15 +181,16 @@
                     <h2>Usage Instructions</h2>
                     <p>To use the tool effectively:</p>
                     <ol class="instructions-list">
-                        <li><strong>Click the "Launch" button</strong> above to open the Hugging Face Space.</li>
+                        <li><strong>Click the "Launch" button</strong> above to open the Gemini Gem interface.</li>
                         <li><strong>Enter your query</strong> in the text box. Be specific for better results (e.g.,
                             instead of "Education," try "Vocational training programs for at-risk youth").</li>
-                        <li><strong>Wait for the agents.</strong> It may take 30-60 seconds for all 10 agents to report
-                            back.</li>
-                        <li><strong>Review the Report.</strong> The final output will be structured by themes, comparing
-                            how different parts of the world approach your problem.</li>
+                        <li><strong>Analyze the Results.</strong> The Gem will provide regional perspectives, a
+                            synthesized report, and an adversarial critique.</li>
+                        <li><strong>Reflect on the "Politics of the Possible."</strong> Use the output to identify how
+                            local constraints might be overcome using global insights.</li>
                     </ol>
                 </section>
+
             </div>
         </div>
     </main>
