@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path Builder | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .project-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .project-details img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .project-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .action-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: instruction-counter;
+        }
+
+        .instructions-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-list li::before {
+            counter-increment: instruction-counter;
+            content: counter(instruction-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="project-details">
+                <h1>Career Path Builder</h1>
+                <p class="project-subtitle">Acting Like a Local in Your Future Field</p>
+
+                <img src="images/slide_4.png" alt="Career Path Builder Illustration">
+
+                <section class="project-section">
+                    <h2>Project Overview</h2>
+                    <p>Starting a career is disorienting in exactly the same way moving to a new city is. You don't know
+                        the layout, you don't know anyone, and you're trying to figure out where the good spots are
+                        before anyone figures out you're new.</p>
+                    <p>The **Career Path Builder** is a Gemini Gem designed to help students transition from "university
+                        tourists" to "industry locals" using a structured 7-step networking and presence framework.</p>
+
+                    <a href="https://gemini.google.com/gem/11meEPGpWKN92QMqeU65FO9xow960rIuU?usp=sharing"
+                        target="_blank" class="action-button">Launch the Career Builder Gem</a>
+
+                </section>
+
+                <section class="project-section">
+                    <h2>The "Acting Like a Local" Framework</h2>
+                    <p>The tool guides you through seven interactive modules to build genuine credibility and community:
+                    </p>
+                    <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.6;">
+                        <li><strong>1. Buy Local (Presence):</strong> Audit your LinkedIn and signals to show you "live
+                            here now."</li>
+                        <li><strong>2. Get a Map (Landscape):</strong> Sketch out the landscape of major players and
+                            boutiques using Python analysis.</li>
+                        <li><strong>3. Buy Lunch (Outreach):</strong> Draft informational interview requests that
+                            professionals actually want to answer.</li>
+                        <li><strong>4. Play Hard (Community):</strong> Engineering repeated contact in low-stakes
+                            environments like hackathons or clubs.</li>
+                        <li><strong>5. Jesus and Wine (Subcultures):</strong> Finding your specific tribe and
+                            enthusiasts within the field.</li>
+                        <li><strong>6. Coffee, Tea, Me (Ambient Exposure):</strong> Hanging out where your field hangs
+                            out online.</li>
+                        <li><strong>7. Get Involved (Ownership):</strong> Taking ownership of unglamorous but vital
+                            tasks for organizations in your field.</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2>How It Works</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Launch the Gem:</strong> Click the button above and tell the AI what industry you
+                            are targeting.</li>
+                        <li><strong>Pick a Module:</strong> Choose one of the 7 sections of the "Acting Like a Local"
+                            framework.</li>
+                        <li><strong>Execute Homework:</strong> Every session ends with a small, actionable task to build
+                            your local presence.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
