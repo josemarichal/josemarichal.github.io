@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding for America Syllabus | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-header .course-meta {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .syllabus-week {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .week-header {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .day-entry .date {
+            font-weight: 700;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 80px;
+        }
+
+        .day-entry .topic {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .readings-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--secondary-color);
+            transition: color 0.2s ease;
+        }
+
+        .readings-list a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+
+        .syllabus-unit h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .reading-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .reading-table th,
+        .reading-table td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .reading-table th {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <div class="syllabus-header">
+                    <h1>Vibe Coding for America</h1>
+                    <div class="course-meta">
+                        <p>Experimental Course | Public Sector Technology & AI</p>
+                    </div>
+                </div>
+
+                <section class="syllabus-unit">
+                    <h2>Course Description</h2>
+                    <p>The intersection of artificial intelligence-assisted development, civic domain knowledge, and the
+                        practical realities of shipping software in the public sector represents a critical frontier in
+                        modern governance. This course addresses a profound systemic tension: civic-minded technologists
+                        must learn the labyrinthine constraints of the public domain, while civil servants must be
+                        empowered to build and iterate rather than merely procure and monitor.</p>
+                    <p>Resolving this tension requires a paradigm shift from traditional software engineering and
+                        top-down policy dictation to <strong>"vibe coding"</strong>—an outcome-first, AI-assisted
+                        development methodology tailored specifically for the rigorous, high-stakes environment of
+                        government services.</p>
+                </section>
+
+                <section class="syllabus-unit">
+                    <h2>Schedule</h2>
+
+                    <!-- Module 1 -->
+                    <h3>Module 1: The Landscape of Public Sector Technology</h3>
+                    <p>Understanding why government IT frequently fails—not due to funding, but due to decoupled
+                        policymaking and implementation.</p>
+                    <div class="week-header">Week 1: Dissecting the Pathology of Failure</div>
+                    <ul class="readings-list">
+                        <li><a href="https://recodingamerica.us/" target="_blank">Jennifer Pahlka, "Recoding America:
+                                Why Government Is Failing in the Digital Age"</a></li>
+                        <li>Case Study: California EDD Crisis (COVID-19 Pandemic)</li>
+                        <li>Case Study: Healthcare.gov Launch and Rescue</li>
+                        <li><a href="https://codeforamerica.org/impact-report-2021" target="_blank">Code for America
+                                2021 Impact Report</a></li>
+                    </ul>
+
+                    <!-- Module 2 -->
+                    <h3>Module 2: Generative Development and Vibe Coding Fundamentals</h3>
+                    <p>Transitioning to the technological solution space: AI-assisted development as an equalizer for
+                        domain experts.</p>
+                    <div class="week-header">Week 2-3: The Vibe Coding Paradigm</div>
+                    <ul class="readings-list">
+                        <li>Tool Comparison: <a href="https://cursor.com" target="_blank">Cursor</a> vs. <a
+                                href="https://replit.com" target="_blank">Replit</a> vs. <a href="https://bolt.new"
+                                target="_blank">Bolt.new</a></li>
+                        <li><a href="https://v0.dev" target="_blank">v0.dev</a> for Generative UI</li>
+                        <li><a href="https://lovable.dev" target="_blank">Lovable.dev</a> for Full-Stack React Apps</li>
+                        <li><a href="https://inkandswitch.com/malleable-software/" target="_blank">Ink & Switch,
+                                "Malleable Software"</a></li>
+                        <li>Claude Artifacts for Rapid Prototyping</li>
+                    </ul>
+
+                    <!-- Module 3 -->
+                    <h3>Module 3: The Government Data Layer</h3>
+                    <p>Grounding generative models in structured, authoritative open government data.</p>
+                    <div class="week-header">Week 4: API Architecture and Public Data</div>
+                    <ul class="readings-list">
+                        <li><a href="https://api.data.gov/" target="_blank">api.data.gov Explorer</a></li>
+                        <li><a href="https://www.census.gov/data/developers/data-sets.html" target="_blank">U.S. Census
+                                Bureau API Documentation</a></li>
+                        <li><a href="https://api.usaspending.gov/" target="_blank">USAspending.gov API</a></li>
+                        <li><a href="https://www.grants.gov/web/grants/developers.html" target="_blank">Grants.gov API
+                                Resources</a></li>
+                        <li><a href="https://www.commerce.gov/sites/default/files/2024-03/Generative-AI-and-Open-Data-Best-Practices.pdf"
+                                target="_blank">Department of Commerce: Generative AI and Open Data Best Practices</a>
+                        </li>
+                    </ul>
+
+                    <!-- Module 4 -->
+                    <h3>Module 4: Responsible AI Deployment</h3>
+                    <p>Establishing ethical, legal, and operational guardrails for high-stakes contexts.</p>
+                    <div class="week-header">Week 5: Guardrails and Compliance</div>
+                    <ul class="readings-list">
+                        <li><a href="https://www.section508.gov/" target="_blank">Section 508 Accessibility
+                                Standards</a></li>
+                        <li><a href="https://designsystem.digital.gov/" target="_blank">U.S. Web Design System
+                                (USWDS)</a></li>
+                        <li><a href="https://www.diu.mil/responsible-ai-guidelines" target="_blank">Defense Innovation
+                                Unit: Responsible AI Guidelines</a></li>
+                        <li><a href="https://coe.gsa.gov/coe/ai-guide-for-government/" target="_blank">GSA AI Guide for
+                                Government</a></li>
+                    </ul>
+
+                    <!-- Module 5 -->
+                    <h3>Module 5: Navigating the Institution</h3>
+                    <p>Learning to maneuver within procurement laws, budgetary cycles, and organizational behaviors.</p>
+                    <div class="week-header">Week 6: Procurement Hacks and Bureaucratic Persuasion</div>
+                    <ul class="readings-list">
+                        <li>Micro-purchasing and <a href="https://fedscoop.com/18f-micropurchase-platform-auctions/"
+                                target="_blank">18F’s Procurement Hack</a></li>
+                        <li><a href="https://www.gsa.gov/buy-through-gsa/purchasing-programs/gsa-multiple-award-schedule/gsa-schedule-offerings/cooperative-purchasing"
+                                target="_blank">GSA Cooperative Purchasing Program</a></li>
+                        <li><a href="https://handbook.tts.gsa.gov/ux-design-guide/" target="_blank">18F User Experience
+                                Design Guide</a></li>
+                        <li>Trauma-informed User Research and the Paperwork Reduction Act (PRA)</li>
+                    </ul>
+
+                    <!-- Module 6 -->
+                    <h3>Module 6: Capstone Application</h3>
+                    <p>Synthesizing theoretical knowledge into an applied municipal prototype.</p>
+                    <div class="week-header">Week 7-8: Capstone Project</div>
+                    <p>Projects focused on real-world needs (e.g., Thousand Oaks Zoning Updates or Ventura County
+                        Digital Upskilling).</p>
+                </section>
+
+                <section class="syllabus-unit">
+                    <h2>Ecosystem Integration</h2>
+                    <p>Learning from institutional champions and the GovTech investment landscape.</p>
+                    <ul class="readings-list">
+                        <li>Profiles: Ron Bronson (Critical Service Design), Angie Quirarte (State Standards)</li>
+                        <li>Venture Landscape: Govtech Fund, Thrive Capital, First Round Capital</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
