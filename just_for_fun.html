@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Marichal - Just for Fun</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        .experiment-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .experiment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .experiment-card h3 {
+            margin-top: 0;
+            color: #1a202c;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experiment-card p {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-launch {
+            display: inline-block;
+            background-color: #3182ce;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-launch:hover {
+            background-color: #2b6cb0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html" class="active">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="page-header">
+                <h1>Experiments in Vibe Coding</h1>
+                <p class="subtitle">A collection of interactive web tools built for fun.</p>
+            </section>
+
+            <section class="experiments-grid">
+
+                <div class="experiment-card">
+                    <h3>Flavor Network & Food Pairing</h3>
+                    <p>
+                        An interactive application exploring the science of culinary pairings across global cuisines.
+                        Based on the research from Ahn et al. (2011), this tool evaluates the "Food Pairing Hypothesis"
+                        prevalent in Western Cuisines versus the "Compound Avoiding Principle" found in East Asian
+                        Cuisines using 32 worldwide <strong>Cooking Bases</strong>.
+                    </p>
+                    <p>
+                        It also includes a visualization of Regional Flavor Profiles compiled from Tim Ferriss' "The
+                        4-Hour Chef".
+                    </p>
+                    <a href="flavor_pairing.html" class="btn-launch" target="_blank">Launch App</a>
+                </div>
+
+                <!-- Future experiments can be added here -->
+
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

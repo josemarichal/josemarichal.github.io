@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Network | Cooking Base Pairing</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #9b51e0;
+            --primary-light: #bb86fc;
+            --bg-color: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --western-color: #fbbf24;
+            --asian-color: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(155, 81, 224, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.15) 0px, transparent 50%);
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-light), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-size: 0.95rem;
+            text-align: left;
+            color: var(--text-muted);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card strong {
+            color: var(--text-main);
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .input-section label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .custom-select {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        select {
+            appearance: none;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            background: var(--glass-bg);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(155, 81, 224, 0.2);
+        }
+
+        select:hover,
+        select:focus {
+            box-shadow: 0 6px 20px rgba(155, 81, 224, 0.4);
+            border-color: var(--primary-light);
+        }
+
+        select option {
+            background-color: var(--bg-color);
+            color: white;
+        }
+
+        .custom-select::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            right: 1.5rem;
+            transform: translateY(-50%);
+            color: var(--primary-light);
+            pointer-events: none;
+        }
+
+        .results-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .results-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pairing-column {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pairing-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .western-col::before {
+            background: linear-gradient(90deg, var(--western-color), #fcd34d);
+        }
+
+        .asian-col::before {
+            background: linear-gradient(90deg, var(--asian-color), #7dd3fc);
+        }
+
+        .col-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .col-header h3 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .western-title {
+            color: var(--western-color);
+        }
+
+        .asian-title {
+            color: var(--asian-color);
+        }
+
+        .col-header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .ingredient-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ingredient-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ingredient-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .ingredient-icon {
+            font-size: 2rem;
+            line-height: 1;
+            margin-right: 0.5rem;
+        }
+
+        .ingredient-details {
+            flex: 1;
+        }
+
+        .ingredient-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .base-composition {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .shared-compounds {
+            font-size: 0.75rem;
+            color: var(--text-main);
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: auto;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Visualization Section Styles */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 4rem 0;
+        }
+
+        .secondary-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .secondary-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .region-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .region-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .region-card-header {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .cuisine-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cuisine-table th {
+            text-align: left;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cuisine-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: top;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .cuisine-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cuisine-name {
+            font-weight: 600;
+            width: 35%;
+        }
+
+        .cuisine-column-data {
+            font-weight: 300;
+        }
+
+        .cuisine-column-data strong {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .cuisine-cheat {
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .cuisine-table td,
+            .cuisine-table th {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Flavor Network</h1>
+        <p class="subtitle">The Culinary Fingerprints of World Cuisines</p>
+
+        <div class="info-card">
+            <p><strong>Ahn et al. (2011)</strong> demonstrated that different culinary traditions use fundamentally
+                different pairing strategies based on the chemical flavor compounds present in ingredients. By
+                evaluating different cultural <strong>Cooking Bases</strong>, we can observe these principles in action:
+                <br><br>
+                <i class="fa-solid fa-earth-americas" style="color:var(--western-color)"></i> <strong>Compound-Sharing
+                    Bases</strong> mirror the <em>Food Pairing Hypothesis</em> favored by Western Cuisines.<br>
+                <i class="fa-solid fa-earth-asia" style="color:var(--asian-color)"></i> <strong>Compound-Avoiding
+                    Bases</strong> mirror the <em>Compound Avoiding Principle</em> typical of East Asian Cuisines.
+            </p>
+        </div>
+    </header>
+
+    <main class="app-container">
+
+        <div class="input-section">
+            <label for="protein-select">Select a Protein to Generate Pairings:</label>
+            <div class="custom-select">
+                <select id="protein-select" aria-label="Select a Protein">
+                    <option value="" disabled selected>-- Choose a Protein --</option>
+                    <option value="beef">Beef</option>
+                    <option value="pork">Pork</option>
+                    <option value="chicken">Chicken</option>
+                    <option value="fish">Fish (Salmon)</option>
+                    <option value="beans">Legumes/Vegetarian</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="results" class="results-container">
+
+            <div class="pairing-column western-col">
+                <div class="col-header">
+                    <h3 class="western-title"><i class="fa-solid fa-link"></i> Highly Shared Compounds</h3>
+                    <p>Cooking Bases utilizing the <strong>Food Pairing Hypothesis</strong>.</p>
+                </div>
+                <ul id="western-list" class="ingredient-list">
+                    <!-- Dynamic content -->
+                </ul>
+            </div>
+
+            <div class="pairing-column asian-col">
+                <div class="col-header">
+                    <h3 class="asian-title"><i class="fa-solid fa-link-slash"></i> Avoided Compounds</h3>
+                    <p>Cooking Bases utilizing the <strong>Compound Avoiding Principle</strong>.</p>
+                </div>
+                <ul id="asian-list" class="ingredient-list">
+                    <!-- Dynamic content -->
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="secondary-header">
+            <h2>Regional Flavor Profiles</h2>
+            <p class="subtitle">A guide to essential staples (<strong>To Learn</strong>) and quick spice blends
+                (<strong>To Cheat</strong>) <br><em>(Adapted from Tim Ferriss' "The 4-Hour Chef")</em>.</p>
+        </div>
+
+        <div id="regions-grid" class="regions-grid">
+            <!-- Dynamic visualization content will be rendered here -->
+        </div>
+
+    </main>
+
+    <script>
+        /**
+         * 1. Application Logic Data
+         */
+        const ingredientCompounds = {
+            "Onion": [11, 12, 13], "Garlic": [11, 13, 14], "Tomatoes": [11, 15, 16],
+            "Cumin": [21, 22], "Oil": [50], "Celery": [1, 2, 3], "Bell pepper": [15, 17, 18],
+            "Ginger": [23, 24, 25], "Scallion": [11, 26, 27], "Parsnip": [3, 4, 5],
+            "Celeriac": [3, 4, 5], "Carrot": [2, 6, 7], "Lard": [8, 9, 50],
+            "Ghee": [8, 10, 50], "Butter": [8, 10, 50], "Leeks": [11, 12, 13],
+            "Paprika": [17, 28, 29], "Caraway": [30], "Herbs": [31, 32],
+            "Chilli": [17, 33, 34], "Turmeric": [35, 36], "Saffron": [37, 38],
+            "Thyme": [31, 32], "Corn": [39, 40], "Squash": [41, 42],
+            "Tomato paste": [11, 15, 16, 43], "Yellow Pepper": [17, 33, 34],
+            "Shrimp Paste": [44, 45, 46], "Fish Sauce": [44, 45, 46],
+            "Bay Leaves": [31, 32, 47], "Bacon": [8, 9, 48, 50], "Cilantro": [15, 49],
+            "White-pepper": [33, 51]
+        };
+
+        const proteins = {
+            "beef": { name: "Beef", compounds: [1, 5, 8, 11, 15, 33, 48] },
+            "pork": { name: "Pork", compounds: [2, 9, 11, 14, 23, 33, 44] },
+            "chicken": { name: "Chicken", compounds: [3, 10, 11, 13, 24, 31, 50] },
+            "fish": { name: "Fish", compounds: [5, 15, 16, 26, 33, 44, 49] },
+            "beans": { name: "Vegetarian", compounds: [2, 6, 12, 15, 21, 39, 41] }
+        };
+
+        const rawBases = [
+            { id: "sa", name: "Arabic Kushnah", region: "🇸🇦", items: ["Onion", "Garlic", "Tomatoes"] },
+            { id: "br", name: "Brazilan", region: "🇧🇷", items: ["Onion", "Garlic", "Cumin", "Oil"] },
+            { id: "us_cajun", name: "Cajun Holy Trinity", region: "⚜️", items: ["Onion", "Garlic", "Celery", "Bell pepper", "Oil"] },
+            { id: "cn", name: "Chinese", region: "🇨🇳", items: ["Garlic", "Ginger", "Scallion", "Oil"] },
+            { id: "co", name: "Colombian Hogao", region: "🇨🇴", items: ["Scallion", "Garlic", "Tomatoes"] },
+            { id: "cu", name: "Cuban", region: "🇨🇺", items: ["Onion", "Garlic", "Bell pepper"] },
+            { id: "cz", name: "Czech", region: "🇨🇿", items: ["Onion", "Garlic", "Parsnip", "Celeriac", "Carrot", "Lard"] },
+            { id: "eg", name: "Egyptian Tasbikah", region: "🇪🇬", items: ["Onion", "Garlic", "Tomatoes", "Ghee"] },
+            { id: "fr", name: "French Mirepoix", region: "🇫🇷", items: ["Onion", "Celery", "Carrot", "Butter"] },
+            { id: "de", name: "German Suppengrün", region: "🇩🇪", items: ["Leeks", "Celeriac", "Carrot", "Oil"] },
+            { id: "hu", name: "Hungarion", region: "🇭🇺", items: ["Onion", "Garlic", "Paprika", "Caraway", "Herbs"] },
+            { id: "in", name: "Indian Masala", region: "🇮🇳", items: ["Onion", "Garlic", "Ginger", "Oil"] },
+            { id: "id", name: "Indonesian bumbu dasar", region: "🇲🇨", items: ["Onion", "Garlic", "Chilli"] },
+            { id: "ir", name: "Iran", region: "🇮🇷", items: ["Onion", "Turmeric", "Saffron"] },
+            { id: "it", name: "Italian Sofrito", region: "🇮🇹", items: ["Onion", "Celery", "Carrot", "Butter"] },
+            { id: "jm", name: "Jamaican", region: "🇯🇲", items: ["Thyme", "Scallion", "Onion", "Oil"] },
+            { id: "mx", name: "Mexican Bandera", region: "🇲🇽", items: ["Onion", "Chilli", "Tomatoes", "Oil"] },
+            { id: "na", name: "Indigenous Three Sisters", region: "▫️", items: ["Corn", "Beans", "Squash", "Onion", "Bell pepper", "Lard"] },
+            { id: "ng", name: "Nigerian", region: "🇳🇬", items: ["Onion", "Tomato paste", "Chilli"] },
+            { id: "pk", name: "Pakistani", region: "🇵🇰", items: ["Garlic", "Ginger", "Turmeric", "Ghee"] },
+            { id: "pe", name: "Peru", region: "🇵🇪", items: ["Onion", "Garlic", "Yellow Pepper"] },
+            { id: "ph", name: "Philippines Gisa", region: "🇵🇭", items: ["Onion", "Scallion", "Garlic", "Ginger", "Tomatoes", "Shrimp Paste", "Fish Sauce"] },
+            { id: "pt", name: "Portugal Refogado", region: "🇵🇹", items: ["Onion", "Garlic", "Bay Leaves", "Oil"] },
+            { id: "pr", name: "Puerto Rico", region: "🇵🇷", items: ["Onion", "Garlic", "Bell pepper", "Oil"] },
+            { id: "ro", name: "Romania", region: "🇷🇴", items: ["Onion", "Garlic", "Bacon"] },
+            { id: "so", name: "Somalian/Ethiopian", region: "🇸🇴", items: ["Onion", "Garlic", "Chilli", "Tomatoes", "Cilantro", "Ghee"] },
+            { id: "es", name: "Catalonia Sofriget", region: "🇪🇸", items: ["Onion", "Garlic", "Tomatoes", "Oil"] },
+            { id: "ch", name: "Switzerland", region: "🇨🇭", items: ["Onion", "Garlic", "Oil"] },
+            { id: "th", name: "Thailand Sam Kloe", region: "🇹🇭", items: ["Garlic", "Cilantro", "White-pepper"] },
+            { id: "tt", name: "Trinidad & Tobago", region: "🇹🇹", items: ["Onion", "Garlic", "Chilli", "Oil"] },
+            { id: "tr", name: "Turkish", region: "🇹🇷", items: ["Onion", "Bell pepper", "Tomatoes", "Butter"] },
+            { id: "ua", name: "Ukraine Zazharka", region: "🇺🇦", items: ["Onion", "Garlic", "Carrot", "Lard"] }
+        ];
+
+        // Hydrate bases
+        const cookingBases = rawBases.map(base => {
+            let allCompounds = new Set();
+            base.items.forEach(item => {
+                if (ingredientCompounds[item]) {
+                    ingredientCompounds[item].forEach(c => allCompounds.add(c));
+                }
+            });
+            return {
+                ...base,
+                compoundArray: Array.from(allCompounds)
+            };
+        });
+
+        const selectEl = document.getElementById("protein-select");
+        const resultsContainer = document.getElementById("results");
+        const westernList = document.getElementById("western-list");
+        const asianList = document.getElementById("asian-list");
+
+        // Compute intersection
+        function getIntersection(arr1, arr2) {
+            return arr1.filter(value => arr2.includes(value));
+        }
+
+        selectEl.addEventListener("change", function (e) {
+            const proteinId = e.target.value;
+            if (!proteinId) return;
+
+            const protein = proteins[proteinId];
+
+            // Calculate pairings
+            const scoredBases = cookingBases.map(base => {
+                const shared = getIntersection(protein.compounds, base.compoundArray);
+                return { ...base, sharedCount: shared.length };
+            });
+
+            const sharedPairings = [...scoredBases]
+                .sort((a, b) => b.sharedCount - a.sharedCount)
+                .slice(0, 5);
+
+            const avoidedPairings = [...scoredBases]
+                .sort((a, b) => a.sharedCount - b.sharedCount)
+                .slice(0, 5);
+
+            renderList(westernList, sharedPairings, 'western');
+            renderList(asianList, avoidedPairings, 'asian');
+
+            // Show results
+            resultsContainer.classList.add('visible');
+        });
+
+        function renderList(listEl, items, type) {
+            listEl.innerHTML = '';
+            items.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'ingredient-item';
+                li.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s both`;
+
+                let pillColor = type === 'western' ? "rgba(251, 191, 36, 0.2)" : "rgba(56, 189, 248, 0.2)";
+                let textColor = type === 'western' ? "var(--western-color)" : "var(--asian-color)";
+                const composition = item.items.join(", ");
+
+                li.innerHTML = `
+                    <div class="ingredient-icon">${item.region}</div>
+                    <div class="ingredient-details">
+                        <div class="ingredient-name">${item.name}</div>
+                        <div class="base-composition">${composition}</div>
+                        <div class="shared-compounds">
+                            <i class="fa-solid fa-microscope" style="opacity:0.6"></i> 
+                            ${item.sharedCount} Shared Component${item.sharedCount !== 1 ? 's' : ''}
+                        </div>
+                    </div>
+                    <div class="pill" style="background: ${pillColor}; color: ${textColor}">
+                        ${item.sharedCount} Match
+                    </div>
+                `;
+                listEl.appendChild(li);
+            });
+        }
+
+        /**
+         * 2. Regional Flavor Profiles Visualization Code
+         */
+        const regionalProfiles = [
+            {
+                regionTitle: "The Americas",
+                bgColor: "#c5e1e6", // Light Blue Tint
+                color: "#1e293b",
+                profiles: [
+                    { cuisine: "Mexico", learn: "<strong>lime, chile</strong><br>tomato, chile", cheat: "taco seasoning + chili powder" },
+                    { cuisine: "Yucatán", learn: "sour orange, garlic, achiote", cheat: "" }
+                ]
+            },
+            {
+                regionTitle: "South Asia",
+                bgColor: "#a1cedb", // Slate Blue Tint
+                color: "#1e293b",
+                profiles: [
+                    { cuisine: "India", learn: "<strong>curry</strong>", cheat: "curry powder" },
+                    { cuisine: "Northern India", learn: "<strong>cumin, ginger, garlic</strong>", cheat: "garam masala" },
+                    { cuisine: "Southern India", learn: "mustard seed, coconut, tamarind, chile", cheat: "" },
+                    { cuisine: "Bengal", learn: "cumin, chile, coriander, turmeric", cheat: "panch phoron" }
+                ]
+            },
+            {
+                regionTitle: "Middle East / N.A.",
+                bgColor: "#3b82f6", // Strong Blue
+                color: "#ffffff",
+                profiles: [
+                    { cuisine: "Middle East", learn: "<strong>lemon, parsley</strong><br>cumin, cilantro", cheat: "za'atar (Arab) or baharat (Levant)" },
+                    { cuisine: "Morocco", learn: "cumin, coriander, cinnamon, ginger, onion/fruit", cheat: "ras el hanout" }
+                ]
+            },
+            {
+                regionTitle: "Africa",
+                bgColor: "#f43f5e", // Rose/Pink
+                color: "#ffffff",
+                profiles: [
+                    { cuisine: "East Africa", learn: "chile, garlic, ginger, fenugreek, cloves", cheat: "berbere" },
+                    { cuisine: "West Africa", learn: "tomato, peanut, chile", cheat: "" },
+                    { cuisine: "North East Africa", learn: "<strong>garlic, cumin, mint</strong>", cheat: "" }
+                ]
+            },
+            {
+                regionTitle: "Mediterranean",
+                bgColor: "#fde047", // Yellow
+                color: "#1e293b",
+                profiles: [
+                    { cuisine: "Greece", learn: "<strong>olive oil, lemon, oregano</strong>", cheat: "" },
+                    { cuisine: "Italy / France", learn: "<strong>olive oil, garlic, basil</strong>", cheat: "" },
+                    { cuisine: "Southern Italy / France", learn: "<strong>olive oil, garlic, parsley and/or anchovy</strong>", cheat: "" },
+                    { cuisine: "Provence", learn: "olive oil, thyme, rosemary, marjoram, sage", cheat: "" }
+                ]
+            },
+            {
+                regionTitle: "Northern Europe",
+                bgColor: "#fce7b2", // Light Butter Yellow
+                color: "#1e293b",
+                profiles: [
+                    { cuisine: "France", learn: "wine, herbs<br>butter/cream + wine/stock", cheat: "fines herbes or herbes de Provence" },
+                    { cuisine: "Normandy", learn: "apple, cider, Calvados", cheat: "" },
+                    { cuisine: "Northern Italy", learn: "wine vinegar, garlic", cheat: "" }
+                ]
+            },
+            {
+                regionTitle: "Eastern Europe & Central",
+                bgColor: "#fbbf24", // Orange
+                color: "#1e293b",
+                profiles: [
+                    { cuisine: "Hungary", learn: "<strong>onion, lard, paprika</strong>", cheat: "" },
+                    { cuisine: "Eastern Euro. Jewish", learn: "onion, chicken fat", cheat: "" },
+                    { cuisine: "North/East Europe", learn: "sour cream, dill or paprika or allspice/caraway", cheat: "" },
+                    { cuisine: "Central Asia", learn: "cinnamon, fruit, pistachio/walnut", cheat: "" },
+                    { cuisine: "Burma", learn: "onion, ginger, garlic, turmeric, chile", cheat: "" },
+                    { cuisine: "Nepal", learn: "<strong>lime, ginger, chile</strong>", cheat: "" }
+                ]
+            },
+            {
+                regionTitle: "East & SE Asia",
+                bgColor: "#84cc16", // Lime Green
+                color: "#1e293b",
+                profiles: [
+                    { cuisine: "Thailand", learn: "ginger, scallions, cilantro<br><strong>fish sauce, curry, chile</strong>", cheat: "red or green curry paste" },
+                    { cuisine: "Vietnam", learn: "<strong>fish sauce, lemon</strong>", cheat: "" },
+                    { cuisine: "Laos", learn: "<strong>fish sauce, coconut</strong>", cheat: "" },
+                    { cuisine: "Indonesia", learn: "tamari, brown sugar, peanut, chile", cheat: "" },
+                    { cuisine: "Japan", learn: "tamari, sake, sugar", cheat: "" },
+                    { cuisine: "Korea", learn: "tamari, brown sugar, sesame, chile", cheat: "" },
+                    { cuisine: "China", learn: "tamari, rice wine, ginger<br><strong>tamari, scallions, ginger</strong><br>+ Beijing: miso/garlic<br>+ Szechuan: sweet/sour/hot<br>+ Canton: black beans, garlic", cheat: "5-spice powder" }
+                ]
+            }
+        ];
+
+        function renderRegions() {
+            const grid = document.getElementById("regions-grid");
+            grid.innerHTML = '';
+
+            regionalProfiles.forEach((regionObj, index) => {
+                const card = document.createElement("div");
+                card.className = "region-card";
+                card.style.animation = `fadeIn 0.5s ease-out ${index * 0.15}s both`;
+
+                // Header
+                const header = document.createElement("div");
+                header.className = "region-card-header";
+                header.style.backgroundColor = regionObj.bgColor;
+                header.style.color = regionObj.color;
+                header.textContent = regionObj.regionTitle;
+                card.appendChild(header);
+
+                // Table
+                const tableContainer = document.createElement("table");
+                tableContainer.className = "cuisine-table";
+
+                const thead = document.createElement("thead");
+                thead.innerHTML = `
+                    <tr>
+                        <th style="width: 35%">Cuisine</th>
+                        <th style="width: 45%">To Learn</th>
+                        <th style="width: 20%">To Cheat</th>
+                    </tr>
+                `;
+                tableContainer.appendChild(thead);
+
+                const tbody = document.createElement("tbody");
+                regionObj.profiles.forEach(prof => {
+                    const row = document.createElement("tr");
+
+                    const nameCol = document.createElement("td");
+                    nameCol.className = "cuisine-name";
+                    nameCol.style.backgroundColor = `rgba(255, 255, 255, 0.05)`;
+                    nameCol.textContent = prof.cuisine;
+
+                    const learnCol = document.createElement("td");
+                    learnCol.className = "cuisine-column-data";
+                    learnCol.innerHTML = prof.learn;
+
+                    const cheatCol = document.createElement("td");
+                    cheatCol.className = "cuisine-column-data cuisine-cheat";
+                    cheatCol.innerHTML = prof.cheat;
+
+                    row.appendChild(nameCol);
+                    row.appendChild(learnCol);
+                    row.appendChild(cheatCol);
+                    tbody.appendChild(row);
+                });
+
+                tableContainer.appendChild(tbody);
+                card.appendChild(tableContainer);
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize visualization
+        document.addEventListener("DOMContentLoaded", renderRegions);
+
+    </script>
+</body>
+
+</html>
