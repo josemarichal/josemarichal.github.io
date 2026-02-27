@@ -338,11 +338,96 @@
         }
 
         .region-card-header {
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem;
             font-size: 1.25rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Spice Blends Styles --- */
+        .spice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .spice-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .spice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .spice-card-header {
+            padding: 1.25rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .spice-flag {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .spice-title-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spice-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spice-region {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.2rem;
+        }
+
+        .spice-ingredients {
+            padding: 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .spice-ingredient-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.2s ease;
+        }
+
+        .spice-ingredient-tag:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
 
         .cuisine-table {
@@ -501,6 +586,17 @@
 
         <div id="regions-grid" class="regions-grid">
             <!-- Dynamic visualization content will be rendered here -->
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="secondary-header">
+            <h2>Spice Blends of the World</h2>
+            <p class="subtitle">A closer look at the constituent ingredients of famous global spice blends.</p>
+        </div>
+
+        <div id="spice-blends-grid" class="spice-grid">
+            <!-- Dynamic spice blend content will be rendered here -->
         </div>
 
     </main>
@@ -800,8 +896,121 @@
             });
         }
 
-        // Initialize visualization
-        document.addEventListener("DOMContentLoaded", renderRegions);
+        /**
+         * 3. Spice Blends of the World Visualization Code
+         */
+        const spiceBlends = [
+            {
+                name: "Garam Masala",
+                region: "India",
+                flag: "🇮🇳",
+                ingredients: ["cumin seed", "coriander seed", "black cardamom", "green cardamom", "cinnamon", "clove", "bay leaf", "mace", "nutmeg", "star anise", "black pepper", "fennel seed"]
+            },
+            {
+                name: "Berbere",
+                region: "Ethiopia",
+                flag: "🇪🇹",
+                ingredients: ["hot peppers", "black pepper", "fenugreek", "ginger", "cardamom", "coriander", "cinnamon", "ajwain", "cumin", "allspice", "nutmeg", "paprika"]
+            },
+            {
+                name: "Quatre Épices",
+                region: "France",
+                flag: "🇫🇷",
+                ingredients: ["ground black or white pepper", "cloves", "nutmeg", "ginger"]
+            },
+            {
+                name: "Shichimi Togarashi",
+                region: "Japan",
+                flag: "🇯🇵",
+                ingredients: ["round chili pepper", "sansho or Japanese pepper", "roasted satsuma mandarin peel", "black or white sesame seeds", "hemp seeds or hearts", "ground ginger", "nori seaweed"]
+            },
+            {
+                name: "Old Bay Seasoning",
+                region: "USA",
+                flag: "🇺🇸",
+                ingredients: ["paprika", "celery salt", "crushed red pepper flake", "black pepper", "bay leaves", "dry mustard", "nutmeg", "ginger", "cloves", "mace", "cardamom", "allspice"]
+            },
+            {
+                name: "5 Chinese Spices",
+                region: "China",
+                flag: "🇨🇳",
+                ingredients: ["star anise", "fennel", "Sichuan pepper", "cinnamon", "clove"]
+            },
+            {
+                name: "Jerk Seasoning",
+                region: "Jamaica",
+                flag: "🇯🇲",
+                ingredients: ["pimento", "Scotch bonnet", "cloves", "cinnamon", "scallions", "nutmeg", "thyme", "garlic", "brown sugar", "ginger", "salt"]
+            },
+            {
+                name: "Ras el Hanout",
+                region: "Morocco",
+                flag: "🇲🇦",
+                ingredients: ["cardamom", "clove", "cinnamon", "coriander", "cumin", "paprika", "mace", "nutmeg", "peppercorn", "turmeric"]
+            },
+            {
+                name: "Baharat",
+                region: "Lebanon",
+                flag: "🇱🇧",
+                ingredients: ["black pepper", "coriander seed", "paprika", "cardamom", "nutmeg", "cumin seed", "cloves", "cinnamon"]
+            }
+        ];
+
+        function renderSpiceBlends() {
+            const grid = document.getElementById("spice-blends-grid");
+            grid.innerHTML = '';
+
+            spiceBlends.forEach((blend, index) => {
+                const card = document.createElement("div");
+                card.className = "spice-card";
+                card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s both`;
+
+                // Header section
+                const header = document.createElement("div");
+                header.className = "spice-card-header";
+
+                const flag = document.createElement("span");
+                flag.className = "spice-flag";
+                flag.textContent = blend.flag;
+
+                const titleWrapper = document.createElement("div");
+                titleWrapper.className = "spice-title-wrapper";
+
+                const title = document.createElement("span");
+                title.className = "spice-title";
+                title.textContent = blend.name;
+
+                const region = document.createElement("span");
+                region.className = "spice-region";
+                region.textContent = blend.region;
+
+                titleWrapper.appendChild(title);
+                titleWrapper.appendChild(region);
+                header.appendChild(flag);
+                header.appendChild(titleWrapper);
+
+                // Ingredients section
+                const ingredientsContainer = document.createElement("div");
+                ingredientsContainer.className = "spice-ingredients";
+
+                blend.ingredients.forEach(ingredient => {
+                    const tag = document.createElement("span");
+                    tag.className = "spice-ingredient-tag";
+                    tag.textContent = ingredient;
+                    ingredientsContainer.appendChild(tag);
+                });
+
+                card.appendChild(header);
+                card.appendChild(ingredientsContainer);
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRegions();
+            renderSpiceBlends();
+        });
 
     </script>
 </body>
