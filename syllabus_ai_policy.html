@@ -95,6 +95,19 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
         }
+
+        .level-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -140,15 +153,13 @@
 
                 <!-- Course Description -->
                 <section class="syllabus-unit">
-                    <h2>Course Description: The AI Policy Entrepreneur</h2>
-                    <p>The AI Policy Entrepreneur is emerging at the intersection of technology, advocacy, and
-                        governance. They work in think tanks, advocacy organizations, lobbying firms, and increasingly
-                        within government itself. Unlike the APO focused on electoral campaigns, the AI Policy
-                        Entrepreneur is focused on <strong>policy change</strong> — getting legislation passed,
-                        regulations shifted, public programs funded, or government priorities reordered.</p>
-                    <p>This course prepares you for this role. We explore how AI doesn't just speed up old processes,
-                        but fundamentally changes what is possible at each stage of the policy cycle, from agenda
-                        setting to termination.</p>
+                    <h2>Course Description: The Enactment Engine</h2>
+                    <p>The AI Policy Entrepreneur doesn't just study policy; they launch it. This course is designed as
+                        a six-stage "deployment" cycle where students identify a local point of failure and build an
+                        AI-powered tactical engine to fix it.</p>
+                    <p>Following the C4 Architecture Model, we move from the broad Political Context (mapping power) to
+                        the functional Containers of advocacy (building the workstreams), down to the granular
+                        Components of influence (the prompts and scripts that change minds).</p>
                 </section>
 
                 <!-- Course Goals -->
@@ -156,16 +167,14 @@
                     <h2>Course Objectives</h2>
                     <p>By the end of this course, students will be able to:</p>
                     <ul>
-                        <li><strong>Deploy AI for Issue Monitoring:</strong> Systematically track legislative and
-                            regulatory activity across multiple jurisdictions.</li>
-                        <li><strong>Draft Policy with AI Assistance:</strong> Use LLMs to generate legislative language,
-                            regulatory comments, and policy briefs.</li>
-                        <li><strong>Simulate Policy Impact:</strong> Model the effects of policy decisions on different
-                            stakeholders.</li>
-                        <li><strong>Navigate Bureaucracy:</strong> Use AI to understand agency procedures and identify
-                            key decision points.</li>
-                        <li><strong>Evaluate Ethics:</strong> Critically assess the democratic implications of automated
-                            advocacy and influence.</li>
+                        <li><strong>Architecting Influence:</strong> Deploy AI systems for persistent jurisdictional
+                            monitoring.</li>
+                        <li><strong>Refactoring Legislation:</strong> Use LLMs to translate technical policy needs into
+                            politically viable drafts.</li>
+                        <li><strong>Simulating Resistance:</strong> Use agentic AI to "Red Team" advocacy strategies
+                            before deployment.</li>
+                        <li><strong>Ethical Debugging:</strong> Critically assess the boundaries of "Automated
+                            Advocacy."</li>
                     </ul>
                 </section>
 
@@ -175,16 +184,17 @@
                     <p><strong>Total Points: 100</strong></p>
                     <ul>
                         <li><strong>Issue Monitoring Dashboard (20 Points):</strong> Build an automated system to track
-                            a specific policy issue across 50 states and federal agencies (using tools like automated
-                            keyword scanning or API integration).</li>
+                            a specific policy issue across jurisdictions using automated monitoring of minutes and
+                            filings.</li>
                         <li><strong>Legislative Drafting Portfolio (25 Points):</strong> Retrieve a model policy and use
-                            AI to draft three variants: a tax credit, a grant program, and a regulatory mandate.
-                            Includes an analysis of the "Goldilocks zone" for coalition support.</li>
-                        <li><strong>Regulatory Comment Bot (25 Points):</strong> Design a system (conceptually or
-                            functionally) to generate unique, substantive comments for a mock rulemaking process.
-                            Includes an ethical reflection on "astroturfing" vs. legitimate advocacy.</li>
-                        <li><strong>Final Policy Simulation (30 Points):</strong> A semester-long project where you act
-                            as a Policy Entrepreneur for a cause, moving it through all six stages using AI tools.</li>
+                            AI to draft variants, searching for the "Goldilocks zone" of support through comparative
+                            analysis.</li>
+                        <li><strong>Regulatory Comment Bot (25 Points):</strong> Design a system to generate 1,000+
+                            unique,
+                            substantive regulatory comments, addressing the ethics of automated participation.</li>
+                        <li><strong>Final Project: Policy Simulation: The Deployment (30 Points):</strong> Move the
+                            "Code"
+                            of your proposal through a simulated (or real) legislative gauntlet.</li>
                     </ul>
                 </section>
 
@@ -192,229 +202,189 @@
                 <section class="syllabus-unit">
                     <h2>Schedule</h2>
 
+                    <div class="level-header">🏗️ LEVEL 1: System Context (The Political Ecosystem)</div>
+                    <p>Mapping the arena before entering it.</p>
+
                     <!-- Unit 1 -->
                     <h3>Unit 1: The New Class of Advocate</h3>
-                    <p>Introduction to the AI Policy Entrepreneur and the tools of the trade.</p>
 
-                    <div class="week-header">Week 1: Who They Are</div>
+                    <div class="week-header">Week 1: Algorithmic Advocacy</div>
                     <div class="day-entry">
-                        <span class="topic">From "Relationships" to "Infrastructure"</span>
-                        <p>How the old guard of lobbying is being challenged by data-driven scale. The shift from
-                            cocktail parties to server farms.</p>
+                        <span class="topic">From "Cocktail Lobbying" to "Algorithmic Advocacy"</span>
+                        <p>The structural shift in advocacy. Identifying your <strong>Local Point of Entry</strong>
+                            (ordinance or state bill).</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">AI Engineering Community, "Building Agentic AI Systems"</a>
+                            <li><a href="#" target="_blank">Bruce Schneier & Nathan E. Sanders, "Rewiring Democracy"</a>
                             </li>
-                            <li><a href="#" target="_blank">Bruce Schneier & Nathan E. Sanders, "Rewiring Democracy: How
-                                    AI Will Transform Our Politics"</a></li>
                         </ul>
                     </div>
 
-                    <div class="week-header">Week 2: The Tool Stack</div>
+                    <div class="week-header">Week 2: The Intelligence Layer</div>
                     <div class="day-entry">
-                        <span class="topic">Overview of the Toolkit</span>
-                        <p>Social listening AI (Brandwatch), Legislative AI (Plural), and predictive analytics. Setting
-                            up your environments.</p>
+                        <span class="topic">Setting up the Tool Stack</span>
+                        <p>Deploying the "AI Intelligence Layer" (Brandwatch, Plural, LLM Environments). Monitoring the
+                            ecosystem.</p>
                         <ul class="readings-list">
+                            <li><a href="#" target="_blank">AI Engineering Community, "Building Agentic AI Systems"</a>
+                            </li>
                             <li><a href="#" target="_blank">Naresh/Palonis, "The Prompt Architect's Playbook"</a></li>
                         </ul>
                     </div>
 
+                    <div class="level-header">📦 LEVEL 2: Containers (The Functional Workstreams)</div>
+                    <p>Building the engines that process information into influence.</p>
+
                     <!-- Unit 2 -->
-                    <h3>Unit 2: Stage 1 — Agenda Setting</h3>
-                    <p>Making problems visible.</p>
+                    <h3>Unit 2: Container 1 — Discovery & Intelligence</h3>
 
-                    <div class="week-header">Week 3: Automated Monitoring</div>
+                    <div class="week-header">Week 3: Agenda Setting at Speed</div>
                     <div class="day-entry">
-                        <span class="topic">Scanning the Horizon</span>
-                        <p>Using AI to scan legislative activity and regulatory filings. Flagging "weak signals" before
-                            they become mainstream news.</p>
+                        <span class="topic">Scanning for "Weak Signals"</span>
+                        <p>Automated monitoring of city council minutes and regulatory filings. Making problems visible.
+                        </p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">Group Caliber, "Top Reputation Monitoring Tools and Why
-                                    Stakeholder Intelligence is Next"</a></li>
+                            <li><a href="#" target="_blank">Group Caliber, "Stakeholder Intelligence"</a></li>
                         </ul>
                     </div>
 
-                    <div class="week-header">Week 4: Narrative Mining & Framing</div>
+                    <div class="week-header">Week 4: Narrative Intelligence</div>
                     <div class="day-entry">
-                        <span class="topic">Compelling Storytelling at Scale</span>
-                        <p>Generating localized narratives for different audiences (rural vs. urban). Using AI sentiment
-                            analysis to test which frames resonate.</p>
+                        <span class="topic">Milestone: The Issue Monitoring Dashboard (20 Points)</span>
+                        <p>Closing the first container. Using AI sentiment analysis to test which frames resonate.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">Stiftung Neue Verantwortung, "Social Media Monitoring During
-                                    Elections"</a></li>
-                            <li><a href="#" target="_blank">FIU News, "Weaponized Storytelling: How AI is Helping Sniff
-                                    Out Disinformation Campaigns"</a></li>
-                        </ul>
-                    </div>
-
-
-                    <div class="week-header">Week 5: Visualizing Problems with Open Data</div>
-                    <div class="day-entry">
-                        <span class="topic">Interactive Mapping & Public Awareness</span>
-                        <p>Processing open government data to build interactive visualizations that localize national issues and drive agenda setting. Case Study: <em>Save Our Bridges</em>, an interactive map using Federal Highway Administration data to help citizens and businesses seamlessly locate structurally deficient and fracture-critical bridges in their zip codes.</p>
-                        <ul class="readings-list">
-                            <li><a href="http://www.saveourbridges.com" target="_blank">Interactive Map: Save Our Bridges (Barry B. LePatner)</a></li>
+                            <li><a href="#" target="_blank">FIU News, "Weaponized Storytelling"</a></li>
                         </ul>
                     </div>
 
                     <!-- Unit 3 -->
-                    <h3>Unit 3: Stage 2 — Policy Formulation</h3>
-                    <p>Designing solutions that survive.</p>
+                    <h3>Unit 3: Container 2 — Solution Architecture</h3>
 
-                    <div class="week-header">Week 6: Comparative Analysis</div>
+                    <div class="week-header">Week 5: Policy Formulation</div>
                     <div class="day-entry">
-                        <span class="topic">Pattern Recognition</span>
-                        <p>Ingesting policies from other jurisdictions to see what passed and what failed. "This worked
-                            in Colorado, but failed in Texas."</p>
+                        <span class="topic">"Porting" Legislation</span>
+                        <p>Ingesting policies from other jurisdictions to see what passed and what failed. Adapting code
+                            for local needs.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">Tech Policy Press, "Making Sense of AI Policy Using
-                                    Computational Tools"</a></li>
+                            <li><a href="#" target="_blank">Tech Policy Press, "Making Sense of AI Policy"</a></li>
                         </ul>
                     </div>
 
-                    <div class="week-header">Week 7: Automated Drafting & Loophole Hunting</div>
+                    <div class="week-header">Week 6: The Goldilocks Zone</div>
                     <div class="day-entry">
-                        <span class="topic">The 10-Minute Bill</span>
-                        <p>Generating legislative variants (tax credit vs. mandate) in hours. Using AI to red-team your
-                            own legislation for loopholes.</p>
+                        <span class="topic">Milestone: The Legislative Drafting Portfolio (25 Points)</span>
+                        <p>Comparative analysis of 50-state policy data to find the optimal support zone. Drafting
+                            variants.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">NCSL, "Legislative Use of Artificial Intelligence: 2025
-                                    Survey"</a></li>
-                            <li><a href="#" target="_blank">RAND Corporation, "Could AI Help Improve How Public Policy
-                                    Is Made?"</a></li>
+                            <li><a href="#" target="_blank">RAND Corporation, "AI and Public Policy Improve"</a></li>
                         </ul>
                     </div>
 
+                    <div class="level-header">🧩 LEVEL 3: Components (The Tactical Workflows)</div>
+                    <p>Refining the tools of persuasion.</p>
 
                     <!-- Unit 4 -->
-                    <h3>Unit 4: Stage 3 — Decision-Making</h3>
-                    <p>Building coalitions and winning votes.</p>
+                    <h3>Unit 4: Component 1 — The Power Mapper</h3>
 
-                    <div class="week-header">Week 8: Legislator Profiling</div>
+                    <div class="week-header">Week 7: Coalition Building</div>
+                    <div class="day-entry">
+                        <span class="topic">Stakeholder Analysis</span>
+                        <p>Mapping the "Persona" of decision-makers using voting history and donor data.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">SVCAF, "Legislative Analysis APIs"</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 8: The Persuadable Middle</div>
                     <div class="day-entry">
                         <span class="topic">Hyper-Informed Influence</span>
-                        <p>Building deep profiles of decision-makers: voting history, donors, and committee leverage.
-                            Identifying who is persuadable.</p>
+                        <p>Identifying key leverage points in the committee process. Personalized pitches.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">SVCAF, "Comprehensive API Resources for AI-Driven
-                                    Legislative Analysis"</a></li>
+                            <li><a href="#" target="_blank">TandF Online, "Targeted Persuasion"</a></li>
                         </ul>
                     </div>
 
-                    <div class="week-header">Week 9: Personalized Persuasion</div>
+                    <div class="week-header">Week 9: Mobilization Simulation</div>
                     <div class="day-entry">
-                        <span class="topic">Customizing the Pitch</span>
-                        <p>Generating unique pitch materials for every member of a committee. The Ag Chair gets the
-                            rural angle; the Tech Caucus gets the innovation story.</p>
-                        <ul class="readings-list">
-                            <li><a href="#" target="_blank">TandF Online, "Targeted Persuasion and Persuasion
-                                    Knowledge"</a></li>
-                            <li><a href="#" target="_blank">Policy Review, "Voter Preferences, Voter Manipulation, Voter
-                                    Analytics"</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="week-header">Week 10: Mobilization & Simulation</div>
-                    <div class="day-entry">
-                        <span class="topic">Simulated Hearings</span>
-                        <p>Preparing for the gauntlet. Using AI to simulate hostile questioning from opposition
-                            legislators based on their past behavior.</p>
+                        <span class="topic">Building Advocacy Workstreams</span>
+                        <p>Using AI to coordinate constituent outreach and stakeholder alignment.</p>
                         <ul class="readings-list">
                             <li><a href="#" target="_blank">Alex Pentland (MIT), "Shared Wisdom"</a></li>
                         </ul>
                     </div>
 
-
                     <!-- Unit 5 -->
-                    <h3>Unit 5: Stage 4 — Implementation</h3>
-                    <p>Ensuring follow-through (where most policies die).</p>
+                    <h3>Unit 5: Component 2 — The Narrative Tailor</h3>
 
-                    <div class="week-header">Week 11: Rulemaking & Comments</div>
+                    <div class="week-header">Week 10: Designing for Buy-in</div>
                     <div class="day-entry">
-                        <span class="topic">Overwhelming the System</span>
-                        <p>Generating thousands of substantive comments during rulemaking. The ethics of synthetic
-                            public participation.</p>
+                        <span class="topic">Rulemaking and Enforcement</span>
+                        <p>How policies die in bureaucracy and how to build components that survive implementation.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">Law-AI, "Automated Compliance and the Regulation of AI"</a>
+                            <li><a href="#" target="_blank">Law-AI, "Automated Compliance"</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 11: The Comment Bot</div>
+                    <div class="day-entry">
+                        <span class="topic">Milestone: The Regulatory Comment Bot (25 Points)</span>
+                        <p>Generating 1,000+ unique, substantive regulatory comments. Scaling participation.</p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Ioni.ai, "AI Regulatory Intelligence"</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="week-header">Week 12: Compliance Assistance</div>
+                    <div class="day-entry">
+                        <span class="topic">The Implementation Engine</span>
+                        <p>Monitoring for enforcement gaps. Helping entities understand new rules with AI assistance.
+                        </p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">RTS Labs, "AI Compliance Monitoring"</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="level-header">📄 LEVEL 4: The "Code" (The Atomic Actions)</div>
+                    <p>The precise prompts and scripts that enact change.</p>
+
+                    <!-- Unit 6 -->
+                    <h3>Unit 6: The Lobbying Loop</h3>
+
+                    <div class="week-header">Week 13: The Long Game</div>
+                    <div class="day-entry">
+                        <span class="topic">Evaluation & Expansion</span>
+                        <p>Measuring impact and preventing repeal. Using automated data collection for causal inference.
+                        </p>
+                        <ul class="readings-list">
+                            <li><a href="#" target="_blank">Taha Yasseri, "Handbook of Computational Social Science"</a>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="week-header">Week 12: Compliance & Enforcement</div>
+                    <div class="week-header">Week 14: Simulating Resistance</div>
                     <div class="day-entry">
-                        <span class="topic">Compliance Assistance</span>
-                        <p>Using AI to help entities understand new rules (reducing resistance). Monitoring agencies for
-                            enforcement gaps.</p>
+                        <span class="topic">"Red Team" Scenarios</span>
+                        <p>Using AI to simulate the objections of hostile officials to refine the final pitch/code.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">Ioni.ai, "Best AI Regulatory Intelligence Tools"</a></li>
-                            <li><a href="#" target="_blank">RTS Labs, "AI Compliance Monitoring: Benefits, Use Cases,
-                                    Steps"</a></li>
+                            <li><a href="#" target="_blank">ArXiv (2024), "Causal Inference with LLMs"</a></li>
                         </ul>
                     </div>
 
-
-                    <!-- Unit 6 -->
-                    <h3>Unit 6: Stage 5 — Evaluation</h3>
-                    <p>Measuring success and learning.</p>
-
-                    <div class="week-header">Week 13: Automated Data Collection</div>
+                    <div class="week-header">Week 15: Strategic Maintenance</div>
                     <div class="day-entry">
-                        <span class="topic">Scraping Reality</span>
-                        <p>Collecting administrative data, FOIA responses, and budget documents to build datasets on
-                            policy outcomes.</p>
-                        <ul class="readings-list">
-                            <li><a href="#" target="_blank">Taha Yasseri (Ed.), "Handbook of Computational Social
-                                    Science"</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="week-header">Week 14: Causal Inference & Reporting</div>
-                    <div class="day-entry">
-                        <span class="topic">Real-Time Evaluation</span>
-                        <p>Using synthetic controls and difference-in-differences to estimate effects. Producing
-                            automated reports for stakeholders.</p>
-                        <ul class="readings-list">
-                            <li><a href="#" target="_blank">ArXiv (2024), "Causal Inference with Large Language Model: A
-                                    Survey"</a></li>
-                            <li><a href="#" target="_blank">ICLR, "Integrating Causal Representation Learning with
-                                    LLMs"</a></li>
-                        </ul>
-                    </div>
-
-
-                    <!-- Unit 7 -->
-                    <h3>Unit 7: Stage 6 — The Long Game</h3>
-                    <p>Maintenance, Expansion, or Termination.</p>
-
-                    <div class="week-header">Week 15: Defense & Maintenance</div>
-                    <div class="day-entry">
-                        <span class="topic">Threat Detection</span>
-                        <p>Monitoring for repeal efforts and budget cuts. Keeping the coalition alive with automated
-                            updates.</p>
+                        <span class="topic">Threat Detection & Replication</span>
+                        <p>Keeping the coalition alive. Identifying new jurisdictions for replication.</p>
                         <ul class="readings-list">
                             <li><a href="#" target="_blank">Marco Iansiti & Karim R. Lakhani, "Competing in the Age of
                                     AI"</a></li>
                         </ul>
                     </div>
 
-                    <div class="week-header">Week 16: Expansion & Termination</div>
+                    <div class="week-header">Week 16: The Deployment</div>
                     <div class="day-entry">
-                        <span class="topic">Replication or Death</span>
-                        <p>Identifying new jurisdictions for successful policies. Or, using AI to build the case for
-                            killing a failed policy.</p>
+                        <span class="topic">Final Project: Policy Simulation (30 Points)</span>
+                        <p>Moving the "Code" of your proposal through a simulated (or real) legislative gauntlet.</p>
                         <ul class="readings-list">
-                            <li><a href="#" target="_blank">Karen Hao, "Empire of AI: Dreams and Nightmares"</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="week-header">Week 17: The Future & Ethics</div>
-                    <div class="day-entry">
-                        <span class="topic">Democratic Values vs. Influence</span>
-                        <p>"We're not just making policy faster. We're changing who gets to make it." The accountability
-                            gap and the future of governance.</p>
-                        <ul class="readings-list">
-                            <li><a href="#" target="_blank">TandF Online, "Critical Research in Education and
-                                    Technology"</a></li>
+                            <li><a href="#" target="_blank">Karen Hao, "Empire of AI"</a></li>
                         </ul>
                     </div>
 
