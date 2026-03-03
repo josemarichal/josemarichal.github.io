@@ -71,6 +71,60 @@
             background-color: var(--bg-color-alt);
             font-weight: 600;
         }
+
+        /* Group List Styles */
+        .groups-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .group-column {
+            flex: 1;
+            min-width: 300px;
+            background: var(--bg-color-alt);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .group-column h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .topic-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .topic-name {
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .student-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .student-list li {
+            padding: 0.2rem 0;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        .student-list li:last-child {
+            border-bottom: none;
+        }
     </style>
 </head>
 
@@ -359,20 +413,140 @@
                     </table>
                 </div>
 
-                <div class="assignment-section">
-                    <h2 class="assignment-title">Notes for Students</h2>
-                    <h3>Building on Previous Work:</h3>
-                    <p>Each assignment builds on the previous one. Your research from Assignment 1 informs Assignment 2.
-                        Your opposition analysis strengthens Assignment 3. Everything culminates in Assignments 4 and 5.
-                    </p>
+            </div>
 
-                    <h3>Academic Integrity:</h3>
-                    <p>All sources must be properly cited. Plagiarism will result in a zero for the assignment and
-                        potential course consequences.</p>
+            <div class="assignment-section">
+                <h2 class="assignment-title">Debate Groups</h2>
+                <div class="groups-container">
+                    <!-- 11:45 Section -->
+                    <div class="group-column">
+                        <h3>11:45 AM Section</h3>
 
+                        <div class="topic-item">
+                            <span class="topic-name">Cancel Culture</span>
+                            <ul class="student-list">
+                                <li>Sandro</li>
+                                <li>Zavier</li>
+                                <li>Alana</li>
+                                <li>Jenna</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Fast Food</span>
+                            <ul class="student-list">
+                                <li>Madox</li>
+                                <li>Jonathan</li>
+                                <li>Noah</li>
+                                <li>Ian</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">AI</span>
+                            <ul class="student-list">
+                                <li>Mason</li>
+                                <li>Alab</li>
+                                <li>Negeen</li>
+                                <li>Nadia</li>
+                                <li>Giovanna</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Health Care</span>
+                            <ul class="student-list">
+                                <li>Meztli</li>
+                                <li>Pablo</li>
+                                <li>Lauren</li>
+                                <li>David</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 10:00 AM Group -->
+                    <div class="group-column">
+                        <h3>10:00 AM Section</h3>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Womens Rights</span>
+                            <ul class="student-list">
+                                <li>Madison</li>
+                                <li>Imaculee</li>
+                                <li>Justin Z</li>
+                                <li>Sydney</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Gun Control</span>
+                            <ul class="student-list">
+                                <li>Jaden</li>
+                                <li>Jefferson</li>
+                                <li>Renee</li>
+                                <li>Michelle</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Justice System</span>
+                            <ul class="student-list">
+                                <li>Noah</li>
+                                <li>Valeria</li>
+                                <li>Maurizio</li>
+                                <li>Logan</li>
+                                <li>Colby</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Book Banning</span>
+                            <ul class="student-list">
+                                <li>Reece</li>
+                                <li>Jackson</li>
+                                <li>Madeline P</li>
+                                <li>Hilary</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Climate</span>
+                            <ul class="student-list">
+                                <li>Abby L</li>
+                                <li>Tyler</li>
+                                <li>Madeline M</li>
+                                <li>Abby H</li>
+                                <li>Katie</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <span class="topic-name">Greenand</span>
+                            <ul class="student-list">
+                                <li>Justin'</li>
+                                <li>Kyle</li>
+                                <li>Brady</li>
+                                <li>David</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="assignment-section">
+                <h2 class="assignment-title">Notes for Students</h2>
+                <h3>Building on Previous Work:</h3>
+                <p>Each assignment builds on the previous one. Your research from Assignment 1 informs Assignment 2.
+                    Your opposition analysis strengthens Assignment 3. Everything culminates in Assignments 4 and 5.
+                </p>
+
+                <h3>Academic Integrity:</h3>
+                <p>All sources must be properly cited. Plagiarism will result in a zero for the assignment and
+                    potential course consequences.</p>
 
             </div>
+
+        </div>
         </div>
     </main>
 
