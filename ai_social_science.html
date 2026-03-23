@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Social Science Research | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Syllabus Specific Styles */
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .syllabus-header .course-meta {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+        .syllabus-unit {
+            margin-bottom: 3rem;
+        }
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        .syllabus-week {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .day-entry .date {
+            font-weight: 700;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 80px;
+        }
+        .day-entry .topic {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        .readings-list {
+            list-style: none;
+            padding-left: 85px;
+            margin-top: 0.5rem;
+        }
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .readings-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--secondary-color);
+            transition: color 0.2s ease;
+        }
+        .readings-list a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+        .assignment-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0 1.5rem 85px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .assignment-box h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .readings-list {
+                padding-left: 0;
+            }
+            .assignment-box {
+                margin-left: 0;
+            }
+            .day-entry .date {
+                display: block;
+                margin-bottom: 0.25rem;
+            }
+        }
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">PAI-L Projects</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <div class="syllabus-header">
+                    <h1>AI for Social Science Research</h1>
+                    <div class="course-meta">
+                        <p>Curriculum Map: Generative AI for Behavioral and Social Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Unit 1: Curriculum Map -->
+                <section class="syllabus-unit">
+                    <h2>Curriculum Map</h2>
+
+                    <div class="day-entry">
+                        <span class="topic" style="font-size: 1.3rem;">Core Concept 1: Silicon Sampling and the Simulation of Human Subjects</span>
+                        <p><strong>Overview:</strong> Introduces the foundational idea of using Large Language Models (LLMs) to simulate human populations, replacing or augmenting traditional human survey respondents.</p>
+                        <ul class="readings-list" style="padding-left: 0;">
+                            <li><strong>Source that introduces it:</strong> <em>"Out of One, Many: Using Language Models to Simulate Human Samples"</em> establishes the premise of "silicon sampling" and the concept of "algorithmic fidelity"—the degree to which a model accurately reflects relationships between ideas, demographics, and behaviors within real subpopulations.</li>
+                            <li><strong>Source that deepens it:</strong> <em>"HUMANLM: Simulating Users with State Alignment Beats Response Imitation"</em> deepens this by moving beyond surface-level text imitation. It introduces a reinforcement learning framework that aligns LLMs with underlying psychological states.</li>
+                            <li><strong>Source that challenges it:</strong> <em>"Digital Twins as Funhouse Mirrors: Five Key Distortions"</em> and <em>"Not Yet: Large Language Models Cannot Replace Human Respondents for Psychometric Research"</em> challenge this practice by demonstrating that LLMs often distort human behavior through stereotyping, hyper-rationality, and representation bias.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-entry">
+                        <span class="topic" style="font-size: 1.3rem;">Core Concept 2: Demographic Representation and Identity Prompting</span>
+                        <p><strong>Overview:</strong> Explores how well LLMs can adopt specific personas and whether they accurately reflect diverse demographic identities without reducing them to stereotypes.</p>
+                        <ul class="readings-list" style="padding-left: 0;">
+                            <li><strong>Source that introduces it:</strong> <em>"Position: LLM Social Simulations Are a Promising Research Method"</em> outlines the baseline framework while identifying five challenges: diversity, bias, sycophancy, alienness, and generalization.</li>
+                            <li><strong>Source that deepens it:</strong> <em>"Evaluating Silicon Sampling: LLM Accuracy in Simulating Public Opinion on Facial Recognition Technology"</em> applies persona prompting across models like GPT-4o, Claude, and DeepSeek to match multinational surveys.</li>
+                            <li><strong>Source that challenges it:</strong> Detailed analysis points out that LLMs suffer from <em>misportrayal</em>, <em>group flattening</em> (erasing subgroup heterogeneity), and <em>identity essentialization</em>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="topic" style="font-size: 1.3rem;">Core Concept 3: Methodological Frameworks and Analytic Flexibility</span>
+                        <p><strong>Overview:</strong> Focuses on the practical and statistical guidelines required to integrate LLMs into robust empirical research, replacing tasks like qualitative hand-coding and econometric estimation.</p>
+                        <ul class="readings-list" style="padding-left: 0;">
+                            <li><strong>Source that introduces it:</strong> <em>"Qualitative Coding with Generative Large Language Models"</em> illustrates emulating traditional qualitative alternating deductive/inductive analysis.</li>
+                            <li><strong>Source that deepens it:</strong> <em>"Large Language Models: An Applied Econometric Framework"</em> divides LLM tasks into "prediction" (no training leakage validation) and "estimation" (requiring human-validated samples to correct errors).</li>
+                            <li><strong>Source that challenges it:</strong> <em>"The threat of analytic flexibility in using large language models to simulate human data"</em> warns that minor defensible choices in prompting drastic alters synthetic datasets, creating a threat to validity.</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="topic" style="font-size: 1.3rem;">Core Concept 4: Cognitive Modeling vs. The Illusion of Understanding</span>
+                        <p><strong>Overview:</strong> Examines whether LLMs genuinely possess a "world model" of human psychology and physics, or if they are simply executing task-specific pattern matching.</p>
+                        <ul class="readings-list" style="padding-left: 0;">
+                            <li><strong>Source that introduces it:</strong> <em>"A foundation model to predict and capture human cognition"</em> introduces "Centaur," fined-tuned on 160 psychological experiments to predict human behavior.</li>
+                            <li><strong>Source that deepens it:</strong> <em>"Playing repeated games with large language models"</em> tests LLMs in scenarios like the Prisoner's Dilemma, showing rational self-maximization distinct from human "unforgivingness".</li>
+                            <li><strong>Source that challenges it:</strong> <em>"What Has a Foundation Model Found?"</em> and <em>"Potemkin Understanding in Large Language Models"</em> demonstrate that LLMs memorize task-specific heuristics, exhibiting internal incoherence ("Potemkin understanding").</li>
+                        </ul>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="topic" style="font-size: 1.3rem;">Core Concept 5: AI-Augmented Scientific Discovery and Theorizing</span>
+                        <p><strong>Overview:</strong> Investigates the frontier of using LLMs not just as data sources or classifiers, but as active participants in generating novel scientific theories and hypotheses.</p>
+                        <ul class="readings-list" style="padding-left: 0;">
+                            <li><strong>Source that introduces it:</strong> <em>"AI Co-Scientist: Augmenting Scientific Discovery and Innovation"</em> introduces a multi-agent system utilizing "generate, debate, and evolve" to propose novel hypotheses.</li>
+                            <li><strong>Source that deepens it:</strong> <em>"Theorizing with Large Language Models"</em> uses a Generative Agent-Based Engine (GABE) to run complex interactions in silico.</li>
+                            <li><strong>Source that challenges it:</strong> <em>"Emergent LLM behaviors are observationally equivalent to data leakage"</em> critiques the premise by arguing AI insights are simply regurgitated from training corpora.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Unit 2: Teaching Sequence -->
+                <section class="syllabus-unit">
+                    <h2>Suggested Logical Teaching Sequence</h2>
+                    
+                    <div class="day-entry">
+                        <span class="date">Phase 1</span>
+                        <span class="topic">The Promise and Mechanics of Simulation (Concepts 1 & 2)</span>
+                        <p>Begin the unit by introducing students to the basic mechanics of how LLMs are currently being used to generate data. Start with Concept 1 to explain "silicon sampling", "algorithmic fidelity", and "state-aligned simulators" like HUMANLM. Transition to Concept 2 to explore prompting specific demographics and identifying structural biases like misportrayal and the "funhouse mirror" effect.</p>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Phase 2</span>
+                        <span class="topic">Execution and Rigor in Empirical Research (Concept 3)</span>
+                        <p>Teach methodological responsibility. Show how LLMs replace qualitative human coders. Introduce the Applied Econometric Framework to teach the necessity of guarding against training data leakage and utilizing human-validated anchor samples (Rectification). Utilize "analytic flexibility" to emphasize pre-registration and rigid standards.</p>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Phase 3</span>
+                        <span class="topic">The Black Box – Cognition and World Models (Concept 4)</span>
+                        <p>Shift to psychology and computer science. Have students analyze how models simulate game theory, and then shatter the illusion with "Potemkin Understanding." Teach students that accurate prediction does not ensure a coherent internal "world model".</p>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Phase 4</span>
+                        <span class="topic">The Future of AI in Science (Concept 5)</span>
+                        <p>Conclude the unit by looking at AI as a peer (AI Co-Scientist and GABE). Facilitate a debate on epistemological limits—are LLMs capable of true scientific discovery, or are they stochastic search engines rearranging human history?</p>
+                    </div>
+                </section>
+
+                <!-- Unit 3: 5-Day Lesson Plan -->
+                <section class="syllabus-unit">
+                    <h2>Generative AI for Behavioral and Social Sciences: 5-Day Plan</h2>
+
+                    <div class="day-entry">
+                        <span class="date">Day 1</span>
+                        <span class="topic">The Promise and Mechanics of "Silicon Sampling"</span>
+                        <ul class="readings-list">
+                            <li><strong>Learning Objective:</strong> Students will define "silicon sampling," analyze how LLMs act as simulated socio-economic agents, and differentiate text imitation from state alignment.</li>
+                            <li><strong>Key Concepts:</strong> Homo Silicus, Algorithmic Fidelity, Retrodiction, State Alignment (HUMANLM).</li>
+                            <li><strong>Real-World Analogy:</strong> <em>The Virtual Focus Group:</em> Feeding 1,000 backstories to an LLM to predict specific demographic polling responses.</li>
+                            <li><strong>Discussion Question:</strong> If an LLM can accurately "retrodict" public opinion from 1972 to 2021, does that mean the model genuinely understands human opinions?</li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Time Breakdown (60 min)</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
+                                <li>0-10: Introduction to "Homo Silicus" and Silicon Sampling</li>
+                                <li>10-30: Deep dive into HUMANLM and state alignment</li>
+                                <li>30-45: Case study: AI-Augmented Surveys and Retrodiction</li>
+                                <li>45-60: Class Discussion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Day 2</span>
+                        <span class="topic">Demographic Representation, Personas, and Bias</span>
+                        <ul class="readings-list">
+                            <li><strong>Learning Objective:</strong> Students will critically assess LLM personas, identifying how models distort, essentialize, or flatten identities.</li>
+                            <li><strong>Key Concepts:</strong> WEIRD Bias, Misportrayal, Group Flattening, Five Key Distortions of Digital Twins.</li>
+                            <li><strong>Real-World Analogy:</strong> <em>The Funhouse Mirror:</em> Resembling the shape of reality but grotesquely exaggerating features while erasing individual nuance.</li>
+                            <li><strong>Discussion Question:</strong> Given pervasive misportrayal, is it ever justifiable to use LLMs as stand-ins for marginalized populations?</li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Time Breakdown (60 min)</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
+                                <li>0-15: Persona prompting and the WEIRD bias</li>
+                                <li>15-35: Analyzing the "Funhouse Mirror" effect</li>
+                                <li>35-45: Real-world psychometric testing failures</li>
+                                <li>45-60: Class Discussion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Day 3</span>
+                        <span class="topic">Methods, Analytic Flexibility, and Rectification</span>
+                        <ul class="readings-list">
+                            <li><strong>Learning Objective:</strong> Apply econometric frameworks to utilize LLMs in empirical research, distinguish prediction vs. estimation, and implement debiasing.</li>
+                            <li><strong>Key Concepts:</strong> Prediction vs. Estimation, Validation Samples and Rectification, Analytic Flexibility.</li>
+                            <li><strong>Real-World Analogy:</strong> <em>The Automated Apple Sorter:</em> Validating an automated sorter output by manually checking 100 apples to establish statistical correction metrics.</li>
+                            <li><strong>Discussion Question:</strong> Should we enforce standardized LLM configurations across science, or does that stifle innovation?</li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Time Breakdown (60 min)</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
+                                <li>0-20: Prediction vs. Estimation tasks</li>
+                                <li>20-35: Rectification and Validation Sampling</li>
+                                <li>35-45: The dangers of Analytic Flexibility</li>
+                                <li>45-60: Class Discussion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Day 4</span>
+                        <span class="topic">Cognitive Modeling vs. The Illusion of Understanding</span>
+                        <ul class="readings-list">
+                            <li><strong>Learning Objective:</strong> Evaluate whether LLMs possess genuine cognitive world models using game theory and psychometrics.</li>
+                            <li><strong>Key Concepts:</strong> Foundation Models of Cognition (Centaur), Repeated Games behavior, Potemkin Understanding.</li>
+                            <li><strong>Real-World Analogy:</strong> <em>The Movie Set Facade:</em> From the street (benchmarks), the facade looks real, but open the door and there is no underlying structure.</li>
+                            <li><strong>Discussion Question:</strong> If a model predicts human behavior perfectly without an internal world model, does its "Potemkin illusion" matter empirically?</li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Time Breakdown (60 min)</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
+                                <li>0-15: The Centaur Model and Psych-101</li>
+                                <li>15-30: LLMs in strategic contexts (Prisoner's Dilemma)</li>
+                                <li>30-45: The Potemkin Understanding critique</li>
+                                <li>45-60: Class Discussion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="day-entry">
+                        <span class="date">Day 5</span>
+                        <span class="topic">AI as Co-Scientist and Automated Theorizing</span>
+                        <ul class="readings-list">
+                            <li><strong>Learning Objective:</strong> Synthesize the unit by exploring multi-agent scientific systems and investigating the emergence vs. leakage boundary.</li>
+                            <li><strong>Key Concepts:</strong> Generative AI-Based Experimentation (GABE), AI Co-Scientist System, Data Leakage vs. Emergence.</li>
+                            <li><strong>Real-World Analogy:</strong> <em>The Scientific Debate Tournament:</em> Autonomous agents pitching, critiquing, debating, and evolving novel hypotheses like an accelerated academic conference.</li>
+                            <li><strong>Discussion Question:</strong> How can we definitively prove whether an AI has engaged in pure scientific discovery compared to uncredited data leakage from its training?</li>
+                        </ul>
+                        <div class="assignment-box">
+                            <h4>Time Breakdown (60 min)</h4>
+                            <ul style="padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
+                                <li>0-15: AI as Co-Scientist and Multi-Agent Tournament</li>
+                                <li>15-30: Simulating complex theory with GABE</li>
+                                <li>30-45: Epistemological limit: Emergent behavior vs. Data Leakage</li>
+                                <li>45-60: Final debate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Unit 4: FAQ & Study Guide -->
+                <section class="syllabus-unit">
+                    <h2>Study Guide & Technical FAQs</h2>
+                    <p><em>The following questions are provided to deepen comprehension of key generative AI methodologies in social science:</em></p>
+
+                    <div class="assignment-box" style="margin-left: 0;">
+                        <h4>What are the common distortions found in Turing Experiments?</h4>
+                        <p style="margin-top: 0.5rem;">Digital twin experimentation is often distorted by five key limitations known as "The Funhouse Mirror" effect: <strong>1) Stereotyping, 2) Insufficient individuation, 3) Representation bias (such as WEIRD bias), 4) Ideological biases, and 5) Hyper-rationality</strong>. These distortions cause models to flatten marginalized identities and misrepresent genuine human complexity by forcing individuals into homogenous groupings.</p>
+                        
+                        <h4 style="margin-top: 1.5rem;">How does Social Chain-of-Thought (SCoT) improve model coordination?</h4>
+                        <p style="margin-top: 0.5rem;">Social Chain-of-Thought improves coordination by explicitly prompting the LLM to model the mental states, beliefs, and potential actions of its human (or AI) partner—also known as Theory of Mind. By maintaining a visible "chain of thought" regarding what another agent intends, the AI becomes significantly better at collaborating in complex social iterations rather than acting on rigid or isolated assumptions.</p>
+
+                        <h4 style="margin-top: 1.5rem;">Explain the difference between prediction and estimation in econometrics.</h4>
+                        <p style="margin-top: 0.5rem;">In an applied econometric framework, <strong>prediction</strong> involves using LLMs to forecast an outcome (which requires strict validation to ensure there is "no training data leakage"). Conversely, <strong>estimation</strong> is the use of an LLM to automate the measurement of economic or social concepts (surrogate labels) so they can be utilized as variables in downstream statistical correlations or regressions.</p>
+                        
+                        <h4 style="margin-top: 1.5rem;">What is the 'hyper-accuracy distortion' in Turing Experiments?</h4>
+                        <p style="margin-top: 0.5rem;">Hyper-accuracy distortion (often paired with "hyper-rationality") occurs when an LLM consistently predicts the most statistically logical or "correct" output. While this helps models pass standardized tests, it erases the natural human noise, heuristical errors, and emotional unpredictability that characterize authentic human respondents in behavioral studies.</p>
+                        
+                        <h4 style="margin-top: 1.5rem;">How can rectification reduce bias in silicon sampling results?</h4>
+                        <p style="margin-top: 0.5rem;">Rectification is a statistical debiasing technique. It involves collecting a small "validation sample" of high-quality, human-coded ground truth data to validate the LLM’s outputs. By mathematically calculating the specific error rate, hallucination rate, or demographic bias present in the LLM's surrogate data, researchers can "rectify" or correct the bias in the overarching synthetic dataset.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+</body>
+</html>
