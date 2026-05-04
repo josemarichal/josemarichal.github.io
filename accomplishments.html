@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic & Professional Accomplishments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #252542;
+            --accent-teal: #00d4aa;
+            --accent-gold: #f0c040;
+            --accent-rose: #e85d75;
+            --accent-sky: #5b9bd5;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b8a;
+            --border: #2a2a45;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); }
+        .slide-container { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 80px; opacity: 0; transform: translateX(100px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; }
+        .slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+        .slide.prev { opacity: 0; transform: translateX(-100px); }
+        .title-slide { background: linear-gradient(135deg, var(--bg-dark) 0%, #151528 50%, var(--bg-dark) 100%); }
+        .title-slide::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%); pointer-events: none; }
+        .title-slide::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(240,192,64,0.06) 0%, transparent 70%); pointer-events: none; }
+        .year-badge { display: inline-block; padding: 8px 24px; border: 1px solid var(--accent-teal); color: var(--accent-teal); font-size: 0.85rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; border-radius: 4px; }
+        .main-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; text-align: center; line-height: 1.15; max-width: 900px; margin-bottom: 20px; background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-teal) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { font-size: 1.2rem; color: var(--text-secondary); text-align: center; max-width: 600px; line-height: 1.6; font-weight: 300; }
+        .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+        .section-header { background: linear-gradient(135deg, var(--bg-dark) 0%, #121225 100%); }
+        .section-header .year-badge { font-size: 1rem; padding: 10px 32px; border-width: 2px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; text-align: center; margin-top: 20px; }
+        .section-count { margin-top: 16px; color: var(--text-muted); font-size: 1rem; letter-spacing: 1px; }
+        .content-slide { background: var(--bg-dark); padding: 50px 100px; }
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 24px; width: 100%; max-width: 1100px; }
+        .content-grid.two-col { grid-template-columns: 1fr 1fr; }
+        .accomplishment-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 36px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .accomplishment-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-teal); transition: width 0.4s ease; }
+        .accomplishment-card:hover { background: var(--bg-card-hover); border-color: var(--accent-teal); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .accomplishment-card:hover::before { width: 6px; }
+        .accomplishment-card.book::before { background: var(--accent-gold); }
+        .accomplishment-card.book:hover { border-color: var(--accent-gold); }
+        .accomplishment-card.article::before { background: var(--accent-rose); }
+        .accomplishment-card.article:hover { border-color: var(--accent-rose); }
+        .accomplishment-card.conference::before { background: var(--accent-sky); }
+        .accomplishment-card.conference:hover { border-color: var(--accent-sky); }
+        .card-type { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding: 6px 14px; border-radius: 20px; background: rgba(0,212,170,0.1); color: var(--accent-teal); }
+        .card-type.book-type { background: rgba(240,192,64,0.1); color: var(--accent-gold); }
+        .card-type.article-type { background: rgba(232,93,117,0.1); color: var(--accent-rose); }
+        .card-type.conference-type { background: rgba(91,155,213,0.1); color: var(--accent-sky); }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; line-height: 1.35; margin-bottom: 12px; color: var(--text-primary); }
+        .card-venue { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
+        .card-meta { font-size: 0.85rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+        .card-meta span { display: flex; align-items: center; gap: 6px; }
+        .affiliations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 1100px; }
+        .affiliation-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; transition: all 0.3s ease; }
+        .affiliation-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); border-color: var(--accent-teal); }
+        .affiliation-role { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-teal); margin-bottom: 10px; }
+        .affiliation-org { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+        .affiliation-detail { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+        .nav-dots { position: fixed; right: 30px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; }
+        .nav-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.3s ease; position: relative; }
+        .nav-dot.active { background: var(--accent-teal); box-shadow: 0 0 12px rgba(0,212,170,0.5); transform: scale(1.3); }
+        .nav-dot:hover { background: var(--accent-teal); }
+        .nav-dot::after { content: attr(data-label); position: absolute; right: 20px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: 0.75rem; color: var(--text-muted); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+        .nav-dot:hover::after { opacity: 1; }
+        .slide-counter { position: fixed; bottom: 30px; right: 30px; font-size: 0.85rem; color: var(--text-muted); z-index: 100; font-variant-numeric: tabular-nums; }
+        .slide-counter span { color: var(--accent-teal); font-weight: 600; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent-teal), var(--accent-gold)); transition: width 0.5s ease; z-index: 100; }
+        .keyboard-hint { position: fixed; bottom: 30px; left: 30px; display: flex; gap: 12px; z-index: 100; }
+        .key { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); }
+        @media (max-width: 1024px) { .slide { padding: 40px 50px; } .content-grid.two-col { grid-template-columns: 1fr; } .affiliations-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .slide { padding: 30px 24px; } .affiliations-grid { grid-template-columns: 1fr; } .nav-dots { display: none; } .keyboard-hint { display: none; } .card-title { font-size: 1.1rem; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .active .accomplishment-card { animation: fadeInUp 0.6s ease forwards; }
+        .active .accomplishment-card:nth-child(1) { animation-delay: 0.1s; }
+        .active .accomplishment-card:nth-child(2) { animation-delay: 0.2s; }
+        .active .accomplishment-card:nth-child(3) { animation-delay: 0.3s; }
+        .active .accomplishment-card:nth-child(4) { animation-delay: 0.4s; }
+        .active .affiliation-card { animation: fadeInUp 0.5s ease forwards; }
+        .active .affiliation-card:nth-child(1) { animation-delay: 0.1s; }
+        .active .affiliation-card:nth-child(2) { animation-delay: 0.15s; }
+        .active .affiliation-card:nth-child(3) { animation-delay: 0.2s; }
+        .active .affiliation-card:nth-child(4) { animation-delay: 0.25s; }
+        .active .affiliation-card:nth-child(5) { animation-delay: 0.3s; }
+        .active .affiliation-card:nth-child(6) { animation-delay: 0.35s; }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="slide-container" id="slideContainer">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide active" data-index="0">
+            <div class="year-badge">2024 — 2025</div>
+            <h1 class="main-title">Academic & Professional<br>Accomplishments</h1>
+            <p class="subtitle">A curated collection of publications, presentations, and institutional engagements at the intersection of AI, democracy, and digital rights.</p>
+            <div class="scroll-hint">
+                <span>Navigate</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </div>
+        </div>
+
+        <!-- Slide 2: 2025 Section Header -->
+        <div class="slide section-header" data-index="1">
+            <div class="year-badge">2025</div>
+            <h2 class="section-title">Publications & Presentations</h2>
+            <p class="section-count">5 Accomplishments</p>
+        </div>
+
+        <!-- Slide 3: 2025 Book -->
+        <div class="slide content-slide" data-index="2">
+            <div class="content-grid">
+                <div class="accomplishment-card book">
+                    <div class="card-type book-type">📖 Monograph</div>
+                    <h3 class="card-title">You Must Become an Algorithmic Problem: Renegotiating the Socio-Technical Contract</h3>
+                    <p class="card-venue">Bristol University Press</p>
+                    <div class="card-meta">
+                        <span>📅 2025</span>
+                        <span>📚 Peer-Reviewed Book</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: 2025 Journal Articles -->
+        <div class="slide content-slide" data-index="3">
+            <div class="content-grid two-col">
+                <div class="accomplishment-card article">
+                    <div class="card-type article-type">📝 Journal Article</div>
+                    <h3 class="card-title">Machine Certainty: Ellul, AI and the Crisis of Democratic Understanding</h3>
+                    <p class="card-venue"><em>Journal of Lutheran Ethics</em></p>
+                    <div class="card-meta">
+                        <span>Vol. 25, Issue 7</span>
+                        <span>Dec 2025 / Jan 2026</span>
+                    </div>
+                </div>
+                <div class="accomplishment-card article">
+                    <div class="card-type article-type">📝 Journal Article</div>
+                    <h3 class="card-title">Data Rights Reconsidered: Reimagining Digital Freedom through Lefebvre's Right to the City</h3>
+                    <p class="card-venue"><em>Communication +1</em></p>
+                    <div class="card-meta">
+                        <span>2025</span>
+                        <span>Peer-Reviewed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: 2025 Conferences -->
+        <div class="slide content-slide" data-index="4">
+            <div class="content-grid two-col">
+                <div class="accomplishment-card conference">
+                    <div class="card-type conference-type">🎤 Conference Paper</div>
+                    <h3 class="card-title">Good for Whom? Identifying Predictors of Participatory AI among UN Sustainable Development AI For Good Projects</h3>
+                    <p class="card-venue">Western Political Science Association Annual Conference</p>
+                    <div class="card-meta">
+                        <span>Seattle, WA</span>
+                        <span>April 17–19, 2025</span>
+                    </div>
+                </div>
+                <div class="accomplishment-card conference">
+                    <div class="card-type conference-type">🎤 Invited Participant</div>
+                    <h3 class="card-title">Conference on World Affairs</h3>
+                    <p class="card-venue">University of Colorado–Boulder</p>
+                    <div class="card-meta">
+                        <span>2025</span>
+                        <span>Invited</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: 2024 Section Header -->
+        <div class="slide section-header" data-index="5">
+            <div class="year-badge">2024</div>
+            <h2 class="section-title">Conference Presentations</h2>
+            <p class="section-count">3 Presentations</p>
+        </div>
+
+        <!-- Slide 7: 2024 Presentations -->
+        <div class="slide content-slide" data-index="6">
+            <div class="content-grid">
+                <div class="accomplishment-card conference">
+                    <div class="card-type conference-type">🎤 Conference Paper</div>
+                    <h3 class="card-title">You are an Algorithmic Problem: AI and the Threat of Factory Farmed Citizens</h3>
+                    <p class="card-venue">Socio-technical Consequences of AI Conference, University of North Carolina at Chapel Hill</p>
+                    <div class="card-meta"><span>September 13, 2024</span></div>
+                </div>
+                <div class="accomplishment-card conference">
+                    <div class="card-type conference-type">🎤 Workshop Paper</div>
+                    <h3 class="card-title">The Promise of LLM based AI Classification in Expanding Narrative Policy Analysis</h3>
+                    <p class="card-venue">Workshop on Generative AI as a Method in Social Sciences — Emerging Technologies Research Lab, Monash University & Imagining Sustainable Digital Futures, Aalto University</p>
+                    <div class="card-meta"><span>June 24, 2024</span><span>International</span></div>
+                </div>
+                <div class="accomplishment-card conference">
+                    <div class="card-type conference-type">🎤 Workshop Paper</div>
+                    <h3 class="card-title">The Importance of Thinking Small: Incorporating Case Study and Fuzzy Set Methodology to the study of Social Media</h3>
+                    <p class="card-venue">Researching Social Media After The API Workshop — Center for Digital Politics, Media and Democracy, University of Liverpool</p>
+                    <div class="card-meta"><span>2024</span><span>International</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Affiliations -->
+        <div class="slide content-slide" data-index="7">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="year-badge" style="margin-bottom: 16px;">Current Roles</div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600;">Affiliations & Service</h2>
+            </div>
+            <div class="affiliations-grid">
+                <div class="affiliation-card">
+                    <div class="affiliation-role">Affiliated Faculty</div>
+                    <div class="affiliation-org">Center for Information, Technology and Public Life</div>
+                    <div class="affiliation-detail">UNC-Chapel Hill</div>
+                </div>
+                <div class="affiliation-card">
+                    <div class="affiliation-role">Contributor</div>
+                    <div class="affiliation-org">Tech Policy Press</div>
+                    <div class="affiliation-detail">Policy Analysis & Commentary</div>
+                </div>
+                <div class="affiliation-card">
+                    <div class="affiliation-role">Co-Investigator</div>
+                    <div class="affiliation-org">New_Public</div>
+                    <div class="affiliation-detail">"AI and the Future of Social Conversations"</div>
+                </div>
+                <div class="affiliation-card">
+                    <div class="affiliation-role">Advisory Council Member</div>
+                    <div class="affiliation-org">Responsible AI-Generated Content</div>
+                    <div class="affiliation-detail">TikTok</div>
+                </div>
+                <div class="affiliation-card">
+                    <div class="affiliation-role">Member</div>
+                    <div class="affiliation-org">Coaching Ethics Forum</div>
+                    <div class="affiliation-detail">AI Open-Source Ethics Collective</div>
+                </div>
+                <div class="affiliation-card">
+                    <div class="affiliation-role">Member</div>
+                    <div class="affiliation-org">ELCA Consulting Group</div>
+                    <div class="affiliation-detail">AI & the Church</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Closing -->
+        <div class="slide title-slide" data-index="8">
+            <div class="year-badge">Thank You</div>
+            <h1 class="main-title" style="font-size: clamp(2rem, 4vw, 3.5rem);">Shaping the Future of<br>AI & Democracy</h1>
+            <p class="subtitle">Through rigorous scholarship, ethical engagement, and public discourse.</p>
+        </div>
+
+    </div>
+
+    <div class="nav-dots" id="navDots"></div>
+    <div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">9</span></div>
+    <div class="keyboard-hint"><div class="key">←</div><div class="key">→</div></div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        const navDotsContainer = document.getElementById('navDots');
+        const progressBar = document.getElementById('progressBar');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        const labels = ['Title', '2025 Overview', 'Book', 'Articles', 'Conferences', '2024 Overview', 'Presentations', 'Affiliations', 'Closing'];
+        slides.forEach((_, i) => { const dot = document.createElement('div'); dot.className = 'nav-dot' + (i === 0 ? ' active' : ''); dot.dataset.index = i; dot.dataset.label = labels[i]; dot.addEventListener('click', () => goToSlide(i)); navDotsContainer.appendChild(dot); });
+        totalSlidesEl.textContent = totalSlides;
+        function updateSlide(index) { slides.forEach((slide, i) => { slide.classList.remove('active', 'prev'); if (i === index) slide.classList.add('active'); else if (i < index) slide.classList.add('prev'); }); document.querySelectorAll('.nav-dot').forEach((dot, i) => dot.classList.toggle('active', i === index)); currentSlideEl.textContent = index + 1; progressBar.style.width = ((index + 1) / totalSlides * 100) + '%'; currentIndex = index; }
+        function goToSlide(index) { if (index < 0 || index >= totalSlides) return; updateSlide(index); }
+        function nextSlide() { goToSlide(currentIndex + 1); }
+        function prevSlide() { goToSlide(currentIndex - 1); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); } else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); } else if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides - 1); } });
+        let touchStartX = 0; let touchEndX = 0;
+        document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        document.addEventListener('touchend', (e) => { touchEndX = e.changedTouches[0].screenX; const diff = touchStartX - touchEndX; if (Math.abs(diff) > 50) { if (diff > 0) nextSlide(); else prevSlide(); } }, { passive: true });
+        let wheelTimeout = null;
+        document.addEventListener('wheel', (e) => { if (wheelTimeout) return; wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 800); if (e.deltaY > 30) nextSlide(); else if (e.deltaY < -30) prevSlide(); }, { passive: true });
+        updateSlide(0);
+    </script>
+</body>
+</html>
