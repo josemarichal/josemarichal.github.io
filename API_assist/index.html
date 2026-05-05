@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Assist - Find the perfect API for your project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Fuse.js for fuzzy search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">API <span>Assist</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Back to Portfolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <div class="pill-tags">
+                    <span class="pill-tag">1400+ APIs</span>
+                    <span class="pill-tag">Semantic Search</span>
+                    <span class="pill-tag">Open Source</span>
+                </div>
+                <h1>Describe your project. <br>Find the <span class="accent-italic">perfect</span> API.</h1>
+                <p>Powered by the public-apis repository. Just tell us what you're trying to build, and we'll suggest the best APIs for the job.</p>
+                
+                <div class="search-container">
+                    <textarea id="project-description" placeholder="E.g., I want to build a weather app that also shows pictures of cats and dog facts..."></textarea>
+                    <button id="search-btn">Suggest APIs</button>
+                </div>
+            </section>
+
+            <section id="results-section" style="display: none;">
+                <h2>Top Suggestions</h2>
+                <div class="results-grid" id="results-grid">
+                    <!-- Results will be injected here by app.js -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="api_db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
