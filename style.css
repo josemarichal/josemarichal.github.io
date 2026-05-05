@@ -572,3 +572,33 @@ footer p {
         gap: 1.5rem;
     }
 }
+
+/* --- Fix for Assignment Boxes on Light Backgrounds --- */
+.assignment-box,
+.assignment-box p,
+.assignment-box li,
+.assignment-box span,
+.assignment-box strong,
+.assignment-box em,
+.assignment-box div {
+    color: #1a1a1a !important;
+}
+
+.assignment-box h1,
+.assignment-box h2,
+.assignment-box h3,
+.assignment-box h4,
+.assignment-box h5,
+.assignment-box h6 {
+    color: #000000 !important;
+}
+
+.assignment-box a {
+    color: #0056b3 !important;
+    text-decoration-color: rgba(0, 86, 179, 0.4) !important;
+}
+
+.assignment-box a:hover {
+    color: #003d82 !important;
+    text-decoration-color: #003d82 !important;
+}
