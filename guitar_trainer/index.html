@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Training Routine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Guitar Practice Routine</h1>
+            <p>Master your craft with structured exercises and core concepts.</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-target="warmup">Warm-Up & Dexterity</button>
+            <button class="tab-btn" data-target="scales">Scales & Fretboard</button>
+            <button class="tab-btn" data-target="soloing">Soloing & Phrasing</button>
+            <button class="tab-btn" data-target="theory">Theory & Chords</button>
+            <button class="tab-btn" data-target="repertoire">Repertoire & Mindset</button>
+            <button class="tab-btn" data-target="theory-course">Music Theory Series</button>
+        </nav>
+
+        <div class="generator-section">
+            <button id="generate-btn" class="generate-btn">
+                <i class="fa-solid fa-bolt"></i> Generate Random Routine
+            </button>
+        </div>
+
+        <main class="content-area">
+            <!-- Warm Up Tab -->
+            <section id="warmup" class="tab-content active">
+                <div class="category-header">
+                    <h2>Warm-Up & Dexterity</h2>
+                    <p>Build finger strength, independence, and foundational timing.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>Spider Walk (Finger Independence)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+spider+walk+exercise" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Get your right and left hands working together while building finger strength.</p>
+                        <p><strong>How to Practice:</strong> Start on the low E string. Place your fingers on frets 1, 2, 3, and 4 sequentially. Use your fingertips for clear notes. Move up all strings, then reverse the pattern (4-3-2-1) going back down. Start slow; clarity is more important than speed.</p>
+                        <span class="badge exercise-badge">Exercise #1</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>3-Note Per String Scales (Major Stretch)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+3+note+per+string+scales+exercise" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Develop dexterity and speed by spanning wider fret intervals.</p>
+                        <p><strong>How to Practice:</strong> In G Major, start on the 3rd fret low E string, spanning to the 7th fret with your pinky. Keep your thumb low on the back of the neck to allow the stretch. Keep your hand in position and don't let it shift unnecessarily.</p>
+                        <span class="badge exercise-badge">Exercise #4</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Metronome Practice (Timing Foundation)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+metronome+practice+routine" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Internalize rhythm and groove so everything you play sounds professional.</p>
+                        <p><strong>Concept:</strong> Timing is the foundation of a building. With great time, even simple things sound amazing. With bad time, complex things sound terrible. Practice scales, songs, and even solos with a click for at least 15 minutes a day to recalibrate your internal timing.</p>
+                        <span class="badge concept-badge">Concept #1</span>
+                    </div>
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>2-Note Per String Alternate Picking</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+2+note+per+string+alternate+picking" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Unlock your wrist for fast alternate picking and avoid moving your whole arm.</p>
+                        <p><strong>How to Practice:</strong> Instead of standard 3-note per string runs, practice playing only 2 notes per string at faster tempos. This forces you to cross strings constantly, which is impossible if you're using your whole arm, naturally forcing you to use your wrist.</p>
+                        <span class="badge exercise-badge">Exercise #6</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>Legato Control</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+legato+control+exercise" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Gain full control of your fretting hand and correct thumb position.</p>
+                        <p><strong>How to Practice:</strong> Focus entirely on hammer-ons and pull-offs with almost no assistance from your picking hand. Keep your fingers close to the fretboard (economy of motion) and ensure your thumb is supporting your fingers from behind the neck.</p>
+                        <span class="badge exercise-badge">Exercise #7</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scales & Fretboard Tab -->
+            <section id="scales" class="tab-content">
+                <div class="category-header">
+                    <h2>Scales & Fretboard</h2>
+                    <p>Navigate the neck and understand scale patterns.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>Minor Pentatonic Scale (G Minor)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+minor+pentatonic+scale+exercise" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Learn the most popular scale in rock/blues, used in almost any style.</p>
+                        <p><strong>How to Practice:</strong> Start on the 3rd fret of the low E string. Play frets: 3-6, 3-5, 3-5, 3-5, 3-6, 3-6 across the strings. Practice forward and in reverse.</p>
+                        <span class="badge exercise-badge">Exercise #2</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>Open Major Scales (C & G Major)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+open+major+scales+exercise" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Develop a foundational understanding of music and moving around the neck using open strings.</p>
+                        <p><strong>How to Practice:</strong> Play the major scale patterns in the open position for C Major and G Major. This builds dexterity and connects your ear to major tonalities.</p>
+                        <span class="badge exercise-badge">Exercise #3</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Map Out the Fretboard</h3>
+                        <a href="https://www.youtube.com/results?search_query=how+to+map+out+the+guitar+fretboard" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Eliminate guesswork when finding notes across the neck.</p>
+                        <p><strong>Concept:</strong> Not knowing the notes on the neck is like walking in a big city without a map. Take the time to learn the notes on the fretboard once. From then on, everything will make more sense, allowing you to play the same lick in multiple positions effortlessly.</p>
+                        <span class="badge concept-badge">Concept #2</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>The CAGED System</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+CAGED+system+explained" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Visualize chords everywhere on the neck.</p>
+                        <p><strong>Concept:</strong> The CAGED system shows how open chords (C, A, G, E, D) can be moved up the neck using barres (your finger acting as a capo). For example, an F major chord is just an E major shape barred at the 1st fret. This unlocks target notes for solos and helps with voice leading.</p>
+                        <span class="badge concept-badge">Concept #6</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Soloing & Phrasing Tab -->
+            <section id="soloing" class="tab-content">
+                <div class="category-header">
+                    <h2>Soloing & Phrasing</h2>
+                    <p>Turn scale patterns into musical, melodic ideas.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3>Melodic Patterns (Groups of 4)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+melodic+patterns+soloing+exercise" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Build your chops and generate melodic ideas for soloing.</p>
+                        <p><strong>How to Practice:</strong> Using the G major scale, play the first 4 notes. Then start on the 2nd note of the scale and play 4 notes up. Then start on the 3rd note and play 4 notes up. Repeat this sequence ascending through the whole scale.</p>
+                        <span class="badge exercise-badge">Exercise #5</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Sing What You Play</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+sing+what+you+play+improvisation" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Prevent mindless noodling and play from the heart.</p>
+                        <p><strong>Concept:</strong> Connect the sound of the notes with your voice. Sing the pitches as you play them during improvisation. It doesn't matter if you have a good voice; rhythm is more important than pitch here. The guitar should be an extension of your internal voice.</p>
+                        <span class="badge concept-badge">Concept #3</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Mixing Major & Minor Pentatonic</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+mixing+major+and+minor+pentatonic" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Break out of rigid "scale boxes."</p>
+                        <p><strong>Concept:</strong> There are no wrong notes! Don't let scale patterns restrict you. Mixing major and minor pentatonic scales, or intentionally playing outside notes, can lead to unique, ear-catching phrasing. Focus on how you resolve tension.</p>
+                        <span class="badge concept-badge">Concept #9</span>
+                    </div>
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>End With Improvisation</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+improvisation+practice" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Tie all your techniques together in a practical setting.</p>
+                        <p><strong>Concept:</strong> Make the last block of your practice routine entirely about improvisation. Don't just do it to become a great improviser; do it because it forces you to fluidly switch between the scales, arpeggios, and picking techniques you just practiced.</p>
+                        <span class="badge concept-badge">Concept #11</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theory & Chords Tab -->
+            <section id="theory" class="tab-content">
+                <div class="category-header">
+                    <h2>Theory & Chords</h2>
+                    <p>Understand the "why" behind the music.</p>
+                </div>
+                
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Harmonizing Scales</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+harmonizing+scales+theory" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Know exactly what chords sound good together.</p>
+                        <p><strong>Concept:</strong> Harmonizing a scale means building a set of chords using only the notes from that scale. For C Major, the chords are C Major, D Minor, E Minor, F Major, G Major, A Minor, and B Diminished. Any combination of these chords will sound good, and you can comfortably solo over them in C Major/A Minor.</p>
+                        <span class="badge concept-badge">Concept #4</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Basic Music Theory (Triads & 7ths)</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+basic+music+theory+triads+7ths" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Understand how chords are constructed.</p>
+                        <p><strong>Concept:</strong> A triad is made of 3 unique notes (e.g., the 1st, 3rd, and 5th notes of a major scale). Changing the 3rd to a 4th makes a Sus4 chord. Adding the 7th note of the scale creates a 7th chord. Knowing these formulas adds immense logic to how you view chords.</p>
+                        <span class="badge concept-badge">Concept #7</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Repertoire & Mindset Tab -->
+            <section id="repertoire" class="tab-content">
+                <div class="category-header">
+                    <h2>Repertoire & Mindset</h2>
+                    <p>Learning songs effectively and approaching the instrument.</p>
+                </div>
+                
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Learn the Whole Song</h3>
+                        <a href="https://www.youtube.com/results?search_query=how+to+learn+full+songs+on+guitar" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Be able to actually play songs for people without stopping.</p>
+                        <p><strong>Concept:</strong> Don't just learn the cool verse riff and abandon the song. Put in the effort to learn the chorus and the bridge. Otherwise, when someone asks you to play, you'll be "that guy" who stops awkwardly halfway through the tune.</p>
+                        <span class="badge concept-badge">Concept #5</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Learn Kid Songs</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+easy+kid+songs+fingerstyle" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Develop fingerstyle basics and learn to intertwine melody and chords.</p>
+                        <p><strong>Concept:</strong> Classic tunes like Happy Birthday or Twinkle Twinkle Little Star are perfect for learning to play chords and melodies simultaneously. They feature foundational progressions and resolutions that serve as great stepping stones for advanced fingerstyle playing.</p>
+                        <span class="badge concept-badge">Concept #10</span>
+                    </div>
+                </div>
+
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>Gear Philosophy</h3>
+                        <a href="https://www.youtube.com/results?search_query=does+guitar+gear+matter" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Focus on playing rather than purchasing.</p>
+                        <p><strong>Concept:</strong> A better instrument won't automatically make you a better player. New gear serves as an <em>accelerator</em> for a path you are already on, not an <em>igniter</em> to start doing the work. You can play crazy fast blues on a basic acoustic if you really put in the time.</p>
+                        <span class="badge concept-badge">Concept #8</span>
+                    </div>
+                <div class="exercise-card concept-card">
+                    <div class="card-header">
+                        <h3>The 4-Block Practice Habit</h3>
+                        <a href="https://www.youtube.com/results?search_query=guitar+practice+routine+blocks" target="_blank" class="yt-link"><i class="fa-brands fa-youtube"></i> Search</a>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Goal:</strong> Build consistency and actually stick to your routine.</p>
+                        <p><strong>Concept:</strong> Consistency is the most important factor. Practice at the same time every day (e.g., right after waking up) so it becomes an automatic habit like brushing your teeth. Divide a 1-hour session into four 15-minute blocks focused on different topics.</p>
+                        <span class="badge concept-badge">Concept #12</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theory Course Tab -->
+            <section id="theory-course" class="tab-content">
+                <div class="category-header">
+                    <h2>Music Theory Series</h2>
+                    <p>A complete chronological roadmap for learning music theory from scratch.</p>
+                </div>
+                
+                <div class="theory-list">
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%231%3A+The+Musical+Alphabet" target="_blank" class="theory-item">
+                        <span class="theory-num">#1</span>
+                        <span class="theory-title">The Musical Alphabet</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%232%3A+Whole+and+Half+Steps+in+the+Natural+Note+Series" target="_blank" class="theory-item">
+                        <span class="theory-num">#2</span>
+                        <span class="theory-title">Whole and Half Steps in the Natural Note Series</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%233%3A+The+Major+Scale" target="_blank" class="theory-item">
+                        <span class="theory-num">#3</span>
+                        <span class="theory-title">The Major Scale</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%234%3A+Sharps%2C+Flats%2C+and+Accidentals" target="_blank" class="theory-item">
+                        <span class="theory-num">#4</span>
+                        <span class="theory-title">Sharps, Flats, and Accidentals</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%235%3A+Using+Accidentals+to+Affect+Interval+Size%2C+Basic+Concept" target="_blank" class="theory-item">
+                        <span class="theory-num">#5</span>
+                        <span class="theory-title">Using Accidentals to Affect Interval Size, Basic Concept</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+THeory+Made+Simple+%236%3A+Guitar+is+TOO+EASY%21" target="_blank" class="theory-item">
+                        <span class="theory-num">#6</span>
+                        <span class="theory-title">Guitar is TOO EASY!</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%237%3A+Constructing+Major+Scales" target="_blank" class="theory-item">
+                        <span class="theory-num">#7</span>
+                        <span class="theory-title">Constructing Major Scales</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%238%3A+The+Natural+Minor+Scale" target="_blank" class="theory-item">
+                        <span class="theory-num">#8</span>
+                        <span class="theory-title">The Natural Minor Scale</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%239%3A+Key+Signatures+and+the+Circle+of+Fifths" target="_blank" class="theory-item">
+                        <span class="theory-num">#9</span>
+                        <span class="theory-title">Key Signatures and the Circle of Fifths</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2310%3A+Minor+Keys+and+the+Circle+of+Fifths" target="_blank" class="theory-item">
+                        <span class="theory-num">#10</span>
+                        <span class="theory-title">Minor Keys and the Circle of Fifths</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2311%3A+Harmonic+Minor" target="_blank" class="theory-item">
+                        <span class="theory-num">#11</span>
+                        <span class="theory-title">Harmonic Minor</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2312%3A+Melodic+Minor" target="_blank" class="theory-item">
+                        <span class="theory-num">#12</span>
+                        <span class="theory-title">Melodic Minor</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2313%3A+Parallel+Keys" target="_blank" class="theory-item">
+                        <span class="theory-num">#13</span>
+                        <span class="theory-title">Parallel Keys</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2314%3A+%22The%22+Pentatonic+ScaleS" target="_blank" class="theory-item">
+                        <span class="theory-num">#14</span>
+                        <span class="theory-title">"The" Pentatonic ScaleS</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2315%3A+The+Hexatonic+Scale" target="_blank" class="theory-item">
+                        <span class="theory-num">#15</span>
+                        <span class="theory-title">The Hexatonic Scale</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2316%3A+Intervals%2C+Part+1" target="_blank" class="theory-item">
+                        <span class="theory-num">#16</span>
+                        <span class="theory-title">Intervals, Part 1</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2317%3A+Intervals%2C+Part+2" target="_blank" class="theory-item">
+                        <span class="theory-num">#17</span>
+                        <span class="theory-title">Intervals, Part 2</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2318%3A+Intervals%2C+Part+3" target="_blank" class="theory-item">
+                        <span class="theory-num">#18</span>
+                        <span class="theory-title">Intervals, Part 3</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2319%3A+Intervals%2C+Part+4%3A+The+Inversion+Principle" target="_blank" class="theory-item">
+                        <span class="theory-num">#19</span>
+                        <span class="theory-title">Intervals, Part 4: The Inversion Principle</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2320%3A+Calculating+Intervals+by+Semitones" target="_blank" class="theory-item">
+                        <span class="theory-num">#20</span>
+                        <span class="theory-title">Calculating Intervals by Semitones</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2321%3A+Calculating+Intervals+by+Reference+Point" target="_blank" class="theory-item">
+                        <span class="theory-num">#21</span>
+                        <span class="theory-title">Calculating Intervals by Reference Point</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2322%3A+Let%27s+Calculate+an+Interval" target="_blank" class="theory-item">
+                        <span class="theory-num">#22</span>
+                        <span class="theory-title">Let's Calculate an Interval</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2323%3A+Scale+Degree+Names" target="_blank" class="theory-item">
+                        <span class="theory-num">#23</span>
+                        <span class="theory-title">Scale Degree Names</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2324%3A+String+Intervals+on+the+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#24</span>
+                        <span class="theory-title">String Intervals on the Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2325%3A+Octaves+on+the+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#25</span>
+                        <span class="theory-title">Octaves on the Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2326%3A+4ths+and+5ths+on+the+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#26</span>
+                        <span class="theory-title">4ths and 5ths on the Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2327%3A+2nds+and+7th+on+the+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#27</span>
+                        <span class="theory-title">2nds and 7th on the Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2328%3A+3rds+and+6ths+on+the+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#28</span>
+                        <span class="theory-title">3rds and 6ths on the Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2329%3A+Harmonizing+a+Scale+with+an+Interval" target="_blank" class="theory-item">
+                        <span class="theory-num">#29</span>
+                        <span class="theory-title">Harmonizing a Scale with an Interval</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2330%3A+Intervals+Review" target="_blank" class="theory-item">
+                        <span class="theory-num">#30</span>
+                        <span class="theory-title">Intervals Review</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2331%3A+The+SECRET+to+Music+Theory" target="_blank" class="theory-item">
+                        <span class="theory-num">#31</span>
+                        <span class="theory-title">The SECRET to Music Theory</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2332%3A+Tertian+Harmony" target="_blank" class="theory-item">
+                        <span class="theory-num">#32</span>
+                        <span class="theory-title">Tertian Harmony</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2333%3A+Tertian+Triads+and+Chords" target="_blank" class="theory-item">
+                        <span class="theory-num">#33</span>
+                        <span class="theory-title">Tertian Triads and Chords</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2334%3A+Triad+Qualities" target="_blank" class="theory-item">
+                        <span class="theory-num">#34</span>
+                        <span class="theory-title">Triad Qualities</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2335%3A+Finding+the+Root" target="_blank" class="theory-item">
+                        <span class="theory-num">#35</span>
+                        <span class="theory-title">Finding the Root</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2336%3A+Triads+on+the+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#36</span>
+                        <span class="theory-title">Triads on the Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2337%3A+More+Triads+on+Guitar" target="_blank" class="theory-item">
+                        <span class="theory-num">#37</span>
+                        <span class="theory-title">More Triads on Guitar</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2338%3A+Open+Position+Triads" target="_blank" class="theory-item">
+                        <span class="theory-num">#38</span>
+                        <span class="theory-title">Open Position Triads</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2339%3A+Diatonic+Triads+in+a+Major+Key" target="_blank" class="theory-item">
+                        <span class="theory-num">#39</span>
+                        <span class="theory-title">Diatonic Triads in a Major Key</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2340%3A+Numeral+Analysis+Systems" target="_blank" class="theory-item">
+                        <span class="theory-num">#40</span>
+                        <span class="theory-title">Numeral Analysis Systems</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2341a%3A+Diatonic+Minor+Triads+Part+1" target="_blank" class="theory-item">
+                        <span class="theory-num">#41a</span>
+                        <span class="theory-title">Diatonic Minor Triads Part 1</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2341b%3A+Diatonic+Minor+Triads+Part+2" target="_blank" class="theory-item">
+                        <span class="theory-num">#41b</span>
+                        <span class="theory-title">Diatonic Minor Triads Part 2</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2342%3A+The+Harmonized+Scale%3A+Triads" target="_blank" class="theory-item">
+                        <span class="theory-num">#42</span>
+                        <span class="theory-title">The Harmonized Scale: Triads</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2343%3A+Seventh+Chords" target="_blank" class="theory-item">
+                        <span class="theory-num">#43</span>
+                        <span class="theory-title">Seventh Chords</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2344%3A+Diatonic+Seventh+Chords" target="_blank" class="theory-item">
+                        <span class="theory-num">#44</span>
+                        <span class="theory-title">Diatonic Seventh Chords</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Music+Theory+Made+Simple+%2345%3A+Inverted+Seventh+Chords" target="_blank" class="theory-item">
+                        <span class="theory-num">#45</span>
+                        <span class="theory-title">Inverted Seventh Chords</span>
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Modal for Random Routine Generator -->
+    <div id="routine-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Your Daily Routine</h2>
+            <div id="routine-output" class="routine-output">
+                <!-- Generated routine injected here -->
+            </div>
+            <button id="regenerate-btn" class="generate-btn secondary-btn">
+                <i class="fa-solid fa-rotate-right"></i> Reroll Routine
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
