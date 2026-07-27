@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Policy Dashboard</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        /* Dashboard Specific Styles */
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            background: linear-gradient(to right, #ffffff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dashboard-header p {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* Tabs Navigation */
+        .policy-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            box-shadow: var(--glow-orange);
+        }
+
+        /* Policy Grid */
+        .policy-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .policy-grid.active {
+            display: grid;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Resource Card */
+        .resource-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-color);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-ambient), var(--glow-orange);
+            border-color: rgba(255, 112, 67, 0.3);
+        }
+
+        .resource-card:hover::before {
+            opacity: 1;
+        }
+
+        .org-type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .resource-card h3 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            font-family: var(--font-display);
+        }
+        
+        /* Report List Styles */
+        .report-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .report-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .report-list li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        .report-list a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .report-list a:hover {
+            color: #fff;
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+            text-underline-offset: 4px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.5rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-heading);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-link::after {
+            content: '→';
+            color: var(--accent-color);
+            transition: transform var(--transition-fast);
+        }
+
+        .btn-link:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-link:hover::after {
+            transform: translateX(4px);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">José <span>Marichal</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>California Policy Dashboard</h1>
+                <p>Explore the leading resources, data, and reporting for California's most critical policy issues.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="policy-tabs" id="tabs">
+                <button class="tab-btn active" data-target="housing">Housing & Homelessness</button>
+                <button class="tab-btn" data-target="education">Education</button>
+                <button class="tab-btn" data-target="justice">Criminal Justice</button>
+                <button class="tab-btn" data-target="economy">Economy & Labor</button>
+                <button class="tab-btn" data-target="health">Health & Safety Net</button>
+                <button class="tab-btn" data-target="environment">Environment</button>
+                <button class="tab-btn" data-target="budget">State Budget</button>
+                <button class="tab-btn" data-target="politics">Politics & Elections</button>
+            </div>
+
+            <!-- Housing & Homelessness Grid -->
+            <div class="policy-grid active" id="housing">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.governing.com/urban/yimbys-hit-a-milestone-in-california-whats-next" target="_blank">YIMBYs Hit a Milestone in California. What's Next?</a></li>
+                        <li><a href="https://www.gov.ca.gov/2026/01/08/california-sees-drop-in-unsheltered-homelessness-bucking-national-trend-and-federal-headwinds/" target="_blank">California Sees Drop in Unsheltered Homelessness</a></li>
+                        <li><a href="https://davisvanguard.org/2026/01/california-homelessness-decline-2025/" target="_blank">Governor Announces Major Drop in California's Unsheltered Homelessness Rates</a></li>
+                        <li><a href="https://davisvanguard.org/2025/12/california-population-housing-crisis/" target="_blank">California's Population and Housing Crisis (Davis Vanguard)</a></li>
+                        <li><a href="https://calhousingpartnership.org/wp-content/uploads/2026/03/CHP_2026-Housing-Needs-Report-FINAL.pdf" target="_blank">CHP 2026 Housing Needs Report (PDF)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">University Research</span>
+                    <h3>California Policy Lab</h3>
+                    <ul class="report-list">
+                        <li><a href="https://capolicylab.org/topic/homelessness/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://capolicylab.org/topic/homelessness/" target="_blank" class="btn-link">All CPL Housing</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/housing/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/housing/" target="_blank" class="btn-link">All PPIC Housing</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/housing/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/housing/" target="_blank" class="btn-link">All CalMatters Housing</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Fiscal Research</span>
+                    <h3>CA Budget Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calbudgetcenter.org/policy-areas/housing/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calbudgetcenter.org/policy-areas/housing/" target="_blank" class="btn-link">All Budget Center Housing</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Grid -->
+            <div class="policy-grid" id="education">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/publication/financing-californias-public-schools/" target="_blank">Financing California's Public Schools (PPIC)</a></li>
+                        <li><a href="https://lao.ca.gov/Publications/Report/4957" target="_blank">The 2025-26 Budget: Higher Education Overview (LAO)</a></li>
+                        <li><a href="https://edsource.org/2025/newsom-funding-cuts-budget-california/734385" target="_blank">Newsom's Proposed Funding Cuts to Education Budget (EdSource)</a></li>
+                        <li><a href="https://www.ppic.org/blog/recent-test-results-show-widening-gap-between-high-and-low-scoring-k-12-students/" target="_blank">Recent Test Results Show Widening Gap Between High and Low-Scoring K-12 Students (PPIC)</a></li>
+                        <li><a href="https://www.ppic.org/publication/californias-k-12-test-scores/" target="_blank">California's K-12 Test Scores (PPIC)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/education/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/education/" target="_blank" class="btn-link">All PPIC Education</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/education/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/education/" target="_blank" class="btn-link">All CalMatters Education</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">University Research</span>
+                    <h3>California Policy Lab</h3>
+                    <ul class="report-list">
+                        <li><a href="https://capolicylab.org/topic/education/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://capolicylab.org/topic/education/" target="_blank" class="btn-link">All CPL Education</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Think Tank</span>
+                    <h3>California Policy Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://californiapolicycenter.org/category/education/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://californiapolicycenter.org/category/education/" target="_blank" class="btn-link">All CPC Education</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Fiscal Research</span>
+                    <h3>CA Budget Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calbudgetcenter.org/policy-areas/education/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calbudgetcenter.org/policy-areas/education/" target="_blank" class="btn-link">All Budget Center Education</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Criminal Justice Grid -->
+            <div class="policy-grid" id="justice">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/justice/2025/09/california-prisons-recidivism-study/" target="_blank">New laws shrank CA prison population. What happened after release - CalMatters</a></li>
+                        <li><a href="https://www.lao.ca.gov/Publications/Report/4986" target="_blank">The 2025-26 Budget: California Department of Corrections and Rehabilitation</a></li>
+                        <li><a href="https://www.cjcj.org/reports-publications/report/california-crime-rates-were-falling-even-before-prop-36-took-effect" target="_blank">California Crime Rates Were Falling Even Before Prop 36 Took Effect (CJCJ)</a></li>
+                        <li><a href="https://www.cbsnews.com/news/california-retail-theft-rates-proposition-36/" target="_blank">California Retail Theft Rates & Proposition 36 (CBS News)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/criminal-justice/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/criminal-justice/" target="_blank" class="btn-link">All PPIC Justice</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">University Research</span>
+                    <h3>California Policy Lab</h3>
+                    <ul class="report-list">
+                        <li><a href="https://capolicylab.org/topic/criminal-justice/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://capolicylab.org/topic/criminal-justice/" target="_blank" class="btn-link">All CPL Justice</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/justice/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/justice/" target="_blank" class="btn-link">All CalMatters Justice</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Academic Journal</span>
+                    <h3>UC CJPP</h3>
+                    <ul class="report-list">
+                        <li><a href="https://escholarship.org/uc/cjpp" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://escholarship.org/uc/cjpp" target="_blank" class="btn-link">All UC CJPP</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economy & Labor Grid -->
+            <div class="policy-grid" id="economy">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.newsweek.com/map-shows-states-causing-california-exodus-11399718" target="_blank">Map shows states causing California exodus - Newsweek</a></li>
+                        <li><a href="https://siepr.stanford.edu/publications/policy-brief/californias-population-drain" target="_blank">California's population drain (SIEPR)</a></li>
+                        <li><a href="https://www.kqed.org/news/12079076/new-report-highlights-low-pay-dangerous-working-conditions-for-farmworkers" target="_blank">New Report Highlights Low Pay, Dangerous Working Conditions for Farmworkers (KQED)</a></li>
+                        <li><a href="https://www.ppic.org/blog/a-year-in-neutral-for-the-job-market/" target="_blank">A Year in Neutral for the Job Market (PPIC)</a></li>
+                        <li><a href="https://pro.stateaffairs.com/CA/ai/california-economic-forecast-2025" target="_blank">California Economic Forecast 2025 (State Affairs)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/economy/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/economy/" target="_blank" class="btn-link">All PPIC Economy</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">University Research</span>
+                    <h3>California Policy Lab</h3>
+                    <ul class="report-list">
+                        <li><a href="https://capolicylab.org/topic/labor-and-employment/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://capolicylab.org/topic/labor-and-employment/" target="_blank" class="btn-link">All CPL Labor</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/economy/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/economy/" target="_blank" class="btn-link">All CalMatters Economy</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Think Tank</span>
+                    <h3>California Policy Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://californiapolicycenter.org/category/public-unions/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://californiapolicycenter.org/category/public-unions/" target="_blank" class="btn-link">All CPC Labor</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health & Safety Net Grid -->
+            <div class="policy-grid" id="health">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://lao.ca.gov/Publications/Report/5146" target="_blank">The 2026-27 Budget: Medi-Cal Analysis</a></li>
+                        <li><a href="https://calbudgetcenter.org/resources/timeline-of-funding-cuts-to-medi-cal-and-calfresh-in-california/" target="_blank">Timeline of Funding Cuts to Medi-Cal and CalFresh (Budget Center)</a></li>
+                        <li><a href="https://calmatters.org/health/2025/12/ghaly-medi-cal-commission/" target="_blank">California’s Medi-Cal commission preps for federal Medicaid cuts</a></li>
+                        <li><a href="https://www.ppic.org/publication/californias-nutrition-safety-net/" target="_blank">California's Nutrition Safety Net (PPIC)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/health-and-safety-net/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/health-and-safety-net/" target="_blank" class="btn-link">All PPIC Health</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">University Research</span>
+                    <h3>California Policy Lab</h3>
+                    <ul class="report-list">
+                        <li><a href="https://capolicylab.org/topic/safety-net/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://capolicylab.org/topic/safety-net/" target="_blank" class="btn-link">All CPL Safety Net</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/health/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/health/" target="_blank" class="btn-link">All CalMatters Health</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Fiscal Research</span>
+                    <h3>CA Budget Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calbudgetcenter.org/policy-areas/health/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calbudgetcenter.org/policy-areas/health/" target="_blank" class="btn-link">All Budget Center Health</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environment Grid -->
+            <div class="policy-grid" id="environment">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.governing.com/policy/california-extends-cap-and-trade-through-2045-in-broad-climate-deal" target="_blank">California Extends Cap-and-Trade Through 2045</a></li>
+                        <li><a href="https://www.ppic.org/publication/priorities-for-californias-water/" target="_blank">Priorities for California's Water (PPIC)</a></li>
+                        <li><a href="https://calmatters.org/environment/2025/09/climate-change-package-legislature/" target="_blank">California lawmakers extend cap and trade through 2045</a></li>
+                        <li><a href="https://news.stanford.edu/stories/2026/06/california-home-insurance-crisis-wildfire-country" target="_blank">California Home Insurance Crisis in Wildfire Country (Stanford News)</a></li>
+                        <li><a href="https://www.kqed.org/science/1999791/new-california-insurance-laws-on-the-books-in-2026" target="_blank">New California Insurance Laws on the Books in 2026 (KQED)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/water/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/water/" target="_blank" class="btn-link">All PPIC Environment</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/environment/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/environment/" target="_blank" class="btn-link">All CalMatters Environment</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Government</span>
+                    <h3>Senate Office of Research</h3>
+                    <ul class="report-list">
+                        <li><a href="https://sor.senate.ca.gov/policyareas/energy-environment" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://sor.senate.ca.gov/policyareas/energy-environment" target="_blank" class="btn-link">All SOR Environment</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- State Budget Grid -->
+            <div class="policy-grid" id="budget">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://lao.ca.gov/Publications/Report/5091" target="_blank">The 2026-27 Budget: California's Fiscal Outlook</a></li>
+                        <li><a href="https://legalclarity.org/what-is-californias-budget-deficit-and-why-it-persists/" target="_blank">What Is California’s Budget Deficit and Why It Persists</a></li>
+                        <li><a href="https://calmatters.org/politics/2025/12/california-budget-primer/" target="_blank">California Budget Primer (CalMatters)</a></li>
+                        <li><a href="https://www.hoover.org/sites/default/files/research/docs/Rauh-Ludwig_WebreadyPDF_230522.pdf" target="_blank">Hoover Institution California Budget Research (PDF)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Fiscal Research</span>
+                    <h3>CA Budget Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calbudgetcenter.org/policy-areas/state-budget/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calbudgetcenter.org/policy-areas/state-budget/" target="_blank" class="btn-link">All Budget Center Budget</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Think Tank</span>
+                    <h3>California Policy Center</h3>
+                    <ul class="report-list">
+                        <li><a href="https://californiapolicycenter.org/category/government-finance/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://californiapolicycenter.org/category/government-finance/" target="_blank" class="btn-link">All CPC Finance</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Government</span>
+                    <h3>Senate Office of Research</h3>
+                    <ul class="report-list">
+                        <li><a href="https://sor.senate.ca.gov/policyareas" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://sor.senate.ca.gov/policyareas" target="_blank" class="btn-link">All SOR Budget</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Politics & Elections Grid -->
+            <div class="policy-grid" id="politics">
+                <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
+                    <span class="org-type">Featured Updates</span>
+                    <h3>Recent News & Reports</h3>
+                    <ul class="report-list">
+                        <li><a href="https://ballotpedia.org/California_Proposition_50,_Use_of_Legislative_Congressional_Redistricting_Map_Amendment_(2025)" target="_blank">California Proposition 50, Redistricting Map Amendment (2025)</a></li>
+                        <li><a href="https://www.ppic.org/blog/californias-changing-political-landscape-and-the-2024-election/" target="_blank">California's Changing Political Landscape and the 2024 Election</a></li>
+                        <li><a href="https://www.cbsnews.com/news/texas-redistricting-court-ruling-california-prop-50/" target="_blank">What happens to California's redistricting after Texas' maps were struck down?</a></li>
+                        <li><a href="https://calmatters.org/california-voter-guide-2026/governor/" target="_blank">California Voter Guide 2026: Governor (CalMatters)</a></li>
+                        <li><a href="https://www.nbcnews.com/politics/2026-primary-elections/california-governor-results" target="_blank">California Governor Primary Election Results (NBC News)</a></li>
+                        <li><a href="https://ballotpedia.org/California_gubernatorial_election,_2026" target="_blank">California Gubernatorial Election 2026 (Ballotpedia)</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Research</span>
+                    <h3>PPIC</h3>
+                    <ul class="report-list">
+                        <li><a href="https://www.ppic.org/policy-area/political-landscape/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ppic.org/policy-area/political-landscape/" target="_blank" class="btn-link">All PPIC Politics</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Nonpartisan Journalism</span>
+                    <h3>CalMatters</h3>
+                    <ul class="report-list">
+                        <li><a href="https://calmatters.org/politics/" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://calmatters.org/politics/" target="_blank" class="btn-link">All CalMatters Politics</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <span class="org-type">Academic Journal</span>
+                    <h3>UC CJPP</h3>
+                    <ul class="report-list">
+                        <li><a href="https://escholarship.org/uc/cjpp" target="_blank">View Latest Publications & Reports</a></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://escholarship.org/uc/cjpp" target="_blank" class="btn-link">All UC CJPP</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 José Marichal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        const tabs = document.querySelectorAll('.tab-btn');
+        const grids = document.querySelectorAll('.policy-grid');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and grids
+                tabs.forEach(t => t.classList.remove('active'));
+                grids.forEach(g => g.classList.remove('active'));
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Show corresponding grid
+                const targetId = tab.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
