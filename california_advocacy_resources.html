@@ -211,6 +211,107 @@
             transform: translateX(4px);
         }
 
+        /* Featured Project Styles */
+        .featured-project {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-ambient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), #ff9a8b);
+        }
+
+        .featured-project h2 {
+            font-size: 2.2rem;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+            margin-top: 0;
+        }
+
+        .featured-project h3 {
+            font-size: 1.6rem;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+        }
+
+        .featured-project .project-overview {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .project-phase {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .project-phase h4 {
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-week {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .project-week:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-week strong.week-title {
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .project-week ul {
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .project-week li {
+            margin-bottom: 0.25rem;
+        }
+
+        .project-rubric {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .project-rubric p {
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
     </style>
 </head>
 <body>
@@ -238,6 +339,162 @@
             <div class="dashboard-header">
                 <h1>California Advocacy Resources</h1>
                 <p>Explore the leading guides, handbooks, and tools for effective advocacy and organizing.</p>
+            </div>
+
+            <!-- Featured Project: Simulation -->
+            <div class="featured-project">
+                <h2>16-Week Policy Advocacy Workshop Simulation</h2>
+                <div class="project-overview">
+                    <p><strong>Overview:</strong> This hands-on, semester-long seminar explores the methods, tools, and skills used to conduct legislative and regulatory advocacy. Rather than just studying the process, you will actively engage in policymaking. Through a sequence of simulations and assignments, you will learn how to effectuate policy reforms with real-world application by drafting written materials and presenting oral advocacy to demonstrate an implementation strategy for a range of policy reform ideas.</p>
+                    <p style="margin-top:1rem;"><strong>Structure & Workshopping:</strong> After three weeks of introductory reading and discussion, there will be short written assignments or preparation for in-class simulations due most weeks. To foster a collaborative environment, students not actively presenting in a given week will serve as the "workshop panel"—providing input, critiquing the writing and presentations of their classmates, and discussing strategies for improvement. The semester will also feature guest lecturers with relevant policy experience from advocacy organizations, think tanks, and government.</p>
+                </div>
+
+                <h3>Weekly Schedule & Deliverables (5 points per graded assignment)</h3>
+
+                <div class="project-phase">
+                    <h4>Phase I: Foundations & The Policy Landscape</h4>
+                    <div class="project-week">
+                        <strong class="week-title">Week 1: Introduction to Policy Advocacy</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Core theories of change, the role of advocacy in a democratic system, and the distinction between issue advocacy and direct lobbying.</li>
+                            <li><strong>Activity:</strong> Introductory reading discussions and mapping the power dynamics of California’s political landscape.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 2: Issue Spotting & Policy Development</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> How to identify systemic gaps and translate societal problems into actionable policy opportunities.</li>
+                            <li><strong>Activity:</strong> Researching the existing legal landscape, identifying key stakeholders, and deciding whether your issue requires a legislative or administrative vehicle.</li>
+                            <li><strong>Deliverable 1 (5 pts):</strong> A 2-page Issue Spotting Memo identifying a specific policy gap, the proposed structural design for a solution, and the appropriate vehicle for change.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 3: Guest Lecturer & Campaign Strategy Workshop</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Hearing from active policy practitioners on how campaigns are built from the ground up.</li>
+                            <li><strong>Activity:</strong> In-class workshopping of Week 2 memos. Students peer-review proposed solutions to test for political feasibility.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-phase">
+                    <h4>Phase II: The Administrative State & Rulemaking</h4>
+                    <div class="project-week">
+                        <strong class="week-title">Week 4: Petitioning Agencies & The Regulatory Process</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Understanding the administrative rulemaking process under state (APA) and federal guidelines. How agencies implement, interpret, and enforce laws.</li>
+                            <li><strong>Activity:</strong> Identifying an open rulemaking period or an existing agency regulation ripe for reform.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 5: Commenting on Agency Regulations</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> The anatomy of an effective public comment. How to combine legal analysis, empirical data, and constituent narratives to force agency response.</li>
+                            <li><strong>Deliverable 2 (5 pts):</strong> Draft a formal public comment letter addressed to a specific state or federal agency regarding a proposed rule or existing regulation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-phase">
+                    <h4>Phase III: The Legislative Arena</h4>
+                    <div class="project-week">
+                        <strong class="week-title">Week 6: Legislative Research & Statutory Design</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> The mechanics of drafting legislation. Understanding the difference between intent language, definitions, and operative clauses.</li>
+                            <li><strong>Activity:</strong> Reviewing existing California bill text (via Leginfo) and analyzing how amendments alter the scope of a law.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 7: Legislative Drafting</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Translating your broad policy idea from Week 2 into strict, enforceable statutory language.</li>
+                            <li><strong>Deliverable 3 (5 pts):</strong> Draft a mock bill or specific amendment language, accompanied by a 1-page digest explaining the legal mechanics of the change.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 8: Writing Policy Briefs</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Drafting structured, high-impact memos intended for busy lawmakers, committee consultants, and executive staff.</li>
+                            <li><strong>Deliverable 4 (5 pts):</strong> Submit a 2-page Policy Brief summarizing the problem, the proposed legislative solution, the fiscal impact, and key arguments for/against.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-phase">
+                    <h4>Phase IV: Controlling the Narrative & Building Power</h4>
+                    <div class="project-week">
+                        <strong class="week-title">Week 9: Communications & Media Strategy</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> How to shape the public narrative around your policy. Understanding earned media, framing, and message discipline.</li>
+                            <li><strong>Deliverable 5 (5 pts):</strong> A Media Toolkit containing a press release for your bill's introduction, an outline for an op-ed, and three core media talking points.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 10: Grassroots Advocacy & Coalition Building</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Building power outside the Capitol. Strategies for community organizing, mapping out local engagement efforts, and identifying unlikely allies.</li>
+                            <li><strong>Activity:</strong> In-class coalition mapping exercise.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 11: Fact Sheets & Sign-On Letters</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Condensing complex data into persuasive, single-page "leave-behinds" and organizing unified organizational support to demonstrate broad momentum.</li>
+                            <li><strong>Deliverable 6 (5 pts):</strong> A visually compelling 1-page Fact Sheet and a formal Sign-On Letter ready for distribution to allied organizations.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-phase">
+                    <h4>Phase V: The Art of Persuasion (Simulations)</h4>
+                    <div class="project-week">
+                        <strong class="week-title">Week 12: Preparing for Committee Testimony</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> The art of oral advocacy. How to structure testimony, manage strict time limits, and anticipate hostile questioning from policymakers.</li>
+                            <li><strong>Activity:</strong> Guest lecture from a seasoned lobbyist or committee consultant on what works (and what fails) in committee hearings.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 13: In-Class Simulation: Committee Hearings (Part 1)</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Live oral advocacy.</li>
+                            <li><strong>Deliverable 7 (5 pts):</strong> Half the class delivers 3-minute oral testimonies defending their policy brief before a mock legislative panel. The non-presenting students serve as the panel, managing rapid-fire Q&A and scoring the testimony.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 14: In-Class Simulation: Committee Hearings (Part 2)</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Live oral advocacy.</li>
+                            <li><strong>Deliverable 8 (5 pts):</strong> The second half of the class delivers their oral testimony, while the first half serves as the legislative panel.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 15: The Final Push: Amendments & Negotiations</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> The messy reality of the legislative process. How to compromise without losing the core of your policy.</li>
+                            <li><strong>Activity:</strong> A live negotiation simulation where students are handed hostile amendments and must decide whether to accept them to save the bill or kill the bill entirely.</li>
+                        </ul>
+                    </div>
+                    <div class="project-week">
+                        <strong class="week-title">Week 16: Final Portfolio Submission & Reflection</strong>
+                        <ul>
+                            <li><strong>Focus:</strong> Synthesizing the semester's work into a cohesive, professional advocacy portfolio.</li>
+                            <li><strong>Deliverable 9 (10 pts):</strong> Submission of your complete, revised Advocacy Portfolio (incorporating all feedback from the semester) along with a 3-page reflection on the most significant challenges encountered during the simulation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-rubric">
+                    <h3>Grading & Assessment (50 Points Total)</h3>
+                    <p>Grades will be determined on the basis of written submissions, in-class role plays, class participation (including workshopping peers), and the final project portfolio. Each of the 8 weekly deliverables is worth 5 points, and the final portfolio is worth 10 points.</p>
+                    
+                    <h4>General Rubric for 5-Point Deliverables:</h4>
+                    <ul class="report-list">
+                        <li><strong>Application of Theory (2 points):</strong> The submission accurately applies the week's core concepts and demonstrates a clear understanding of the relevant political or administrative process.</li>
+                        <li><strong>Professional Execution (2 points):</strong> The deliverable mirrors real-world professional standards. It is formatted correctly (e.g., proper memo structure, statutory drafting conventions) and is written clearly, concisely, and persuasively.</li>
+                        <li><strong>Strategic Depth (1 point):</strong> The work anticipates potential opposition and accounts for the practical political realities of California government.</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Tabs -->
