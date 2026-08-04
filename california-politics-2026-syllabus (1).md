@@ -1,218 +1,357 @@
-# California as Symbol: State Policy, Affordability, and the Politics of Decline
-### A Policy Analysis Course Using Deborah Stone's *Policy Paradox*
+# POSC / POLI 3XX: California Politics and Public Policy
+## Governing in the Age of Polycrisis and Abundance
+**Term:** 16-Week Semester (Monday / Wednesday / Friday)  
+**Instructor:** Jose Marichal, Ph.D. | California Lutheran University  
+**Department:** Political Science | Office: Swenson 228 | Email: marichal@callutheran.edu  
 
 ---
 
-## Course Framing
+## I. Course Overview & Theoretical Framing
 
-This course treats California not just as a set of policy problems but as a **contested national symbol** — the place both sides of American politics point to as proof of their worldview. To the right, California is the cautionary tale: what happens when progressivism, multiculturalism, and regulation run unchecked (the "doom loop," the "exodus," the "California nightmare"). To the left and to the state's own boosters, California is proof of concept: multiracial democracy, climate leadership, and economic dynamism working at scale. Both stories are true in fragments and false in totality — which is exactly the kind of problem Deborah Stone's *Policy Paradox* is built to dissect.
+Why is California—the world’s fifth-largest economy and the vanguard of American progressivism—so frequently paralyzed by the very crises it seeks to solve? How can a state with supermajorities committed to climate action, racial equity, and public investment struggle so acutely to build affordable housing, construct clean transit, prevent catastrophic megafires, resolve structural water deficits, and manage extreme inequality?
 
-**Stone's toolkit, used all semester:**
-- **Goals as contested, not technical** — equity, efficiency, security, and liberty are not solved by "getting the facts right"; they're competing values that every California policy fight secretly argues about.
-- **Problem definition as political strategy** — numbers, causes, symbols, and "who's to blame" are constructed, not discovered. Every unit below asks: *whose story of decline or success is this, and what does it justify?*
-- **Policy solutions as symbolic acts** (inducements, rules, rights, powers) — not just as technical fixes.
+This course examines California government and public policy through the dynamic analytical tension between two foundational contemporary frameworks:
 
-The throughline for the semester is **affordability and livability**: California's central paradox is that it is simultaneously the wealthiest state in the country, a magnet for global talent, and the hardest place for an ordinary resident to afford a home, a family, or a stable life. Nearly every unit below is, underneath its topic label, a chapter in that same story.
+```
+                      ┌────────────────────────────────────────────────────────┐
+                      │                 THE CALIFORNIA PARADOX                  │
+                      │   Vast Wealth & Ambition  vs.  Paralysis & Breakdown   │
+                      └───────────────────────────┬────────────────────────────┘
+                                                  │
+                 ┌────────────────────────────────┴────────────────────────────────┐
+                 ▼                                                                 ▼
+   ┌───────────────────────────┐                                     ┌───────────────────────────┐
+   │   THE POLYCRISIS THESIS   │                                     │   THE ABUNDANCE AGENDA    │
+   │        (Adam Tooze)       │           VS. / SYNTHESIS           │ (Ezra Klein & Derek Thompson)│
+   ├───────────────────────────┤                                     ├───────────────────────────┤
+   │ Overlapping, Entangled    │                                     │ Supply-Side Progressivism:│
+   │ Shocks:                   │                                     │ • Rebuilding State Power  │
+   │ • Climate & Megafires     │                                     │ • Dismantling Vetocracy   │
+   │ • Housing Deficits        │                                     │ • Overcoming Proceduralism│
+   │ • Water Insecurity        │                                     │   (CEQA, NIMBYism)        │
+   │ • Energy Grid Fragility   │                                     │ • Delivering Physical &   │
+   │ • Budget Volatility       │                                     │   Social Abundance        │
+   └─────────────┬─────────────┘                                     └─────────────┬─────────────┘
+                 │                                                                 │
+                 └───────────────────────────────┬─────────────────────────────────┘
+                                                 ▼
+                 ┌─────────────────────────────────────────────────────────────────┐
+                 │                      THE ANALYTICAL LENSES                      │
+                 ├─────────────────────────────────────────────────────────────────┤
+                 │ • Deborah Stone (Policy Paradox): Market Model vs. Polis Model  │
+                 │ • Oregon State OER Textbook: Institutional Nuts & Bolts         │
+                 │ • California Constitutional Realities (1879, Direct Democracy)  │
+                 └─────────────────────────────────────────────────────────────────┘
+```
 
-**Stone's "Interests" chapter, and why California is an unusually good test case for it.** Stone's Problems section includes a chapter arguing that problem definitions aren't neutral — every claim about what a policy problem "really is" quietly draws a line between whose interests count as "the public" and whose get written off as merely "special." Groups build coalitions not because members agree in principle but because aggregating enough stakes is how power gets built at all. That argument is more than an abstraction in California, because a few of the state's own institutions amplify interest-group power in specific, describable ways:
-
-- **Direct democracy as a bypass venue.** Few other systems give well-funded interests a routine option to go over the legislature's head — California's initiative process, with its professionalized signature-gathering industry, functions as a second lobbying track. Prop 22 (2020, gig companies) is the canonical case of an industry buying the policy outcome the legislature wouldn't give it.
-- **Term limits shifted power toward permanent actors.** Between Prop 140 (1990) and Prop 28 (2012, loosened to 12 years combined), legislators churn through faster than the lobbyists, agency staff, and interest-group representatives they negotiate with — institutional memory increasingly sits outside the legislature rather than inside it.
-- **Public-sector unions carry an outsized footprint** relative to most states, given California's collective bargaining rights and lack of a right-to-work law (CTA, CCPOA, SEIU California).
-- **Entrenched water rights** give agricultural water districts a durable legal status (prior-appropriation doctrine, century-old contracts) that doesn't reset just because the policy conversation has moved on.
-- **Informal, local interest groups matter too** — homeowner and neighborhood associations function as interest groups in Stone's sense even though they're rarely discussed as such, which is exactly what's being tested in the SB 79 fight over state zoning preemption.
-
-Treat this as the conceptual toolkit behind the interest-group case studies already built into Units 7 (housing/construction unions), 8 (climate/oil-and-gas vs. environmental-justice groups), and 11 (water/Delta Conveyance coalitions) — introduce the Stone chapter and this list here, then let those units be where students apply it.
-
----
-
-## Unit 1: Opening Debate — Abundance vs. Decay
-
-**Framing question:** Is California the future working, or the future failing — and can both stories be built from the same facts?
-
-This is the course's organizing tension, so it opens rather than closes the semester. California carries two competing national myths simultaneously: the **dream state** (opportunity, reinvention, the frontier of American progress) and the **decay state** (dysfunction, bureaucratic paralysis, a warning about what happens when a society stops being able to build). The *Abundance* argument from Ezra Klein and Derek Thompson is the most useful entry point precisely because it doesn't sit neatly on either side — it's a critique of California written largely from within the progressive coalition, which immediately complicates any student's instinct to sort this into a left/right binary.
-
-- Deborah Stone, *Policy Paradox*, Introduction and Ch. 1 ("Markets and Polis")
-- Ezra Klein and Derek Thompson, *Abundance* — assign the high-speed rail case study directly (their *Ezra Klein Show*/*Plain English* episodes on California are free and cover the same argument if you want an audio option alongside or instead of the book)
-- Current reporting on the High-Speed Rail Authority's 2026 business plan: cost estimates have moved from the original $33B (2008) to roughly $126B–$231B depending on the source and month, no track has been laid on the initial operating segment after nearly two decades, and the Federal Railroad Administration terminated about $4 billion in federal grants in July 2025 after a compliance review. Assign a mix of a sympathetic-to-critical outlet (Railway News, or California Policy Center's "Crossroads" piece) and at least one straightforwardly hostile piece (the project is now heavily covered by conservative and business media as exhibit A for "blue state waste") so students see the same project doing symbolic work in opposite directions
-- A matched pair for the "decay" side of the myth — a "California doom loop"/exodus op-ed or segment from 2025-26 alongside a rebuttal (Lincoln Mitchell's "The New National Narrative About San Francisco" is a clean one, on how the doom-loop story outlived the data behind it)
-- The UC Berkeley California Policy Lab's 2026 study finding the state had a real net population loss in 2025 — driven specifically by cost of living, not politics per se — paired against PPIC's current statewide survey on Californians' own view of the state's direction
-
-*Stone application:* Ch. 8 ("Causes") and Ch. 9 ("Decisions") do the heaviest lifting here. Have students treat "the bureaucratic state failed" (Klein/Thompson's claim) as a contested causal story, not a settled diagnosis — is the real cause litigation and process, insufficient political will, underfunding, or federal sabotage (the FRA grant termination alone complicates any single-cause account)? Then have them do the same move on the "doom loop" story: which parts of the decline narrative are causal claims, which are symbols, and which are numbers doing symbolic work. Ending the unit by naming both *Abundance* and "doom loop" as **stories told about the same underlying facts** sets up the capstone assignment (Unit 12) on day one.
-
----
-
-## Unit 2: Political Culture and the Demographics of Contest
-
-**Framing question:** Whose California is the "real" one?
-
-- Stone, Ch. 6 ("Symbols") and Ch. 7 ("Numbers")
-- PPIC, *Just the Facts: California's Population* (current edition)
-- Retain the Pinker/Skelton/Cohn "red state-blue state" pieces as a 2012 baseline, but pair with a current piece on the state's actual partisan geography post-Prop 50 (below) — the interior/coastal divide is sharper now, not softer
-- A current piece on California's status as a "minority-majority" state entering its third decade, and how that fact is deployed rhetorically by both parties
-
-*Stone application:* diversity as a **goal** (equity/community) framed by opponents as a **cause** of decline — trace the causal chain each side asserts.
-
-**Mechanics mini-lecture (not assigned reading):** if students need grounding in how public opinion is actually measured and how much weight it should carry, an 8-10 minute recorded lecture drawing on Reti Ch. 4 ("Public Opinion in California") covers this more efficiently than assigning the chapter — the content is expository background, not something that generates discussion on its own.
+1. **The Polycrisis Thesis (Adam Tooze):** Shocks across climate, housing, public health, energy, and municipal finance are no longer isolated; they are deeply entangled and mutually reinforcing. As Adam Tooze diagnosed in his landmark 2022 essay, in a polycrisis, the interaction between distinct economic and non-economic shocks creates a whole that is more dangerous and unpredictable than the sum of its parts.
+2. **The Abundance Agenda & State Capacity (Ezra Klein & Derek Thompson):** Progressive governance suffers from an institutional "vetocracy" and "everything-bagel liberalism"—where procedural hurdles, environmental litigation (CEQA), local zoning vetoes, and fragmented bureaucracy have manufactured artificial scarcity in the physical world. The solution is a supply-side progressivism that rebuilds the state's capacity to build.
+3. **The Policy Paradox (Deborah Stone):** The clash between the rationalist **Market Model** (efficiency, individual self-interest, market clearing) and the **Polis Model** (community, public interest, shared loyalty, symbolic power). We interrogate how policy goals (equity, efficiency, welfare, security, liberty) and problem definitions (symbols, numbers, causes, interests) are politically constructed.
+4. **State & Local Government Institutions (Oregon State OER Textbook):** The formal mechanics of constitutions, federalism, executive power, legislative professionalism, courts, bureaucracy, public budgeting, entitlements, and visible public services.
 
 ---
 
-## Unit 3: Fiscal Politics — From "Crisis" to "Volatility"
+## II. Required Texts & Open Educational Resources (OER)
 
-**Framing question:** Is California's budget broken, or just unusually exposed?
-
-Replace the 2011-12 "California is dying" fiscal-crisis literature entirely. The state's own story since then is boom-bust volatility, not collapse:
-
-- Stone, Ch. 8 ("Causes") — useful for interrogating "structural deficit" as a causal claim
-- LAO (Legislative Analyst's Office), current *Fiscal Outlook* report
-- California Budget & Policy Center, current *Budget 101* / *Dollars and Democracy* materials
-- A retrospective piece on the state's Rainy Day Fund (Prop 2, 2014) and how it performed during the 2023-24 deficit and subsequent recovery
-- Keep Citrin (2009) on Prop 13 as the historical anchor — that argument hasn't dated — but add a current piece on the 2020s "split roll" fights and Prop 13's afterlife
-
-**Mechanics mini-lecture (not assigned reading):** this unit is where the biggest institutional gap shows up — students can't evaluate "is the deficit structural" without knowing how a budget bill actually moves (May Revise, trailer bills, the Prop 25 shift to simple-majority passage but two-thirds for tax increases). Record a short lecture pulling from Reti Ch. 8 ("The Legislature") and Ch. 9 ("The Executive Branch") rather than assigning either chapter whole — you only need the budget-process sections, not the full legislative-organization material.
-
----
-
-## Unit 4: Federalism, Live — California v. Washington
-
-**Framing question:** Is federalism a check on the state, or the state's weapon against the federal government?
-
-This is a new unit, and probably your strongest addition. 2012's federalism unit was abstract; 2026's is a running news story.
-
-- Stone, Ch. 5 ("Interests") and Ch. 10 ("Powers")
-- Keep Yarbrough (1985) and Day (1985) as the durable Federalist/Anti-Federalist theoretical baseline
-- Current reporting on California AG's litigation record against the federal government (dozens of suits across two Trump administrations) as the applied case
-- The June 2025 Los Angeles immigration-enforcement crisis: National Guard and Marine deployment over the governor's objection, *Newsom v. Trump* — assign a timeline piece (ABC News or Al Jazeera's visual guide) alongside CalMatters' coverage of the sanctuary-law fight
-- This unit should explicitly ask: does "federalism" protect state autonomy, or is it just whichever level of government currently agrees with you?
-
-**Mechanics mini-lecture (not assigned reading):** Reti Ch. 3 ("The Impact of Federalism") maps directly onto this unit and is probably the single most useful chapter in the book for your purposes — but it's still better delivered as a 10-12 minute recorded overview than as required reading, since the discussion should center on the *Newsom v. Trump* case study, not on federalism theory in the abstract. Also worth a brief mention of California's plural executive here (AG, Controller, Superintendent of Public Instruction all independently elected, per Reti Ch. 9) — it's exactly what makes "California v. Washington" institutionally different from a fight the President could unilaterally settle.
+1. **State & Local Government Nuts and Bolts (Free OER):**  
+   Simon, Christopher A., Brent S. Steel, Nicholas P. Lovrich, Erika Allen Wolters, Tamara Krawchenko, and Sadaf Farooq. *State and Local Government and Politics: An Open Oregon Educational Resource* (3rd Edition). Oregon State University.  
+   *(Designated as **OSU OER**)*.
+2. **Policy Theory & The Polis:**  
+   Stone, Deborah. *Policy Paradox: The Art of Political Decision Making*. W. W. Norton & Company.  
+   *(Designated as **Stone**)*.
+3. **The Polycrisis & Abundance Corpus (Provided via LMS / Digital Links):**
+   * Adam Tooze, "Welcome to the world of the polycrisis" (*Financial Times*, 2022) and selected *Chartbook* essays.
+   * Ezra Klein and Derek Thompson, Selected writings on *The Abundance Agenda*, *Supply-Side Progressivism*, and *Vetocracy* (*The Atlantic*, *The New York Times*).
+   * Reports from the Public Policy Institute of California (PPIC), the Legislative Analyst's Office (LAO), and major California judicial rulings.
 
 ---
 
-## Unit 5: Redistricting and Representation — The Commission Under Siege
+## III. Course Learning Outcomes (CLOs)
 
-**Framing question:** Can independent institutions survive a fight where only one side disarms?
-
-The 2012 version of this unit treated the Citizens Redistricting Commission as a settled reform success. 2025-26 inverted that story completely — worth restructuring around the reversal itself.
-
-- Stone, Ch. 9 ("Decisions") — decision rules as power struggles, not neutral procedure
-- LAO's official Prop 50 ballot analysis (clear, nonpartisan explainer of what changed and why)
-- PPIC's analysis of how the Prop 50 maps affect racial and geographic representation
-- Coverage of the Texas mid-decade redistricting that triggered this (any solid national outlet)
-- NPR or SCOTUSblog coverage of the Supreme Court allowing California to use the new maps for 2026
-- Keep Wang (2013), "The Great Gerrymander of 2012," as historical grounding — it's still one of the clearest explanations of *how* gerrymandering works technically
-
-*Stone application:* the Commission was designed as a "rule" to remove politics from map-drawing; Prop 50 is a case study in how a "rule" gets suspended once it stops serving the goals of the people who created it.
-
-**Mechanics mini-lecture (not assigned reading):** briefly cover the Citizens Redistricting Commission's actual constitutional composition and criteria (14 members, party-balance requirements) before getting into Prop 50 — a 5-minute lecture segment is enough, since the point is just to establish the baseline students need to see the rule being bent. Reti Ch. 8 covers the Commission alongside the Legislature's prior redistricting role if you want a source to draw from.
+By the end of this course, students will be able to:
+* **CLO 1 (Institutional Literacy):** Explain the structural powers, checks, and limitations of California’s executive branch, bicameral legislature, judicial system, plural executive, and fragmented local governments.
+* **CLO 2 (Direct Democracy & Fiscal Politics):** Critique how direct democracy (initiatives, referenda, recalls—especially Propositions 13, 98, 47, 22, and 36) has constrained governance and public finance.
+* **CLO 3 (Theoretical Synthesis):** Apply Tooze’s *Polycrisis*, Klein/Thompson’s *Abundance Agenda*, and Stone’s *Market vs. Polis* framework to diagnose California's policy impasses.
+* **CLO 4 (Policy Advocacy & Institutional Design):** Formulate evidence-based policy solutions that reconcile environmental protection, democratic equity, and supply-side capacity to build public goods.
 
 ---
 
-## Unit 6: Direct Democracy, Updated
+## IV. Grading & Assessment Breakdown
 
-**Framing question:** Does the initiative process register public will, or manufacture it?
-
-- Stone, Ch. 11 ("Rights") pairs well here
-- Keep Fishkin (2011) as the theoretical anchor on deliberative alternatives
-- Swap the specific ballot-measure case studies for the post-2012 record: Prop 47 (2014, reclassification), Prop 22 (2020, gig work), and Prop 36 (2024, partial reversal of Prop 47) form a clean "reform-backlash-counter-reform" arc — much richer than any single 2012-era measure
-- Prop 50 (Unit 5) can double as your direct-democracy case study too — a rare instance where "direct democracy" was used to override an "independent institution" built by direct democracy
-
-**Mechanics mini-lecture (not assigned reading):** the one place a short lecture genuinely earns its keep — most students don't actually know the mechanical differences between initiative, referendum, and recall (signature thresholds, single-subject rule, judicial review standards), and that's foundational vocabulary for the whole unit rather than something to work out through discussion. Reti Ch. 5 ("Voting in California") covers this; pull just the initiative/referendum/recall mechanics into an 8-minute segment.
-
----
-
-## Unit 7: Housing and the Politics of Zoning Preemption
-
-**Framing question:** Who should control land use — cities, or the state?
-
-This needs the most substantial rebuild. 2012's housing unit was about the subprime crash; 2026's is almost entirely about supply, zoning, and state preemption of local control — a much better fit for the affordability throughline and for Stone's framework (efficiency vs. community/local control as competing goals).
-
-- Stone, Ch. 4 ("Community") and Ch. 12 ("Powers") — local control vs. state mandate as a powers question
-- Terner Center (UC Berkeley), current housing legislative round-up covering SB 79 (transit-oriented density), AB 130/SB 131 (CEQA exemptions for infill)
-- California YIMBY's own SB 79 explainer, paired with a critical piece from a slow-growth or local-control advocate for balance
-- CalMatters coverage of cities "scrambling to comply with or fight" SB 79 as it takes effect (July 2026) — this is happening in real time as you teach the course
-- Keep the "Human Right to Housing" reading as the normative anchor Stone would want you to interrogate directly
-- Explicit callback to Unit 1: CEQA reform is the connective tissue between the housing-abundance argument and the high-speed-rail-abundance argument — worth returning to whether the *Abundance* diagnosis holds up as well for housing as it did for rail
-- **Interest-group lens:** SB 79's path is a clean case study in how organized labor shapes what a housing bill actually says. The State Building and Construction Trades Council initially opposed the bill; California YIMBY and Sen. Wiener negotiated labor-standards amendments (skilled-and-trained workforce requirements on taller and transit-agency-owned projects), which moved the Trades Council to neutral and brought UNITE HERE on as a supporter. Assign coverage of that deal (Davis Vanguard or LAist both covered it well) alongside the CalMatters implementation piece — it's a good instance of Stone's "interests" chapter in action: the bill's substance changed because of who needed to be brought along, not because of a technical optimum.
-
-*Stone application:* have students write the same housing fact ("a four-story apartment building is going up near your BART stop") as both a rights claim and an efficiency claim and a community-harm claim — that's the whole book in one exercise.
+| Component | Weight | Description |
+| :--- | :--- | :--- |
+| **Seminar Participation & In-Class Debates** | 15% | Active engagement in daily discussions, debates, and breakout policy analyses. |
+| **Weekly Analytical Reading Memos (10 × 2%)** | 20% | 400–500 word synthesis memos connecting OSU OER chapters to Stone, Tooze, or Klein/Thompson. |
+| **Midterm Examination** | 20% | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. |
+| **The "Vetocracy vs. Abundance" Policy Audit** | 20% | 2,000-word empirical investigation into a stalled or completed California project. |
+| **Capstone Legislative Hearing & White Paper** | 25% | Mock Joint Legislative Hearing roleplay (10%) + 2,500-word legislative policy white paper (15%). |
 
 ---
 
-## Unit 8: Climate and Environmental Policy — A Decade of Results
+## V. 16-Week Schedule (Monday / Wednesday / Friday)
 
-**Framing question:** Did cap-and-trade actually work, and does it matter if voters believe it did?
+```
+========================================================================================
+PART I: THEORETICAL FOUNDATIONS & INSTITUTIONAL ARCHITECTURE (Weeks 1–5)
+========================================================================================
+```
 
-- Stone, Ch. 7 ("Numbers") — a great pairing, since cap-and-trade's defenders and critics are fighting almost entirely over which numbers to trust
-- Keep the original "California Kicks Off Cap and Trade" piece as the 2012 baseline, but pair it with a current retrospective on the program's 2035/2045 reauthorization and outcomes to date
-- A piece on environmental-justice critiques of cap-and-trade (offsets, "pay to pollute" concerns in disadvantaged communities) — the Ong/UCLA-style environmental justice material from the original syllabus is still directly relevant and barely needs updating
-- Consider adding wildfire and insurance-market collapse (FAIR Plan strain, insurer exits) as a new climate-adjacent affordability angle — it didn't exist as a policy topic in 2012 and now touches almost every homeowner in the state
-- **Interest-group lens:** cap-and-trade reauthorization is a three-way fight — oil and gas interests (Western States Petroleum Association) pushing to keep offset provisions and soften compliance costs, environmental-justice organizations pushing to tighten or end offsets in disadvantaged communities, and mainstream environmental groups largely defending the program's continuation. Assign a short piece tracing that three-way split rather than treating "environmentalists vs. industry" as a clean binary — the EJ critique of cap-and-trade is itself a break from the broader environmental coalition, which is a good complication for students expecting green groups to speak with one voice.
-
----
-
-## Unit 9: Immigration — From Fiscal Impact to Federal Confrontation
-
-**Framing question:** Has immigration policy in California shifted from an economic question to a sovereignty question?
-
-Full reconstruction, as discussed. This is the unit where the "California as symbol" theme is most explicit and most current.
-
-- Stone, Ch. 6 ("Symbols") again — immigrants-as-symbol is maybe the clearest example in the whole course
-- SB 54 (2017), California's sanctuary-state law, as the legal baseline
-- CalMatters' reporting on the June 2025 ICE raids and the state's sanctuary-law response
-- The Mixed Migration Centre's comparative piece on state-federal immigration tension across sanctuary jurisdictions in 2025 (useful for putting California in national context rather than treating it as unique)
-- Keep CCSCE's fiscal-impact framework as historical background for how the debate used to be conducted — a good contrast device for "then it was an economic argument, now it's a constitutional one"
+### Week 1: The California Paradox — Polycrisis meets the Scarcity Trap
+* **Mon (Session 1): Course Introduction — The Golden State as Crucible**
+  * *Topic:* California’s global stature, wealth concentration, and systemic crises.
+  * *Readings:* Syllabus overview; California Dept. of Finance Economic Snapshot.
+* **Wed (Session 2): Theorizing the Polycrisis**
+  * *Topic:* How distinct shocks (ecological, economic, geopolitical, social) become entangled.
+  * *Readings:* Adam Tooze, "Welcome to the world of the polycrisis" (*Financial Times*, 2022); Adam Tooze, "Chartbook: The Anatomy of the Polycrisis" (2022).
+  * *Discussion:* Why does solving one crisis in California (e.g., housing) frequently worsen or run into another (e.g., wildfire risk, water, carbon emissions)?
+* **Fri (Session 3): The Abundance Agenda & The Crisis of State Capacity**
+  * *Topic:* Supply-side progressivism; how well-intentioned proceduralism creates artificial scarcity.
+  * *Readings:* Derek Thompson, "A Simple Plan to Solve All of America’s Problems: The Abundance Agenda" (*The Atlantic*, 2022); Ezra Klein, "What the Left Gets Wrong About Power" (*New York Times*, 2022).
+  * *Discussion:* Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?
 
 ---
 
-## Unit 10: Criminal Justice — A Completed Feedback Loop
-
-**Framing question:** What happened when California actually tried decarceration?
-
-2012 treated realignment as an open question. You now have the full arc and can teach it as cause-effect-correction rather than speculation.
-
-- Stone, Ch. 8 ("Causes") applies directly — competing causal stories about crime rates
-- AB 109 realignment (2011) as the starting point
-- Prop 47 (2014) → Prop 36 (2024) as thesis-antithesis
-- Current California DOJ crime-rate data alongside record clearance under AB 1076/SB 731 — gives students a real dataset to argue over rather than dueling anecdotes
-- Keep the "Three Strikes" critique readings; they're still analytically sound and provide good contrast with the more recent reform cycle
-
----
-
-## Unit 11: Water and the Delta — Unfinished Business
-
-**Framing question:** Why can't California finish a water project?
-
-- Keep Tullis (2011) on the Delta as historical grounding
-- Update with current coverage of the Delta Conveyance Project (the single-tunnel successor to the twin-tunnels/WaterFix fight) and the 2023 Colorado River basin cuts agreement
-- Worth an explicit callback to Unit 1: the Delta tunnel and high-speed rail are the same "failed bureaucratic state" story told twice, decades apart — a good prompt for whether students think the *Abundance* diagnosis actually explains both or whether water and rail fail for different reasons
-- **Interest-group lens:** the Delta Conveyance Project is probably the richest interest-group case study in the course, precisely because it doesn't split cleanly into two sides. Southern California urban water districts and business coalitions (Southern California Water Coalition, State Water Contractors) support the tunnel; environmental groups (Sierra Club, San Francisco Baykeeper, Restore the Delta) and Delta-area tribes (the Winnemem Wintu have been especially vocal) oppose it; and Central Valley agricultural water districts — the group students will assume is uniformly pro-tunnel — are actually internally split, with some Kern County districts recently cutting their funding commitment to the project's planning phase over unresolved questions about water allocation. Assign a piece on that Kern County funding pullback alongside a Sierra Club/Restore the Delta position and a Southern California Water Coalition position — three stakeholders, not two, is the point.
-
-*Stone application:* the interest-group split above is why the Delta tunnel is a 50-year case study in decision-avoidance — no coalition on either side has ever been large enough to force a resolution.
+### Week 2: Frameworks of Public Choice — Market, Polis, and Federalism
+* **Mon (Session 4): Deborah Stone’s Policy Paradox — Market vs. Polis**
+  * *Topic:* Rational market models vs. political community; self-interest vs. public interest.
+  * *Readings:* **Stone**, Chapter 1 ("The Market and the Polis").
+* **Wed (Session 5): Goals of the Polis — Equity vs. Efficiency**
+  * *Topic:* The trade-offs and political rhetoric underlying public goals.
+  * *Readings:* **Stone**, Chapter 2 ("Equity") & Chapter 3 ("Efficiency").
+* **Fri (Session 6): Federalism, Preemption, and California Exceptionalism**
+  * *Topic:* Intergovernmental relations; California as a "nation-state" within the US federal system (Clean Air Act waivers, state-level resistance).
+  * *Readings:* **OSU OER**, Chapter 1 ("Introduction and Themes") & Chapter 2 ("Federalism").
+  * *Discussion:* How does federalism allow California to pioneer climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?
 
 ---
 
-## Unit 12: Capstone — Writing California's Story
-
-**Assignment framing:** Each student picks one policy area from the semester and writes it twice — once as the "California is failing" narrative and once as the "California is working" narrative, using the *same underlying facts* in both. This operationalizes Stone's central argument (that policy analysis is never just fact-finding, it's story-construction), closes the loop on the Abundance-vs-Decay framing from Unit 1, and gives you a natural way to grade critical thinking about the affordability/symbol framing rather than just command of the reading list.
+### Week 3: The Rules of the Game — State Constitutions & Direct Democracy
+* **Mon (Session 7): Constitutional Foundations — The California Constitution of 1879**
+  * *Topic:* Distrust of institutions, anti-monopoly origins, constitutional length, and ease of amendment.
+  * *Readings:* **OSU OER**, Chapter 6 ("State Constitutions"); Excerpts from California Constitution, Article I & IV.
+* **Wed (Session 8): Direct Democracy — The Progressive Weapon**
+  * *Topic:* Hiram Johnson, the Southern Pacific Railroad, and the invention of Initiative, Referendum, and Recall.
+  * *Readings:* **OSU OER**, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."
+* **Fri (Session 9): Direct Democracy in Practice — Proposition 13 and the Tax Revolt**
+  * *Topic:* Howard Jarvis, the 1978 property tax freeze, two-thirds supermajorities, and intergenerational lock-in.
+  * *Readings:* Peter Schrag, *Paradise Lost* (Chapter 1: "The Tax Revolt"); **Stone**, Chapter 7 ("Numbers").
+  * *Discussion:* In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?
 
 ---
 
-## Notes on sourcing
+### Week 4: The Legislative Branch & The Policy Process
+* **Mon (Session 10): Key Actors in the Sacramento Ecosystem**
+  * *Topic:* Interest groups, lobbyists, think tanks, public sector unions, and corporate donors in the policy cycle.
+  * *Readings:* **OSU OER**, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments"); **Stone**, Chapter 9 ("Interests").
+* **Wed (Session 11): The California State Legislature — Professionalism and Polarization**
+  * *Topic:* Bicameralism, the Jesse Unruh legacy of full-time professionalized staff, and the supermajority paradox.
+  * *Readings:* **OSU OER**, Chapter 7 ("Legislatures"); Thad Kousser, *Term Limits and the Dismantling of State Legislative Power* (Excerpts).
+* **Fri (Session 12): Caucuses, Coalitions, and Legislative Vetocracy**
+  * *Topic:* Factional politics in a one-party state: The Progressive Caucus vs. Moderate "Mod Squad" Democrats; logrolling and bill-killing committees.
+  * *Readings:* **Stone**, Chapter 6 ("Symbols") & Chapter 8 ("Causes").
+  * *Discussion:* Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side or single-payer legislation?
 
-Everything above is available through your existing free-only stack (LAO, Cal Budget & Policy Center, CalMatters, leginfo.legislature.ca.gov) plus PPIC, which has become an excellent free source for exactly this kind of survey and policy-brief material and didn't have the same public-facing footprint in 2012. CalMatters in particular is worth leaning on throughout — it's grown into the best single free source for the "affordability crisis" throughline since it didn't really exist in its current form when you built the original syllabus.
+---
 
-## On the LibreTexts textbook (Reti, *Introduction to California Government and Politics*)
+### Week 5: The Executive Branch, Bureaucracy, and State Capacity
+* **Mon (Session 13): The Governor and Executive Power**
+  * *Topic:* Formal powers (line-item veto, executive orders, emergency declarations) and informal power (bully pulpit).
+  * *Readings:* **OSU OER**, Chapter 8 ("Executives"); Selected Executive Orders from Newsom and Brown.
+* **Wed (Session 14): The Plural Executive — Fragmented Executive Authority**
+  * *Topic:* Independently elected statewide officers: Attorney General, Insurance Commissioner, Lt. Governor, Controller, Superintendent of Public Instruction.
+  * *Readings:* California Constitution, Article V; Case Study: Attorney General vs. Governor policy friction.
+* **Fri (Session 15): State Bureaucracy & "Everything-Bagel Liberalism"**
+  * *Topic:* Civil service rules, administrative burden, agency turf wars, and procedural sclerosis.
+  * *Readings:* **OSU OER**, Chapter 10 ("State and Local Bureaucracy and Administration"); Ezra Klein, "The Problem with Everything-Bagel Liberalism" (*New York Times*, 2023).
+  * *Discussion:* How does stacking multiple uncoordinated social goals onto administrative agencies degrade their ability to execute core missions?
 
-List this as an **optional/recommended reference**, not a required or assigned text: something like "if a primary-source reading assumes institutional knowledge you don't have, the relevant chapter of this open textbook fills it in — no need to read it cover to cover." That gives students who need more scaffolding a place to self-serve without building the class around textbook exposition. Its table of contents maps cleanly onto the mini-lecture topics flagged above:
+---
 
-- Ch. 2, California Constitutional Development — useful background for Unit 1 or Unit 5 (the state's long history of amending itself via initiative)
-- Ch. 3, The Impact of Federalism — Unit 4
-- Ch. 4, Public Opinion in California — Unit 2
-- Ch. 5, Voting in California — Units 5 and 6 (initiative/referendum/recall mechanics)
-- Ch. 8, The Legislature — Units 3 and 5 (budget process, redistricting)
-- Ch. 9, The Executive Branch — Units 3 and 4 (governor's budget role, plural executive)
-- Ch. 10, The Judicial Branch — could support Unit 10 (Criminal Justice) if you want a short mechanics segment on court structure and judicial selection
-- Ch. 11, Local Governments — Unit 7 (state-local zoning preemption)
+```
+========================================================================================
+PART II: LOCAL GOVERNANCE, FISCAL POLITICS, & JUDICIAL POWER (Weeks 6–8)
+========================================================================================
+```
 
-Ch. 6 (Political Parties) is more relevant to the companion legislative-drafting/lobbying course than to this survey course. Ch. 7 (Interest Groups) is less needed as a standalone reading now that interest-group politics are embedded directly in Units 7, 8, and 11 as case studies (construction unions on housing, oil/gas and environmental-justice groups on cap-and-trade, water districts and environmental groups on the Delta tunnel) — the concrete, current examples do more work than the textbook's general treatment of interest-group theory would.
+### Week 6: Local Government, Sustainability Planning, & Land-Use Vetoes
+* **Mon (Session 16): Municipal Governance — Counties, Charter Cities, and General Law**
+  * *Topic:* Police powers, local home rule doctrine, municipal incorporation, and city councils.
+  * *Readings:* League of California Cities, *The Nature of Local Government*; **Stone**, Chapter 15 ("Powers").
+* **Wed (Session 17): Local Environmental & Sustainability Planning in the Region**
+  * *Topic:* Rural vs. suburban vs. urban capacity in sustainability programs; regional councils of government (COGs).
+  * *Readings:* **OSU OER**, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.).
+* **Fri (Session 18): NIMBYism and Local Control as Manufactured Scarcity**
+  * *Topic:* Public comment procedures, neighborhood defense, discretionary zoning reviews, and exclusionary localism.
+  * *Readings:* Katherine Levine Einstein et al., *Neighborhood Defenders* (Chapters 1 & 3); Derek Thompson, "How California Blew It on Housing."
+  * *Discussion:* Is local zoning control an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?
+
+---
+
+### Week 7: Public Finance — Budgeting, Entitlements, & Fiscal Volatility
+* **Mon (Session 19): State and Local Budgeting Systems**
+  * *Topic:* The budget cycle, balanced budget mandates, May Revise, and progressive income tax dependence on high earners.
+  * *Readings:* **OSU OER**, Chapter 11 ("Budgeting and Sustainability"); Legislative Analyst’s Office (LAO), *California’s Tax System: A Primer*.
+* **Wed (Session 20): The Fiscalization of Land Use & Prop 13 Distortions**
+  * *Topic:* How loss of property tax revenue forced cities to favor auto malls and hotels over residential housing.
+  * *Readings:* Paul G. Lewis, *Shaping Suburbia* (Chapter 4); LAO, *Understanding California's Property Taxes*.
+* **Fri (Session 21): Budgeting in an Era of Polycrisis**
+  * *Topic:* Navigating $30B+ surplus-to-deficit swings; Rainy Day Funds (Prop 2), Gann Limit, and Prop 98 guarantees.
+  * *Readings:* **OSU OER**, Chapter 11 (cont.); **Stone**, Chapter 11 ("Decisions"); LAO Budget Overview (Current Fiscal Year).
+  * *Discussion:* Can a state execute multi-decade abundance infrastructure plans when its tax revenues experience wild boom-and-bust cycles?
+
+---
+
+### Week 8: Courts, Legal Battles, and the CEQA Bottleneck
+* **Mon (Session 22): The California Judiciary**
+  * *Topic:* Superior Courts, Courts of Appeal, and the California Supreme Court; judicial retention elections and legal culture.
+  * *Readings:* **OSU OER**, Chapter 9 ("Courts"); California Constitution, Article VI.
+* **Wed (Session 23): Deborah Stone on Solutions — Rules, Rights, and Powers**
+  * *Topic:* How legal rights and procedural rules become weapons of political contestation.
+  * *Readings:* **Stone**, Chapter 13 ("Rules") & Chapter 14 ("Rights").
+* **Fri (Session 24): CEQA as a Weapon — The Judicialization of Environmental Review**
+  * *Topic:* California Environmental Quality Act (1970), *Friends of Mammoth* (1972), private right of action, union greenmail, and housing litigation.
+  * *Readings:* Jennifer Hernandez, "California Environmental Quality Act Lawsuits and the Housing Crisis" (*Hastings Env. L.J.*); Chris Elmendorf, "When Public Agencies Block Public Policy."
+  * *Discussion:* How did a 1970 environmental protection statute evolve into the primary legal tool used to block solar farms, bike lanes, and dense housing?
+  * *Note:* **Policy Audit Due Friday at 11:59 PM.**
+
+---
+
+```
+========================================================================================
+PART III: SECTORAL POLYCRISIS: HOUSING, WATER, ENERGY, TRANSIT, & HEALTH (Weeks 9–14)
+========================================================================================
+```
+
+### Week 9: Housing & Homelessness — The Epicenter of Scarcity
+* **Mon (Session 25): Diagnosing the 3.5 Million Home Deficit**
+  * *Topic:* Housing costs, cost-burdened renters, spatial segregation, and youth out-migration.
+  * *Readings:* Conor Dougherty, *Golden Gates: Fighting for Housing in More Expensive America* (Excerpts); PPIC, *California’s Housing Shortage*.
+* **Wed (Session 26): Homelessness as an Intersecting Polycrisis**
+  * *Topic:* High housing costs, mental health deinstitutionalization, substance use, and public space law (*Grants Pass v. Johnson*, CARE Courts).
+  * *Readings:* Margot Kushel et al., *UCSF Statewide Study of People Experiencing Homelessness in California* (Executive Summary); **Stone**, Chapter 4 ("Welfare & Security").
+* **Fri (Session 27): The YIMBY Counter-Offensive & State Preemption**
+  * *Topic:* State-level overrides: SB 35, SB 9/10, Housing Element enforcement, the Housing Accountability Unit, and the "Builder’s Remedy."
+  * *Readings:* Nolan Gray, *Arbitrary Lines* (Excerpts); Ezra Klein, "The Abundance Agenda in Sacramento."
+  * *Discussion:* Does state preemption of local zoning violate democratic principles, or is it the only antidote to regional collective action failure?
+
+---
+
+### Week 10: Climate, Megafires, and the Fragile Energy Grid
+* **Mon (Session 28): The Ecological Polycrisis in California**
+  * *Topic:* Megadroughts, catastrophic wildfires, the wildland-urban interface (WUI), and property insurer insolvency (State Farm / Allstate exit).
+  * *Readings:* Adam Tooze, "Chartbook: California Wildfire Risk as Financial Contagion"; California Dept. of Insurance Market Briefing.
+* **Wed (Session 29): Traditional & Visible Services: Clean Energy and Grid Reliability**
+  * *Topic:* SB 100 clean energy targets, CAISO grid management, Diablo Canyon nuclear extension, rooftop solar (NEM 3.0), and transmission interconnection queues.
+  * *Readings:* **OSU OER**, Chapter 13 ("Traditional and Visible Services"); Severin Borenstein, "The Economics of California’s Energy Transition."
+* **Fri (Session 30): Clean Abundance vs. Conservationist Degrowth**
+  * *Topic:* Green supply-side buildouts (massive solar and transmission) vs. preservationist conservation.
+  * *Readings:* Ezra Klein, "The Climate Movement Needs to Embrace Building" (*New York Times*, 2022); **Stone**, Chapter 5 ("Liberty").
+  * *Discussion:* In the Polis, how do we navigate the conflict between protecting local desert ecosystems and building massive utility-scale clean power?
+
+---
+
+### Week 11: Water Politics — Hydraulic Empires and Drought Realities
+* **Mon (Session 31): Traditional & Visible Services: The Architecture of California Water**
+  * *Topic:* The State Water Project (SWP), Central Valley Project (CVP), Colorado River Compact, and transferring water north-to-south.
+  * *Readings:* **OSU OER**, Chapter 13 (cont.); Marc Reisner, *Cadillac Desert* (Excerpts).
+* **Wed (Session 32): Water Rights, Senior Appropriators, and Ecosystem Collapse**
+  * *Topic:* Riparian rights, appropriative rights (the 1914 line), the Bay-Delta crisis, and agricultural vs. urban allocations.
+  * *Readings:* Barton H. Thompson Jr., *Liquid Asset* (Chapter on California Water Law); **Stone**, Chapter 14 ("Rights & Powers").
+* **Fri (Session 33): Engineering Water Abundance in a Polycrisis**
+  * *Topic:* Sustainable Groundwater Management Act (SGMA), Delta Conveyance Tunnel, wastewater recycling (Pure Water SoCal), and desalination politics.
+  * *Readings:* PPIC, *Priorities for California’s Water*; CalMatters Water In-Depth Investigative Series.
+  * *Discussion:* Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?
+
+---
+
+### Week 12: Infrastructure, Transportation & High-Speed Rail
+* **Mon (Session 34): Traditional and Visible Services: Highways vs. Transit**
+  * *Topic:* Caltrans, freeway expansion, Vehicle Miles Traveled (VMT) mandates, and racial equity in urban transit.
+  * *Readings:* **OSU OER**, Chapter 13 (cont.); Ethan Elkind, *Railtown: The Fight for the LA Metro Rail* (Excerpts).
+* **Wed (Session 35): The High-Speed Rail Saga — A Case Study in Vetocracy**
+  * *Topic:* Proposition 1A (2008), Central Valley routing compromises, procurement blunders, utility relocation disputes, and $100B+ cost growth.
+  * *Readings:* Ralph Vartabedian, "How California's High-Speed Rail Went Off the Rails" (*New York Times*, 2022); CA High-Speed Rail Authority Business Plan Summary.
+* **Fri (Session 36): Transit Cost Disease and State Capacity**
+  * *Topic:* Why international peers (Spain, France, Japan) build transit at one-fourth the cost of California; contracting-out vs. in-house state engineering.
+  * *Readings:* Alon Levy & Eric Goldwyn, *Transit Costs Project Findings*; Derek Thompson, "Why the U.S. Can’t Build Transit Anymore."
+  * *Discussion:* What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?
+
+---
+
+### Week 13: Inequality, Labor, and "The New Margins"
+* **Mon (Session 37): The New Margins — Demographic Divides and Spatial Inequality**
+  * *Topic:* Coastal wealth enclaves vs. Inland Empire/Central Valley poverty; racial and economic marginalization in state policy.
+  * *Readings:* **OSU OER**, Chapter 3 ("The New Margins"); PPIC, *Income Inequality and the Middle Class in California*.
+* **Wed (Session 38): Algorithmic Labor, AB 5, and Proposition 22**
+  * *Topic:* Employee vs. independent contractor classification (Dynamex), AB 5 (Lorena Gonzalez), and Big Tech’s $200M ballot measure war (Prop 22).
+  * *Readings:* Veena Dubal, "The Drive to Precarity" (*Berkeley J. of Emp. & Labor Law*); Selected court rulings on Prop 22.
+* **Fri (Session 39): Silicon Valley, Artificial Intelligence, and Frontier State Regulation**
+  * *Topic:* Consumer privacy (CCPA/CPRA), algorithmic transparency, AI frontier model safety (the SB 1047 debate), and venture capital lobbying.
+  * *Readings:* Selected legislative analyses on SB 1047; **Stone**, Chapter 10 ("Decisions & Persuasion").
+  * *Discussion:* Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?
+
+---
+
+### Week 14: Social Welfare, Entitlements, and Higher Education
+* **Mon (Session 40): Entitlements and Public Health: Medi-Cal & CalRx**
+  * *Topic:* Medicaid expansion to all income-eligible residents regardless of immigration status; state-manufactured insulin (CalRx); the single-payer dilemma (SB 770 / CalCare).
+  * *Readings:* **OSU OER**, Chapter 12 ("Entitlements"); Healthy California for All Commission Report (Key Findings).
+* **Wed (Session 41): The California Master Plan for Higher Education**
+  * *Topic:* Clark Kerr’s tripartite model (UC, CSU, Community Colleges), student housing shortages, and CEQA enrollment limits (*UC Berkeley student housing battle*).
+  * *Readings:* John Aubrey Douglass, *The California Idea and Higher Education* (Excerpts); Selected coverage of *Save Berkeley’s Neighborhoods v. UC Regents*.
+* **Fri (Session 42): K-12 Education, Prop 98, and the Local Control Funding Formula (LCFF)**
+  * *Topic:* School finance equity, CTA union power, post-pandemic learning loss, and facilities bonds.
+  * *Readings:* **OSU OER**, Chapter 12 (cont.); **Stone**, Chapter 4 ("Welfare"); LAO, *An Overview of the Local Control Funding Formula*.
+  * *Discussion:* In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?
+
+---
+
+```
+========================================================================================
+PART IV: CRIMINAL JUSTICE, REFORMING THE MACHINE, & CAPSTONE (Weeks 15–16)
+========================================================================================
+```
+
+### Week 15: Criminal Justice, Public Safety, and Incarceration Politics
+* **Mon (Session 43): Traditional and Visible Services: Mass Incarceration to Realignment**
+  * *Topic:* 1990s "Three Strikes," prison overcrowding, *Brown v. Plata*, AB 109 realignment, and Proposition 47.
+  * *Readings:* **OSU OER**, Chapter 13 ("Traditional and Visible Services"); Ruth Wilson Gilmore, *Golden Gulag* (Excerpts).
+* **Wed (Session 44): The Public Safety Backlash — Proposition 36 and the Polis**
+  * *Topic:* Retail theft panics, fentanyl overdoses, progressive prosecutors vs. police associations, and the 2024 ballot measure to overhaul Prop 47.
+  * *Readings:* PPIC, *Crime Trends in California*; **Stone**, Chapter 5 ("Security"); Prop 36 voter guide arguments.
+* **Fri (Session 45): The Polycrisis of Crime, Drugs, and Social Disinvestment**
+  * *Topic:* Integrating public health, addiction, housing insecurity, and carceral enforcement.
+  * *Readings:* **Stone**, Chapter 8 ("Causes") & Chapter 12 ("Decisions"); Selected academic criminological analyses.
+  * *Discussion:* How do political symbols and numbers construct competing narratives of "law and order" versus "systemic reform" in California?
+
+---
+
+### Week 16: Rebuilding State Capacity & Capstone Simulation
+* **Mon (Session 46): Reimagining the Golden State — Institutional Reforms**
+  * *Topic:* Reforming the initiative process, calling a state constitutional convention, expanding legislative seats, CEQA statutory overhaul, and regional governance.
+  * *Readings:* Ezra Klein, "How California Can Save Itself" (2024); California Forward, *A Roadmap for Governance Reform*.
+* **Wed (Session 47): Capstone Simulation (Part I) — Assembly Committee on California’s Future**
+  * *Format:* Student teams roleplay lawmakers, executive officials, interest groups, and analysts debating amendments to the mock "California Abundance & Resilience Act."
+* **Fri (Session 48): Capstone Simulation (Part II) & Course Synthesis**
+  * *Format:* Committee markups, roll call votes, and final course debrief: *Can California Deliver Abundance in an Age of Polycrisis?*
+  * *Note:* **Final Policy White Paper Due Friday at 11:59 PM.**
+
+---
+
+## VI. Mapping of the OSU OER Textbook (All 13 Chapters)
+
+| OSU OER Chapter Title | Course Week | Application in California Governance |
+| :--- | :--- | :--- |
+| **Chapter 1: Introduction and Themes** | Week 2 | Sustainability, state capacity, and California exceptionalism. |
+| **Chapter 2: Federalism** | Week 2 | Intergovernmental conflicts, Clean Air Act waivers, sanctuary laws. |
+| **Chapter 3: The New Margins** | Week 13 | Wealth inequality, demographic shifts, coastal vs. Inland divide. |
+| **Chapter 4: Small and Rural Local Government Environmental Sustainability...** | Week 6 | Regional sustainability planning, rural vs. urban capacity. |
+| **Chapter 5: Key Actors and the Policy Process in State and Local Governments** | Week 4 | Sacramento lobbying, interest group coalitions, public sector unions. |
+| **Chapter 6: State Constitutions** | Week 3 | The 1879 CA Constitution, direct democracy (Initiative, Referendum, Recall). |
+| **Chapter 7: Legislatures** | Week 4 | Professionalization, term limits, caucuses, and supermajorities. |
+| **Chapter 8: Executives** | Week 5 | Formal/informal gubernatorial powers, the Plural Executive. |
+| **Chapter 9: Courts** | Week 8 | The CA Supreme Court, judicial elections, and environmental litigation. |
+| **Chapter 10: State and Local Bureaucracy and Administration** | Week 5 | Administrative burdens, civil service, and "everything-bagel liberalism." |
+| **Chapter 11: Budgeting and Sustainability** | Week 7 | Fiscal volatility, Prop 13, Gann Limit, and surplus/deficit swings. |
+| **Chapter 12: Entitlements** | Week 14 | Medi-Cal universal expansion, LCFF school finance, social safety net. |
+| **Chapter 13: Traditional and Visible Services** | Weeks 10, 11, 12, 15 | Clean grid (W10), water plumbing (W11), High-Speed Rail (W12), criminal justice (W15). |

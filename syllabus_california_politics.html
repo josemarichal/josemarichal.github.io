@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POLS California Politics Syllabus | Jose Marichal</title>
+    <title>California Politics & Public Policy Syllabus | Jose Marichal</title>
     <link rel="stylesheet" href="style.css?v=3">
     
     <style>
@@ -13,107 +13,200 @@
             text-align: center;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
         }
 
         .syllabus-header h1 {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: var(--primary-color, #1e293b);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .syllabus-header .course-subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--secondary-color, #0284c7);
             margin-bottom: 0.5rem;
         }
 
         .syllabus-header .course-meta {
             font-family: 'Inter', sans-serif;
-            color: var(--secondary-color);
-            font-size: 1.1rem;
+            color: var(--text-muted, #64748b);
+            font-size: 1.05rem;
         }
 
-        .syllabus-unit {
-            margin-bottom: 3rem;
+        .framework-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
-        .syllabus-unit h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .syllabus-week {
-            margin-bottom: 2rem;
-            padding-left: 1.5rem;
-        }
-
-        .week-header {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            margin-top: 2rem;
-        }
-
-        .day-entry {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .day-entry .date {
-            font-weight: 700;
-            color: var(--accent-color);
-            display: inline-block;
-            width: 80px;
-        }
-
-        .day-entry .topic {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-color);
-        }
-
-        .readings-list {
-            list-style: none;
-            padding-left: 80px;
-            margin-top: 0.5rem;
-        }
-
-        .readings-list li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .readings-list a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--secondary-color);
-            transition: color 0.2s ease;
-        }
-
-        .readings-list a:hover {
-            color: var(--accent-color);
-            border-bottom-style: solid;
+        .framework-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
         }
 
         @media (max-width: 768px) {
-            .readings-list {
-                padding-left: 0;
-            }
-
-            .day-entry .date {
-                display: block;
-                margin-bottom: 0.25rem;
-                width: auto;
+            .framework-grid {
+                grid-template-columns: 1fr;
             }
         }
 
+        .framework-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            border-left: 4px solid var(--secondary-color, #0284c7);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .framework-card.abundance {
+            border-left-color: #10b981;
+        }
+
+        .framework-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            color: #0f172a;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3.5rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.85rem;
+            color: var(--primary-color, #1e293b);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color, #f59e0b);
+        }
+
         .syllabus-unit h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 1.4rem;
+            color: var(--primary-color, #1e293b);
             margin-top: 2rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
             padding-bottom: 0.5rem;
+        }
+
+        .part-divider {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 2.5rem 0 1.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .week-container {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .week-container:hover {
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.08);
+        }
+
+        .week-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color, #1e293b);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .day-entry {
+            margin-bottom: 1.25rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .day-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .day-entry .day-tag {
+            font-weight: 700;
+            color: var(--secondary-color, #0284c7);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .day-entry .session-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1e293b;
+            margin-left: 0.25rem;
+        }
+
+        .day-entry .details {
+            margin-top: 0.4rem;
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .readings-list {
+            margin: 0.4rem 0 0 1.25rem;
+            padding: 0;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.35rem;
+            font-size: 0.92rem;
+            color: #334155;
+        }
+
+        .question-box {
+            background: #fffbeb;
+            border-left: 3px solid #f59e0b;
+            padding: 0.5rem 0.75rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #92400e;
+            border-radius: 0 4px 4px 0;
+        }
+
+        table.syllabus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        table.syllabus-table th, table.syllabus-table td {
+            padding: 0.85rem 1rem;
+            border: 1px solid #cbd5e1;
+            text-align: left;
+        }
+
+        table.syllabus-table th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        table.syllabus-table tr:nth-child(even) {
+            background-color: #f8fafc;
         }
     </style>
 </head>
@@ -127,7 +220,7 @@
             <nav>
                 <ul>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="teaching.html" class="active">Teaching</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="media.html">Media</a></li>
                     <li><a href="invited_talks.html">Invited Talks</a></li>
@@ -143,549 +236,538 @@
             <div class="content-page">
 
                 <div class="syllabus-header">
-                    <h1>California Politics</h1>
+                    <h1>California Politics and Public Policy</h1>
+                    <div class="course-subtitle">Governing in the Age of Polycrisis and Abundance</div>
                     <div class="course-meta">
-                        <p>Fall 2026</p>
+                        <p><strong>POSC / POLI 3XX</strong> • 16-Week Semester • Monday / Wednesday / Friday</p>
+                        <p><strong>Instructor:</strong> Jose Marichal, Ph.D. • Department of Political Science • California Lutheran University</p>
+                        <p><strong>Office:</strong> Swenson 228 • <strong>Email:</strong> <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a></p>
                     </div>
                 </div>
 
-                <!-- Instructor Info -->
+                <!-- Theoretical Framework -->
                 <section class="syllabus-unit">
-                    <h2>Instructor information</h2>
-                    <p><strong>Jose Marichal, Ph.D.</strong><br>
-                        California Lutheran University<br>
-                        Department of Political Science<br>
-                        E-mail: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a><br>
-                        Office: Swenson 228</p>
+                    <h2>Course Overview & Theoretical Framing</h2>
+                    <p>Why is California—the world’s fifth-largest economy and the undisputed vanguard of progressive policy—so frequently paralyzed by the very crises it seeks to solve? How can a state with supermajorities committed to climate action, racial equity, and public investment struggle so acutely to build affordable housing, construct clean transit, prevent catastrophic megafires, resolve structural water deficits, and manage extreme inequality?</p>
+                    
+                    <p>This course examines California government and public policy through the dynamic analytical tension between two foundational contemporary frameworks:</p>
+
+                    <div class="framework-box">
+                        <h3 style="margin-top:0; border:none; padding-bottom:0; text-align:center;">The Core Analytical Tension</h3>
+                        <div class="framework-grid">
+                            <div class="framework-card">
+                                <h4>🌊 The Polycrisis Thesis (Adam Tooze)</h4>
+                                <p style="font-size:0.92rem; color:#475569; margin:0;">Shocks across climate, housing, public health, energy, and municipal finance are no longer isolated events; they are deeply entangled, compounding, and mutually reinforcing. The whole is more volatile and dangerous than the sum of its parts.</p>
+                            </div>
+                            <div class="framework-card abundance">
+                                <h4>🏗️ The Abundance Agenda (Ezra Klein & Derek Thompson)</h4>
+                                <p style="font-size:0.92rem; color:#475569; margin:0;">Progressive governance suffers from an institutional "vetocracy" and "everything-bagel liberalism"—where procedural hurdles, environmental review litigation (CEQA), local zoning vetoes, and fragmented bureaucracy manufacture artificial scarcity.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>To evaluate these competing diagnostics, we anchor our policy debates in <strong>Deborah Stone’s <em>Policy Paradox</em></strong>—contrasting the rationalist <strong>Market Model</strong> (efficiency, self-interest, market clearing) with the <strong>Polis Model</strong> (community, public interest, shared loyalty, symbolic power)—while mastering the structural mechanics of state and local institutions using the Open Oregon Educational Resource textbook by <strong>Simon, Steel, Lovrich, et al.</strong></p>
                 </section>
 
-                <!-- Course Description -->
+                <!-- Required Texts -->
                 <section class="syllabus-unit">
-                    <h2>COURSE GOALS</h2>
-                    <p>States and localities in the United States are often referred to as “laboratories of democracy.”
-                        This is because of the great latitude that the U.S. Constitution gives to the American states to
-                        develop solutions to their problems (education, health care, crime, the environment, growth and
-                        sprawl, etc.). This freedom brings both opportunities and challenges (after all, laboratory
-                        experiments often fail!) For citizens, it provides real opportunities to affect change through
-                        citizen activism and social advocacy. The American federalist structure gives citizens the
-                        opportunity to have an impact on important policy issues.</p>
-                    <p>No state provides more opportunities for citizen change than California. With its diverse
-                        population, unique history, and unusually populist governing process, California is a land of
-                        both promise and challenges. The promise of California is its incredible dynamism and energy.
-                        The state often sets the trends in policy innovation and structural reforms. The challenge is in
-                        getting the members of this multi-ethnic, multi-cultural state to work together to solve
-                        collective problems.</p>
-                    <p>This course will look at the politics of states and localities using California as a reference
-                        point. The course has two main objectives. First is to understand the basics of California state
-                        and local government with particular emphasis on how political culture and institutions impact
-                        policy outcomes. The second is to study different approaches to citizen activism and social
-                        advocacy through formulating and conducting an activist campaign around a social issue.</p>
-
-                    <h3>This course will address the following CLU General Education Goals:</h3>
-                    <ul>
-                        <li>Written and Oral Communication Skills</li>
-                        <li>Understanding of Cultural and Global Diversity</li>
-                        <li>Critical Thinking</li>
-                        <li>Service to the Community</li>
+                    <h2>Required Texts & Resources</h2>
+                    <ul style="padding-left: 1.5rem; list-style-type: disc;">
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>State & Local Government Nuts and Bolts (Free OER):</strong><br>
+                            Simon, Christopher A., Brent S. Steel, Nicholas P. Lovrich, Erika Allen Wolters, Tamara Krawchenko, and Sadaf Farooq. <em>State and Local Government and Politics: An Open Oregon Educational Resource</em> (3rd Edition). Oregon State University.
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Policy Theory & The Polis:</strong><br>
+                            Stone, Deborah. <em>Policy Paradox: The Art of Political Decision Making</em> (W. W. Norton & Co.).
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Polycrisis & Abundance Corpus (Provided via LMS / Digital Links):</strong>
+                            <ul>
+                                <li>Adam Tooze, "Welcome to the world of the polycrisis" (<em>Financial Times</em>, 2022) and selected <em>Chartbook</em> essays.</li>
+                                <li>Ezra Klein & Derek Thompson, Selected writings on <em>The Abundance Agenda</em>, <em>Supply-Side Progressivism</em>, and <em>Vetocracy</em> (<em>The Atlantic</em>, <em>The New York Times</em>).</li>
+                                <li>Reports from the Public Policy Institute of California (PPIC), Legislative Analyst's Office (LAO), and major California Supreme Court decisions.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="california_policy_dashboard.html" target="_blank" style="color: var(--secondary-color); font-weight: 600;">California Policy Dashboard</a> & 
+                            <a href="california_advocacy_resources.html" target="_blank" style="color: var(--secondary-color); font-weight: 600;">California Advocacy Resources</a>.
+                        </li>
                     </ul>
+                </section>
 
-                    <h3>This course will address the following Political Science Department Goals:</h3>
-                    <ul>
-                        <li>Critical Thinking</li>
-                        <li>Civic Engagement</li>
-                    </ul>
+                <!-- Assignments & Grading -->
+                <section class="syllabus-unit">
+                    <h2>Course Grading & Major Assignments</h2>
+                    <table class="syllabus-table">
+                        <thead>
+                            <tr>
+                                <th>Assignment</th>
+                                <th>Weight</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Seminar Participation & Daily Debates</strong></td>
+                                <td>15%</td>
+                                <td>Active, informed contributions in seminar discussions, simulations, and breakout analysis.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weekly Analytical Reading Memos (10 × 2%)</strong></td>
+                                <td>20%</td>
+                                <td>400–500 word synthesis memos connecting OSU OER chapters to Stone, Tooze, or Klein/Thompson.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Midterm Examination</strong></td>
+                                <td>20%</td>
+                                <td>Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>The "Vetocracy vs. Abundance" Policy Audit</strong></td>
+                                <td>20%</td>
+                                <td>2,000-word empirical investigation into a stalled or completed California project (Due Week 8).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Capstone Legislative Hearing & White Paper</strong></td>
+                                <td>25%</td>
+                                <td>Mock Joint Legislative Hearing roleplay (10%) + 2,500-word legislative policy white paper (15%) (Week 16).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
 
-                    <h3>In this course, students are expected to:</h3>
-                    <ul>
-                        <li>employ different theoretical approaches towards understanding California Politics.</li>
-                        <li>exhibit critical thinking and effective writing skills by incorporating course readings into
-                            reflective essay assignments</li>
-                        <li>demonstrate the ability to work with other students in groups to present information.</li>
-                        <li>show an ability to find, evaluate, use and communicate information in both oral and written
-                            formats.</li>
-                    </ul>
+                <!-- 16-Week Schedule -->
+                <section class="syllabus-unit">
+                    <h2>16-Week Detailed Schedule (Monday / Wednesday / Friday)</h2>
+
+                    <div class="part-divider">PART I: THEORETICAL FOUNDATIONS & INSTITUTIONAL ARCHITECTURE (Weeks 1–5)</div>
+
+                    <!-- Week 1 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 1: The California Paradox — Polycrisis Meets the Scarcity Trap</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 1):</span> <span class="session-title">Course Introduction — The Golden State as Crucible</span>
+                            <div class="details">Syllabus overview; California Department of Finance Economic Overview.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 2):</span> <span class="session-title">Theorizing the Polycrisis</span>
+                            <div class="details">
+                                <ul class="readings-list">
+                                    <li>Adam Tooze, "Welcome to the world of the polycrisis" (<em>Financial Times</em>, 2022)</li>
+                                    <li>Adam Tooze, "Chartbook: The Anatomy of the Polycrisis" (2022)</li>
+                                </ul>
+                                <div class="question-box"><strong>Discussion Prompt:</strong> How does the concept of a "polycrisis" differ from simply facing multiple separate problems simultaneously?</div>
+                            </div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 3):</span> <span class="session-title">The Abundance Agenda & State Capacity</span>
+                            <div class="details">
+                                <ul class="readings-list">
+                                    <li>Derek Thompson, "A Simple Plan to Solve All of America’s Problems: The Abundance Agenda" (<em>The Atlantic</em>, 2022)</li>
+                                    <li>Ezra Klein, "What the Left Gets Wrong About Power" (<em>The New York Times</em>, 2022)</li>
+                                </ul>
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 2 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 2: Frameworks of Public Choice — Market, Polis, and Federalism</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 4):</span> <span class="session-title">Deborah Stone’s Policy Paradox — Market vs. Polis</span>
+                            <div class="details"><strong>Stone</strong>, Chapter 1 ("The Market and the Polis").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 5):</span> <span class="session-title">Goals of the Polis — Equity vs. Efficiency</span>
+                            <div class="details"><strong>Stone</strong>, Chapter 2 ("Equity") & Chapter 3 ("Efficiency").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 6):</span> <span class="session-title">Federalism, Preemption, and California Exceptionalism</span>
+                            <div class="details">
+                                <strong>OSU OER</strong>, Chapter 1 ("Introduction and Themes") & Chapter 2 ("Federalism").
+                                <div class="question-box"><strong>Discussion Prompt:</strong> How does federalism allow California to pioneer national climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 3: The Rules of the Game — State Constitutions & Direct Democracy</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 7):</span> <span class="session-title">Constitutional Foundations — The 1879 Constitution</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 6 ("State Constitutions"); Excerpts from California Constitution, Article I & IV.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 8):</span> <span class="session-title">Direct Democracy — The Progressive Weapon</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 9):</span> <span class="session-title">Direct Democracy in Practice — Proposition 13 and the Tax Revolt</span>
+                            <div class="details">
+                                Peter Schrag, <em>Paradise Lost</em> (Chapter 1: "The Tax Revolt"); <strong>Stone</strong>, Chapter 7 ("Numbers").
+                                <div class="question-box"><strong>Discussion Prompt:</strong> In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 4 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 4: The Legislative Branch & Sacramento’s Key Actors</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 10):</span> <span class="session-title">Key Actors in the Sacramento Ecosystem</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments"); <strong>Stone</strong>, Chapter 9 ("Interests").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 11):</span> <span class="session-title">The State Legislature — Professionalism & Polarization</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 7 ("Legislatures"); Thad Kousser, <em>Term Limits and the Dismantling of Legislative Power</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 12):</span> <span class="session-title">Caucuses, Coalitions, and Legislative Vetocracy</span>
+                            <div class="details">
+                                <strong>Stone</strong>, Chapter 6 ("Symbols") & Chapter 8 ("Causes").
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side housing or single-payer health legislation?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 5 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 5: The Executive Branch, Bureaucracy, and State Capacity</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 13):</span> <span class="session-title">The Governor and Executive Power</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 8 ("Executives"); Selected Executive Orders from Newsom and Brown.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 14):</span> <span class="session-title">The Plural Executive — Fragmented Authority</span>
+                            <div class="details">California Constitution, Article V; Case Study: Attorney General vs. Governor policy friction.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 15):</span> <span class="session-title">State Bureaucracy & "Everything-Bagel Liberalism"</span>
+                            <div class="details">
+                                <strong>OSU OER</strong>, Chapter 10 ("State and Local Bureaucracy and Administration"); Ezra Klein, "The Problem with Everything-Bagel Liberalism" (<em>The New York Times</em>, 2023).
+                                <div class="question-box"><strong>Discussion Prompt:</strong> How does stacking multiple uncoordinated social mandates onto administrative agencies degrade their ability to build physical infrastructure?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="part-divider">PART II: LOCAL GOVERNANCE, FISCAL POLITICS, & JUDICIAL POWER (Weeks 6–8)</div>
+
+                    <!-- Week 6 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 6: Local Government, Sustainability Planning, & Land-Use Vetoes</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 16):</span> <span class="session-title">Municipal Governance — Counties, Charter Cities, and General Law</span>
+                            <div class="details">League of California Cities, <em>The Nature of Local Government</em>; <strong>Stone</strong>, Chapter 15 ("Powers").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 17):</span> <span class="session-title">Local Environmental & Sustainability Planning in the Region</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.).</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 18):</span> <span class="session-title">NIMBYism and Local Control as Manufactured Scarcity</span>
+                            <div class="details">
+                                Katherine Levine Einstein et al., <em>Neighborhood Defenders</em> (Chapters 1 & 3); Derek Thompson, "How California Blew It on Housing."
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Is local zoning control an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 7 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 7: Public Finance — Budgeting, Entitlements, & Fiscal Volatility</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 19):</span> <span class="session-title">State and Local Budgeting Systems</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 11 ("Budgeting and Sustainability"); Legislative Analyst’s Office (LAO), <em>California’s Tax System: A Primer</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 20):</span> <span class="session-title">The Fiscalization of Land Use & Prop 13 Distortions</span>
+                            <div class="details">Paul G. Lewis, <em>Shaping Suburbia</em> (Chapter 4); LAO, <em>Understanding California's Property Taxes</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 21):</span> <span class="session-title">Budgeting in an Era of Polycrisis</span>
+                            <div class="details">
+                                <strong>OSU OER</strong>, Chapter 11 (cont.); <strong>Stone</strong>, Chapter 11 ("Decisions"); LAO Budget Overview (Current Fiscal Year).
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Can a state execute multi-decade abundance infrastructure plans when its tax revenues experience wild boom-and-bust cycles?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 8 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 8: Courts, Legal Battles, and the CEQA Bottleneck</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 22):</span> <span class="session-title">The California Judiciary</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 9 ("Courts"); California Constitution, Article VI.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 23):</span> <span class="session-title">Deborah Stone on Solutions — Rules, Rights, and Powers</span>
+                            <div class="details"><strong>Stone</strong>, Chapter 13 ("Rules") & Chapter 14 ("Rights").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 24):</span> <span class="session-title">CEQA as a Weapon — The Judicialization of Environmental Review</span>
+                            <div class="details">
+                                Jennifer Hernandez, "California Environmental Quality Act Lawsuits and the Housing Crisis" (<em>Hastings Env. L.J.</em>); Chris Elmendorf, "When Public Agencies Block Public Policy."
+                                <div class="question-box"><strong>Discussion Prompt:</strong> How did a 1970 environmental protection statute evolve into the primary legal weapon used to block solar farms, bike lanes, and dense housing?</div>
+                                <p style="color:#b91c1c; font-weight:600; margin-top:0.5rem;">📌 Policy Audit Due Friday at 11:59 PM.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="part-divider">PART III: SECTORAL POLYCRISIS: HOUSING, WATER, ENERGY, TRANSIT, & HEALTH (Weeks 9–14)</div>
+
+                    <!-- Week 9 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 9: Housing & Homelessness — The Epicenter of Scarcity</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 25):</span> <span class="session-title">Diagnosing the 3.5 Million Home Deficit</span>
+                            <div class="details">Conor Dougherty, <em>Golden Gates: Fighting for Housing in More Expensive America</em> (Excerpts); PPIC, <em>California’s Housing Shortage</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 26):</span> <span class="session-title">Homelessness as an Intersecting Polycrisis</span>
+                            <div class="details">Margot Kushel et al., <em>UCSF Statewide Study of People Experiencing Homelessness in California</em> (Executive Summary); <strong>Stone</strong>, Chapter 4 ("Welfare & Security").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 27):</span> <span class="session-title">The YIMBY Counter-Offensive & State Preemption</span>
+                            <div class="details">
+                                Nolan Gray, <em>Arbitrary Lines</em> (Excerpts); Ezra Klein, "The Abundance Agenda in Sacramento."
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Does state preemption of local zoning violate democratic principles, or is it the only antidote to regional collective action failure?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 10 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 10: Climate, Megafires, and the Fragile Energy Grid</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 28):</span> <span class="session-title">The Ecological Polycrisis in California</span>
+                            <div class="details">Adam Tooze, "Chartbook: California Wildfire Risk as Financial Contagion"; California Dept. of Insurance Market Briefing.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 29):</span> <span class="session-title">Traditional & Visible Services: Clean Energy and Grid Reliability</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 13 ("Traditional and Visible Services"); Severin Borenstein, "The Economics of California’s Energy Transition."</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 30):</span> <span class="session-title">Clean Abundance vs. Conservationist Degrowth</span>
+                            <div class="details">
+                                Ezra Klein, "The Climate Movement Needs to Embrace Building" (<em>The New York Times</em>, 2022); <strong>Stone</strong>, Chapter 5 ("Liberty").
+                                <div class="question-box"><strong>Discussion Prompt:</strong> In the Polis, how do we navigate the conflict between protecting local desert ecosystems and building massive utility-scale clean power?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 11 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 11: Water Politics — Hydraulic Empires and Drought Realities</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 31):</span> <span class="session-title">Traditional & Visible Services: The Architecture of California Water</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 13 (cont.); Marc Reisner, <em>Cadillac Desert</em> (Excerpts).</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 32):</span> <span class="session-title">Water Rights, Senior Appropriators, and Ecosystem Collapse</span>
+                            <div class="details">Barton H. Thompson Jr., <em>Liquid Asset</em> (Chapter on California Water Law); <strong>Stone</strong>, Chapter 14 ("Rights & Powers").</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 33):</span> <span class="session-title">Engineering Water Abundance in a Polycrisis</span>
+                            <div class="details">
+                                PPIC, <em>Priorities for California’s Water</em>; CalMatters Water In-Depth Investigative Series.
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 12 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 12: Infrastructure, Transportation & High-Speed Rail</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 34):</span> <span class="session-title">Traditional and Visible Services: Highways vs. Transit</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 13 (cont.); Ethan Elkind, <em>Railtown: The Fight for the LA Metro Rail</em> (Excerpts).</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 35):</span> <span class="session-title">The High-Speed Rail Saga — A Case Study in Vetocracy</span>
+                            <div class="details">Ralph Vartabedian, "How California's High-Speed Rail Went Off the Rails" (<em>The New York Times</em>, 2022); CA High-Speed Rail Authority Business Plan Summary.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 36):</span> <span class="session-title">Transit Cost Disease and State Capacity</span>
+                            <div class="details">
+                                Alon Levy & Eric Goldwyn, <em>Transit Costs Project Findings</em>; Derek Thompson, "Why the U.S. Can’t Build Transit Anymore."
+                                <div class="question-box"><strong>Discussion Prompt:</strong> What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 13 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 13: Inequality, Labor, and "The New Margins"</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 37):</span> <span class="session-title">The New Margins — Demographic Divides and Spatial Inequality</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 3 ("The New Margins"); PPIC, <em>Income Inequality and the Middle Class in California</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 38):</span> <span class="session-title">Algorithmic Labor, AB 5, and Proposition 22</span>
+                            <div class="details">Veena Dubal, "The Drive to Precarity" (<em>Berkeley J. of Emp. & Labor Law</em>); Selected court rulings on Prop 22.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 39):</span> <span class="session-title">Silicon Valley, Artificial Intelligence, and Frontier State Regulation</span>
+                            <div class="details">
+                                Selected legislative analyses on SB 1047; <strong>Stone</strong>, Chapter 10 ("Decisions & Persuasion").
+                                <div class="question-box"><strong>Discussion Prompt:</strong> Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 14 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 14: Social Welfare, Entitlements, and Higher Education</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 40):</span> <span class="session-title">Entitlements and Public Health: Medi-Cal & CalRx</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 12 ("Entitlements"); Healthy California for All Commission Report (Key Findings).</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 41):</span> <span class="session-title">The California Master Plan for Higher Education</span>
+                            <div class="details">John Aubrey Douglass, <em>The California Idea and Higher Education</em> (Excerpts); Selected coverage of <em>Save Berkeley’s Neighborhoods v. UC Regents</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 42):</span> <span class="session-title">K-12 Education, Prop 98, and the Local Control Funding Formula</span>
+                            <div class="details">
+                                <strong>OSU OER</strong>, Chapter 12 (cont.); <strong>Stone</strong>, Chapter 4 ("Welfare"); LAO, <em>An Overview of the Local Control Funding Formula</em>.
+                                <div class="question-box"><strong>Discussion Prompt:</strong> In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="part-divider">PART IV: CRIMINAL JUSTICE, REFORMING THE MACHINE, & CAPSTONE (Weeks 15–16)</div>
+
+                    <!-- Week 15 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 15: Criminal Justice, Public Safety, and Incarceration Politics</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 43):</span> <span class="session-title">Traditional and Visible Services: Mass Incarceration to Realignment</span>
+                            <div class="details"><strong>OSU OER</strong>, Chapter 13 ("Traditional and Visible Services"); Ruth Wilson Gilmore, <em>Golden Gulag</em> (Excerpts).</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 44):</span> <span class="session-title">The Public Safety Backlash — Proposition 36 and the Polis</span>
+                            <div class="details">PPIC, <em>Crime Trends in California</em>; <strong>Stone</strong>, Chapter 5 ("Security"); Prop 36 voter guide arguments.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 45):</span> <span class="session-title">The Polycrisis of Crime, Drugs, and Social Disinvestment</span>
+                            <div class="details">
+                                <strong>Stone</strong>, Chapter 8 ("Causes") & Chapter 12 ("Decisions"); Selected academic criminological analyses.
+                                <div class="question-box"><strong>Discussion Prompt:</strong> How do political symbols and numbers construct competing narratives of "law and order" versus "systemic reform" in California?</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 16 -->
+                    <div class="week-container">
+                        <div class="week-title">Week 16: Rebuilding State Capacity & Capstone Simulation</div>
+                        <div class="day-entry">
+                            <span class="day-tag">Mon (Session 46):</span> <span class="session-title">Reimagining the Golden State — Institutional Reforms</span>
+                            <div class="details">Ezra Klein, "How California Can Save Itself" (2024); California Forward, <em>A Roadmap for Governance Reform</em>.</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Wed (Session 47):</span> <span class="session-title">Capstone Simulation (Part I) — Assembly Committee on California’s Future</span>
+                            <div class="details">Student teams roleplay lawmakers, executive officials, interest groups, and analysts debating amendments to the mock "California Abundance & Resilience Act."</div>
+                        </div>
+                        <div class="day-entry">
+                            <span class="day-tag">Fri (Session 48):</span> <span class="session-title">Capstone Simulation (Part II) & Course Synthesis</span>
+                            <div class="details">
+                                Committee markups, roll call votes, and final course debrief: <em>Can California Deliver Abundance in an Age of Polycrisis?</em>
+                                <p style="color:#b91c1c; font-weight:600; margin-top:0.5rem;">📌 Final Policy White Paper Due Friday at 11:59 PM.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mapping Table -->
+                <section class="syllabus-unit">
+                    <h2>Textbook Alignment Matrix (OSU OER 3rd Edition)</h2>
+                    <table class="syllabus-table">
+                        <thead>
+                            <tr>
+                                <th>OSU OER Chapter Title</th>
+                                <th>Course Week</th>
+                                <th>Substantive Focus in California Context</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Chapter 1: Introduction and Themes</strong></td>
+                                <td>Week 2</td>
+                                <td>Sustainability, state capacity, and California exceptionalism.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 2: Federalism</strong></td>
+                                <td>Week 2</td>
+                                <td>Intergovernmental conflicts, Clean Air Act waivers, sanctuary laws.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 3: The New Margins</strong></td>
+                                <td>Week 13</td>
+                                <td>Wealth inequality, demographic shifts, coastal vs. Inland divide.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 4: Small & Rural Local Govt Sustainability...</strong></td>
+                                <td>Week 6</td>
+                                <td>Regional sustainability planning, rural vs. urban capacity.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 5: Key Actors & the Policy Process...</strong></td>
+                                <td>Week 4</td>
+                                <td>Sacramento lobbying, interest group coalitions, public sector unions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 6: State Constitutions</strong></td>
+                                <td>Week 3</td>
+                                <td>The 1879 CA Constitution, direct democracy (Initiative, Referendum, Recall).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 7: Legislatures</strong></td>
+                                <td>Week 4</td>
+                                <td>Professionalization, term limits, caucuses, and supermajorities.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 8: Executives</strong></td>
+                                <td>Week 5</td>
+                                <td>Formal/informal gubernatorial powers, the Plural Executive.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 9: Courts</strong></td>
+                                <td>Week 8</td>
+                                <td>The CA Supreme Court, judicial elections, and environmental litigation.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 10: State & Local Bureaucracy & Admin</strong></td>
+                                <td>Week 5</td>
+                                <td>Administrative burdens, civil service, and "everything-bagel liberalism."</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 11: Budgeting and Sustainability</strong></td>
+                                <td>Week 7</td>
+                                <td>Fiscal volatility, Prop 13, Gann Limit, and surplus/deficit swings.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 12: Entitlements</strong></td>
+                                <td>Week 14</td>
+                                <td>Medi-Cal universal expansion, LCFF school finance, social safety net.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chapter 13: Traditional and Visible Services</strong></td>
+                                <td>Weeks 10, 11, 12, 15</td>
+                                <td>Clean grid (W10), water plumbing (W11), High-Speed Rail (W12), criminal justice (W15).</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
 
                 <!-- Policies -->
                 <section class="syllabus-unit">
-                    <h2>CLASS REQUIREMENTS</h2>
-                    <p><em>Any aspect of this syllabus can be changed by the instructor at his discretion.</em></p>
-
-                    <p><strong>Readings</strong> for the day need to be completed prior to class times, as class
-                        activities, discussions, and quizzes will primarily draw upon assigned readings.</p>
-
-                    <p><strong>Classroom Environment:</strong> Talking, working, and thinking with others are large
-                        parts of this class. We will get into discussions about some controversial subjects. I encourage
-                        expressions of opinions (myself included), but there are some classroom boundaries. Our class
-                        will be a safe place. That is to say, we will all treat each other in a respectful manner.
-                        Translation: rude interruptions, hurtful insults (including racial, gender, sexuality, etc.
-                        slurs), and personal attacks will not be tolerated. You may not always be comfortable with the
-                        topics, and by no means are you expected to approve of everything we discuss.</p>
-
-                    <p><strong>Accommodations:</strong> California Lutheran University is committed to providing
-                        reasonable accommodations to students with various documented disabilities (physical, learning,
-                        or psychological). If you are a student requesting accommodations for this course, please
-                        contact your professor at the beginning of the semester and register with the Coordinator for
-                        Students with Disabilities (Pearson Library, Center for Academic Resources, Ext. 3260) for the
-                        facilitation and verification of need. Faculty will work closely together with you and your
-                        coordinator to provide necessary accommodations.</p>
-
-                    <p><strong>Technology:</strong> There is no ban on technology in the classroom, but I as the
-                        instruction reserve the right to alter the policy if I feel the classroom dynamic is being
-                        negatively impacted by the inappropriate use of technology. Technology in the classroom should
-                        be used to supplement your learning, not to detract from it. If you are found repeatedly using
-                        technology in ways that harm the class dynamic, your devices will be banned from the course.</p>
-
-                    <p><strong>Academic Honesty:</strong> Plagiarism, cheating and other forms of academic dishonesty
-                        will not be tolerated in this class. According to the CLU student handbook, plagiarism occurs
-                        “whenever a source of any kind has not been acknowledged.” With respect to my policy, let me be
-                        clear – you will receive and F in the course if you take material from the Internet and insert
-                        it into any written work as your own without giving credit to the person who wrote it. Those
-                        found violating the CLU code on academic dishonesty in any way will receive an F in the class.
-                    </p>
-
-                    <p><strong>Assignments:</strong> All quizzes, exams, activities, and papers must be turned in on
-                        time: no make-ups will be given, and no re-writes will be offered. If an assignment is of the
-                        take-home variety, it must be typed, double-spaced, with 1-inch margins all around,
-                        spell-checked, grammar-checked, and demonstrate correct citation and bibliographic format. Late
-                        take-home assignments will not be graded unless you have documentation of an emergency. Missed
-                        quizzes will be marked down as zeroes</p>
-
-                    <p><strong>Attendance:</strong> There is no mandatory attendance policy in this course. However,
-                        your presence in the classroom is particularly essential for creating a productive learning
-                        culture. This is especially true on days where your fellow students are leading discussions or
-                        giving presentations. As such, I will factor attendance on “debate fridays” in consideration of
-                        extra credit. Regular attendance (no more than three friday absences) will enable you to earn up
-                        to three extra credit points. If a student has more than three friday absences, they will not be
-                        eligible for extra credit.</p>
-
-                    <p><strong>Extra Credit:</strong> Students in this course are eligible to earn up to three points of
-                        extra credit by attending campus events that are relevant to the subject we are studying and
-                        writing a one page reflection paper.</p>
+                    <h2>Course Policies & Expectations</h2>
+                    <p><strong>Classroom Environment:</strong> Discussions in this course touch upon contested political values, economic distributions, and identity. We will maintain an intellectually rigorous, respectful environment where students can critique policy arguments, assumptions, and institutional outcomes constructively.</p>
+                    <p><strong>Accommodations:</strong> California Lutheran University is committed to providing reasonable accommodations to students with documented disabilities. Contact the Center for Academic Resources at the start of the semester to coordinate accommodations.</p>
+                    <p><strong>Academic Integrity:</strong> Plagiarism and uncredited AI generation of written submissions will result in an F on the assignment and referral to the academic conduct board. All academic arguments must cite evidence and original sources accurately.</p>
                 </section>
-
-                <!-- Assignments -->
-                <section class="syllabus-unit">
-                    <h2>COURSE ASSIGNMENTS</h2>
-                    <p>Your grade will come from the following assignments. Note: Past assignments like the final project, debates, and service portfolio have been consolidated into a single, comprehensive, semester-long civic engineering project using our Civic AI framework.</p>
-
-                    <h3>Community Participation (20 points)</h3>
-                    <p>Part of your grade will come from your level of engagement with the readings. I will ask you to post a one-paragraph critical response to the readings/films on Monday and Wednesday during the semester.</p>
-
-                    <h3>Take Home Exam (20 points)</h3>
-                    <p>We will complete our consideration of California Political dynamics with one take home exam in which you will be asked to apply the theories and concepts learned to current issues related to California Politics. The essay exam will be worth 20 points.</p>
-
-                    <h3>Civic AI App Development Project: The Civic AI Framework (60 points)</h3>
-                    <p>Throughout the semester, you will act as a civic innovator, using Agentic AI tools (like NotebookLM, Google Deep Research, and Antigravity) to build a functional application that addresses a critical issue in California politics (e.g., housing, water scarcity, structural inequality). No software engineering experience is required; you will act as the "Research Director" guiding the AI to develop the tool. The project is broken down into five phases over the semester:</p>
-                    <ul>
-                        <li><strong>Phase 1: Problem Formulation & The "NotebookLM Sandbox" (10 points):</strong> Gather primary documents (e.g., city council minutes, state legislation) on your issue. Upload them to NotebookLM to isolate the human problems in the policy without hallucination. Submit a problem-framing memo.</li>
-                        <li><strong>Phase 2: Defining the Target with Google Deep Research (10 points):</strong> Scour the web for existing quantitative benchmarks and datasets related to your issue. Synthesize the current state of the public problem to create a scoring rubric for your app.</li>
-                        <li><strong>Phase 3: Rapid Prototyping with Antigravity (15 points):</strong> Prompt an agentic coding assistant to build an interactive web app, data dashboard, or policy simulator. Iterate in real-time until you have a functional prototype.</li>
-                        <li><strong>Phase 4: Stress-Testing & Auditing for Rigor (10 points):</strong> Use Gemini 1.5 Pro to "red-team" your app by creating AI simulations that test whether your proposed policy or tool can withstand scrutiny from diverse and competing stakeholders. The goal is to ensure your app complicates the narrative fairly instead of blindly optimizing for any single viewpoint.</li>
-                        <li><strong>Phase 5: Deploying Living, Forkable Civic Infrastructure (15 points):</strong> Publish your project to GitHub or as a public Gemini Gem. You will present your working tool to the class at the end of the semester to demonstrate how it actively engages communities in your chosen California policy issue.</li>
-                    </ul>
-
-                    <h3>Assignments Summary</h3>
-                    <ul>
-                        <li>Community Participation = 20 points</li>
-                        <li>Take Home Exam = 20 points</li>
-                        <li>Civic AI App Development Project = 60 points</li>
-                        <li><strong>Total = 100 points</strong></li>
-                    </ul>
-                </section>
-
-                <!-- Materials -->
-                <section class="syllabus-unit">
-                    <h2>REQUIRED TEXTS & RESOURCES</h2>
-                    <p>All Readings On-Line</p>
-                    <ul style="margin-top: 1rem; padding-left: 1.5rem; list-style-type: disc;">
-                        <li style="margin-bottom: 0.5rem;"><span style="font-weight: 600;">Stone, Deborah.</span> <em>Policy Paradox: The Art of Political Decision Making</em> (W.W. Norton & Company)</li>
-                        <li style="margin-bottom: 0.5rem;"><a href="california_policy_dashboard.html" target="_blank" style="color: var(--secondary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--secondary-color);">California Policy Dashboard</a>: A curated collection of policy reports, think tanks, and recent updates across major California policy areas.</li>
-                        <li style="margin-bottom: 0.5rem;"><a href="california_advocacy_resources.html" target="_blank" style="color: var(--secondary-color); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--secondary-color);">California Advocacy Resources</a>: A comprehensive guide to organizing, strategy, tactics, and legal frameworks for social advocacy.</li>
-                    </ul>
-                </section>
-
-                <!-- Schedule -->
-                <section class="syllabus-unit">
-<h2>LIST OF READINGS & IMPORTANT DATES</h2>
-
-<h3><strong>Unit 1: Opening Debate — Abundance vs. Decay</strong></h3>
-
-<div class="day-entry">
-    <span class="date">8-24</span>
-    <ul class="readings-list">
-        <li>Deborah Stone, *Policy Paradox*, Introduction and Ch. 1 ("Markets and Polis")</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">8-26</span>
-    <ul class="readings-list">
-        <li>Ezra Klein and Derek Thompson, *Abundance* — assign the high-speed rail case study directly (their *Ezra Klein Show*/*Plain English* episodes on California are free and cover the same argument if you want an audio option alongside or instead of the book)</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">8-28</span>
-    <ul class="readings-list">
-        <li>Current reporting on the High-Speed Rail Authority's 2026 business plan: cost estimates have moved from the original $33B (2008) to roughly $126B–$231B depending on the source and month, no track has been laid on the initial operating segment after nearly two decades, and the Federal Railroad Administration terminated about $4 billion in federal grants in July 2025 after a compliance review. Assign a mix of a sympathetic-to-critical outlet (Railway News, or California Policy Center's "Crossroads" piece) and at least one straightforwardly hostile piece (the project is now heavily covered by conservative and business media as exhibit A for "blue state waste") so students see the same project doing symbolic work in opposite directions</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">8-31</span>
-    <ul class="readings-list">
-        <li>A matched pair for the "decay" side of the myth — a "California doom loop"/exodus op-ed or segment from 2025-26 alongside a rebuttal (Lincoln Mitchell's "The New National Narrative About San Francisco" is a clean one, on how the doom-loop story outlived the data behind it)</li>
-        <li>The UC Berkeley California Policy Lab's 2026 study finding the state had a real net population loss in 2025 — driven specifically by cost of living, not politics per se — paired against PPIC's current statewide survey on Californians' own view of the state's direction</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Mon, Aug 31</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Faculty signature required to add a class</span>
-</div>
-
-<h3><strong>Unit 2: Political Culture and the Demographics of Contest</strong></h3>
-
-<div class="day-entry">
-    <span class="date">9-2</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 6 ("Symbols") and Ch. 7 ("Numbers")</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-4</span>
-    <ul class="readings-list">
-        <li>PPIC, *Just the Facts: California's Population* (current edition)</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Sun, Sep 6</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Last Day to Add a Class for Fall Semester<br>Last Day to Drop a Class for Fall Semester Without a Grade of 'W'</span>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Mon, Sep 7</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Labor Day Holiday (No Class)</span>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-9</span>
-    <ul class="readings-list">
-        <li>Retain the Pinker/Skelton/Cohn "red state-blue state" pieces as a 2012 baseline, but pair with a current piece on the state's actual partisan geography post-Prop 50 (below) — the interior/coastal divide is sharper now, not softer</li>
-        <li>A current piece on California's status as a "minority-majority" state entering its third decade, and how that fact is deployed rhetorically by both parties</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 3: Fiscal Politics — From "Crisis" to "Volatility"</strong></h3>
-
-<div class="day-entry">
-    <span class="date">9-11</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 8 ("Causes") — useful for interrogating "structural deficit" as a causal claim</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-14</span>
-    <ul class="readings-list">
-        <li>LAO (Legislative Analyst's Office), current *Fiscal Outlook* report</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-16</span>
-    <ul class="readings-list">
-        <li>California Budget & Policy Center, current *Budget 101* / *Dollars and Democracy* materials</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-18</span>
-    <ul class="readings-list">
-        <li>A retrospective piece on the state's Rainy Day Fund (Prop 2, 2014) and how it performed during the 2023-24 deficit and subsequent recovery</li>
-        <li>Keep Citrin (2009) on Prop 13 as the historical anchor — that argument hasn't dated — but add a current piece on the 2020s "split roll" fights and Prop 13's afterlife</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Sun, Sep 20</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Last Day to Add an Internship, Independent Study, Tutorial or Directed Research for Fall Semester</span>
-</div>
-
-<h3><strong>Unit 4: Federalism, Live — California v. Washington</strong></h3>
-
-<div class="day-entry">
-    <span class="date">9-21</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 5 ("Interests") and Ch. 10 ("Powers")</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-23</span>
-    <ul class="readings-list">
-        <li>Keep Yarbrough (1985) and Day (1985) as the durable Federalist/Anti-Federalist theoretical baseline</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-25</span>
-    <ul class="readings-list">
-        <li>Current reporting on California AG's litigation record against the federal government (dozens of suits across two Trump administrations) as the applied case</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">9-28</span>
-    <ul class="readings-list">
-        <li>The June 2025 Los Angeles immigration-enforcement crisis: National Guard and Marine deployment over the governor's objection, *Newsom v. Trump* — assign a timeline piece (ABC News or Al Jazeera's visual guide) alongside CalMatters' coverage of the sanctuary-law fight</li>
-        <li>This unit should explicitly ask: does "federalism" protect state autonomy, or is it just whichever level of government currently agrees with you?</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 5: Redistricting and Representation — The Commission Under Siege</strong></h3>
-
-<div class="day-entry">
-    <span class="date">9-30</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 9 ("Decisions") — decision rules as power struggles, not neutral procedure</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Thu, Oct 1</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Priority Deadline to File to Graduate for February, May and August Degree Conferral Dates</span>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-2</span>
-    <ul class="readings-list">
-        <li>LAO's official Prop 50 ballot analysis (clear, nonpartisan explainer of what changed and why)</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-5</span>
-    <ul class="readings-list">
-        <li>PPIC's analysis of how the Prop 50 maps affect racial and geographic representation</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-7</span>
-    <ul class="readings-list">
-        <li>Coverage of the Texas mid-decade redistricting that triggered this (any solid national outlet)</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Fri, Oct 9</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Fall Holiday (No Class)<br>Residence halls will remain open.</span>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-12</span>
-    <ul class="readings-list">
-        <li>NPR or SCOTUSblog coverage of the Supreme Court allowing California to use the new maps for 2026</li>
-        <li>Keep Wang (2013), "The Great Gerrymander of 2012," as historical grounding — it's still one of the clearest explanations of *how* gerrymandering works technically</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 6: Direct Democracy, Updated</strong></h3>
-
-<div class="day-entry">
-    <span class="date">10-14</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 11 ("Rights") pairs well here</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-16</span>
-    <ul class="readings-list">
-        <li>Keep Fishkin (2011) as the theoretical anchor on deliberative alternatives</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-19</span>
-    <ul class="readings-list">
-        <li>Swap the specific ballot-measure case studies for the post-2012 record: Prop 47 (2014, reclassification), Prop 22 (2020, gig work), and Prop 36 (2024, partial reversal of Prop 47) form a clean "reform-backlash-counter-reform" arc — much richer than any single 2012-era measure</li>
-        <li>Prop 50 (Unit 5) can double as your direct-democracy case study too — a rare instance where "direct democracy" was used to override an "independent institution" built by direct democracy</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 7: Housing and the Politics of Zoning Preemption</strong></h3>
-
-<div class="day-entry">
-    <span class="date">10-21</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 4 ("Community") and Ch. 12 ("Powers") — local control vs. state mandate as a powers question</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-23</span>
-    <ul class="readings-list">
-        <li>Terner Center (UC Berkeley), current housing legislative round-up covering SB 79 (transit-oriented density), AB 130/SB 131 (CEQA exemptions for infill)</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-26</span>
-    <ul class="readings-list">
-        <li>California YIMBY's own SB 79 explainer, paired with a critical piece from a slow-growth or local-control advocate for balance</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-28</span>
-    <ul class="readings-list">
-        <li>CalMatters coverage of cities "scrambling to comply with or fight" SB 79 as it takes effect (July 2026) — this is happening in real time as you teach the course</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">10-30</span>
-    <ul class="readings-list">
-        <li>Keep the "Human Right to Housing" reading as the normative anchor Stone would want you to interrogate directly</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Fri, Oct 30</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Last Day to Withdraw from Class for Fall Semester<br>Last Day to Select Pass/No Credit for Fall Semester Pass/No Credit Information<br>Last Day to Makeup a Grade of Incomplete from Spring 2026</span>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-2</span>
-    <ul class="readings-list">
-        <li>Explicit callback to Unit 1: CEQA reform is the connective tissue between the housing-abundance argument and the high-speed-rail-abundance argument — worth returning to whether the *Abundance* diagnosis holds up as well for housing as it did for rail</li>
-        <li>**Interest-group lens:** SB 79's path is a clean case study in how organized labor shapes what a housing bill actually says. The State Building and Construction Trades Council initially opposed the bill; California YIMBY and Sen. Wiener negotiated labor-standards amendments (skilled-and-trained workforce requirements on taller and transit-agency-owned projects), which moved the Trades Council to neutral and brought UNITE HERE on as a supporter. Assign coverage of that deal (Davis Vanguard or LAist both covered it well) alongside the CalMatters implementation piece — it's a good instance of Stone's "interests" chapter in action: the bill's substance changed because of who needed to be brought along, not because of a technical optimum.</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 8: Climate and Environmental Policy — A Decade of Results</strong></h3>
-
-<div class="day-entry">
-    <span class="date">11-4</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 7 ("Numbers") — a great pairing, since cap-and-trade's defenders and critics are fighting almost entirely over which numbers to trust</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-6</span>
-    <ul class="readings-list">
-        <li>Keep the original "California Kicks Off Cap and Trade" piece as the 2012 baseline, but pair it with a current retrospective on the program's 2035/2045 reauthorization and outcomes to date</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-9</span>
-    <ul class="readings-list">
-        <li>A piece on environmental-justice critiques of cap-and-trade (offsets, "pay to pollute" concerns in disadvantaged communities) — the Ong/UCLA-style environmental justice material from the original syllabus is still directly relevant and barely needs updating</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-11</span>
-    <ul class="readings-list">
-        <li>Consider adding wildfire and insurance-market collapse (FAIR Plan strain, insurer exits) as a new climate-adjacent affordability angle — it didn't exist as a policy topic in 2012 and now touches almost every homeowner in the state</li>
-        <li>**Interest-group lens:** cap-and-trade reauthorization is a three-way fight — oil and gas interests (Western States Petroleum Association) pushing to keep offset provisions and soften compliance costs, environmental-justice organizations pushing to tighten or end offsets in disadvantaged communities, and mainstream environmental groups largely defending the program's continuation. Assign a short piece tracing that three-way split rather than treating "environmentalists vs. industry" as a clean binary — the EJ critique of cap-and-trade is itself a break from the broader environmental coalition, which is a good complication for students expecting green groups to speak with one voice.</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 9: Immigration — From Fiscal Impact to Federal Confrontation</strong></h3>
-
-<div class="day-entry">
-    <span class="date">11-13</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 6 ("Symbols") again — immigrants-as-symbol is maybe the clearest example in the whole course</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-16</span>
-    <ul class="readings-list">
-        <li>SB 54 (2017), California's sanctuary-state law, as the legal baseline</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-18</span>
-    <ul class="readings-list">
-        <li>CalMatters' reporting on the June 2025 ICE raids and the state's sanctuary-law response</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-20</span>
-    <ul class="readings-list">
-        <li>The Mixed Migration Centre's comparative piece on state-federal immigration tension across sanctuary jurisdictions in 2025 (useful for putting California in national context rather than treating it as unique)</li>
-        <li>Keep CCSCE's fiscal-impact framework as historical background for how the debate used to be conducted — a good contrast device for "then it was an economic argument, now it's a constitutional one"</li>
-    </ul>
-</div>
-
-<h3><strong>Unit 10: Criminal Justice — A Completed Feedback Loop</strong></h3>
-
-<div class="day-entry">
-    <span class="date">11-23</span>
-    <ul class="readings-list">
-        <li>Stone, Ch. 8 ("Causes") applies directly — competing causal stories about crime rates</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Wed, Nov 25</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Reading Day (No Class)</span>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Thu, Nov 26</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Thanksgiving Break (Nov 26 - Nov 29)<br>All residence halls remain open but dining services will not be serving meals.</span>
-</div>
-
-<div class="day-entry">
-    <span class="date">11-30</span>
-    <ul class="readings-list">
-        <li>AB 109 realignment (2011) as the starting point</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">12-2</span>
-    <ul class="readings-list">
-        <li>Prop 47 (2014) → Prop 36 (2024) as thesis-antithesis</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date">12-4</span>
-    <ul class="readings-list">
-        <li>Current California DOJ crime-rate data alongside record clearance under AB 1076/SB 731 — gives students a real dataset to argue over rather than dueling anecdotes</li>
-        <li>Keep the "Three Strikes" critique readings; they're still analytically sound and provide good contrast with the more recent reform cycle</li>
-    </ul>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Mon, Dec 7</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Finals Week (Dec 7 - Dec 11)</span>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Fri, Dec 11</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Fall 2026 Semester Ends<br>Mt. Clef, Pederson, and Thompson Hall will close at 5pm. Residents are not allowed to move back in until January 17, 2027.</span>
-</div>
-
-<div class="day-entry">
-    <span class="date" style="color: #6c757d; font-weight: normal; font-size: 0.9rem;">Fri, Dec 18</span>
-    <span class="topic" style="color: #495057; font-style: italic;">Fall Semester Grades are Due by 12:00PM</span>
-</div>
-</section>
 
             </div> <!-- End content-page -->
         </div>
