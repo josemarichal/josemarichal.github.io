@@ -1,357 +1,143 @@
-# POSC / POLI 3XX: California Politics and Public Policy
-## Governing in the Age of Polycrisis and Abundance
-**Term:** 16-Week Semester (Monday / Wednesday / Friday)  
-**Instructor:** Jose Marichal, Ph.D. | California Lutheran University  
-**Department:** Political Science | Office: Swenson 228 | Email: marichal@callutheran.edu  
+Course #: POSC / POLI 3XX: California Politics and Public Policy
+Term, Year: Fall 2026
+Instructor Information: 
+	Jose Marichal, Ph.D.
+	Department of Political Science
 
----
+Office Hours 
+& Location:	Swenson 228 (Hours TBA)
 
-## I. Course Overview & Theoretical Framing
+Contact Info:	CLU Phone: (TBA)
+CLU Email: marichal@callutheran.edu
+Class Meeting Times & Location:	Mondays, Wednesdays, and Fridays (Times TBA)
 
-Why is California—the world’s fifth-largest economy and the vanguard of American progressivism—so frequently paralyzed by the very crises it seeks to solve? How can a state with supermajorities committed to climate action, racial equity, and public investment struggle so acutely to build affordable housing, construct clean transit, prevent catastrophic megafires, resolve structural water deficits, and manage extreme inequality?
+Drop Dates:
+	See academic calendar
+    Last Day to Add/Drop Without "W": Sunday, Sept 6, 2026
+    Last Day to Withdraw: Friday, Oct 30, 2026
+
+COURSE DESCRIPTION
+
+Why is California—the world’s fifth-largest economy and the undisputed vanguard of progressive policy—so frequently paralyzed by the very crises it seeks to solve? How can a state with supermajorities committed to climate action, racial equity, and public investment struggle so acutely to build affordable housing, construct clean transit, prevent catastrophic megafires, resolve structural water deficits, and manage extreme inequality?
 
 This course examines California government and public policy through the dynamic analytical tension between two foundational contemporary frameworks:
+* **The Polycrisis Thesis (Adam Tooze):** Shocks across climate, housing, public health, energy, and municipal finance are no longer isolated events; they are deeply entangled, compounding, and mutually reinforcing. The whole is more volatile and dangerous than the sum of its parts.
+* **The Abundance Agenda (Ezra Klein & Derek Thompson):** Progressive governance suffers from an institutional "vetocracy" and "everything-bagel liberalism"—where procedural hurdles, environmental review litigation (CEQA), local zoning vetoes, and fragmented bureaucracy manufacture artificial scarcity.
 
-```
-                      ┌────────────────────────────────────────────────────────┐
-                      │                 THE CALIFORNIA PARADOX                  │
-                      │   Vast Wealth & Ambition  vs.  Paralysis & Breakdown   │
-                      └───────────────────────────┬────────────────────────────┘
-                                                  │
-                 ┌────────────────────────────────┴────────────────────────────────┐
-                 ▼                                                                 ▼
-   ┌───────────────────────────┐                                     ┌───────────────────────────┐
-   │   THE POLYCRISIS THESIS   │                                     │   THE ABUNDANCE AGENDA    │
-   │        (Adam Tooze)       │           VS. / SYNTHESIS           │ (Ezra Klein & Derek Thompson)│
-   ├───────────────────────────┤                                     ├───────────────────────────┤
-   │ Overlapping, Entangled    │                                     │ Supply-Side Progressivism:│
-   │ Shocks:                   │                                     │ • Rebuilding State Power  │
-   │ • Climate & Megafires     │                                     │ • Dismantling Vetocracy   │
-   │ • Housing Deficits        │                                     │ • Overcoming Proceduralism│
-   │ • Water Insecurity        │                                     │   (CEQA, NIMBYism)        │
-   │ • Energy Grid Fragility   │                                     │ • Delivering Physical &   │
-   │ • Budget Volatility       │                                     │   Social Abundance        │
-   └─────────────┬─────────────┘                                     └─────────────┬─────────────┘
-                 │                                                                 │
-                 └───────────────────────────────┬─────────────────────────────────┘
-                                                 ▼
-                 ┌─────────────────────────────────────────────────────────────────┐
-                 │                      THE ANALYTICAL LENSES                      │
-                 ├─────────────────────────────────────────────────────────────────┤
-                 │ • Deborah Stone (Policy Paradox): Market Model vs. Polis Model  │
-                 │ • Oregon State OER Textbook: Institutional Nuts & Bolts         │
-                 │ • California Constitutional Realities (1879, Direct Democracy)  │
-                 └─────────────────────────────────────────────────────────────────┘
-```
+To evaluate these competing diagnostics, we anchor our policy debates in Deborah Stone’s *Policy Paradox*—contrasting the rationalist Market Model with the Polis Model—while mastering the structural mechanics of state and local institutions using the Open Oregon Educational Resource textbook.
 
-1. **The Polycrisis Thesis (Adam Tooze):** Shocks across climate, housing, public health, energy, and municipal finance are no longer isolated; they are deeply entangled and mutually reinforcing. As Adam Tooze diagnosed in his landmark 2022 essay, in a polycrisis, the interaction between distinct economic and non-economic shocks creates a whole that is more dangerous and unpredictable than the sum of its parts.
-2. **The Abundance Agenda & State Capacity (Ezra Klein & Derek Thompson):** Progressive governance suffers from an institutional "vetocracy" and "everything-bagel liberalism"—where procedural hurdles, environmental litigation (CEQA), local zoning vetoes, and fragmented bureaucracy have manufactured artificial scarcity in the physical world. The solution is a supply-side progressivism that rebuilds the state's capacity to build.
-3. **The Policy Paradox (Deborah Stone):** The clash between the rationalist **Market Model** (efficiency, individual self-interest, market clearing) and the **Polis Model** (community, public interest, shared loyalty, symbolic power). We interrogate how policy goals (equity, efficiency, welfare, security, liberty) and problem definitions (symbols, numbers, causes, interests) are politically constructed.
-4. **State & Local Government Institutions (Oregon State OER Textbook):** The formal mechanics of constitutions, federalism, executive power, legislative professionalism, courts, bureaucracy, public budgeting, entitlements, and visible public services.
+PREREQUISITE KNOWLEDGE OR COURSEWORK
 
----
+None
 
-## II. Required Texts & Open Educational Resources (OER)
+TEXTBOOKS
 
-1. **State & Local Government Nuts and Bolts (Free OER):**  
-   Simon, Christopher A., Brent S. Steel, Nicholas P. Lovrich, Erika Allen Wolters, Tamara Krawchenko, and Sadaf Farooq. *State and Local Government and Politics: An Open Oregon Educational Resource* (3rd Edition). Oregon State University.  
-   *(Designated as **OSU OER**)*.
-2. **Policy Theory & The Polis:**  
-   Stone, Deborah. *Policy Paradox: The Art of Political Decision Making*. W. W. Norton & Company.  
-   *(Designated as **Stone**)*.
-3. **The Polycrisis & Abundance Corpus (Provided via LMS / Digital Links):**
-   * Adam Tooze, "Welcome to the world of the polycrisis" (*Financial Times*, 2022) and selected *Chartbook* essays.
-   * Ezra Klein and Derek Thompson, Selected writings on *The Abundance Agenda*, *Supply-Side Progressivism*, and *Vetocracy* (*The Atlantic*, *The New York Times*).
-   * Reports from the Public Policy Institute of California (PPIC), the Legislative Analyst's Office (LAO), and major California judicial rulings.
+*   **State & Local Government Nuts and Bolts (Free OER):** Simon, Christopher A., Brent S. Steel, Nicholas P. Lovrich, Erika Allen Wolters, Tamara Krawchenko, and Sadaf Farooq. [*State and Local Government and Politics: An Open Oregon Educational Resource*](https://open.oregonstate.education/statelocal/) (3rd Edition). Oregon State University.
+*   **Policy Theory & The Polis:** Stone, Deborah. [*Policy Paradox: The Art of Political Decision Making*](https://wwnorton.com/books/9780393912722) [Book/Library] (W. W. Norton & Co.).
+*   **Polycrisis & Abundance Corpus (Provided via LMS / Digital Links):** 
+    * Adam Tooze, ["Welcome to the world of the polycrisis"](https://www.ft.com/content/498398e7-11b1-494b-9cd3-6d669ff358c4) * (*Financial Times*, 2022) and selected *Chartbook* essays.
+    * Ezra Klein & Derek Thompson, Selected writings on *The Abundance Agenda*, *Supply-Side Progressivism*, and *Vetocracy* (*The Atlantic*, *The New York Times*).
+    * Reports from the Public Policy Institute of California (PPIC), Legislative Analyst's Office (LAO), and major California Supreme Court decisions.
+*   [California Policy Dashboard](california_policy_dashboard.html) & [California Advocacy Resources](california_advocacy_resources.html).
 
----
+PROGRAM LEARNING OUTCOMES
 
-## III. Course Learning Outcomes (CLOs)
+1. Demonstrate a comprehensive understanding of political institutions, processes, and theories.
+2. Analyze complex political phenomena using appropriate methodological and theoretical frameworks.
+3. Communicate political analyses effectively in both written and oral formats.
 
-By the end of this course, students will be able to:
-* **CLO 1 (Institutional Literacy):** Explain the structural powers, checks, and limitations of California’s executive branch, bicameral legislature, judicial system, plural executive, and fragmented local governments.
-* **CLO 2 (Direct Democracy & Fiscal Politics):** Critique how direct democracy (initiatives, referenda, recalls—especially Propositions 13, 98, 47, 22, and 36) has constrained governance and public finance.
-* **CLO 3 (Theoretical Synthesis):** Apply Tooze’s *Polycrisis*, Klein/Thompson’s *Abundance Agenda*, and Stone’s *Market vs. Polis* framework to diagnose California's policy impasses.
-* **CLO 4 (Policy Advocacy & Institutional Design):** Formulate evidence-based policy solutions that reconcile environmental protection, democratic equity, and supply-side capacity to build public goods.
+STUDENT LEARNING OUTCOMES
 
----
+Upon completion of the course, the student should be able to:
 
-## IV. Grading & Assessment Breakdown
+1. Analyze the institutional architecture of California state and local government, including the legislature, executive, judiciary, and direct democracy mechanisms.
+2. Evaluate contemporary California policy challenges through the competing theoretical frameworks of the "Polycrisis" and the "Abundance Agenda."
+3. Apply Deborah Stone’s Polis and Market models to dissect real-world policy battles over housing, climate, water, and public finance.
+4. Formulate evidence-based policy recommendations and articulate them through academic writing, memos, and legislative simulations.
 
-| Component | Weight | Description |
-| :--- | :--- | :--- |
-| **Seminar Participation & In-Class Debates** | 15% | Active engagement in daily discussions, debates, and breakout policy analyses. |
-| **Weekly Analytical Reading Memos (10 × 2%)** | 20% | 400–500 word synthesis memos connecting OSU OER chapters to Stone, Tooze, or Klein/Thompson. |
-| **Midterm Examination** | 20% | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. |
-| **The "Vetocracy vs. Abundance" Policy Audit** | 20% | 2,000-word empirical investigation into a stalled or completed California project. |
-| **Capstone Legislative Hearing & White Paper** | 25% | Mock Joint Legislative Hearing roleplay (10%) + 2,500-word legislative policy white paper (15%). |
+COURSE FORMAT & DELIVERY
 
----
+This course spans a duration of 16 weeks and convenes three times a week on campus. The scheduled class sessions are held on Mondays, Wednesdays, and Fridays, excluding campus holidays. The course materials, readings, and assignment submissions will be managed via the Canvas platform. Active participation in daily debates and simulations is a core component of the in-person experience.
 
-## V. 16-Week Schedule (Monday / Wednesday / Friday)
+COURSE ASSIGNMENTS 
 
-```
-========================================================================================
-PART I: THEORETICAL FOUNDATIONS & INSTITUTIONAL ARCHITECTURE (Weeks 1–5)
-========================================================================================
-```
+| Assignment Type & Title | Description | Points | % of Total Points |
+|---|---|---|---|
+| **Seminar Participation & Daily Debates** | Active, informed contributions in seminar discussions, simulations, and breakout analysis. | 150 | 15% |
+| **Weekly Analytical Reading Memos** | Ten 400–500 word synthesis memos connecting OSU OER chapters to Stone, Tooze, or Klein/Thompson (10 × 2%). | 200 | 20% |
+| **Midterm Examination** | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. | 200 | 20% |
+| **"Vetocracy vs. Abundance" Policy Audit** | 2,000-word empirical investigation into a stalled or completed California project (Due Week 8). | 200 | 20% |
+| **Capstone Simulation & White Paper** | Mock Joint Legislative Hearing roleplay (10%) + 2,500-word legislative policy white paper (15%) (Week 16). | 250 | 25% |
 
-### Week 1: The California Paradox — Polycrisis meets the Scarcity Trap
-* **Mon (Session 1): Course Introduction — The Golden State as Crucible**
-  * *Topic:* California’s global stature, wealth concentration, and systemic crises.
-  * *Readings:* Syllabus overview; California Dept. of Finance Economic Snapshot.
-* **Wed (Session 2): Theorizing the Polycrisis**
-  * *Topic:* How distinct shocks (ecological, economic, geopolitical, social) become entangled.
-  * *Readings:* Adam Tooze, "Welcome to the world of the polycrisis" (*Financial Times*, 2022); Adam Tooze, "Chartbook: The Anatomy of the Polycrisis" (2022).
-  * *Discussion:* Why does solving one crisis in California (e.g., housing) frequently worsen or run into another (e.g., wildfire risk, water, carbon emissions)?
-* **Fri (Session 3): The Abundance Agenda & The Crisis of State Capacity**
-  * *Topic:* Supply-side progressivism; how well-intentioned proceduralism creates artificial scarcity.
-  * *Readings:* Derek Thompson, "A Simple Plan to Solve All of America’s Problems: The Abundance Agenda" (*The Atlantic*, 2022); Ezra Klein, "What the Left Gets Wrong About Power" (*New York Times*, 2022).
-  * *Discussion:* Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?
+COURSE GRADING POLICY
 
----
+Student work will be graded based on analytical rigor, integration of course concepts, clarity of writing, and empirical accuracy. Grading rubrics for the Policy Audit and the Capstone White Paper are available in Canvas. Students can expect to receive feedback on reading memos within one week of submission, and within two weeks for major papers.
 
-### Week 2: Frameworks of Public Choice — Market, Polis, and Federalism
-* **Mon (Session 4): Deborah Stone’s Policy Paradox — Market vs. Polis**
-  * *Topic:* Rational market models vs. political community; self-interest vs. public interest.
-  * *Readings:* **Stone**, Chapter 1 ("The Market and the Polis").
-* **Wed (Session 5): Goals of the Polis — Equity vs. Efficiency**
-  * *Topic:* The trade-offs and political rhetoric underlying public goals.
-  * *Readings:* **Stone**, Chapter 2 ("Equity") & Chapter 3 ("Efficiency").
-* **Fri (Session 6): Federalism, Preemption, and California Exceptionalism**
-  * *Topic:* Intergovernmental relations; California as a "nation-state" within the US federal system (Clean Air Act waivers, state-level resistance).
-  * *Readings:* **OSU OER**, Chapter 1 ("Introduction and Themes") & Chapter 2 ("Federalism").
-  * *Discussion:* How does federalism allow California to pioneer climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?
+| Score Range | Letter | Score Range | Letter |
+|---|---|---|---|
+| Over 93% | A | 73% to 76% | C |
+| 90% to 92% | A- | 70% to 72% | C- |
+| 87% to 89% | B+ | 67% to 69% | D+ |
+| 83% to 86% | B | 63% to 66% | D |
+| 80% to 82% | B- | 60% to 62% | D- |
+| 77% to 79% | C+ | <60% | F |
 
----
+COURSE SCHEDULE
 
-### Week 3: The Rules of the Game — State Constitutions & Direct Democracy
-* **Mon (Session 7): Constitutional Foundations — The California Constitution of 1879**
-  * *Topic:* Distrust of institutions, anti-monopoly origins, constitutional length, and ease of amendment.
-  * *Readings:* **OSU OER**, Chapter 6 ("State Constitutions"); Excerpts from California Constitution, Article I & IV.
-* **Wed (Session 8): Direct Democracy — The Progressive Weapon**
-  * *Topic:* Hiram Johnson, the Southern Pacific Railroad, and the invention of Initiative, Referendum, and Recall.
-  * *Readings:* **OSU OER**, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."
-* **Fri (Session 9): Direct Democracy in Practice — Proposition 13 and the Tax Revolt**
-  * *Topic:* Howard Jarvis, the 1978 property tax freeze, two-thirds supermajorities, and intergenerational lock-in.
-  * *Readings:* Peter Schrag, *Paradise Lost* (Chapter 1: "The Tax Revolt"); **Stone**, Chapter 7 ("Numbers").
-  * *Discussion:* In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?
+| Week | Dates | Topics | Assignment Due |
+|---|---|---|---|
+| 1 | Mon, Aug. 24 - Fri, Aug. 28 | **Week 1: The California Paradox — Polycrisis Meets the Scarcity Trap**<br>● Course Introduction — The Golden State as Crucible<br>● Theorizing the Polycrisis<br>● The Abundance Agenda & State Capacity<br> | Syllabus overview; [California Department of Finance Economic Overview](https://dof.ca.gov/forecasting/economics/economic-indicators/) .<br>Read: Adam Tooze, ["Welcome to the world of the polycrisis"](https://www.ft.com/content/498398e7-11b1-494b-9cd3-6d669ff358c4) * (*Financial Times*, 2022)<br>Read: Adam Tooze, ["Chartbook: The Anatomy of the Polycrisis"](https://adamtooze.com/2022/06/24/chartbook-130-the-anatomy-of-the-polycrisis/) (2022)<br>***Discussion Prompt:** How does the concept of a "polycrisis" differ from simply facing multiple separate problems simultaneously?*<br>Read: Derek Thompson, ["A Simple Plan to Solve All of America’s Problems: The Abundance Agenda"](https://www.theatlantic.com/ideas/archive/2022/01/abundance-agenda-housing-healthcare-energy/621215/) * (*The Atlantic*, 2022)<br>Read: Ezra Klein, ["What the Left Gets Wrong About Power"](https://www.nytimes.com/2022/03/13/opinion/berkeley-enrollment-climate-crisis.html) * (*The New York Times*, 2022)<br>***Discussion Prompt:** Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?*<br> |
+| 2 | Mon, Aug. 31 - Fri, Sep. 4 | **Week 2: Frameworks of Public Choice — Market, Polis, and Federalism**<br>● Deborah Stone’s Policy Paradox — Market vs. Polis & Goals of the Polis — Equity vs. Efficiency<br>● Federalism, Preemption, and California Exceptionalism<br>● Constitutional Foundations — The 1879 Constitution<br> | **Stone** , Chapter 1 ("The Market and the Polis"). **Stone** , Chapter 2 ("Equity") & Chapter 3 ("Efficiency").<br>[OSU OER, Chapter 1 ("Introduction and Themes")](https://open.oregonstate.education/statelocal/chapter/chapter-1/) & Chapter 2 ("Federalism").<br>***Discussion Prompt:** How does federalism allow California to pioneer national climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?*<br>[OSU OER, Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/) ; Excerpts from [California Constitution, Article I & IV](https://leginfo.legislature.ca.gov/faces/codesTOCExpand.xhtml?tocCode=CONS) .<br> |
+| 3 | Mon, Sep. 7 - Fri, Sep. 11 | **Week 3: The Rules of the Game — State Constitutions & Direct Democracy**<br>● Labor Day Holiday (No Class)<br>● Direct Democracy — The Progressive Weapon<br>● Direct Democracy in Practice — Proposition 13 and the Tax Revolt<br> | **OSU OER** , Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."<br>Peter Schrag, [Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost) [Book/Library] (Chapter 1: "The Tax Revolt"); **Stone** , Chapter 7 ("Numbers").<br>***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?*<br> |
+| 4 | Mon, Sep. 14 - Fri, Sep. 18 | **Week 4: The Legislative Branch & Sacramento’s Key Actors**<br>● Key Actors in the Sacramento Ecosystem & The State Legislature — Professionalism & Polarization<br>● Caucuses, Coalitions, and Legislative Vetocracy<br>● The Governor and Executive Power & The Plural Executive — Fragmented Authority<br> | [OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/) ; **Stone** , Chapter 9 ("Interests"). [OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/statelocal/chapter/chapter-7/) ; Thad Kousser, [Term Limits and the Dismantling of Legislative Power](https://www.cambridge.org/9780521603171) [Book/Library].<br>**Stone** , Chapter 6 ("Symbols") & Chapter 8 ("Causes").<br>***Discussion Prompt:** Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side housing or single-payer health legislation?*<br>[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/) ; [Selected Executive Orders from Newsom and Brown](https://www.gov.ca.gov/executive-orders/) .California Constitution, Article V; Case Study: Attorney General vs. Governor policy friction.<br> |
+| 5 | Mon, Sep. 21 - Fri, Sep. 25 | **Week 5: The Executive Branch, Bureaucracy, and State Capacity**<br>● State Bureaucracy & "Everything-Bagel Liberalism"<br>● Municipal Governance — Counties, Charter Cities, and General Law<br>● Local Environmental & Sustainability Planning in the Region<br> | [OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/statelocal/chapter/chapter-10/) ; Ezra Klein, ["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html) * ( *The New York Times* , 2023).<br>***Discussion Prompt:** How does stacking multiple uncoordinated social mandates onto administrative agencies degrade their ability to build physical infrastructure?*<br>League of California Cities, [The Nature of Local Government](https://www.calcities.org/resource/the-nature-of-california-municipal-government) ; **Stone** , Chapter 15 ("Powers").<br>[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/statelocal/chapter/chapter-4/) .<br> |
+| 6 | Mon, Sep. 28 - Fri, Oct. 2 | **Week 6: Local Government, Sustainability Planning, & Land-Use Vetoes**<br>● NIMBYism and Local Control as Manufactured Scarcity<br>● State and Local Budgeting Systems<br>● The Fiscalization of Land Use & Prop 13 Distortions<br> | Katherine Levine Einstein et al., [Neighborhood Defenders](https://www.cambridge.org/9781108701327) [Book/Library] (Chapters 1 & 3); Derek Thompson, "How California Blew It on Housing."<br>***Discussion Prompt:** Is local zoning control an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?*<br>[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/statelocal/chapter/chapter-11/) ; Legislative Analyst’s Office (LAO), [California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf) .<br>Paul G. Lewis, *Shaping Suburbia* (Chapter 4); LAO, [Understanding California's Property Taxes](https://lao.ca.gov/reports/2012/tax/property-tax-primer-112912.aspx) .<br> |
+| 7 | Mon, Oct. 5 - Fri, Oct. 9 | **Week 7: Public Finance — Budgeting, Entitlements, & Fiscal Volatility**<br>● Budgeting in an Era of Polycrisis<br>● The California Judiciary & Deborah Stone on Solutions — Rules, Rights, and Powers<br>● Fall Holiday (No Class)<br> | **OSU OER** , Chapter 11 (cont.); **Stone** , Chapter 11 ("Decisions"); [LAO Budget Overview (Current Fiscal Year)](https://lao.ca.gov/Budget) .<br>***Discussion Prompt:** Can a state execute multi-decade abundance infrastructure plans when its tax revenues experience wild boom-and-bust cycles?*<br>[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/statelocal/chapter/chapter-9/) ; California Constitution, Article VI. **Stone** , Chapter 13 ("Rules") & Chapter 14 ("Rights").<br> |
+| 8 | Mon, Oct. 12 - Fri, Oct. 16 | **Week 8: Courts, Legal Battles, and the CEQA Bottleneck**<br>● CEQA as a Weapon — The Judicialization of Environmental Review<br>● Diagnosing the 3.5 Million Home Deficit<br>● Homelessness as an Intersecting Polycrisis<br> | Jennifer Hernandez, ["California Environmental Quality Act Lawsuits and the Housing Crisis"](https://repository.uclawsf.edu/hastings_environmental_law_journal/vol24/iss2/4/) ( *Hastings Env. L.J.* ); Chris Elmendorf, "When Public Agencies Block Public Policy." 📌 Policy Audit Due Friday at 11:59 PM.<br>***Discussion Prompt:** How did a 1970 environmental protection statute evolve into the primary legal weapon used to block solar farms, bike lanes, and dense housing?*<br>Conor Dougherty, [Golden Gates: Fighting for Housing in More Expensive America](https://www.penguinrandomhouse.com/books/588860/golden-gates-by-conor-dougherty/) [Book/Library] (Excerpts); PPIC, [California’s Housing Shortage](https://www.ppic.org/blog/californias-housing-shortage-is-limiting-economic-opportunity/) .<br>Margot Kushel et al., [UCSF Statewide Study of People Experiencing Homelessness in California](https://homelessness.ucsf.edu/our-impact/studies/california-statewide-study-people-experiencing-homelessness) (Executive Summary); **Stone** , Chapter 4 ("Welfare & Security").<br> |
+| 9 | Mon, Oct. 19 - Fri, Oct. 23 | **Week 9: Housing & Homelessness — The Epicenter of Scarcity**<br>● The YIMBY Counter-Offensive & State Preemption<br>● The Ecological Polycrisis in California<br>● Traditional & Visible Services: Clean Energy and Grid Reliability<br> | Nolan Gray, *Arbitrary Lines* (Excerpts); Ezra Klein, "The Abundance Agenda in Sacramento."<br>***Discussion Prompt:** Does state preemption of local zoning violate democratic principles, or is it the only antidote to regional collective action failure?*<br>Adam Tooze, ["Chartbook: California Wildfire Risk as Financial Contagion"](https://adamtooze.com/2021/08/17/chartbook-33-california-wildfire-as-financial-contagion/) ; California Dept. of Insurance Market Briefing.<br>[OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/) ; Severin Borenstein, "The Economics of California’s Energy Transition."<br> |
+| 10 | Mon, Oct. 26 - Fri, Oct. 30 | **Week 10: Climate, Megafires, and the Fragile Energy Grid**<br>● Clean Abundance vs. Conservationist Degrowth<br>● Traditional & Visible Services: The Architecture of California Water & Water Rights, Senior Appropriators, and Ecosystem Collapse<br>● Engineering Water Abundance in a Polycrisis<br> | Ezra Klein, ["The Climate Movement Needs to Embrace Building"](https://www.nytimes.com/2022/05/29/opinion/climate-change-building-infrastructure.html) * ( *The New York Times* , 2022); **Stone** , Chapter 5 ("Liberty").<br>***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting local desert ecosystems and building massive utility-scale clean power?*<br>**OSU OER** , Chapter 13 (cont.); Marc Reisner, [Cadillac Desert](https://www.penguinrandomhouse.com/books/323381/cadillac-desert-by-marc-reisner/) [Book/Library] (Excerpts).Barton H. Thompson Jr., *Liquid Asset* (Chapter on California Water Law); **Stone** , Chapter 14 ("Rights & Powers").<br>PPIC, [Priorities for California’s Water](https://www.ppic.org/publication/priorities-for-californias-water/) ; [CalMatters Water In-Depth Investigative Series](https://calmatters.org/environment/water/) .<br>***Discussion Prompt:** Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?*<br> |
+| 11 | Mon, Nov. 2 - Fri, Nov. 6 | **Week 11: Water Politics — Hydraulic Empires and Drought Realities**<br>● Traditional and Visible Services: Highways vs. Transit<br>● The High-Speed Rail Saga — A Case Study in Vetocracy<br>● Transit Cost Disease and State Capacity<br> | **OSU OER** , Chapter 13 (cont.); Ethan Elkind, *Railtown: The Fight for the LA Metro Rail* (Excerpts).<br>Ralph Vartabedian, ["How California's High-Speed Rail Went Off the Rails"](https://www.nytimes.com/2022/10/09/us/california-high-speed-rail-politics.html) * ( *The New York Times* , 2022); [CA High-Speed Rail Authority Business Plan Summary](https://hsr.ca.gov/about/high-speed-rail-business-plans/) .<br>Alon Levy & Eric Goldwyn, [Transit Costs Project Findings](https://transitcosts.com/) ; Derek Thompson, "Why the U.S. Can’t Build Transit Anymore."<br>***Discussion Prompt:** What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?*<br> |
+| 12 | Mon, Nov. 9 - Fri, Nov. 13 | **Week 12: Infrastructure, Transportation & High-Speed Rail**<br>● The New Margins — Demographic Divides and Spatial Inequality<br>● Algorithmic Labor, AB 5, and Proposition 22<br>● Silicon Valley, Artificial Intelligence, and Frontier State Regulation<br> | [OSU OER, Chapter 3 ("The New Margins")](https://open.oregonstate.education/statelocal/chapter/chapter-3/) ; PPIC, [Income Inequality and the Middle Class in California](https://www.ppic.org/publication/income-inequality-in-california/) .<br>Veena Dubal, ["The Drive to Precarity"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3100257) ( *Berkeley J. of Emp. & Labor Law* ); Selected court rulings on Prop 22.<br>Selected legislative analyses on SB 1047; **Stone** , Chapter 10 ("Decisions & Persuasion").<br>***Discussion Prompt:** Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?*<br> |
+| 13 | Mon, Nov. 16 - Fri, Nov. 20 | **Week 13: Inequality, Labor, and "The New Margins"**<br>● Entitlements and Public Health: Medi-Cal & CalRx<br>● The California Master Plan for Higher Education<br>● K-12 Education, Prop 98, and the Local Control Funding Formula<br> | [OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/) ; [Healthy California for All Commission Report (Key Findings)](https://www.chhs.ca.gov/healthy-california-for-all/) .<br>John Aubrey Douglass, *The California Idea and Higher Education* (Excerpts); Selected coverage of *Save Berkeley’s Neighborhoods v. UC Regents* .<br>**OSU OER** , Chapter 12 (cont.); **Stone** , Chapter 4 ("Welfare"); LAO, [An Overview of the Local Control Funding Formula](https://lao.ca.gov/reports/2013/edu/lcff/lcff-072913.aspx) .<br>***Discussion Prompt:** In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?*<br> |
+| 14 | Mon, Nov. 23 - Fri, Nov. 27 | **Week 14: Social Welfare, Entitlements, and Higher Education**<br>● Traditional and Visible Services: Mass Incarceration to Realignment & The Public Safety Backlash — Proposition 36 and the Polis<br>● Reading Day (No Class)<br>● Thanksgiving Break (No Class)<br> | [OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/) ; Ruth Wilson Gilmore, [Golden Gulag](https://www.ucpress.edu/book/9780520242012/golden-gulag) [Book/Library] (Excerpts).PPIC, [Crime Trends in California](https://www.ppic.org/publication/crime-trends-in-california/) ; **Stone** , Chapter 5 ("Security"); [Prop 36 voter guide arguments](https://voterguide.sos.ca.gov/propositions/36/) .<br> |
+| 15 | Mon, Nov. 30 - Fri, Dec. 4 | **Week 15: Criminal Justice, Public Safety, and Incarceration Politics**<br>● The Polycrisis of Crime, Drugs, and Social Disinvestment<br>● Reimagining the Golden State — Institutional Reforms<br>● Capstone Simulation (Part I) — Assembly Committee on California’s Future<br> | **Stone** , Chapter 8 ("Causes") & Chapter 12 ("Decisions"); Selected academic criminological analyses.<br>***Discussion Prompt:** How do political symbols and numbers construct competing narratives of "law and order" versus "systemic reform" in California?*<br>Ezra Klein, ["How California Can Save Itself"](https://www.nytimes.com/2024/01/21/opinion/ezra-klein-podcast-scott-wiener-housing.html) * (2024); California Forward, [A Roadmap for Governance Reform](https://cafwd.org/our-work/governance-reform/) .<br>Student teams roleplay lawmakers, executive officials, interest groups, and analysts debating amendments to the mock "California Abundance & Resilience Act."<br> |
+| 16 | Mon, Dec. 7 - Fri, Dec. 11 | **Week 16: Rebuilding State Capacity & Capstone Simulation**<br>● Capstone Simulation (Part II) & Course Synthesis<br>● Finals Week (No Class)<br>● Finals Week (No Class)<br> | Committee markups, roll call votes, and final course debrief: *Can California Deliver Abundance in an Age of Polycrisis?* 📌 Final Policy White Paper Due Friday at 11:59 PM.<br> |
 
----
 
-### Week 4: The Legislative Branch & The Policy Process
-* **Mon (Session 10): Key Actors in the Sacramento Ecosystem**
-  * *Topic:* Interest groups, lobbyists, think tanks, public sector unions, and corporate donors in the policy cycle.
-  * *Readings:* **OSU OER**, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments"); **Stone**, Chapter 9 ("Interests").
-* **Wed (Session 11): The California State Legislature — Professionalism and Polarization**
-  * *Topic:* Bicameralism, the Jesse Unruh legacy of full-time professionalized staff, and the supermajority paradox.
-  * *Readings:* **OSU OER**, Chapter 7 ("Legislatures"); Thad Kousser, *Term Limits and the Dismantling of State Legislative Power* (Excerpts).
-* **Fri (Session 12): Caucuses, Coalitions, and Legislative Vetocracy**
-  * *Topic:* Factional politics in a one-party state: The Progressive Caucus vs. Moderate "Mod Squad" Democrats; logrolling and bill-killing committees.
-  * *Readings:* **Stone**, Chapter 6 ("Symbols") & Chapter 8 ("Causes").
-  * *Discussion:* Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side or single-payer legislation?
+ATTENDANCE POLICY
 
----
+Attendance and active participation are essential components of this seminar-style course and account for 15% of your total grade. Missing more than three unexcused classes will negatively impact your participation score. In the event of illness or an anticipated absence, please email the instructor prior to class to make necessary arrangements. Regardless of whether an absence is excused, students are responsible for all material covered and assignments due. Accurate attendance records are maintained for all class sessions.
 
-### Week 5: The Executive Branch, Bureaucracy, and State Capacity
-* **Mon (Session 13): The Governor and Executive Power**
-  * *Topic:* Formal powers (line-item veto, executive orders, emergency declarations) and informal power (bully pulpit).
-  * *Readings:* **OSU OER**, Chapter 8 ("Executives"); Selected Executive Orders from Newsom and Brown.
-* **Wed (Session 14): The Plural Executive — Fragmented Executive Authority**
-  * *Topic:* Independently elected statewide officers: Attorney General, Insurance Commissioner, Lt. Governor, Controller, Superintendent of Public Instruction.
-  * *Readings:* California Constitution, Article V; Case Study: Attorney General vs. Governor policy friction.
-* **Fri (Session 15): State Bureaucracy & "Everything-Bagel Liberalism"**
-  * *Topic:* Civil service rules, administrative burden, agency turf wars, and procedural sclerosis.
-  * *Readings:* **OSU OER**, Chapter 10 ("State and Local Bureaucracy and Administration"); Ezra Klein, "The Problem with Everything-Bagel Liberalism" (*New York Times*, 2023).
-  * *Discussion:* How does stacking multiple uncoordinated social goals onto administrative agencies degrade their ability to execute core missions?
+LATE POLICY
 
----
+Assignments submitted after the deadline will incur a 10% penalty for each day they are late. Assignments more than five days late will not be accepted without prior authorization. If you are facing extenuating circumstances, please contact the instructor *before* the deadline to discuss a potential extension.
 
-```
-========================================================================================
-PART II: LOCAL GOVERNANCE, FISCAL POLITICS, & JUDICIAL POWER (Weeks 6–8)
-========================================================================================
-```
+TECHNICAL SKILLS AND TECHNOLOGY REQUIRED FOR THIS COURSE
 
-### Week 6: Local Government, Sustainability Planning, & Land-Use Vetoes
-* **Mon (Session 16): Municipal Governance — Counties, Charter Cities, and General Law**
-  * *Topic:* Police powers, local home rule doctrine, municipal incorporation, and city councils.
-  * *Readings:* League of California Cities, *The Nature of Local Government*; **Stone**, Chapter 15 ("Powers").
-* **Wed (Session 17): Local Environmental & Sustainability Planning in the Region**
-  * *Topic:* Rural vs. suburban vs. urban capacity in sustainability programs; regional councils of government (COGs).
-  * *Readings:* **OSU OER**, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.).
-* **Fri (Session 18): NIMBYism and Local Control as Manufactured Scarcity**
-  * *Topic:* Public comment procedures, neighborhood defense, discretionary zoning reviews, and exclusionary localism.
-  * *Readings:* Katherine Levine Einstein et al., *Neighborhood Defenders* (Chapters 1 & 3); Derek Thompson, "How California Blew It on Housing."
-  * *Discussion:* Is local zoning control an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?
+Please refer to the Student Resources section in Canvas for a description of general technology requirements. 
+For this course, students will also need access to basic word processing software and the ability to navigate online state databases (such as the LAO and PPIC websites) to complete their Policy Audit and White Paper.
 
----
+UNIVERSITY POLICIES AND RESOURCES
 
-### Week 7: Public Finance — Budgeting, Entitlements, & Fiscal Volatility
-* **Mon (Session 19): State and Local Budgeting Systems**
-  * *Topic:* The budget cycle, balanced budget mandates, May Revise, and progressive income tax dependence on high earners.
-  * *Readings:* **OSU OER**, Chapter 11 ("Budgeting and Sustainability"); Legislative Analyst’s Office (LAO), *California’s Tax System: A Primer*.
-* **Wed (Session 20): The Fiscalization of Land Use & Prop 13 Distortions**
-  * *Topic:* How loss of property tax revenue forced cities to favor auto malls and hotels over residential housing.
-  * *Readings:* Paul G. Lewis, *Shaping Suburbia* (Chapter 4); LAO, *Understanding California's Property Taxes*.
-* **Fri (Session 21): Budgeting in an Era of Polycrisis**
-  * *Topic:* Navigating $30B+ surplus-to-deficit swings; Rainy Day Funds (Prop 2), Gann Limit, and Prop 98 guarantees.
-  * *Readings:* **OSU OER**, Chapter 11 (cont.); **Stone**, Chapter 11 ("Decisions"); LAO Budget Overview (Current Fiscal Year).
-  * *Discussion:* Can a state execute multi-decade abundance infrastructure plans when its tax revenues experience wild boom-and-bust cycles?
+Visit the Student Resources site in Canvas for links to relevant university policies and resources, including information about academic support, student support, and library services.
 
----
+Course Policies & Expectations:
+*   **Classroom Environment:** Discussions in this course touch upon contested political values, economic distributions, and identity. We will maintain an intellectually rigorous, respectful environment where students can critique policy arguments, assumptions, and institutional outcomes constructively.
+*   **Accommodations:** California Lutheran University is committed to providing reasonable accommodations to students with documented disabilities. Contact the Center for Academic Resources at the start of the semester to coordinate accommodations.
+*   **Academic Integrity:** Plagiarism and uncredited AI generation of written submissions will result in an F on the assignment and referral to the academic conduct board. All academic arguments must cite evidence and original sources accurately.
 
-### Week 8: Courts, Legal Battles, and the CEQA Bottleneck
-* **Mon (Session 22): The California Judiciary**
-  * *Topic:* Superior Courts, Courts of Appeal, and the California Supreme Court; judicial retention elections and legal culture.
-  * *Readings:* **OSU OER**, Chapter 9 ("Courts"); California Constitution, Article VI.
-* **Wed (Session 23): Deborah Stone on Solutions — Rules, Rights, and Powers**
-  * *Topic:* How legal rights and procedural rules become weapons of political contestation.
-  * *Readings:* **Stone**, Chapter 13 ("Rules") & Chapter 14 ("Rights").
-* **Fri (Session 24): CEQA as a Weapon — The Judicialization of Environmental Review**
-  * *Topic:* California Environmental Quality Act (1970), *Friends of Mammoth* (1972), private right of action, union greenmail, and housing litigation.
-  * *Readings:* Jennifer Hernandez, "California Environmental Quality Act Lawsuits and the Housing Crisis" (*Hastings Env. L.J.*); Chris Elmendorf, "When Public Agencies Block Public Policy."
-  * *Discussion:* How did a 1970 environmental protection statute evolve into the primary legal tool used to block solar farms, bike lanes, and dense housing?
-  * *Note:* **Policy Audit Due Friday at 11:59 PM.**
+ADDENDUM
 
----
+Carnegie Hour Table (For 4-Credit Class - 15 Weeks + Finals)
 
-```
-========================================================================================
-PART III: SECTORAL POLYCRISIS: HOUSING, WATER, ENERGY, TRANSIT, & HEALTH (Weeks 9–14)
-========================================================================================
-```
-
-### Week 9: Housing & Homelessness — The Epicenter of Scarcity
-* **Mon (Session 25): Diagnosing the 3.5 Million Home Deficit**
-  * *Topic:* Housing costs, cost-burdened renters, spatial segregation, and youth out-migration.
-  * *Readings:* Conor Dougherty, *Golden Gates: Fighting for Housing in More Expensive America* (Excerpts); PPIC, *California’s Housing Shortage*.
-* **Wed (Session 26): Homelessness as an Intersecting Polycrisis**
-  * *Topic:* High housing costs, mental health deinstitutionalization, substance use, and public space law (*Grants Pass v. Johnson*, CARE Courts).
-  * *Readings:* Margot Kushel et al., *UCSF Statewide Study of People Experiencing Homelessness in California* (Executive Summary); **Stone**, Chapter 4 ("Welfare & Security").
-* **Fri (Session 27): The YIMBY Counter-Offensive & State Preemption**
-  * *Topic:* State-level overrides: SB 35, SB 9/10, Housing Element enforcement, the Housing Accountability Unit, and the "Builder’s Remedy."
-  * *Readings:* Nolan Gray, *Arbitrary Lines* (Excerpts); Ezra Klein, "The Abundance Agenda in Sacramento."
-  * *Discussion:* Does state preemption of local zoning violate democratic principles, or is it the only antidote to regional collective action failure?
-
----
-
-### Week 10: Climate, Megafires, and the Fragile Energy Grid
-* **Mon (Session 28): The Ecological Polycrisis in California**
-  * *Topic:* Megadroughts, catastrophic wildfires, the wildland-urban interface (WUI), and property insurer insolvency (State Farm / Allstate exit).
-  * *Readings:* Adam Tooze, "Chartbook: California Wildfire Risk as Financial Contagion"; California Dept. of Insurance Market Briefing.
-* **Wed (Session 29): Traditional & Visible Services: Clean Energy and Grid Reliability**
-  * *Topic:* SB 100 clean energy targets, CAISO grid management, Diablo Canyon nuclear extension, rooftop solar (NEM 3.0), and transmission interconnection queues.
-  * *Readings:* **OSU OER**, Chapter 13 ("Traditional and Visible Services"); Severin Borenstein, "The Economics of California’s Energy Transition."
-* **Fri (Session 30): Clean Abundance vs. Conservationist Degrowth**
-  * *Topic:* Green supply-side buildouts (massive solar and transmission) vs. preservationist conservation.
-  * *Readings:* Ezra Klein, "The Climate Movement Needs to Embrace Building" (*New York Times*, 2022); **Stone**, Chapter 5 ("Liberty").
-  * *Discussion:* In the Polis, how do we navigate the conflict between protecting local desert ecosystems and building massive utility-scale clean power?
-
----
-
-### Week 11: Water Politics — Hydraulic Empires and Drought Realities
-* **Mon (Session 31): Traditional & Visible Services: The Architecture of California Water**
-  * *Topic:* The State Water Project (SWP), Central Valley Project (CVP), Colorado River Compact, and transferring water north-to-south.
-  * *Readings:* **OSU OER**, Chapter 13 (cont.); Marc Reisner, *Cadillac Desert* (Excerpts).
-* **Wed (Session 32): Water Rights, Senior Appropriators, and Ecosystem Collapse**
-  * *Topic:* Riparian rights, appropriative rights (the 1914 line), the Bay-Delta crisis, and agricultural vs. urban allocations.
-  * *Readings:* Barton H. Thompson Jr., *Liquid Asset* (Chapter on California Water Law); **Stone**, Chapter 14 ("Rights & Powers").
-* **Fri (Session 33): Engineering Water Abundance in a Polycrisis**
-  * *Topic:* Sustainable Groundwater Management Act (SGMA), Delta Conveyance Tunnel, wastewater recycling (Pure Water SoCal), and desalination politics.
-  * *Readings:* PPIC, *Priorities for California’s Water*; CalMatters Water In-Depth Investigative Series.
-  * *Discussion:* Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?
-
----
-
-### Week 12: Infrastructure, Transportation & High-Speed Rail
-* **Mon (Session 34): Traditional and Visible Services: Highways vs. Transit**
-  * *Topic:* Caltrans, freeway expansion, Vehicle Miles Traveled (VMT) mandates, and racial equity in urban transit.
-  * *Readings:* **OSU OER**, Chapter 13 (cont.); Ethan Elkind, *Railtown: The Fight for the LA Metro Rail* (Excerpts).
-* **Wed (Session 35): The High-Speed Rail Saga — A Case Study in Vetocracy**
-  * *Topic:* Proposition 1A (2008), Central Valley routing compromises, procurement blunders, utility relocation disputes, and $100B+ cost growth.
-  * *Readings:* Ralph Vartabedian, "How California's High-Speed Rail Went Off the Rails" (*New York Times*, 2022); CA High-Speed Rail Authority Business Plan Summary.
-* **Fri (Session 36): Transit Cost Disease and State Capacity**
-  * *Topic:* Why international peers (Spain, France, Japan) build transit at one-fourth the cost of California; contracting-out vs. in-house state engineering.
-  * *Readings:* Alon Levy & Eric Goldwyn, *Transit Costs Project Findings*; Derek Thompson, "Why the U.S. Can’t Build Transit Anymore."
-  * *Discussion:* What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?
-
----
-
-### Week 13: Inequality, Labor, and "The New Margins"
-* **Mon (Session 37): The New Margins — Demographic Divides and Spatial Inequality**
-  * *Topic:* Coastal wealth enclaves vs. Inland Empire/Central Valley poverty; racial and economic marginalization in state policy.
-  * *Readings:* **OSU OER**, Chapter 3 ("The New Margins"); PPIC, *Income Inequality and the Middle Class in California*.
-* **Wed (Session 38): Algorithmic Labor, AB 5, and Proposition 22**
-  * *Topic:* Employee vs. independent contractor classification (Dynamex), AB 5 (Lorena Gonzalez), and Big Tech’s $200M ballot measure war (Prop 22).
-  * *Readings:* Veena Dubal, "The Drive to Precarity" (*Berkeley J. of Emp. & Labor Law*); Selected court rulings on Prop 22.
-* **Fri (Session 39): Silicon Valley, Artificial Intelligence, and Frontier State Regulation**
-  * *Topic:* Consumer privacy (CCPA/CPRA), algorithmic transparency, AI frontier model safety (the SB 1047 debate), and venture capital lobbying.
-  * *Readings:* Selected legislative analyses on SB 1047; **Stone**, Chapter 10 ("Decisions & Persuasion").
-  * *Discussion:* Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?
-
----
-
-### Week 14: Social Welfare, Entitlements, and Higher Education
-* **Mon (Session 40): Entitlements and Public Health: Medi-Cal & CalRx**
-  * *Topic:* Medicaid expansion to all income-eligible residents regardless of immigration status; state-manufactured insulin (CalRx); the single-payer dilemma (SB 770 / CalCare).
-  * *Readings:* **OSU OER**, Chapter 12 ("Entitlements"); Healthy California for All Commission Report (Key Findings).
-* **Wed (Session 41): The California Master Plan for Higher Education**
-  * *Topic:* Clark Kerr’s tripartite model (UC, CSU, Community Colleges), student housing shortages, and CEQA enrollment limits (*UC Berkeley student housing battle*).
-  * *Readings:* John Aubrey Douglass, *The California Idea and Higher Education* (Excerpts); Selected coverage of *Save Berkeley’s Neighborhoods v. UC Regents*.
-* **Fri (Session 42): K-12 Education, Prop 98, and the Local Control Funding Formula (LCFF)**
-  * *Topic:* School finance equity, CTA union power, post-pandemic learning loss, and facilities bonds.
-  * *Readings:* **OSU OER**, Chapter 12 (cont.); **Stone**, Chapter 4 ("Welfare"); LAO, *An Overview of the Local Control Funding Formula*.
-  * *Discussion:* In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?
-
----
-
-```
-========================================================================================
-PART IV: CRIMINAL JUSTICE, REFORMING THE MACHINE, & CAPSTONE (Weeks 15–16)
-========================================================================================
-```
-
-### Week 15: Criminal Justice, Public Safety, and Incarceration Politics
-* **Mon (Session 43): Traditional and Visible Services: Mass Incarceration to Realignment**
-  * *Topic:* 1990s "Three Strikes," prison overcrowding, *Brown v. Plata*, AB 109 realignment, and Proposition 47.
-  * *Readings:* **OSU OER**, Chapter 13 ("Traditional and Visible Services"); Ruth Wilson Gilmore, *Golden Gulag* (Excerpts).
-* **Wed (Session 44): The Public Safety Backlash — Proposition 36 and the Polis**
-  * *Topic:* Retail theft panics, fentanyl overdoses, progressive prosecutors vs. police associations, and the 2024 ballot measure to overhaul Prop 47.
-  * *Readings:* PPIC, *Crime Trends in California*; **Stone**, Chapter 5 ("Security"); Prop 36 voter guide arguments.
-* **Fri (Session 45): The Polycrisis of Crime, Drugs, and Social Disinvestment**
-  * *Topic:* Integrating public health, addiction, housing insecurity, and carceral enforcement.
-  * *Readings:* **Stone**, Chapter 8 ("Causes") & Chapter 12 ("Decisions"); Selected academic criminological analyses.
-  * *Discussion:* How do political symbols and numbers construct competing narratives of "law and order" versus "systemic reform" in California?
-
----
-
-### Week 16: Rebuilding State Capacity & Capstone Simulation
-* **Mon (Session 46): Reimagining the Golden State — Institutional Reforms**
-  * *Topic:* Reforming the initiative process, calling a state constitutional convention, expanding legislative seats, CEQA statutory overhaul, and regional governance.
-  * *Readings:* Ezra Klein, "How California Can Save Itself" (2024); California Forward, *A Roadmap for Governance Reform*.
-* **Wed (Session 47): Capstone Simulation (Part I) — Assembly Committee on California’s Future**
-  * *Format:* Student teams roleplay lawmakers, executive officials, interest groups, and analysts debating amendments to the mock "California Abundance & Resilience Act."
-* **Fri (Session 48): Capstone Simulation (Part II) & Course Synthesis**
-  * *Format:* Committee markups, roll call votes, and final course debrief: *Can California Deliver Abundance in an Age of Polycrisis?*
-  * *Note:* **Final Policy White Paper Due Friday at 11:59 PM.**
-
----
-
-## VI. Mapping of the OSU OER Textbook (All 13 Chapters)
-
-| OSU OER Chapter Title | Course Week | Application in California Governance |
-| :--- | :--- | :--- |
-| **Chapter 1: Introduction and Themes** | Week 2 | Sustainability, state capacity, and California exceptionalism. |
-| **Chapter 2: Federalism** | Week 2 | Intergovernmental conflicts, Clean Air Act waivers, sanctuary laws. |
-| **Chapter 3: The New Margins** | Week 13 | Wealth inequality, demographic shifts, coastal vs. Inland divide. |
-| **Chapter 4: Small and Rural Local Government Environmental Sustainability...** | Week 6 | Regional sustainability planning, rural vs. urban capacity. |
-| **Chapter 5: Key Actors and the Policy Process in State and Local Governments** | Week 4 | Sacramento lobbying, interest group coalitions, public sector unions. |
-| **Chapter 6: State Constitutions** | Week 3 | The 1879 CA Constitution, direct democracy (Initiative, Referendum, Recall). |
-| **Chapter 7: Legislatures** | Week 4 | Professionalization, term limits, caucuses, and supermajorities. |
-| **Chapter 8: Executives** | Week 5 | Formal/informal gubernatorial powers, the Plural Executive. |
-| **Chapter 9: Courts** | Week 8 | The CA Supreme Court, judicial elections, and environmental litigation. |
-| **Chapter 10: State and Local Bureaucracy and Administration** | Week 5 | Administrative burdens, civil service, and "everything-bagel liberalism." |
-| **Chapter 11: Budgeting and Sustainability** | Week 7 | Fiscal volatility, Prop 13, Gann Limit, and surplus/deficit swings. |
-| **Chapter 12: Entitlements** | Week 14 | Medi-Cal universal expansion, LCFF school finance, social safety net. |
-| **Chapter 13: Traditional and Visible Services** | Weeks 10, 11, 12, 15 | Clean grid (W10), water plumbing (W11), High-Speed Rail (W12), criminal justice (W15). |
+| Activity | Instructor-Led (Weekly) | Instructor-Led (Course) | Independent (Weekly) | Independent (Course) | Remarks |
+|---|---|---|---|---|---|
+| In-Person Class Sessions | 3.0 | 45.0 | | | Seminars (Mon, Wed, Fri for 15 weeks) |
+| Course Readings | | | 4.0 | 60.0 | Reading average of 4 hours/week |
+| Analytical Reading Memos | | | 1.0 | 15.0 | 10 synthesis memos over the semester |
+| Midterm Exam Prep & Exam | 1.0 | 1.0 | | 15.0 | Midterm examination |
+| Policy Audit Research | | | | 20.0 | Empirical investigation paper |
+| Capstone Simulation Prep | | | | 10.0 | Roleplay preparation |
+| Legislative White Paper | | | | 25.0 | Final capstone paper |
+| Final Simulation (Finals Week)| 2.0 | 2.0 | | | Final capstone presentation session |
+| **TOTAL HOURS** | | **48.0** | | **145.0** | Total Course Hours = 193 |
