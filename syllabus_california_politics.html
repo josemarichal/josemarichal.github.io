@@ -124,7 +124,42 @@
             font-size: 0.9rem;
             color: #475569;
         }
-    </style>
+    
+        .day-entry {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .day-entry .date {
+            font-weight: bold;
+            color: var(--accent-color);
+            display: inline-block;
+            width: 120px;
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 120px;
+            margin-top: 0.5rem;
+        }
+
+        .readings-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .readings-list {
+                padding-left: 0;
+            }
+
+            .day-entry .date {
+                display: block;
+                margin-bottom: 0.25rem;
+                width: auto;
+            }
+        }
+</style>
 </head>
 <body>
     <header>
