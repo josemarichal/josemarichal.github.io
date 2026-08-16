@@ -327,9 +327,7 @@ Carnegie Hour Table (For 4-Credit Class - 15 Weeks + Finals)
 |---|---|---|---|---|---|
 | In-Person Class Sessions | 3.0 | 45.0 | | | Seminars (Mon, Wed, Fri for 15 weeks) |
 | Course Readings | | | 4.0 | 60.0 | Reading average of 4 hours/week |
-| Analytical Reading Memos | | | 1.0 | 15.0 | 10 synthesis memos over the semester |
+| Weekly Reading Memos & Policy Audit | | | | 42.0 | Synthesis memos and empirical investigation paper |
 | Midterm Exam Prep & Exam | 1.0 | 1.0 | | 15.0 | Midterm examination |
-| Policy Audit Research | | | | 20.0 | Empirical investigation paper |
-| Capstone Simulation Prep | | | | 10.0 | Roleplay preparation |
-| Final Examination (Finals Week)| 2.0 | 2.0 | | | Final examination session |
-| **TOTAL HOURS** | | **48.0** | | **145.0** | Total Course Hours = 193 |
+| Final Examination & Prep | 2.0 | 2.0 | | 15.0 | Final examination session |
+| **TOTAL HOURS** | | **48.0** | | **132.0** | Total Course Hours = 180 |
