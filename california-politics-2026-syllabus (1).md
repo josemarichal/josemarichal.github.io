@@ -87,7 +87,7 @@ COURSE SCHEDULE
 
 **Mon, Aug. 24**
 * Syllabus overview
-* *[California Department of Finance Economic Overview](https://dof.ca.gov/forecasting/economics/economic-indicators/)*.
+
 
 **Wed, Aug. 26**
 * Read: Adam Tooze, *["Welcome to the world of the polycrisis"](https://www.ft.com/content/498398e7-11b1-494b-9cd3-6d669ff358c4)* (*Financial Times*, 2022)
