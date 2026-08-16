@@ -63,15 +63,14 @@ COURSE ASSIGNMENTS
 
 | Assignment Type & Title | Description | Points | % of Total Points |
 |---|---|---|---|
-| **Seminar Participation & Daily Debates** | Active, informed contributions in seminar discussions, simulations, and breakout analysis. | 150 | 15% |
-| **Weekly Analytical Reading Memos** | Ten 400–500 word synthesis memos connecting OSU OER chapters to Stone, Tooze, or Klein/Thompson (10 × 2%). | 200 | 20% |
-| **Midterm Examination** | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. | 200 | 20% |
-| **"Vetocracy vs. Abundance" Policy Audit** | 2,000-word empirical investigation into a stalled or completed California project (Due Week 8). | 200 | 20% |
-| **Capstone Simulation & White Paper** | Mock Joint Legislative Hearing roleplay (10%) + 2,500-word legislative policy white paper (15%) (Week 16). | 250 | 25% |
+| **Seminar Participation, Daily Debates, & Attendance** | Active, informed contributions in seminar discussions, simulations, breakout analysis, and regular attendance. | 15 | 15% |
+| **Weekly Analytical Reading Memos & Policy Audit** | Ten 400–500 word synthesis memos connecting course readings, and a 2,000-word empirical investigation into a California project (Due Week 8). | 40 | 40% |
+| **Midterm Examination** | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. | 20 | 20% |
+| **Final Examination** | Comprehensive exam similar to the midterm, covering institutional mechanics and theoretical course frameworks. | 25 | 25% |
 
 COURSE GRADING POLICY
 
-Student work will be graded based on analytical rigor, integration of course concepts, clarity of writing, and empirical accuracy. Grading rubrics for the Policy Audit and the Capstone White Paper are available in Canvas. Students can expect to receive feedback on reading memos within one week of submission, and within two weeks for major papers.
+Student work will be graded based on analytical rigor, integration of course concepts, clarity of writing, and empirical accuracy. Grading rubrics for the Policy Audit and the Final Examination are available in Canvas. Students can expect to receive feedback on reading memos within one week of submission, and within two weeks for major papers.
 
 | Score Range | Letter | Score Range | Letter |
 |---|---|---|---|
@@ -101,7 +100,7 @@ COURSE SCHEDULE
 | 13 | Mon, Nov. 16 - Fri, Nov. 20 | **Week 13: Inequality, Labor, and "The New Margins"**<br>● Entitlements and Public Health: Medi-Cal & CalRx<br>● The California Master Plan for Higher Education<br>● K-12 Education, Prop 98, and the Local Control Funding Formula<br> | [OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/) ; [Healthy California for All Commission Report (Key Findings)](https://www.chhs.ca.gov/healthy-california-for-all/) .<br>John Aubrey Douglass, *The California Idea and Higher Education* (Excerpts); Selected coverage of *Save Berkeley’s Neighborhoods v. UC Regents* .<br>**OSU OER** , Chapter 12 (cont.); **Stone** , Chapter 4 ("Welfare"); LAO, [An Overview of the Local Control Funding Formula](https://lao.ca.gov/reports/2013/edu/lcff/lcff-072913.aspx) .<br>***Discussion Prompt:** In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?*<br> |
 | 14 | Mon, Nov. 23 - Fri, Nov. 27 | **Week 14: Social Welfare, Entitlements, and Higher Education**<br>● Traditional and Visible Services: Mass Incarceration to Realignment & The Public Safety Backlash — Proposition 36 and the Polis<br>● Reading Day (No Class)<br>● Thanksgiving Break (No Class)<br> | [OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/) ; Ruth Wilson Gilmore, [Golden Gulag](https://www.ucpress.edu/book/9780520242012/golden-gulag) [Book/Library] (Excerpts).PPIC, [Crime Trends in California](https://www.ppic.org/publication/crime-trends-in-california/) ; **Stone** , Chapter 5 ("Security"); [Prop 36 voter guide arguments](https://voterguide.sos.ca.gov/propositions/36/) .<br> |
 | 15 | Mon, Nov. 30 - Fri, Dec. 4 | **Week 15: Criminal Justice, Public Safety, and Incarceration Politics**<br>● The Polycrisis of Crime, Drugs, and Social Disinvestment<br>● Reimagining the Golden State — Institutional Reforms<br>● Capstone Simulation (Part I) — Assembly Committee on California’s Future<br> | **Stone** , Chapter 8 ("Causes") & Chapter 12 ("Decisions"); Selected academic criminological analyses.<br>***Discussion Prompt:** How do political symbols and numbers construct competing narratives of "law and order" versus "systemic reform" in California?*<br>Ezra Klein, ["How California Can Save Itself"](https://www.nytimes.com/2024/01/21/opinion/ezra-klein-podcast-scott-wiener-housing.html) * (2024); California Forward, [A Roadmap for Governance Reform](https://cafwd.org/our-work/governance-reform/) .<br>Student teams roleplay lawmakers, executive officials, interest groups, and analysts debating amendments to the mock "California Abundance & Resilience Act."<br> |
-| 16 | Mon, Dec. 7 - Fri, Dec. 11 | **Week 16: Rebuilding State Capacity & Capstone Simulation**<br>● Capstone Simulation (Part II) & Course Synthesis<br>● Finals Week (No Class)<br>● Finals Week (No Class)<br> | Committee markups, roll call votes, and final course debrief: *Can California Deliver Abundance in an Age of Polycrisis?* 📌 Final Policy White Paper Due Friday at 11:59 PM.<br> |
+| 16 | Mon, Dec. 7 - Fri, Dec. 11 | **Week 16: Rebuilding State Capacity & Capstone Simulation**<br>● Capstone Simulation (Part II) & Course Synthesis<br>● Finals Week (No Class)<br>● Finals Week (No Class)<br> | Committee markups, roll call votes, and final course debrief: *Can California Deliver Abundance in an Age of Polycrisis?* 📌 Final Examination.<br> |
 
 
 ATTENDANCE POLICY
@@ -138,6 +137,5 @@ Carnegie Hour Table (For 4-Credit Class - 15 Weeks + Finals)
 | Midterm Exam Prep & Exam | 1.0 | 1.0 | | 15.0 | Midterm examination |
 | Policy Audit Research | | | | 20.0 | Empirical investigation paper |
 | Capstone Simulation Prep | | | | 10.0 | Roleplay preparation |
-| Legislative White Paper | | | | 25.0 | Final capstone paper |
-| Final Simulation (Finals Week)| 2.0 | 2.0 | | | Final capstone presentation session |
+| Final Examination (Finals Week)| 2.0 | 2.0 | | | Final examination session |
 | **TOTAL HOURS** | | **48.0** | | **145.0** | Total Course Hours = 193 |
