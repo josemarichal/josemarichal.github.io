@@ -63,9 +63,9 @@ COURSE ASSIGNMENTS
 
 | Assignment Type & Title | Description | Points | % of Total Points |
 |---|---|---|---|
-| **Seminar Participation, Daily Debates, & Attendance** | Active, informed contributions in seminar discussions, simulations, breakout analysis, and regular attendance. | 15 | 15% |
+| **Seminar Participation, Daily Debates, & Attendance** | Active, informed contributions in seminar discussions, simulations, breakout analysis, and regular attendance. | 10 | 10% |
 | **Weekly Analytical Reading Memos & Policy Audit** | Ten 400–500 word synthesis memos connecting course readings, and a 2,000-word empirical investigation into a California project (Due Week 8). | 40 | 40% |
-| **Midterm Examination** | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. | 20 | 20% |
+| **Midterm Examination** | Institutional mechanics IDs + theoretical essay on Market vs. Polis and Polycrisis vs. Abundance. | 25 | 25% |
 | **Final Examination** | Comprehensive exam similar to the midterm, covering institutional mechanics and theoretical course frameworks. | 25 | 25% |
 
 COURSE GRADING POLICY
