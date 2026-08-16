@@ -83,7 +83,7 @@ Student work will be graded based on analytical rigor, integration of course con
 
 COURSE SCHEDULE
 
-### Week 1: The California Paradox — Polycrisis Meets the Scarcity Trap
+### **Week 1: The California Paradox — Polycrisis Meets the Scarcity Trap**
 
 **Mon, Aug. 24**
 * Syllabus overview
@@ -99,7 +99,7 @@ COURSE SCHEDULE
 * Read: Ezra Klein, ["What the Left Gets Wrong About Power"](https://www.nytimes.com/2022/03/13/opinion/berkeley-enrollment-climate-crisis.html) (*The New York Times*, 2022).
 * ***Discussion Prompt:** Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?*
 
-### Week 2: Frameworks of Public Choice — Market, Polis, and Federalism
+### **Week 2: Frameworks of Public Choice — Market, Polis, and Federalism**
 
 **Mon, Aug. 31**
 * **Stone**, Chapter 1 ("The Market and the Polis") & Chapter 2 ("Equity").
@@ -112,7 +112,7 @@ COURSE SCHEDULE
 * [OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/) & [Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/).
 * ***Discussion Prompt:** How does federalism allow California to pioneer national climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?*
 
-### Week 3: The Rules of the Game — State Constitutions & Direct Democracy
+### **Week 3: The Rules of the Game — State Constitutions & Direct Democracy**
 
 **Mon, Sep. 7**
 * *No Class (Labor Day)*
@@ -125,7 +125,7 @@ COURSE SCHEDULE
 * **Stone**, Chapter 7 ("Numbers").
 * ***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?*
 
-### Week 4: The Legislative Branch & Sacramento’s Key Actors
+### **Week 4: The Legislative Branch & Sacramento’s Key Actors**
 
 **Mon, Sep. 14**
 * [OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/)
@@ -140,7 +140,7 @@ COURSE SCHEDULE
 * **Stone**, Chapter 8 ("Causes").
 * ***Discussion Prompt:** Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side housing or single-payer health legislation?*
 
-### Week 5: The Executive Branch, Bureaucracy, and State Capacity
+### **Week 5: The Executive Branch, Bureaucracy, and State Capacity**
 
 **Mon, Sep. 21**
 * [OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/statelocal/chapter/chapter-10/); Ezra Klein, ["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html).
@@ -153,7 +153,7 @@ COURSE SCHEDULE
 **Fri, Sep. 25**
 * [OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/statelocal/chapter/chapter-4/).
 
-### Week 6: Local Government, Sustainability Planning, & Land-Use Vetoes
+### **Week 6: Local Government, Sustainability Planning, & Land-Use Vetoes**
 
 **Mon, Sep. 28**
 * Katherine Levine Einstein et al., [Neighborhood Defenders](https://www.cambridge.org/9781108701327) [Book/Library] (Chapters 1 & 3); Derek Thompson, "How California Blew It on Housing."
@@ -165,7 +165,7 @@ COURSE SCHEDULE
 **Fri, Oct. 2**
 * Paul G. Lewis, *Shaping Suburbia* (Chapter 4); LAO, [Understanding California's Property Taxes](https://lao.ca.gov/reports/2012/tax/property-tax-primer-112912.aspx).
 
-### Week 7: Public Finance — Budgeting, Entitlements, & Fiscal Volatility
+### **Week 7: Public Finance — Budgeting, Entitlements, & Fiscal Volatility**
 
 **Mon, Oct. 5**
 * **OSU OER**, Chapter 11 (cont.)
@@ -179,7 +179,7 @@ COURSE SCHEDULE
 **Fri, Oct. 9**
 * *No Class (Fall Holiday)*
 
-### Week 8: Courts, Legal Battles, and the CEQA Bottleneck
+### **Week 8: Courts, Legal Battles, and the CEQA Bottleneck**
 
 **Mon, Oct. 12**
 * Jennifer Hernandez, ["California Environmental Quality Act Lawsuits and the Housing Crisis"](https://repository.uclawsf.edu/hastings_environmental_law_journal/vol24/iss2/4/); Chris Elmendorf, "When Public Agencies Block Public Policy."
@@ -192,7 +192,7 @@ COURSE SCHEDULE
 * Margot Kushel et al., [UCSF Statewide Study of People Experiencing Homelessness in California](https://homelessness.ucsf.edu/our-impact/studies/california-statewide-study-people-experiencing-homelessness) (Executive Summary)
 * **Stone**, Chapter 4 ("Welfare & Security"). 📌 Policy Audit Due Friday at 11:59 PM.
 
-### Week 9: Housing & Homelessness — The Epicenter of Scarcity
+### **Week 9: Housing & Homelessness — The Epicenter of Scarcity**
 
 **Mon, Oct. 19**
 * Nolan Gray, *Arbitrary Lines* (Excerpts); Ezra Klein, "The Abundance Agenda in Sacramento."
@@ -204,7 +204,7 @@ COURSE SCHEDULE
 **Fri, Oct. 23**
 * [OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/); Severin Borenstein, "The Economics of California’s Energy Transition."
 
-### Week 10: Climate, Megafires, and the Fragile Energy Grid
+### **Week 10: Climate, Megafires, and the Fragile Energy Grid**
 
 **Mon, Oct. 26**
 * Ezra Klein, ["The Climate Movement Needs to Embrace Building"](https://www.nytimes.com/2022/05/29/opinion/climate-change-building-infrastructure.html)
@@ -220,7 +220,7 @@ COURSE SCHEDULE
 * [CalMatters Water In-Depth Investigative Series](https://calmatters.org/environment/water/).
 * ***Discussion Prompt:** Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?*
 
-### Week 11: Water Politics — Hydraulic Empires and Drought Realities
+### **Week 11: Water Politics — Hydraulic Empires and Drought Realities**
 
 **Mon, Nov. 2**
 * **OSU OER**, Chapter 13 (cont.); Ethan Elkind, *Railtown: The Fight for the LA Metro Rail* (Excerpts).
@@ -233,7 +233,7 @@ COURSE SCHEDULE
 * Alon Levy & Eric Goldwyn, [Transit Costs Project Findings](https://transitcosts.com/); Derek Thompson, "Why the U.S. Can’t Build Transit Anymore."
 * ***Discussion Prompt:** What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?*
 
-### Week 12: Infrastructure, Transportation & High-Speed Rail
+### **Week 12: Infrastructure, Transportation & High-Speed Rail**
 
 **Mon, Nov. 9**
 * [OSU OER, Chapter 3 ("The New Margins")](https://open.oregonstate.education/statelocal/chapter/chapter-3/); PPIC, [Income Inequality and the Middle Class in California](https://www.ppic.org/publication/income-inequality-in-california/).
@@ -246,7 +246,7 @@ COURSE SCHEDULE
 * **Stone**, Chapter 10 ("Decisions & Persuasion").
 * ***Discussion Prompt:** Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?*
 
-### Week 13: Inequality, Labor, and "The New Margins"
+### **Week 13: Inequality, Labor, and "The New Margins"**
 
 **Mon, Nov. 16**
 * [OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/)
@@ -259,7 +259,7 @@ COURSE SCHEDULE
 * **Stone**, Chapter 4 ("Welfare"); LAO, [An Overview of the Local Control Funding Formula](https://lao.ca.gov/reports/2013/edu/lcff/lcff-072913.aspx).
 * ***Discussion Prompt:** In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?*
 
-### Week 14: Social Welfare, Entitlements, and Higher Education
+### **Week 14: Social Welfare, Entitlements, and Higher Education**
 
 **Mon, Nov. 23**
 * [OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/)
@@ -271,7 +271,7 @@ COURSE SCHEDULE
 **Fri, Nov. 27**
 * *No Class (Thanksgiving Break)*
 
-### Week 15: Criminal Justice, Public Safety, and Incarceration Politics
+### **Week 15: Criminal Justice, Public Safety, and Incarceration Politics**
 
 **Mon, Nov. 30**
 * **Stone**, Chapter 8 ("Causes") & Chapter 12 ("Decisions").
@@ -283,7 +283,7 @@ COURSE SCHEDULE
 **Fri, Dec. 4**
 * *Capstone Simulation (Part I) (No Readings).* Student teams roleplay lawmakers, executive officials, interest groups, and analysts debating amendments to the mock "California Abundance & Resilience Act."
 
-### Week 16: Rebuilding State Capacity & Capstone Simulation
+### **Week 16: Rebuilding State Capacity & Capstone Simulation**
 
 **Mon, Dec. 7**
 * *Capstone Simulation (Part II) (No Readings).* Committee markups, roll call votes, and final course debrief: *Can California Deliver Abundance in an Age of Polycrisis?*
