@@ -143,10 +143,11 @@ COURSE SCHEDULE
 ### **Week 5: The Executive Branch, Bureaucracy, and State Capacity**
 
 **Mon, Sep. 21**
-* *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/statelocal/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
-* ***Discussion Prompt:** How does stacking multiple uncoordinated social mandates onto administrative agencies degrade their ability to build physical infrastructure?*
+* *No Class*
 
 **Wed, Sep. 23**
+* *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/statelocal/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
+* ***Discussion Prompt:** How does stacking multiple uncoordinated social mandates onto administrative agencies degrade their ability to build physical infrastructure?*
 * League of California Cities, *[The Nature of Local Government](https://www.calcities.org/resource/the-nature-of-california-municipal-government)*
 * **Stone**, Chapter 15 ("Powers").
 
@@ -173,8 +174,7 @@ COURSE SCHEDULE
 * ***Discussion Prompt:** Can a state execute multi-decade abundance infrastructure plans when its tax revenues experience wild boom-and-bust cycles?*
 
 **Wed, Oct. 7**
-* *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/statelocal/chapter/chapter-9/)*
-* **Stone**, Chapter 13 ("Rules").
+* *No Class*
 
 **Fri, Oct. 9**
 * *No Class (Fall Holiday)*
@@ -182,6 +182,8 @@ COURSE SCHEDULE
 ### **Week 8: Courts, Legal Battles, and the CEQA Bottleneck**
 
 **Mon, Oct. 12**
+* *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/statelocal/chapter/chapter-9/)*
+* **Stone**, Chapter 13 ("Rules").
 * Jennifer Hernandez, *["California Environmental Quality Act Lawsuits and the Housing Crisis"](https://repository.uclawsf.edu/hastings_environmental_law_journal/vol24/iss2/4/)*; Chris Elmendorf, "When Public Agencies Block Public Policy."
 * ***Discussion Prompt:** How did a 1970 environmental protection statute evolve into the primary legal weapon used to block solar farms, bike lanes, and dense housing?*
 
