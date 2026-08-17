@@ -26,6 +26,15 @@ This course examines California government and public policy through the dynamic
 
 To evaluate these competing diagnostics, we anchor our policy debates in Deborah Stone’s *Policy Paradox*—contrasting the rationalist Market Model with the Polis Model—while mastering the structural mechanics of state and local institutions using the Open Oregon Educational Resource textbook.
 
+CAREER PATHWAYS IN POLITICAL SCIENCE
+
+This course develops skills applicable to five core career pathways:
+* **Law & Government:** Law school, courts, legislative offices, public administration, campaigns.
+* **International & Global Affairs:** Diplomacy, NGOs, human rights, international organizations, foreign service.
+* **Policy & Research:** Think tanks, policy institutes, government analysis, program evaluation.
+* **Community Development & Advocacy:** Nonprofits, advocacy, community organizing, civic engagement.
+* **Pre-Law & JD/Legal Professions:** LSAT preparation and fellowships, legal and paralegal internships, law school readiness.
+
 PREREQUISITE KNOWLEDGE OR COURSEWORK
 
 None
