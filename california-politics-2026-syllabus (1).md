@@ -29,11 +29,11 @@ To evaluate these competing diagnostics, we anchor our policy debates in Deborah
 CAREER PATHWAYS IN POLITICAL SCIENCE
 
 This course develops skills applicable to five core career pathways:
-* **Law & Government:** Law school, courts, legislative offices, public administration, campaigns.
-* **International & Global Affairs:** Diplomacy, NGOs, human rights, international organizations, foreign service.
-* **Policy & Research:** Think tanks, policy institutes, government analysis, program evaluation.
-* **Community Development & Advocacy:** Nonprofits, advocacy, community organizing, civic engagement.
-* **Pre-Law & JD/Legal Professions:** LSAT preparation and fellowships, legal and paralegal internships, law school readiness.
+* **Law & Government:** Law school, courts, legislative offices, public administration, campaigns. *(Example: Legislative Aide for a State Senator)*
+* **International & Global Affairs:** Diplomacy, NGOs, human rights, international organizations, foreign service. *(Example: Foreign Service Officer for the State Department)*
+* **Policy & Research:** Think tanks, policy institutes, government analysis, program evaluation. *(Example: Policy Analyst at a Non-Partisan Think Tank)*
+* **Community Development & Advocacy:** Nonprofits, advocacy, community organizing, civic engagement. *(Example: Community Organizer for a Regional Housing Advocacy Group)*
+* **Pre-Law & JD/Legal Professions:** LSAT preparation and fellowships, legal and paralegal internships, law school readiness. *(Example: Assistant Public Defender)*
 
 PREREQUISITE KNOWLEDGE OR COURSEWORK
 
