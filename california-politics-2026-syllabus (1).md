@@ -316,6 +316,16 @@ LATE POLICY
 
 Assignments submitted after the deadline will incur a 10% penalty for each day they are late. Assignments more than five days late will not be accepted without prior authorization. If you are facing extenuating circumstances, please contact the instructor *before* the deadline to discuss a potential extension.
 
+DEVICE AND AI POLICY
+
+Following the pedagogical model recently adopted by the University of Chicago’s Social Sciences Core, this course is designed as an "analog" environment. We strongly believe that equipping students to read, write, and think independently—without dependence on artificial intelligence or constant digital distraction—is essential to evaluating the complex problems of California governance.
+
+* **Device-Free Classroom:** The use of laptops, tablets, and smartphones is generally prohibited during class. Our seminars will rely on device-free, guided discussions to afford students the freedom to think for themselves and engage in good faith, face-to-face, without the cacophony of disembodied voices.
+* **Analog Reading (Print Your Readings!):** To limit screen time and improve deep reading comprehension, you are strongly encouraged to print out the assigned readings and bring the physical copies to class. Electronic reading during discussion is highly discouraged.
+* **No AI Tools:** The use of artificial intelligence tools (e.g., ChatGPT, Claude) by students to generate coursework or complete assignments is banned. Human engagement, human interaction, and human expertise are central to our educational mission.
+
+*Exceptions to the device-free norm may occasionally be carved out by the instructor for specific purposes, such as collectively examining tabulations in a dataset or accessing specific library resources.*
+
 TECHNICAL SKILLS AND TECHNOLOGY REQUIRED FOR THIS COURSE
 
 Please refer to the Student Resources section in Canvas for a description of general technology requirements. 
