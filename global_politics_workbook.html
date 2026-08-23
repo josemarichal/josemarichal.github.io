@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Politics Seminar Workbook</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <title>Global Politics Friday Workbook</title>
     <style>
         body {
             background: #fff; 
             color: #000;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         
         .workbook-container {
@@ -29,8 +31,6 @@
             color: #000;
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            background: none;
-            -webkit-text-fill-color: initial;
         }
 
         .workbook-header p {
@@ -52,6 +52,7 @@
             padding-bottom: 0.25rem;
             font-family: monospace;
             color: #666;
+            margin-left: 20px;
         }
 
         .week-page {
@@ -59,40 +60,37 @@
             min-height: 90vh;
             display: flex;
             flex-direction: column;
-            padding-top: 1rem;
+            margin-bottom: 4rem;
         }
 
         .week-header {
-            background: #f8f9fa;
-            border: 2px solid #000;
-            padding: 1.5rem;
             margin-bottom: 1rem;
-            border-radius: 4px;
         }
 
         .week-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .week-date {
-            font-size: 1rem;
-            font-weight: normal;
-            color: #555;
-            background: #eee;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .prompt-text {
             font-size: 1.1rem;
             line-height: 1.5;
             color: #333;
+            background: #f8fafc;
+            padding: 1rem;
+            border-left: 4px solid #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .theories-list {
+            font-weight: bold;
+            color: #1e40af;
         }
 
         .writing-area {
@@ -105,293 +103,222 @@
             min-height: 600px;
             border: 1px solid #e2e8f0;
         }
-
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                background: none;
+            }
+            .workbook-container {
+                padding: 0;
+            }
+        }
+        
         .print-btn {
             display: block;
             width: 100%;
             max-width: 300px;
             margin: 2rem auto;
             padding: 1rem;
-            background: var(--primary-color, #1e293b);
+            background: #1e293b;
             color: white;
             text-align: center;
             text-decoration: none;
-            font-size: 1.2rem;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             border: none;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            font-size: 1.1rem;
         }
-
         .print-btn:hover {
-            background: var(--accent-color, #3b82f6);
-        }
-
-        .section-divider {
-            page-break-before: always;
-            page-break-after: always;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 90vh;
-            text-align: center;
-        }
-
-        .section-divider h2 {
-            font-size: 3rem;
-            border-bottom: 4px solid #000;
-            padding-bottom: 1rem;
-        }
-
-        @media print {
-            .print-btn, header, footer, .logo, nav {
-                display: none !important;
-            }
-            body, .workbook-container {
-                padding: 0;
-                margin: 0;
-                background: white;
-            }
-            .writing-area {
-                border-color: #cbd5e1;
-            }
+            background: #334155;
         }
     </style>
 </head>
 <body>
-    <button class="print-btn" onclick="window.print()">🖨️ Print Workbook</button>
 
-    <div class="workbook-container">
-        
-        <div class="workbook-header">
-            <h1>Global Politics Seminar Workbook</h1>
-            <p>POLS 200 - Dr. José Marichal</p>
-            <p style="margin-top: 1rem; font-style: italic; font-size: 0.95rem;">
-                Print this workbook and bring it to class. All Living Rights reflections, Debate Project worksheets, and Case Study notes will be handwritten here.
-            </p>
-        </div>
+<div class="workbook-container">
+    <button onclick="window.print()" class="print-btn no-print">🖨️ Print Workbook</button>
 
-        <div class="student-info">
-            <div>Name: </div>
-        </div>
-
-        <!-- SECTION I: LIVING RIGHTS PORTFOLIO -->
-        <div class="section-divider">
-            <div>
-                <h2>Part I: Living Rights Portfolio</h2>
-                <p style="font-size: 1.2rem; margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    Connect the week's political "right" to a digital artifact (TikTok, song, meme, news clip) that matters to you.
-                </p>
-            </div>
-        </div>
-
-        <!-- Living Rights 1 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Artifact 1: Right to Resources & Inequality</span>
-                    <span class="week-date">Due: Feb 20</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Artifact Description:</strong> (What is it and where is it from?)<br><br>
-                    <strong>Prompt:</strong> How does this artifact visualize or normalize inequality? Explain your <em>personal resonance</em> (why it speaks to you) and how it illustrates what this "right" looks like in practice.
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Living Rights 2 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Artifact 2: Right to Economic Security</span>
-                    <span class="week-date">Due: Feb 27</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Artifact Description:</strong><br><br>
-                    <strong>Prompt:</strong> Find an artifact that speaks to the fragility of economic security. What does this tell us about who is protected and who is vulnerable? Include your personal resonance.
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Living Rights 3 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Artifact 3: Right to Belonging</span>
-                    <span class="week-date">Due: Mar 13</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Artifact Description:</strong><br><br>
-                    <strong>Prompt:</strong> Select an artifact that draws a line between who belongs and who doesn't. How does this artifact construct a sense of 'community' or 'otherness'?
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Living Rights 4 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Artifact 4: Right to Dissent</span>
-                    <span class="week-date">Due: Apr 3</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Artifact Description:</strong><br><br>
-                    <strong>Prompt:</strong> Find an artifact representing protest, resistance, or speaking truth to power. How does this artifact help us understand the right to dissent as a lived human experience?
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Living Rights 5 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Artifact 5: Right to Infrastructure</span>
-                    <span class="week-date">Due: Apr 24</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Artifact Description:</strong><br><br>
-                    <strong>Prompt:</strong> Find an artifact related to public goods, spaces, or infrastructure (digital or physical). How does this artifact demonstrate the politics of what gets built and for whom?
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Living Rights Final -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Final Portfolio Curation</span>
-                    <span class="week-date">Due: May 8</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Prompt:</strong> Look back at your 5 artifacts. Assembly & Reflection. What overarching story do they tell about how global politics is experienced in digital culture today?
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- SECTION II: DEBATE PROJECT -->
-        <div class="section-divider">
-            <div>
-                <h2>Part II: Debate Project</h2>
-                <p style="font-size: 1.2rem; margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    Structured empathetic argumentation worksheets leading up to your final debate performance.
-                </p>
-            </div>
-        </div>
-
-        <!-- Debate 1 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Debate 1: Research & Claim</span>
-                    <span class="week-date">Due: Feb 20</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Task:</strong> Write your one-sentence debatable claim statement below. Then provide an annotated bibliography of 5 sources (3 supporting, 2 opposing).
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Debate 2 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Debate 2: Opposition Brief</span>
-                    <span class="week-date">Due: Mar 27</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Task:</strong> Argue AGAINST your original claim. Identify 3 strong opposing arguments with evidence. Write a reflection on what you learned from "steel-manning" the other side.
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Debate 3 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Debate 3: Argument Construction</span>
-                    <span class="week-date">Due: Apr 17</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Task:</strong> Build your affirmative case. Develop 2 main arguments with Warrants/Evidence. Address counterarguments and draft 2 questions to ask the opposition.
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Debate 4 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Debate 4: Outline Prep</span>
-                    <span class="week-date">Due: May 1</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Task:</strong> Draft the formal outline of your debate performance here. (You will transfer the key points to your 6 index cards for the actual debate).
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-        
-        <!-- Debate 5 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Debate 5: Reflection</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Task:</strong> Reflect on your group's final debate performance. How did the opposition challenge your views, and how equitably did your group participate?
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- SECTION III: SEMINAR NOTES -->
-        <div class="section-divider">
-            <div>
-                <h2>Part III: Seminar & Case Study Notes</h2>
-                <p style="font-size: 1.2rem; margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    Use these pages to prepare your thoughts for Friday Case Study Debates or Small Group Discussions.
-                </p>
-            </div>
-        </div>
-
-        <!-- Generic Seminar Notes 1 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Friday Case Study Debate Prep (1)</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Topic / Proposition:</strong> __________________________________________________<br><br>
-                    Jot down your key arguments, evidence, and points to raise during your assigned Friday debate.
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
-        <!-- Generic Seminar Notes 2 -->
-        <div class="week-page">
-            <div class="week-header">
-                <div class="week-title">
-                    <span>Friday Case Study Debate Prep (2)</span>
-                </div>
-                <div class="prompt-text">
-                    <strong>Topic / Proposition:</strong> __________________________________________________<br><br>
-                    Jot down your key arguments, evidence, and points to raise during your assigned Friday debate.
-                </div>
-            </div>
-            <div class="writing-area"></div>
-        </div>
-
+    <div class="workbook-header">
+        <h1>Global Politics Friday Workbook</h1>
+        <p>In-class weekly theoretical application exercises.</p>
     </div>
+
+    <div class="student-info">
+        <div>Name:</div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 2</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 3</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 4</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 5</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 6</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 7</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 8</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 9</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 10</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 11</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 12</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 13</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 14</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+    <div class="week-page">
+        <div class="week-header">
+            <div class="week-title">
+                <span>Week 15</span>
+            </div>
+            <div class="prompt-text">
+                <strong>Prompt:</strong> Apply one of the following six theories to this week's readings: <span class="theories-list">Realism, Liberalism, Constructivism, Marxism, Feminism, or Post-Colonialism</span>. Explain how this theory helps us understand the key concepts and cases discussed this week.
+            </div>
+        </div>
+        <div class="writing-area"></div>
+    </div>
+
+</div>
 </body>
 </html>
