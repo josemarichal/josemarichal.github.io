@@ -322,7 +322,7 @@ Following the pedagogical model recently adopted by the University of Chicago’
 
 * **Device-Free Classroom:** The use of laptops, tablets, and smartphones is generally prohibited during class. Our seminars will rely on device-free, guided discussions to afford students the freedom to think for themselves and engage in good faith, face-to-face, without the cacophony of disembodied voices.
 * **Analog Reading (Print Your Readings!):** To limit screen time and improve deep reading comprehension, you are strongly encouraged to print out the assigned readings and bring the physical copies to class. Electronic reading during discussion is highly discouraged.
-* **No AI Tools:** The use of artificial intelligence tools (e.g., ChatGPT, Claude) by students to generate coursework or complete assignments is banned. Human engagement, human interaction, and human expertise are central to our educational mission.
+* **AI Tool Usage:** You are welcome to use artificial intelligence tools (e.g., ChatGPT, Claude) to brainstorm ideas, clarify concepts, or improve your general understanding of the material. However, the use of AI to write, draft, or complete any graded assignments is strictly prohibited. Human engagement and human expertise remain central to the core work of this class.
 
 *Exceptions to the device-free norm may occasionally be carved out by the instructor for specific purposes, such as collectively examining tabulations in a dataset or accessing specific library resources.*
 
