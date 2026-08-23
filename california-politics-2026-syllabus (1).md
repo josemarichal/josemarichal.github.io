@@ -99,13 +99,13 @@ COURSE SCHEDULE
 
 
 **Wed, Aug. 26**
-* Read: Adam Tooze, *["Welcome to the world of the polycrisis"](https://www.ft.com/content/498398e7-11b1-494b-9cd3-6d669ff358c4)* (*Financial Times*, 2022)
-* Read: Adam Tooze, *["Chartbook: The Anatomy of the Polycrisis"](https://adamtooze.com/2022/06/24/chartbook-130-the-anatomy-of-the-polycrisis/)* (2022).
+* Read: Adam Tooze, *["What is a polycrisis? Historian Adam Tooze explains"](https://www.weforum.org/stories/2023/03/polycrisis-adam-tooze-historian-explains/)* (World Economic Forum, 2023)
+* Listen: [Adam Tooze on the Polycrisis (Spotify Podcast)](https://open.spotify.com/episode/0FMbRgzqW6ofAHCmvDAjiZ?go=1&sp_cid=5d41a49494b68804cf5d7e7e3a515ac8&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=ade028a0e55f4f0d)
 * ***Discussion Prompt:** How does the concept of a "polycrisis" differ from simply facing multiple separate problems simultaneously?*
 
 **Fri, Aug. 28**
-* Read: Derek Thompson, *["A Simple Plan to Solve All of America’s Problems: The Abundance Agenda"](https://www.theatlantic.com/ideas/archive/2022/01/abundance-agenda-housing-healthcare-energy/621215/)* (*The Atlantic*, 2022)
-* Read: Ezra Klein, *["What the Left Gets Wrong About Power"](https://www.nytimes.com/2022/03/13/opinion/berkeley-enrollment-climate-crisis.html)* (*The New York Times*, 2022).
+* Read: Derek Thompson, *["A Simple Plan to Solve All of America’s Problems: The Abundance Agenda"](https://drive.google.com/file/d/1MxfSqTiK1Jzq18FwQqxycUPniVJLeh8Z/view?usp=sharing)* (*The Atlantic*, 2022)
+* Watch: [The Abundance Agenda (YouTube)](https://www.youtube.com/watch?v=Ib1wzwbL7Is)
 * ***Discussion Prompt:** Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?*
 
 ### **Week 2: Frameworks of Public Choice — Market, Polis, and Federalism**
