@@ -8,11 +8,10 @@ Name and Title: Jose Marichal, Ph.D., Professor, Department of Political Science
 Swenson 228 (Hours TBA)
 
 **Contact Info:**
-CLU Phone: (TBA)
 CLU Email: marichal@callutheran.edu
 
 **Class Meeting Times & Location:**
-Mondays, Wednesdays, and Fridays (Times & Room TBA)
+Mondays, Wednesdays, and Fridays (10:30am)
 
 **Drop Dates:**
 See academic calendar:
@@ -103,7 +102,7 @@ Student work will be graded based on analytical rigor, integration of course con
 
 ### ATTENDANCE POLICY
 
-Attendance and active participation are essential components of this seminar-style course and account for 15% of your total grade. Missing more than three unexcused classes will negatively impact your participation score. In the event of illness or an anticipated absence, please email the instructor prior to class to make necessary arrangements. Regardless of whether an absence is excused, students are responsible for all material covered and assignments due. Accurate attendance records are maintained for all class sessions.
+Attendance and active participation are essential components of this seminar-style course and account for 10% of your total grade. Missing more than three unexcused classes will negatively impact your participation score. In the event of illness or an anticipated absence, please email the instructor prior to class to make necessary arrangements. Regardless of whether an absence is excused, students are responsible for all material covered and assignments due. Accurate attendance records are maintained for all class sessions.
 
 ### LATE POLICY
 
