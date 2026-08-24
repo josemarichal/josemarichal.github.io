@@ -181,7 +181,7 @@ COURSE SCHEDULE
 
 **Mon, Sep. 28**
 * **Required:**
-  * Katherine Levine Einstein et al., *[Neighborhood Defenders](https://www.cambridge.org/9781108701327)* [Book/Library] (Chapters 1 & 3); Derek Thompson, "How California Blew It on Housing."
+* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** Is local zoning control an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?*
 
 **Wed, Sep. 30**
@@ -230,7 +230,7 @@ COURSE SCHEDULE
 
 **Mon, Oct. 19**
 * **Required:**
-  * Nolan Gray, *Arbitrary Lines* (Excerpts); Ezra Klein, "The Abundance Agenda in Sacramento."
+* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** Does state preemption of local zoning violate democratic principles, or is it the only antidote to regional collective action failure?*
 
 **Wed, Oct. 21**
@@ -245,7 +245,7 @@ COURSE SCHEDULE
 
 **Mon, Oct. 26**
 * **Required:**
-  * Ezra Klein, *["The Climate Movement Needs to Embrace Building"](https://www.nytimes.com/2022/05/29/opinion/climate-change-building-infrastructure.html)*
+* **Case Study:** Environment
   * **Stone**, Chapter 5 ("Liberty").
 * ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting local desert ecosystems and building massive utility-scale clean power?*
 
@@ -256,8 +256,8 @@ COURSE SCHEDULE
 
 **Fri, Oct. 30**
 * **Required:**
-  * PPIC, *[Priorities for California’s Water](https://www.ppic.org/publication/priorities-for-californias-water/)*
-  * *[CalMatters Water In-Depth Investigative Series](https://calmatters.org/environment/water/)*.
+* **Case Study:** Environment
+* **Case Study:** Environment
 * ***Discussion Prompt:** Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?*
 
 ### **Week 11: Liberty, Surveillance, and Rights**
@@ -271,7 +271,7 @@ COURSE SCHEDULE
 
 **Fri, Nov. 6**
 * **Required:**
-  * Alon Levy & Eric Goldwyn, *[Transit Costs Project Findings](https://transitcosts.com/)*; Derek Thompson, "Why the U.S. Can’t Build Transit Anymore."
+* **Case Study:** Economy & Labor
 * ***Discussion Prompt:** What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?*
 
 ### **Week 12: Infrastructure, Inequality, and Decision-Making**
@@ -282,11 +282,11 @@ COURSE SCHEDULE
 
 **Wed, Nov. 11**
 * **Required:**
-  * Veena Dubal, *["The Drive to Precarity"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3100257)*; Selected court rulings on Prop 22.
+* **Case Study:** Economy & Labor
 
 **Fri, Nov. 13**
 * **Required:**
-  * Selected legislative analyses on SB 1047
+* **Case Study:** Economy & Labor
   * **Stone**, Chapter 10 ("Decisions & Persuasion").
 * ***Discussion Prompt:** Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?*
 
@@ -295,11 +295,11 @@ COURSE SCHEDULE
 **Mon, Nov. 16**
 * **Required:**
   * *[OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/)*
-  * *[Healthy California for All Commission Report (Key Findings)](https://www.chhs.ca.gov/healthy-california-for-all/)*.
+* **Case Study:** Health & Safety Net
 
 **Wed, Nov. 18**
 * **Required:**
-  * John Aubrey Douglass, *The California Idea and Higher Education* (Excerpts); Selected coverage of *Save Berkeley’s Neighborhoods v. UC Regents*.
+* **Case Study:** Education
 
 **Fri, Nov. 20**
 * **Required:**
@@ -330,7 +330,7 @@ COURSE SCHEDULE
 
 **Wed, Dec. 2**
 * **Required:**
-  * Ezra Klein, *["How California Can Save Itself"](https://www.nytimes.com/2024/01/21/opinion/ezra-klein-podcast-scott-wiener-housing.html)*; California Forward, *[A Roadmap for Governance Reform](https://cafwd.org/our-work/governance-reform/)*.
+* **Case Study:** Housing & Homelessness
 
 **Fri, Dec. 4**
 * **Required:**
