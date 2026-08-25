@@ -101,7 +101,7 @@ COURSE SCHEDULE
 **Wed, Aug. 26**
 * **Required:**
   * Read: Adam Tooze, *["What is a polycrisis? Historian Adam Tooze explains"](https://www.weforum.org/stories/2023/03/polycrisis-adam-tooze-historian-explains/)* (World Economic Forum, 2023)
-  * Listen: [Adam Tooze on the Polycrisis (Podcast)](https://radioopensource.org/polycrisis/)
+  * Listen: [Adam Tooze on the Polycrisis (click on the gray listen button on the upper righthand side of the screen)](https://radioopensource.org/polycrisis/)
 * ***Discussion Prompt:** How does the concept of a "polycrisis" differ from simply facing multiple separate problems simultaneously?*
 
 **Fri, Aug. 28**
