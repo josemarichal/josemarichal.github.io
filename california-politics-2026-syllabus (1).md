@@ -109,6 +109,7 @@ COURSE SCHEDULE
 * **Required:**
   * Read: Derek Thompson, *["A Simple Plan to Solve All of America’s Problems: The Abundance Agenda"](https://drive.google.com/file/d/1MxfSqTiK1Jzq18FwQqxycUPniVJLeh8Z/view?usp=sharing)* (*The Atlantic*, 2022)
   * Watch: [The Abundance Agenda (YouTube)](https://www.youtube.com/watch?v=VwjxVRfUV_4&t=3s)
+  * Review: [discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSydd6YN1AFK1hzWeGQ4YKRmLaXIK69DtUCdPB8Anh8AJ77Ba5Ykhezq_FK83EElzLL-7jSydwvSk-f/pub?start=false&loop=false&delayms=3000)
 * ***Discussion Prompt:** Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?*
 
 ### **Week 2: The Market, the Polis, Equity, and Efficiency**
