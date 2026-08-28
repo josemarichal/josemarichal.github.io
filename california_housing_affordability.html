@@ -287,6 +287,91 @@
             margin-bottom: 1.25rem;
         }
 
+        /* Thousand Oaks Focus Section Card */
+        .to-focus-card {
+            background: linear-gradient(180deg, rgba(255, 112, 67, 0.05) 0%, rgba(22, 16, 12, 0.95) 100%);
+            border: 1px solid rgba(255, 112, 67, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            position: relative;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+        }
+
+        .to-focus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ffab91, var(--accent-color));
+        }
+
+        .to-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 112, 67, 0.15);
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 112, 67, 0.35);
+            padding: 0.3rem 0.85rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .to-focus-card h3 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            color: var(--text-heading);
+            font-family: var(--font-display);
+        }
+
+        .to-focus-card p {
+            font-size: 1.02rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Policy Data Table */
+        .policy-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .policy-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            text-align: left;
+        }
+
+        .policy-table th {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-heading);
+            padding: 0.85rem 1.2rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .policy-table td {
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+        }
+
+        .policy-table tr:hover td {
+            background: rgba(255, 112, 67, 0.03);
+        }
+
         /* Sidebar Callouts */
         .sidebar-panel {
             display: flex;
@@ -519,6 +604,10 @@
                 padding: 1.5rem;
             }
 
+            .to-focus-card {
+                padding: 1.5rem;
+            }
+
             .resource-library {
                 padding: 1.5rem;
             }
@@ -556,7 +645,7 @@
             <div class="resource-header">
                 <span class="resource-badge">California & Ventura County Policy Dossier</span>
                 <h1>California / Thousand Oaks Housing Affordability Resource Page</h1>
-                <p class="lead">A comprehensive policy repository analyzing the systemic drivers, legal bottlenecks, financing friction, and local Conejo Valley dynamics defining California's housing crisis, featuring curated empirical studies, legislative analyses, and primary sources.</p>
+                <p class="lead">California State Mandates Versus Local Growth Constraints: An Exhaustive Analysis of Nine Housing Policy Domains in Thousand Oaks, California. A comprehensive repository exploring systemic supply barriers, legal friction, finance complexity, and municipal case studies.</p>
             </div>
 
             <!-- Sticky Tab Navigation (9 Core Areas) -->
@@ -570,7 +659,7 @@
                     <button class="tab-btn" data-target="issue-6" role="tab" aria-selected="false"><span class="tab-num">6</span> Article 34 Repeal</button>
                     <button class="tab-btn" data-target="issue-7" role="tab" aria-selected="false"><span class="tab-num">7</span> Water & Parking</button>
                     <button class="tab-btn" data-target="issue-8" role="tab" aria-selected="false"><span class="tab-num">8</span> RHNA & Social Housing</button>
-                    <button class="tab-btn" data-target="issue-9" role="tab" aria-selected="false"><span class="tab-num">9</span> Thousand Oaks Focus</button>
+                    <button class="tab-btn" data-target="issue-9" role="tab" aria-selected="false"><span class="tab-num">9</span> Thousand Oaks Synthesis</button>
                 </div>
             </div>
 
@@ -648,6 +737,15 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: Single-Family Zoning Inelasticity & SB 9 In Practice</h3>
+                    <p>Thousand Oaks represents a quintessential suburban master-planned community where 72 percent of the 48,131 housing units are owner-occupied, and low-density single-family zoning covers over 85 percent of the residential landscape. While Senate Bill 9 was theoretically designed to unlock fourplexes across these vast single-family tracts, local empirical uptake in Thousand Oaks mirrors the statewide pattern of extreme inertia.</p>
+                    <p>Although the City of Thousand Oaks published ministerial SB 9 urban lot split application packets, actual homeowner filings have remained negligible. This subdued uptake underscores a core economic reality: lot splits require substantial upfront capital, specialized entitlement navigation, and construction financing at elevated interest rates. Furthermore, because Thousand Oaks has historically maintained stringent development standards and high land values, the underlying market math makes piecemeal duplex development financially unfeasible for most ordinary homeowners without institutional capital backing.</p>
+                    <p>Consequently, the city's housing supply strategy has not relied on decentralized single-family infill under SB 9. Instead, to satisfy state production targets without disrupting suburban neighborhoods, Thousand Oaks has been forced to channel nearly all new density into concentrated commercial rezonings along Thousand Oaks Boulevard.</p>
                 </div>
 
                 <!-- Curated Research & Policy Library for Core Issue 1 -->
@@ -802,6 +900,14 @@
                     </div>
                 </div>
 
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: The Civic Arts Plaza EIR & "Statement of Overriding Considerations"</h3>
+                    <p>In Thousand Oaks, CEQA review operates as the primary battleground where civic slow-growth sentiment clashes with infill mandates. This dynamic was vividly demonstrated during the approval of the city's flagship <strong>Downtown Project on the 17.68-acre Civic Arts Plaza site</strong>. To advance the project—which includes 240 residential units (with 39 deed-restricted affordable units), retail space, and 1,395 parking stalls—the city was required to prepare an exhaustive Environmental Impact Report (EIR).</p>
+                    <p>Project opponents leveraged the CEQA framework during intense public hearings to challenge traffic congestion models, parking ratios, and specifically the planned removal of 53 protected oak and landmark trees. To legally adopt the EIR and insulate the development against inevitable CEQA lawsuits from anti-density entities, the Thousand Oaks City Council was forced to formally adopt a <em>"Statement of Overriding Considerations."</em> This statutory finding legally declared that the public benefits of providing mixed-income infill housing and revitalizing downtown outweighed the unavoidable environmental and aesthetic impacts, illustrating how even municipally sponsored housing faces intense procedural CEQA hurdles.</p>
+                </div>
+
                 <!-- Curated Research & Policy Library for Core Issue 2 -->
                 <div class="resource-library">
                     <div class="resource-library-header">
@@ -938,6 +1044,14 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: Fiscal Scarcity & Developer Fee Transparency Under AB 1820</h3>
+                    <p>Like many mature Ventura County suburban cities, Thousand Oaks relies heavily on capital exactions, water/wastewater connection fees, traffic mitigation charges, and school facility fees to maintain municipal infrastructure in the post-Proposition 13 era. However, when municipal impact fees and utility hookup charges escalate toward $30,000 to $50,000 per unit, they create an immediate financial barrier for both market-rate and deed-restricted affordable infill.</p>
+                    <p>This fee burden creates a direct policy contradiction: the city is mandated by the state to zone for and facilitate 2,621 RHNA housing units, yet high municipal impact fees render marginal commercial infill redevelopment financially unviable for private and non-profit builders alike. The enactment of <strong>AB 1820</strong> and <strong>SB 1014</strong> enforces a critical shift in Thousand Oaks by requiring the city to provide developers with a binding, itemized, good-faith estimate of all municipal fees within 30 days of receiving a preliminary housing application. This early certainty prevents unexpected late-stage infrastructure levies from derailing pro formas and stalling housing production.</p>
                 </div>
 
                 <!-- Curated Research & Policy Library for Core Issue 3 -->
@@ -1092,6 +1206,14 @@
                     </div>
                 </div>
 
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: Delivering 1,236 Lower-Income Units & Non-Profit Capital Stacking</h3>
+                    <p>To meet its state-mandated 6th Cycle allocation, Thousand Oaks must produce <strong>1,236 lower-income homes</strong> (735 Very Low-Income and 501 Low-Income units). In the high-cost Conejo Valley real estate market, market-rate rents cannot subsidize these income brackets, placing the burden squarely on subsidized affordable housing developers such as <strong>Many Mansions</strong> and the <strong>Area Housing Authority of the County of Ventura (AHACV)</strong>.</p>
+                    <p>Local non-profit developers in Thousand Oaks must navigate the full brunt of California's capital stacking bottleneck. Securing 9% or 4% LIHTC equity covers only a portion of baseline costs that now exceed $500,000 per unit in Ventura County. Developers must continually aggregate local HOME/CDBG funds, County Housing Trust Funds, state HCD Super NOFA programs (such as MHP), and competitive tax allocations from CTCAC/CDLAC. Because each layer adds an average of 10 months in processing time and over $20,000 in per-unit carrying overhead, local subsidized projects frequently endure multi-year pre-development gestation periods before breaking ground.</p>
+                </div>
+
                 <!-- Curated Research & Policy Library for Core Issue 4 -->
                 <div class="resource-library">
                     <div class="resource-library-header">
@@ -1206,6 +1328,18 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: The Developer Labor Calculus in "Areas of Change"</h3>
+                    <p>In Thousand Oaks, the interplay between state labor mandates and local land-use constraints creates a high-stakes calculation for private developers evaluating multifamily infill sites along the Thousand Oaks Boulevard corridor and around Janss Marketplace. A builder aiming to construct an 80-to-150-unit mixed-use development must weigh two divergent entitlement pathways:</p>
+                    <ul>
+                        <li><strong>The Ministerial Streamlining Route (SB 35 / AB 2011):</strong> The developer gains by-right approval, exempt from CEQA litigation and discretionary City Council vetoes, but is legally bound to pay union-rate <em>prevailing wages</em> and employ registered apprentices, adding 5 to 9 percent to baseline hard construction expenditures.</li>
+                        <li><strong>The Standard Discretionary Municipal Route:</strong> The developer can utilize cheaper non-union residential labor, but exposes the project to 18 to 36 months of discretionary hearings, holding costs, architectural disputes, and the constant threat of third-party CEQA lawsuits.</li>
+                    </ul>
+                    <p>In the high-interest-rate environment of the Conejo Valley, the cost of carrying land loans often surpasses the incremental labor cost premium of prevailing wages, increasingly nudging sophisticated developers toward state ministerial pathways.</p>
                 </div>
 
                 <!-- Curated Research & Policy Library for Core Issue 5 -->
@@ -1369,6 +1503,14 @@
                     </div>
                 </div>
 
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: Navigating Article 34 via Surplus Public Land</h3>
+                    <p>For the City of Thousand Oaks, navigating Article 34's constitutional restrictions is directly tied to the development of municipal property. When the city elected to develop the 17.68-acre <strong>Civic Arts Plaza site</strong> for the Downtown Project, urban planners had to ensure that the 39 affordable units (out of 240 total units, representing 16.25% affordability) complied with Article 34 exemptions without triggering a municipal ballot referendum.</p>
+                    <p>By declaring the parcel surplus land and partnering with private development entities while keeping subsidized units well below the 49% statutory ceiling, the city avoids triggering Article 34. However, this dynamic highlights the constitutional handicap facing local government: the City of Thousand Oaks cannot directly construct, own, and operate 100% municipal public housing for its local workforce without subjecting the initiative to a high-risk citywide public vote.</p>
+                </div>
+
                 <!-- Curated Research & Policy Library for Core Issue 6 -->
                 <div class="resource-library">
                     <div class="resource-library-header">
@@ -1496,6 +1638,14 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: Calleguas Water Assurances & AB 2097 Parking Reform</h3>
+                    <p>In the semi-arid, drought-vulnerable landscape of East Ventura County, water supply laws represent a primary infrastructure constraint. Thousand Oaks imports the vast majority of its potable water from the Metropolitan Water District through the <strong>Calleguas Municipal Water District</strong>. Any major master-planned development exceeding 500 units triggers the complex Water Supply Assessment requirements of <strong>SB 610 and SB 221</strong>, requiring local water purveyors (City of Thousand Oaks Water Division and California Water Service) to verify 20-year sufficiency under multi-dry year drought scenarios.</p>
+                    <p>Simultaneously, the abolition of parking minimums under <strong>AB 2097</strong> is reshaping infill viability along Thousand Oaks Boulevard. Historically, the Thousand Oaks Specific Plan mandated generous off-street surface parking ratios (often 2+ spaces per unit plus commercial ratios), consuming immense parcel acreage. By lifting parking minimums for qualifying transit-adjacent corridors, AB 2097 allows developers to eliminate costly subterranean parking garages (saving up to $75,000 per stall) and utilize constrained strip-mall parcels for higher residential density.</p>
                 </div>
 
                 <!-- Curated Research & Policy Library for Core Issue 7 -->
@@ -1658,6 +1808,14 @@
                     </div>
                 </div>
 
+                <!-- Dedicated Thousand Oaks Municipal Focus Section -->
+                <div class="to-focus-card">
+                    <span class="to-badge">🏙️ Thousand Oaks Municipal Analysis</span>
+                    <h3>Thousand Oaks Focus: The "Mini Builder’s Remedy" & Housing Element Certification</h3>
+                    <p>Because Thousand Oaks secured timely HCD certification of its 2021–2029 Housing Element on December 22, 2021, the city is legally protected from the traditional, disruptive <strong>"Builder’s Remedy"</strong> that swept through non-compliant Southern California cities like Santa Monica and Beverly Hills. However, Thousand Oaks remains subject to the potent <strong>"Mini Builder’s Remedy"</strong> codified under <em>Gov. Code § 65589.5(d)(5)(A)</em>.</p>
+                    <p>Under this provision, if a developer proposes an affordable housing project on an undeveloped parcel listed in the city's certified RHNA Site Inventory at the density specified in the inventory, the city <em>cannot legally deny the project</em>, even if the city council has not yet enacted the formal zoning code amendments. This mechanism prevents local foot-dragging and guarantees that commercial property owners in designated "Areas of Change" can immediately exercise the enhanced development rights promised in the 6th Cycle Housing Element.</p>
+                </div>
+
                 <!-- Curated Research & Policy Library for Core Issue 8 -->
                 <div class="resource-library">
                     <div class="resource-library-header">
@@ -1760,62 +1918,126 @@
 
                 <div class="jump-container">
                     <a href="#issue-7" class="jump-btn prev" onclick="switchTab('issue-7')">← Previous: Water & Parking</a>
-                    <a href="#issue-9" class="jump-btn next" onclick="switchTab('issue-9')">Next: Thousand Oaks Focus →</a>
+                    <a href="#issue-9" class="jump-btn next" onclick="switchTab('issue-9')">Next: Thousand Oaks Synthesis →</a>
                 </div>
             </section>
 
             <!-- ========================================== -->
-            <!-- CORE ISSUE 9: Thousand Oaks & Ventura County Focus -->
+            <!-- CORE ISSUE 9: Thousand Oaks Comprehensive Synthesis -->
             <!-- ========================================== -->
             <section class="issue-panel" id="issue-9" role="tabpanel">
                 <div class="issue-header-card">
                     <div class="issue-meta">
                         <span class="issue-pill">Core Issue 9</span>
-                        <span class="issue-tag">Local Case Study • Conejo Valley • Measure E • General Plan 2045</span>
+                        <span class="issue-tag">Comprehensive Local Case Study • Measure E • General Plan 2045 Synthesis</span>
                     </div>
-                    <h2>Thousand Oaks & Ventura County Local Housing Reality</h2>
-                    <p class="summary">Thousand Oaks and the greater Conejo Valley embody the acute intersection of California's statewide housing dilemmas: strict voter-approved open-space boundaries (SOAR), local growth control measures (Measure E), shifting 6th Cycle RHNA mandates, and critical workforce housing shortages.</p>
+                    <h2>California State Mandates Versus Local Growth Constraints: An Exhaustive Analysis of Nine Housing Policy Domains in Thousand Oaks, California</h2>
+                    <p class="summary">Thousand Oaks operates as a highly illustrative microcosm of California's broader existential struggle over land use, economics, and environmental regulation. This exhaustive analysis synthesizes municipal demographics, Measure E friction, RHNA 6th Cycle compliance, and the transfer of planning sovereignty from city halls to Sacramento.</p>
 
                     <div class="stat-grid">
                         <div class="stat-card">
-                            <div class="stat-val">4,183</div>
-                            <div class="stat-desc">Thousand Oaks 6th Cycle RHNA housing allocation (2021–2029)</div>
+                            <div class="stat-val">126,966</div>
+                            <div class="stat-desc">Thousand Oaks Total Population (72% Homeownership / 48,131 Units)</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-val">$885K+</div>
-                            <div class="stat-desc">Median single-family home price in Thousand Oaks / Conejo Valley</div>
+                            <div class="stat-val">2,621</div>
+                            <div class="stat-desc">6th Cycle Net New Housing Units Allocated by SCAG (2021–2029)</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-val">&gt;52%</div>
-                            <div class="stat-desc">Of local renter households paying more than 30% of gross income on rent</div>
+                            <div class="stat-val">&lt;8%</div>
+                            <div class="stat-desc">City land area designated as "Areas of Change" absorbing all reallocated density</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-val">2045</div>
-                            <div class="stat-desc">Target horizon for the City of Thousand Oaks Comprehensive General Plan Update</div>
+                            <div class="stat-val">45 du/ac</div>
+                            <div class="stat-desc">Maximum density permitted in Mixed-Use Medium up to 6 stories (58–75 ft)</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="content-columns">
                     <div class="main-analysis">
-                        <h3>Local Growth Controls: Measure E and SOAR</h3>
-                        <p>The political economy of housing in Thousand Oaks is defined by a legacy of fierce open space preservation and voter-approved growth caps. In 1996, Thousand Oaks voters passed <strong>Measure E</strong>, a citizen initiative requiring that any increase in residential density or change in land-use designation from non-residential to residential must be approved by a vote of the people, except under narrow state-mandated exceptions.</p>
-                        <p>Simultaneously, Ventura County’s <strong>SOAR (Save Open-space and Agricultural Resources)</strong> initiatives establish rigorous voter-controlled Urban Restriction Boundaries around all major cities. While SOAR and Measure E have successfully preserved thousands of acres of pristine oak woodlands and open space ridgelines, they have eliminated outward greenfield expansion. Consequently, all future housing must be accommodated strictly through urban infill and corridor redevelopment.</p>
+                        <h3>Demographic Realities and The Suburban Context</h3>
+                        <p>At the intersection of aggressive state-level legislative intervention and municipal resistance sits Thousand Oaks, a suburban city in Ventura County characterized by a deeply entrenched culture of slow growth. Thousand Oaks features a total population of roughly 126,966 and a predominantly owner-occupied housing market. Demographic data from the Southern California Association of Governments (SCAG) indicates the city's housing stock consists of 48,131 total units, with a high homeownership rate of 72 percent (32,112 owner-occupied units versus 13,665 renter-occupied units). The population leans older, with 18.3 percent of residents aged 65 and above, compared to the regional average of 13 percent, while the under-18 population sits at 21.9 percent.</p>
 
-                        <h3>The 6th Cycle RHNA Challenge & General Plan 2045</h3>
-                        <p>Under the Southern California Association of Governments (SCAG) 6th Cycle RHNA allocation, the City of Thousand Oaks was assigned a target of <strong>4,183 new housing units</strong> across the 2021–2029 cycle, including 1,291 Very Low-Income and 781 Low-Income units. This allocation represents a massive increase over previous cycles, where the city routinely planned for fewer than a few hundred units.</p>
-                        <p>To comply with state housing element law without violating the spirit of Measure E, the city embarked on its <strong>Thousand Oaks General Plan 2045 Update (TOAKS 2045)</strong>. The plan identifies specific commercial and retail revitalization areas—notably the <em>Thousand Oaks Boulevard Downtown Corridor</em>, the <em>Borchard Road Commercial Center</em>, and the <em>Janss Marketplace / The Oaks Mall</em> transit nodes—for mixed-use multifamily infill.</p>
+                        <h3>1. The 6th Cycle RHNA Allocation Breakdown</h3>
+                        <p>For the 6th Cycle (covering October 2021 to October 2029 for the SCAG region), HCD and SCAG drastically increased allocations to account for historical underproduction. Thousand Oaks was allocated a total of <strong>2,621 net new housing units</strong> across four income tiers:</p>
 
-                        <h3>The Missing Middle & Essential Workforce Squeeze</h3>
-                        <p>The lack of affordable and entry-level "missing middle" housing (townhomes, duplexes, courtyard apartments) has created an acute workforce crisis in the Conejo Valley. Local employers, including the bio-tech corridor (Amgen and startups), school districts (CVUSD), healthcare facilities (Los Robles Regional Medical Center), and service workers face immense recruiting hurdles as staff are priced out of the city and forced into grueling commutes from western Ventura County or the Antelope Valley.</p>
+                        <div class="policy-table-wrapper">
+                            <table class="policy-table">
+                                <thead>
+                                    <tr>
+                                        <th>Income Category</th>
+                                        <th>6th Cycle RHNA Allocation (Units)</th>
+                                        <th>Percentage of Total Allocation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Very Low Income</strong></td>
+                                        <td>735</td>
+                                        <td>28.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Low Income</strong></td>
+                                        <td>501</td>
+                                        <td>19.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Moderate Income</strong></td>
+                                        <td>511</td>
+                                        <td>19.5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Above Moderate Income</strong></td>
+                                        <td>874</td>
+                                        <td>33.4%</td>
+                                    </tr>
+                                    <tr style="font-weight: 700; background: rgba(255, 112, 67, 0.08);">
+                                        <td>Total Allocation</td>
+                                        <td>2,621</td>
+                                        <td>100.0%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-size: 0.82rem; opacity: 0.75; margin-top: -0.5rem;"><em>Source: SCAG 6th Cycle Final RHNA Allocation Plan; City of Thousand Oaks 2021–2029 Housing Element</em></p>
 
-                        <h3>Key Local Actors & Community Providers</h3>
-                        <p>Progress on local affordability relies heavily on established non-profit and regional public developers:</p>
-                        <ul>
-                            <li><strong>Many Mansions:</strong> A premier local non-profit developer headquartered in Thousand Oaks, managing over 1,700 affordable units and providing on-site supportive services for low-income families, veterans, and formerly unhoused residents.</li>
-                            <li><strong>Area Housing Authority of the County of Ventura (AHACV):</strong> Administers Section 8 Housing Choice Vouchers, public housing, and develops tax-credit subsidized properties across East Ventura County.</li>
-                            <li><strong>City Community Development Department:</strong> Manages the inclusionary housing ordinance, ADU permitting acceleration, and state Annual Progress Reports.</li>
-                        </ul>
+                        <h3>2. The Friction of Measure E & Density Reallocation</h3>
+                        <p>The most unique and constraining variable in Thousand Oaks' housing landscape is <strong>Measure E</strong>, a slow-growth initiative adopted by voters in 1996. Measure E establishes a baseline residential capacity based on the 1996 General Plan and strictly prohibits the city council from enacting any General Plan amendments that result in a net increase in maximum residential density or commercial acreage without explicit voter approval via referendum.</p>
+                        <p>To accommodate the state-mandated 2,621 RHNA units without triggering a highly risky public referendum under Measure E, Thousand Oaks urban planners employed a strategy of <em>"density reallocation."</em> The 2045 General Plan update effectively strips unused, theoretical residential capacity from largely built-out, low-density single-family neighborhoods and transfers that capacity to highly concentrated commercial corridors.</p>
+                        <p>These targeted <strong>"Areas of Change,"</strong> which represent less than 8 percent of the city’s total acreage, include the Thousand Oaks Boulevard commercial corridor, the Janss Marketplace, The Oaks mall, and specific zones in Newbury Park (Rancho Conejo) and Westlake. In these pockets, the city introduced new "Mixed-Use Low" and "Mixed-Use Medium" designations, allowing building heights up to five or six stories (58 to 75 feet) and residential densities of up to 45 units per acre.</p>
+
+                        <h3>3. Surplus Public Land & The Civic Arts Plaza Downtown Project</h3>
+                        <p>Measure E specifically exempts land-use amendments required to allow a viable use of publicly owned land that has been declared surplus. The city is leveraging this exact loophole to advance the Downtown Project on the 17.68-acre Civic Arts Plaza site. This municipal project will feature 240 residential units (including 39 deed-restricted low-income units), 1,395 parking spaces, and require the removal of 53 protected trees, all without triggering a Measure E public vote.</p>
+
+                        <h3>4. Capital Stacking Realities for Lower-Income Units</h3>
+                        <p>Delivering the 1,236 Very Low and Low-Income units requires navigating complex public subsidies. The Terner Center's empirical findings on LIHTC layering demonstrate the compounding costs and delays facing local projects:</p>
+
+                        <div class="policy-table-wrapper">
+                            <table class="policy-table">
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Average Increase per Additional Public Funding Source</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Development Timeline Delay</strong></td>
+                                        <td>+ 10 Months</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Development Cost Increase</strong></td>
+                                        <td>+ $20,460 per unit</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-size: 0.82rem; opacity: 0.75; margin-top: -0.5rem;"><em>Source: Terner Center for Housing Innovation, UC Berkeley (Analysis of 699 LIHTC Projects)</em></p>
+
+                        <h3>Conclusion: The Paradigm Shift in Municipal Governance</h3>
+                        <p>The housing landscape in Thousand Oaks operates as a highly illustrative microcosm of California's broader existential struggle over land use, economics, and environmental regulation. Operational control over urban planning is being systematically transferred from the municipal level to the state.</p>
+                        <p>Thousand Oaks' historical identity as a low-density, slow-growth suburb protected by Measure E is being directly challenged by the geometric math of the 6th Cycle RHNA and the punitive, deregulatory threats of the Builder's Remedy. The state has provided developers with potent tools to bypass local resistance—ranging from CEQA exemptions under SB 35 to the total elimination of parking minimums under AB 2097. However, legislative deregulation alone does not build homes: resolving the crisis requires reconciling prevailing wages, CEQA infill exemptions, and municipal fee structures into a coherent, buildable framework.</p>
                     </div>
 
                     <div class="sidebar-panel">
@@ -1824,24 +2046,24 @@
                             <ul>
                                 <li><strong>Measure E (1996):</strong> Local voter-approval mandate for residential density increases.</li>
                                 <li><strong>Countywide SOAR:</strong> Urban restriction boundaries protecting open space.</li>
-                                <li><strong>Housing Element 2021–2029:</strong> 4,183 units targeted across infill mixed-use zones.</li>
-                                <li><strong>TO General Plan 2045:</strong> Transforming aging strip malls and office parks into mixed-use villages.</li>
+                                <li><strong>Housing Element 2021–2029:</strong> 2,621 units certified by HCD on Dec 22, 2021.</li>
+                                <li><strong>TO General Plan 2045:</strong> 5-6 story mixed-use commercial village designations.</li>
                             </ul>
                             <div class="statute-tag-list">
                                 <span class="statute-tag">Measure E</span>
                                 <span class="statute-tag">SOAR Boundary</span>
                                 <span class="statute-tag">TOAKS 2045</span>
-                                <span class="statute-tag">RHNA: 4,183</span>
+                                <span class="statute-tag">RHNA: 2,621</span>
                             </div>
                         </div>
 
                         <div class="callout-box">
-                            <h4>Key Local Resources</h4>
+                            <h4>Key Local Actors</h4>
                             <ul>
-                                <li><a href="https://www.toaks2045.org" target="_blank" style="color: var(--accent-color); font-weight: 600;">Thousand Oaks General Plan 2045</a></li>
-                                <li><a href="https://www.toaks.org/departments/community-development/planning/housing-element" target="_blank" style="color: var(--accent-color); font-weight: 600;">City Housing Element Portal</a></li>
-                                <li><a href="https://www.manymansions.org" target="_blank" style="color: var(--accent-color); font-weight: 600;">Many Mansions Community Housing</a></li>
-                                <li><a href="https://www.ahacv.org" target="_blank" style="color: var(--accent-color); font-weight: 600;">Area Housing Authority (AHACV)</a></li>
+                                <li><strong>City of Thousand Oaks:</strong> Community Development Dept (ODDS & Housing Element).</li>
+                                <li><strong>Many Mansions:</strong> Premier local non-profit affordable developer.</li>
+                                <li><strong>AHACV:</strong> Area Housing Authority of the County of Ventura.</li>
+                                <li><strong>Calleguas MWD:</strong> Regional wholesale water purveyor.</li>
                             </ul>
                         </div>
                     </div>
