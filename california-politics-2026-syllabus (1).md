@@ -117,6 +117,7 @@ COURSE SCHEDULE
 **Mon, Aug. 31**
 * **Required:**
   * **Stone**, Chapter 1 ("The Market and the Polis") & Chapter 2 ("Equity").
+  * Read: [The road to housing in California runs through the federal government (CalMatters)](https://calmatters.org/housing/2026/07/road-housing-california-federal/)
 
 **Wed, Sep. 2**
 * **Required:**
