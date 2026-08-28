@@ -134,7 +134,7 @@ COURSE SCHEDULE
 * **Required:**
   * *[OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/)* & *[Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/)*.
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** How does federalism allow California to pioneer national climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?*
+* ***Discussion Prompt:** How does federalism constrain California's ability to solve its affordable housing crisis locally, and how does the Polis conceptualize 'equity' in housing access compared to the Market?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 3: Federalism and the Foundations of State Governance**
@@ -154,7 +154,7 @@ COURSE SCHEDULE
   * Peter Schrag, *[Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost)* [Book/Library] (Chapter 1: "The Tax Revolt")
   * **Stone**, Chapter 7 ("Numbers").
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?*
+* ***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity, and how does this affect affordable housing production today?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 4: State Constitutions and the Politics of Numbers**
@@ -178,7 +178,7 @@ COURSE SCHEDULE
   * *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/)*
   * **Stone**, Chapter 8 ("Causes").
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side housing or single-payer health legislation?*
+* ***Discussion Prompt:** Why does a progressive supermajority in Sacramento struggle to pass supply-side housing legislation, and how does the Polis measure 'efficiency' in housing policy differently than a pure market?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 5: Key Actors, Interests, and the Legislative Process**
@@ -193,7 +193,7 @@ COURSE SCHEDULE
   * League of California Cities, *[The Nature of Local Government](https://www.calcities.org/resource/the-nature-of-california-municipal-government)*
   * **Stone**, Chapter 15 ("Powers").
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** How does stacking multiple uncoordinated social mandates onto administrative agencies degrade their ability to build physical infrastructure?*
+* ***Discussion Prompt:** How does stacking multiple, uncoordinated social mandates onto local agencies impede their capacity to construct affordable housing and manage homelessness?*
 
 **Fri, Sep. 25**
 * **Required:**
@@ -206,7 +206,7 @@ COURSE SCHEDULE
 **Mon, Sep. 28**
 * **Required:**
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** Is local zoning control an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?*
+* ***Discussion Prompt:** Is local zoning control over housing density an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?*
 
 **Wed, Sep. 30**
 * **Required:**
@@ -226,7 +226,7 @@ COURSE SCHEDULE
 * **Required:**
   * **OSU OER**, Chapter 11 (cont.)
   * **Stone**, Chapter 11 ("Decisions").
-* ***Discussion Prompt:** Can a state execute multi-decade abundance infrastructure plans when its tax revenues experience wild boom-and-bust cycles?*
+* ***Discussion Prompt:** Can California effectively plan and fund multi-decade affordable housing infrastructure when its tax revenues experience wild boom-and-bust cycles?*
 
 **Wed, Oct. 7**
 * **Required:**
@@ -243,7 +243,7 @@ COURSE SCHEDULE
   * *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/statelocal/chapter/chapter-9/)*
   * **Stone**, Chapter 13 ("Rules").
   * Jennifer Hernandez, *["California Environmental Quality Act Lawsuits and the Housing Crisis"](https://repository.uclawsf.edu/hastings_environmental_law_journal/vol24/iss2/4/)*; Chris Elmendorf, "When Public Agencies Block Public Policy."
-* ***Discussion Prompt:** How did a 1970 environmental protection statute evolve into the primary legal weapon used to block solar farms, bike lanes, and dense housing?*
+* ***Discussion Prompt:** How did the California Environmental Quality Act (CEQA) evolve into the primary legal weapon used by local neighborhood groups to block affordable and dense housing?*
 
 **Wed, Oct. 14**
 * **Required:**
@@ -259,7 +259,7 @@ COURSE SCHEDULE
 **Mon, Oct. 19**
 * **Required:**
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** Does state preemption of local zoning violate democratic principles, or is it the only antidote to regional collective action failure?*
+* ***Discussion Prompt:** How are numbers and statistics used strategically in the debate over state preemption of local zoning to frame the housing crisis as a failure of local government?*
 
 **Wed, Oct. 21**
 * **Required:**
@@ -275,7 +275,7 @@ COURSE SCHEDULE
 * **Required:**
 * **Case Study:** Environment
   * **Stone**, Chapter 5 ("Liberty").
-* ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting local desert ecosystems and building massive utility-scale clean power?*
+* ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting existing neighborhood character and the urgent need to build high-density affordable housing?*
 
 **Wed, Oct. 28**
 * **Required:**
@@ -286,7 +286,7 @@ COURSE SCHEDULE
 * **Required:**
 * **Case Study:** Environment
 * **Case Study:** Environment
-* ***Discussion Prompt:** Is California water scarcity an unyielding physical reality of the climate polycrisis, or a legal and political failure to price, recycle, and transport water?*
+* ***Discussion Prompt:** Which interest groups wield the most power in local housing disputes, and how do they overcome the collective action problem compared to unhoused or prospective residents?*
 
 ### **Week 11: Liberty, Surveillance, and Rights**
 
@@ -300,7 +300,7 @@ COURSE SCHEDULE
 **Fri, Nov. 6**
 * **Required:**
 * **Case Study:** Economy & Labor
-* ***Discussion Prompt:** What specific institutional mechanisms explain why California public agencies struggle to deliver heavy civil infrastructure on time and on budget?*
+* ***Discussion Prompt:** What specific legislative and institutional mechanisms explain why California public agencies struggle to deliver affordable housing projects on time and on budget?*
 
 ### **Week 12: Infrastructure, Inequality, and Decision-Making**
 
@@ -316,7 +316,7 @@ COURSE SCHEDULE
 * **Required:**
 * **Case Study:** Economy & Labor
   * **Stone**, Chapter 10 ("Decisions & Persuasion").
-* ***Discussion Prompt:** Can California regulate Silicon Valley tech monopolies and AI without triggering capital and high-earner flight to other states?*
+* ***Discussion Prompt:** How do political symbols associated with 'Silicon Valley tech wealth' versus 'unhoused encampments' shape the legislative debate over housing inequality?*
 
 ### **Week 13: Entitlements, Social Welfare, and Education Funding**
 
@@ -332,7 +332,7 @@ COURSE SCHEDULE
 **Fri, Nov. 20**
 * **Required:**
   * **Stone**, Chapter 4 ("Welfare"); LAO, *[An Overview of the Local Control Funding Formula](https://lao.ca.gov/reports/2013/edu/lcff/lcff-072913.aspx)*.
-* ***Discussion Prompt:** In the Polis, why does record spending per pupil through the LCFF still leave major achievement gaps along racial and geographic lines?*
+* ***Discussion Prompt:** How can the Governor and local executives utilize their power to compel reluctant municipalities to meet their Regional Housing Needs Allocation (RHNA) targets?*
 
 ### **Week 14: Security and Social Welfare**
 
@@ -354,7 +354,7 @@ COURSE SCHEDULE
 **Mon, Nov. 30**
 * **Required:**
   * **Stone**, Chapter 8 ("Causes") & Chapter 12 ("Decisions").
-* ***Discussion Prompt:** How do political symbols and numbers construct competing narratives of "law and order" versus "systemic reform" in California?*
+* ***Discussion Prompt:** How do competing political narratives attribute the 'causes' of homelessness to either individual moral failure or systemic housing shortages, and how does this affect policy solutions?*
 
 **Wed, Dec. 2**
 * **Required:**
