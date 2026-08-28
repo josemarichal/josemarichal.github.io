@@ -358,41 +358,120 @@
             font-weight: 600;
         }
 
-        /* Sources & Citations Box */
-        .citations-card {
-            background: rgba(22, 16, 12, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-md);
-            padding: 1.75rem;
-            margin-top: 2.5rem;
+        /* Core Policy & Research Library Section */
+        .resource-library {
+            margin-top: 3.5rem;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
         }
 
-        .citations-card h4 {
-            font-size: 0.95rem;
+        .resource-library-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .resource-library-header h3 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .resource-count-badge {
+            background: rgba(255, 112, 67, 0.15);
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 112, 67, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .resource-library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .resource-item-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .resource-item-card:hover {
+            border-color: rgba(255, 112, 67, 0.4);
+            background: rgba(255, 112, 67, 0.03);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .resource-item-card .res-source {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-main);
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .resource-item-card h4 {
+            font-size: 1.05rem;
+            line-height: 1.4;
             margin-top: 0;
-            margin-bottom: 1rem;
-            opacity: 0.75;
+            margin-bottom: 0.75rem;
+            color: var(--text-heading);
+            font-family: var(--font-body);
+            font-weight: 600;
         }
 
-        .citations-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .citations-list li {
+        .resource-item-card p.res-desc {
             font-size: 0.88rem;
             color: var(--text-main);
-            padding: 0.5rem 0.75rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: var(--radius-sm);
-            border-left: 2px solid var(--accent-color);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            opacity: 0.85;
+            flex-grow: 1;
+        }
+
+        .resource-item-card a.res-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: gap var(--transition-fast), color var(--transition-fast);
+            word-break: break-all;
+        }
+
+        .resource-item-card a.res-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+            gap: 0.6rem;
         }
 
         /* Quick Jump Bar */
@@ -404,7 +483,7 @@
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 1rem 1.5rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .jump-btn {
@@ -422,7 +501,7 @@
             transform: translateX(4px);
             text-decoration: underline;
         }
-        
+
         .jump-btn.prev:hover {
             transform: translateX(-4px);
         }
@@ -431,12 +510,19 @@
             .resource-header h1 {
                 font-size: 2.4rem;
             }
+
             .issue-header-card {
                 padding: 1.75rem;
             }
+
             .main-analysis {
                 padding: 1.5rem;
             }
+
+            .resource-library {
+                padding: 1.5rem;
+            }
+
             .stat-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -470,7 +556,7 @@
             <div class="resource-header">
                 <span class="resource-badge">California & Ventura County Policy Dossier</span>
                 <h1>California / Thousand Oaks Housing Affordability Resource Page</h1>
-                <p class="lead">A rigorous, multi-dimensional policy compendium analyzing the systemic drivers, legal bottlenecks, financial frictions, and local dynamics defining California's housing crisis and the Conejo Valley.</p>
+                <p class="lead">A comprehensive policy repository analyzing the systemic drivers, legal bottlenecks, financing friction, and local Conejo Valley dynamics defining California's housing crisis, featuring curated empirical studies, legislative analyses, and primary sources.</p>
             </div>
 
             <!-- Sticky Tab Navigation (9 Core Areas) -->
@@ -564,13 +650,74 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>Legislative Analyst's Office (LAO):</strong> <em>California's High Housing Costs: Causes and Consequences</em></li>
-                        <li><strong>Terner Center for Housing Innovation (UC Berkeley):</strong> <em>Will SB 9 Unlock Housing? Implementation Across 10 Cities</em></li>
-                        <li><strong>UCLA Lewis Center:</strong> <em>Accessory Dwelling Units in California: Scaling Production</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 1 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">10 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Legislative Analyst's Office (LAO)</span>
+                            <h4>Perspectives on Helping Low-Income Californians Afford Housing</h4>
+                            <p class="res-desc">Analysis evaluating state assistance strategies, targeted subsidies, and the limits of demand-side housing programs.</p>
+                            <a href="https://lao.ca.gov/Publications/Report/3941" target="_blank" class="res-link">View LAO Report #3941 →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📊 Legislative Analyst's Office (LAO)</span>
+                            <h4>California Housing Center: Economics & Taxation Tracking</h4>
+                            <p class="res-desc">Ongoing dashboard and economic tracking of housing permits, prices, demographic shifts, and regional affordability.</p>
+                            <a href="https://lao.ca.gov/laoecontax/housing" target="_blank" class="res-link">Access LAO Housing Center →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Legislative Analyst's Office (LAO)</span>
+                            <h4>California’s High Housing Costs: Causes and Consequences</h4>
+                            <p class="res-desc">Landmark report documenting the 1970s divergence, coastal land-use restrictions, and economic spillover effects.</p>
+                            <a href="https://lao.ca.gov/reports/2015/finance/housing-costs/housing-costs.aspx" target="_blank" class="res-link">Read Full Landmark Report →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏢 Building Industry Association (BIA)</span>
+                            <h4>LAO Follow-Up Report: More Supply, Not Regulation</h4>
+                            <p class="res-desc">Synthesis examining how regulatory burdens impede market responses and why supply expansion remains paramount.</p>
+                            <a href="https://www.biabayarea.org/lao-follow-up-report-more-supply--not-regulat" target="_blank" class="res-link">View BIA Bay Area Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>SB 9 Turns One: Applications and Early Implementation</h4>
+                            <p class="res-desc">Empirical analysis across California cities demonstrating low uptake caused by municipal design constraints.</p>
+                            <a href="https://ternercenter.berkeley.edu/research-and-policy/sb-9-turns-one-applications/" target="_blank" class="res-link">View Terner Implementation Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📐 APA Northern California</span>
+                            <h4>How Some Cities Are Legally Undermining SB 9</h4>
+                            <p class="res-desc">Planning review of local ordinances using setback, height, and tree canopy mandates to block duplexes.</p>
+                            <a href="https://norcalapa.org/2022/06/how-some-cities-are-legally-undermining-sb9/" target="_blank" class="res-link">Read NorCal APA Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📜 California Legislature</span>
+                            <h4>SB 450 Bill Analysis (Enforcing SB 9 Compliance)</h4>
+                            <p class="res-desc">Official legislative analysis detailing state efforts to prevent municipal obstruction of ministerial lot splits.</p>
+                            <a href="https://billtexts.s3.amazonaws.com/ca/ca-analysishttps-leginfo-legislature-ca-gov-faces-billAnalysisClient-xhtml-bill-id-202320240SB450-ca-analysis-380384.pdf" target="_blank" class="res-link">Download SB 450 Analysis (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Will SB 9 Unlock Housing Production? (July 2021 Brief)</h4>
+                            <p class="res-desc">Financial modeling assessing the potential for up to 700,000 new homes on previously single-family parcels.</p>
+                            <a href="https://ternercenter.berkeley.edu/wp-content/uploads/2021/07/SB-9-Brief-July-2021-Final.pdf" target="_blank" class="res-link">Download Terner Brief (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Inclusionary Zoning & Housing Production Modeling</h4>
+                            <p class="res-desc">Economic simulation assessing when below-market mandates make residential development financially unviable.</p>
+                            <a href="https://ternercenter.berkeley.edu/research-and-policy/inclusionary-zoning-housing-production-modeling/" target="_blank" class="res-link">View Terner Modeling Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏢 BIA San Diego</span>
+                            <h4>Study Highlights Housing Tradeoffs in Inclusionary Zoning Policies</h4>
+                            <p class="res-desc">Industry examination of how high inclusionary percentages can inadvertently suppress overall housing output.</p>
+                            <a href="https://biasandiego.org/study-highlights-housing-tradeoffs-in-inclusionary-zoning-policies/" target="_blank" class="res-link">Read BIA San Diego Overview →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -655,12 +802,62 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>Jennifer Hernandez, Holland & Knight:</strong> <em>In the Name of the Environment: How CEQA is Weaponized Against Housing</em></li>
-                        <li><strong>Hastings Environmental Law Journal:</strong> <em>CEQA, Infill Housing, and Anti-Development Litigation Patterns</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 2 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">8 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Holland & Knight</span>
+                            <h4>Partner Jennifer Hernandez Authors Report Showing CEQA Lawsuit Impact</h4>
+                            <p class="res-desc">Definitive multi-year study tracking 3 years of CEQA litigation and its disproportionate impact on infill housing.</p>
+                            <a href="https://www.hklaw.com/en/insights/publications/2022/08/partner-jennifer-hernandez-authors-report-showing-ceqa-lawsuit-impact" target="_blank" class="res-link">Read Holland & Knight Report →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Chapman Law Review</span>
+                            <h4>In the Name of the Environment: How Litigation Blocks Sustainable Housing</h4>
+                            <p class="res-desc">Peer-reviewed legal examination of how environmental laws promote suburban sprawl by blocking urban density.</p>
+                            <a href="https://digitalcommons.chapman.edu/cgi/viewcontent.cgi?article=1486&context=chapman-law-review" target="_blank" class="res-link">Download Law Review Article (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Chapman Law Review</span>
+                            <h4>Chapman Law Review Volume 26, Issue 1 Repository</h4>
+                            <p class="res-desc">Academic symposium issue analyzing housing litigation, statutory reforms, and California environmental jurisprudence.</p>
+                            <a href="https://digitalcommons.chapman.edu/chapman-law-review/vol26/iss1/2/" target="_blank" class="res-link">View Journal Repository →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">💼 Fident Capital</span>
+                            <h4>Jennifer Hernandez on Inequality Through California's Environmental Quality Act</h4>
+                            <p class="res-desc">In-depth interview exploring the civil rights and economic equity consequences of CEQA abuse in minority communities.</p>
+                            <a href="https://fidentcapital.com/jennifer-hernandez-inequality-through-californias-environmental-quality-act/" target="_blank" class="res-link">Read Fident Capital Feature →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 Northern California Record</span>
+                            <h4>New Report Details Impact of CEQA Lawsuits on California Housing Shortage</h4>
+                            <p class="res-desc">Legal reporting on how 48,000 units were blocked in a single calendar year through anonymous petitioner filings.</p>
+                            <a href="https://www.legalnewsline.com/northern-california-record/new-report-details-impact-of-ceqa-lawsuits-on-california-housing-shortage/article_81b42a0e-513e-515b-89c1-10df666925d6.html" target="_blank" class="res-link">Read Legal Newsline Report →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ R Street Institute</span>
+                            <h4>Lawmakers Know CEQA Is a Bust, So Why Won't They Fix It?</h4>
+                            <p class="res-desc">Policy commentary evaluating the political coalitions and interest groups maintaining CEQA status quo.</p>
+                            <a href="https://www.rstreet.org/commentary/lawmakers-know-ceqa-is-a-bust-so-why-wont-they-fix-it/" target="_blank" class="res-link">Read R Street Commentary →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏡 Realtor.com News</span>
+                            <h4>How California's Environmental Law Is Halting New Homes</h4>
+                            <p class="res-desc">Consumer-facing investigation into how CEQA delays inflate home prices and restrict entry-level homeownership.</p>
+                            <a href="https://www.realtor.com/news/trends/california-enviornmental-law-new-homes/" target="_blank" class="res-link">Read Realtor.com Investigation →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏢 Rental Housing Industry (RIA)</span>
+                            <h4>CEQA Litigation Trends and Multifamily Housing Supply</h4>
+                            <p class="res-desc">Industry analysis of the carrying costs and settlement demands facing multifamily infill developers.</p>
+                            <a href="https://www.naylornetwork.com/ria-nwl/articles/index-v3.asp?aid=747722&issueID=90108" target="_blank" class="res-link">View RIA Industry Brief →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -743,12 +940,74 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>Pacific Legal Foundation:</strong> <em>Development Impact Fees and the Housing Affordability Crisis</em></li>
-                        <li><strong>Terner Center for Housing Innovation:</strong> <em>It All Adds Up: The Cost of Housing Development Fees in California</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 3 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">10 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Pacific Legal Foundation</span>
+                            <h4>California Has the Highest Impact Fees for Homebuilding in the Country</h4>
+                            <p class="res-desc">National comparison documenting California's $30,000+ per unit averages and constitutional fee limits.</p>
+                            <a href="https://pacificlegal.org/california-has-the-highest-impact-fees-for-homebuilding-in-the-country/" target="_blank" class="res-link">Read PLF National Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Residential Impact Fees in California: Nexus Studies Analysis</h4>
+                            <p class="res-desc">Comprehensive study revealing methodological flaws in local nexus calculations that inflate per-unit exactions.</p>
+                            <a href="https://ternercenter.berkeley.edu/wp-content/uploads/2020/12/Nexus_Studies_November_2020.pdf" target="_blank" class="res-link">Download Nexus Analysis (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏠 Housing Finance</span>
+                            <h4>Impact Fees Drive Affordable Housing Costs in California</h4>
+                            <p class="res-desc">Analysis of the $300 million in public tax credits drained annually from affordable housing projects by municipal fees.</p>
+                            <a href="https://www.housingfinance.com/data-trends/impact-fees-drive-affordable-housing-costs-california" target="_blank" class="res-link">Read Housing Finance Report →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ California Housing & Community Development (HCD)</span>
+                            <h4>Residential Impact Fee Study and Recommendations</h4>
+                            <p class="res-desc">Official state study examining how local fee structures act as a primary barrier to RHNA production goals.</p>
+                            <a href="https://www.hcd.ca.gov/plans-and-reports/residential-impact-fees" target="_blank" class="res-link">Access HCD Impact Fee Portal →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Impact Fees and Housing Development Economic Feasibility</h4>
+                            <p class="res-desc">Pro forma modeling evaluating the threshold at which cumulative development fees halt multifamily construction.</p>
+                            <a href="https://ternercenter.berkeley.edu/blog/impact-fees-economic-feasibility/" target="_blank" class="res-link">Read Feasibility Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏢 California Council for Affordable Housing (CCAH)</span>
+                            <h4>Terner Center Brief: Outsized Impact of Local Fees on Affordable Housing</h4>
+                            <p class="res-desc">Industry briefing on how impact fee exemptions could immediately finance 1,250+ additional subsidized homes.</p>
+                            <a href="https://californiacouncil.org/news/new-terner-center-brief-highlights-the-outsized-impact-of-local-fees-on-affordable-housing-development" target="_blank" class="res-link">View CCAH Briefing →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📜 California YIMBY</span>
+                            <h4>AB 1820 Developer Fee Transparency Fact Sheet</h4>
+                            <p class="res-desc">Legislative fact sheet detailing requirements for local agencies to provide binding 30-day fee estimates.</p>
+                            <a href="https://cayimby.org/wp-content/uploads/2024/03/AB-1820-Developer-Fee-Transparency-Fact-Sheet-ML-2.7.2024-1.pdf" target="_blank" class="res-link">Download Fact Sheet (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Burke, Williams & Sorensen</span>
+                            <h4>Public Law Update: Housing Project Fee Estimates (AB 1820)</h4>
+                            <p class="res-desc">Municipal legal briefing on city compliance mandates, timeline constraints, and preliminary application rules.</p>
+                            <a href="https://www.bwslaw.com/insights/public-law-update-housing-development-project-fee-estimates-ab-1820-2024/?pdf=10942" target="_blank" class="res-link">Download Legal Update (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Pacific Legal Foundation</span>
+                            <h4>Could Lower Impact Fees Be Key to Solving California's Crisis?</h4>
+                            <p class="res-desc">Legal and economic argument for reforming the Mitigation Fee Act and aligning fees with true marginal public costs.</p>
+                            <a href="https://pacificlegal.org/could-lower-impact-fees-be-key-to-solving-californias-housing-crisis/" target="_blank" class="res-link">Read PLF Policy Essay →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📢 California YIMBY Press Release</span>
+                            <h4>Legislature Votes to Make Local Housing Fees Transparent</h4>
+                            <p class="res-desc">Legislative overview of the bipartisan coalition supporting statutory fee transparency and standardization.</p>
+                            <a href="https://cayimby.org/news-events/press-releases/california-legislature-votes-to-make-local-housing-fees-transparent/" target="_blank" class="res-link">Read Press Release →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -833,12 +1092,38 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>Terner Center for Housing Innovation (UC Berkeley):</strong> <em>The Complexity of Financing Affordable Housing in California (2024 Analysis)</em></li>
-                        <li><strong>California Housing Partnership:</strong> <em>Funding Affordable Housing: A Road Map for Reform</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 4 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">4 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>The Complexity of Financing Affordable Housing in California</h4>
+                            <p class="res-desc">Empirical analysis of 699 LIHTC applications revealing the severe cost and delay penalties of capital stacking.</p>
+                            <a href="https://ternercenter.berkeley.edu/blog/lihtc-complexity/" target="_blank" class="res-link">Read Terner LIHTC Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Reducing Complexity in California's Affordable Housing Finance System</h4>
+                            <p class="res-desc">Actionable blueprint advocating for a consolidated 'one-stop-shop' state application based on Midwestern models.</p>
+                            <a href="https://ternercenter.berkeley.edu/blog/reducing-the-complexity-in-californias-affordable-housing-finance-system/" target="_blank" class="res-link">View Policy Solutions Brief →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 Davis Vanguard</span>
+                            <h4>California Affordable Housing Finance: Deep Dive</h4>
+                            <p class="res-desc">Investigative reporting breaking down how multiple funding silos slow project groundbreakings across the state.</p>
+                            <a href="https://davisvanguard.org/2025/05/california-affordable-housing-finance/" target="_blank" class="res-link">Read Davis Vanguard Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🔬 NIH PubMed Central</span>
+                            <h4>Political Economy & Financial Hurdles of Permanent Supportive Housing</h4>
+                            <p class="res-desc">Peer-reviewed public health study detailing the extreme 11-source capital stacks needed for supportive housing.</p>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8356292/" target="_blank" class="res-link">Access PubMed Central Paper →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -923,12 +1208,86 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>UC Berkeley Labor Center:</strong> <em>Building a High-Road Construction Economy in California</em></li>
-                        <li><strong>RAND Corporation:</strong> <em>Comparing Construction Costs Across Growth States (CA vs. TX)</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 5 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">12 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">👷 UC Berkeley Labor Center</span>
+                            <h4>The Public Cost of Low-Wage Jobs in California Construction</h4>
+                            <p class="res-desc">Groundbreaking analysis revealing that taxpayer-funded safety net programs spend $3B annually supporting construction families.</p>
+                            <a href="https://laborcenter.berkeley.edu/the-public-cost-of-low-wage-jobs-in-californias-construction-industry/" target="_blank" class="res-link">Read Full Labor Center Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📢 UC Berkeley Labor Center</span>
+                            <h4>Press Release: Low-Wage Construction Jobs and Safety Net Burdens</h4>
+                            <p class="res-desc">Executive summary detailing health insurance disparities and misclassification in residential building.</p>
+                            <a href="https://laborcenter.berkeley.edu/release-the-public-cost-of-low-wage-jobs-in-californias-construction-industry/" target="_blank" class="res-link">View Official Press Release →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>The Cost of Building Housing Series: Framing the Challenge</h4>
+                            <p class="res-desc">Foundational research examining the compounding effects of material inflation, local fees, and labor shortages.</p>
+                            <a href="https://ternercenter.berkeley.edu/wp-content/uploads/2020/08/Cost_of_Building_Housing_Series_Framing.pdf" target="_blank" class="res-link">Download Framing Paper (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Cost of Building Housing Research Series Hub</h4>
+                            <p class="res-desc">Comprehensive repository of all Terner Center empirical investigations into residential hard and soft construction costs.</p>
+                            <a href="https://ternercenter.berkeley.edu/research-and-policy/the-cost-of-building-housing-series/" target="_blank" class="res-link">Access Research Series Hub →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 CalMatters Explainer</span>
+                            <h4>Why Does It Cost So Much to Build Housing in California?</h4>
+                            <p class="res-desc">Deep-dive explainer breaking down why per-unit construction costs in coastal California are the highest in the world.</p>
+                            <a href="https://calmatters.org/explainers/california-housing-costs-explainer/" target="_blank" class="res-link">Read CalMatters Explainer →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 CalMatters Housing</span>
+                            <h4>California Affordable Housing and Labor Unions</h4>
+                            <p class="res-desc">Reporting on the political negotiations between housing advocates and building trades over prevailing wage standards.</p>
+                            <a href="https://calmatters.org/housing/2021/06/california-affordable-housing-unions/" target="_blank" class="res-link">Read CalMatters Labor Report →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">👷 UC Berkeley Labor Center</span>
+                            <h4>Prevailing Wage in Clean Energy: Delivering Good Jobs</h4>
+                            <p class="res-desc">Analysis demonstrating how prevailing wage and registered apprenticeships yield productivity gains that offset wages.</p>
+                            <a href="https://laborcenter.berkeley.edu/prevailing-wage-in-solar-can-deliver-good-jobs-while-keeping-growth-on-track/" target="_blank" class="res-link">View Clean Energy Labor Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">👷 UC Berkeley Labor Center</span>
+                            <h4>IRA Charts a Path That Is Both Pro-Climate and Pro-Worker</h4>
+                            <p class="res-desc">Examining how the Inflation Reduction Act's 5x tax credit bonus creates a high-road model for building standards.</p>
+                            <a href="https://laborcenter.berkeley.edu/ira-charts-a-path-that-is-both-pro-climate-and-pro-worker/" target="_blank" class="res-link">Read IRA Policy Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Pathways to Scale Innovative and Industrialized Construction</h4>
+                            <p class="res-desc">Comprehensive analysis of modular, off-site, and panelized manufacturing hurdles and solutions in California.</p>
+                            <a href="https://ternercenter.berkeley.edu/wp-content/uploads/2026/03/PathwaystoScaleInnovativeConstruction2026.pdf" target="_blank" class="res-link">Download Modular Report (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Center for American Progress</span>
+                            <h4>Increasing Affordable Housing Stock Through Modular Building</h4>
+                            <p class="res-desc">Federal and state policy recommendations for standardizing building codes to accelerate factory-built homes.</p>
+                            <a href="https://www.americanprogress.org/article/increasing-affordable-housing-stock-through-modular-building/" target="_blank" class="res-link">Read CAP Modular Policy →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 CalMatters Commentary</span>
+                            <h4>Without Political Will, Affordable Housing Will Remain a Dream</h4>
+                            <p class="res-desc">Op-ed on the structural legislative gridlock preventing bold action on construction supply and cost reform.</p>
+                            <a href="https://calmatters.org/commentary/2021/08/without-political-will-affordable-housing-will-remain-a-california-dream/" target="_blank" class="res-link">Read CalMatters Commentary →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 Edhat News</span>
+                            <h4>Billions More for California Housing: Why Some Unions Aren't Sold</h4>
+                            <p class="res-desc">Regional reporting on union apprenticeships, prevailing wage debates, and state funding packages.</p>
+                            <a href="https://www.edhat.com/news/billions-more-for-california-housing-why-some-construction-unions-arent-sold-yet/" target="_blank" class="res-link">Read Edhat Article →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -1010,12 +1369,56 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>California Law Review:</strong> <em>The Constitutional Wall: Article 34 and the Racist Roots of California Housing Law</em></li>
-                        <li><strong>U.S. Supreme Court:</strong> <em>James v. Valtierra, 402 U.S. 137 (1971)</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 6 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">7 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">🏠 Abundant Housing LA</span>
+                            <h4>Article 34 Workarounds & The Financial Costs of Segregationist Policy</h4>
+                            <p class="res-desc">Research paper calculating the $10,000-$80,000 per unit cost penalty of navigating Article 34 structuring loopholes.</p>
+                            <a href="https://abundanthousingla.org/wp-content/uploads/2023/01/Article-34-Workarounds-Research-Paper.pdf" target="_blank" class="res-link">Download Research Paper (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📜 California YIMBY</span>
+                            <h4>Senate Constitutional Amendment 2 (SCA 2) Campaign</h4>
+                            <p class="res-desc">Official legislative background and advocacy dossier for repealing Article 34 from the California Constitution.</p>
+                            <a href="https://cayimby.org/legislation/sca-2/" target="_blank" class="res-link">View SCA 2 Campaign Portal →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📻 KQED News</span>
+                            <h4>California Shelves Repeal of 1950 Housing Law That Stoked Racial Tension</h4>
+                            <p class="res-desc">In-depth reporting on why lawmakers pulled the Article 34 repeal from the 2024 ballot due to campaign cost concerns.</p>
+                            <a href="https://www.kqed.org/news/11991827/california-shelves-repeal-of-1950-housing-law-that-stoked-racial-tension" target="_blank" class="res-link">Read KQED Investigation →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ CALCOG</span>
+                            <h4>California Association of Councils of Governments: Repeal Article 34</h4>
+                            <p class="res-desc">Regional planning agency coalition position paper outlining why Article 34 obstructs regional housing targets.</p>
+                            <a href="https://calcog.org/repeal-article-34/" target="_blank" class="res-link">View CALCOG Position Paper →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Western Center on Law & Poverty</span>
+                            <h4>Legislative Agenda: Advancing Constitutional Housing Rights</h4>
+                            <p class="res-desc">Legal aid coalition analysis targeting structural barriers to low-income and racially integrated public housing.</p>
+                            <a href="https://wclp.org/western-centers-2022-legislative-agenda/" target="_blank" class="res-link">Read Western Center Agenda →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🗳️ Ballotpedia</span>
+                            <h4>California Repeal Article 34 Amendment Analysis</h4>
+                            <p class="res-desc">Historical overview of past repeal ballot propositions (1974, 1977, 1993) and voter referendum dynamics.</p>
+                            <a href="https://ballotpedia.org/California_Repeal_Article_34_Local_Referendum_Requirement_for_Low-Rent_Housing_Projects_Amendment_(2020)" target="_blank" class="res-link">View Ballotpedia Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Mayors for Social Housing</span>
+                            <h4>State Initiatives & Public Housing Constitutional Reform</h4>
+                            <p class="res-desc">Coalition of municipal leaders organizing for direct municipal housing development models unhindered by Article 34.</p>
+                            <a href="https://mayorsforsocialhousing.org/state-initiatives/" target="_blank" class="res-link">Visit Mayors for Social Housing →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -1095,12 +1498,80 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>California Department of Water Resources:</strong> <em>Guidebook for Implementation of SB 610 and SB 221</em></li>
-                        <li><strong>Donald Shoup, UCLA Urban Planning:</strong> <em>The High Cost of Free Parking (Updated California Transit Analysis)</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 7 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">11 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">💧 Stanford Water in the West</span>
+                            <h4>Show Me the Water: Integrating Water and Land Use Planning in California</h4>
+                            <p class="res-desc">Landmark Stanford study evaluating the 20-year verification requirements of SB 221 and SB 610.</p>
+                            <a href="https://waterinthewest.stanford.edu/sites/default/files/related_documents/Show_Me_Water_Plan.pdf" target="_blank" class="res-link">Download Stanford Study (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🚗 SF Jones Architects</span>
+                            <h4>The Parking Law (AB 2097) That's Changing California Development</h4>
+                            <p class="res-desc">Architectural case study detailing the cost savings and commercial revitalization unlocked by parking deregulation.</p>
+                            <a href="https://sfjones.com/the-parking-law-thats-quietly-changing-the-california-restaurant-game/" target="_blank" class="res-link">Read Architectural Case Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>California Housing Laws Going into Effect (AB 2553 & Parking)</h4>
+                            <p class="res-desc">Policy overview of how AB 2553 expands parking minimum exemptions to bus corridors and major transfer centers.</p>
+                            <a href="https://ternercenter.berkeley.edu/research-and-policy/california-housing-laws-that-go-into-effect-in-2025/" target="_blank" class="res-link">Read Terner Law Overview →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">💧 California Water Service</span>
+                            <h4>Water Supply Assessments (SB 610) & Verifications (SB 221)</h4>
+                            <p class="res-desc">Technical utility guide outlining the requirements for developer water sufficiency verification.</p>
+                            <a href="https://www.calwater.com/newbusiness/wsa-wsv/" target="_blank" class="res-link">Access CalWater Utility Guide →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">💧 Coachella Valley Water District (CVWD)</span>
+                            <h4>Water Supply Assessments & Verification Standards</h4>
+                            <p class="res-desc">Regional water district guidelines for subdivision review, drought modeling, and 20-year planning.</p>
+                            <a href="https://www.cvwd.org/579/Water-Supply-Assessments-Verifications" target="_blank" class="res-link">View CVWD Guidelines →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📜 California Legislative Information</span>
+                            <h4>SB 221 Official Statute Text (Chaptered)</h4>
+                            <p class="res-desc">Primary legislative text establishing the mandatory 500+ unit water supply verification requirement.</p>
+                            <a href="http://www.leginfo.ca.gov/pub/01-02/bill/sen/sb_0201-0250/sb_221_bill_20011009_chaptered.html" target="_blank" class="res-link">View LegInfo Statute Text →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">💧 California Water Library</span>
+                            <h4>DWR Guidebook for Implementation of SB 610 and SB 221</h4>
+                            <p class="res-desc">Official Department of Water Resources guidebook assisting cities and water purveyors with land-use integration.</p>
+                            <a href="https://cawaterlibrary.net/document/guidebook-for-implementation-of-sb-610-and-sb-221-to-assist-water-suppliers-cities-and-counties-in-integrating-water-and-land-use-planning/" target="_blank" class="res-link">Access DWR Guidebook →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Western City Magazine</span>
+                            <h4>What City Officials Should Know: Water and Land Use Laws</h4>
+                            <p class="res-desc">League of California Cities guide on coordinating Housing Elements with Urban Water Management Plans.</p>
+                            <a href="https://www.westerncity.com/article/what-city-officials-should-know-about-evolving-laws-linking-water-and-land-use" target="_blank" class="res-link">Read Western City Article →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🌿 ESA Environmental Consultants</span>
+                            <h4>CEQA Water Supply Assessment Changes: "Show Me the Water"</h4>
+                            <p class="res-desc">Environmental consulting review of how climate change models and drought regulations impact EIR water chapters.</p>
+                            <a href="https://esassoc.com/news-and-ideas/2019/11/ceqa-water-supply-assessment-changes-show-me-the-water/" target="_blank" class="res-link">Read ESA Practice Brief →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🚌 CVAG Transportation Toolbox</span>
+                            <h4>Right-Sizing Parking Supply and Transportation Demand</h4>
+                            <p class="res-desc">Municipal toolkit for reducing minimum parking ratios and eliminating vehicle storage land waste.</p>
+                            <a href="https://cvagtdmtoolbox.com/tdm_base/right-sizing-parking-supply/" target="_blank" class="res-link">Access TDM Parking Guide →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎙️ California Housing Podcast</span>
+                            <h4>Gimme Shelter: The California Housing Crisis Podcast Feed</h4>
+                            <p class="res-desc">Regular audio discussions on major legislative breakthroughs including AB 2097 parking reform and water mandates.</p>
+                            <a href="https://feeds.buzzsprout.com/1745274.rss" target="_blank" class="res-link">Access Podcast RSS Feed →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -1187,12 +1658,104 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>California HCD:</strong> <em>6th Cycle Housing Element Annual Progress Report Dashboard</em></li>
-                        <li><strong>Terner Center for Housing Innovation:</strong> <em>Streamlining Housing: Evaluating the Real Impact of SB 35</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 8 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Primary Sources, Reports & Legal Analyses</h3>
+                        <span class="resource-count-badge">15 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>Streamlined Housing Production Under SB 35: 5-Year Evaluation</h4>
+                            <p class="res-desc">Landmark study evaluating the 18,000+ units approved by-right and shielded from CEQA litigation under SB 35.</p>
+                            <a href="https://ternercenter.berkeley.edu/research-and-policy/sb-35-evaluation/" target="_blank" class="res-link">Read Terner SB 35 Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center Blog</span>
+                            <h4>How SB 35 Is Reshaping Affordable Housing Production</h4>
+                            <p class="res-desc">Executive summary of SB 35 project timelines, developer survey results, and labor standard outcomes.</p>
+                            <a href="https://ternercenter.berkeley.edu/blog/sb-35-evaluation/" target="_blank" class="res-link">Read Terner Center Blog →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🗺️ ArcGIS StoryMaps / UC Berkeley</span>
+                            <h4>SB 35 & Spatial Equity: Siting Affordable Housing</h4>
+                            <p class="res-desc">Interactive GIS spatial analysis tracking how 75% of streamlined projects concentrated in lower-resource census tracts.</p>
+                            <a href="https://storymaps.arcgis.com/stories/6bf84d86235f448396eb247d9db050cc" target="_blank" class="res-link">Explore Interactive StoryMap →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ California HCD</span>
+                            <h4>Annual Progress Report (APR) Housing Open Data Dashboard</h4>
+                            <p class="res-desc">Official state portal tracking building permits, RHNA progress, and Housing Element compliance for all 539 CA jurisdictions.</p>
+                            <a href="https://www.hcd.ca.gov/housing-open-data-tools/apr-dashboard" target="_blank" class="res-link">Access HCD APR Dashboard →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ California HCD</span>
+                            <h4>6th Cycle Regional Housing Needs Allocation (RHNA) Portal</h4>
+                            <p class="res-desc">Official methodology, statutory timelines, and regional allocations across California councils of governments.</p>
+                            <a href="https://www.hcd.ca.gov/rhna/sixth-cycle" target="_blank" class="res-link">View Official RHNA 6th Cycle →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 CalMatters Housing</span>
+                            <h4>What Is California's 'Builder's Remedy' and How Does It Work?</h4>
+                            <p class="res-desc">Deep-dive investigative reporting on how non-compliant cities lose local zoning control to high-density proposals.</p>
+                            <a href="https://calmatters.org/housing/2023/06/california-builders-remedy/" target="_blank" class="res-link">Read CalMatters Explainer →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ Ecology Law Quarterly (UC Berkeley Law)</span>
+                            <h4>The Legal Dynamics of the California Housing Accountability Act</h4>
+                            <p class="res-desc">Comprehensive legal analysis of Gov. Code § 65589.5, judicial review standards, and municipal sanctions.</p>
+                            <a href="https://www.ecologylawquarterly.org/wp-content/uploads/2020/04/05_46.2_Clare_Final_Internet.pdf" target="_blank" class="res-link">Download Law Review (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Othering & Belonging Institute (UC Berkeley)</span>
+                            <h4>Social Housing Models: Cross-Subsidization and California Pathways</h4>
+                            <p class="res-desc">Comprehensive policy framework examining Vienna and Singapore social housing models for California implementation.</p>
+                            <a href="https://belonging.berkeley.edu/sites/default/files/ARCHIVE/OBI%20Social%20Housing.pdf" target="_blank" class="res-link">Download Social Housing Report (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">⚖️ California Western Law Review</span>
+                            <h4>Social Housing and the Right to the City in California</h4>
+                            <p class="res-desc">Scholarly article examining non-market housing acquisition, public utility frameworks, and state legislative proposals.</p>
+                            <a href="https://scholarlycommons.law.cwsl.edu/cgi/viewcontent.cgi?article=1760&context=cwlr" target="_blank" class="res-link">Download Law Review Paper (PDF) →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🎓 Terner Center (UC Berkeley)</span>
+                            <h4>California Housing Legislative Recap (SB 423, SB 555 & AB 309)</h4>
+                            <p class="res-desc">Detailed summary of state housing legislation advancing social housing studies and permanent SB 35 extensions.</p>
+                            <a href="https://ternercenter.berkeley.edu/research-and-policy/legislative-recap-2023/" target="_blank" class="res-link">Read Legislative Recap →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📐 Opticos Design</span>
+                            <h4>Objective Design and Development Standards (ODDS) for By-Right Housing</h4>
+                            <p class="res-desc">Urban design guide for creating clear, objective standards that comply with state streamlining statutes.</p>
+                            <a href="https://opticosdesign.com/blog/objective-design-and-development-standards-more-housing-great-places/" target="_blank" class="res-link">Read Urban Design Guide →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏙️ Silicon Valley at Home (SV@Home)</span>
+                            <h4>6th Cycle Housing Element Toolkit & Pro-Housing Advocacy</h4>
+                            <p class="res-desc">Community advocacy guide for holding Bay Area and Southern California cities accountable to RHNA targets.</p>
+                            <a href="https://siliconvalleyathome.org/advocacy/housing-element-toolkit/" target="_blank" class="res-link">View SV@Home Toolkit →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏢 PHS Realty</span>
+                            <h4>Santa Monica & The Builder's Remedy Wave: A Development Boom</h4>
+                            <p class="res-desc">Case study of the 14+ high-rise Builder's Remedy filings submitted during Santa Monica's period of non-compliance.</p>
+                            <a href="https://phsrealty.com/blog/a-development-boom-in-the-cards-for-santa-monica" target="_blank" class="res-link">Read Santa Monica Case Study →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Yorba Linda Local Control</span>
+                            <h4>The Builder's Remedy Explained: Loss of Local Zoning Authority</h4>
+                            <p class="res-desc">Municipal perspective on the severe loss of local control facing jurisdictions that fail to adopt compliant Housing Elements.</p>
+                            <a href="https://yllocalcontrol.com/builders-remedy/" target="_blank" class="res-link">Read Local Control Analysis →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 First Tuesday Journal</span>
+                            <h4>An Evaluation of Streamlined Housing Production Under SB 35</h4>
+                            <p class="res-desc">Real estate legal and brokerage analysis of ministerial permitting timelines and project approvals.</p>
+                            <a href="https://journal.firsttuesday.us/an-evaluation-of-streamlined-housing-production-under-sb-35-after-five-years/91868/" target="_blank" class="res-link">Read First Tuesday Article →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
@@ -1284,13 +1847,50 @@
                     </div>
                 </div>
 
-                <div class="citations-card">
-                    <h4>Key Local Empirical Sources</h4>
-                    <ul class="citations-list">
-                        <li><strong>City of Thousand Oaks:</strong> <em>2021–2029 Housing Element & Annual Progress Reports (APR)</em></li>
-                        <li><strong>SCAG (Southern California Association of Governments):</strong> <em>6th Cycle RHNA Final Allocation Methodology</em></li>
-                        <li><strong>Ventura County Civic Alliance:</strong> <em>State of the County Report (Housing & Cost of Living Index)</em></li>
-                    </ul>
+                <!-- Curated Research & Policy Library for Core Issue 9 -->
+                <div class="resource-library">
+                    <div class="resource-library-header">
+                        <h3>📚 Thousand Oaks & Ventura County Core Sources</h3>
+                        <span class="resource-count-badge">6 Curated Resources</span>
+                    </div>
+                    <div class="resource-library-grid">
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ City of Thousand Oaks</span>
+                            <h4>Thousand Oaks General Plan 2045 Official Portal</h4>
+                            <p class="res-desc">Comprehensive planning documents, land-use maps, downtown master plans, and environmental impact reports.</p>
+                            <a href="https://www.toaks2045.org" target="_blank" class="res-link">Visit TOAKS 2045 Portal →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ City of Thousand Oaks</span>
+                            <h4>City of Thousand Oaks 2021-2029 Housing Element</h4>
+                            <p class="res-desc">Official certified Housing Element, site inventory, rezoning commitments, and Annual Progress Reports (APRs).</p>
+                            <a href="https://www.toaks.org/departments/community-development/planning/housing-element" target="_blank" class="res-link">Access Housing Element Portal →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏠 Many Mansions</span>
+                            <h4>Affordable & Supportive Housing Communities</h4>
+                            <p class="res-desc">Local nonprofit affordable housing developer providing permanent supportive housing, veteran units, and family communities.</p>
+                            <a href="https://www.manymansions.org" target="_blank" class="res-link">Visit Many Mansions Site →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">🏛️ Area Housing Authority (AHACV)</span>
+                            <h4>Ventura County Area Housing Authority Portal</h4>
+                            <p class="res-desc">Administering Section 8 Housing Choice Vouchers, subsidized developments, and public housing in East Ventura County.</p>
+                            <a href="https://www.ahacv.org" target="_blank" class="res-link">Visit AHACV Official Site →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📊 Ventura County CoC</span>
+                            <h4>Ventura County Homelessness Strategic Plan & Point-in-Time Data</h4>
+                            <p class="res-desc">Countywide Continuum of Care strategic reports, unsheltered homeless counts, and shelter capacity tracking.</p>
+                            <a href="https://coc.venturacounty.gov/reports/" target="_blank" class="res-link">View CoC Reports & Counts →</a>
+                        </div>
+                        <div class="resource-item-card">
+                            <span class="res-source">📰 The Thousand Oaks Acorn</span>
+                            <h4>Local Housing, Growth, and Planning News</h4>
+                            <p class="res-desc">Independent local coverage of city council hearings, Measure E debates, Planning Commission decisions, and infill projects.</p>
+                            <a href="https://www.toacorn.com/" target="_blank" class="res-link">Read The Acorn Housing News →</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jump-container">
