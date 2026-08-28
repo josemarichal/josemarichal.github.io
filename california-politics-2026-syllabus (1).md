@@ -79,6 +79,8 @@ COURSE ASSIGNMENTS
 
 COURSE GRADING POLICY
 
+> **📝 Extra Credit Opportunity (3 points):** Students who submit a question in their Friday workbooks that is selected and read at the October 6 City Council Housing Forum (up to 3 students) will receive 3 extra credit points.
+
 Student work will be graded based on analytical rigor, integration of course concepts, clarity of writing, and empirical accuracy. Grading rubrics for the Policy Audit and the Final Examination are available in Canvas. Students can expect to receive feedback on reading memos within one week of submission, and within two weeks for major papers.
 
 | Score Range | Letter | Score Range | Letter |
@@ -119,16 +121,22 @@ COURSE SCHEDULE
   * **Stone**, Chapter 1 ("The Market and the Polis") & Chapter 2 ("Equity").
   * Read: [The road to housing in California runs through the federal government (CalMatters)](https://calmatters.org/housing/2026/07/road-housing-california-federal/)
 
+* **Case Study:** Housing & Homelessness
+
 **Wed, Sep. 2**
 * **Required:**
   * **Stone**, Chapter 3 ("Efficiency")
   * *[OSU OER, Chapter 1 ("Introduction and Themes")](https://open.oregonstate.education/statelocal/chapter/chapter-1/)*.
 
+* **Case Study:** Housing & Homelessness
+
 **Fri, Sep. 4**
 * **Required:**
   * *[OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/)* & *[Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/)*.
+* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How does federalism allow California to pioneer national climate policy, while constraining its ability to enact single-payer healthcare or immigration solutions?*
 
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 3: Federalism and the Foundations of State Governance**
 
 **Mon, Sep. 7**
@@ -139,12 +147,16 @@ COURSE SCHEDULE
 * **Required:**
   * **OSU OER**, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."
 
+* **Case Study:** Housing & Homelessness
+
 **Fri, Sep. 11**
 * **Required:**
   * Peter Schrag, *[Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost)* [Book/Library] (Chapter 1: "The Tax Revolt")
   * **Stone**, Chapter 7 ("Numbers").
+* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity?*
 
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 4: State Constitutions and the Politics of Numbers**
 
 **Mon, Sep. 14**
@@ -152,17 +164,23 @@ COURSE SCHEDULE
   * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/)*
   * **Stone**, Chapter 9 ("Interests").
 
+* **Case Study:** Housing & Homelessness
+
 **Wed, Sep. 16**
 * **Required:**
   * *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/statelocal/chapter/chapter-7/)*
   * **Stone**, Chapter 6 ("Symbols").
 
+* **Case Study:** Housing & Homelessness
+
 **Fri, Sep. 18**
 * **Required:**
   * *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/)*
   * **Stone**, Chapter 8 ("Causes").
+* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** Why does a two-thirds progressive supermajority in Sacramento still fail to pass flagship supply-side housing or single-payer health legislation?*
 
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 5: Key Actors, Interests, and the Legislative Process**
 
 **Mon, Sep. 21**
@@ -174,12 +192,15 @@ COURSE SCHEDULE
   * *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/statelocal/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
   * League of California Cities, *[The Nature of Local Government](https://www.calcities.org/resource/the-nature-of-california-municipal-government)*
   * **Stone**, Chapter 15 ("Powers").
+* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How does stacking multiple uncoordinated social mandates onto administrative agencies degrade their ability to build physical infrastructure?*
 
 **Fri, Sep. 25**
 * **Required:**
   * *[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/statelocal/chapter/chapter-4/)*.
 
+* **Case Study:** Housing & Homelessness
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 6: Executive Power, Symbols, and Political Causes**
 
 **Mon, Sep. 28**
@@ -191,10 +212,14 @@ COURSE SCHEDULE
 * **Required:**
   * *[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/statelocal/chapter/chapter-11/)*; Legislative Analyst’s Office (LAO), *[California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf)*.
 
+* **Case Study:** Housing & Homelessness
+
 **Fri, Oct. 2**
 * **Required:**
   * Paul G. Lewis, *Shaping Suburbia* (Chapter 4); LAO, *[Understanding California's Property Taxes](https://lao.ca.gov/reports/2012/tax/property-tax-primer-112912.aspx)*.
 
+* **Case Study:** Housing & Homelessness
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 ### **Week 7: Midterm and State Bureaucracy**
 
 **Mon, Oct. 5**
