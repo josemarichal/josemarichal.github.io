@@ -52,6 +52,10 @@
             transition: all var(--transition-normal);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .tab-btn:hover {
@@ -242,8 +246,8 @@
 
             <!-- Tabs -->
             <div class="policy-tabs" id="tabs">
-                <button class="tab-btn active" data-target="housing">Housing & Homelessness</button>
-                <button class="tab-btn" data-target="education">Education</button>
+                <a href="california_housing_affordability.html" class="tab-btn">Housing & Homelessness</a>
+                <button class="tab-btn active" data-target="education">Education</button>
                 <button class="tab-btn" data-target="justice">Criminal Justice</button>
                 <button class="tab-btn" data-target="economy">Economy & Labor</button>
                 <button class="tab-btn" data-target="health">Health & Safety Net</button>
@@ -254,12 +258,11 @@
             </div>
 
             <!-- Housing & Homelessness Grid -->
-            <div class="policy-grid active" id="housing">
+            <div class="policy-grid" id="housing">
                 <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
                     <span class="org-type">Featured Updates</span>
                     <h3>Recent News & Reports</h3>
                     <ul class="report-list">
-                        <li><a href="california_housing_affordability.html" style="color: var(--accent-color); font-weight: bold;">📘 California & Thousand Oaks Housing Affordability Resource Dossier (9 Core Issues)</a></li>
                         <li><a href="https://www.governing.com/urban/yimbys-hit-a-milestone-in-california-whats-next" target="_blank">YIMBYs Hit a Milestone in California. What's Next?</a></li>
                         <li><a href="https://www.gov.ca.gov/2026/01/08/california-sees-drop-in-unsheltered-homelessness-bucking-national-trend-and-federal-headwinds/" target="_blank">California Sees Drop in Unsheltered Homelessness</a></li>
                         <li><a href="https://davisvanguard.org/2026/01/california-homelessness-decline-2025/" target="_blank">Governor Announces Major Drop in California's Unsheltered Homelessness Rates</a></li>
@@ -310,7 +313,7 @@
             </div>
 
             <!-- Education Grid -->
-            <div class="policy-grid" id="education">
+            <div class="policy-grid active" id="education">
                 <div class="resource-card" style="grid-column: 1 / -1; border-color: var(--accent-color);">
                     <span class="org-type">Featured Updates</span>
                     <h3>Recent News & Reports</h3>
@@ -746,17 +749,22 @@
         const grids = document.querySelectorAll('.policy-grid');
 
         tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and grids
-                tabs.forEach(t => t.classList.remove('active'));
+            tab.addEventListener('click', (e) => {
+                const targetId = tab.getAttribute('data-target');
+                if (!targetId) return; // Allow anchor links to navigate normally
+
+                // Remove active class from all button tabs and grids
+                tabs.forEach(t => {
+                    if (t.hasAttribute('data-target')) t.classList.remove('active');
+                });
                 grids.forEach(g => g.classList.remove('active'));
 
                 // Add active class to clicked tab
                 tab.classList.add('active');
 
                 // Show corresponding grid
-                const targetId = tab.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) targetEl.classList.add('active');
             });
         });
     </script>
