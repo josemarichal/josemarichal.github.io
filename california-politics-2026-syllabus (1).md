@@ -181,93 +181,107 @@ COURSE SCHEDULE
 * ***Discussion Prompt:** Why does a progressive supermajority in Sacramento struggle to pass supply-side housing legislation, and how does the Polis measure 'efficiency' in housing policy differently than a pure market?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
-### **Week 5: Key Actors, Interests, and the Legislative Process**
+### **Week 5: Local Government and Bureaucracy**
 
 **Mon, Sep. 21**
 * **Required:**
-  * *No Class*
-
-**Wed, Sep. 23**
-* **Required:**
-  * *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/statelocal/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
-  * League of California Cities, *[The Nature of Local Government](https://www.calcities.org/resource/the-nature-of-california-municipal-government)*
-  * **Stone**, Chapter 15 ("Powers").
+  * *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
 * **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How does stacking multiple, uncoordinated social mandates onto local agencies impede their capacity to construct affordable housing and manage homelessness?*
 
-**Fri, Sep. 25**
+**Wed, Sep. 23**
 * **Required:**
-  * *[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/statelocal/chapter/chapter-4/)*.
-
-* **Case Study:** Housing & Homelessness
-* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
-### **Week 6: Executive Power, Symbols, and Political Causes**
-
-**Mon, Sep. 28**
-* **Required:**
+  * League of California Cities, *[The Nature of Local Government](https://www.calcities.org/resource/the-nature-of-california-municipal-government)*
 * **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** Is local zoning control over housing density an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?*
 
+**Fri, Sep. 25**
+* **Required:**
+  * *[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-4/)*.
+* **Case Study:** Housing & Homelessness
+* ***Discussion Prompt:** How are numbers and statistics used strategically in the debate over state preemption of local zoning to frame the housing crisis as a failure of local government?*
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
+
+---
+
+### **Week 6: Key Actors and Interests**
+
+**Mon, Sep. 28**
+* **Required:**
+  * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-5/)*
+* **Case Study:** Housing & Homelessness
+* ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting existing neighborhood character and the urgent need to build high-density affordable housing?*
+
 **Wed, Sep. 30**
 * **Required:**
-  * *[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/statelocal/chapter/chapter-11/)*; Legislative Analyst’s Office (LAO), *[California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf)*.
-
+  * **Stone**, Chapter 9 ("Interests").
 * **Case Study:** Housing & Homelessness
+* ***Discussion Prompt:** Which interest groups wield the most power in local housing disputes, and how do they overcome the collective action problem compared to unhoused or prospective residents?*
 
 **Fri, Oct. 2**
 * **Required:**
-  * Paul G. Lewis, *Shaping Suburbia* (Chapter 4); LAO, *[Understanding California's Property Taxes](https://lao.ca.gov/reports/2012/tax/property-tax-primer-112912.aspx)*.
-
+  * **Stone**, Chapter 6 ("Symbols").
 * **Case Study:** Housing & Homelessness
+* ***Discussion Prompt:** How do political symbols associated with 'Silicon Valley tech wealth' versus 'unhoused encampments' shape the legislative debate over housing inequality?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
-### **Week 7: Midterm and State Bureaucracy**
+
+---
+
+### **Week 7: Midterm and Executives**
 
 **Mon, Oct. 5**
-* **Required:**
-  * **OSU OER**, Chapter 11 (cont.)
-  * **Stone**, Chapter 11 ("Decisions").
-* ***Discussion Prompt:** Can California effectively plan and fund multi-decade affordable housing infrastructure when its tax revenues experience wild boom-and-bust cycles?*
+* **Midterm Examination**
 
 **Wed, Oct. 7**
 * **Required:**
-  * *No Class*
+  * *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-8/)*
+* **Case Study:** Economy & Labor
+* ***Discussion Prompt:** How can the Governor and local executives utilize their power to compel reluctant municipalities to meet their Regional Housing Needs Allocation (RHNA) targets?*
 
 **Fri, Oct. 9**
-* **Required:**
-  * *No Class (Fall Holiday)*
+* *No Class - Fall Holiday*
 
-### **Week 8: The Powers of Public Policy**
+---
+
+### **Week 8: Legislatures and Causes**
 
 **Mon, Oct. 12**
 * **Required:**
-  * *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/statelocal/chapter/chapter-9/)*
-  * **Stone**, Chapter 13 ("Rules").
-  * Jennifer Hernandez, *["California Environmental Quality Act Lawsuits and the Housing Crisis"](https://repository.uclawsf.edu/hastings_environmental_law_journal/vol24/iss2/4/)*; Chris Elmendorf, "When Public Agencies Block Public Policy."
-* ***Discussion Prompt:** How did the California Environmental Quality Act (CEQA) evolve into the primary legal weapon used by local neighborhood groups to block affordable and dense housing?*
+  * *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-7/)*
+* **Case Study:** Economy & Labor
+* ***Discussion Prompt:** What specific legislative and institutional mechanisms explain why California public agencies struggle to deliver affordable housing projects on time and on budget?*
 
 **Wed, Oct. 14**
 * **Required:**
-  * Conor Dougherty, *[Golden Gates: Fighting for Housing in More Expensive America](https://www.penguinrandomhouse.com/books/588860/golden-gates-by-conor-dougherty/)* (Excerpts); PPIC, *[California’s Housing Shortage](https://www.ppic.org/blog/californias-housing-shortage-is-limiting-economic-opportunity/)*.
+  * **Stone**, Chapter 8 ("Causes").
+* **Case Study:** Health & Safety Net
+* ***Discussion Prompt:** How do competing political narratives attribute the 'causes' of homelessness to either individual moral failure or systemic housing shortages, and how does this affect policy solutions?*
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section.
 
 **Fri, Oct. 16**
 * **Required:**
-  * Margot Kushel et al., *[UCSF Statewide Study of People Experiencing Homelessness in California](https://homelessness.ucsf.edu/our-impact/studies/california-statewide-study-people-experiencing-homelessness)* (Executive Summary)
-* **Stone**, Chapter 4 ("Welfare & Security"). 📌 Policy Audit Due Friday at 11:59 PM.
+  * **Stone**, Chapter 15 ("Powers").
+* **Case Study:** Housing & Homelessness
 
-### **Week 9: Local Government and Community Politics**
+---
+
+### **Week 9: Budgeting and Decisions**
 
 **Mon, Oct. 19**
 * **Required:**
+  * *[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-11/)*; Legislative Analyst’s Office (LAO), *[California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf)*.
 * **Case Study:** Housing & Homelessness
-* ***Discussion Prompt:** How are numbers and statistics used strategically in the debate over state preemption of local zoning to frame the housing crisis as a failure of local government?*
 
 **Wed, Oct. 21**
 * **Required:**
-  * Adam Tooze, *["Chartbook: California Wildfire Risk as Financial Contagion"](https://adamtooze.com/2021/08/17/chartbook-33-california-wildfire-as-financial-contagion/)*; California Dept. of Insurance Market Briefing.
+  * **Stone**, Chapter 11 ("Decisions").
+* 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section.
 
 **Fri, Oct. 23**
 * **Required:**
-  * *[OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/)*; Severin Borenstein, "The Economics of California’s Energy Transition."
+  * *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-9/)*
+
+---
 
 ### **Week 10: Rules, Welfare, and Traditional State Services**
 
