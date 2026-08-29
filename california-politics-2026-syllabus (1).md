@@ -201,6 +201,9 @@ COURSE SCHEDULE
 * **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How are numbers and statistics used strategically in the debate over state preemption of local zoning to frame the housing crisis as a failure of local government?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
+* ⭐ **Extra Credit (1 point):** Our Immigrant Neighbors Speaker Series
+  * Sunday, Sept. 27 @ 4pm | United Methodist Church of Westlake Village (1049 S. Westlake Blvd, Westlake Village, CA 91361)
+  * *Willie Lubka of Buen Vecino discusses the effects of immigration policy on Ventura County individuals and families.*
 
 ---
 
