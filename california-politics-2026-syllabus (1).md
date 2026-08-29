@@ -157,6 +157,9 @@ COURSE SCHEDULE
 * ***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity, and how does this affect affordable housing production today?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
+* ⭐ **Extra Credit (1 point):** Our Immigrant Neighbors Speaker Series
+  * Sunday, Sept. 13 @ 4pm | United Methodist Church of Westlake Village (1049 S. Westlake Blvd, Westlake Village, CA 91361)
+  * *Immigration attorney Vanessa Frank presents on current immigration law and policy.*
 ### **Week 4: State Constitutions and the Politics of Numbers**
 
 **Mon, Sep. 14**
