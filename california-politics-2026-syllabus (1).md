@@ -120,6 +120,7 @@ COURSE SCHEDULE
 * **Required:**
   * **Stone**, Chapter 1 ("The Market and the Polis") & Chapter 2 ("Equity").
   * Read: [The road to housing in California runs through the federal government (CalMatters)](https://calmatters.org/housing/2026/07/road-housing-california-federal/)
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vTC2LAnblq_uSUmE33RVbSqoBwlaydFgRZ7sDRaqw67WfdvcsooRr-63IEo4PkWFqlntTiVSVO36-te/pub?start=false&loop=false&delayms=3000)
 
 * **Case Study:** Housing & Homelessness
 
