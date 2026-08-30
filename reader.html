@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Linear Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1B2420;
+            --panel: #212C27;
+            --hairline: #3A4740;
+            --bone: #E7E1D2;
+            --bone-dim: #9CA79C;
+            --moss: #8CA07C;
+            --moss-dim: #3E4A43;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--ink);
+            color: var(--bone);
+            font-family: 'Inter', system-ui, sans-serif;
+            padding: 48px 24px 80px;
+            display: flex;
+            justify-content: center;
+        }
+        .page { width: 100%; max-width: 600px; }
+        .eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--bone-dim);
+            margin-bottom: 6px;
+        }
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: 36px;
+            margin: 0 0 24px;
+            letter-spacing: -0.01em;
+        }
+        .view { display: none; }
+        .view.active { display: block; }
+        
+        /* Upload View */
+        .upload-card {
+            padding: 40px 26px;
+            background: var(--panel);
+            border-radius: 4px;
+            border: 1px dashed var(--hairline);
+            text-align: center;
+            margin-top: 40px;
+        }
+        .upload-title {
+            font-family: 'Fraunces', serif;
+            font-size: 20px;
+            color: var(--bone);
+            margin-bottom: 16px;
+        }
+        .upload-sub {
+            font-size: 14px;
+            color: var(--bone-dim);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        .library-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .lib-btn {
+            background: var(--ink);
+            border: 1px solid var(--hairline);
+            color: var(--bone);
+            padding: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            transition: border-color 0.15s;
+        }
+        .lib-btn:hover { border-color: var(--moss); }
+        .lib-title { font-family: 'Fraunces', serif; font-size: 18px; margin-bottom: 4px; }
+        .lib-author { font-size: 13px; color: var(--bone-dim); font-style: italic; }
+        input[type="file"] {
+            display: none;
+        }
+        .btn {
+            background: transparent;
+            border: 0.5px solid var(--hairline);
+            color: var(--bone);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .btn:hover {
+            border-color: var(--moss);
+            color: var(--moss);
+        }
+
+        /* Reading View */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--panel);
+            border-radius: 2px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--moss);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--bone-dim);
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .context-btn {
+            display: block;
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--bone-dim);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 16px 0;
+            cursor: pointer;
+            border-top: 1px dashed var(--hairline);
+            border-bottom: 1px dashed var(--hairline);
+            margin: 16px 0;
+            transition: color 0.15s;
+        }
+        .context-btn:hover { color: var(--moss); }
+        .context-btn.hidden { display: none; }
+
+        .paragraph-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .paragraph {
+            font-family: 'Fraunces', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--bone);
+        }
+        .paragraph.context {
+            color: var(--bone-dim);
+        }
+
+        .action-row {
+            margin-top: 48px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .footer-note {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .link-btn {
+            background: none;
+            border: none;
+            color: var(--bone-dim);
+            text-decoration: underline;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Completion View */
+        .completion-text {
+            font-family: 'Fraunces', serif;
+            font-size: 24px;
+            color: var(--moss);
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+
+    </style>
+    <script src="library.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="eyebrow">Anthropotechnics companion</div>
+        <h1 id="page-title">Non-Linear Reader</h1>
+
+        <!-- Library View -->
+        <div class="view active" id="view-library">
+            <div class="upload-card">
+                <div class="upload-title">The Library</div>
+                <div class="upload-sub">Select a philosophical work to begin your practice.</div>
+                
+                <div class="library-list" id="library-list">
+                    <!-- Library items injected here -->
+                </div>
+
+                <div style="margin-top: 32px; border-top: 1px dashed var(--hairline); padding-top: 32px;">
+                    <div class="upload-sub" style="margin-bottom: 16px;">Or upload your own custom .txt file:</div>
+                    <label for="book-upload" class="btn">Select .txt file</label>
+                    <input type="file" id="book-upload" accept=".txt">
+                </div>
+            </div>
+        </div>
+
+        <!-- Reading View -->
+        <div class="view" id="view-reading">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0% read</div>
+
+            <button class="context-btn" id="btn-prev">Show previous paragraph</button>
+            
+            <div class="paragraph-list" id="paragraph-container">
+                <!-- Paragraphs go here -->
+            </div>
+
+            <button class="context-btn" id="btn-next">Show next paragraph</button>
+
+            <div class="action-row">
+                <button class="btn" id="btn-mark-read">Mark as read</button>
+            </div>
+
+            <div class="footer-note">
+                <button class="link-btn" id="btn-change-book">Change book</button>
+            </div>
+        </div>
+
+        <!-- Completion View -->
+        <div class="view" id="view-completion">
+            <div class="completion-text">You have finished the book.</div>
+            <div class="action-row">
+                <button class="btn" id="btn-restart">Upload another</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let paragraphs = [];
+        let unreadIndices = [];
+        let currentFilename = "";
+        
+        let topVisibleIndex = -1;
+        let bottomVisibleIndex = -1;
+
+        const elLibraryView = document.getElementById('view-library');
+        const elReadingView = document.getElementById('view-reading');
+        const elCompletionView = document.getElementById('view-completion');
+        const elUploadInput = document.getElementById('book-upload');
+        const elParagraphContainer = document.getElementById('paragraph-container');
+        const elBtnPrev = document.getElementById('btn-prev');
+        const elBtnNext = document.getElementById('btn-next');
+        const elBtnMarkRead = document.getElementById('btn-mark-read');
+        const elProgressFill = document.getElementById('progress-fill');
+        const elProgressText = document.getElementById('progress-text');
+
+        function switchView(viewEl) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            viewEl.classList.add('active');
+        }
+
+        function loadState(filename) {
+            const saved = localStorage.getItem('reader-state-' + filename);
+            const savedCount = localStorage.getItem('reader-count-' + filename);
+            if (saved && savedCount == paragraphs.length) {
+                try {
+                    unreadIndices = JSON.parse(saved);
+                    return true;
+                } catch (e) { console.error(e); }
+            }
+            return false;
+        }
+
+        function saveState() {
+            localStorage.setItem('reader-state-' + currentFilename, JSON.stringify(unreadIndices));
+            localStorage.setItem('reader-count-' + currentFilename, paragraphs.length);
+            updateProgress();
+        }
+
+        function updateProgress() {
+            if (paragraphs.length === 0) return;
+            const readCount = paragraphs.length - unreadIndices.length;
+            const percent = (readCount / paragraphs.length) * 100;
+            elProgressFill.style.width = percent + '%';
+            elProgressText.textContent = `${readCount} / ${paragraphs.length} paragraphs read (${Math.round(percent)}%)`;
+        }
+
+        function chunkParagraphs(text) {
+            const rawParagraphs = text.split(/\r?\n\s*\r?\n/)
+                                     .map(p => p.trim())
+                                     .filter(p => p.length > 0);
+            const maxWords = 200;
+            const finalParagraphs = [];
+            
+            rawParagraphs.forEach(p => {
+                const words = p.split(/\s+/);
+                if (words.length <= maxWords) {
+                    finalParagraphs.push(p);
+                } else {
+                    // Try to split cleanly at sentence boundaries
+                    const sentences = p.split(/(?<=[.?!])\s+/);
+                    let currentChunk = [];
+                    let currentWordCount = 0;
+                    
+                    for (const sentence of sentences) {
+                        const sentenceWords = sentence.split(/\s+/).length;
+                        if (currentWordCount + sentenceWords > maxWords && currentChunk.length > 0) {
+                            finalParagraphs.push(currentChunk.join(' '));
+                            currentChunk = [sentence];
+                            currentWordCount = sentenceWords;
+                        } else {
+                            currentChunk.push(sentence);
+                            currentWordCount += sentenceWords;
+                        }
+                    }
+                    if (currentChunk.length > 0) {
+                        finalParagraphs.push(currentChunk.join(' '));
+                    }
+                }
+            });
+            return finalParagraphs;
+        }
+
+        function processFileText(text) {
+            paragraphs = chunkParagraphs(text);
+            
+            if (paragraphs.length === 0) {
+                alert("No readable paragraphs found in the file.");
+                return;
+            }
+
+            if (!loadState(currentFilename)) {
+                // Initialize unread indices if no state found
+                unreadIndices = Array.from({ length: paragraphs.length }, (_, i) => i);
+                saveState();
+            }
+
+            if (unreadIndices.length === 0) {
+                switchView(elCompletionView);
+            } else {
+                switchView(elReadingView);
+                pickRandom();
+            }
+        }
+
+        // Initialize Library
+        const elLibraryList = document.getElementById('library-list');
+        if (typeof LIBRARY !== 'undefined') {
+            LIBRARY.forEach(book => {
+                const btn = document.createElement('button');
+                btn.className = 'lib-btn';
+                btn.innerHTML = `<div class="lib-title">${book.title}</div><div class="lib-author">${book.author}</div>`;
+                btn.addEventListener('click', () => {
+                    currentFilename = book.id;
+                    processFileText(book.text);
+                });
+                elLibraryList.appendChild(btn);
+            });
+        }
+
+        elUploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            currentFilename = file.name;
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                processFileText(evt.target.result);
+            };
+            reader.readAsText(file);
+        });
+
+        function renderParagraphs() {
+            elParagraphContainer.innerHTML = '';
+            for (let i = topVisibleIndex; i <= bottomVisibleIndex; i++) {
+                const p = document.createElement('div');
+                p.className = 'paragraph';
+                // If it's not the first one we picked (not unread context), or just visually treat everything shown as context except maybe the middle one? 
+                // Let's just make all of them look normal to encourage reading.
+                p.textContent = paragraphs[i];
+                elParagraphContainer.appendChild(p);
+            }
+
+            // Update buttons
+            if (topVisibleIndex <= 0) {
+                elBtnPrev.classList.add('hidden');
+            } else {
+                elBtnPrev.classList.remove('hidden');
+            }
+
+            if (bottomVisibleIndex >= paragraphs.length - 1) {
+                elBtnNext.classList.add('hidden');
+            } else {
+                elBtnNext.classList.remove('hidden');
+            }
+        }
+
+        function pickRandom() {
+            if (unreadIndices.length === 0) {
+                switchView(elCompletionView);
+                return;
+            }
+
+            const rIndex = Math.floor(Math.random() * unreadIndices.length);
+            const chosenIndex = unreadIndices[rIndex];
+            
+            topVisibleIndex = chosenIndex;
+            bottomVisibleIndex = chosenIndex;
+            
+            renderParagraphs();
+            window.scrollTo(0, 0);
+        }
+
+        elBtnPrev.addEventListener('click', () => {
+            if (topVisibleIndex > 0) {
+                topVisibleIndex--;
+                renderParagraphs();
+            }
+        });
+
+        elBtnNext.addEventListener('click', () => {
+            if (bottomVisibleIndex < paragraphs.length - 1) {
+                bottomVisibleIndex++;
+                renderParagraphs();
+            }
+        });
+
+        elBtnMarkRead.addEventListener('click', () => {
+            // Remove all visible indices from unread pool
+            for (let i = topVisibleIndex; i <= bottomVisibleIndex; i++) {
+                const idx = unreadIndices.indexOf(i);
+                if (idx !== -1) {
+                    unreadIndices.splice(idx, 1);
+                }
+            }
+            saveState();
+            pickRandom();
+        });
+
+        document.getElementById('btn-change-book').addEventListener('click', () => {
+            elUploadInput.value = '';
+            switchView(elLibraryView);
+        });
+
+        document.getElementById('btn-restart').addEventListener('click', () => {
+            elUploadInput.value = '';
+            switchView(elLibraryView);
+        });
+    </script>
+</body>
+</html>
