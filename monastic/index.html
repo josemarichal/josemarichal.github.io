@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orthopraxis — Spiritual & World Faith Habit Disciplines</title>
-  <meta name="description" content="A comprehensive catalog and companion of orthopraxis disciplines across Liberation Theology, Christian Monasticism, Jewish Halakha, Islamic Fiqh, Confucian Li, Hindu Sanātana Dharma, Jain Kriya, Buddhist Sīla, and Stoic Askesis.">
+  <title>Orthopraxis — Spiritual, Ancient Askesis & Liberation Disciplines</title>
+  <meta name="description" content="A comprehensive catalog and companion of orthopraxis disciplines across Greco-Roman Askesis, Liberation Theology, Christian Monasticism, Jewish Halakha, Islamic Fiqh, Confucian Li, Hindu Sanātana Dharma, Jain Kriya, and Buddhist Sīla.">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles/main.css">
@@ -29,7 +29,7 @@
               ORTHOPRAXIS
               <span class="badge-gold">World Traditions</span>
             </h1>
-            <span class="brand-subtitle">Praxis de Liberación • Halakha • Fiqh • Li • Kriya • Sīla • Askesis</span>
+            <span class="brand-subtitle">Ἄσκησις • Ἐπιμέλεια Ἑαυτοῦ • Praxis de Liberación • Halakha • Fiqh • Li</span>
           </div>
         </div>
 
@@ -95,10 +95,10 @@
           <i data-lucide="quote" class="quote-icon"></i>
           <div>
             <div class="quote-text">
-              "Theology is a critical reflection on historical praxis. Authentic faith is verified only through transformative action with the crucified peoples of history and dialogue with poverty and culture."
+              "Philosophy in antiquity was an askesis (spiritual training)—rigorous diets, voluntary poverty, journaling, and cosmic contemplation to sculpt autonomous subjectivity against imperial decadence and coercion."
             </div>
             <div class="quote-subtext">
-              — Gustavo Gutiérrez • Jon Sobrino • Leonardo Boff • Aloysius Pieris (Triple Dialogue) • Minjung Theology
+              — Pierre Hadot (Philosophy as a Way of Life) • Michel Foucault (Technologies of the Self) • Musonius Rufus • Seneca • Marcus Aurelius
             </div>
           </div>
         </div>
@@ -111,6 +111,11 @@
               <i data-lucide="globe"></i>
               <span>All Traditions</span>
               <span class="count-badge" id="count-trad-all">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="greco-roman">
+              <i data-lucide="compass"></i>
+              <span>Greco-Roman Askesis</span>
+              <span class="count-badge" id="count-trad-greco-roman">0</span>
             </button>
             <button class="tradition-chip-btn" data-tradition="liberation">
               <i data-lucide="flame"></i>
@@ -152,11 +157,6 @@
               <span>Buddhist Sīla & Zen</span>
               <span class="count-badge" id="count-trad-buddhism">0</span>
             </button>
-            <button class="tradition-chip-btn" data-tradition="stoicism">
-              <i data-lucide="compass"></i>
-              <span>Stoic Askesis</span>
-              <span class="count-badge" id="count-trad-stoicism">0</span>
-            </button>
           </div>
         </div>
 
@@ -164,7 +164,7 @@
         <div class="search-filter-bar">
           <div class="search-input-wrap">
             <i data-lucide="search"></i>
-            <input type="text" id="catalog-search" class="search-input" placeholder="Search disciplines, Hebrew/Latin/Arabic/Korean terms, habit benefits..." aria-label="Search disciplines">
+            <input type="text" id="catalog-search" class="search-input" placeholder="Search disciplines, Greek/Hebrew/Latin/Arabic terms, habit benefits..." aria-label="Search disciplines">
           </div>
 
           <div class="category-chips" id="category-chips-wrap">
@@ -172,6 +172,16 @@
               <i data-lucide="sparkles"></i>
               <span>All Categories</span>
               <span class="count-badge" id="count-all">0</span>
+            </button>
+            <button class="chip-btn" data-category="philosophical-audit">
+              <i data-lucide="brain"></i>
+              <span>Care of Self & Mental Vigilance</span>
+              <span class="count-badge" id="count-philosophical-audit">0</span>
+            </button>
+            <button class="chip-btn" data-category="embodied-ascetic">
+              <i data-lucide="activity"></i>
+              <span>Embodied Asceticism & Bodily Regimens</span>
+              <span class="count-badge" id="count-embodied-ascetic">0</span>
             </button>
             <button class="chip-btn" data-category="ethical-social">
               <i data-lucide="users"></i>
@@ -193,16 +203,6 @@
               <span>Contemplative & Prayer</span>
               <span class="count-badge" id="count-spiritual-practices">0</span>
             </button>
-            <button class="chip-btn" data-category="embodied-ascetic">
-              <i data-lucide="activity"></i>
-              <span>Embodied Asceticism</span>
-              <span class="count-badge" id="count-embodied-ascetic">0</span>
-            </button>
-            <button class="chip-btn" data-category="philosophical-audit">
-              <i data-lucide="brain"></i>
-              <span>Daily Audit & Vigilance</span>
-              <span class="count-badge" id="count-philosophical-audit">0</span>
-            </button>
           </div>
         </div>
       </div>
@@ -217,9 +217,9 @@
           <div>
             <h2 class="section-title">
               <i data-lucide="scroll"></i>
-              Orthopraxis Disciplines Catalog
+              Orthopraxis & Askesis Disciplines
             </h2>
-            <span class="section-title-sub">Explore practices across sacred traditions or launch interactive guided sessions.</span>
+            <span class="section-title-sub">Explore practices across ancient and modern traditions or launch interactive guided sessions.</span>
           </div>
           <button class="btn-secondary" id="btn-add-custom">
             <i data-lucide="plus"></i>
@@ -406,7 +406,7 @@
           </div>
 
           <div>
-            <h4 class="form-label" style="margin-bottom: 0.35rem;">Meaning & Theological/Philosophical Foundation</h4>
+            <h4 class="form-label" style="margin-bottom: 0.35rem;">Meaning & Philosophical/Spiritual Foundation</h4>
             <p id="detail-modal-desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;"></p>
           </div>
 
@@ -453,18 +453,19 @@
         <form id="form-custom-discipline" class="modal-body">
           <div class="form-group">
             <label class="form-label" for="custom-name">Discipline Name *</label>
-            <input type="text" id="custom-name" class="form-input" placeholder="e.g., Strike Solidarity Vigil, Daily Walking Meditation" required>
+            <input type="text" id="custom-name" class="form-input" placeholder="e.g., Cold Water Immersion, Daily Walking Meditation" required>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="custom-latin">Original / Traditional Subtitle (Optional)</label>
-            <input type="text" id="custom-latin" class="form-input" placeholder="e.g., Ver-Juzgar-Actuar, Hitbodedut, Prosochê">
+            <input type="text" id="custom-latin" class="form-input" placeholder="e.g., Epimeleia Heautou, Hitbodedut, Prosochê">
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
               <label class="form-label" for="custom-tradition">Tradition Alignment</label>
               <select id="custom-tradition" class="form-select">
+                <option value="greco-roman">Greco-Roman Askesis</option>
                 <option value="liberation">Liberation Theology</option>
                 <option value="christian">Christian Monasticism</option>
                 <option value="judaism">Jewish Halakha</option>
@@ -473,19 +474,18 @@
                 <option value="hinduism">Hindu Sanātana Dharma</option>
                 <option value="jainism">Jain Kriya</option>
                 <option value="buddhism">Buddhist Sīla & Zen</option>
-                <option value="stoicism">Stoic Askesis</option>
               </select>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="custom-category">Category</label>
               <select id="custom-category" class="form-select">
+                <option value="philosophical-audit">Care of Self & Mental Vigilance</option>
+                <option value="embodied-ascetic">Embodied Asceticism & Bodily Training</option>
                 <option value="ethical-social">Social Justice & Liberation</option>
                 <option value="spiritual-practices">Contemplative & Prayer</option>
                 <option value="foundational-practices">Foundational Rites</option>
                 <option value="foundational-disciplines">Core Disciplines</option>
-                <option value="embodied-ascetic">Embodied Asceticism</option>
-                <option value="philosophical-audit">Daily Audit & Vigilance</option>
               </select>
             </div>
           </div>
@@ -502,7 +502,7 @@
 
           <div class="form-group">
             <label class="form-label" for="custom-benefit">Key Habit Benefit</label>
-            <input type="text" id="custom-benefit" class="form-input" placeholder="e.g. Cultivates courageous solidarity with the oppressed">
+            <input type="text" id="custom-benefit" class="form-input" placeholder="e.g. Forges autonomous subjectivity and self-control">
           </div>
 
           <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem;">
@@ -539,11 +539,11 @@
             <div class="form-group">
               <label class="form-label" for="journal-mood-select">Spiritual State / Mood</label>
               <select id="journal-mood-select" class="form-select">
-                <option value="Peaceful">🕊️ Peaceful (Shalom / Salam / Shanti)</option>
-                <option value="Grateful">🙏 Grateful (Modeh / Alhamdulillah / Eucharist)</option>
-                <option value="Contemplative">🕯️ Contemplative (Kavanah / Dhyana)</option>
+                <option value="Peaceful">🕊️ Peaceful (Ataraxia / Shalom / Salam)</option>
+                <option value="Grateful">🙏 Grateful (Eucharist / Modeh / Alhamdulillah)</option>
+                <option value="Contemplative">🕯️ Contemplative (Theōria / Kavanah / Dhyana)</option>
                 <option value="Joyful">✨ Joyful (Simcha / Ananda / Minjung Feast)</option>
-                <option value="Self-Auditing">⚖️ Self-Auditing (Examen / Muhasaba / San Xing)</option>
+                <option value="Self-Auditing">⚖️ Self-Auditing (Prosochê / Examen / Muhasaba)</option>
                 <option value="Struggling">🌧️ Dry / Struggling / In Han</option>
               </select>
             </div>

@@ -1,6 +1,6 @@
 /**
  * ORTHOPRAXIS - STANDALONE BUNDLED JAVASCRIPT ENGINE
- * Multi-Tradition Orthopraxis & Liberation Theology Companion
+ * Multi-Tradition Orthopraxis, Liberation Theology & Greco-Roman Askesis Companion
  */
 
 (function () {
@@ -18,6 +18,15 @@
       originRegion: "Global",
       coreConcept: "Orthopraxis across World Traditions",
       summary: "Orthopraxis ('right action/practice') prioritizes lived behavioral conformity, sacred habits, embodied rituals, and ethical disciplines over mere cognitive or dogmatic assent."
+    },
+    {
+      id: "greco-roman",
+      label: "Greco-Roman Askesis & Care of Self",
+      icon: "compass",
+      originalScript: "Ἄσκησις (Askesis) • Ἐπιμέλεια Ἑαυτοῦ (Care of Self)",
+      coreConcept: "Technologies of the Self & Existential Self-Sculpting",
+      scholarRefs: "Pierre Hadot (Philosophy as a Way of Life), Michel Foucault (Care of the Self), Musonius Rufus, Seneca, Epictetus, Marcus Aurelius, Epicurus, Pythagoras, Diogenes the Cynic",
+      summary: "In Greco-Roman antiquity, philosophy was not an abstract theoretical doctrine, but an askesis—a comprehensive art of living and system of rigorous spiritual and physical exercises. Through strict dietary regimens, voluntary poverty, daily journaling (hupomnemata), continuous vigilance (prosochê), and cosmic contemplation, philosophers deliberately formed their subjectivity to achieve inner freedom (autarkeia) and resist imperial decadence, consumerist distraction, and social conformity."
     },
     {
       id: "liberation",
@@ -90,30 +99,241 @@
       coreConcept: "Embodied Mindfulness & Action as Enlightenment",
       scholarRefs: "Noble Eightfold Path, Dogen Zenji (Shobogenzo), Thich Nhat Hanh",
       summary: "In Buddhism, Sīla (ethical conduct) provides the non-negotiable foundation for meditation. In Zen tradition, master Dogen taught that daily chores (Samu), bowing, and posture are not preparations for enlightenment, but the very manifestation of enlightenment itself."
-    },
-    {
-      id: "stoicism",
-      label: "Stoic Askesis & Daily Discipline",
-      icon: "compass",
-      originalScript: "Ἄσκησις (Askesis) & Προσoχή (Prosochê)",
-      coreConcept: "Philosophical Spiritual Exercises & Mindful Vigilance",
-      scholarRefs: "Epictetus, Seneca, Marcus Aurelius, Pierre Hadot ('Philosophy as a Way of Life')",
-      summary: "Ancient Hellenistic philosophy was not an academic theory, but an askesis (spiritual training). Through the evening self-audit, Premeditatio Malorum, and Prosochê (continuous attention to the governing faculty), the philosopher actively forms habits of wisdom and courage."
     }
   ];
 
   const CATEGORIES = [
     { id: "all", label: "All Categories", icon: "sparkles", count: 0 },
+    { id: "philosophical-audit", label: "Care of Self & Mental Vigilance", icon: "brain", count: 0 },
+    { id: "embodied-ascetic", label: "Embodied Asceticism & Bodily Training", icon: "activity", count: 0 },
+    { id: "ethical-social", label: "Social Justice & Liberation Praxis", icon: "users", count: 0 },
     { id: "foundational-practices", label: "Foundational Rites", icon: "landmark", count: 0 },
     { id: "foundational-disciplines", label: "Core Lifelong Disciplines", icon: "shield", count: 0 },
-    { id: "spiritual-practices", label: "Contemplative & Prayer Methods", icon: "flame", count: 0 },
-    { id: "ethical-social", label: "Social Justice & Liberation Praxis", icon: "users", count: 0 },
-    { id: "embodied-ascetic", label: "Embodied Asceticism & Body Prayer", icon: "activity", count: 0 },
-    { id: "philosophical-audit", label: "Daily Audit & Mental Vigilance", icon: "brain", count: 0 }
+    { id: "spiritual-practices", label: "Contemplative & Prayer Methods", icon: "flame", count: 0 }
   ];
 
   const DEFAULT_DISCIPLINES = [
-    // 0. LIBERATION THEOLOGY & REVOLUTIONARY PRAXIS
+    // 0. GRECO-ROMAN RIGOROUS ASCETICISM & TECHNOLOGIES OF THE SELF (FOUCAULT / HADOT)
+    {
+      id: "musonius-dietary-asceticism",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "Musonius Rufus's Dietary Asceticism & Bodily Hardening",
+      latinName: "Δίαιτα & Ἄσκησις Σώματος (Musonius Rufus)",
+      category: "embodied-ascetic",
+      categoryLabel: "Embodied Asceticism & Bodily Training",
+      durationMin: 30,
+      durationLabel: "Daily Regimen",
+      frequency: "Daily Dietary & Somatic Discipline",
+      icon: "utensils-crossed",
+      shortDesc: "The rigorous physical and nutritional training of Musonius Rufus ('The Roman Socrates'): plain plant nourishment, cold water bathing, rough cloaks, and manual farming to master desire.",
+      longDesc: "Musonius Rufus, the teacher of Epictetus, insisted that philosophy must begin in the stomach and body. In his Discourses on Food, he taught that elaborate feasts, cooked meats, and luxury drinks soften the soul and breed greed and sickness. By eating simple, uncooked plant foods (fruits, raw vegetables, cheeses, whole grains), bathing in cold water, going barefoot, and laboring in agriculture, the philosopher trains the body to serve virtue and resists imperial Roman decadence.",
+      originHistory: "Musonius Rufus (Discourses, Lecture 18A/18B: 'On Food and Clothing', 1st Cent. AD).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["musonius-rufus", "dietary-asceticism", "bodily-hardening", "hadot", "care-of-self", "stoic"],
+      habitBenefits: [
+        "Shatters psychological addiction to processed culinary luxury and sensual gratification",
+        "Builds vigorous somatic resilience through exposure to cold, physical labor, and simple foods",
+        "Liberates substantial time and income from consumerist dining habits for contemplation and community"
+      ],
+      scriptureOrQuote: "Mastery of food is the foundation of all self-control. One should choose inexpensive food that is easy to obtain, suitable for health, and requiring little cooking. — Musonius Rufus",
+      steps: [
+        { title: "1. The Examination of Appetite (Gaster)", durationSec: 180, guidance: "Observe your food desires before eating. Eliminate gourmet cravings, seeking only basic nourishment for health and strength." },
+        { title: "2. The Austere Meal (Simple Unprocessed Food)", durationSec: 900, guidance: "Partake of raw vegetables, whole grains, nuts, olives, and water. Eat with quiet composure without gluttonous haste." },
+        { title: "3. Somatic Hardening (Cold Exposure & Posture)", durationSec: 360, guidance: "Embrace physical simplicity: a cold rinse, walking barefoot on rough earth, or engaging in vigorous manual labor." },
+        { title: "4. Affirmation of Bodily Autonomy", durationSec: 180, guidance: "Affirm: 'My body is the instrument of reason and virtue, not a slave to imperial culinary addictions.'" }
+      ]
+    },
+    {
+      id: "seneca-voluntary-poverty",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "Seneca's Voluntary Poverty & Hardship Rehearsal",
+      latinName: "Inurere Paupertatem (Seneca: Letters to Lucilius 18)",
+      category: "embodied-ascetic",
+      categoryLabel: "Embodied Asceticism & Bodily Training",
+      durationMin: 1440,
+      durationLabel: "3 – 4 Days Monthly",
+      frequency: "Monthly 3-Day Immersion",
+      icon: "shield-alert",
+      shortDesc: "Setting aside 3 to 4 days every month to dress in rough cloth and eat cheap, stale bread, asking: 'Is this the condition that I feared?'",
+      longDesc: "Seneca instructed his student Lucilius to set aside a few days every month where he would deliberately live on the cheapest crusts of bread, drink only tap water, wear a coarse, worn cloak, and sleep on a hard pallet. By physically inhabiting the worst-case scenario of financial ruin, the philosopher inoculates the mind against constant economic panic and exposes that happiness requires almost nothing external.",
+      originHistory: "Seneca (Moral Letters to Lucilius, Letter 18: 'On Festivals and Fasting', c. 65 AD).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["seneca", "voluntary-poverty", "resilience", "hardship-rehearsal", "anti-consumerism"],
+      habitBenefits: [
+        "Eradicates paralyzing anxiety over economic status, loss of wealth, and career instability",
+        "Demonstrates somatic proof that peace of mind does not depend on luxury goods",
+        "Deepens profound empathy and solidarity with the impoverished"
+      ],
+      scriptureOrQuote: "Set aside a certain number of days, during which you shall be content with the scantiest and cheapest fare, with coarse and rough dress, saying to yourself the while: 'Is this the condition that I feared?' — Seneca, Letter 18.5",
+      steps: [
+        { title: "1. Declaring the Voluntary Hardship Days", durationSec: 180, guidance: "Commit to 3 days of living as if impoverished. Wear simple rough clothes and sleep on a firm floor or thin mat." },
+        { title: "2. The Scantiest Fare", durationSec: 600, guidance: "Eat only basic stale bread, simple broth, and water. Refrain from coffee, gourmet snacks, sweets, or dining out." },
+        { title: "3. Confronting the Imagined Catastrophe", durationSec: 300, guidance: "Look at your coarse food and simple surroundings, asking aloud: 'Is this the condition that I spent so many nights fearing?'" },
+        { title: "4. Deepening Gratitude & Fortitude", durationSec: 180, guidance: "Realize with exhilaration that your tranquility and reason remain entirely untouched." }
+      ]
+    },
+    {
+      id: "hupomnemata-journaling",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "Philosophical Journaling for Self-Sculpting (Hupomnēmata)",
+      latinName: "Ὑπομνήματα (Marcus Aurelius & Michel Foucault)",
+      category: "philosophical-audit",
+      categoryLabel: "Care of Self & Mental Vigilance",
+      durationMin: 20,
+      durationLabel: "15 – 30 Minutes Daily",
+      frequency: "Daily Morning & Evening",
+      icon: "book-open",
+      shortDesc: "The ancient discipline of personal notebooks (hupomnēmata) analyzed by Foucault: writing down maxims, deeds, and reflections to digest philosophy into one's very blood (in succum et sanguinem).",
+      longDesc: "In 'The Technologies of the Self,' Michel Foucault analyzed how ancient Greco-Romans used 'hupomnēmata' (personal reflection books). Marcus Aurelius's famous 'Meditations' (originally titled 'To Himself' — Ta Eis Heauton) was not written for publication, but as a spiritual exercise of daily self-dialogue. Writing down philosophical precepts, reframing grievances, and assimilating wisdom makes the truth visceral and builds an impenetrable internal citadel.",
+      originHistory: "Practiced by Hellenistic philosophers; analyzed in Michel Foucault's 'The Care of the Self' (1984).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["hupomnemata", "marcus-aurelius", "foucault", "hadot", "self-sculpting", "journaling"],
+      habitBenefits: [
+        "Converts passive intellectual knowledge into active, reflexive mental armor",
+        "Exposes hidden rationalizations, vanity, and emotional reactivity on the written page",
+        "Sculpts an autonomous, self-governing subjectivity immune to social manipulation"
+      ],
+      scriptureOrQuote: "Writing is a technology of the self... It turns the gaze inwards, taking up what has been read or heard, and digesting it into the soul's own substance. — Michel Foucault",
+      steps: [
+        { title: "1. Gathering the Ancient Maxims", durationSec: 240, guidance: "Select a core philosophical principle (e.g. dichotomy of control, transience of fame, duty to human community)." },
+        { title: "2. Writing To Yourself (Self-Dialogue)", durationSec: 600, guidance: "Write in the second person: 'Marcus, remember that the opinions of fools cannot harm your soul...' Address your specific vulnerabilities." },
+        { title: "3. Dissecting Daily Grievances", durationSec: 300, guidance: "Break down external insults or frustrations into their bare physical elements, stripping them of dramatic cognitive exaggeration." },
+        { title: "4. Sealing the Precept in the Blood", durationSec: 180, guidance: "Re-read your handwritten words slowly, committing to act upon them throughout the day." }
+      ]
+    },
+    {
+      id: "view-from-above-theoria",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "The View from Above (Cosmic Theōria)",
+      latinName: "Ἡ Ἄνωθεν Θέα (Hadot & Marcus Aurelius)",
+      category: "philosophical-audit",
+      categoryLabel: "Care of Self & Mental Vigilance",
+      durationMin: 15,
+      durationLabel: "10 – 20 Minutes",
+      frequency: "Daily Contemplation",
+      icon: "globe",
+      shortDesc: "Mentally soaring into cosmic heights to look down upon human cities, wars, monuments, and dramas from the perspective of cosmic eternity.",
+      longDesc: "Documented extensively by Pierre Hadot in 'Philosophy as a Way of Life,' the 'View from Above' is an imaginative spiritual exercise practiced by Stoics, Platonists, and Epicureans. The practitioner ascends in consciousness to the stars, observing the tiny globe of Earth with its armies, courtrooms, wealth, and funerals. This radical shift in scale annihilates vanity, pettiness, and provincial hatreds, immersing the mind in cosmic brotherhood (Cosmopolitanism).",
+      originHistory: "Marcus Aurelius (Meditations 7.48, 9.30), Pierre Hadot (Philosophy as a Way of Life).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["view-from-above", "hadot", "marcus-aurelius", "cosmology", "theoria", "stoic"],
+      habitBenefits: [
+        "Dissolves acute existential panic and catastrophic overthinking in seconds",
+        "Shrinks inflated ego-centric drama into proper cosmic proportion",
+        "Ignites profound cosmopolitan compassion for the shared fragility of all mortals"
+      ],
+      scriptureOrQuote: "Look down from above upon the countless gatherings, the thousands of ceremonies, all kinds of voyagings in calm and storm... See how tiny is the point of earth you occupy! — Marcus Aurelius, Meditations 7.48",
+      suggestedPhrases: [
+        { inhale: "Soaring into Cosmic Space", exhale: "Earth is a Single Speck" },
+        { inhale: "Transcending Petty Grievance", exhale: "Resting in Universal Nature" }
+      ],
+      steps: [
+        { title: "1. Elevation of Consciousness", durationSec: 180, guidance: "Close your eyes. Imagine your viewpoint rising above your room, over your city, over continents, oceans, and into deep space." },
+        { title: "2. Observing Human Activity from the Stars", durationSec: 360, guidance: "Look down upon traffic, courtrooms, political arguments, and markets. See them as tiny ants scurrying on a small clod of earth." },
+        { title: "3. Contemplating the Abyss of Time", durationSec: 300, guidance: "Remember the billions of humans who walked the Earth before you, and the billions who will come after. All empires vanish into stardust." },
+        { title: "4. Returning with Cosmopolitan Serenity", durationSec: 180, guidance: "Descend back into your body carrying this expansive cosmic tranquility into your daily interactions." }
+      ]
+    },
+    {
+      id: "epicurean-tetrapharmakos",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "Epicurean Tetrapharmakos & Simple Garden Diet",
+      latinName: "Τετραφάρμακος & Καταστηματικὴ Ἡδονή (Epicurus)",
+      category: "philosophical-audit",
+      categoryLabel: "Care of Self & Mental Vigilance",
+      durationMin: 20,
+      durationLabel: "15 – 30 Minutes",
+      frequency: "Daily Contemplative Meditation",
+      icon: "trees",
+      shortDesc: "The Epicurean Fourfold Remedy for anxiety combined with a simple diet of water and barley bread to achieve pure freedom from pain (Aponia) and anxiety (Ataraxia).",
+      longDesc: "Far from the vulgar caricature of hedonism, Epicurus founded 'The Garden' as an intentional counter-cultural community that practiced radical dietary austerity (water and barley bread, with a little pot of cheese on feast days). The core mental exercise was the daily repetition of the Tetrapharmakos (The Fourfold Remedy): 1. God is not to be feared; 2. Death is nothing to worry about; 3. What is good is easy to get; 4. What is terrible is easy to endure. This disarms all artificial, capitalist cravings.",
+      originHistory: "Epicurus (Letter to Menoeceus, Principal Doctrines), Philodemus of Gadara (1st Cent. BC).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["epicurus", "tetrapharmakos", "ataraxia", "aponia", "garden", "simplicity"],
+      habitBenefits: [
+        "Extinguishes neurotic fear of death and divine punishment",
+        "Demonstrates that natural and necessary pleasures (water, bread, friendship) cost almost nothing",
+        "Shields against the frantic rat-race of fame, political ambition, and infinite luxury accumulation"
+      ],
+      scriptureOrQuote: "Don't fear God, Don't worry about death; What is good is easy to get, and What is terrible is easy to endure. — The Epicurean Tetrapharmakos",
+      suggestedPhrases: [
+        { inhale: "Don't Fear God, Don't Fear Death", exhale: "What is Good is Easy to Get" },
+        { inhale: "Rest in Aponia (No Pain)", exhale: "Dwell in Ataraxia (Untroubled Soul)" }
+      ],
+      steps: [
+        { title: "1. Remedy 1 & 2: Divine & Mortal Freedom", durationSec: 300, guidance: "Affirm: The gods are in bliss and do not torment us; death is the absence of sensation, so when death is here, we are not." },
+        { title: "2. Remedy 3: Simplicity of True Good", durationSec: 300, guidance: "Reflect: Natural and necessary desires (water, bread, warm friendship) are easily satisfied. Artificial desires have no boundary." },
+        { title: "3. Remedy 4: Endurance of Pain", durationSec: 300, guidance: "Affirm: Severe pain is short; chronic pain is mild. Reason can summon pleasant memories of friendship to overpower present bodily ache." },
+        { title: "4. Communal Friendship in the Garden", durationSec: 180, guidance: "Send loving thoughts to your philosophical companions, celebrating the joy of simple existence." }
+      ]
+    },
+    {
+      id: "pythagorean-backward-audit",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "Pythagorean Backward Memory Audit (Mnēmē & Echemythia)",
+      latinName: "Μνήμη & Ἐχεμυθία (Pythagorean Golden Verses)",
+      category: "philosophical-audit",
+      categoryLabel: "Care of Self & Mental Vigilance",
+      durationMin: 15,
+      durationLabel: "10 – 15 Minutes Nightly",
+      frequency: "Nightly before sleep",
+      icon: "rotate-ccw",
+      shortDesc: "The ancient Pythagorean exercise of reviewing the entire day in reverse order, asking: 'Where did I go wrong? What did I do? What duty was left undone?'",
+      longDesc: "Recorded in the Pythagorean Golden Verses, the disciple was strictly forbidden from falling asleep before mentally replaying the entire day in backwards chronological order—from the last moment before bed back to the first waking breath. This rigorous cognitive training sharpens memory (Mnēmē), catches unconscious automatic behaviors, and guarantees ethical accountability alongside the Pythagorean discipline of five-year silence (Echemythia).",
+      originHistory: "The Golden Verses of Pythagoras (lines 40–44), Iamblichus (Life of Pythagoras).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["pythagoras", "golden-verses", "backward-audit", "memory", "silence", "askesis"],
+      habitBenefits: [
+        "Drastically improves working memory and vivid episodic recall",
+        "Interrupts subconscious cognitive drift and unexamined moral hypocrisy",
+        "Cultivates deliberate mindfulness by knowing every action will be audited in reverse tonight"
+      ],
+      scriptureOrQuote: "Never let slumber slide upon your eyes ere you have thrice scanned the deeds of the day: Where did I slip? What did I achieve? What duty was left undone? — Pythagorean Golden Verses",
+      steps: [
+        { title: "1. Stilling the Mind at Bedtime", durationSec: 60, guidance: "Lie down in stillness. Prohibit sleep from overtaking you until the threefold audit is complete." },
+        { title: "2. Chronological Reverse Replay", durationSec: 360, guidance: "Replay the day backwards: from laying in bed, to dinner, to afternoon work, to morning waking. Observe every word and deed like a movie in reverse." },
+        { title: "3. The Three Questions", durationSec: 300, guidance: "At each scene, ask: 1. Where did I transgress? 2. What good did I accomplish? 3. What duty did I neglect?" },
+        { title: "4. Healing & Clear Resolution", durationSec: 180, guidance: "Grieve where you erred with a firm vow to rectify it tomorrow; rejoice in what was done well and sleep in peace." }
+      ]
+    },
+    {
+      id: "proscoche-impression-testing",
+      tradition: "greco-roman",
+      traditionLabel: "Greco-Roman Askesis",
+      name: "Stoic Continuous Vigilance (Prosochê & Phantasia Audit)",
+      latinName: "Προσοχή & Δοκιμασία Φαντασιῶν (Epictetus: Discourses)",
+      category: "philosophical-audit",
+      categoryLabel: "Care of Self & Mental Vigilance",
+      durationMin: 15,
+      durationLabel: "Ongoing / 15 Min Practice",
+      frequency: "Continuous Mindful Vigilance",
+      icon: "eye",
+      shortDesc: "Epictetus's spiritual gymnastics: challenging every incoming impression at the gate of the mind: 'You are just an impression; are you within my control or not?'",
+      longDesc: "In the Discourses of Epictetus, 'Prosochê' is the continuous state of acute spiritual attentiveness and vigilance. Just as a night sentry challenges every stranger at the fortress gate, the philosopher stops every sensory impression (phantasia) before giving it assent (synkatathesis), testing whether it concerns things up to us (prohairesis) or things external.",
+      originHistory: "Epictetus (Discourses 3.12: 'On Training', Enchiridion 1.5).",
+      url: "https://urbanmonastic.org/practices/",
+      tags: ["epictetus", "proscoche", "phantasia", "mindfulness", "vigilance", "stoic"],
+      habitBenefits: [
+        "Prevents sudden bursts of anger, panic, outrage, or addictive craving from hijacking reason",
+        "Maintains an uninterrupted state of serene self-possession throughout stressful encounters",
+        "Separates objective reality from emotional value-judgments"
+      ],
+      scriptureOrQuote: "Practise then from the start to say to every harsh impression: 'You are an impression, and not at all what you seem to be.' Then test it: Is it about things in my power, or things not in my power? — Epictetus, Enchiridion 1.5",
+      steps: [
+        { title: "1. Sentry at the Gate of the Soul", durationSec: 180, guidance: "Imagine your consciousness as a fortified gateway. When a disturbing thought or urge approaches, yell: 'Halt!'" },
+        { title: "2. Stripping the Value Judgment", durationSec: 360, guidance: "Separate the raw event (e.g. spilled coffee, critical email) from your emotional story ('This is terrible!')." },
+        { title: "3. The Dichotomy of Control Filter", durationSec: 240, guidance: "Ask: Is this outcome in my direct control? If it is not, declare: 'Then it is nothing to me; my integrity is in my control.'" },
+        { title: "4. Withholding or Granting Assent", durationSec: 120, guidance: "Grant rational assent only to virtue, courage, and truth." }
+      ]
+    },
+
+    // 1. LIBERATION THEOLOGY & REVOLUTIONARY PRAXIS
     {
       id: "liberation-see-judge-act",
       tradition: "liberation",
@@ -212,68 +432,8 @@
         { title: "4. Resting in the Theology of Harmony", durationSec: 240, guidance: "Cultivate subjective dialogical consistency, rejecting sectarian hostility and resting in cosmic shalom." }
       ]
     },
-    {
-      id: "minjung-han-lament",
-      tradition: "liberation",
-      traditionLabel: "Liberation Theology",
-      name: "Minjung Han-Release & Communal Praxis (Dan-Han)",
-      latinName: "민중신학 (Minjung Theology: Ahn Byung-Mu)",
-      category: "spiritual-practices",
-      categoryLabel: "Contemplative & Prayer Methods",
-      durationMin: 20,
-      durationLabel: "15 – 30 Minutes",
-      frequency: "Communal Vigils & Weekly Prayer",
-      icon: "flame",
-      shortDesc: "Transforming the deep, accumulated collective grief and unrequited injustice (Han) of the oppressed masses into revolutionary, festive hope.",
-      longDesc: "Born during the struggle against authoritarian military rule in South Korea, Minjung Theology (pioneered by Ahn Byung-Mu and Suh Nam-Dong) centers on the 'Minjung'—the downtrodden, marginalized masses of the land. Its central orthopraxis is 'Dan-Han' (cutting off and resolving Han)—the visceral, embodied release of collective generational grief through lament, communal solidarity, and festive resistance (Dap-Jeon-Nor-I).",
-      originHistory: "Ahn Byung-Mu, Suh Nam-Dong, Korean Christian democracy movement (1970s–1980s).",
-      url: "https://urbanmonastic.org/practices/",
-      tags: ["minjung", "korea", "han", "dan-han", "ahn-byung-mu", "liberation"],
-      habitBenefits: [
-        "Prevents accumulated societal trauma and grief (Han) from turning into self-destructive bitterness",
-        "Validates the tears and historical agency of ordinary working people",
-        "Ignites vibrant communal courage and festive hope against oppressive regimes"
-      ],
-      scriptureOrQuote: "Jesus was not an isolated theological dogma; he was the Ochlos (the Minjung, the marginalized crowd). Where the Minjung suffer and rise, there is the Living Christ. — Ahn Byung-Mu",
-      steps: [
-        { title: "1. Naming the Collective Han (Unresolved Grief)", durationSec: 300, guidance: "Acknowledge the unspoken sorrow, systemic exploitation, and historical wounds carried by working families and the oppressed." },
-        { title: "2. Communal Lamentation & Cry", durationSec: 360, guidance: "Pour out tears and raw sighs without polite filters, joining the ancient groan of the Ochlos (the crowd)." },
-        { title: "3. Dan-Han: The Severing of Bitterness", durationSec: 360, guidance: "Consciously transform toxic resentment into revolutionary love, resolute resistance, and communal solidarity." },
-        { title: "4. The Minjung Feast (Dap-Jeon-Nor-I)", durationSec: 180, guidance: "Celebrate the indestructible joy and resilience of the people through song, bread-sharing, and dance." }
-      ]
-    },
-    {
-      id: "boff-cry-of-earth",
-      tradition: "liberation",
-      traditionLabel: "Liberation Theology",
-      name: "Socio-Ecological Liberation (Cry of the Earth, Cry of the Poor)",
-      latinName: "Ecologia da Libertação (Leonardo Boff)",
-      category: "ethical-social",
-      categoryLabel: "Social Justice & Liberation Praxis",
-      durationMin: 20,
-      durationLabel: "15 – 30 Minutes",
-      frequency: "Daily Eco-Audit & Community Action",
-      icon: "trees",
-      shortDesc: "Leonardo Boff's expanded liberation praxis uniting the groaning of exploited human workers with the devastation of the living planet.",
-      longDesc: "Franciscan liberation theologian Leonardo Boff expanded Latin American liberation theology into eco-theology. He revealed that the same rapacious capitalist machinery that exploits the impoverished worker also strip-mines the rainforest and pollutes the waters. Authentic orthopraxis must therefore respond simultaneously to 'the cry of the poor and the cry of the Earth.'",
-      originHistory: "Leonardo Boff (Cry of the Earth, Cry of the Poor, 1995; Ecology & Liberation).",
-      url: "https://urbanmonastic.org/practices/",
-      tags: ["boff", "ecology", "earth-care", "creation", "anti-capitalism", "liberation"],
-      habitBenefits: [
-        "Dismantles anthropocentric arrogance and consumerist waste",
-        "Protects local ecosystems, clean water, and indigenous land sovereignty",
-        "Cultivates sacred kinship with all living creatures as cosmic siblings"
-      ],
-      scriptureOrQuote: "The same logic that exploits the worker and reduces nations to misery is the logic that pillages Mother Earth. We must hear both cries as one single cry. — Leonardo Boff",
-      steps: [
-        { title: "1. Listening to the Groaning Earth", durationSec: 300, guidance: "Contemplate your local watershed, soil, and atmosphere. Where is creation being poisoned or exploited for profit?" },
-        { title: "2. Connecting Ecological Rape to Social Poverty", durationSec: 300, guidance: "Identify how toxic dumping and climate change disproportionately inflict disease on impoverished communities." },
-        { title: "3. Eco-Praxis & Consumption Fast", durationSec: 360, guidance: "Commit to reducing waste, defending local green commons, boycotting polluters, and rewilding space." },
-        { title: "4. Cosmic Kinship (Canticle of Creatures)", durationSec: 180, guidance: "Offer a blessing of gratitude to Sister Water, Brother Sun, and Mother Earth in joyful communion." }
-      ]
-    },
 
-    // 1. CHRISTIAN MONASTIC ORTHOPRAXIS
+    // 2. CHRISTIAN MONASTIC ORTHOPRAXIS
     {
       id: "divine-office",
       tradition: "christian",
@@ -303,96 +463,6 @@
         { title: "Scripture Reading & Silence", durationSec: 240, guidance: "Listen to a short passage from Scripture. Spend 2-3 minutes in silent contemplation." },
         { title: "Intercessions & The Lord's Prayer", durationSec: 180, guidance: "Lift up prayers for the church, the world, those who suffer, and your community. Conclude with the Lord's Prayer." },
         { title: "Benediction & Closing", durationSec: 60, guidance: "Recite the closing blessing: 'May the peace of God guard our hearts and minds in Christ Jesus.'" }
-      ]
-    },
-    {
-      id: "eucharist",
-      tradition: "christian",
-      traditionLabel: "Christian Monasticism",
-      name: "Eucharist",
-      latinName: "Eucharistia",
-      category: "foundational-practices",
-      categoryLabel: "Foundational Rites",
-      durationMin: 5,
-      durationLabel: "5 – 15 Minutes",
-      frequency: "Daily / Weekly / Feasts",
-      icon: "wine",
-      shortDesc: "Partake in the sacred rite of Holy Communion that Jesus instituted on the night he was betrayed.",
-      longDesc: "The Eucharist (from the Greek eucharistia, meaning 'thanksgiving') is the heart of Christian worship and monastic devotion. It is the sacrament of real presence, deep thanksgiving, covenant renewal, and union with Christ.",
-      originHistory: "Instituted by Jesus at the Last Supper (Matthew 26, 1 Corinthians 11).",
-      url: "https://urbanmonastic.org/practices/eucharist/",
-      tags: ["sacrament", "communion", "thanksgiving", "worship", "covenant"],
-      habitBenefits: [
-        "Instills a foundational posture of thanksgiving (eucharistein) across all of life",
-        "Re-centers identity on Christ's self-giving love rather than self-striving",
-        "Fosters humble reconciliation with fellow believers"
-      ],
-      scriptureOrQuote: "He took bread, gave thanks and broke it, and gave it to them... — Luke 22:19",
-      steps: [
-        { title: "Self-Examination & Confession", durationSec: 90, guidance: "Acknowledge where you have fallen short. Release grudges and rest in Christ's forgiveness." },
-        { title: "The Great Thanksgiving", durationSec: 90, guidance: "Recall God's wondrous works of creation and redemption. Lift up your heart in gratitude." },
-        { title: "Partaking / Spiritual Communion", durationSec: 90, guidance: "Receive the consecrated elements in reverence, or make an act of Spiritual Communion." },
-        { title: "Post-Communion Sending", durationSec: 60, guidance: "Offer yourself as a living sacrifice to love and serve the world in peace." }
-      ]
-    },
-    {
-      id: "fasting",
-      tradition: "christian",
-      traditionLabel: "Christian Monasticism",
-      name: "Fasting",
-      latinName: "Ieiunium",
-      category: "embodied-ascetic",
-      categoryLabel: "Embodied Asceticism & Body Prayer",
-      durationMin: 1440,
-      durationLabel: "1+ Days (or 12-24 Hours)",
-      frequency: "Weekly (Wednesdays/Fridays) or Seasonal (Lent)",
-      icon: "utensils-crossed",
-      shortDesc: "To abstain from all food or certain nourishments for at least a day to feast upon God's presence.",
-      longDesc: "Fasting is voluntary abstinence from food for spiritual purposes. Far from mere self-denial, Christian fasting creates physical space and spiritual hunger, reorienting desires from earthly appetites to the Bread of Life.",
-      originHistory: "Rooted in biblical traditions and early church fast days (Didache, c. 100 AD).",
-      url: "https://urbanmonastic.org/practices/fasting/",
-      tags: ["asceticism", "hunger-for-god", "simplicity", "discipline", "humility"],
-      habitBenefits: [
-        "Breaks the tyranny of physical cravings and instant gratification",
-        "Sharpens spiritual focus and heightens sensitivity in prayer",
-        "Builds solidarity and compassion with the hungry and impoverished"
-      ],
-      scriptureOrQuote: "Man shall not live on bread alone, but on every word that comes from the mouth of God. — Matthew 4:4",
-      steps: [
-        { title: "Setting the Sacred Intention", durationSec: 180, guidance: "Dedicate this fast to God in secret. Define your fast boundary with grace." },
-        { title: "Transforming Hunger into Prayer", durationSec: 300, guidance: "Whenever you feel a hunger pang, pray: 'Lord, you are my true food.'" },
-        { title: "Almsgiving & Mercy Connection", durationSec: 180, guidance: "Dedicate the money and time saved toward serving someone in need." },
-        { title: "Breaking the Fast with Gratitude", durationSec: 180, guidance: "End your fast gently, receiving every bite with conscious praise." }
-      ]
-    },
-    {
-      id: "prayer",
-      tradition: "christian",
-      traditionLabel: "Christian Monasticism",
-      name: "Prayer",
-      latinName: "Ora",
-      category: "foundational-disciplines",
-      categoryLabel: "Core Lifelong Disciplines",
-      durationMin: 15,
-      durationLabel: "Ongoing / 10-30 Min",
-      frequency: "Daily / Unceasing",
-      icon: "sparkles",
-      shortDesc: "Being purposefully in God's tender and loving presence where thoughts, emotions, and words can move in both directions.",
-      longDesc: "Prayer is the fundamental heartbeat of monastic life and spiritual health. It is an honest, unvarnished dialogue of love, adoration, confession, thanksgiving, and quiet listening.",
-      originHistory: "Universal pillar of Christian monasticism modeled by Jesus and the Psalmists.",
-      url: "https://urbanmonastic.org/practices/prayer/",
-      tags: ["communion", "dialogue", "adoration", "intercession", "presence"],
-      habitBenefits: [
-        "Cultivates ongoing conversational intimacy with the Creator",
-        "Transforms anxiety into surrendered trust",
-        "Anchors emotional equilibrium in divine fidelity"
-      ],
-      scriptureOrQuote: "Pray without ceasing. In everything give thanks... — 1 Thessalonians 5:17-18",
-      steps: [
-        { title: "Entering God's Presence", durationSec: 180, guidance: "Acknowledge God's infinite majesty and tender nearness." },
-        { title: "Honest Vulnerability", durationSec: 180, guidance: "Share your unedited thoughts, fears, joys, and struggles." },
-        { title: "Intercession for Others", durationSec: 180, guidance: "Bring friends, family, leaders, and suffering neighbors before the throne of grace." },
-        { title: "Quiet Listening", durationSec: 180, guidance: "Be still. Stop talking and allow God's gentle whisper to rest your soul." }
       ]
     },
     {
@@ -437,7 +507,7 @@
       name: "The Daily Examen",
       latinName: "Examination",
       category: "philosophical-audit",
-      categoryLabel: "Daily Audit & Mental Vigilance",
+      categoryLabel: "Care of Self & Mental Vigilance",
       durationMin: 15,
       durationLabel: "5 – 15 Minutes",
       frequency: "Daily (Midday or Evening)",
@@ -462,7 +532,7 @@
       ]
     },
 
-    // 2. JEWISH HALAKHA & MITZVOT
+    // 3. JEWISH HALAKHA
     {
       id: "shabbat-observance",
       tradition: "judaism",
@@ -494,7 +564,7 @@
       ]
     },
 
-    // 3. ISLAMIC FIQH & SUNNAH
+    // 4. ISLAMIC FIQH & SUNNAH
     {
       id: "salah-five-prayers",
       tradition: "islam",
@@ -527,7 +597,7 @@
       ]
     },
 
-    // 4. CONFUCIAN LI
+    // 5. CONFUCIAN LI
     {
       id: "confucian-li-ritual",
       tradition: "confucianism",
@@ -556,48 +626,17 @@
         { title: "Mindful Speech & Tone", durationSec: 300, guidance: "Ensure words are truthful and benevolent (Ren)." },
         { title: "Deferential Regard (Bowing)", durationSec: 180, guidance: "Acknowledge elders, colleagues, guests, and family with undivided attention." }
       ]
-    },
-
-    // 5. STOIC ASKESIS
-    {
-      id: "stoic-evening-audit",
-      tradition: "stoicism",
-      traditionLabel: "Stoic Askesis & Daily Discipline",
-      name: "The Stoic Evening Audit (Sextius / Seneca)",
-      latinName: "Askesis: Examen Vespertinum",
-      category: "philosophical-audit",
-      categoryLabel: "Daily Audit & Mental Vigilance",
-      durationMin: 10,
-      durationLabel: "5 – 15 Minutes Nightly",
-      frequency: "Nightly before sleep",
-      icon: "moon",
-      shortDesc: "Seneca's nightly courtroom of the soul: What bad habit have I cured today? What temptation resisted? In what respect am I better?",
-      longDesc: "In the Hellenistic tradition documented by Pierre Hadot in 'Philosophy as a Way of Life,' philosophy was not an academic theory, but an ongoing spiritual exercise (askesis).",
-      originHistory: "Pythagorean Golden Verses, practiced by Seneca (On Anger 3.36) and Marcus Aurelius.",
-      url: "https://urbanmonastic.org/practices/",
-      tags: ["stoic", "seneca", "askesis", "evening-audit", "pierre-hadot"],
-      habitBenefits: [
-        "Develops fearless self-honesty without paralyzing neurotic self-loathing",
-        "Guarantees daily incremental improvement in emotional self-control",
-        "Prepares the mind for a restorative, tranquil sleep free of unexamined guilt"
-      ],
-      scriptureOrQuote: "When the light has been removed and my wife has fallen silent... I examine my entire day and retrace my deeds and words; I hide nothing from myself. — Seneca",
-      steps: [
-        { title: "Retracing the Course of the Day", durationSec: 120, guidance: "Step mentally through your day from waking to nightfall." },
-        { title: "The Three Inquiries", durationSec: 300, guidance: "Ask: 1. What bad habit did I check? 2. What temptation resisted? 3. How am I better?" },
-        { title: "Pardon & Strategy for Tomorrow", durationSec: 180, guidance: "Grant yourself philosophical pardon and plan tomorrow's posture." }
-      ]
     }
   ];
 
   const CANONICAL_HOURS = [
-    { id: "matins", name: "Matins / Vigils (Fajr / Minjung Cry)", latinName: "Ad Matutinum", hourTime: "05:00", typicalHour: 5, disciplineId: "minjung-han-lament", desc: "Pre-dawn watch, Minjung lament & Fajr contemplation" },
-    { id: "lauds", name: "Lauds (Morning Liturgy & Shema)", latinName: "Ad Laudes", hourTime: "07:00", typicalHour: 7, disciplineId: "divine-office", desc: "Welcoming morning light with Psalms & Shema" },
-    { id: "terce", name: "Terce (See-Judge-Act Praxis)", latinName: "Ad Tertiam", hourTime: "09:00", typicalHour: 9, disciplineId: "liberation-see-judge-act", desc: "Prophetic action, CEB discernment & social audit" },
-    { id: "sext", name: "Sext (Midday Solidarity / Dhuhr)", latinName: "Ad Sextam", hourTime: "12:00", typicalHour: 12, disciplineId: "sobrino-crucified-accompaniment", desc: "Midday solidarity with the Crucified Peoples" },
+    { id: "matins", name: "Matins / Vigils (Pythagorean & Fajr)", latinName: "Ad Matutinum", hourTime: "05:00", typicalHour: 5, disciplineId: "proscoche-impression-testing", desc: "Pre-dawn watch, Prosochê sentry vigilance & Fajr" },
+    { id: "lauds", name: "Lauds (Morning Hupomnēmata & Shema)", latinName: "Ad Laudes", hourTime: "07:00", typicalHour: 7, disciplineId: "hupomnemata-journaling", desc: "Morning self-dialogue & Psalms of praise" },
+    { id: "terce", name: "Terce (See-Judge-Act / Musonius Diet)", latinName: "Ad Tertiam", hourTime: "09:00", typicalHour: 9, disciplineId: "musonius-dietary-asceticism", desc: "Somatic mastery, simple diet & prophetic action" },
+    { id: "sext", name: "Sext (Midday View from Above / Theōria)", latinName: "Ad Sextam", hourTime: "12:00", typicalHour: 12, disciplineId: "view-from-above-theoria", desc: "Midday cosmic elevation & solidarity" },
     { id: "none", name: "None (Asian Triple Dialogue / Asr)", latinName: "Ad Nonam", hourTime: "15:00", typicalHour: 15, disciplineId: "pieris-triple-dialogue", desc: "Harmony with religions, cultures & poverty" },
-    { id: "vespers", name: "Vespers (Cry of the Earth / Maghrib)", latinName: "Ad Vesperas", hourTime: "18:00", typicalHour: 18, disciplineId: "boff-cry-of-earth", desc: "Socio-ecological praise & creation defense" },
-    { id: "compline", name: "Compline (Night Prayer & Audit)", latinName: "Ad Completorium", hourTime: "21:30", typicalHour: 21, disciplineId: "stoic-evening-audit", desc: "Daily Examen, Isha prayer & Stoic evening audit" }
+    { id: "vespers", name: "Vespers (Epicurean Garden / Maghrib)", latinName: "Ad Vesperas", hourTime: "18:00", typicalHour: 18, disciplineId: "epicurean-tetrapharmakos", desc: "Tetrapharmakos tranquility & evening gratitude" },
+    { id: "compline", name: "Compline (Pythagorean & Stoic Audit)", latinName: "Ad Completorium", hourTime: "21:30", typicalHour: 21, disciplineId: "pythagorean-backward-audit", desc: "Threefold reverse memory audit before sleep" }
   ];
 
   // =========================================================================
@@ -1346,7 +1385,7 @@
 
     isBreathDriven() {
       if (!this.activeDiscipline) return false;
-      return ["breath-prayer", "liberation-see-judge-act", "pieris-triple-dialogue", "dhikr-remembrance"].includes(this.activeDiscipline.id);
+      return ["breath-prayer", "view-from-above-theoria", "epicurean-tetrapharmakos", "liberation-see-judge-act", "pieris-triple-dialogue", "dhikr-remembrance"].includes(this.activeDiscipline.id);
     }
 
     startBreathCycle() {
@@ -1355,10 +1394,10 @@
 
       let phaseIndex = 0;
       const phases = [
-        { name: "inhale", duration: this.breathCadence.inhale, label: "Inhale (Receiving Solidarity)" },
-        { name: "hold-in", duration: this.breathCadence.holdIn, label: "Hold (Deepening Kavanah)" },
-        { name: "exhale", duration: this.breathCadence.exhale, label: "Exhale (Transforming Injustice)" },
-        { name: "hold-out", duration: this.breathCadence.holdOut, label: "Rest in Revolutionary Peace" }
+        { name: "inhale", duration: this.breathCadence.inhale, label: "Inhale (Receiving Reason & Solidarity)" },
+        { name: "hold-in", duration: this.breathCadence.holdIn, label: "Hold (Deepening Self-Mastery)" },
+        { name: "exhale", duration: this.breathCadence.exhale, label: "Exhale (Releasing False Attachments)" },
+        { name: "hold-out", duration: this.breathCadence.holdOut, label: "Rest in Imperturbable Peace" }
       ];
 
       const runPhase = () => {
@@ -1927,10 +1966,6 @@
                 <i data-lucide="play"></i>
                 Practice Triple Dialogue
               </button>
-              <button class="btn-secondary" data-action="launch-praxis" data-id="minjung-han-lament" style="justify-content: center;">
-                <i data-lucide="play"></i>
-                Minjung Han-Release
-              </button>
             </div>
           </div>
 
@@ -1982,24 +2017,24 @@
         <div class="philosophy-hero-card">
           <h2 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem;">
             <i data-lucide="scale" style="color: var(--accent-gold);"></i>
-            The Primacy of Practice: Orthopraxis across World Traditions
+            The Primacy of Practice: Orthopraxis, Askesis & Technologies of the Self
           </h2>
           
           <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
-            While Western discourse has frequently privileged <em>orthodoxy</em> (right cognitive belief), world faith and wisdom traditions operate as systems of <strong>orthopraxis</strong> (right practice). In these frameworks, the performance of codified actions, liturgy, ritual propriety, and moral disciplines directly forms the human subject.
+            While Western modernity has frequently privileged <em>orthodoxy</em> (right cognitive belief), ancient wisdom and revolutionary traditions operate as systems of <strong>orthopraxis</strong> (right practice) and <strong>askesis</strong> (spiritual exercises). In these frameworks, the deliberate performance of bodily disciplines, self-audits, and prophetic solidarity directly forms human subjectivity.
           </p>
 
           <div class="philosophy-quote-highlight">
-            "Jewish faith is not a set of cognitive assertions or dogmas, but rather a 'groundless conative commitment' manifested purely through halakhic observance."
+            "Philosophy in antiquity was an art of living, a concrete attitude and determinate lifestyle. Spiritual exercises (askēsis) transformed the vision of the world and metamorphosed one's inner being."
             <div style="font-size: 0.88rem; font-family: var(--font-sans); font-style: normal; color: var(--accent-gold); margin-top: 0.5rem;">
-              — Yeshayahu Leibowitz
+              — Pierre Hadot, <em>Philosophy as a Way of Life</em>
             </div>
           </div>
 
           <div class="philosophy-quote-highlight" style="border-left-color: var(--accent-purple);">
-            "Confucianism views 'the secular as sacred'... Li (ritual propriety) operates as a system of behavioral norms that cultivates moral dispositions through highly codified physical actions."
+            "Care of the self (epimeleia heautou) is not a narcissistic retreat, but a practice of freedom: forging through bodily and mental exercises an autonomous subjectivity capable of resisting pervasive power, imperial decadence, and sovereign coercion."
             <div style="font-size: 0.88rem; font-family: var(--font-sans); font-style: normal; color: var(--accent-purple); margin-top: 0.5rem;">
-              — Herbert Fingarette, <em>Confucius: The Secular as Sacred</em>
+              — Michel Foucault, <em>The Hermeneutics of the Subject / Technologies of the Self</em>
             </div>
           </div>
         </div>
@@ -2075,30 +2110,30 @@
               Select any spiritual discipline or orthopraxis habit from the catalog, Liberation tab, Horarium, or traditions matrix to begin a guided session with sacred bells and timers.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
+              <button class="btn-primary" id="btn-studio-theoria">
+                <i data-lucide="globe"></i>
+                View from Above (15 Min)
+              </button>
+              <button class="btn-secondary" id="btn-studio-hupomnemata">
+                <i data-lucide="book-open"></i>
+                Hupomnēmata Journal (20 Min)
+              </button>
+              <button class="btn-secondary" id="btn-studio-tetrapharmakos">
+                <i data-lucide="trees"></i>
+                Epicurean 4-Remedy (20 Min)
+              </button>
               <button class="btn-liberation" id="btn-studio-see-judge-act">
                 <i data-lucide="scale"></i>
                 See-Judge-Act (20 Min)
-              </button>
-              <button class="btn-primary" id="btn-studio-quick-breath">
-                <i data-lucide="wind"></i>
-                Breath Prayer (5 Min)
-              </button>
-              <button class="btn-secondary" id="btn-studio-pieris">
-                <i data-lucide="globe-2"></i>
-                Triple Dialogue (20 Min)
-              </button>
-              <button class="btn-secondary" id="btn-studio-stoic">
-                <i data-lucide="moon"></i>
-                Stoic Evening Audit (10 Min)
               </button>
             </div>
           </div>
         `;
 
+        document.getElementById("btn-studio-theoria")?.addEventListener("click", () => this.launchPractice("view-from-above-theoria"));
+        document.getElementById("btn-studio-hupomnemata")?.addEventListener("click", () => this.launchPractice("hupomnemata-journaling"));
+        document.getElementById("btn-studio-tetrapharmakos")?.addEventListener("click", () => this.launchPractice("epicurean-tetrapharmakos"));
         document.getElementById("btn-studio-see-judge-act")?.addEventListener("click", () => this.launchPractice("liberation-see-judge-act"));
-        document.getElementById("btn-studio-quick-breath")?.addEventListener("click", () => this.launchPractice("breath-prayer"));
-        document.getElementById("btn-studio-pieris")?.addEventListener("click", () => this.launchPractice("pieris-triple-dialogue"));
-        document.getElementById("btn-studio-stoic")?.addEventListener("click", () => this.launchPractice("stoic-evening-audit"));
 
         this.refreshLucideIcons();
         return;
