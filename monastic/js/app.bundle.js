@@ -1,6 +1,6 @@
 /**
  * ORTHOPRAXIS - STANDALONE BUNDLED JAVASCRIPT ENGINE
- * Multi-Tradition Orthopraxis, Liberation Theology & Greco-Roman Askesis Companion
+ * Multi-Tradition Orthopraxis, Greco-Roman Askesis & Liberation Theology Companion
  */
 
 (function () {
@@ -105,7 +105,7 @@
   const CATEGORIES = [
     { id: "all", label: "All Categories", icon: "sparkles", count: 0 },
     { id: "philosophical-audit", label: "Care of Self & Mental Vigilance", icon: "brain", count: 0 },
-    { id: "embodied-ascetic", label: "Embodied Asceticism & Bodily Training", icon: "activity", count: 0 },
+    { id: "embodied-ascetic", label: "Embodied Asceticism & Bodily Regimens", icon: "activity", count: 0 },
     { id: "ethical-social", label: "Social Justice & Liberation Praxis", icon: "users", count: 0 },
     { id: "foundational-practices", label: "Foundational Rites", icon: "landmark", count: 0 },
     { id: "foundational-disciplines", label: "Core Lifelong Disciplines", icon: "shield", count: 0 },
@@ -121,7 +121,7 @@
       name: "Musonius Rufus's Dietary Asceticism & Bodily Hardening",
       latinName: "Δίαιτα & Ἄσκησις Σώματος (Musonius Rufus)",
       category: "embodied-ascetic",
-      categoryLabel: "Embodied Asceticism & Bodily Training",
+      categoryLabel: "Embodied Asceticism & Bodily Regimens",
       durationMin: 30,
       durationLabel: "Daily Regimen",
       frequency: "Daily Dietary & Somatic Discipline",
@@ -151,7 +151,7 @@
       name: "Seneca's Voluntary Poverty & Hardship Rehearsal",
       latinName: "Inurere Paupertatem (Seneca: Letters to Lucilius 18)",
       category: "embodied-ascetic",
-      categoryLabel: "Embodied Asceticism & Bodily Training",
+      categoryLabel: "Embodied Asceticism & Bodily Regimens",
       durationMin: 1440,
       durationLabel: "3 – 4 Days Monthly",
       frequency: "Monthly 3-Day Immersion",
@@ -251,7 +251,7 @@
       frequency: "Daily Contemplative Meditation",
       icon: "trees",
       shortDesc: "The Epicurean Fourfold Remedy for anxiety combined with a simple diet of water and barley bread to achieve pure freedom from pain (Aponia) and anxiety (Ataraxia).",
-      longDesc: "Far from the vulgar caricature of hedonism, Epicurus founded 'The Garden' as an intentional counter-cultural community that practiced radical dietary austerity (water and barley bread, with a little pot of cheese on feast days). The core mental exercise was the daily repetition of the Tetrapharmakos (The Fourfold Remedy): 1. God is not to be feared; 2. Death is nothing to worry about; 3. What is good is easy to get; 4. What is terrible is easy to endure. This disarms all artificial, capitalist cravings.",
+      longDesc: "Far from the vulgar caricature of hedonism, Epicurus founded 'The Garden' as an intentional counter-cultural community that practiced radical dietary austerity (water and barley bread, with a little pot of cheese on feast days). The core mental exercise was the daily repetition of the Tetrapharmakos (The Fourfold Remedy): 1. God is not to be feared; 2. Death is nothing to worry about; 3. What is good is easy to get; 4. What is terrible is easy to endure. This disarms all artificial, consumerist cravings.",
       originHistory: "Epicurus (Letter to Menoeceus, Principal Doctrines), Philodemus of Gadara (1st Cent. BC).",
       url: "https://urbanmonastic.org/practices/",
       tags: ["epicurus", "tetrapharmakos", "ataraxia", "aponia", "garden", "simplicity"],
@@ -630,7 +630,7 @@
   ];
 
   const CANONICAL_HOURS = [
-    { id: "matins", name: "Matins / Vigils (Pythagorean & Fajr)", latinName: "Ad Matutinum", hourTime: "05:00", typicalHour: 5, disciplineId: "proscoche-impression-testing", desc: "Pre-dawn watch, Prosochê sentry vigilance & Fajr" },
+    { id: "matins", name: "Matins / Vigils (Prosochê & Fajr)", latinName: "Ad Matutinum", hourTime: "05:00", typicalHour: 5, disciplineId: "proscoche-impression-testing", desc: "Pre-dawn watch, Prosochê sentry vigilance & Fajr" },
     { id: "lauds", name: "Lauds (Morning Hupomnēmata & Shema)", latinName: "Ad Laudes", hourTime: "07:00", typicalHour: 7, disciplineId: "hupomnemata-journaling", desc: "Morning self-dialogue & Psalms of praise" },
     { id: "terce", name: "Terce (See-Judge-Act / Musonius Diet)", latinName: "Ad Tertiam", hourTime: "09:00", typicalHour: 9, disciplineId: "musonius-dietary-asceticism", desc: "Somatic mastery, simple diet & prophetic action" },
     { id: "sext", name: "Sext (Midday View from Above / Theōria)", latinName: "Ad Sextam", hourTime: "12:00", typicalHour: 12, disciplineId: "view-from-above-theoria", desc: "Midday cosmic elevation & solidarity" },
@@ -1571,7 +1571,9 @@
         view.classList.toggle("active", view.id === `tab-${tabId}`);
       });
 
-      if (tabId === "liberation") {
+      if (tabId === "grecoroman") {
+        this.renderGrecoRoman();
+      } else if (tabId === "liberation") {
         this.renderLiberation();
       } else if (tabId === "tracker") {
         this.renderTracker();
@@ -1835,6 +1837,197 @@
       this.refreshLucideIcons();
     }
 
+    renderGrecoRoman() {
+      const container = document.getElementById("grecoroman-view-content");
+      if (!container) return;
+
+      container.innerHTML = `
+        <div class="greco-hero-card">
+          <div class="theologian-badge-row">
+            <span class="theologian-pill" style="border-color: rgba(56, 189, 248, 0.4); color: #38BDF8;">Pierre Hadot</span>
+            <span class="theologian-pill" style="border-color: rgba(56, 189, 248, 0.4); color: #38BDF8;">Michel Foucault</span>
+            <span class="theologian-pill">Musonius Rufus</span>
+            <span class="theologian-pill">Seneca</span>
+            <span class="theologian-pill">Marcus Aurelius</span>
+            <span class="theologian-pill">Epictetus</span>
+            <span class="theologian-pill">Epicurus</span>
+            <span class="theologian-pill">Pythagoras</span>
+          </div>
+
+          <h2 class="greco-title">
+            <i data-lucide="compass" style="color: #38BDF8;"></i>
+            Greco-Roman Askesis & The Care of the Self (Epimeleia Heautou)
+          </h2>
+
+          <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;">
+            In classical Greco-Roman antiquity, philosophy was not an abstract academic theory or armchair discourse, but a lived <strong>askēsis</strong> (spiritual and bodily training). As illuminated by <strong>Pierre Hadot</strong> (<em>Philosophy as a Way of Life</em>) and <strong>Michel Foucault</strong> (<em>The Care of the Self / Technologies of the Self</em>), ancient philosophers undertook rigorous dietary regimens, voluntary hardship, daily journaling notebooks (<em>hupomnēmata</em>), and cosmic meditations to deliberately shape their subjectivity and resist pervasive imperial decadence, consumerist distraction, and societal coercion.
+          </p>
+
+          <div class="greco-banner-quote">
+            "Philosophy in antiquity was an art of living... Spiritual exercises (askēsis) were meant to transform the soul, forging an autonomous subjectivity capable of absolute self-mastery."
+            <div style="font-size: 0.88rem; font-family: var(--font-sans); font-style: normal; color: #38BDF8; margin-top: 0.5rem;">
+              — Pierre Hadot & Michel Foucault
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Column Detailed Matrix of Hellenistic Practices -->
+        <div class="greco-grid">
+
+          <!-- Card 1: Musonius Rufus & Dietary Regimens -->
+          <div class="greco-section-card">
+            <div class="greco-card-header">
+              <div class="greco-icon-box">
+                <i data-lucide="utensils-crossed"></i>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">Dietary Asceticism & Body</h3>
+                <span style="font-family: var(--font-sacred); font-size: 1rem; color: #38BDF8; font-style: italic;">Musonius Rufus ('The Roman Socrates')</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+              Musonius taught that moral discipline starts in the stomach. He prescribed uncooked plant foods, olives, cold water bathing, barefoot walking, and agricultural labor to master bodily urges and fortify physical endurance.
+            </p>
+
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+              <button class="btn-greco" data-action="launch-greco-praxis" data-id="musonius-dietary-asceticism" style="justify-content: center;">
+                <i data-lucide="play"></i>
+                Launch Dietary Regimen
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Seneca's Voluntary Poverty Rehearsal -->
+          <div class="greco-section-card">
+            <div class="greco-card-header">
+              <div class="greco-icon-box">
+                <i data-lucide="shield-alert"></i>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">Voluntary Poverty Rehearsal</h3>
+                <span style="font-family: var(--font-sacred); font-size: 1rem; color: #38BDF8; font-style: italic;">Inurere Paupertatem (Seneca)</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+              Setting aside 3 to 4 days every month to dress in rough cloth, sleep on a hard pallet, and eat cheap stale crusts, confronting financial fears head-on: <em>"Is this the condition that I feared?"</em>
+            </p>
+
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+              <button class="btn-greco" data-action="launch-greco-praxis" data-id="seneca-voluntary-poverty" style="justify-content: center;">
+                <i data-lucide="play"></i>
+                Practice Voluntary Poverty
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Hupomnemata & Journaling (Foucault & Marcus) -->
+          <div class="greco-section-card">
+            <div class="greco-card-header">
+              <div class="greco-icon-box">
+                <i data-lucide="book-open"></i>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">Self-Sculpting Notebooks</h3>
+                <span style="font-family: var(--font-sacred); font-size: 1rem; color: #38BDF8; font-style: italic;">Ὑπομνήματα (Marcus Aurelius & Foucault)</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+              Daily handwritten philosophical notebooks (<em>Ta Eis Heauton</em>) digesting precepts into the very bloodstream (<em>in succum et sanguinem</em>), reframing grievances, and building the impenetrable Inner Citadel.
+            </p>
+
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+              <button class="btn-greco" data-action="launch-greco-praxis" data-id="hupomnemata-journaling" style="justify-content: center;">
+                <i data-lucide="play"></i>
+                Hupomnēmata Journaling
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: View from Above (Hadot & Marcus) -->
+          <div class="greco-section-card">
+            <div class="greco-card-header">
+              <div class="greco-icon-box">
+                <i data-lucide="globe"></i>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">The View from Above</h3>
+                <span style="font-family: var(--font-sacred); font-size: 1rem; color: #38BDF8; font-style: italic;">Ἡ Ἄνωθεν Θέα (Cosmic Theōria)</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+              Soaring in consciousness to the stars to observe human wars, cities, courts, and wealth as mere dust motes in eternal time, dissolving petty outrage and cultivating Cosmopolitan brotherhood.
+            </p>
+
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+              <button class="btn-greco" data-action="launch-greco-praxis" data-id="view-from-above-theoria" style="justify-content: center;">
+                <i data-lucide="play"></i>
+                Ascend to View from Above
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Epicurean Tetrapharmakos & Garden -->
+          <div class="greco-section-card">
+            <div class="greco-card-header">
+              <div class="greco-icon-box">
+                <i data-lucide="trees"></i>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">Epicurean Tetrapharmakos</h3>
+                <span style="font-family: var(--font-sacred); font-size: 1rem; color: #38BDF8; font-style: italic;">The Fourfold Remedy & Simple Diet</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+              The Garden community's simple water-and-barley diet paired with meditation on the 4-part cure: <em>Don't fear God, Don't fear death, What is good is easy to get, What is terrible is easy to endure.</em>
+            </p>
+
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+              <button class="btn-greco" data-action="launch-greco-praxis" data-id="epicurean-tetrapharmakos" style="justify-content: center;">
+                <i data-lucide="play"></i>
+                Epicurean 4-Remedy
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6: Pythagorean Backward Audit -->
+          <div class="greco-section-card">
+            <div class="greco-card-header">
+              <div class="greco-icon-box">
+                <i data-lucide="rotate-ccw"></i>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">Pythagorean Backward Audit</h3>
+                <span style="font-family: var(--font-sacred); font-size: 1rem; color: #38BDF8; font-style: italic;">Μνήμη & Ἐχεμυθία (Golden Verses)</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+              The strict bedtime discipline of scanning the entire day backwards in reverse chronological order: <em>"Where did I slip? What did I achieve? What duty was left undone?"</em> alongside 5-year vows of silence.
+            </p>
+
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+              <button class="btn-greco" data-action="launch-greco-praxis" data-id="pythagorean-backward-audit" style="justify-content: center;">
+                <i data-lucide="play"></i>
+                Pythagorean Audit
+              </button>
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      container.querySelectorAll("[data-action='launch-greco-praxis']").forEach(btn => {
+        btn.addEventListener("click", () => this.launchPractice(btn.dataset.id));
+      });
+
+      this.refreshLucideIcons();
+    }
+
     renderLiberation() {
       const container = document.getElementById("liberation-view-content");
       if (!container) return;
@@ -2070,7 +2263,9 @@
       container.querySelectorAll("[data-action='filter-tradition-quick']").forEach(btn => {
         btn.addEventListener("click", () => {
           const trad = btn.dataset.tradition;
-          if (trad === "liberation") {
+          if (trad === "greco-roman") {
+            this.switchTab("grecoroman");
+          } else if (trad === "liberation") {
             this.switchTab("liberation");
           } else {
             this.activeTradition = trad;
@@ -2107,24 +2302,24 @@
             </div>
             <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-primary);">Contemplative Studio Idle</h2>
             <p style="max-width: 540px; color: var(--text-secondary); line-height: 1.6;">
-              Select any spiritual discipline or orthopraxis habit from the catalog, Liberation tab, Horarium, or traditions matrix to begin a guided session with sacred bells and timers.
+              Select any spiritual discipline or orthopraxis habit from the catalog, Greco-Roman tab, Liberation tab, Horarium, or traditions matrix to begin a guided session with sacred bells and timers.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
-              <button class="btn-primary" id="btn-studio-theoria">
+              <button class="btn-greco" id="btn-studio-theoria">
                 <i data-lucide="globe"></i>
                 View from Above (15 Min)
               </button>
-              <button class="btn-secondary" id="btn-studio-hupomnemata">
+              <button class="btn-primary" id="btn-studio-hupomnemata">
                 <i data-lucide="book-open"></i>
                 Hupomnēmata Journal (20 Min)
-              </button>
-              <button class="btn-secondary" id="btn-studio-tetrapharmakos">
-                <i data-lucide="trees"></i>
-                Epicurean 4-Remedy (20 Min)
               </button>
               <button class="btn-liberation" id="btn-studio-see-judge-act">
                 <i data-lucide="scale"></i>
                 See-Judge-Act (20 Min)
+              </button>
+              <button class="btn-secondary" id="btn-studio-tetrapharmakos">
+                <i data-lucide="trees"></i>
+                Epicurean 4-Remedy (20 Min)
               </button>
             </div>
           </div>
@@ -2132,8 +2327,8 @@
 
         document.getElementById("btn-studio-theoria")?.addEventListener("click", () => this.launchPractice("view-from-above-theoria"));
         document.getElementById("btn-studio-hupomnemata")?.addEventListener("click", () => this.launchPractice("hupomnemata-journaling"));
-        document.getElementById("btn-studio-tetrapharmakos")?.addEventListener("click", () => this.launchPractice("epicurean-tetrapharmakos"));
         document.getElementById("btn-studio-see-judge-act")?.addEventListener("click", () => this.launchPractice("liberation-see-judge-act"));
+        document.getElementById("btn-studio-tetrapharmakos")?.addEventListener("click", () => this.launchPractice("epicurean-tetrapharmakos"));
 
         this.refreshLucideIcons();
         return;
@@ -2591,7 +2786,7 @@
     handleCustomDisciplineSubmit() {
       const name = document.getElementById("custom-name").value.trim();
       const latinName = document.getElementById("custom-latin").value.trim();
-      const tradition = document.getElementById("custom-tradition")?.value || "christian";
+      const tradition = document.getElementById("custom-tradition")?.value || "greco-roman";
       const category = document.getElementById("custom-category").value;
       const durationMin = parseInt(document.getElementById("custom-duration").value, 10) || 10;
       const shortDesc = document.getElementById("custom-desc").value.trim();
@@ -2703,6 +2898,7 @@
 
     renderAll() {
       this.renderCatalog();
+      this.renderGrecoRoman();
       this.renderLiberation();
       this.renderPhilosophy();
       this.renderStudio();
