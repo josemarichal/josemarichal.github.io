@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orthopraxis — Spiritual & World Faith Habit Disciplines</title>
+  <meta name="description" content="A comprehensive catalog and companion of orthopraxis disciplines across Liberation Theology, Christian Monasticism, Jewish Halakha, Islamic Fiqh, Confucian Li, Hindu Sanātana Dharma, Jain Kriya, Buddhist Sīla, and Stoic Askesis.">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="theme-midnight">
+  <div class="app-wrapper">
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+      <div class="header-container">
+        
+        <!-- Brand / Identity -->
+        <div class="brand-section">
+          <div class="brand-icon-wrap">
+            <i data-lucide="scale"></i>
+          </div>
+          <div class="brand-titles">
+            <h1 class="brand-title">
+              ORTHOPRAXIS
+              <span class="badge-gold">World Traditions</span>
+            </h1>
+            <span class="brand-subtitle">Praxis de Liberación • Halakha • Fiqh • Li • Kriya • Sīla • Askesis</span>
+          </div>
+        </div>
+
+        <!-- Main Navigation Tabs -->
+        <nav class="main-nav" aria-label="Main Navigation">
+          <button class="nav-btn active" data-tab="catalog" id="nav-catalog">
+            <i data-lucide="book-open"></i>
+            <span>Disciplines</span>
+          </button>
+          <button class="nav-btn" data-tab="liberation" id="nav-liberation">
+            <i data-lucide="flame"></i>
+            <span>Liberation Praxis</span>
+          </button>
+          <button class="nav-btn" data-tab="philosophy" id="nav-philosophy">
+            <i data-lucide="scale"></i>
+            <span>Comparative Matrix</span>
+          </button>
+          <button class="nav-btn" data-tab="practice" id="nav-practice">
+            <i data-lucide="play-circle"></i>
+            <span>Practice Studio</span>
+          </button>
+          <button class="nav-btn" data-tab="horarium" id="nav-horarium">
+            <i data-lucide="clock"></i>
+            <span>Rule of Life</span>
+          </button>
+          <button class="nav-btn" data-tab="tracker" id="nav-tracker">
+            <i data-lucide="activity"></i>
+            <span>Streaks & Stats</span>
+          </button>
+          <button class="nav-btn" data-tab="journal" id="nav-journal">
+            <i data-lucide="pen-tool"></i>
+            <span>Journal</span>
+          </button>
+        </nav>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <div class="monastic-hour-pill" id="header-hour-pill" title="Current Daily Hour">
+            <div class="hour-dot"></div>
+            <span>Lauds (07:00)</span>
+          </div>
+
+          <button class="action-icon-btn" id="sound-settings-btn" title="Audio & Ambient Settings">
+            <i data-lucide="volume-2"></i>
+          </button>
+
+          <button class="action-icon-btn" id="theme-toggle-btn" title="Change Theme Palette">
+            <i data-lucide="palette"></i>
+          </button>
+
+          <button class="action-icon-btn" id="btn-data-manage" title="Data Backup & Export">
+            <i data-lucide="download"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- HERO / BANNER -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-quote-card">
+          <i data-lucide="quote" class="quote-icon"></i>
+          <div>
+            <div class="quote-text">
+              "Theology is a critical reflection on historical praxis. Authentic faith is verified only through transformative action with the crucified peoples of history and dialogue with poverty and culture."
+            </div>
+            <div class="quote-subtext">
+              — Gustavo Gutiérrez • Jon Sobrino • Leonardo Boff • Aloysius Pieris (Triple Dialogue) • Minjung Theology
+            </div>
+          </div>
+        </div>
+
+        <!-- Traditions Filter Chips -->
+        <div class="traditions-filter-bar">
+          <div class="filter-label-sub">Traditions & Systems of Practice:</div>
+          <div class="traditions-chips" id="traditions-chips-wrap">
+            <button class="tradition-chip-btn active" data-tradition="all">
+              <i data-lucide="globe"></i>
+              <span>All Traditions</span>
+              <span class="count-badge" id="count-trad-all">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="liberation">
+              <i data-lucide="flame"></i>
+              <span>Liberation Theology</span>
+              <span class="count-badge" id="count-trad-liberation">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="christian">
+              <i data-lucide="landmark"></i>
+              <span>Christian Monasticism</span>
+              <span class="count-badge" id="count-trad-christian">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="judaism">
+              <i data-lucide="scroll"></i>
+              <span>Jewish Halakha</span>
+              <span class="count-badge" id="count-trad-judaism">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="islam">
+              <i data-lucide="moon"></i>
+              <span>Islamic Fiqh & Sunnah</span>
+              <span class="count-badge" id="count-trad-islam">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="confucianism">
+              <i data-lucide="book-marked"></i>
+              <span>Confucian Li</span>
+              <span class="count-badge" id="count-trad-confucianism">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="hinduism">
+              <i data-lucide="sun"></i>
+              <span>Hindu Sanātana Dharma</span>
+              <span class="count-badge" id="count-trad-hinduism">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="jainism">
+              <i data-lucide="shield-alert"></i>
+              <span>Jain Kriya</span>
+              <span class="count-badge" id="count-trad-jainism">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="buddhism">
+              <i data-lucide="circle-dot"></i>
+              <span>Buddhist Sīla & Zen</span>
+              <span class="count-badge" id="count-trad-buddhism">0</span>
+            </button>
+            <button class="tradition-chip-btn" data-tradition="stoicism">
+              <i data-lucide="compass"></i>
+              <span>Stoic Askesis</span>
+              <span class="count-badge" id="count-trad-stoicism">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search and Categories -->
+        <div class="search-filter-bar">
+          <div class="search-input-wrap">
+            <i data-lucide="search"></i>
+            <input type="text" id="catalog-search" class="search-input" placeholder="Search disciplines, Hebrew/Latin/Arabic/Korean terms, habit benefits..." aria-label="Search disciplines">
+          </div>
+
+          <div class="category-chips" id="category-chips-wrap">
+            <button class="chip-btn active" data-category="all">
+              <i data-lucide="sparkles"></i>
+              <span>All Categories</span>
+              <span class="count-badge" id="count-all">0</span>
+            </button>
+            <button class="chip-btn" data-category="ethical-social">
+              <i data-lucide="users"></i>
+              <span>Social Justice & Liberation</span>
+              <span class="count-badge" id="count-ethical-social">0</span>
+            </button>
+            <button class="chip-btn" data-category="foundational-practices">
+              <i data-lucide="landmark"></i>
+              <span>Foundational Rites</span>
+              <span class="count-badge" id="count-foundational-practices">0</span>
+            </button>
+            <button class="chip-btn" data-category="foundational-disciplines">
+              <i data-lucide="shield"></i>
+              <span>Core Disciplines</span>
+              <span class="count-badge" id="count-foundational-disciplines">0</span>
+            </button>
+            <button class="chip-btn" data-category="spiritual-practices">
+              <i data-lucide="flame"></i>
+              <span>Contemplative & Prayer</span>
+              <span class="count-badge" id="count-spiritual-practices">0</span>
+            </button>
+            <button class="chip-btn" data-category="embodied-ascetic">
+              <i data-lucide="activity"></i>
+              <span>Embodied Asceticism</span>
+              <span class="count-badge" id="count-embodied-ascetic">0</span>
+            </button>
+            <button class="chip-btn" data-category="philosophical-audit">
+              <i data-lucide="brain"></i>
+              <span>Daily Audit & Vigilance</span>
+              <span class="count-badge" id="count-philosophical-audit">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN BODY CONTENT WITH TABS -->
+    <main class="main-content">
+
+      <!-- TAB 1: CATALOG GRID -->
+      <section class="tab-view active" id="tab-catalog">
+        <div class="catalog-header-meta">
+          <div>
+            <h2 class="section-title">
+              <i data-lucide="scroll"></i>
+              Orthopraxis Disciplines Catalog
+            </h2>
+            <span class="section-title-sub">Explore practices across sacred traditions or launch interactive guided sessions.</span>
+          </div>
+          <button class="btn-secondary" id="btn-add-custom">
+            <i data-lucide="plus"></i>
+            Add Custom Habit
+          </button>
+        </div>
+
+        <div class="disciplines-grid" id="disciplines-grid">
+          <!-- Populated dynamically by js/app.bundle.js -->
+        </div>
+      </section>
+
+      <!-- TAB 2: LIBERATION THEOLOGY & PRAXIS -->
+      <section class="tab-view" id="tab-liberation">
+        <div class="liberation-container" id="liberation-view-content">
+          <!-- Populated dynamically by js/app.bundle.js -->
+        </div>
+      </section>
+
+      <!-- TAB 3: COMPARATIVE MATRIX & PHILOSOPHY -->
+      <section class="tab-view" id="tab-philosophy">
+        <div class="philosophy-container" id="philosophy-view-content">
+          <!-- Populated dynamically by js/app.bundle.js -->
+        </div>
+      </section>
+
+      <!-- TAB 4: PRACTICE STUDIO (GUIDED MEDITATION & TIMERS) -->
+      <section class="tab-view" id="tab-practice">
+        <div class="studio-container">
+          <div id="practice-studio-content">
+            <!-- Rendered by js/app.bundle.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: HORARIUM / RULE OF LIFE -->
+      <section class="tab-view" id="tab-horarium">
+        <div class="horarium-container">
+          <div class="horarium-banner">
+            <div>
+              <h2 class="section-title">
+                <i data-lucide="clock-8"></i>
+                Daily Horarium & Rule of Life
+              </h2>
+              <span class="section-title-sub">Sanctify the hours of your day with dawn, midday, evening, and night orthopraxis.</span>
+            </div>
+            <div style="font-family: var(--font-sacred); font-size: 1.1rem; color: var(--text-sacred); font-style: italic;">
+              "Septies in die laudem dixi tibi"
+            </div>
+          </div>
+
+          <div class="horarium-timeline" id="horarium-list-wrap">
+            <!-- Rendered by js/app.bundle.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: TRACKER & STREAKS -->
+      <section class="tab-view" id="tab-tracker">
+        <div class="tracker-container">
+          <div>
+            <h2 class="section-title">
+              <i data-lucide="flame"></i>
+              Habit Streaks & Orthopraxis Metrics
+            </h2>
+            <span class="section-title-sub">Consistency over intensity: nurturing lifelong contemplative and ethical habits.</span>
+          </div>
+
+          <!-- Top Metrics Cards -->
+          <div class="metrics-row">
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <i data-lucide="flame"></i>
+              </div>
+              <div>
+                <div class="metric-val" id="metric-current-streak">0</div>
+                <div class="metric-lbl">Day Streak</div>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <i data-lucide="trophy"></i>
+              </div>
+              <div>
+                <div class="metric-val" id="metric-longest-streak">0</div>
+                <div class="metric-lbl">Best Streak</div>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <i data-lucide="check-circle-2"></i>
+              </div>
+              <div>
+                <div class="metric-val" id="metric-completed-today">0</div>
+                <div class="metric-lbl">Practiced Today</div>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-wrap">
+                <i data-lucide="clock"></i>
+              </div>
+              <div>
+                <div class="metric-val" id="metric-total-minutes">0</div>
+                <div class="metric-lbl">Total Minutes Logged</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 14-Day Consistency View -->
+          <div class="consistency-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">
+              14-Day Practice Consistency
+            </h3>
+            <div class="days-grid-wrap" id="days-consistency-grid">
+              <!-- Rendered by js/app.bundle.js -->
+            </div>
+          </div>
+
+          <!-- Top Disciplines Breakdown -->
+          <div class="top-disciplines-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-primary);">
+              Most Practiced Disciplines
+            </h3>
+            <div class="top-list" id="top-disciplines-list">
+              <!-- Rendered by js/app.bundle.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: SPIRITUAL JOURNAL -->
+      <section class="tab-view" id="tab-journal">
+        <div class="journal-container">
+          <div class="journal-top-bar">
+            <div>
+              <h2 class="section-title">
+                <i data-lucide="pen-tool"></i>
+                Spiritual Reflection Journal
+              </h2>
+              <span class="section-title-sub">Record consolations, self-examinations, and prayers from your daily practice.</span>
+            </div>
+            <button class="btn-primary" id="btn-new-journal">
+              <i data-lucide="plus-circle"></i>
+              New Reflection
+            </button>
+          </div>
+
+          <div class="journal-list" id="journal-entries-list">
+            <!-- Rendered by js/app.bundle.js -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Modal 1: Discipline Detail Modal -->
+    <div class="modal-overlay" id="modal-discipline-detail">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 id="detail-modal-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary);">Discipline Title</h2>
+            <div id="detail-modal-latin" style="font-family: var(--font-sacred); font-size: 1.1rem; color: var(--text-sacred); font-style: italic;">Original Term</div>
+          </div>
+          <button class="modal-close-btn" title="Close"><i data-lucide="x"></i></button>
+        </div>
+
+        <div class="modal-body">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="meta-pill tradition" id="detail-modal-tradition">Tradition</span>
+            <span class="meta-pill" id="detail-modal-category">Category</span>
+            <span class="meta-pill duration" id="detail-modal-duration">15 Minutes</span>
+          </div>
+
+          <div class="detail-quote-box" id="detail-modal-quote">
+            "Primary sacred quote or maxim."
+          </div>
+
+          <div>
+            <h4 class="form-label" style="margin-bottom: 0.35rem;">Meaning & Theological/Philosophical Foundation</h4>
+            <p id="detail-modal-desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;"></p>
+          </div>
+
+          <div>
+            <h4 class="form-label" style="margin-bottom: 0.35rem;">Historical Codification & Sage Lineage</h4>
+            <p id="detail-modal-origin" style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;"></p>
+          </div>
+
+          <div>
+            <h4 class="form-label" style="margin-bottom: 0.5rem;">Habit & Soul Transformation</h4>
+            <ul id="detail-modal-benefits" style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; color: var(--text-secondary);"></ul>
+          </div>
+
+          <div>
+            <h4 class="form-label" style="margin-bottom: 0.5rem;">Step-by-Step Practice Guide</h4>
+            <div class="detail-steps-list" id="detail-modal-steps"></div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+            <a href="#" target="_blank" rel="noopener noreferrer" id="detail-modal-ref-link" class="btn-secondary" style="font-size: 0.85rem;">
+              <i data-lucide="external-link"></i>
+              Reference Source
+            </a>
+            <button class="btn-primary" id="detail-modal-start-practice">
+              <i data-lucide="play"></i>
+              Start Guided Practice
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Custom Discipline Creator Modal -->
+    <div class="modal-overlay" id="modal-custom-discipline">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary);">Create Custom Discipline</h2>
+            <span style="font-size: 0.88rem; color: var(--text-secondary);">Add your own personal spiritual habit or orthopraxis rule</span>
+          </div>
+          <button class="modal-close-btn" title="Close"><i data-lucide="x"></i></button>
+        </div>
+
+        <form id="form-custom-discipline" class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="custom-name">Discipline Name *</label>
+            <input type="text" id="custom-name" class="form-input" placeholder="e.g., Strike Solidarity Vigil, Daily Walking Meditation" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-latin">Original / Traditional Subtitle (Optional)</label>
+            <input type="text" id="custom-latin" class="form-input" placeholder="e.g., Ver-Juzgar-Actuar, Hitbodedut, Prosochê">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="custom-tradition">Tradition Alignment</label>
+              <select id="custom-tradition" class="form-select">
+                <option value="liberation">Liberation Theology</option>
+                <option value="christian">Christian Monasticism</option>
+                <option value="judaism">Jewish Halakha</option>
+                <option value="islam">Islamic Fiqh & Sunnah</option>
+                <option value="confucianism">Confucian Li</option>
+                <option value="hinduism">Hindu Sanātana Dharma</option>
+                <option value="jainism">Jain Kriya</option>
+                <option value="buddhism">Buddhist Sīla & Zen</option>
+                <option value="stoicism">Stoic Askesis</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="custom-category">Category</label>
+              <select id="custom-category" class="form-select">
+                <option value="ethical-social">Social Justice & Liberation</option>
+                <option value="spiritual-practices">Contemplative & Prayer</option>
+                <option value="foundational-practices">Foundational Rites</option>
+                <option value="foundational-disciplines">Core Disciplines</option>
+                <option value="embodied-ascetic">Embodied Asceticism</option>
+                <option value="philosophical-audit">Daily Audit & Vigilance</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-duration">Typical Duration (Minutes)</label>
+            <input type="number" id="custom-duration" class="form-input" min="1" max="180" value="15">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-desc">Description & Meaning *</label>
+            <textarea id="custom-desc" class="form-textarea" placeholder="Describe the purpose, philosophical focus, and practice instructions..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custom-benefit">Key Habit Benefit</label>
+            <input type="text" id="custom-benefit" class="form-input" placeholder="e.g. Cultivates courageous solidarity with the oppressed">
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem;">
+            <button type="button" class="btn-secondary modal-close-btn">Cancel</button>
+            <button type="submit" class="btn-primary">Save Discipline</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 3: Journal Reflection Modal -->
+    <div class="modal-overlay" id="modal-journal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-primary);">Write Spiritual Reflection</h2>
+            <span style="font-size: 0.88rem; color: var(--text-secondary);">Capture your interior movements, consolations, and daily audit</span>
+          </div>
+          <button class="modal-close-btn" title="Close"><i data-lucide="x"></i></button>
+        </div>
+
+        <form id="form-journal-entry" class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="journal-title-input">Reflection Title</label>
+            <input type="text" id="journal-title-input" class="form-input" value="Spiritual Reflection" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="journal-discipline-select">Associated Discipline</label>
+              <select id="journal-discipline-select" class="form-select"></select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="journal-mood-select">Spiritual State / Mood</label>
+              <select id="journal-mood-select" class="form-select">
+                <option value="Peaceful">🕊️ Peaceful (Shalom / Salam / Shanti)</option>
+                <option value="Grateful">🙏 Grateful (Modeh / Alhamdulillah / Eucharist)</option>
+                <option value="Contemplative">🕯️ Contemplative (Kavanah / Dhyana)</option>
+                <option value="Joyful">✨ Joyful (Simcha / Ananda / Minjung Feast)</option>
+                <option value="Self-Auditing">⚖️ Self-Auditing (Examen / Muhasaba / San Xing)</option>
+                <option value="Struggling">🌧️ Dry / Struggling / In Han</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="journal-content-input">Your Reflection *</label>
+            <textarea id="journal-content-input" class="form-textarea" style="min-height: 160px;" placeholder="What was revealed during this practice? Where did you notice alignment or resistance? Write freely..." required></textarea>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button type="button" class="btn-secondary modal-close-btn">Cancel</button>
+            <button type="submit" class="btn-primary">Save Reflection</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 4: Post-Practice Celebration Modal -->
+    <div class="modal-overlay" id="modal-post-practice">
+      <div class="modal-content" style="text-align: center; max-width: 520px;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--badge-bg); border: 1px solid var(--border-color); color: var(--accent-gold); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem;">
+          <i data-lucide="check-circle-2"></i>
+        </div>
+        <h2 id="post-practice-title" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Session Complete
+        </h2>
+        <p id="post-practice-subtext" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem;"></p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <button class="btn-primary" id="btn-post-practice-journal" style="justify-content: center;">
+            <i data-lucide="pen-tool"></i>
+            Log Reflection in Journal
+          </button>
+          <button class="btn-secondary" id="btn-post-practice-skip" style="justify-content: center;">
+            Return in Peace
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5: Theme Palette Selector -->
+    <div class="modal-overlay" id="modal-theme-select">
+      <div class="modal-content" style="max-width: 480px;">
+        <div class="modal-header">
+          <h2 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary);">Sacred Aesthetic Themes</h2>
+          <button class="modal-close-btn" title="Close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Choose a contemplative visual environment:</p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <button class="btn-secondary" onclick="window.app.setTheme('theme-midnight'); window.app.closeAllModals();" style="justify-content: space-between; padding: 0.85rem 1.25rem;">
+              <span><strong>Monastery Midnight</strong> (Dark Obsidian & Gold)</span>
+              <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #D4AF37; border: 1px solid #FFF;"></span>
+            </button>
+            <button class="btn-secondary" onclick="window.app.setTheme('theme-parchment'); window.app.closeAllModals();" style="justify-content: space-between; padding: 0.85rem 1.25rem;">
+              <span><strong>Vatican Parchment</strong> (Warm Linen & Burgundy)</span>
+              <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #8B263E; border: 1px solid #2C221E;"></span>
+            </button>
+            <button class="btn-secondary" onclick="window.app.setTheme('theme-hermitage'); window.app.closeAllModals();" style="justify-content: space-between; padding: 0.85rem 1.25rem;">
+              <span><strong>Forest Hermitage</strong> (Pine Sage & Bronze)</span>
+              <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #34D399; border: 1px solid #FFF;"></span>
+            </button>
+            <button class="btn-secondary" onclick="window.app.setTheme('theme-celestial'); window.app.closeAllModals();" style="justify-content: space-between; padding: 0.85rem 1.25rem;">
+              <span><strong>Celestial Solitude</strong> (Twilight Sapphire & Violet)</span>
+              <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #A78BFA; border: 1px solid #FFF;"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6: Audio & Ambient Settings -->
+    <div class="modal-overlay" id="modal-sound-settings">
+      <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-header">
+          <h2 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary);">Acoustic & Sound Settings</h2>
+          <button class="modal-close-btn" title="Close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between;">
+            <label class="form-label" for="setting-sound-enabled" style="cursor: pointer;">Enable Chimes & Bells</label>
+            <input type="checkbox" id="setting-sound-enabled" checked style="width: 20px; height: 20px; accent-color: var(--accent-gold); cursor: pointer;">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="setting-bell-type">Primary Bell Instrument</label>
+            <select id="setting-bell-type" class="form-select">
+              <option value="tibetan-bowl">Tibetan / Monastic Singing Bowl (Warm Resonance)</option>
+              <option value="cathedral-bell">Cathedral Church Bell (Deep Harmonic Strike)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="setting-audio-volume">Bell Chime Volume</label>
+            <input type="range" id="setting-audio-volume" min="0" max="100" value="75" style="accent-color: var(--accent-gold); width: 100%;">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="setting-ambient-type">Continuous Ambient Soundscape</label>
+            <select id="setting-ambient-type" class="form-select">
+              <option value="none">None (Pure Silence)</option>
+              <option value="chapel-drone">Chapel Drone (Organ & Acoustic Resonance)</option>
+              <option value="monastery-rain">Monastery Rain (Gentle Rain against Stone)</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 0.5rem; display: flex; justify-content: space-between;">
+            <button type="button" class="btn-secondary" id="btn-test-bell">
+              <i data-lucide="bell"></i>
+              Test Chime
+            </button>
+            <button type="button" class="btn-primary modal-close-btn">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 7: Data Management (Export / Import) -->
+    <div class="modal-overlay" id="modal-data-manage">
+      <div class="modal-content" style="max-width: 520px;">
+        <div class="modal-header">
+          <h2 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-primary);">Data & Rule of Life Backup</h2>
+          <button class="modal-close-btn" title="Close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            All your habit completions, custom disciplines, reflections, and Rule of Life are saved directly in your browser. You can export or restore a backup anytime.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
+            <button class="btn-primary" id="btn-export-json" onclick="
+              const data = window.storage ? window.storage.exportAllData() : {};
+              const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `orthopraxis-backup-${new Date().toISOString().split('T')[0]}.json`;
+              a.click();
+            " style="justify-content: center;">
+              <i data-lucide="download"></i>
+              Export Backup (JSON)
+            </button>
+
+            <button class="btn-secondary" onclick="window.print();" style="justify-content: center;">
+              <i data-lucide="printer"></i>
+              Print Rule of Life & Daily Rhythm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Standalone Bundled Script (100% offline & local file:/// protocol compatible) -->
+  <script src="js/app.bundle.js"></script>
+</body>
+</html>
