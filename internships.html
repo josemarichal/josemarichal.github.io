@@ -4,113 +4,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internships | Jose Marichal</title>
+    <title>Political Science & Pre-Law Internship Master Directory | Jose Marichal</title>
     <link rel="stylesheet" href="style.css?v=3">
-    
     <style>
-        /* --- Gold & Violet Theme Overrides --- */
-        :root {
-            --primary-color: #46166b;
-            /* CLU Violet-ish */
-            --accent-color: #FFC72C;
-            /* CLU Gold-ish */
-            --secondary-color: #6a5acd;
-            /* Slate Blue/Violet */
-            --text-heading: #2d1a47;
-            --bg-color: #fcf9ff;
-            /* Very faint violet tint */
-        }
-
-        /* Specific Page Styles */
-        .internship-hero {
+        /* Directory Custom Styles */
+        .directory-header {
             text-align: center;
-            padding: 3rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), #2a0a45);
-            color: white;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 25px -5px rgba(70, 22, 107, 0.4);
+            margin: 2rem 0 3rem;
         }
 
-        .internship-hero h1 {
-            color: #ffffff;
-            /* Override heading color for dark bg */
+        .directory-header h1 {
+            font-size: 3.2rem;
             margin-bottom: 1rem;
+            color: var(--text-heading);
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.15;
         }
 
-        .internship-hero p {
+        .directory-header p {
             font-size: 1.2rem;
+            color: var(--text-main);
+            max-width: 820px;
+            margin: 0 auto 1.5rem;
             opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #e0d0f0;
+            line-height: 1.6;
         }
 
-        .category-section {
+        .stats-badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-pill {
+            background: rgba(255, 112, 67, 0.12);
+            border: 1px solid rgba(255, 112, 67, 0.3);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Search & Filter Controls */
+        .filter-controls {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-ambient);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            padding-left: 3rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            outline: none;
+            transition: all var(--transition-fast);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: var(--glow-orange);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-main);
+            opacity: 0.6;
+            font-size: 1.2rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+            opacity: 0.7;
+            margin-bottom: 0.6rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.55rem 1.15rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(255, 112, 67, 0.4);
+        }
+
+        /* Results Counter */
+        .results-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            opacity: 0.8;
+        }
+
+        /* Card Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
-        .category-title {
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--accent-color);
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
         }
 
-        .category-title h2 {
-            margin-bottom: 0;
-            color: var(--primary-color);
-            font-size: 1.8rem;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 112, 67, 0.4);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 112, 67, 0.15);
         }
 
-        .category-icon {
-            font-size: 2rem;
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
         }
 
-        .career-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .card:hover::before {
+            opacity: 1;
         }
 
-        .career-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-color);
-            box-shadow: 0 2px 4px rgba(70, 22, 107, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .card-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
         }
 
-        .career-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(70, 22, 107, 0.1);
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
         }
 
-        .career-role {
-            font-weight: 700;
-            color: var(--primary-color);
-            font-size: 1.05rem;
-            margin-bottom: 0.25rem;
-            display: block;
+        .badge-pathway {
+            background: rgba(255, 112, 67, 0.15);
+            color: #ff9e80;
+            border: 1px solid rgba(255, 112, 67, 0.3);
         }
 
-        .career-org {
-            color: #555;
+        .badge-county {
+            background: rgba(255, 255, 255, 0.08);
+            color: #e0d0f0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .badge-city {
+            background: rgba(106, 90, 205, 0.15);
+            color: #b3a0ff;
+            border: 1px solid rgba(106, 90, 205, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 0.4rem;
+            line-height: 1.25;
+        }
+
+        .card-subtitle {
             font-size: 0.95rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
             font-weight: 500;
         }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--accent-color);
-            /* Gold hover for this page */
+        .card-body {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
         }
 
-        nav ul li a::after {
-            background-color: var(--accent-color);
+        .contact-box {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            padding: 0.85rem 1rem;
+            font-size: 0.88rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-item {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            word-break: break-word;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item strong {
+            color: #fff;
+            min-width: 65px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .contact-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .portal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 112, 67, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 112, 67, 0.25);
+            padding: 0.45rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .portal-btn:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
+        .app-note {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Empty state */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--border-color);
+        }
+
+        .no-results h3 {
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Table view for cities */
+        .city-table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .city-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .city-table th,
+        .city-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .city-table th {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .city-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .city-table a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .city-table a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .directory-header h1 {
+                font-size: 2.3rem;
+            }
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-controls {
+                padding: 1.25rem;
+            }
         }
     </style>
 </head>
@@ -119,7 +420,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Jose Marichal</a>
+                <a href="index.html">Jose <span>Marichal</span></a>
             </div>
             <nav>
                 <ul>
@@ -127,8 +428,8 @@
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="media.html">Media</a></li>
-                    <li><a href="internships.html" class="active" style="color: var(--primary-color);">Internships</a>
-                    </li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="internships.html" class="active">Internships</a></li>
                     <li><a href="ai_tools.html">AI Tools</a></li>
                     <li><a href="just_for_fun.html">Just for Fun</a></li>
                 </ul>
@@ -138,610 +439,1306 @@
 
     <main>
         <div class="container">
-
-            <section class="internship-hero">
-                <h1>Internships</h1>
-                <p>Explore the diverse pathways our alumni have taken—from legislative halls to international NGOs.
-                    Discover where a degree in Political Science can lead you.</p>
+            <!-- Directory Header -->
+            <section class="directory-header">
+                <h1>Political Science & Pre-Law Internship Master Directory</h1>
+                <p>A comprehensive regional clearinghouse of internships, fellowships, legal assistant positions, and research opportunities across <strong>Ventura, Santa Barbara, and Los Angeles Counties</strong>.</p>
+                <div class="stats-badge-row">
+                    <span class="stat-pill">5 Core Career Pathways</span>
+                    <span class="stat-pill">Tri-Counties Jurisdictions (805 & LA)</span>
+                    <span class="stat-pill">Courts, Cities, NGOs & Private Firms</span>
+                    <span class="stat-pill">Verified Contacts & Portals</span>
+                </div>
             </section>
 
-            <!-- Government & Policy -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🏛️</span>
-                    <h2>Government, Public Policy & Legislative Work</h2>
+            <!-- Search & Filter Controls -->
+            <section class="filter-controls">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by keyword, city (e.g. Oxnard, Santa Barbara, Palmdale, Camarillo), title, or organization..." oninput="filterCards()">
                 </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Legislative Aide</span>
-                        <span class="career-org">California State Assembly</span>
+
+                <div class="filter-group">
+                    <span class="filter-label">Filter by Career Pathway</span>
+                    <div class="filter-pills" id="pathwayFilters">
+                        <button class="filter-btn active" data-filter="all" onclick="setPathwayFilter('all', this)">All Pathways</button>
+                        <button class="filter-btn" data-filter="law-gov" onclick="setPathwayFilter('law-gov', this)">🏛️ Law & Government</button>
+                        <button class="filter-btn" data-filter="global" onclick="setPathwayFilter('global', this)">🌐 International & Global Affairs</button>
+                        <button class="filter-btn" data-filter="policy" onclick="setPathwayFilter('policy', this)">📊 Policy & Research</button>
+                        <button class="filter-btn" data-filter="advocacy" onclick="setPathwayFilter('advocacy', this)">✊ Community Advocacy & Organizing</button>
+                        <button class="filter-btn" data-filter="prelaw" onclick="setPathwayFilter('prelaw', this)">⚖️ Pre-Law & Legal Professions</button>
+                        <button class="filter-btn" data-filter="private-law" onclick="setPathwayFilter('private-law', this)">🏢 Private Law Firms</button>
+                        <button class="filter-btn" data-filter="alumni" onclick="setPathwayFilter('alumni', this)">🎓 Alumni Career Paths</button>
                     </div>
-                    <div class="career-card">
-                        <span class="career-role">Policy Director</span>
-                        <span class="career-org">California State Senate</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Legislative Director & Counsel</span>
-                        <span class="career-org">U.S. House of Representatives</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Legislative Correspondent</span>
-                        <span class="career-org">Congressional Office</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Government Affairs Director</span>
-                        <span class="career-org">Andarko Petroleum Corporation</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Manager of Federal Affairs</span>
-                        <span class="career-org">American Psychiatric Association</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Media Officer for Legislative Affairs</span>
-                        <span class="career-org">County of Santa Clara</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Emergency Manager</span>
-                        <span class="career-org">United States Air Force</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Executive Officer</span>
-                        <span class="career-org">United States Capitol Police</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">City Administrator</span>
-                        <span class="career-org">Texas</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">City Manager</span>
-                        <span class="career-org">Various Municipalities</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Courtroom Clerk II</span>
-                        <span class="career-org">Superior Court (CA)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Political Field Canvasser</span>
-                        <span class="career-org">State Assemblywoman</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Lobbyist</span>
-                        <span class="career-org">Various Firms</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">District Representative & Military Liaison</span>
-                        <span class="career-org">U.S. House of Representatives</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Associate Consultant</span>
-                        <span class="career-org">California State Assembly Emergency Management Committee</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Manager, Government Affairs & External Relations</span>
-                        <span class="career-org">PennyMac / Rancho Simi Recreation & Parks District</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Officer for the State of Arkansas</span>
-                        <span class="career-org">Emotional Intelligence Academy</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Environmental Protection Specialist</span>
-                        <span class="career-org">US Environmental Protection Agency (EPA)</span>
+                </div>
+
+                <div class="filter-group" style="margin-top: 1rem;">
+                    <span class="filter-label">Filter by Region / County</span>
+                    <div class="filter-pills" id="countyFilters">
+                        <button class="filter-btn active" data-county="all" onclick="setCountyFilter('all', this)">All Regions</button>
+                        <button class="filter-btn" data-county="ventura" onclick="setCountyFilter('ventura', this)">Ventura County (805)</button>
+                        <button class="filter-btn" data-county="santa-barbara" onclick="setCountyFilter('santa-barbara', this)">Santa Barbara County</button>
+                        <button class="filter-btn" data-county="los-angeles" onclick="setCountyFilter('los-angeles', this)">Los Angeles County (North & Metro)</button>
                     </div>
                 </div>
             </section>
 
-            <!-- Diplomacy & Human Rights -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🌐</span>
-                    <h2>Diplomacy, International Organizations & Human Rights</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Strategic Partnerships & Outreach</span>
-                        <span class="career-org">UN FAO</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Case Worker</span>
-                        <span class="career-org">International Human Rights Clinic</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Education & Cultural Affairs Specialist</span>
-                        <span class="career-org">American Embassy</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Program Manager (Inbound)</span>
-                        <span class="career-org">Kennedy–Lugar YES Program</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">International Education Director</span>
-                        <span class="career-org">California Lutheran University</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Human Rights Attorney</span>
-                        <span class="career-org">Various NGOs</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Immigration Law Attorney</span>
-                        <span class="career-org">Private Practice / Non-Profit</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Assistant to the Chair</span>
-                        <span class="career-org">Dept. of Medicine (Intl Research)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Peace Corps Volunteer</span>
-                        <span class="career-org">Bulgaria (English Teacher)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Lead Attorney for Humanitarian Dept.</span>
-                        <span class="career-org">The Matian Firm, APC / Southwestern Law School</span>
-                    </div>
+            <!-- Results Meta Info -->
+            <div class="results-meta">
+                <span id="resultsCount">Showing all listings</span>
+                <span>Click any portal or contact button to apply</span>
+            </div>
+
+            <!-- Resource Cards Grid -->
+            <div class="resource-grid" id="cardGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Municipal Reference Table -->
+            <section style="margin: 4rem 0;">
+                <h2 style="font-size: 2rem; color: var(--text-heading); margin-bottom: 0.5rem;">Ventura County Municipal HR Directory</h2>
+                <p style="color: var(--text-main); margin-bottom: 1.5rem;">Under California municipal law, Ventura County contains <strong>10 incorporated cities</strong> (each with its own independent City Hall and Human Resources department), while the remaining <strong>18 unincorporated communities</strong> (e.g., Oak Park, El Rio, Piru, Somis) are administered directly by the County of Ventura Human Resources Department.</p>
+                <div class="city-table-container">
+                    <table class="city-table">
+                        <thead>
+                            <tr>
+                                <th>Municipality</th>
+                                <th>City Hall Address</th>
+                                <th>HR Phone</th>
+                                <th>Contact / Portal</th>
+                                <th>Key Entry Divisions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>City of Thousand Oaks</strong></td>
+                                <td>2100 Thousand Oaks Blvd, Thousand Oaks, CA 91362</td>
+                                <td>(805) 449-2144</td>
+                                <td><a href="mailto:humanresources@toaks.gov">humanresources@toaks.gov</a><br><a href="https://www.toaks.gov/departments/human-resources" target="_blank">toaks.gov/hr</a></td>
+                                <td>City Manager's Office, Community Development, Youth Commission</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of San Buenaventura (Ventura)</strong></td>
+                                <td>501 Poli St, Room 210, Ventura, CA 93001</td>
+                                <td>(805) 654-7853</td>
+                                <td><a href="https://www.cityofventura.ca.gov/153/Human-Resources" target="_blank">cityofventura.ca.gov/hr</a></td>
+                                <td>Planning Division (805-654-2493), City Manager, Parks & Rec</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Oxnard</strong></td>
+                                <td>300 W. Third St, Oxnard, CA 93030</td>
+                                <td>(805) 385-7590</td>
+                                <td><a href="mailto:hr@oxnard.org">hr@oxnard.org</a><br><a href="https://www.oxnard.org/departments/human-resources" target="_blank">oxnard.org/hr</a></td>
+                                <td>Community Development, Housing Authority, City Clerk</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Simi Valley</strong></td>
+                                <td>2929 Tapo Canyon Rd, Simi Valley, CA 93063</td>
+                                <td>(805) 583-6336</td>
+                                <td><a href="mailto:hr@simivalley.org">hr@simivalley.org</a><br><a href="https://www.simivalley.org/departments/city-manager-s-office/human-resources" target="_blank">simivalley.org/hr</a></td>
+                                <td>City Administration, Environmental Services (Zoning/Planning)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Camarillo</strong></td>
+                                <td>601 Carmen Dr, Camarillo, CA 93010</td>
+                                <td>(805) 388-5310</td>
+                                <td>Wendy Levy, HR Director (805-383-5646)<br><a href="https://www.cityofcamarillo.gov/departments/human_resources" target="_blank">cityofcamarillo.gov/hr</a></td>
+                                <td>City Manager, Community Development, City Clerk (Elections)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Moorpark</strong></td>
+                                <td>799 Moorpark Ave, Moorpark, CA 93021</td>
+                                <td>(805) 517-6200 x465</td>
+                                <td>Carolina Tijerino, HR Mgr (<a href="mailto:ctijerino@moorparkca.gov">ctijerino@moorparkca.gov</a>)<br><a href="https://www.moorparkca.gov/168/Human-Resources" target="_blank">moorparkca.gov/hr</a></td>
+                                <td>Assistant City Manager, Community Development, Parks & Rec</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Santa Paula</strong></td>
+                                <td>970 E. Ventura St, Santa Paula, CA 93060</td>
+                                <td>(805) 933-4247</td>
+                                <td>Lorena Alvarez, HR Mgr (<a href="mailto:lalvarez@spcity.org">lalvarez@spcity.org</a>)<br><a href="https://www.spcity.org/211/Human-Resources" target="_blank">spcity.org/hr</a></td>
+                                <td>City Administration, Historic Preservation, Planning</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Port Hueneme</strong></td>
+                                <td>250 N. Ventura Rd, Port Hueneme, CA 93041</td>
+                                <td>(805) 986-6510</td>
+                                <td>Frank Lee, HR/Risk Mgr<br><a href="https://www.ci.port-hueneme.ca.us/143/Human-Resources" target="_blank">ci.port-hueneme.ca.us</a></td>
+                                <td>City Manager's Office, Coastal Environmental Management</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Fillmore</strong></td>
+                                <td>250 Central Ave, Fillmore, CA 93015</td>
+                                <td>(805) 524-3701 x212</td>
+                                <td>Jacky Herrera, HR Supv (<a href="mailto:jherrera@fillmoreca.gov">jherrera@fillmoreca.gov</a>)<br><a href="https://www.fillmoreca.gov/173/Human-Resources" target="_blank">fillmoreca.gov/hr</a></td>
+                                <td>City Administration, Public Works Policy, Community Development</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City of Ojai</strong></td>
+                                <td>401 S. Ventura St, Ojai, CA 93023</td>
+                                <td>(805) 646-5581 x126</td>
+                                <td>Kathy Holman, HR/Risk Mgr<br><a href="https://www.ojaicity.org" target="_blank">ojaicity.org</a></td>
+                                <td>City Manager, Climate & Sustainability Committee Liaison</td>
+                            </tr>
+                            <tr>
+                                <td><strong>County of Ventura (Governing 18 Unincorporated Areas)</strong></td>
+                                <td>800 S. Victoria Ave, #1970, Ventura, CA 93009</td>
+                                <td>(805) 654-5129</td>
+                                <td><a href="https://hr.ventura.org" target="_blank">hr.ventura.org</a></td>
+                                <td>Administers civil service and local services for Oak Park, El Rio, Piru, Somis, Santa Rosa Valley, Meiners Oaks, Mira Monte, Oak View, Upper Ojai, Channel Islands Beach, Saticoy, Casa Conejo, Bell Canyon, etc.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
-
-            <!-- Legal Careers -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">⚖️</span>
-                    <h2>Legal Careers in Politics & Public Interest</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Attorney (Office of Enforcement)</span>
-                        <span class="career-org">State Water Resources Control Board</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">U.S. Immigration Law Attorney</span>
-                        <span class="career-org">Federal Practice</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Assistant Attorney General</span>
-                        <span class="career-org">State of Arizona</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Section Chief Counsel</span>
-                        <span class="career-org">Attorney General’s Office</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Tax Attorney</span>
-                        <span class="career-org">International Finance/Treaties</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Civil Litigation Lawyer</span>
-                        <span class="career-org">State Capacity Focus</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Regulatory Attorney</span>
-                        <span class="career-org">Environmental / Labor</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Law Clerk</span>
-                        <span class="career-org">State/City Attorneys & Public Courts</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Deputy County Attorney</span>
-                        <span class="career-org">Mohave County</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Deputy Public Defender</span>
-                        <span class="career-org">San Diego Public Defender's Office</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Assistant Vice President, Legal Services</span>
-                        <span class="career-org">Crescendo Interactive, Inc.</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">1L Student</span>
-                        <span class="career-org">Pepperdine School of Law</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Judicial Law Clerk</span>
-                        <span class="career-org">Los Angeles Superior Court</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Deputy City Attorney</span>
-                        <span class="career-org">City of Simi Valley</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Director of Bar Review - NYC</span>
-                        <span class="career-org">Quimbee</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Counsel, Business and Legal Affairs</span>
-                        <span class="career-org">Paramount Global</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Associate Attorney</span>
-                        <span class="career-org">Wilson Elser Moskowitz Edelman & Dicker LLP / UC San Francisco College
-                            of Law</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Attorney</span>
-                        <span class="career-org">Private Practice</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Risk & Security -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🌍</span>
-                    <h2>International Risk, Intelligence & Security</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Country Risk Analyst</span>
-                        <span class="career-org">Horizon Intelligence (MENA & Asia Pacific)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Emergency Manager & General Officer</span>
-                        <span class="career-org">U.S. Air Force</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Electronic Warfare Acquisition NCO</span>
-                        <span class="career-org">Ranger Regiment</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Chief Innovation Officer</span>
-                        <span class="career-org">N2N Global (Ag/Safety Border Systems)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Cyber Underwriting Manager</span>
-                        <span class="career-org">Tokio Marine HCC</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Manager of Global Crisis Communications and Travel Safety</span>
-                        <span class="career-org">Ross</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Global Business -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">📈</span>
-                    <h2>Global Business, Trade & Economic Systems</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Investment Advisor</span>
-                        <span class="career-org">Wealth Management (Global Finance)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Financial Analyst</span>
-                        <span class="career-org">Mission Produce (Global Supply Chain)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Senior Research Analyst</span>
-                        <span class="career-org">Business Insider</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Director of Business Development</span>
-                        <span class="career-org">SpokeDC</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Project Manager</span>
-                        <span class="career-org">Edlio</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Project Coordinator</span>
-                        <span class="career-org">Strategic Acquisitions</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Consultant</span>
-                        <span class="career-org">Intercultural Competence Programs</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Junior Software Engineer</span>
-                        <span class="career-org">TF Cornerstone</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">University Events Recruiting Coordinator</span>
-                        <span class="career-org">Microsoft</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Recruiter, Customer Success</span>
-                        <span class="career-org">Customer Success</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Associate Underwriter</span>
-                        <span class="career-org">Cardigan General Insurance Services</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Principal Supply Chain Planning Specialist</span>
-                        <span class="career-org">Northrop Grumman</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Merchandise Analyst</span>
-                        <span class="career-org">Pottery Barn</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Assistant Manager</span>
-                        <span class="career-org">Nordstrom</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Project Director Transmission Towers</span>
-                        <span class="career-org">Hyndla</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Procurement Lead</span>
-                        <span class="career-org">DAC International</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Procurement Analyst</span>
-                        <span class="career-org">Aerojet Rocketdyne</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Senior Project Manager</span>
-                        <span class="career-org">Confidential</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Wholesale Account Executive</span>
-                        <span class="career-org">Athas Capital</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Manager of Business Development</span>
-                        <span class="career-org">Corporate Travel Manager</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Product Marketing Manager</span>
-                        <span class="career-org">BlackLine</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Talent Agency Rep</span>
-                        <span class="career-org">Eris Talent Agency / University of Essex</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Development & NGOs -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🌱</span>
-                    <h2>International Development, NGOs & Sustainability</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Project Partner</span>
-                        <span class="career-org">Water.org</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Coordinator</span>
-                        <span class="career-org">Habitat for Humanity (Iowa/Ventura)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Communications Specialist</span>
-                        <span class="career-org">California Sea Grant</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Manager</span>
-                        <span class="career-org">Citizen Philanthropy Advisors</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Advocate/Organizer</span>
-                        <span class="career-org">Sierra Club</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Operations Manager</span>
-                        <span class="career-org">Focalpoint International</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Chief Executive Officer</span>
-                        <span class="career-org">Corporate Giving Connection</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Lead, Business Development</span>
-                        <span class="career-org">Community Solar Arcadia</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Program Supervisor (Introductory Program)</span>
-                        <span class="career-org">NAV Vestre Aker</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Project Manager II</span>
-                        <span class="career-org">People's Self Help Housing</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Director of Sustainability</span>
-                        <span class="career-org">Lutheran Retreats, Camps, and Conferences / Yale Divinity School</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Journalism & Media -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">📰</span>
-                    <h2>Journalism, Media & Strategic Communications</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Reporter (Policy Beat)</span>
-                        <span class="career-org">KING 5 News</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Managing Director of External Relations</span>
-                        <span class="career-org">Southern California Public Radio</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Writer/Editor</span>
-                        <span class="career-org">Political & Business Outlets</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Communications Manager</span>
-                        <span class="career-org">Visa Consultant (Norway)</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Public Affairs Consultant</span>
-                        <span class="career-org">Powell Strategic Communication</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Director of Marketing</span>
-                        <span class="career-org">Scorpion</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Billing Clerk</span>
-                        <span class="career-org">Pixelogic Media</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Communications / Marketing Consultant</span>
-                        <span class="career-org">Independent</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education & Culture -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🧭</span>
-                    <h2>International Education, Language & Culture</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Government Scholar (Chinese)</span>
-                        <span class="career-org">Beijing</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Instructor</span>
-                        <span class="career-org">International College Beijing</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">International Baccalaureate Teacher</span>
-                        <span class="career-org">Arendal International School</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">English Teacher</span>
-                        <span class="career-org">Korea</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Director of International Education</span>
-                        <span class="career-org">California Lutheran University</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Cross-Cultural Consultant</span>
-                        <span class="career-org">Private Practice</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Program Coordinator - Guardian Scholars, Diversity Programs</span>
-                        <span class="career-org">Univ. of Southern California</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">TEFL Volunteer/Teacher</span>
-                        <span class="career-org">Peace Corps</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Graduate Teaching Fellow</span>
-                        <span class="career-org">University of Oregon</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Social Science Teacher</span>
-                        <span class="career-org">Channel Islands High School</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Science Teacher</span>
-                        <span class="career-org">Conejo Valley Unified School District</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Instructor and PhD Student</span>
-                        <span class="career-org">Virginia Tech</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Research -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🧪</span>
-                    <h2>Research & Governance</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">PhD Researcher (Policy)</span>
-                        <span class="career-org">UC Davis</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Doctoral Student</span>
-                        <span class="career-org">Arid Lands Resource Science</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Senior Business & Research Analyst</span>
-                        <span class="career-org">San Diego Workforce Partnership</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Research Specialist</span>
-                        <span class="career-org">J.D. Power</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Researcher</span>
-                        <span class="career-org">Public Policy Labs</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Administrative Assistant and PhD Researcher</span>
-                        <span class="career-org">GMZ Engineering INC</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">PhD Candidate and Graduate Assistant</span>
-                        <span class="career-org">Department of Childhood Studies at Rutgers University</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Graduate Researcher, PhD Student Philosophy</span>
-                        <span class="career-org">UC Santa Barbara</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">PhD Candidate</span>
-                        <span class="career-org">Department of Political Science, Lund University</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Health -->
-            <section class="category-section">
-                <div class="category-title">
-                    <span class="category-icon">🏥</span>
-                    <h2>Global Health & Systems</h2>
-                </div>
-                <div class="career-grid">
-                    <div class="career-card">
-                        <span class="career-role">Manager of Federal Affairs (Health)</span>
-                        <span class="career-org">American Psychiatric Association</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">IT Professional (Health-Tech)</span>
-                        <span class="career-org">Phoenix Children’s Hospital</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Nutrition Assistant (Public Policy)</span>
-                        <span class="career-org">SDSU Extension</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Registered Nurse</span>
-                        <span class="career-org">Children's Hospital Los Angeles</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Technical Integration Manager</span>
-                        <span class="career-org">Baxter International Inc.</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">MSAT Associate Scientist</span>
-                        <span class="career-org">Lonza</span>
-                    </div>
-                    <div class="career-card">
-                        <span class="career-role">Associate Veterinarian</span>
-                        <span class="career-org">San Francisco Pet Hospital</span>
-                    </div>
-                </div>
-            </section>
-
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>© 2025 Jose Marichal. All rights reserved.</p>
+            <p>© 2026 Jose Marichal. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Directory Data & Search Script -->
+    <script>
+        const directoryData = [
+            // ==================== PATHWAY 1: LAW & GOVERNMENT ====================
+            {
+                id: "rep-brownley",
+                title: "U.S. House of Representatives – Rep. Julia Brownley (CA-26)",
+                subtitle: "Federal Congressional Casework & Legislative Affairs",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks & Oxnard",
+                description: "Handle constituent casework involving federal agencies (VA, USCIS, Social Security, State Department), draft congressional inquiry letters, attend community events with field representatives, and monitor district press coverage.",
+                contactName: "District Internship Coordinator",
+                contactPhone: "(805) 379-1779",
+                contactEmail: "",
+                address: "223 E. Thousand Oaks Blvd, Suite 220, Thousand Oaks, CA 91360 / 201 E. 4th St, Suite 209B, Oxnard, CA 93030",
+                portalUrl: "https://juliabrownley.house.gov/services/internships/",
+                note: "Requires cover letter, resume, 1-2 page writing sample, and 3 references. Open Fall, Spring, Summer."
+            },
+            {
+                id: "sen-limon",
+                title: "California State Senate – Senator Monique Limón (District 19)",
+                subtitle: "State Legislative Office & Constituent Casework",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard & Santa Barbara",
+                description: "Track state legislation impacting Ventura County, draft legislative resolutions, assist field staff with constituent casework (EDD, Caltrans, DMV, Dept of Insurance), and staff community roundtables.",
+                contactName: "District Office Intern Coordinator",
+                contactPhone: "(805) 988-1940",
+                contactEmail: "Senator.Limon@senate.ca.gov",
+                address: "300 E. Esplanade Dr, Suite 430, Oxnard, CA 93036",
+                portalUrl: "https://sd19.senate.ca.gov/",
+                note: "Apply via Senate District Internship Interest Form under 'Get In Touch'."
+            },
+            {
+                id: "asm-irwin",
+                title: "California State Assembly – Assemblymember Jacqui Irwin (AD-42)",
+                subtitle: "State Legislative Research & Constituent Advocacy",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks & Camarillo",
+                description: "Research state legislative proposals (cybersecurity, higher ed, veteran affairs, water policy), prepare background memos for legislative staff, manage constituent outreach, and attend local civic hearings.",
+                contactName: "District Director / Intern Coordinator",
+                contactPhone: "(805) 370-0542",
+                contactEmail: "",
+                address: "223 E. Thousand Oaks Blvd, Suite 412, Thousand Oaks, CA 91360",
+                portalUrl: "https://irwin.asmdc.org/",
+                note: "8-12 hours/week. Bilingual Spanish proficiency is strongly encouraged."
+            },
+            {
+                id: "asm-bennett",
+                title: "California State Assembly – Assemblymember Steve Bennett (AD-38)",
+                subtitle: "Environmental, Agricultural & Open Space Policy",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard & Ventura",
+                description: "Specialize in environmental policy, agricultural labor oversight, SOAR (Save Open-space and Agricultural Resources) regional land-use monitoring, and local agency coordination.",
+                contactName: "Field Representative / Intern Coordinator",
+                contactPhone: "(805) 485-4745",
+                contactEmail: "",
+                address: "300 E. Esplanade Dr, Suite 1790, Oxnard, CA 93036",
+                portalUrl: "https://bennett.asmdc.org/",
+                note: "Applications available online or in-person at the Oxnard office."
+            },
+            {
+                id: "sen-stern",
+                title: "California State Senate – Senator Henry Stern (District 27)",
+                subtitle: "Environmental Protection, Wildfire Policy & Grid Reliability",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura / LA Border",
+                city: "Calabasas, Thousand Oaks, Simi Valley",
+                description: "Covers Eastern Ventura County (Thousand Oaks, Moorpark, Simi Valley) and Western LA County (Calabasas, Agoura Hills, Malibu). Work on wildfire mitigation policy, grid reliability, climate resilience, and public safety oversight.",
+                contactName: "District Intern Coordinator",
+                contactPhone: "(818) 876-3352",
+                contactEmail: "",
+                address: "5016 N. Parkway Calabasas, Suite 222, Calabasas, CA 91302",
+                portalUrl: "https://sd27.senate.ca.gov/",
+                note: "Excellent placement for environmental, energy, and open space policy."
+            },
+            {
+                id: "sen-padilla",
+                title: "U.S. Senate – Senator Alex Padilla (Los Angeles Regional Office)",
+                subtitle: "Federal Legislation, Immigration & Judicial Nominations",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "West Los Angeles",
+                description: "Serves the Greater LA and Ventura County region. Interns track federal casework, immigration relief petitions, federal appropriations requests, judicial nominations, and regional environmental projects.",
+                contactName: "Regional Intern Coordinator",
+                contactPhone: "(310) 231-4494",
+                contactEmail: "",
+                address: "11845 W. Olympic Blvd, Suite 1250W, Los Angeles, CA 90064",
+                portalUrl: "https://www.padilla.senate.gov/services/internships/",
+                note: "Competitive federal internship. Apply 3 months in advance."
+            },
+            {
+                id: "rep-carbajal",
+                title: "U.S. House of Representatives – Rep. Salud Carbajal (CA-24)",
+                subtitle: "Armed Services, Coastal Agriculture & Transportation",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara / Ventura",
+                city: "Goleta, Santa Barbara & Ventura",
+                description: "Represents Western Ventura County (City of Ventura, Ojai) and Santa Barbara County. Work on maritime infrastructure, offshore oil decommissioning, defense affairs, and federal veterans casework.",
+                contactName: "District Intern Coordinator",
+                contactPhone: "(805) 730-1710",
+                contactEmail: "",
+                address: "360 Campus Dr, Suite 201, Goleta, CA 93117",
+                portalUrl: "https://carbajal.house.gov/services/internships.htm",
+                note: "Covers Western Ventura County coastal issues."
+            },
+            {
+                id: "rep-garcia",
+                title: "U.S. House of Representatives – Rep. Mike Garcia (CA-27)",
+                subtitle: "Defense Appropriations, Aerospace & Water Infrastructure",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Santa Clarita & Palmdale",
+                description: "Represents Santa Clarita, Antelope Valley, and the northwest LA/Simi border. Focus on defense manufacturing oversight, military veterans affairs, and regional high-desert water allocations.",
+                contactName: "District Staff Director",
+                contactPhone: "(661) 568-4855",
+                contactEmail: "",
+                address: "23734 Valencia Blvd, Suite 301, Santa Clarita, CA 91355 / 1008 W. Avenue M-14, Palmdale, CA 93551",
+                portalUrl: "https://mikegarcia.house.gov/",
+                note: "Federal district casework and legislative tracking."
+            },
+            {
+                id: "ventura-county-ceo",
+                title: "County of Ventura – County Executive Office & Board of Supervisors",
+                subtitle: "County Administration, Public Policy & Budget Analysis",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Government Center)",
+                description: "Intern directly with a County Supervisor (Matt LaVere, Jeff Gorell, Kelly Long, Janice Parvin, Vianey Lopez) or within the Resource Management Agency (Planning Division: 805-654-2493). Work on regional housing, CEQA compliance, public health, and county budget hearings.",
+                contactName: "County HR Student Coordinator",
+                contactPhone: "(805) 654-5129",
+                contactEmail: "interns@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Administration, Ventura, CA 93009",
+                portalUrl: "https://hr.ventura.org",
+                note: "Countywide civil service internship program across 26 agencies."
+            },
+            {
+                id: "city-thousand-oaks",
+                title: "City of Thousand Oaks – City Manager's Office & HR",
+                subtitle: "Municipal Administration, Housing & Sustainability",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks",
+                description: "Assist with City Council agenda preparation, sustainability master plan monitoring, general plan updates, affordable housing allocations, and community engagement. Close proximity to Cal Lutheran.",
+                contactName: "Human Resources Department",
+                contactPhone: "(805) 449-2144",
+                contactEmail: "humanresources@toaks.gov",
+                address: "2100 Thousand Oaks Blvd, Thousand Oaks, CA 91362",
+                portalUrl: "https://www.toaks.gov/departments/human-resources",
+                note: "Open to enrolled college students. Also manages the Youth Commission."
+            },
+            {
+                id: "city-santa-clarita",
+                title: "City of Santa Clarita – Intergovernmental Affairs & Planning",
+                subtitle: "Full-Service Municipal Government & Legislative Platform",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Santa Clarita",
+                description: "The 3rd largest city in LA County. Intern in the City Manager's Intergovernmental Relations division (tracking state/federal bills), Planning/Land Use, or Santa Clarita Transit administration.",
+                contactName: "Human Resources Division",
+                contactPhone: "(661) 284-1418",
+                contactEmail: "",
+                address: "23920 Valencia Blvd, Suite 110, Santa Clarita, CA 91355",
+                portalUrl: "https://www.santaclarita.gov/human-resources",
+                note: "Large municipal employer with formal student internship cohorts."
+            },
+            {
+                id: "campaign-vcdems",
+                title: "Democratic Party of Ventura County (VCDCC)",
+                subtitle: "Electoral Organizing, VAN Database & Field Campaigns",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Camarillo",
+                description: "Runs a structured Campaign & Organizing Fellowship every election cycle. Students learn VAN (Voter Activation Network) database management, digital campaigning, phone bank coordination, and field canvassing.",
+                contactName: "Campaign & Fellowship Director",
+                contactPhone: "(805) 419-0139",
+                contactEmail: "Info@VenturaCountyDemocrats.com",
+                address: "817 Camarillo Springs Rd, Suite D, Camarillo, CA 93012",
+                portalUrl: "https://www.venturacountydemocrats.com/",
+                note: "Spring, Summer, and Fall electoral campaign cycles."
+            },
+            {
+                id: "campaign-vcgop",
+                title: "Republican Party of Ventura County (VCGOP)",
+                subtitle: "Voter Turnout, Campaign Headquarters & Grassroots Outreach",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Camarillo / Simi Valley",
+                description: "Coordinates Republican campaigns, precinct walks, voter registration drives, headquarters logistics, and ballot tracking across Ventura County and the Simi Valley corridor.",
+                contactName: "Headquarters Operations",
+                contactPhone: "(805) 628-2386",
+                contactEmail: "info@venturagop.org",
+                address: "79 E. Daily Dr, #118, Camarillo, CA 93010",
+                portalUrl: "https://venturagop.org/",
+                note: "Active campaign volunteer and field director internship pipelines."
+            },
+            {
+                id: "campaign-ca27",
+                title: "California’s 27th Congressional Campaign Committees (Battleground)",
+                subtitle: "High-Profile National Swing District Campaign Operations",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Santa Clarita & Palmdale",
+                description: "One of the most competitive, expensive, and nationally watched congressional swing districts in the United States. Both Democratic and Republican campaigns operate high-capacity field programs recruiting deputy field organizers and student fellows.",
+                contactName: "Campaign Field Directors",
+                contactPhone: "Varies by campaign",
+                contactEmail: "",
+                address: "Multiple field offices in Santa Clarita, Palmdale, and Lancaster",
+                portalUrl: "https://www.fec.gov/",
+                note: "High-intensity campaign experience with national political impact."
+            },
+
+            // ==================== PATHWAY 2: INTERNATIONAL & GLOBAL AFFAIRS ====================
+            {
+                id: "port-hueneme",
+                title: "The Port of Hueneme (Oxnard Harbor District)",
+                subtitle: "Maritime Commerce, International Trade & Foreign-Trade Zone",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Port Hueneme",
+                description: "The only commercial deepwater port between LA and SF, administering Foreign-Trade Zone #205 and billions in global trade. Interns assist with international maritime environmental policy (zero-emission green port), trade delegation logistics, and international supply chain analysis.",
+                contactName: "Robin Campos, Admin Coordinator",
+                contactPhone: "(805) 488-3677",
+                contactEmail: "rcampos@portofh.org",
+                address: "333 Ponoma St, Port Hueneme, CA 93041",
+                portalUrl: "https://www.portofhueneme.org/",
+                note: "Foreign language proficiency and international business/relations coursework valued."
+            },
+            {
+                id: "direct-relief",
+                title: "Direct Relief (Global Headquarters)",
+                subtitle: "Global Health Policy, Humanitarian Supply Chain & Disaster Relief",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara / 805",
+                city: "Goleta / Santa Barbara",
+                description: "One of the world's leading humanitarian healthcare NGOs operating in 80+ countries in partnership with the WHO. Interns track global health policy, cross-border customs regulations for pharmaceuticals, and emergency logistics.",
+                contactName: "Volunteer & Internship Services",
+                contactPhone: "(805) 964-4767",
+                contactEmail: "",
+                address: "6100 Wallace Becknell Rd, Santa Barbara, CA 93117",
+                portalUrl: "https://www.directrelief.org/careers/",
+                note: "Accessible directly along the 101 corridor. High-impact global humanitarian operations."
+            },
+            {
+                id: "la-consular-corps",
+                title: "The Los Angeles Consular Corps (Foreign Consulates-General)",
+                subtitle: "Bilateral Diplomacy, Consular Affairs & International Relations",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Los Angeles & Century City",
+                description: "LA hosts over 100 foreign consulates-general (second largest in the world). Prominent consulates offering formal diplomatic internships: Consulate General of Mexico (213-351-6800), British Consulate-General (310-789-0031), Consulate General of Canada (213-346-2700), and Consulate General of Japan (213-617-6700).",
+                contactName: "Consular Public Affairs Divisions",
+                contactPhone: "(213) 351-6800",
+                contactEmail: "",
+                address: "Various Consulates in Downtown LA, Century City, and Miracle Mile",
+                portalUrl: "https://www.dfpni.gov.uk/contacts/los-angeles-consular-corps",
+                note: "Direct exposure to diplomatic statecraft, foreign policy, and consular protection."
+            },
+            {
+                id: "pacific-council",
+                title: "Pacific Council on International Policy",
+                subtitle: "Foreign Policy Think Tank & West Coast Partner to CFR",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Downtown Los Angeles",
+                description: "The premier non-partisan international policy council on the West Coast. Interns help organize high-level diplomatic briefings, research Indo-Pacific geopolitics and transatlantic trade, and edit international policy publications.",
+                contactName: "Engagement Team",
+                contactPhone: "(213) 221-2000",
+                contactEmail: "engagement@pacificcouncil.org",
+                address: "725 S. Figueroa St, Suite 450, Los Angeles, CA 90017",
+                portalUrl: "https://www.pacificcouncil.org/",
+                note: "Leading forum for international diplomacy and global affairs research."
+            },
+            {
+                id: "irc-la",
+                title: "International Rescue Committee (IRC) – Los Angeles Office",
+                subtitle: "Refugee Resettlement, Asylum Advocacy & UN Coordination",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "los-angeles",
+                countyLabel: "Northern LA / Glendale",
+                city: "Glendale",
+                description: "Global NGO working directly with the UN High Commissioner for Refugees (UNHCR). Interns assist newly arrived refugees with asylum documentation, work authorization filings, community orientation, and state legislative advocacy.",
+                contactName: "Volunteer & Resettlement Coordinator",
+                contactPhone: "(818) 550-6220",
+                contactEmail: "",
+                address: "625 N. Maryland Ave, Glendale, CA 91206",
+                portalUrl: "https://www.rescue.org/united-states/los-angeles-ca",
+                note: "Convenient to northern LA. Exceptional placement for human rights and immigration."
+            },
+            {
+                id: "una-usa",
+                title: "UNA-USA: United Nations Association (Santa Barbara & Tri-Counties)",
+                subtitle: "UN Sustainable Development Goals & Grassroots Diplomacy",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "ventura",
+                countyLabel: "Tri-Counties (805)",
+                city: "Ventura & Santa Barbara",
+                description: "Represents Ventura, Santa Barbara, and San Luis Obispo counties. Coordinates regional programming on UN SDGs, hosts the annual Peace Prize ceremony, and organizes youth diplomacy summits.",
+                contactName: "Chapter Leadership",
+                contactPhone: "",
+                contactEmail: "info@unasb.org",
+                address: "Tri-Counties Regional Chapter",
+                portalUrl: "https://unasb.org/",
+                note: "Student memberships and youth delegation opportunities available."
+            },
+
+            // ==================== PATHWAY 3: POLICY & RESEARCH ====================
+            {
+                id: "rand-corp",
+                title: "RAND Corporation (Global Headquarters)",
+                subtitle: "Public Policy Analysis, Quantitative Modeling & Defense Studies",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Santa Monica",
+                description: "The world's leading non-partisan public policy research organization. College graduates and upper-division students work as Research Assistants (RAs) and project aides supporting senior researchers across defense, education, health policy, and civil justice.",
+                contactName: "Summer Associate Director / HR",
+                contactPhone: "(310) 393-0411",
+                contactEmail: "Summer_Director@rand.org",
+                address: "1776 Main St, Santa Monica, CA 90401",
+                portalUrl: "https://www.rand.org/jobs",
+                note: "Quantitative data cleaning, Stata/R modeling, and literature reviews."
+            },
+            {
+                id: "cerf-clucerf",
+                title: "Center for Economic Research & Forecasting (CERF) – Cal Lutheran",
+                subtitle: "Macroeconomic Modeling, Land Use & Water Market Policy",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks",
+                description: "Nationally recognized forecasting institute at Cal Lutheran. Interns compile quantitative time-series data, assist in econometric modeling, and analyze California housing, environmental, and water policies (Fox Canyon groundwater market).",
+                contactName: "Dr. Matthew Fienup, Executive Director",
+                contactPhone: "(805) 493-3668",
+                contactEmail: "",
+                address: "California Lutheran University, 60 W. Olsen Rd, Thousand Oaks, CA 91360",
+                portalUrl: "https://clucerf.org/",
+                note: "Located right on Cal Lutheran's campus. Strong quantitative focus."
+            },
+            {
+                id: "milken-inst",
+                title: "Milken Institute (Global Headquarters)",
+                subtitle: "Regional Economic Performance & Public Health Policy",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Santa Monica",
+                description: "Major economic think tank known for the Best-Performing Cities Index and FasterCures center. Interns compile economic time-series data, analyze municipal fiscal health, and draft policy briefs for civic and corporate leaders.",
+                contactName: "Career & Internship Inquiries",
+                contactPhone: "(310) 570-4600",
+                contactEmail: "inquiries@milkeninstitute.org",
+                address: "1250 Fourth St, Santa Monica, CA 90401",
+                portalUrl: "https://milkeninstitute.org/careers",
+                note: "Year-round and summer internships in economics, health, and global conferences."
+            },
+            {
+                id: "ucla-lppi",
+                title: "UCLA Latino Policy & Politics Institute (LPPI)",
+                subtitle: "Data-Driven Voting Rights, Criminal Justice & Economic Mobility",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Westwood / Los Angeles",
+                description: "The nation's leading research institute addressing domestic policy issues impacting Latino communities. Interns analyze U.S. Census data, conduct voting rights research, and draft policy briefs distributed to state legislators.",
+                contactName: "Research Operations",
+                contactPhone: "(310) 794-5555",
+                contactEmail: "latino@luskin.ucla.edu",
+                address: "UCLA Luskin, 3326 Murphy Hall, Los Angeles, CA 90095",
+                portalUrl: "https://latino.ucla.edu/",
+                note: "Premier quantitative social science and policy advocacy institute."
+            },
+            {
+                id: "lmu-studyla",
+                title: "Center for the Study of Los Angeles (StudyLA) – LMU",
+                subtitle: "Public Opinion Polling, Survey Methodology & Civic Indicators",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Westchester / Los Angeles",
+                description: "The definitive public opinion polling center in Southern California. Conducts the annual Los Angeles Public Opinion Survey and election exit polls. Student research assistants learn sampling methodology, survey weighting, and data synthesis.",
+                contactName: "Brianne Gilbert, Managing Director",
+                contactPhone: "(310) 338-4565",
+                contactEmail: "brianne.gilbert@lmu.edu",
+                address: "Loyola Marymount University, 1 LMU Dr, Suite 4119, Los Angeles, CA 90045",
+                portalUrl: "https://academics.lmu.edu/studyla",
+                note: "Specializes in undergraduate survey research assistantships."
+            },
+            {
+                id: "catalyst-ca",
+                title: "Catalyst California (formerly Advancement Project)",
+                subtitle: "RACE COUNTS, Civil Rights & Budget Equity Analytics",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Los Angeles (Echo Park)",
+                description: "Data-driven civil rights policy research non-profit. Created the statewide RACE COUNTS benchmarking tool tracking racial disparities across all 58 California counties. Interns analyze municipal budgets and build GIS maps.",
+                contactName: "Research & Talent Team",
+                contactPhone: "(213) 989-1300",
+                contactEmail: "info@catalystcalifornia.org",
+                address: "1910 W. Sunset Blvd, Suite 500, Los Angeles, CA 90026",
+                portalUrl: "https://www.catalystcalifornia.org/careers",
+                note: "Leading research shop in California budget and racial equity."
+            },
+            {
+                id: "vcca-alliance",
+                title: "Ventura County Civic Alliance (VCCA)",
+                subtitle: "State of the Region Report & Tri-Counties Civic Health",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura",
+                description: "Regional civic collaborative that publishes the biennial State of the Region Report. Student researchers gather demographic, housing, wage, water, and educational data across all 10 cities in Ventura County.",
+                contactName: "Research Committee Coordinator",
+                contactPhone: "(805) 665-3834",
+                contactEmail: "Info@CivicAlliance.org",
+                address: "P.O. Box 23412, Ventura, CA 93002",
+                portalUrl: "https://www.civicalliance.org",
+                note: "Direct research contribution to countywide quality of life indicators."
+            },
+
+            // ==================== PATHWAY 4: COMMUNITY ADVOCACY & ORGANIZING ====================
+            {
+                id: "cause-oxnard",
+                title: "CAUSE: Central Coast Alliance for a Sustainable Economy",
+                subtitle: "Grassroots Organizing, Rent Control & Farmworker Rights",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard & Santa Paula",
+                description: "The premier community-labor coalition on the Central Coast. Interns conduct door-to-door community surveys, organize tenant rights workshops, draft talking points for City Council hearings, and participate in grassroots lobbying.",
+                contactName: "Organizing & Internship Team",
+                contactPhone: "(805) 486-4383",
+                contactEmail: "",
+                address: "4225 Saviers Rd, Suite 2, Oxnard, CA 93033 / 121 N. 8th St, Santa Paula, CA",
+                portalUrl: "https://www.causenow.org/jobs-internships/",
+                note: "Paid and volunteer community organizing internships available."
+            },
+            {
+                id: "micop-oxnard",
+                title: "MICOP: Mixteco/Indígena Community Organizing Project",
+                subtitle: "Indigenous Migrant Rights, Language Justice & Health Policy",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard",
+                description: "Advocates for the 30,000+ indigenous Mexican migrant farmworkers residing in Ventura County who speak Mixteco, Zapoteco, and Triqui. Support indigenous language rights, community health workshops, and Radio Indígena 94.1 FM broadcasts.",
+                contactName: "Liza Diniakos / Norma Gomez",
+                contactPhone: "(805) 483-1166",
+                contactEmail: "liza.diniakos@mixteco.org",
+                address: "505 S. A St, Oxnard, CA 93030",
+                portalUrl: "https://mixteco.org/careers/",
+                note: "Norma Gomez direct: (805) 280-6509, norma.gomez@mixteco.org."
+            },
+            {
+                id: "cabrillo-edc",
+                title: "Cabrillo Economic Development Corporation (CEDC)",
+                subtitle: "Affordable Housing Development & Resident Leadership Organizing",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura",
+                description: "The largest non-profit affordable housing developer and resident empowerment organization in Ventura County. Interns work in the Resident and Community Services Division organizing Resident Councils, youth programs, and housing advocacy.",
+                contactName: "Community Services Coordinator",
+                contactPhone: "(805) 659-3791",
+                contactEmail: "info@cabrilloedc.org",
+                address: "702 County Square Dr, Suite 200, Ventura, CA 93003",
+                portalUrl: "https://www.cabrilloedc.org",
+                note: "Focus on affordable housing policy and community empowerment."
+            },
+            {
+                id: "one-step-fillmore",
+                title: "One Step A La Vez (Santa Clara River Valley)",
+                subtitle: "Youth Restorative Justice, Diversion & Rural Equity",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Fillmore & Piru",
+                description: "Youth-led community advocacy and social justice center serving Fillmore, Piru, and Santa Paula. Interns support juvenile justice diversion programs, rural public transit advocacy (Highway 126 corridor), and youth mental health equity.",
+                contactName: "Executive Leadership",
+                contactPhone: "(805) 625-7067",
+                contactEmail: "info@myonestep.org",
+                address: "421 Sespe Ave, Fillmore, CA 93015",
+                portalUrl: "https://www.myonestep.org/",
+                note: "P.O. Box 803, Fillmore, CA 93016. High-impact rural youth organizing."
+            },
+            {
+                id: "cec-sb",
+                title: "Community Environmental Council (CEC)",
+                subtitle: "Regional Climate Policy, Decarbonization & Resilience",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara",
+                description: "Founded in 1970, CEC is one of California's oldest and most influential regional environmental policy organizations. Interns draft building decarbonization policies, organize climate resilience campaigns, and engage local city councils.",
+                contactName: "Internship & Volunteer Program",
+                contactPhone: "(805) 963-0583",
+                contactEmail: "",
+                address: "1219 State St, Suite A, Santa Barbara, CA 93101",
+                portalUrl: "https://cecsb.org/careers",
+                note: "Regional climate action hub for Ventura, SB, and SLO counties."
+            },
+            {
+                id: "sbcan",
+                title: "Santa Barbara County Action Network (SBCAN)",
+                subtitle: "Countywide Labor, Housing & Environmental Justice",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara & Santa Maria",
+                description: "Grassroots membership network advocating for social, economic, and environmental justice across North and South Santa Barbara County. Interns organize community roundtables, advocate for farmworker housing, and track planning dockets.",
+                contactName: "Nancy Avoce, Executive Director",
+                contactPhone: "(805) 739-1836",
+                contactEmail: "nancy@sbcan.org",
+                address: "P.O. Box 6174, Santa Maria, CA 93456",
+                portalUrl: "http://www.sbcan.org/",
+                note: "General inquiries: info@sbcan.org."
+            },
+            {
+                id: "pacoima-beautiful",
+                title: "Pacoima Beautiful (Northeast San Fernando Valley)",
+                subtitle: "Environmental Justice, Toxic Remediation & Shade Equity",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Pacoima (SFV)",
+                description: "Historic environmental justice organization right across the Ventura County border in the Northeast Valley. Interns organize community members to remediate toxic industrial sites, advocate for shade equity, and testify at air quality hearings.",
+                contactName: "Community Programs Team",
+                contactPhone: "(818) 899-2454",
+                contactEmail: "",
+                address: "13520 Van Nuys Blvd, Suite 200, Pacoima, CA 91331",
+                portalUrl: "https://www.pacoimabeautiful.org/",
+                note: "Grassroots environmental justice in low-income communities of color."
+            },
+            {
+                id: "chirla-sfv-av",
+                title: "CHIRLA: Coalition for Humane Immigrant Rights (SFV & AV)",
+                subtitle: "Immigrant Organizing, DACA Advocacy & State Lobbying",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Pacoima & Palmdale",
+                description: "One of the nation's premier immigrant rights organizations. Regional offices in Pacoima (11243 Glenoaks Blvd) and Palmdale (1305 E. Palmdale Blvd). Interns lead student organizing, legislative lobbying delegations in Sacramento, and deportation defense triage.",
+                contactName: "Youth & Regional Organizing",
+                contactPhone: "(213) 353-1333",
+                contactEmail: "",
+                address: "Regional Offices in Pacoima and Palmdale; Main HQ in LA",
+                portalUrl: "https://www.chirla.org/",
+                note: "Massive youth network and legislative advocacy pipeline."
+            },
+
+            // ==================== PATHWAY 5: PRE-LAW & LEGAL PROFESSIONS ====================
+            {
+                id: "vc-public-defender",
+                title: "Ventura County Public Defender’s Office",
+                subtitle: "Undergraduate Investigative Internships & Case Preparation",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Hall of Justice)",
+                description: "One of the most competitive pre-law internships in California. Shadow Senior Investigators, review police body-worn camera footage, assist in subpoena service and witness interviews, locate defense evidence, and observe felony/misdemeanor court proceedings.",
+                contactName: "Aron Miller & Erika Villa, Senior Investigators",
+                contactPhone: "(805) 654-2201",
+                contactEmail: "Aron.Miller@ventura.org",
+                address: "Hall of Justice, Room 207, 800 S. Victoria Ave, Ventura, CA 93009",
+                portalUrl: "https://pubdef.ventura.org",
+                note: "Email resume and cover letter to both Aron.Miller@ventura.org and Erika.Villa@ventura.org. Deadlines: Nov (Spring), Feb (Summer), July (Fall)."
+            },
+            {
+                id: "sb-public-defender",
+                title: "Santa Barbara County Public Defender’s Office",
+                subtitle: "Undergraduate Criminal Defense & Courtroom Discovery",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara & Santa Maria",
+                description: "Undergraduate interns assist public defenders with case preparation, review police discovery, organize criminal history records, and observe courtroom trial proceedings across South and North County offices.",
+                contactName: "Dee Engler, Intern Coordinator",
+                contactPhone: "(805) 568-3470",
+                contactEmail: "dengler@publicdefendersb.org",
+                address: "1100 Anacapa St, Santa Barbara, CA 93101 / 312 E. Cook St, Santa Maria, CA",
+                portalUrl: "https://www.countyofsb.org/3129/InternExtern",
+                note: "Deadlines: August 1st (Fall), December 1st (Spring), May 1st (Summer)."
+            },
+            {
+                id: "la-public-defender",
+                title: "Los Angeles County Public Defender’s Office",
+                subtitle: "Paralegal & Investigator Student Tracks",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "San Fernando, Van Nuys, Lancaster & Downtown LA",
+                description: "The nation's largest public defender agency. Five dedicated student tracks: Legal, Investigator, Paralegal, Communications, and Administrative. Interns assist with motion filing, client interviews, and exhibit assembly across branch courthouses.",
+                contactName: "County HR Intern Coordinator",
+                contactPhone: "(213) 974-2811",
+                contactEmail: "interns@hr.lacounty.gov",
+                address: "210 W. Temple St, 19th Floor, Los Angeles, CA 90012 (and Valley branches)",
+                portalUrl: "https://pubdef.lacounty.gov/",
+                note: "Requires 16 hours/week commitment. Rolling applications accepted year-round."
+            },
+            {
+                id: "vc-district-attorney",
+                title: "Ventura County District Attorney’s Office",
+                subtitle: "Prosecutorial Litigation, Crime Victims & Investigation",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Hall of Justice)",
+                description: "Assist Deputy DAs with trial binder preparation, case digest research, evidence indexing, and courtroom motions. Crime Victims' Assistance Unit provides court accompaniment and restitution assistance during violent crime cases.",
+                contactName: "Chief Asst DA Lisa Lyytikainen / Vianey Valdez",
+                contactPhone: "(805) 654-3622",
+                contactEmail: "Vianey.Valdez@venturacounty.gov",
+                address: "Hall of Justice, Room 311, 800 S. Victoria Ave, Ventura, CA 93009",
+                portalUrl: "https://da.venturacounty.gov/",
+                note: "Bureau of Investigation LiveScan takes 6-8 weeks; apply 2 months early. Volunteers barred from defense work."
+            },
+            {
+                id: "ca-court-appeal-div6",
+                title: "California Court of Appeal – 2nd District, Division Six (Ventura)",
+                subtitle: "Judicial Externship & Appellate Research Chambers",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Downtown)",
+                description: "Division Six is located right on Santa Clara St in Ventura and hears all state appellate matters from Ventura, Santa Barbara, and San Luis Obispo counties. Externs review trial records, write legal research memoranda, draft bench briefs, and observe oral arguments.",
+                contactName: "Clerk’s Office / Chambers",
+                contactPhone: "(805) 641-4700",
+                contactEmail: "",
+                address: "200 E. Santa Clara St, Ventura, CA 93001",
+                portalUrl: "https://appellate.courts.ca.gov/district-courts/2dca",
+                note: "One of the most prestigious legal research placements in the 805 region."
+            },
+            {
+                id: "crla-oxnard",
+                title: "California Rural Legal Assistance (CRLA) – Oxnard Office",
+                subtitle: "Civil Rights, Farmworker Eviction Defense & Labor Law",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard",
+                description: "Paralegal support in housing defense—interviewing farmworker tenants facing unlawful detainers, filing answers in court, drafting wage-theft complaints for the Labor Commissioner, and verifying employer compliance with agricultural labor laws.",
+                contactName: "Central Pro Bono Coordinator",
+                contactPhone: "(805) 486-1068",
+                contactEmail: "probonosupport@crla.org",
+                address: "338 S. A St, Oxnard, CA 93030",
+                portalUrl: "https://crla.org/careers/internships",
+                note: "Specify 'Oxnard Regional Office' in application. Bilingual Spanish/Mixteco highly valued."
+            },
+            {
+                id: "conejo-free-clinic",
+                title: "Conejo Free Clinic Legal Services (Thousand Oaks)",
+                subtitle: "Pro Bono Client Intake, Triage & Attorney Shadowing",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks",
+                description: "Located adjacent to Cal Lutheran. Pre-law interns conduct initial client intake interviews, triage disputes (family law, immigration, bankruptcy, tenant-landlord), and shadow pro bono attorneys during weekly consultation sessions.",
+                contactName: "Eileen Harris, Legal Coordinator",
+                contactPhone: "(805) 807-3614",
+                contactEmail: "eileenharris@conejofreeclinic.org",
+                address: "80 E. Hillcrest Dr, Suite 213, Thousand Oaks, CA 91360",
+                portalUrl: "https://www.conejofreeclinic.org/",
+                note: "Clinic main phone: (805) 497-3575. Excellent entry-level client intake experience."
+            },
+            {
+                id: "lafsbc-legal-aid",
+                title: "Legal Aid Foundation of Santa Barbara County (LAFSBC)",
+                subtitle: "Eviction Defense, Domestic Violence Restraining Orders & Intake",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara, Santa Maria & Lompoc",
+                description: "Volunteer internships for college and law students. Assist paralegals with client intakes, prepare emergency petitions for Domestic Violence Restraining Orders (DVRO), draft elder abuse declarations, and support tenant eviction defense.",
+                contactName: "Personnel & Volunteer Coordinator",
+                contactPhone: "(805) 963-6754",
+                contactEmail: "personnel@lafsbc.org",
+                address: "301 E. Canon Perdido St, Santa Barbara, CA 93101 / 301 S. Miller St, Santa Maria, CA",
+                portalUrl: "https://lafsbc.org",
+                note: "Send resume and cover letter to personnel@lafsbc.org."
+            },
+            {
+                id: "nlsla-sfv-av",
+                title: "Neighborhood Legal Services of LA County (NLSLA)",
+                subtitle: "Courthouse Self-Help Centers & Healthcare Access Advocacy",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Pacoima, Palmdale & Van Nuys",
+                description: "Primary civil legal aid provider for the San Fernando, Antelope, and Santa Clarita Valleys. Interns staff the Self-Help Legal Access Centers inside the Van Nuys, San Fernando, Chatsworth, and Antelope Valley courthouses.",
+                contactName: "Volunteer Coordinator",
+                contactPhone: "(818) 291-1762",
+                contactEmail: "volunteers@nlsla.org",
+                address: "13327 Van Nuys Blvd, Pacoima, CA 91331 / 1104 E. Avenue R, Palmdale, CA",
+                portalUrl: "https://nlsla.org",
+                note: "Huge provider of paralegal and pre-law student fellowships."
+            },
+            {
+                id: "bet-tzedek",
+                title: "Bet Tzedek Legal Services",
+                subtitle: "Pro Bono Legal Intake, Elder Justice & Worker Protection",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Los Angeles",
+                description: "One of the nation's premier pro bono legal organizations. Interns conduct client intake in elder abuse and conservatorships, research Holocaust reparations, support the Employment Rights Project, and file housing defense petitions.",
+                contactName: "Rachael Ettinger, Pro Bono Coordinator",
+                contactPhone: "(323) 939-0506",
+                contactEmail: "volunteer@bettzedek.org",
+                address: "3250 Wilshire Blvd, 13th Floor, Los Angeles, CA 90010",
+                portalUrl: "https://www.bettzedek.org",
+                note: "Rachael Ettinger direct: (323) 549-5838, rettinger@bettzedek.org."
+            },
+            {
+                id: "immdef-la",
+                title: "ImmDef: Immigrant Defenders Law Center",
+                subtitle: "Universal Deportation Defense & Removal Court Shadowing",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Downtown Los Angeles",
+                description: "California's largest deportation defense firm, committed to universal legal representation. Interns shadow defense attorneys in federal immigration court, draft declarations for asylum seekers, and compile country conditions dossiers.",
+                contactName: "Internship & Volunteer Program",
+                contactPhone: "(213) 542-0100",
+                contactEmail: "",
+                address: "634 S. Spring St, 10th Floor, Los Angeles, CA 90014",
+                portalUrl: "https://www.immdef.org/",
+                note: "Premier training ground for immigration defense litigation."
+            },
+
+            // ==================== PATHWAY 6: PRIVATE LAW FIRMS ====================
+            {
+                id: "firm-fcop",
+                title: "Ferguson Case Orr Paterson LLP (FCOP)",
+                subtitle: "Full-Service Commercial, Real Estate, Water & Employment Law",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura & Westlake Village",
+                description: "The largest full-service private law partnership in Ventura County with 40+ attorneys. Practice groups include Business Transactions, Commercial Litigation, Land Use, Employment Defense, Trusts & Estates, and Agricultural Water Law.",
+                contactName: "Firm Administrator / Hiring Partner",
+                contactPhone: "(805) 659-6800",
+                contactEmail: "",
+                address: "1052 S. Seaward Ave, Ventura, CA 93001 / 2801 Townsgate Rd, Westlake Village, CA",
+                portalUrl: "https://www.fcoplaw.com",
+                note: "Hires undergraduate legal assistants, file clerks, and summer clerks."
+            },
+            {
+                id: "firm-mullen-henzell",
+                title: "Mullen & Henzell L.L.P.",
+                subtitle: "Corporate Law, Civil Litigation, Real Estate & Labor",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara",
+                description: "Serving the Central Coast since 1953. Full-service practice representing regional corporations, agricultural estates, and educational institutions in corporate governance, civil trials, real estate entitlements, and labor defense.",
+                contactName: "Office Administrator",
+                contactPhone: "(805) 966-1501",
+                contactEmail: "",
+                address: "112 E. Victoria St, Santa Barbara, CA 93101",
+                portalUrl: "https://www.mullenlaw.com/",
+                note: "Premier Central Coast private firm with deep institutional ties."
+            },
+            {
+                id: "firm-price-postel",
+                title: "Price, Postel & Parma LLP",
+                subtitle: "Water Rights, Complex Land Use, Environmental & Business Law",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara",
+                description: "Established in 1852, this is the oldest continuously operating law firm in California. Renowned statewide for groundwater rights adjudication, environmental compliance, and high-net-worth estate planning.",
+                contactName: "Managing Partner / Administrator",
+                contactPhone: "(805) 962-0011",
+                contactEmail: "",
+                address: "200 E. Carrillo St, Suite 400, Santa Barbara, CA 93101",
+                portalUrl: "https://www.ppplaw.com/",
+                note: "Historical leader in California water law and agricultural entitlements."
+            },
+            {
+                id: "firm-lightgabler",
+                title: "LightGabler LLP",
+                subtitle: "Corporate Labor & Employment Defense Boutique",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Camarillo",
+                description: "Ventura County's premier labor and employment defense firm. Defends regional employers and executives in wage-and-hour class actions, PAGA claims, wrongful termination trials, and workplace discrimination lawsuits.",
+                contactName: "Firm Administrator",
+                contactPhone: "(805) 248-7208",
+                contactEmail: "",
+                address: "760 Paseo Camarillo, Suite 300, Camarillo, CA 93010",
+                portalUrl: "https://www.lightgablerlaw.com/",
+                note: "Leading employment litigation practice in the 805 corridor."
+            },
+            {
+                id: "firm-lewitt-hackman",
+                title: "Lewitt Hackman (Lewitt, Hackman, Shapiro, Marshall & Harlan)",
+                subtitle: "Commercial Litigation, Franchise Law & Corporate Transactions",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "los-angeles",
+                countyLabel: "San Fernando Valley",
+                city: "Encino",
+                description: "The largest commercial law firm headquartered in the San Fernando Valley. Heavy practice in Franchise Law, Business Litigation, Employment Defense, Corporate Mergers, and Commercial Real Estate.",
+                contactName: "Human Resources / Office Administrator",
+                contactPhone: "(818) 990-2120",
+                contactEmail: "",
+                address: "16633 Ventura Blvd, 11th Floor, Encino, CA 91436",
+                portalUrl: "https://www.lewitthackman.com/",
+                note: "Convenient along the 101 corridor for Conejo Valley / SFV students."
+            },
+            {
+                id: "firm-biglaw-la",
+                title: "Los Angeles 'BigLaw' Gap-Year Paralegal Programs",
+                subtitle: "Latham & Watkins • Gibson Dunn • O'Melveny & Myers • Quinn Emanuel",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Century City & Downtown LA",
+                description: "Elite global corporate powerhouses regularly recruit graduating seniors for paid, 1-2 year Project Assistant / Paralegal programs before law school. Search NALP Directory and firm portals between January and April.",
+                contactName: "Paralegal Recruiting Coordinators",
+                contactPhone: "Varies by firm",
+                contactEmail: "",
+                address: "Offices in Century City and Downtown Los Angeles",
+                portalUrl: "https://www.nalpdirectory.com/",
+                note: "Paid pre-law gap-year pipeline with intensive corporate & trial litigation training."
+            },
+            {
+                id: "bar-directories",
+                title: "Official Regional Bar Association Searchable Directories",
+                subtitle: "VCBA • SBCBA • LACBA • SFVBA • State Bar of California",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "all",
+                countyLabel: "Tri-Counties",
+                city: "Searchable by Practice & City",
+                description: "Use official bar directories to locate specialized private firms: Ventura County Bar (vcba.org / 805-650-7599), Santa Barbara County Bar (sblaw.org / 805-569-5511), LA County Bar (lacba.org / 213-243-1525), and San Fernando Valley Bar (sfvba.org / 818-227-0490).",
+                contactName: "Bar Association Lawyer Referral Services",
+                contactPhone: "(805) 650-7599",
+                contactEmail: "",
+                address: "Ventura, Santa Barbara, and Los Angeles Bar Offices",
+                portalUrl: "https://www.vcba.org/",
+                note: "Search attorneys by practice specialty (e.g. IP, Environmental, Real Estate)."
+            },
+
+            // ==================== PATHWAY 7: ALUMNI CAREER OUTCOMES ====================
+            {
+                id: "alumni-gov-assembly",
+                title: "Legislative Aide & Policy Director",
+                subtitle: "California State Legislature Alumni Pathways",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "California Statewide",
+                city: "Sacramento & Ventura County",
+                description: "Alumni have served as Legislative Aides, Policy Directors, and Committee Consultants across the California State Assembly and California State Senate, drafting statutes and analyzing state appropriations.",
+                contactName: "Cal Lutheran Poli-Sci Alumni Network",
+                contactPhone: "",
+                contactEmail: "",
+                address: "California State Capitol & District Offices",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Legislative Aide, California State Assembly."
+            },
+            {
+                id: "alumni-house-counsel",
+                title: "Legislative Director & Counsel",
+                subtitle: "U.S. House of Representatives Alumni Pathways",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "los-angeles",
+                countyLabel: "Federal & Regional",
+                city: "Washington, D.C. & District Offices",
+                description: "Alumni serve as Legislative Directors, Committee Counsels, and Legislative Correspondents for members of Congress, directing policy portfolios on defense, healthcare, and budget oversight.",
+                contactName: "Poli-Sci Alumni Network",
+                contactPhone: "",
+                contactEmail: "",
+                address: "U.S. House of Representatives",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Legislative Director & Counsel, U.S. House of Representatives."
+            },
+            {
+                id: "alumni-public-defender",
+                title: "Assistant Public Defender & Deputy District Attorney",
+                subtitle: "Trial Attorneys & Criminal Justice Reformers",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "Ventura & Tri-Counties",
+                city: "Ventura & Los Angeles",
+                description: "Graduates have attended top law schools and serve as Assistant Public Defenders, Deputy District Attorneys, and civil rights litigators in county and federal courtrooms across California.",
+                contactName: "Pre-Law Alumni Mentors",
+                contactPhone: "",
+                contactEmail: "",
+                address: "County Government Centers",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Assistant Public Defender, Ventura County."
+            },
+            {
+                id: "alumni-city-manager",
+                title: "City Manager & Municipal Administrator",
+                subtitle: "Local Government Executive Leadership",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "Municipal Governments",
+                city: "Southern California Cities",
+                description: "Alumni lead municipal operations as City Managers, Assistant City Managers, and Community Development Directors, managing public works budgets, emergency response, and urban planning.",
+                contactName: "Public Administration Alumni",
+                contactPhone: "",
+                contactEmail: "",
+                address: "Various Municipalities",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: City Manager & Assistant City Administrator."
+            },
+            {
+                id: "alumni-foreign-service",
+                title: "Foreign Service & International NGO Officer",
+                subtitle: "Diplomatic Corps & Transnational Policy",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "los-angeles",
+                countyLabel: "Global / International",
+                city: "Global Placements",
+                description: "Alumni have pursued careers as Foreign Service Officers with the U.S. Department of State, international humanitarian logistics coordinators, and United Nations program liaisons.",
+                contactName: "International Relations Alumni",
+                contactPhone: "",
+                contactEmail: "",
+                address: "U.S. State Department & International NGOs",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Foreign Service Officer, U.S. Department of State."
+            },
+            {
+                id: "alumni-think-tank",
+                title: "Policy Analyst & Research Fellow",
+                subtitle: "Think Tanks & Public Policy Institutes",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "Regional & National",
+                city: "Los Angeles & Sacramento",
+                description: "Graduates conduct quantitative and qualitative policy research at non-partisan think tanks, economic development corporations, and doctoral research laboratories across the UC and CSU systems.",
+                contactName: "Research Alumni Network",
+                contactPhone: "",
+                contactEmail: "",
+                address: "Think Tanks & University Policy Labs",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Senior Research & Policy Analyst, Public Policy Labs."
+            }
+        ];
+
+        let activePathway = "all";
+        let activeCounty = "all";
+
+        function renderCards(cards) {
+            const grid = document.getElementById("cardGrid");
+            const resultsCount = document.getElementById("resultsCount");
+            grid.innerHTML = "";
+
+            if (cards.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No matching resources found</h3>
+                        <p>Try broadening your search term or clearing the selected filters.</p>
+                        <button class="filter-btn" style="margin-top: 1rem;" onclick="resetFilters()">Reset All Filters</button>
+                    </div>
+                `;
+                resultsCount.textContent = "Showing 0 listings";
+                return;
+            }
+
+            resultsCount.textContent = `Showing ${cards.length} verified listings`;
+
+            cards.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                let contactHtml = "";
+                if (item.contactName || item.contactPhone || item.contactEmail || item.address) {
+                    contactHtml = `<div class="contact-box">`;
+                    if (item.contactName) {
+                        contactHtml += `<div class="contact-item"><strong>Contact:</strong> <span>${item.contactName}</span></div>`;
+                    }
+                    if (item.contactPhone) {
+                        contactHtml += `<div class="contact-item"><strong>Phone:</strong> <a href="tel:${item.contactPhone.replace(/[^0-9+]/g, '')}">${item.contactPhone}</a></div>`;
+                    }
+                    if (item.contactEmail) {
+                        contactHtml += `<div class="contact-item"><strong>Email:</strong> <a href="mailto:${item.contactEmail}">${item.contactEmail}</a></div>`;
+                    }
+                    if (item.address) {
+                        contactHtml += `<div class="contact-item"><strong>Address:</strong> <span>${item.address}</span></div>`;
+                    }
+                    contactHtml += `</div>`;
+                }
+
+                let portalBtnHtml = "";
+                if (item.portalUrl) {
+                    portalBtnHtml = `<a href="${item.portalUrl}" target="_blank" class="portal-btn">View Website / Portal ↗</a>`;
+                }
+
+                let noteHtml = item.note ? `<span class="app-note">${item.note}</span>` : "";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="card-badges">
+                            <span class="badge badge-pathway">${item.pathwayLabel}</span>
+                            <span class="badge badge-county">${item.countyLabel}</span>
+                            <span class="badge badge-city">${item.city}</span>
+                        </div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="card-subtitle">${item.subtitle}</div>
+                        <p class="card-body">${item.description}</p>
+                        ${contactHtml}
+                    </div>
+                    <div class="card-footer">
+                        ${portalBtnHtml}
+                        ${noteHtml}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCards() {
+            const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+            const filtered = directoryData.filter(item => {
+                const matchesPathway = (activePathway === "all") || (item.pathway === activePathway);
+                const matchesCounty = (activeCounty === "all") || (item.county === activeCounty) || (item.county === "all");
+
+                const textToSearch = `${item.title} ${item.subtitle} ${item.description} ${item.city} ${item.contactName} ${item.contactEmail} ${item.address} ${item.pathwayLabel} ${item.countyLabel}`.toLowerCase();
+                const matchesSearch = query === "" || textToSearch.includes(query);
+
+                return matchesPathway && matchesCounty && matchesSearch;
+            });
+
+            renderCards(filtered);
+        }
+
+        function setPathwayFilter(pathway, btn) {
+            activePathway = pathway;
+            const buttons = document.querySelectorAll("#pathwayFilters .filter-btn");
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            filterCards();
+        }
+
+        function setCountyFilter(county, btn) {
+            activeCounty = county;
+            const buttons = document.querySelectorAll("#countyFilters .filter-btn");
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            filterCards();
+        }
+
+        function resetFilters() {
+            activePathway = "all";
+            activeCounty = "all";
+            document.getElementById("searchInput").value = "";
+            document.querySelectorAll("#pathwayFilters .filter-btn").forEach((b, i) => i === 0 ? b.classList.add("active") : b.classList.remove("active"));
+            document.querySelectorAll("#countyFilters .filter-btn").forEach((b, i) => i === 0 ? b.classList.add("active") : b.classList.remove("active"));
+            renderCards(directoryData);
+        }
+
+        // Initial Render
+        document.addEventListener("DOMContentLoaded", () => {
+            renderCards(directoryData);
+        });
+    </script>
 </body>
 
 </html>
