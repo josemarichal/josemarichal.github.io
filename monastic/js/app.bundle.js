@@ -531,6 +531,35 @@
         { title: "5. Look Forward to Tomorrow", durationSec: 120, guidance: "Ask for specific grace and wisdom for tomorrow's challenges." }
       ]
     },
+    {
+      id: "fruit-of-the-spirit",
+      tradition: "christian",
+      traditionLabel: "Christian Monasticism",
+      name: "Fruit of the Spirit",
+      latinName: "Fructus Spiritus",
+      category: "ethical-social",
+      categoryLabel: "Social Justice & Ritual Propriety",
+      durationMin: 15,
+      durationLabel: "10 – 15 Minutes",
+      frequency: "Daily",
+      icon: "tree-deciduous",
+      shortDesc: "Cultivating love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness, and self-control.",
+      longDesc: "The Fruit of the Spirit represents the transformative character of Christ growing within a believer. This practice involves an intentional, reflective, and active cultivation of these nine virtues (Galatians 5:22-23). Rather than relying on mere willpower, the practitioner yields to the Holy Spirit, allowing these virtues to guide their interactions and inner life.",
+      originHistory: "Apostle Paul's letter to the Galatians (Galatians 5:22-23).",
+      url: "",
+      tags: ["virtue", "character", "holy-spirit", "sanctification", "love", "joy", "peace"],
+      habitBenefits: [
+        "Replaces destructive impulses with life-giving virtues",
+        "Transforms interpersonal relationships through forbearance and kindness",
+        "Grounds the soul in divine peace and self-control amid chaos"
+      ],
+      scriptureOrQuote: "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law. — Galatians 5:22-23",
+      steps: [
+        { title: "Yielding (Love, Joy, Peace)", durationSec: 300, guidance: "Begin by resting in God's love. Ask the Spirit to fill you with a deep joy and a peace that surpasses understanding, setting the tone for the day." },
+        { title: "Relating (Forbearance, Kindness, Goodness)", durationSec: 300, guidance: "Consider your interactions with others today. Pray for the patience to bear with difficult people, the kindness to serve them, and the goodness to seek their true well-being." },
+        { title: "Grounding (Faithfulness, Gentleness, Self-Control)", durationSec: 300, guidance: "Commit to remaining faithful to your promises, responding to hostility with gentle grace, and exercising self-control over impulsive desires." }
+      ]
+    },
 
     // 3. JEWISH HALAKHA
     {
