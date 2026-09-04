@@ -134,6 +134,7 @@ COURSE SCHEDULE
 **Fri, Sep. 4**
 * **Required:**
   * *[OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/)* & *[Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/)*.
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/1cF4ey7LNfdM289BAeOEuKBtEU9IYwaKSxdnlK6uyuvs/edit?slide=id.g3fb251d7d21_0_19#slide=id.g3fb251d7d21_0_19)
 * **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How does federalism constrain California's ability to solve its affordable housing crisis locally, and how does the Polis conceptualize 'equity' in housing access compared to the Market?*
 
