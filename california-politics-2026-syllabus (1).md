@@ -177,8 +177,8 @@ COURSE SCHEDULE
   * **Stone**, Chapter 6 ("Symbols").
 
 * **Case Study:** Housing & Homelessness
-* ⭐ **Extra Credit (1 point):** Candidates Forum for City of Thousand Oaks Councilmember
-  * Wednesday, September 17 from 6:00 pm – 8:00 pm | Lundring Events Center at California Lutheran University
+* ⭐ **Extra Credit (1 point):** [Candidates Forum for City of Thousand Oaks Councilmember](https://www.conejochamber.org/events/details/candidates-forum-2026-13718)
+  * Thursday, September 17 from 6:00 pm – 8:00 pm | Lundring Events Center at California Lutheran University
   * *The Chamber, the Acorn Newspapers and Cal Lutheran University are collaborating to host this forum. It will be moderated by Becca Whitnall (The Acorn Newspapers) and Dr. Haco Hoang (CLU).*
 
 **Fri, Sep. 18**
