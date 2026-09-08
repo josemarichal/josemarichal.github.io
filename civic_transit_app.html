@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Transit | Political Science Internship Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #090e17;
+            --panel-bg: rgba(15, 23, 42, 0.6);
+            --line-red: #ef4444;
+            --line-blue: #3b82f6;
+            --line-green: #10b981;
+            --line-gold: #f59e0b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #0f172a;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header h1 span {
+            background: rgba(255,255,255,0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .user-points {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Panels */
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-heading);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Map Area */
+        .map-panel {
+            grid-column: 1 / 2;
+            overflow-y: auto;
+        }
+
+        .transit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .transit-line {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .transit-line.red { border-top: 4px solid var(--line-red); }
+        .transit-line.blue { border-top: 4px solid var(--line-blue); }
+        .transit-line.green { border-top: 4px solid var(--line-green); }
+        .transit-line.gold { border-top: 4px solid var(--line-gold); }
+
+        .transit-line h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .station-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .station {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        .station::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .red .station::before { background: var(--line-red); box-shadow: 0 0 10px var(--line-red); }
+        .blue .station::before { background: var(--line-blue); box-shadow: 0 0 10px var(--line-blue); }
+        .green .station::before { background: var(--line-green); box-shadow: 0 0 10px var(--line-green); }
+        .gold .station::before { background: var(--line-gold); box-shadow: 0 0 10px var(--line-gold); }
+
+        .capture-badge {
+            font-size: 0.7rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        /* Right Sidebar Layout */
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow-y: auto;
+        }
+
+        /* Logger Form */
+        .logger-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-main);
+            opacity: 0.8;
+        }
+
+        .form-group select, .form-group input {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 0.6rem;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            outline: none;
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .btn-swipe {
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 0.75rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-swipe:hover {
+            background: #0ea5e9; /* Slight shift */
+            transform: translateY(-1px);
+        }
+
+        /* Missions */
+        .mission-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mission-card {
+            background: rgba(255,255,255,0.03);
+            border-left: 3px solid #8b5cf6;
+            padding: 1rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .mission-card h4 {
+            margin: 0 0 0.4rem 0;
+            font-size: 0.9rem;
+            color: var(--text-heading);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .mission-bounty {
+            color: #8b5cf6;
+            font-family: var(--font-mono);
+        }
+
+        .mission-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        /* Leaderboard */
+        .leaderboard-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .leaderboard-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .leaderboard-list li span:last-child {
+            color: var(--accent-color);
+        }
+        
+        /* Toast Notification */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent-color);
+            color: #000;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-weight: bold;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 100;
+        }
+
+        #toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Civic Transit <span>INTERNSHIP TRACKER</span></h1>
+        <div class="user-profile">
+            <span>Team: <span style="color: #fff;">The Federalists</span></span> | 
+            <span>Score: <span class="user-points" id="nav-points">0</span> pts</span>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        
+        <!-- Left: The Map -->
+        <div class="panel map-panel">
+            <div class="panel-header">System Map</div>
+            <p style="margin: 0 0 1rem 0; font-size: 0.9rem; opacity: 0.8;">Explore the ecosystem. Complete actions to capture stations for your team.</p>
+            
+            <div class="transit-grid" id="transit-grid">
+                <!-- Javascript populates -->
+            </div>
+        </div>
+
+        <!-- Right: Actions & Leaderboards -->
+        <div class="right-sidebar">
+            
+            <!-- Activity Logger -->
+            <div class="panel">
+                <div class="panel-header">Swipe Oyster Card</div>
+                <div class="logger-form">
+                    <div class="form-group">
+                        <label>Action Type</label>
+                        <select id="action-type">
+                            <option value="10">Submit Application (+10 pts)</option>
+                            <option value="20">Cold Email Alumnus (+20 pts)</option>
+                            <option value="50">Informational Interview (+50 pts)</option>
+                            <option value="100">Official Interview (+100 pts)</option>
+                            <option value="200">Complete Mission (+200 pts)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Station</label>
+                        <select id="target-station">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <button class="btn-swipe" onclick="logAction()">Log Action</button>
+                </div>
+            </div>
+
+            <!-- Missions -->
+            <div class="panel">
+                <div class="panel-header">Active Missions</div>
+                <div class="mission-list">
+                    <div class="mission-card">
+                        <h4>The Gadfly <span class="mission-bounty">200 pts</span></h4>
+                        <p>Attend a local City Council meeting in person and log a 'Mission' action at City Hall.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h4>The Swamp Tour <span class="mission-bounty">150 pts</span></h4>
+                        <p>Log actions at a Lobbying Firm AND a Public Defender's office in the same week.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="panel">
+                <div class="panel-header">Team Standings</div>
+                <ul class="leaderboard-list">
+                    <li><span>1. The Federalists</span> <span>2,450 pts</span></li>
+                    <li><span>2. The Progressives</span> <span>2,100 pts</span></li>
+                    <li><span>3. Policy Wonks</span> <span>1,850 pts</span></li>
+                    <li><span>4. Campaigners</span> <span>1,200 pts</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">Action Logged! +Points</div>
+
+    <script>
+        // State
+        let userPoints = parseInt(localStorage.getItem('civicTransitPoints')) || 0;
+        
+        // Map Data
+        const mapData = [
+            {
+                id: 'red',
+                name: 'Electoral Line',
+                color: 'red',
+                stations: [
+                    { id: 'campaign_hq', name: 'Campaign HQ', capturedBy: 'The Federalists', points: 300 },
+                    { id: 'party_comm', name: 'Party Committee', capturedBy: 'Policy Wonks', points: 150 },
+                    { id: 'pollster', name: 'Polling Firm', capturedBy: 'None', points: 0 }
+                ]
+            },
+            {
+                id: 'blue',
+                name: 'Governance Line',
+                color: 'blue',
+                stations: [
+                    { id: 'city_hall', name: 'City Hall', capturedBy: 'The Progressives', points: 500 },
+                    { id: 'state_cap', name: 'State Capitol', capturedBy: 'The Federalists', points: 450 },
+                    { id: 'fed_agency', name: 'Federal Agency', capturedBy: 'None', points: 100 }
+                ]
+            },
+            {
+                id: 'green',
+                name: 'Advocacy Line',
+                color: 'green',
+                stations: [
+                    { id: 'aclu', name: 'ACLU', capturedBy: 'The Progressives', points: 350 },
+                    { id: 'think_tank', name: 'Think Tank', capturedBy: 'Campaigners', points: 200 },
+                    { id: 'grassroots', name: 'Grassroots Org', capturedBy: 'None', points: 50 }
+                ]
+            },
+            {
+                id: 'gold',
+                name: 'Legal/Lobby Line',
+                color: 'gold',
+                stations: [
+                    { id: 'law_firm', name: 'Corporate Law Firm', capturedBy: 'None', points: 0 },
+                    { id: 'pub_def', name: 'Public Defender', capturedBy: 'The Federalists', points: 250 },
+                    { id: 'k_street', name: 'Lobbying Shop', capturedBy: 'None', points: 0 }
+                ]
+            }
+        ];
+
+        // Initialization
+        function init() {
+            document.getElementById('nav-points').innerText = userPoints.toLocaleString();
+            renderMap();
+            populateSelects();
+        }
+
+        // Render Map UI
+        function renderMap() {
+            const grid = document.getElementById('transit-grid');
+            grid.innerHTML = '';
+
+            mapData.forEach(line => {
+                let html = `<div class="transit-line ${line.color}">
+                    <h3>${line.name}</h3>
+                    <ul class="station-list">`;
+                
+                line.stations.forEach(station => {
+                    let badge = station.capturedBy !== 'None' 
+                        ? `<span class="capture-badge" style="background: ${getBadgeColor(station.capturedBy)}">${station.capturedBy}</span>` 
+                        : '';
+                    
+                    html += `
+                        <li class="station">
+                            <span>${station.name}</span>
+                            ${badge}
+                        </li>
+                    `;
+                });
+
+                html += `</ul></div>`;
+                grid.innerHTML += html;
+            });
+        }
+
+        // Populate Form Selects
+        function populateSelects() {
+            const select = document.getElementById('target-station');
+            mapData.forEach(line => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = line.name;
+                line.stations.forEach(station => {
+                    const opt = document.createElement('option');
+                    opt.value = station.id;
+                    opt.text = station.name;
+                    optgroup.appendChild(opt);
+                });
+                select.appendChild(optgroup);
+            });
+        }
+
+        // Handle Swiping Card
+        function logAction() {
+            const pointsSelector = document.getElementById('action-type');
+            const stationSelector = document.getElementById('target-station');
+            
+            const pointsGained = parseInt(pointsSelector.value);
+            const stationId = stationSelector.value;
+            
+            // Update Points
+            userPoints += pointsGained;
+            localStorage.setItem('civicTransitPoints', userPoints);
+            document.getElementById('nav-points').innerText = userPoints.toLocaleString();
+
+            // Simulate Territory Capture if high points
+            simulateCapture(stationId, pointsGained);
+
+            // Show Toast
+            const toast = document.getElementById('toast');
+            toast.innerText = `Card Swiped! +${pointsGained} pts`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function simulateCapture(stationId, pointsGained) {
+            // Find station and increase points
+            mapData.forEach(line => {
+                line.stations.forEach(station => {
+                    if(station.id === stationId) {
+                        station.points += pointsGained;
+                        // If they dump a lot of points or accumulate enough, Federalist takes it
+                        if(station.points > 200 && station.capturedBy !== 'The Federalists') {
+                            station.capturedBy = 'The Federalists';
+                        }
+                    }
+                });
+            });
+            renderMap(); // Re-render to show capture badge updates
+        }
+
+        // Helper for Badge Colors
+        function getBadgeColor(team) {
+            if(team === 'The Federalists') return '#3b82f6';
+            if(team === 'The Progressives') return '#10b981';
+            if(team === 'Policy Wonks') return '#ef4444';
+            if(team === 'Campaigners') return '#f59e0b';
+            return 'rgba(255,255,255,0.1)';
+        }
+
+        // Run
+        init();
+    </script>
+</body>
+</html>
