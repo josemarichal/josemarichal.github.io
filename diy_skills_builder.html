@@ -3,110 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Skills Builder | The 40-30-30 Framework</title>
+    <title>DIY Skills Builder | The 40-30-30 Master Workshop</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --app-bg: #090e17;
             --sidebar-bg: #0f172a;
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --border-glow: rgba(16, 185, 129, 0.2);
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-hover: rgba(30, 41, 59, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(16, 185, 129, 0.25);
+            --accent-color: #10b981;
+            --accent-hover: #059669;
             --phase1-color: #3b82f6; /* Blue for Prep */
             --phase2-color: #f59e0b; /* Amber for Tech */
             --phase3-color: #ef4444; /* Red for Risk */
+            --yt-red: #ff0000;
+            --yt-hover: #cc0000;
+            --text-heading: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #94a3b8;
+            --star-gold: #fbbf24;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             background-color: var(--app-bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            letter-spacing: -0.01em;
         }
 
-        /* Top Navigation Bar */
+        /* Top App Header */
         .app-header {
             background-color: var(--sidebar-bg);
             border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            z-index: 20;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-toggle-btn {
+            display: none;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-heading);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         .app-title {
-            font-family: var(--font-heading);
             color: var(--text-heading);
-            font-size: 1.5rem;
+            font-size: 1.35rem;
+            font-weight: 700;
             margin: 0;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .app-title span {
-            font-size: 0.9rem;
-            background: var(--accent-color);
-            color: #fff;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: var(--font-mono);
-            letter-spacing: 1px;
-        }
-
-        .home-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-family: var(--font-mono);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            transition: all var(--transition-fast);
-        }
-
-        .home-link:hover {
-            border-color: var(--accent-color);
+        .app-title i {
             color: var(--accent-color);
         }
 
-        /* App Layout */
+        .app-title span.badge {
+            font-size: 0.75rem;
+            background: linear-gradient(135deg, var(--accent-color), #059669);
+            color: #fff;
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-link:hover {
+            border-color: var(--accent-color);
+            color: var(--text-heading);
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        /* Global Control & Search Bar */
+        .controls-bar {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            z-index: 15;
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 250px;
+        }
+
+        .progress-label {
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-heading);
+            white-space: nowrap;
+        }
+
+        .progress-label strong {
+            color: var(--accent-color);
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 999px;
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            flex: 1;
+            max-width: 380px;
+            min-width: 220px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.5rem 2rem 0.5rem 2.25rem;
+            color: var(--text-heading);
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            pointer-events: none;
+        }
+
+        .search-clear-btn {
+            position: absolute;
+            right: 0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: none;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-heading);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .filter-btn.active {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .btn-generator {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #090e17;
+            border: none;
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-generator:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        /* App Container & Sidebar */
         .app-container {
             display: flex;
             flex: 1;
             overflow: hidden;
+            position: relative;
         }
 
-        /* Sidebar Navigation */
         .sidebar {
-            width: 320px;
+            width: 340px;
             background-color: var(--sidebar-bg);
             border-right: 1px solid var(--border-color);
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
         .sidebar-header {
-            padding: 1.5rem;
+            padding: 1rem 1.25rem;
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             background: var(--sidebar-bg);
             z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .sidebar-header h3 {
             margin: 0;
             color: var(--text-heading);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .nav-list {
@@ -116,7 +321,7 @@
         }
 
         .nav-item {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
         .nav-btn {
@@ -124,111 +329,183 @@
             background: none;
             border: none;
             text-align: left;
-            padding: 1.25rem 1.5rem;
+            padding: 0.9rem 1.25rem;
             color: var(--text-main);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: all 0.2s ease;
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,255,255,0.03);
             color: var(--text-heading);
         }
 
         .nav-btn.active {
-            background: rgba(16, 185, 129, 0.08);
+            background: rgba(16, 185, 129, 0.1);
             border-left: 3px solid var(--accent-color);
             color: var(--text-heading);
+            font-weight: 600;
         }
 
-        .nav-num {
-            font-family: var(--font-mono);
+        .nav-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .nav-icon {
             color: var(--accent-color);
-            font-size: 0.8rem;
-            padding-top: 2px;
-            min-width: 20px;
+            font-size: 0.9rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        .nav-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-badge {
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .nav-badge.complete {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-color);
+            font-weight: bold;
         }
 
         /* Main Content Area */
         .main-content {
             flex: 1;
             overflow-y: auto;
-            padding: 3rem;
+            padding: 2.5rem;
             position: relative;
-        }
-
-        .main-content::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 320px;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
         }
 
         .content-wrapper {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
-            opacity: 1;
-            transition: opacity 0.3s ease;
         }
 
-        .content-wrapper.fade-out {
-            opacity: 0;
+        /* Section Hero Banner */
+        .section-hero {
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .skill-header {
-            margin-bottom: 3rem;
-            text-align: center;
+        .section-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--accent-color);
         }
 
-        .skill-title {
-            font-size: 2.5rem;
-            color: var(--text-heading);
-            margin: 0 0 1rem 0;
-            line-height: 1.2;
-        }
-
-        .framework-intro {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* The 40-30-30 Grid */
-        .framework-grid {
+        .section-badge-row {
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-num-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.12);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-heading);
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-intro {
+            font-size: 0.98rem;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 40-30-30 Framework Accordion / Section */
+        .framework-toggle-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .framework-toggle-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-heading);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .framework-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
         }
 
         .phase-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
             position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .phase-card:hover {
-            transform: translateY(-2px);
+            display: flex;
+            flex-direction: column;
         }
 
         .phase-card::before {
@@ -236,8 +513,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
+            right: 0;
+            height: 3px;
         }
 
         .phase-1::before { background-color: var(--phase1-color); }
@@ -247,16 +524,16 @@
         .phase-header {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 1rem;
+            padding-bottom: 0.75rem;
         }
 
         .phase-percent {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
             line-height: 1;
         }
 
@@ -264,368 +541,1165 @@
         .phase-2 .phase-percent { color: var(--phase2-color); }
         .phase-3 .phase-percent { color: var(--phase3-color); }
 
-        .phase-title-group h2 {
-            margin: 0 0 0.25rem 0;
-            font-size: 1.4rem;
+        .phase-title-group h4 {
+            margin: 0 0 0.15rem 0;
+            font-size: 1.05rem;
             color: var(--text-heading);
         }
 
         .phase-title-group p {
             margin: 0;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-main);
-            opacity: 0.7;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
             text-transform: uppercase;
         }
 
-        /* Phase Content Styling */
-        .checklist {
+        .phase-checklist {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            line-height: 1.45;
         }
 
-        .checklist li {
+        .phase-checklist li {
             position: relative;
-            padding-left: 1.75rem;
-            color: var(--text-main);
-            line-height: 1.5;
+            padding-left: 1.4rem;
         }
 
-        .checklist li::before {
+        .phase-checklist li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            top: 0;
             color: var(--phase1-color);
             font-weight: bold;
         }
 
-        .progression-path {
+        .phase-tiers {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 0.75rem;
+            font-size: 0.86rem;
         }
 
-        .skill-tier {
-            background: rgba(0,0,0,0.2);
-            padding: 1.25rem;
-            border: 1px solid rgba(255,255,255,0.03);
+        .tier-block {
+            background: rgba(0,0,0,0.25);
+            padding: 0.65rem 0.85rem;
             border-radius: 4px;
+            border-left: 2px solid var(--phase2-color);
         }
 
-        .skill-tier h4 {
-            margin: 0 0 0.75rem 0;
+        .tier-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
             color: var(--phase2-color);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
         }
-        
-        .skill-tier p {
-            margin: 0;
+
+        .tier-text {
             color: var(--text-main);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
-        .risk-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+        .phase-risks {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.86rem;
         }
 
-        .risk-box {
-            background: rgba(0,0,0,0.2);
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.03);
+        .risk-block {
+            background: rgba(0,0,0,0.25);
+            padding: 0.65rem 0.85rem;
             border-radius: 4px;
         }
 
-        .risk-box.alert {
-            border-color: rgba(239, 68, 68, 0.3);
-            background: rgba(239, 68, 68, 0.05);
+        .risk-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--phase3-color);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
         }
 
-        .risk-box h4 {
-            margin: 0 0 0.75rem 0;
-            color: var(--phase3-color);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
+        /* Tasks & Skills Section */
+        .tasks-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .tasks-header-row h3 {
+            font-size: 1.35rem;
+            color: var(--text-heading);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tasks-count-tag {
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 0.2rem 0.5rem;
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .task-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .task-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .task-card.completed {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.04);
+        }
+
+        .task-card.bookmarked {
+            border-color: rgba(251, 191, 36, 0.4);
+        }
+
+        .task-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 0.75rem;
+        }
+
+        .custom-checkbox {
+            margin-top: 3px;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .custom-checkbox:hover {
+            border-color: var(--accent-color);
+        }
+
+        .custom-checkbox.checked {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #090e17;
+        }
+
+        .task-title-group {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 1.12rem;
+            color: var(--text-heading);
+            font-weight: 700;
+            margin: 0 0 0.35rem 0;
+            line-height: 1.35;
+        }
+
+        .task-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 0.85rem;
+        }
+
+        .difficulty-badge {
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-weight: 600;
             text-transform: uppercase;
         }
 
-        .risk-box p {
-            margin: 0;
-            color: var(--text-main);
-            line-height: 1.5;
+        .diff-beginner {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
-        .placeholder-message {
+        .diff-intermediate {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .diff-advanced {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .time-badge {
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        .bookmark-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 2px 4px;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .bookmark-btn:hover {
+            color: var(--star-gold);
+            transform: scale(1.15);
+        }
+
+        .bookmark-btn.active {
+            color: var(--star-gold);
+        }
+
+        .task-tools {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .task-tools strong {
+            color: var(--text-main);
+        }
+
+        .task-narrative {
+            font-size: 0.88rem;
+            color: var(--text-main);
+            line-height: 1.55;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .narrative-item {
+            margin-bottom: 0.65rem;
+        }
+
+        .narrative-item strong {
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .protip-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 2px solid var(--phase2-color);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.84rem;
+            color: #fde68a;
+            margin-bottom: 1.25rem;
+            line-height: 1.45;
+        }
+
+        .protip-box strong {
+            color: #fbbf24;
+            display: block;
+            margin-bottom: 0.15rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .yt-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 0, 0, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 0, 0, 0.25);
+            padding: 0.65rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .yt-button:hover {
+            background: var(--yt-red);
+            color: #ffffff;
+            border-color: var(--yt-red);
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+        }
+
+        .yt-button i {
+            font-size: 1.1rem;
+        }
+
+        /* Generator Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .generator-modal {
+            background: var(--sidebar-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+            animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--text-heading);
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-header h3 i {
+            color: #f59e0b;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .routine-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .routine-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+
+        .routine-tag.tool { color: #3b82f6; }
+        .routine-tag.repair { color: #10b981; }
+        .routine-tag.project { color: #f59e0b; }
+
+        .routine-title {
+            font-size: 1.15rem;
+            color: var(--text-heading);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .routine-desc {
+            font-size: 0.88rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            line-height: 1.45;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-regenerate {
+            background: #f59e0b;
+            color: #090e17;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Empty / Search State */
+        .empty-results {
             text-align: center;
             padding: 4rem 2rem;
-            color: var(--text-main);
-            font-style: italic;
-            opacity: 0.6;
+            color: var(--text-muted);
         }
 
-        @media (max-width: 900px) {
-            .app-container { flex-direction: column; }
-            .sidebar { width: 100%; height: 30vh; border-right: none; border-bottom: 1px solid var(--border-color); }
-            .main-content { padding: 1.5rem; }
-            .risk-grid { grid-template-columns: 1fr; }
-            .main-content::before { left: 0; }
+        .empty-results i {
+            font-size: 3rem;
+            color: var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .app-container {
+                position: relative;
+            }
+            .sidebar {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 30;
+                transform: translateX(-100%);
+                box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .menu-toggle-btn {
+                display: block;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .progress-indicator {
+                width: 100%;
+            }
+            .search-box-wrapper {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Header -->
     <header class="app-header">
-        <h1 class="app-title">DIY Skills Builder <span>40-30-30</span></h1>
-        <a href="index.html" class="home-link">← Back to Portfolio</a>
+        <div class="header-left">
+            <button class="menu-toggle-btn" id="menu-toggle-btn" title="Toggle Sections Sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <h1 class="app-title">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                DIY Skills Builder 
+                <span class="badge">40-30-30 Master Companion</span>
+            </h1>
+        </div>
+        <nav class="header-nav">
+            <a href="index.html" class="header-link"><i class="fa-solid fa-arrow-left"></i> Portfolio</a>
+            <a href="just_for_fun.html" class="header-link"><i class="fa-solid fa-shapes"></i> Just for Fun</a>
+            <a href="guitar_trainer/index.html" class="header-link"><i class="fa-solid fa-guitar"></i> Guitar Trainer</a>
+        </nav>
     </header>
 
+    <!-- Global Progress and Search Bar -->
+    <section class="controls-bar">
+        <div class="progress-indicator">
+            <div class="progress-label" id="progress-text">
+                <strong id="completed-count">0</strong> / <span id="total-count">292</span> Mastered (<span id="percent-text">0%</span>)
+            </div>
+            <div class="progress-track" title="Overall Mastery Progress">
+                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="search-box-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" class="search-input" placeholder="Search 292 tasks, tools, techniques...">
+            <button id="search-clear-btn" class="search-clear-btn" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="beginner">Beginner</button>
+            <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+            <button class="filter-btn" data-filter="advanced">Advanced</button>
+            <button class="filter-btn" data-filter="completed"><i class="fa-solid fa-check"></i> Mastered</button>
+            <button class="filter-btn" data-filter="bookmarked"><i class="fa-solid fa-star"></i> Saved</button>
+        </div>
+
+        <button class="btn-generator" id="open-generator-btn">
+            <i class="fa-solid fa-dice"></i> Skill Generator
+        </button>
+    </section>
+
+    <!-- App Main Container -->
     <div class="app-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h3>Skill Domains</h3>
+                <h3>Curriculum Sections</h3>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">17 Domains</span>
             </div>
             <ul class="nav-list" id="nav-list">
-                <!-- Javascript will populate this -->
+                <!-- Javascript will populate sidebar items -->
             </ul>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Main Content Area -->
         <main class="main-content" id="main-content">
             <div class="content-wrapper" id="content-wrapper">
-                <!-- Javascript will populate this -->
+                <!-- Javascript will populate section content and cards -->
             </div>
         </main>
     </div>
 
+    <!-- Random Skill / Project Generator Modal -->
+    <div class="modal-overlay" id="generator-modal">
+        <div class="generator-modal">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-bolt"></i> Daily DIY Workshop Routine</h3>
+                <button class="modal-close-btn" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="routine-modal-body">
+                <!-- Routine items generated dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-regenerate" id="regenerate-routine-btn">
+                    <i class="fa-solid fa-rotate"></i> Roll New Routine
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Skills Database -->
+    <script src="diy_skills_data.js"></script>
+
+    <!-- Core Application Logic -->
     <script>
-        // The 17 Sections Data Structure
-        const skillsData = {
-            1: {
-                title: "Hand Tools: How to Choose and Use Them",
-                intro: "The fundamental building block of all manual labor. Mastering hand tools gives you precision, control, and a tactile understanding of materials.",
-                prep40: [
-                    "Assess your physical workspace: Ensure proper lighting, ventilation, and a sturdy workbench.",
-                    "Safety gear check: Safety glasses and heavy-duty work gloves are non-negotiable.",
-                    "Mental readiness: Understand that precision takes patience. Rushing cuts or measurements leads to mistakes and injury.",
-                    "Basic toolkit assembly: Acquire a claw hammer, crosscut saw, 25-foot tape measure, multi-bit screwdriver, and slip-joint pliers."
-                ],
-                tech30: {
-                    beginner: "Mastering the tape measure (measure twice, cut once). Basic hammering without bending nails. Operating manual screwdrivers without stripping heads.",
-                    intermediate: "Using hand saws (crosscut and rip saws) for straight, plumb cuts. Sharpening and setting saw teeth. Utilizing block planes for edge jointing.",
-                    expert: "Complex joining with chisels and gouges. Precision filing. Advanced vise and clamping techniques for flawless glue-ups."
-                },
-                risk30: {
-                    projects: "Building basic shelving, installing door hinges and hardware, crafting simple wooden boxes and framing.",
-                    risks: "Moderate physical risk (cuts, blisters, pinched fingers). Low financial risk, as materials for hand-tool projects are typically cheap.",
-                    callPro: "When structural integrity of a home's load-bearing walls is involved, or when restoring priceless antique furniture requiring specialized, calibrated tools."
-                }
-            },
-            7: {
-                title: "Plumbing: Keeping it in Working Order",
-                intro: "Plumbing combines fluid dynamics with mechanical fastening. It is high stakes—water damage is unforgiving—but deeply logical.",
-                prep40: [
-                    "Locate the main water shutoff valve immediately. Never start work without knowing how to kill the water supply.",
-                    "Prepare for a mess: Have buckets, heavy-duty towels, and a wet/dry shop vac on standby.",
-                    "Assemble the plumbing toolkit: Pipe wrenches, basin wrenches, Teflon tape, plumber's putty, and pipe cutters.",
-                    "Mental readiness: Accept that you will likely get wet and dirty. Panic leads to stripped threads and bigger leaks."
-                ],
-                tech30: {
-                    beginner: "Clearing clogged fixture drains and toilets. Replacing basic faucet aerators and showerheads. Applying Teflon tape to threaded fittings.",
-                    intermediate: "Replacing sink P-traps. Swapping out faucet cartridges. Installing new toilet flush valves and wax rings. Working with flexible plastic tubing (PEX).",
-                    expert: "Cutting, fluxing, and soldering (sweating) rigid copper pipe. Roughing-in new supply lines. Installing hot-water heaters and sump pumps."
-                },
-                risk30: {
-                    projects: "Fixing leaky faucets, upgrading shower hardware, installing dishwashers, completely resetting a toilet.",
-                    risks: "High financial risk if you fail to secure a pressurized supply line (flooding). Moderate physical risk if working with soldering torches.",
-                    callPro: "When dealing with main sewer line blockages, frozen/burst pipes inside walls, or tying into the municipal water main."
-                }
-            },
-            8: {
-                title: "Electricity: Solving Power Problems Safely",
-                intro: "Electrical work is highly abstract and completely invisible. It requires absolute adherence to code and safety protocols.",
-                prep40: [
-                    "Identify your main breaker panel. Map and label all circuits before touching a single wire.",
-                    "The golden rule toolkit: Non-contact voltage tester, wire strippers, linesman pliers, and insulated screwdrivers.",
-                    "Safety protocol: Buy a voltage tester and test it on a KNOWN LIVE circuit before trusting it on a dead one.",
-                    "Mental readiness: Fear is healthy here. Respect the invisible danger. Never work rushed or distracted."
-                ],
-                tech30: {
-                    beginner: "Understanding fuses vs. breakers. Repairing lamp cords and plugs. Replacing standard wall faceplates safely.",
-                    intermediate: "Wiring basic single-pole switches and standard 120V outlets. Installing new light fixtures and ceiling fans on existing boxes.",
-                    expert: "Wiring 3-way and 4-way switches. Running new Romex cable through walls. Calculating load for new circuits. Installing heavy outdoor lighting."
-                },
-                risk30: {
-                    projects: "Upgrading all home outlets to GFCI/AFCI, installing smart switches, hanging chandeliers, adding outdoor security lighting.",
-                    risks: "Extreme physical risk (electrocution, fire). Significant property risk if wiring is not up to code, potentially voiding home insurance.",
-                    callPro: "Upgrading the main service panel, installing sub-panels, running 240V circuits for heavy appliances, or rewiring knob-and-tube."
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+            // State Management
+            let completedTasks = new Set(JSON.parse(localStorage.getItem('diy_skills_completed') || '[]'));
+            let bookmarkedTasks = new Set(JSON.parse(localStorage.getItem('diy_skills_bookmarked') || '[]'));
+            let currentSectionId = 1;
+            let activeFilter = 'all';
+            let searchQuery = '';
+            let showFramework = true;
+
+            const database = window.diySkillsDatabase;
+            if (!database || !database.sections) {
+                console.error("Database not loaded!");
+                return;
             }
-        };
 
-        // All 17 Sections for the menu
-        const sectionNames = [
-            "Hand tools", "Power tools", "Fasteners, hardware, and adhesives", "Interior repairs", 
-            "Exterior repairs", "Furniture repair", "Plumbing", "Electricity", 
-            "Climate control", "Painting and decorating", "Working with wood", "Metals", 
-            "Glass, ceramics, plastics", "Brickwork and stonework", "Working with concrete", 
-            "Guide to better planning", "Fifty projects you can build"
-        ];
+            // Total Task Count
+            let totalTasksCount = 0;
+            database.sections.forEach(sec => totalTasksCount += sec.tasks.length);
+            document.getElementById('total-count').textContent = totalTasksCount;
 
-        // DOM Elements
-        const navList = document.getElementById('nav-list');
-        const contentWrapper = document.getElementById('content-wrapper');
+            // DOM Elements
+            const navList = document.getElementById('nav-list');
+            const contentWrapper = document.getElementById('content-wrapper');
+            const searchInput = document.getElementById('search-input');
+            const searchClearBtn = document.getElementById('search-clear-btn');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const sidebar = document.getElementById('sidebar');
 
-        // Initialization
-        function initApp() {
-            renderSidebar();
-            // Load Hand Tools by default
-            loadSkill(1);
-        }
+            // Generator Elements
+            const openGeneratorBtn = document.getElementById('open-generator-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const generatorModal = document.getElementById('generator-modal');
+            const regenerateBtn = document.getElementById('regenerate-routine-btn');
+            const routineBody = document.getElementById('routine-modal-body');
 
-        // Render Sidebar Navigation
-        function renderSidebar() {
-            sectionNames.forEach((name, index) => {
-                const sectionId = index + 1;
-                const li = document.createElement('li');
-                li.className = 'nav-item';
-                
-                const btn = document.createElement('button');
-                btn.className = 'nav-btn';
-                btn.id = `nav-${sectionId}`;
-                btn.innerHTML = `<span class="nav-num">${sectionId}.</span> <span>${name}</span>`;
-                
-                btn.addEventListener('click', () => loadSkill(sectionId));
-                li.appendChild(btn);
-                navList.appendChild(li);
-            });
-        }
+            // Initialize App
+            function init() {
+                renderSidebar();
+                updateGlobalProgress();
+                loadSection(1);
+                setupEventListeners();
+            }
 
-        // Load Skill Content
-        function loadSkill(id) {
-            // Update Active State
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`nav-${id}`).classList.add('active');
+            // Render Sidebar
+            function renderSidebar() {
+                navList.innerHTML = '';
+                database.sections.forEach(sec => {
+                    const secCompleted = sec.tasks.filter(t => completedTasks.has(t.id)).length;
+                    const isAllDone = secCompleted === sec.tasks.length && sec.tasks.length > 0;
 
-            // Fade out, update, fade in
-            contentWrapper.classList.add('fade-out');
-            
-            setTimeout(() => {
-                if (skillsData[id]) {
-                    renderFramework(skillsData[id]);
-                } else {
-                    renderPlaceholder(sectionNames[id - 1]);
+                    const li = document.createElement('li');
+                    li.className = 'nav-item';
+
+                    const btn = document.createElement('button');
+                    btn.className = `nav-btn ${sec.id === currentSectionId && !searchQuery ? 'active' : ''}`;
+                    btn.id = `nav-${sec.id}`;
+                    btn.innerHTML = `
+                        <div class="nav-info">
+                            <i class="fa-solid ${sec.icon || 'fa-wrench'} nav-icon"></i>
+                            <span class="nav-title">${sec.id}. ${sec.title.split(':')[0]}</span>
+                        </div>
+                        <span class="nav-badge ${isAllDone ? 'complete' : ''}" id="sec-badge-${sec.id}">
+                            ${secCompleted}/${sec.tasks.length}
+                        </span>
+                    `;
+
+                    btn.addEventListener('click', () => {
+                        searchQuery = '';
+                        searchInput.value = '';
+                        searchClearBtn.style.display = 'none';
+                        loadSection(sec.id);
+                        if (window.innerWidth <= 860) {
+                            sidebar.classList.remove('open');
+                        }
+                    });
+
+                    li.appendChild(btn);
+                    navList.appendChild(li);
+                });
+            }
+
+            // Update Progress Counts
+            function updateGlobalProgress() {
+                const completed = completedTasks.size;
+                const percent = Math.round((completed / totalTasksCount) * 100) || 0;
+                document.getElementById('completed-count').textContent = completed;
+                document.getElementById('percent-text').textContent = `${percent}%`;
+                document.getElementById('progress-bar-fill').style.width = `${percent}%`;
+
+                // Update section badges
+                database.sections.forEach(sec => {
+                    const count = sec.tasks.filter(t => completedTasks.has(t.id)).length;
+                    const badge = document.getElementById(`sec-badge-${sec.id}`);
+                    if (badge) {
+                        badge.textContent = `${count}/${sec.tasks.length}`;
+                        if (count === sec.tasks.length && count > 0) {
+                            badge.classList.add('complete');
+                        } else {
+                            badge.classList.remove('complete');
+                        }
+                    }
+                });
+
+                // Persist state
+                localStorage.setItem('diy_skills_completed', JSON.stringify([...completedTasks]));
+                localStorage.setItem('diy_skills_bookmarked', JSON.stringify([...bookmarkedTasks]));
+            }
+
+            // Load Section
+            function loadSection(id) {
+                currentSectionId = id;
+
+                // Update sidebar active classes
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                const activeBtn = document.getElementById(`nav-${id}`);
+                if (activeBtn) activeBtn.classList.add('active');
+
+                const sec = database.sections.find(s => s.id === id);
+                if (!sec) return;
+
+                renderSectionView(sec);
+                document.getElementById('main-content').scrollTop = 0;
+            }
+
+            // Render Section Content
+            function renderSectionView(sec) {
+                let tasksToRender = sec.tasks;
+
+                // Apply difficulty / status filters
+                if (activeFilter === 'beginner') tasksToRender = tasksToRender.filter(t => t.difficulty === 'Beginner');
+                if (activeFilter === 'intermediate') tasksToRender = tasksToRender.filter(t => t.difficulty === 'Intermediate');
+                if (activeFilter === 'advanced') tasksToRender = tasksToRender.filter(t => t.difficulty === 'Advanced');
+                if (activeFilter === 'completed') tasksToRender = tasksToRender.filter(t => completedTasks.has(t.id));
+                if (activeFilter === 'bookmarked') tasksToRender = tasksToRender.filter(t => bookmarkedTasks.has(t.id));
+
+                const prepListHTML = sec.prep40.map(item => `<li>${item}</li>`).join('');
+
+                contentWrapper.innerHTML = `
+                    <div class="section-hero">
+                        <div class="section-badge-row">
+                            <span class="section-num-tag">Section ${sec.id} of 17</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                                ${sec.tasks.length} Handcrafted Tasks
+                            </span>
+                        </div>
+                        <h2 class="section-title">${sec.title}</h2>
+                        <div class="section-subtitle">${sec.subtitle}</div>
+                        <p class="section-intro">${sec.intro}</p>
+                    </div>
+
+                    <div class="framework-toggle-bar">
+                        <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-heading);">
+                            <i class="fa-solid fa-scale-balanced" style="color: var(--phase2-color); margin-right: 6px;"></i> 
+                            The 40-30-30 Mastery Framework
+                        </h3>
+                        <button class="framework-toggle-btn" id="toggle-framework-btn">
+                            <i class="fa-solid ${showFramework ? 'fa-eye-slash' : 'fa-eye'}"></i>
+                            ${showFramework ? 'Hide Framework Details' : 'Show Framework Details'}
+                        </button>
+                    </div>
+
+                    <div class="framework-grid" id="framework-grid" style="display: ${showFramework ? 'grid' : 'none'};">
+                        <!-- 40% Prep -->
+                        <div class="phase-card phase-1">
+                            <div class="phase-header">
+                                <div class="phase-percent">40%</div>
+                                <div class="phase-title-group">
+                                    <h4>Preparation</h4>
+                                    <p>Physical & Mental Readiness</p>
+                                </div>
+                            </div>
+                            <ul class="phase-checklist">
+                                ${prepListHTML}
+                            </ul>
+                        </div>
+
+                        <!-- 30% Tech -->
+                        <div class="phase-card phase-2">
+                            <div class="phase-header">
+                                <div class="phase-percent">30%</div>
+                                <div class="phase-title-group">
+                                    <h4>Technical Skill</h4>
+                                    <p>Progression Milestones</p>
+                                </div>
+                            </div>
+                            <div class="phase-tiers">
+                                <div class="tier-block">
+                                    <div class="tier-label">Beginner</div>
+                                    <div class="tier-text">${sec.tech30.beginner}</div>
+                                </div>
+                                <div class="tier-block">
+                                    <div class="tier-label">Intermediate</div>
+                                    <div class="tier-text">${sec.tech30.intermediate}</div>
+                                </div>
+                                <div class="tier-block">
+                                    <div class="tier-label">Expert</div>
+                                    <div class="tier-text">${sec.tech30.expert}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 30% Risk -->
+                        <div class="phase-card phase-3">
+                            <div class="phase-header">
+                                <div class="phase-percent">30%</div>
+                                <div class="phase-title-group">
+                                    <h4>Risk Taking</h4>
+                                    <p>Execution Bounds</p>
+                                </div>
+                            </div>
+                            <div class="phase-risks">
+                                <div class="risk-block">
+                                    <div class="risk-label">Appropriate Projects</div>
+                                    <div style="color: var(--text-main); line-height: 1.4;">${sec.risk30.projects}</div>
+                                </div>
+                                <div class="risk-block">
+                                    <div class="risk-label">Inherent Risks</div>
+                                    <div style="color: var(--text-main); line-height: 1.4;">${sec.risk30.risks}</div>
+                                </div>
+                                <div class="risk-block" style="border-left: 2px solid var(--phase3-color);">
+                                    <div class="risk-label">When to Call a Pro</div>
+                                    <div style="color: var(--text-main); line-height: 1.4;">${sec.risk30.callPro}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tasks-header-row">
+                        <h3>
+                            <i class="fa-solid fa-list-check" style="color: var(--accent-color);"></i>
+                            Hands-On Skills & Tasks
+                            <span class="tasks-count-tag">${tasksToRender.length} ${tasksToRender.length === 1 ? 'Task' : 'Tasks'}</span>
+                        </h3>
+                    </div>
+
+                    <div class="tasks-grid" id="tasks-grid">
+                        ${renderTasksHTML(tasksToRender)}
+                    </div>
+                `;
+
+                // Attach Task Listeners
+                attachTaskCardListeners();
+
+                // Framework Toggle Listener
+                document.getElementById('toggle-framework-btn').addEventListener('click', () => {
+                    showFramework = !showFramework;
+                    document.getElementById('framework-grid').style.display = showFramework ? 'grid' : 'none';
+                    document.getElementById('toggle-framework-btn').innerHTML = `
+                        <i class="fa-solid ${showFramework ? 'fa-eye-slash' : 'fa-eye'}"></i>
+                        ${showFramework ? 'Hide Framework Details' : 'Show Framework Details'}
+                    `;
+                });
+            }
+
+            // Render Search Results
+            function renderSearchResults(query) {
+                const lower = query.toLowerCase();
+                let matches = [];
+
+                database.sections.forEach(sec => {
+                    sec.tasks.forEach(task => {
+                        const inTitle = task.title.toLowerCase().includes(lower);
+                        const inOverview = task.overview.toLowerCase().includes(lower);
+                        const inTechnique = task.technique.toLowerCase().includes(lower);
+                        const inTools = task.tools.toLowerCase().includes(lower);
+                        const inProTip = task.proTip.toLowerCase().includes(lower);
+
+                        if (inTitle || inOverview || inTechnique || inTools || inProTip) {
+                            matches.push({ ...task, secTitle: sec.title, secId: sec.id });
+                        }
+                    });
+                });
+
+                // Apply active filter
+                if (activeFilter === 'beginner') matches = matches.filter(t => t.difficulty === 'Beginner');
+                if (activeFilter === 'intermediate') matches = matches.filter(t => t.difficulty === 'Intermediate');
+                if (activeFilter === 'advanced') matches = matches.filter(t => t.difficulty === 'Advanced');
+                if (activeFilter === 'completed') matches = matches.filter(t => completedTasks.has(t.id));
+                if (activeFilter === 'bookmarked') matches = matches.filter(t => bookmarkedTasks.has(t.id));
+
+                contentWrapper.innerHTML = `
+                    <div class="tasks-header-row">
+                        <h3>
+                            <i class="fa-solid fa-magnifying-glass" style="color: var(--accent-color);"></i>
+                            Search Results for "${query}"
+                            <span class="tasks-count-tag">${matches.length} matches found</span>
+                        </h3>
+                    </div>
+                    ${matches.length === 0 ? `
+                        <div class="empty-results">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <h3>No matching skills or tasks found</h3>
+                            <p>Try searching for broader terms like "hammer", "pipe", "wire", "paint", or "table".</p>
+                        </div>
+                    ` : `
+                        <div class="tasks-grid">
+                            ${renderTasksHTML(matches, true)}
+                        </div>
+                    `}
+                `;
+
+                attachTaskCardListeners();
+            }
+
+            // Generate HTML for Tasks
+            function renderTasksHTML(tasks, isSearch = false) {
+                if (tasks.length === 0) {
+                    return `
+                        <div class="empty-results" style="grid-column: 1 / -1;">
+                            <i class="fa-solid fa-filter"></i>
+                            <h3>No tasks match the active filter</h3>
+                            <p>Switch your filter to "All" to view all available tasks in this section.</p>
+                        </div>
+                    `;
                 }
-                contentWrapper.classList.remove('fade-out');
-            }, 300);
-        }
 
-        // Render the 40-30-30 Framework UI
-        function renderFramework(data) {
-            let prepListHTML = data.prep40.map(item => `<li>${item}</li>`).join('');
+                return tasks.map(task => {
+                    const isDone = completedTasks.has(task.id);
+                    const isBookmarked = bookmarkedTasks.has(task.id);
+                    const diffClass = task.difficulty === 'Beginner' ? 'diff-beginner' :
+                                      task.difficulty === 'Intermediate' ? 'diff-intermediate' : 'diff-advanced';
 
-            contentWrapper.innerHTML = `
-                <div class="skill-header">
-                    <h2 class="skill-title">${data.title}</h2>
-                    <p class="framework-intro">${data.intro}</p>
-                </div>
-
-                <div class="framework-grid">
-                    
-                    <!-- 40% Preparation -->
-                    <div class="phase-card phase-1">
-                        <div class="phase-header">
-                            <div class="phase-percent">40%</div>
-                            <div class="phase-title-group">
-                                <h2>Preparation</h2>
-                                <p>Physical Setup & Mental Readiness</p>
+                    return `
+                        <div class="task-card ${isDone ? 'completed' : ''} ${isBookmarked ? 'bookmarked' : ''}" id="card-${task.id}">
+                            <div class="task-card-header">
+                                <div class="custom-checkbox ${isDone ? 'checked' : ''}" data-task-id="${task.id}" title="Toggle Mastered">
+                                    ${isDone ? '<i class="fa-solid fa-check"></i>' : ''}
+                                </div>
+                                <div class="task-title-group">
+                                    ${isSearch ? `<div style="font-size: 0.75rem; color: var(--accent-color); font-family: 'JetBrains Mono', monospace; margin-bottom: 2px;">Section ${task.secId}</div>` : ''}
+                                    <h4 class="task-title">${task.title}</h4>
+                                    <div class="task-meta-row">
+                                        <span class="difficulty-badge ${diffClass}">${task.difficulty}</span>
+                                        <span class="time-badge"><i class="fa-regular fa-clock"></i> ${task.timeEst}</span>
+                                    </div>
+                                </div>
+                                <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${task.id}" title="Bookmark this skill">
+                                    <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+                                </button>
                             </div>
+
+                            <div class="task-tools">
+                                <strong><i class="fa-solid fa-toolbox"></i> Tools:</strong> ${task.tools}
+                            </div>
+
+                            <div class="task-narrative">
+                                <div class="narrative-item">
+                                    <strong>Overview & Purpose</strong>
+                                    ${task.overview}
+                                </div>
+                                <div class="narrative-item">
+                                    <strong>Step-by-Step Technique</strong>
+                                    ${task.technique}
+                                </div>
+                            </div>
+
+                            <div class="protip-box">
+                                <strong><i class="fa-solid fa-lightbulb"></i> Trade Secret & Safety:</strong>
+                                ${task.proTip}
+                            </div>
+
+                            <a href="${task.ytQuery}" target="_blank" class="yt-button">
+                                <i class="fa-brands fa-youtube"></i> Watch Video Guides
+                            </a>
                         </div>
-                        <ul class="checklist">
-                            ${prepListHTML}
-                        </ul>
+                    `;
+                }).join('');
+            }
+
+            // Attach Checkbox and Bookmark Listeners
+            function attachTaskCardListeners() {
+                // Checkboxes
+                document.querySelectorAll('.custom-checkbox').forEach(box => {
+                    box.addEventListener('click', (e) => {
+                        const taskId = box.getAttribute('data-task-id');
+                        const card = document.getElementById(`card-${taskId}`);
+
+                        if (completedTasks.has(taskId)) {
+                            completedTasks.delete(taskId);
+                            box.classList.remove('checked');
+                            box.innerHTML = '';
+                            if (card) card.classList.remove('completed');
+                        } else {
+                            completedTasks.add(taskId);
+                            box.classList.add('checked');
+                            box.innerHTML = '<i class="fa-solid fa-check"></i>';
+                            if (card) card.classList.add('completed');
+                        }
+
+                        updateGlobalProgress();
+                    });
+                });
+
+                // Bookmarks
+                document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const taskId = btn.getAttribute('data-bookmark-id');
+                        const card = document.getElementById(`card-${taskId}`);
+
+                        if (bookmarkedTasks.has(taskId)) {
+                            bookmarkedTasks.delete(taskId);
+                            btn.classList.remove('active');
+                            btn.innerHTML = '<i class="fa-regular fa-star"></i>';
+                            if (card) card.classList.remove('bookmarked');
+                        } else {
+                            bookmarkedTasks.add(taskId);
+                            btn.classList.add('active');
+                            btn.innerHTML = '<i class="fa-solid fa-star"></i>';
+                            if (card) card.classList.add('bookmarked');
+                        }
+
+                        localStorage.setItem('diy_skills_bookmarked', JSON.stringify([...bookmarkedTasks]));
+                    });
+                });
+            }
+
+            // Setup Search & Filters
+            function setupEventListeners() {
+                // Search Input
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value.trim();
+                    if (searchQuery.length > 0) {
+                        searchClearBtn.style.display = 'block';
+                        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                        renderSearchResults(searchQuery);
+                    } else {
+                        searchClearBtn.style.display = 'none';
+                        loadSection(currentSectionId);
+                    }
+                });
+
+                searchClearBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    searchQuery = '';
+                    searchClearBtn.style.display = 'none';
+                    loadSection(currentSectionId);
+                });
+
+                // Filter Buttons
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        activeFilter = btn.getAttribute('data-filter');
+
+                        if (searchQuery) {
+                            renderSearchResults(searchQuery);
+                        } else {
+                            loadSection(currentSectionId);
+                        }
+                    });
+                });
+
+                // Mobile Menu Toggle
+                menuToggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                });
+
+                // Generator Modal
+                openGeneratorBtn.addEventListener('click', generateDailyRoutine);
+                regenerateBtn.addEventListener('click', generateDailyRoutine);
+                closeModalBtn.addEventListener('click', () => generatorModal.classList.remove('show'));
+                generatorModal.addEventListener('click', (e) => {
+                    if (e.target === generatorModal) generatorModal.classList.remove('show');
+                });
+            }
+
+            // Generate Daily 3-Part Workshop Routine
+            function generateDailyRoutine() {
+                // Category 1: Hand / Power Tools (Sections 1, 2, 12)
+                const toolTasks = [];
+                [1, 2, 12].forEach(id => {
+                    const s = database.sections.find(sec => sec.id === id);
+                    if (s) toolTasks.push(...s.tasks.map(t => ({ ...t, secTitle: s.title })));
+                });
+
+                // Category 2: Home Repairs (Sections 4, 5, 6, 7, 8, 9, 10, 14, 15)
+                const repairTasks = [];
+                [4, 5, 6, 7, 8, 9, 10, 14, 15].forEach(id => {
+                    const s = database.sections.find(sec => sec.id === id);
+                    if (s) repairTasks.push(...s.tasks.map(t => ({ ...t, secTitle: s.title })));
+                });
+
+                // Category 3: Planning & Projects (Sections 3, 11, 16, 17)
+                const projectTasks = [];
+                [3, 11, 16, 17].forEach(id => {
+                    const s = database.sections.find(sec => sec.id === id);
+                    if (s) projectTasks.push(...s.tasks.map(t => ({ ...t, secTitle: s.title })));
+                });
+
+                const pick1 = toolTasks[Math.floor(Math.random() * toolTasks.length)];
+                const pick2 = repairTasks[Math.floor(Math.random() * repairTasks.length)];
+                const pick3 = projectTasks[Math.floor(Math.random() * projectTasks.length)];
+
+                routineBody.innerHTML = `
+                    <div class="routine-card">
+                        <div class="routine-tag tool"><i class="fa-solid fa-wrench"></i> Drill #1: Workshop & Tool Skill</div>
+                        <div class="routine-title">${pick1.title}</div>
+                        <div class="routine-desc">${pick1.overview}</div>
+                        <div style="margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
+                            <strong>Tools:</strong> ${pick1.tools}
+                        </div>
+                        <a href="${pick1.ytQuery}" target="_blank" class="yt-button" style="display: inline-flex;">
+                            <i class="fa-brands fa-youtube"></i> Watch ${pick1.title} Guide
+                        </a>
                     </div>
 
-                    <!-- 30% Technical Skill -->
-                    <div class="phase-card phase-2">
-                        <div class="phase-header">
-                            <div class="phase-percent">30%</div>
-                            <div class="phase-title-group">
-                                <h2>Technical Skill & Experience</h2>
-                                <p>Progression Path</p>
-                            </div>
+                    <div class="routine-card">
+                        <div class="routine-tag repair"><i class="fa-solid fa-house-chimney-crack"></i> Drill #2: Home Maintenance & Repair</div>
+                        <div class="routine-title">${pick2.title}</div>
+                        <div class="routine-desc">${pick2.overview}</div>
+                        <div style="margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
+                            <strong>Technique:</strong> ${pick2.technique}
                         </div>
-                        <div class="progression-path">
-                            <div class="skill-tier">
-                                <h4>Beginner</h4>
-                                <p>${data.tech30.beginner}</p>
-                            </div>
-                            <div class="skill-tier">
-                                <h4>Intermediate</h4>
-                                <p>${data.tech30.intermediate}</p>
-                            </div>
-                            <div class="skill-tier">
-                                <h4>Expert</h4>
-                                <p>${data.tech30.expert}</p>
-                            </div>
-                        </div>
+                        <a href="${pick2.ytQuery}" target="_blank" class="yt-button" style="display: inline-flex;">
+                            <i class="fa-brands fa-youtube"></i> Watch ${pick2.title} Guide
+                        </a>
                     </div>
 
-                    <!-- 30% Risk Taking -->
-                    <div class="phase-card phase-3">
-                        <div class="phase-header">
-                            <div class="phase-percent">30%</div>
-                            <div class="phase-title-group">
-                                <h2>Willingness to Take Risks</h2>
-                                <p>Execution & Bounds</p>
-                            </div>
+                    <div class="routine-card">
+                        <div class="routine-tag project"><i class="fa-solid fa-hammer"></i> Drill #3: Craft & Project Mastery</div>
+                        <div class="routine-title">${pick3.title}</div>
+                        <div class="routine-desc">${pick3.overview}</div>
+                        <div style="margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
+                            <strong>Trade Secret:</strong> ${pick3.proTip}
                         </div>
-                        <div class="risk-grid">
-                            <div class="risk-box">
-                                <h4>Appropriate Projects</h4>
-                                <p>${data.risk30.projects}</p>
-                            </div>
-                            <div class="risk-box">
-                                <h4>Inherent Risks</h4>
-                                <p>${data.risk30.risks}</p>
-                            </div>
-                            <div class="risk-box alert" style="grid-column: 1 / -1;">
-                                <h4>When to Call a Pro</h4>
-                                <p>${data.risk30.callPro}</p>
-                            </div>
-                        </div>
+                        <a href="${pick3.ytQuery}" target="_blank" class="yt-button" style="display: inline-flex;">
+                            <i class="fa-brands fa-youtube"></i> Watch ${pick3.title} Guide
+                        </a>
                     </div>
+                `;
 
-                </div>
-            `;
-        }
+                generatorModal.classList.add('show');
+            }
 
-        // Render Placeholder for unpopulated sections
-        function renderPlaceholder(title) {
-            contentWrapper.innerHTML = `
-                <div class="skill-header">
-                    <h2 class="skill-title">${title}</h2>
-                    <p class="framework-intro">The 40-30-30 framework mapping for this skill is currently being developed.</p>
-                </div>
-                <div class="placeholder-message">
-                    <h3 style="margin-top: 0;">Module Data Not Yet Available</h3>
-                    <p>Select <strong>Hand tools (1)</strong>, <strong>Plumbing (7)</strong>, or <strong>Electricity (8)</strong> to see the framework in action.</p>
-                </div>
-            `;
-        }
-
-        // Start App
-        initApp();
+            // Launch App
+            init();
+        });
     </script>
 </body>
 </html>
