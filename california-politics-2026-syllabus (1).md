@@ -155,10 +155,11 @@ COURSE SCHEDULE
 * **Required:**
   * Peter Schrag, *[Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost)* [Book/Library] (Chapter 1: "The Tax Revolt")
   * **Stone**, Chapter 7 ("Numbers").
+  * *[California Housing Affordability: Core Issue 3 (Development Impact Fees and Proposition 13)](california_housing_affordability.html#issue-3)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 3: Development Impact Fees and the Shadow of Proposition 13](california_housing_affordability.html#issue-3)* — **Role & Scenario:** You are a housing developer trying to build a 40-unit apartment building in Thousand Oaks.
-  * *• 5–7 min (Read & Extract):* Skim Section #3 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is an *impact fee*, and what is *Proposition 13*? (2) How much do impact fees cost per unit in California compared to the national average? (3) As a developer, how do high impact fees ($48,000/unit in Thousand Oaks) make it harder for you to build or keep rents affordable?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is an *impact fee*, and what is *Proposition 13*? (2) How much do impact fees cost per unit in California compared to the national average? (3) As a developer, how do high impact fees ($48,000/unit in Thousand Oaks) make it harder for you to build or keep rents affordable?
   * *• 15 min (Pair Discussion):* With a partner (one developer, one city planner), discuss: If the city charges $48,000 per unit in impact fees before construction even starts, who actually ends up paying that cost, and what happens if a project can no longer afford to build?
-  * *• 8–10 min (Debrief & Deliverable):* Write down a 2-sentence summary explaining how impact fees act as a hidden cost passed along to renters and homebuyers.
+  * *• 10 min (Debrief & Deliverable):* Write down a 2-sentence summary explaining how impact fees act as a hidden cost passed along to renters and homebuyers.
 * ***Discussion Prompt:** In Stone's terms, how did Prop 13 use the symbol of the "vulnerable homeowner" to institutionalize permanent fiscal scarcity, and how does this affect affordable housing production today?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
@@ -171,19 +172,21 @@ COURSE SCHEDULE
 * **Required:**
   * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/)*
   * **Stone**, Chapter 9 ("Interests").
+  * *[California Housing Affordability: Core Issue 4 (Financing Complexity and Capital Stacking)](california_housing_affordability.html#issue-4)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 4: Financing Complexity and "Capital Stacking" in Affordable Housing](california_housing_affordability.html#issue-4)* — **Role & Scenario:** You work for Many Mansions, a Thousand Oaks non-profit organization trying to build an affordable apartment community for lower-income families.
-  * *• 5–7 min (Read & Extract):* Skim Section #4 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is *capital stacking*, and what is the *Low-Income Housing Tax Credit (LIHTC)*? (2) Why can't affordable housing just be built with a standard commercial bank loan? (3) How many different government funding sources do developers typically have to piece together (3.5 to 11), and how much delay (+10 months) and extra cost (+$20,460/unit) does each additional layer add?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *capital stacking*, and what is the *Low-Income Housing Tax Credit (LIHTC)*? (2) Why can't affordable housing just be built with a standard commercial bank loan? (3) How many different government funding sources do developers typically have to piece together (3.5 to 11), and how much delay (+10 months) and extra cost (+$20,460/unit) does each additional layer add?
   * *• 15 min (Pair Discussion):* With a partner, discuss: Why does having to apply for 4 or 5 separate public funding programs make building affordable housing take years longer and cost over $500,000 per unit?
-  * *• 8–10 min (Debrief & Deliverable):* Share one reform highlighted in the write-up (such as a consolidated "one-stop-shop" application) that would make Many Mansions' job easier.
+  * *• 10 min (Debrief & Deliverable):* Share one reform highlighted in the write-up (such as a consolidated "one-stop-shop" application) that would make Many Mansions' job easier.
 
 **Wed, Sep. 16**
 * **Required:**
   * *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/statelocal/chapter/chapter-7/)*
   * **Stone**, Chapter 6 ("Symbols").
+  * *[California Housing Affordability: Core Issue 5 (Hard Construction Costs and Labor Economics)](california_housing_affordability.html#issue-5)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 5: Hard Construction Costs, Labor Economics, and Prescriptive Codes](california_housing_affordability.html#issue-5)* — **Role & Scenario:** You are an infill developer planning a new apartment complex near Janss Marketplace in Thousand Oaks.
-  * *• 5–7 min (Read & Extract):* Skim Section #5 of the dashboard write-up. Pull out: (1) **Define the key terms:** What are *hard costs*, and what is a *prevailing wage*? (2) How much does it cost to build a single apartment in California compared to states like Texas (2.3× higher)? (3) What is the trade-off between paying higher union prevailing wages to get fast-track state approval vs. using cheaper non-union labor that risks long local delays?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What are *hard costs*, and what is a *prevailing wage*? (2) How much does it cost to build a single apartment in California compared to states like Texas (2.3× higher)? (3) What is the trade-off between paying higher union prevailing wages to get fast-track state approval vs. using cheaper non-union labor that risks long local delays?
   * *• 15 min (Pair Discussion):* In pairs, discuss: As a developer in Thousand Oaks, would you choose to pay higher prevailing wages to guarantee faster approval, or use cheaper non-union labor and risk two years of city hearings and delays? Why?
-  * *• 8–10 min (Debrief & Deliverable):* Cast a quick class vote (Fast-track with union wages vs. cheaper labor with delays) with a 1-sentence explanation.
+  * *• 10 min (Debrief & Deliverable):* Cast a quick class vote (Fast-track with union wages vs. cheaper labor with delays) with a 1-sentence explanation.
 * ⭐ **Extra Credit (1 point):** [Candidates Forum for City of Thousand Oaks Councilmember](https://www.conejochamber.org/events/details/candidates-forum-2026-13718)
   * Thursday, September 17 from 6:00 pm – 8:00 pm | Lundring Events Center at California Lutheran University
   * *The Chamber, the Acorn Newspapers and Cal Lutheran University are collaborating to host this forum. It will be moderated by Becca Whitnall (The Acorn Newspapers) and Dr. Haco Hoang (CLU).*
@@ -192,10 +195,11 @@ COURSE SCHEDULE
 * **Required:**
   * *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/)*
   * **Stone**, Chapter 8 ("Causes").
+  * *[California Housing Affordability: Core Issue 6 (Constitutional Roadblocks and Article 34)](california_housing_affordability.html#issue-6)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 6: Constitutional Roadblocks and the Legacy of Article 34](california_housing_affordability.html#issue-6)* — **Role & Scenario:** You are an affordable housing advocate advising the Thousand Oaks City Council on building homes for local workforce families on city-owned land (near the Civic Arts Plaza).
-  * *• 5–7 min (Read & Extract):* Skim Section #6 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is *Article 34* of the California Constitution, and what is *public housing*? (2) Why was Article 34 originally passed in 1950, and how did it reinforce racial and economic segregation in California suburbs? (3) How do modern projects avoid triggering a mandatory citywide public vote (such as keeping subsidized units under 49%)?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *Article 34* of the California Constitution, and what is *public housing*? (2) Why was Article 34 originally passed in 1950, and how did it reinforce racial and economic segregation in California suburbs? (3) How do modern projects avoid triggering a mandatory citywide public vote (such as keeping subsidized units under 49%)?
   * *• 15 min (Pair Discussion):* In pairs, discuss: If Thousand Oaks wanted to build 100% city-owned housing for teachers and service workers, why would city leaders be nervous about holding a public vote? Is Article 34 democratic oversight or an exclusionary roadblock?
-  * *• 8–10 min (Debrief & Deliverable):* Write down 1 reason why state lawmakers have struggled to repeal Article 34 despite broad recognition of the housing shortage.
+  * *• 10 min (Debrief & Deliverable):* Write down 1 reason why state lawmakers have struggled to repeal Article 34 despite broad recognition of the housing shortage.
 * ***Discussion Prompt:** Why does a progressive supermajority in Sacramento struggle to pass supply-side housing legislation, and how does the Polis measure 'efficiency' in housing policy differently than a pure market?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
@@ -208,19 +212,21 @@ COURSE SCHEDULE
 **Wed, Sep. 23**
 * **Required:**
   * *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
+  * *[California Housing Affordability: Core Issue 7 (Water Verification and Parking Mandates)](california_housing_affordability.html#issue-7)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 7: Layered Regulatory Mandates (Water Verification and Parking Minimums)](california_housing_affordability.html#issue-7)* — **Role & Scenario:** You are a Thousand Oaks homeowner living in a residential neighborhood near Thousand Oaks Boulevard.
-  * *• 5–7 min (Read & Extract):* Skim Section #7 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is *AB 2097* (parking reform), and what is a *Water Supply Assessment (WSA)*? (2) Why are structured parking spaces so expensive ($25,000 to $75,000 per space)? (3) What do state water laws (SB 221 / SB 610) require large developments to prove about drought water supplies?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *AB 2097* (parking reform), and what is a *Water Supply Assessment (WSA)*? (2) Why are structured parking spaces so expensive ($25,000 to $75,000 per space)? (3) What do state water laws (SB 221 / SB 610) require large developments to prove about drought water supplies?
   * *• 15 min (Pair Discussion):* With a partner (one homeowner, one developer), discuss: The homeowner worries the new building will cause street parking headaches and strain local water supplies. The developer explains that AB 2097 legally forbids the city from requiring parking spaces. How do state mandates override local neighborhood concerns?
-  * *• 8–10 min (Debrief & Deliverable):* Submit a 1-sentence take: Was the state right or wrong to ban parking minimums near transit in suburban cities like Thousand Oaks?
+  * *• 10 min (Debrief & Deliverable):* Submit a 1-sentence take: Was the state right or wrong to ban parking minimums near transit in suburban cities like Thousand Oaks?
 * ***Discussion Prompt:** Is local zoning control over housing density an expression of authentic participatory democracy (the Polis), or a structural mechanism of elite wealth preservation?*
 
 **Fri, Sep. 25**
 * **Required:**
   * *[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-4/)*.
+  * *[California Housing Affordability: Core Issue 8 (RHNA Enforcement and Builder's Remedy)](california_housing_affordability.html#issue-8)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 8: The State-Local Power Struggle, Enforcement, and Social Housing](california_housing_affordability.html#issue-8)* — **Role & Scenario:** You are a Thousand Oaks resident attending a neighborhood meeting about a new 5-story apartment proposal on an old commercial lot.
-  * *• 5–7 min (Read & Extract):* Skim Section #8 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is *RHNA (Regional Housing Needs Allocation)*, and what is the *Builder's Remedy*? (2) What happens to a city's zoning power if it fails to adopt a state-approved Housing Element? (3) What is "ministerial approval" (SB 35), and why can't neighbors or cities use CEQA environmental lawsuits or public hearings to stop qualifying projects?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *RHNA (Regional Housing Needs Allocation)*, and what is the *Builder's Remedy*? (2) What happens to a city's zoning power if it fails to adopt a state-approved Housing Element? (3) What is "ministerial approval" (SB 35), and why can't neighbors or cities use CEQA environmental lawsuits or public hearings to stop qualifying projects?
   * *• 15 min (Pair Discussion):* In pairs, discuss: Thousand Oaks has historically maintained strict slow-growth limits. Why did the state legislature create aggressive penalties like the Builder's Remedy and SB 35, and who holds more power today: the local city council or Sacramento?
-  * *• 8–10 min (Debrief & Deliverable):* Write a 1-sentence answer: Does state preemption help solve California's housing shortage, or does it unfairly take away local democracy?
+  * *• 10 min (Debrief & Deliverable):* Write a 1-sentence answer: Does state preemption help solve California's housing shortage, or does it unfairly take away local democracy?
 * ***Discussion Prompt:** How are numbers and statistics used strategically in the debate over state preemption of local zoning to frame the housing crisis as a failure of local government?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 * ⭐ **Extra Credit (1 point):** Our Immigrant Neighbors Speaker Series
@@ -234,19 +240,21 @@ COURSE SCHEDULE
 **Mon, Sep. 28**
 * **Required:**
   * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-5/)*
+  * *[California Housing Affordability: Core Issue 9 (Thousand Oaks Local Growth Realities & Measure E)](california_housing_affordability.html#issue-9)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 9: Thousand Oaks Local Growth Realities & Measure E Constraints](california_housing_affordability.html#issue-9)* — **Role & Scenario:** You are a Thousand Oaks City Councilmember preparing for a major vote on the city's General Plan.
-  * *• 5–7 min (Read & Extract):* Skim Section #9 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is *Measure E* (the 1996 Thousand Oaks voter initiative), and what is a city's *Housing Element*? (2) How many total new homes is Thousand Oaks mandated by the state to plan for (2,621 units)? (3) How did city planners solve this dilemma by reallocating density into commercial "Areas of Change" (like Thousand Oaks Blvd, Janss Marketplace, and The Oaks Mall) that make up less than 8% of the city?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *Measure E* (the 1996 Thousand Oaks voter initiative), and what is a city's *Housing Element*? (2) How many total new homes is Thousand Oaks mandated by the state to plan for (2,621 units)? (3) How did city planners solve this dilemma by reallocating density into commercial "Areas of Change" (like Thousand Oaks Blvd, Janss Marketplace, and The Oaks Mall) that make up less than 8% of the city?
   * *• 15 min (Pair Discussion):* In small groups (councilmembers), discuss: Why did the city council choose to concentrate all new apartment density into shopping centers rather than asking voters to amend Measure E in a citywide election?
-  * *• 8–10 min (Debrief & Deliverable):* Draft a 2-sentence public statement explaining to local homeowners how reallocating density to commercial malls actually protects existing single-family neighborhoods from growth.
+  * *• 10 min (Debrief & Deliverable):* Draft a 2-sentence public statement explaining to local homeowners how reallocating density to commercial malls actually protects existing single-family neighborhoods from growth.
 * ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting existing neighborhood character and the urgent need to build high-density affordable housing?*
 
 **Wed, Sep. 30**
 * **Required:**
   * **Stone**, Chapter 9 ("Interests").
+  * *[California Housing Affordability: Core Issue 10 (Federal Vouchers and Fair Housing Mandates)](california_housing_affordability.html#issue-10)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 10: Federal Interventions, Funding, and Fair Housing Mandates](california_housing_affordability.html#issue-10)* — **Role & Scenario:** You are a low-income renter or senior in Thousand Oaks searching for an apartment with a federal Section 8 Housing Choice Voucher.
-  * *• 5–7 min (Read & Extract):* Skim Section #10 of the dashboard write-up. Pull out: (1) **Define the key terms:** What is a *Section 8 Housing Choice Voucher*, and what is *Affirmatively Furthering Fair Housing (AFFH)*? (2) How does the voucher payment work (tenant pays 30% of income, government pays the rest)? (3) Why is it difficult for voucher holders to find housing in suburban areas like Thousand Oaks, and how do California fair housing laws protect tenants from being rejected?
+  * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is a *Section 8 Housing Choice Voucher*, and what is *Affirmatively Furthering Fair Housing (AFFH)*? (2) How does the voucher payment work (tenant pays 30% of income, government pays the rest)? (3) Why is it difficult for voucher holders to find housing in suburban areas like Thousand Oaks, and how do California fair housing laws protect tenants from being rejected?
   * *• 15 min (Pair Discussion):* With a partner (one voucher holder, one private landlord), discuss: Why might private landlords be reluctant to accept housing vouchers, and how do California fair housing laws protect tenants from being turned away just because they use a voucher?
-  * *• 8–10 min (Debrief & Deliverable):* Write down 1 concrete step the city or federal government could take to make vouchers easier to use in Thousand Oaks.
+  * *• 10 min (Debrief & Deliverable):* Write down 1 concrete step the city or federal government could take to make vouchers easier to use in Thousand Oaks.
 * ***Discussion Prompt:** Which interest groups wield the most power in local housing disputes, and how do they overcome the collective action problem compared to unhoused or prospective residents?*
 
 **Fri, Oct. 2**
