@@ -155,6 +155,7 @@ COURSE SCHEDULE
 * **Required:**
   * Peter Schrag, *[Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost)* [Book/Library] (Chapter 1: "The Tax Revolt")
   * **Stone**, Chapter 7 ("Numbers").
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vQbZ2UO4RX4GzvDV9lfZwSRhNa-awl93fvyeGgscJSR-OOy7-W1_DbRzna67Pi1cp-34xr0a5y9CNjB/pub?start=false&loop=false&delayms=3000)
   * *[California Housing Affordability: Core Issue 3 (Development Impact Fees and Proposition 13)](california_housing_affordability.html#issue-3)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 3: Development Impact Fees and the Shadow of Proposition 13](california_housing_affordability.html#issue-3)* — **Role & Scenario:** You are a housing developer trying to build a 40-unit apartment building in Thousand Oaks.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is an *impact fee*, and what is *Proposition 13*? (2) How much do impact fees cost per unit in California compared to the national average? (3) As a developer, how do high impact fees ($48,000/unit in Thousand Oaks) make it harder for you to build or keep rents affordable?
