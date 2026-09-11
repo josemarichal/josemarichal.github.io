@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Nations 17 Sustainable Development Goals (SDGs) Policy & Analytics Dashboard | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        /* --- SDG Dashboard Custom Theme & Styling --- */
+        :root {
+            --sdg-1: #E5243B;
+            --sdg-2: #DDA63A;
+            --sdg-3: #4C9F38;
+            --sdg-4: #C5192D;
+            --sdg-5: #FF3A21;
+            --sdg-6: #26BDE2;
+            --sdg-7: #FCC30B;
+            --sdg-8: #A21942;
+            --sdg-9: #FD6925;
+            --sdg-10: #DD1367;
+            --sdg-11: #FD9D24;
+            --sdg-12: #BF8B2E;
+            --sdg-13: #3F7E44;
+            --sdg-14: #0A97D9;
+            --sdg-15: #56C02B;
+            --sdg-16: #00689D;
+            --sdg-17: #19486A;
+        }
+
+        .dashboard-hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(38, 189, 226, 0.12);
+            color: #26BDE2;
+            border: 1px solid rgba(38, 189, 226, 0.35);
+            padding: 0.4rem 1.15rem;
+            border-radius: 50px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .dashboard-hero h1 {
+            font-size: 3.1rem;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            color: var(--text-heading);
+            background: linear-gradient(135deg, #ffffff 40%, #90caf9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dashboard-hero p.lead {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* --- 5 Ps Filter Pills --- */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 2rem auto 2.5rem;
+            max-width: 980px;
+            padding: 0.5rem;
+        }
+
+        .filter-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+            margin-right: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.45rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+        }
+
+        /* --- 17-Goal Tile Grid (Matches UN SDG Poster) --- */
+        .sdg-grid-showcase {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.85rem;
+            margin-bottom: 3.5rem;
+        }
+
+        @media (max-width: 1100px) {
+            .sdg-grid-showcase {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sdg-grid-showcase {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sdg-grid-showcase {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .sdg-tile {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            padding: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .sdg-tile:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+            z-index: 5;
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .sdg-tile.dimmed {
+            opacity: 0.25;
+            filter: grayscale(80%);
+            pointer-events: auto;
+        }
+
+        .sdg-tile .tile-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .sdg-tile .tile-num {
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1;
+            font-family: var(--font-body);
+        }
+
+        .sdg-tile .tile-name {
+            font-size: 0.76rem;
+            font-weight: 800;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .sdg-tile .tile-icon {
+            align-self: center;
+            width: 52px;
+            height: 52px;
+            margin-top: auto;
+            margin-bottom: auto;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sdg-tile .tile-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        .sdg-tile-center {
+            background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.75rem;
+        }
+
+        .sdg-tile-center .wheel-graphic {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--sdg-1) 0deg 21.17deg,
+                var(--sdg-2) 21.17deg 42.35deg,
+                var(--sdg-3) 42.35deg 63.52deg,
+                var(--sdg-4) 63.52deg 84.7deg,
+                var(--sdg-5) 84.7deg 105.88deg,
+                var(--sdg-6) 105.88deg 127.05deg,
+                var(--sdg-7) 127.05deg 148.23deg,
+                var(--sdg-8) 148.23deg 169.4deg,
+                var(--sdg-9) 169.4deg 190.58deg,
+                var(--sdg-10) 190.58deg 211.75deg,
+                var(--sdg-11) 211.75deg 232.93deg,
+                var(--sdg-12) 232.93deg 254.1deg,
+                var(--sdg-13) 254.1deg 275.28deg,
+                var(--sdg-14) 275.28deg 296.45deg,
+                var(--sdg-15) 296.45deg 317.63deg,
+                var(--sdg-16) 317.63deg 338.8deg,
+                var(--sdg-17) 338.8deg 360deg
+            );
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .sdg-tile-center .wheel-graphic::after {
+            content: '';
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #0f172a;
+        }
+
+        .sdg-tile-center span {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #f1f5f9;
+            line-height: 1.2;
+        }
+
+        /* --- Sticky Tab Navigation Bar --- */
+        .tab-navigation-wrapper {
+            position: sticky;
+            top: var(--header-height);
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sdg-tabs {
+            display: flex;
+            gap: 0.45rem;
+            overflow-x: auto;
+            padding: 0.2rem 1rem 0.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) transparent;
+        }
+
+        .sdg-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .sdg-tabs::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.55rem 0.95rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tab-btn .tab-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- Goal Content Panels --- */
+        .sdg-panel {
+            display: none;
+            animation: fadeInPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            margin-bottom: 4rem;
+        }
+
+        .sdg-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeInPanel {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Goal Header Card */
+        .sdg-header-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 2.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .sdg-header-card .color-strip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .goal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .goal-pill {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            padding: 0.3rem 0.85rem;
+            border-radius: 30px;
+            color: #ffffff;
+        }
+
+        .status-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-heading);
+        }
+
+        .status-tag.critical {
+            background: rgba(229, 36, 59, 0.15);
+            border-color: rgba(229, 36, 59, 0.4);
+            color: #ff6b6b;
+        }
+
+        .status-tag.slow {
+            background: rgba(253, 157, 36, 0.15);
+            border-color: rgba(253, 157, 36, 0.4);
+            color: #fca311;
+        }
+
+        .status-tag.moderate {
+            background: rgba(76, 159, 56, 0.15);
+            border-color: rgba(76, 159, 56, 0.4);
+            color: #80e27e;
+        }
+
+        .sdg-header-card h2 {
+            font-size: 2.3rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            font-family: var(--font-display);
+            line-height: 1.2;
+        }
+
+        .sdg-header-card p.target-statement {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--primary-color);
+            margin-bottom: 0;
+            font-weight: 500;
+            border-left: 3px solid;
+            padding-left: 1.2rem;
+        }
+
+        /* --- Stat Grid --- */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 1.4rem;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .stat-val {
+            font-size: 2.1rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-desc {
+            font-size: 0.82rem;
+            color: var(--text-main);
+            opacity: 0.85;
+            line-height: 1.4;
+        }
+
+        /* --- Content Layout Columns --- */
+        .content-columns {
+            display: grid;
+            grid-template-columns: 1.9fr 1.1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 960px) {
+            .content-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .main-analysis {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2.4rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .main-analysis h3 {
+            font-size: 1.35rem;
+            color: var(--text-heading);
+            margin-top: 2.2rem;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-analysis h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .main-analysis p {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+        }
+
+        /* Target Badge List */
+        .target-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .target-tag {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.4rem;
+        }
+
+        .target-desc {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        /* Sidebar Panels */
+        .sidebar-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .panel-box {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+        }
+
+        .panel-box h4 {
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .local-focus-box {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border-top: 3px solid;
+        }
+
+        .local-focus-box h4 {
+            color: var(--text-heading);
+        }
+
+        .local-focus-box p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--text-main);
+            margin-bottom: 0.85rem;
+        }
+
+        .resource-link-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .resource-link-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.88rem;
+        }
+
+        .resource-link-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .resource-link-list a {
+            color: #38bdf8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-weight: 500;
+        }
+
+        .resource-link-list a:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+
+        /* Jump Container (Previous / Next) */
+        .jump-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.2rem 1.75rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .jump-btn {
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .jump-btn:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .sdg-header-card {
+                padding: 1.75rem;
+            }
+
+            .main-analysis {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">José <span>Marichal</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Hero Header -->
+            <div class="dashboard-hero">
+                <span class="hero-badge">United Nations · 2030 Agenda for Sustainable Development</span>
+                <h1>UN 17 Sustainable Development Goals (SDGs) Policy &amp; Data Dashboard</h1>
+                <p class="lead">An exhaustive empirical policy repository and multilateral roadmap. Exploring systemic bottlenecks, transformative financing, official indicator targets, and subnational localization across the 17 global goals adopted by 193 UN Member States.</p>
+            </div>
+
+            <!-- 5 Ps Filter Controls -->
+            <div class="filter-container">
+                <span class="filter-label">Filter Framework:</span>
+                <button class="filter-btn active" data-filter="all">All 17 Goals</button>
+                <button class="filter-btn" data-filter="people">People (1–5)</button>
+                <button class="filter-btn" data-filter="prosperity">Prosperity (7–11)</button>
+                <button class="filter-btn" data-filter="planet">Planet (6, 12–15)</button>
+                <button class="filter-btn" data-filter="peace">Peace (16)</button>
+                <button class="filter-btn" data-filter="partnership">Partnerships (17)</button>
+            </div>
+
+            <!-- Visual 17-Tile Showcase Grid (Directly mirroring the UN Poster) -->
+            <div class="sdg-grid-showcase" id="sdgGrid">
+                <!-- Goal 1 -->
+                <a class="sdg-tile" data-goal="sdg-1" data-cat="people" style="background-color: var(--sdg-1);" href="#sdg-1">
+                    <div class="tile-top">
+                        <span class="tile-num">1</span>
+                        <span class="tile-name">No<br>Poverty</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 2 -->
+                <a class="sdg-tile" data-goal="sdg-2" data-cat="people" style="background-color: var(--sdg-2);" href="#sdg-2">
+                    <div class="tile-top">
+                        <span class="tile-num">2</span>
+                        <span class="tile-name">Zero<br>Hunger</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 3.7 2.01 6.94 4.99 8.65V21c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-.35C19.99 18.94 22 15.7 22 12c0-5.52-4.48-10-10-10zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 3 -->
+                <a class="sdg-tile" data-goal="sdg-3" data-cat="people" style="background-color: var(--sdg-3);" href="#sdg-3">
+                    <div class="tile-top">
+                        <span class="tile-num">3</span>
+                        <span class="tile-name">Good Health &amp;<br>Well-Being</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 4 -->
+                <a class="sdg-tile" data-goal="sdg-4" data-cat="people" style="background-color: var(--sdg-4);" href="#sdg-4">
+                    <div class="tile-top">
+                        <span class="tile-num">4</span>
+                        <span class="tile-name">Quality<br>Education</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 5 -->
+                <a class="sdg-tile" data-goal="sdg-5" data-cat="people" style="background-color: var(--sdg-5);" href="#sdg-5">
+                    <div class="tile-top">
+                        <span class="tile-num">5</span>
+                        <span class="tile-name">Gender<br>Equality</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17.5 10c0-2.48-2.02-4.5-4.5-4.5s-4.5 2.02-4.5 4.5c0 2.12 1.48 3.89 3.45 4.35v2.24H10v2h1.95V21h2.1v-2.41h1.95v-2h-1.95v-2.24c1.97-.46 3.45-2.23 3.45-4.35zm-6.9 0c0-1.32 1.08-2.4 2.4-2.4s2.4 1.08 2.4 2.4-1.08 2.4-2.4 2.4-2.4-1.08-2.4-2.4z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 6 -->
+                <a class="sdg-tile" data-goal="sdg-6" data-cat="planet" style="background-color: var(--sdg-6);" href="#sdg-6">
+                    <div class="tile-top">
+                        <span class="tile-num">6</span>
+                        <span class="tile-name">Clean Water<br>&amp; Sanitation</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 7 -->
+                <a class="sdg-tile" data-goal="sdg-7" data-cat="prosperity" style="background-color: var(--sdg-7); color: #0f172a;" href="#sdg-7">
+                    <div class="tile-top">
+                        <span class="tile-num" style="color: #0f172a;">7</span>
+                        <span class="tile-name" style="color: #0f172a;">Affordable &amp;<br>Clean Energy</span>
+                    </div>
+                    <div class="tile-icon" style="color: #0f172a;">
+                        <svg viewBox="0 0 24 24"><path d="M11 21h-1l1-7H7.5c-.88 0-.33-.75-.31-.78C8.48 10.94 10.42 7.54 13.01 3h1l-1 7h3.51c.4 0 .62.19.4.66l-5.92 10.34z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 8 -->
+                <a class="sdg-tile" data-goal="sdg-8" data-cat="prosperity" style="background-color: var(--sdg-8);" href="#sdg-8">
+                    <div class="tile-top">
+                        <span class="tile-num">8</span>
+                        <span class="tile-name">Decent Work &amp;<br>Econ Growth</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 9 -->
+                <a class="sdg-tile" data-goal="sdg-9" data-cat="prosperity" style="background-color: var(--sdg-9);" href="#sdg-9">
+                    <div class="tile-top">
+                        <span class="tile-num">9</span>
+                        <span class="tile-name">Industry &amp;<br>Infrastructure</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm0 14H5V8h14v10z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 10 -->
+                <a class="sdg-tile" data-goal="sdg-10" data-cat="prosperity" style="background-color: var(--sdg-10);" href="#sdg-10">
+                    <div class="tile-top">
+                        <span class="tile-num">10</span>
+                        <span class="tile-name">Reduced<br>Inequalities</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 9h16v2H4zm0 4h16v2H4z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 11 -->
+                <a class="sdg-tile" data-goal="sdg-11" data-cat="prosperity" style="background-color: var(--sdg-11);" href="#sdg-11">
+                    <div class="tile-top">
+                        <span class="tile-num">11</span>
+                        <span class="tile-name">Sustainable<br>Cities</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 12 -->
+                <a class="sdg-tile" data-goal="sdg-12" data-cat="planet" style="background-color: var(--sdg-12);" href="#sdg-12">
+                    <div class="tile-top">
+                        <span class="tile-num">12</span>
+                        <span class="tile-name">Responsible<br>Consumption</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 13 -->
+                <a class="sdg-tile" data-goal="sdg-13" data-cat="planet" style="background-color: var(--sdg-13);" href="#sdg-13">
+                    <div class="tile-top">
+                        <span class="tile-num">13</span>
+                        <span class="tile-name">Climate<br>Action</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 14 -->
+                <a class="sdg-tile" data-goal="sdg-14" data-cat="planet" style="background-color: var(--sdg-14);" href="#sdg-14">
+                    <div class="tile-top">
+                        <span class="tile-num">14</span>
+                        <span class="tile-name">Life Below<br>Water</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2H0c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2h-4zM4 5h16v11H4V5z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 15 -->
+                <a class="sdg-tile" data-goal="sdg-15" data-cat="planet" style="background-color: var(--sdg-15);" href="#sdg-15">
+                    <div class="tile-top">
+                        <span class="tile-num">15</span>
+                        <span class="tile-name">Life<br>On Land</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 16 -->
+                <a class="sdg-tile" data-goal="sdg-16" data-cat="peace" style="background-color: var(--sdg-16);" href="#sdg-16">
+                    <div class="tile-top">
+                        <span class="tile-num">16</span>
+                        <span class="tile-name">Peace, Justice &amp;<br>Institutions</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                    </div>
+                </a>
+
+                <!-- Goal 17 -->
+                <a class="sdg-tile" data-goal="sdg-17" data-cat="partnership" style="background-color: var(--sdg-17);" href="#sdg-17">
+                    <div class="tile-top">
+                        <span class="tile-num">17</span>
+                        <span class="tile-name">Partnerships<br>For Goals</span>
+                    </div>
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-9-2c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm9 0c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                    </div>
+                </a>
+
+                <!-- 18th Center SDG Wheel Tile -->
+                <div class="sdg-tile sdg-tile-center" id="sdgWheel">
+                    <div class="wheel-graphic"></div>
+                    <span>Global<br>Goals 2030</span>
+                </div>
+            </div>
+
+            <!-- Sticky Horizontal Tab Bar -->
+            <div class="tab-navigation-wrapper">
+                <div class="sdg-tabs" id="sdgTabs" role="tablist">
+                    <button class="tab-btn active" data-target="sdg-1" style="--accent-color: var(--sdg-1);"><span class="tab-badge" style="background: var(--sdg-1);">1</span> No Poverty</button>
+                    <button class="tab-btn" data-target="sdg-2" style="--accent-color: var(--sdg-2);"><span class="tab-badge" style="background: var(--sdg-2);">2</span> Zero Hunger</button>
+                    <button class="tab-btn" data-target="sdg-3" style="--accent-color: var(--sdg-3);"><span class="tab-badge" style="background: var(--sdg-3);">3</span> Health &amp; Well-Being</button>
+                    <button class="tab-btn" data-target="sdg-4" style="--accent-color: var(--sdg-4);"><span class="tab-badge" style="background: var(--sdg-4);">4</span> Quality Education</button>
+                    <button class="tab-btn" data-target="sdg-5" style="--accent-color: var(--sdg-5);"><span class="tab-badge" style="background: var(--sdg-5);">5</span> Gender Equality</button>
+                    <button class="tab-btn" data-target="sdg-6" style="--accent-color: var(--sdg-6);"><span class="tab-badge" style="background: var(--sdg-6);">6</span> Clean Water</button>
+                    <button class="tab-btn" data-target="sdg-7" style="--accent-color: var(--sdg-7);"><span class="tab-badge" style="background: var(--sdg-7); color: #000;">7</span> Clean Energy</button>
+                    <button class="tab-btn" data-target="sdg-8" style="--accent-color: var(--sdg-8);"><span class="tab-badge" style="background: var(--sdg-8);">8</span> Decent Work</button>
+                    <button class="tab-btn" data-target="sdg-9" style="--accent-color: var(--sdg-9);"><span class="tab-badge" style="background: var(--sdg-9);">9</span> Industry &amp; Inno</button>
+                    <button class="tab-btn" data-target="sdg-10" style="--accent-color: var(--sdg-10);"><span class="tab-badge" style="background: var(--sdg-10);">10</span> Reduced Inequalities</button>
+                    <button class="tab-btn" data-target="sdg-11" style="--accent-color: var(--sdg-11);"><span class="tab-badge" style="background: var(--sdg-11);">11</span> Sustainable Cities</button>
+                    <button class="tab-btn" data-target="sdg-12" style="--accent-color: var(--sdg-12);"><span class="tab-badge" style="background: var(--sdg-12);">12</span> Responsible Consump</button>
+                    <button class="tab-btn" data-target="sdg-13" style="--accent-color: var(--sdg-13);"><span class="tab-badge" style="background: var(--sdg-13);">13</span> Climate Action</button>
+                    <button class="tab-btn" data-target="sdg-14" style="--accent-color: var(--sdg-14);"><span class="tab-badge" style="background: var(--sdg-14);">14</span> Life Below Water</button>
+                    <button class="tab-btn" data-target="sdg-15" style="--accent-color: var(--sdg-15);"><span class="tab-badge" style="background: var(--sdg-15);">15</span> Life On Land</button>
+                    <button class="tab-btn" data-target="sdg-16" style="--accent-color: var(--sdg-16);"><span class="tab-badge" style="background: var(--sdg-16);">16</span> Peace &amp; Justice</button>
+                    <button class="tab-btn" data-target="sdg-17" style="--accent-color: var(--sdg-17);"><span class="tab-badge" style="background: var(--sdg-17);">17</span> Partnerships</button>
+                </div>
+            </div>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 1: NO POVERTY -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel active" id="sdg-1">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-1);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-1);">Goal 1 · People</span>
+                        <span class="status-tag critical">Critical Off-Track</span>
+                    </div>
+                    <h2>SDG 1: End Poverty in All Its Forms Everywhere</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-1);">Eradicate extreme poverty for all people everywhere by 2030, currently measured as people living on less than $2.15 a day, and reduce at least by half the proportion of men, women, and children living in poverty according to national definitions.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-1);">712M</div>
+                        <div class="stat-desc">People living in extreme poverty (<$2.15/day) globally</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-1);">575M</div>
+                        <div class="stat-desc">Projected to remain in extreme poverty by 2030 at current pace</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-1);">47%</div>
+                        <div class="stat-desc">Global population with zero access to social protection benefits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-1);">$4.2T</div>
+                        <div class="stat-desc">Annual financing gap facing developing countries to meet SDGs</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(229, 36, 59, 0.15); color: var(--sdg-1);">Target 1.1</span>
+                            <p class="target-desc">By 2030, eradicate extreme poverty for all people everywhere (under $2.15/day international poverty line).</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(229, 36, 59, 0.15); color: var(--sdg-1);">Target 1.3</span>
+                            <p class="target-desc">Implement nationally appropriate social protection systems and floors for all, achieving substantial coverage of the poor and vulnerable.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(229, 36, 59, 0.15); color: var(--sdg-1);">Target 1.5</span>
+                            <p class="target-desc">Build resilience of the poor and vulnerable to climate-related extreme events and economic, social, and environmental shocks.</p>
+                        </div>
+
+                        <h3>Systemic Bottlenecks &amp; Polycrisis Headwinds</h3>
+                        <p>Three compounding crises—the post-pandemic economic scarring, mounting sovereign debt distress, and intensifying climate disasters—have stalled three decades of steady poverty reduction. In sub-Saharan Africa, poverty rates have stagnated as population growth outpaces fragile economic expansion. More than 54 developing nations are currently in severe debt distress, dedicating over 25% of government revenues solely to debt servicing rather than healthcare, education, or social cash transfers.</p>
+                        <p>Furthermore, the informal nature of work in the Global South leaves over 2 billion laborers completely exposed to catastrophic health shocks and inflationary food price spikes without unemployment insurance or wage subsidies.</p>
+
+                        <h3>Catalytic Policy Interventions &amp; Financing</h3>
+                        <p><strong>Universal Social Protection Floors:</strong> Shifting from ad-hoc emergency aid to institutionalized social registries and direct digital cash transfers creates counter-cyclical buffers that prevent vulnerable households from selling productive assets during crises.</p>
+                        <p><strong>Multilateral Debt Restructuring:</strong> Reforming the G20 Common Framework and expanding debt-for-development swaps allows highly indebted nations to reallocate debt service payments into universal basic services and poverty reduction programs.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-1);">
+                            <h4>Localizing SDG 1: Subnational Action</h4>
+                            <p><strong>Subnational Dimension:</strong> Cities and state governments (such as California's CalEITC and Golden State Stimulus) demonstrate how subnational earned-income credits, guaranteed basic income (GBI) pilots in cities like Stockton and Los Angeles, and local eviction defense trust funds directly target deep poverty within wealthy regions.</p>
+                            <p><strong>Voluntary Local Reviews (VLRs):</strong> Over 150 global cities now track municipal poverty lines and spatial segregation to deploy hyper-local capital investments.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://unstats.un.org/sdgs/report/2023/goal-01/" target="_blank">UN Stats: SDG 1 Progress Dashboard ↗</a></li>
+                                <li><a href="https://pip.worldbank.org/" target="_blank">World Bank Poverty &amp; Inequality Platform ↗</a></li>
+                                <li><a href="https://www.ilo.org/global/topics/social-security/lang--en/index.htm" target="_blank">ILO World Social Protection Database ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-17')">← Goal 17: Partnerships</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-2')">Goal 2: Zero Hunger →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 2: ZERO HUNGER -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-2">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-2);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-2);">Goal 2 · People</span>
+                        <span class="status-tag critical">Severe Reversal</span>
+                    </div>
+                    <h2>SDG 2: End Hunger, Achieve Food Security, and Promote Sustainable Agriculture</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-2);">End hunger and ensure access by all people, in particular the poor and people in vulnerable situations including infants, to safe, nutritious and sufficient food all year round by 2030.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-2);">735M</div>
+                        <div class="stat-desc">People facing chronic hunger worldwide (up 122M since 2019)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-2);">2.4B</div>
+                        <div class="stat-desc">People moderately or severely food insecure globally</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-2);">148M</div>
+                        <div class="stat-desc">Children under 5 suffering from stunting due to chronic malnutrition</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-2);">3.1B</div>
+                        <div class="stat-desc">People unable to afford a healthy, balanced diet</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(221, 166, 58, 0.15); color: var(--sdg-2);">Target 2.1</span>
+                            <p class="target-desc">End hunger and ensure access by all people to safe, nutritious and sufficient food year-round.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(221, 166, 58, 0.15); color: var(--sdg-2);">Target 2.3</span>
+                            <p class="target-desc">Double agricultural productivity and incomes of small-scale food producers, particularly women, indigenous peoples, and pastoralists.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(221, 166, 58, 0.15); color: var(--sdg-2);">Target 2.4</span>
+                            <p class="target-desc">Ensure sustainable food production systems and implement resilient agricultural practices that increase productivity and maintain ecosystems.</p>
+                        </div>
+
+                        <h3>Systemic Bottlenecks &amp; Climate Shocks</h3>
+                        <p>Global hunger has rebounded to 2005 levels. The intersection of protracted military conflicts (disrupting staple grain exports and global fertilizer supplies), extreme weather anomalies (megadroughts across East Africa, monsoonal flooding in South Asia), and commodity market speculation has driven food inflation to generational highs.</p>
+                        <p>Smallholder farmers produce roughly one-third of the world's food but receive less than 2% of international climate finance. Industrial agricultural subsidies heavily favor water-intensive, calorie-dense staple monocultures over nutrient-dense vegetables, worsening hidden hunger and micro-nutrient deficiencies.</p>
+
+                        <h3>Transformative Agricultural Policies</h3>
+                        <p><strong>Agroecological Transition &amp; Soil Regeneration:</strong> Shifting subsidies from synthetic nitrogen fertilizers toward regenerative agriculture, precision drip irrigation, and drought-tolerant seed varieties enhances climate resilience while cutting emissions.</p>
+                        <p><strong>Decentralized Food Hubs &amp; Cold Storage:</strong> Investing in solar-powered cold-chain infrastructure at rural distribution hubs prevents the 13% harvest loss that occurs between the farmgate and the retail market in developing economies.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-2);">
+                            <h4>Localizing SDG 2: California &amp; Ventura</h4>
+                            <p><strong>Agricultural Paradox:</strong> California's Central Valley and Ventura County produce over a third of US vegetables and two-thirds of fruits, yet agricultural farmworkers and low-income residents in food deserts face high rates of food insecurity.</p>
+                            <p><strong>Policy Action:</strong> Initiatives like California Universal School Meals, local Food Share networks, and groundwater sustainability regulations (SGMA) model how subnational governments localize food security.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.fao.org/state-of-food-security-nutrition" target="_blank">FAO: State of Food Security &amp; Nutrition (SOFI) ↗</a></li>
+                                <li><a href="https://www.wfp.org/global-hunger-crisis" target="_blank">World Food Programme: Hunger Map LIVE ↗</a></li>
+                                <li><a href="https://www.ifad.org/" target="_blank">IFAD Rural Poverty &amp; Smallholder Hub ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-1')">← Goal 1: No Poverty</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-3')">Goal 3: Health &amp; Well-Being →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 3: GOOD HEALTH AND WELL-BEING -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-3">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-3);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-3);">Goal 3 · People</span>
+                        <span class="status-tag slow">Slow Progress</span>
+                    </div>
+                    <h2>SDG 3: Ensure Healthy Lives and Promote Well-Being for All at All Ages</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-3);">Achieve universal health coverage, including financial risk protection, access to quality essential health-care services and access to safe, effective, quality and affordable essential medicines and vaccines for all.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-3);">4.5B</div>
+                        <div class="stat-desc">People not fully covered by essential health services (over half of humanity)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-3);">223</div>
+                        <div class="stat-desc">Global maternal mortality ratio per 100,000 live births (target is &lt;70)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-3);">1B+</div>
+                        <div class="stat-desc">Pushed or pushed further into extreme poverty due to out-of-pocket health costs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-3);">10M</div>
+                        <div class="stat-desc">Projected global shortage of health workers by 2030, mostly in low-income states</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(76, 159, 56, 0.15); color: var(--sdg-3);">Target 3.1</span>
+                            <p class="target-desc">Reduce global maternal mortality ratio to less than 70 per 100,000 live births.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(76, 159, 56, 0.15); color: var(--sdg-3);">Target 3.8</span>
+                            <p class="target-desc">Achieve Universal Health Coverage (UHC), including financial risk protection and access to safe, affordable essential medicines and vaccines.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(76, 159, 56, 0.15); color: var(--sdg-3);">Target 3.b</span>
+                            <p class="target-desc">Support research, development, and universal access to vaccines and medicines for communicable and non-communicable diseases.</p>
+                        </div>
+
+                        <h3>Systemic Bottlenecks &amp; Global Health Inequities</h3>
+                        <p>The aftermath of the COVID-19 pandemic triggered the largest sustained decline in routine childhood immunizations in 30 years, reigniting outbreaks of measles and polio. Non-communicable diseases (cardiovascular disease, cancer, diabetes) now account for 74% of all deaths globally, disproportionately burdening low- and middle-income countries that lack specialized diagnostic infrastructure.</p>
+                        <p>A severe health workforce migration crisis ("brain drain") drains doctors and nurses from developing nations into wealthy OECD economies, leaving rural clinics in sub-Saharan Africa and Southeast Asia severely understaffed.</p>
+
+                        <h3>Policy Interventions &amp; Universal Health Coverage</h3>
+                        <p><strong>Primary Health Care (PHC) Prioritization:</strong> Reorienting national health budgets from tertiary urban hospitals to community health clinics and trained community health workers delivers 90% of essential UHC interventions at a fraction of the cost.</p>
+                        <p><strong>TRIPS Flexibility &amp; Regional Vaccine Hubs:</strong> Institutionalizing patent waivers, technology transfer, and local biomanufacturing hubs in Africa and Latin America breaks vaccine monopolies and secures pandemic preparedness.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-3);">
+                            <h4>Localizing SDG 3: Medi-Cal &amp; Mental Health</h4>
+                            <p><strong>Subnational Innovation:</strong> California became the first state in the nation to extend universal healthcare coverage (Medi-Cal) to all income-eligible residents regardless of immigration status.</p>
+                            <p><strong>Mental Health Infrastructure:</strong> Addressing behavioral health crises through mobile crisis response teams, community clinics, and behavioral health transformation funding illustrates local execution of Target 3.4.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.who.int/data/gho" target="_blank">WHO Global Health Observatory ↗</a></li>
+                                <li><a href="https://www.gavi.org/" target="_blank">Gavi: The Vaccine Alliance ↗</a></li>
+                                <li><a href="https://www.theglobalfund.org/" target="_blank">The Global Fund to Fight AIDS, TB &amp; Malaria ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-2')">← Goal 2: Zero Hunger</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-4')">Goal 4: Quality Education →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 4: QUALITY EDUCATION -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-4">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-4);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-4);">Goal 4 · People</span>
+                        <span class="status-tag critical">Critical Off-Track</span>
+                    </div>
+                    <h2>SDG 4: Ensure Inclusive and Equitable Quality Education for All</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-4);">Ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes, and eliminate gender disparities in education.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-4);">250M</div>
+                        <div class="stat-desc">Children and youth out of school globally (up by 6M recently)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-4);">70%</div>
+                        <div class="stat-desc">Of 10-year-olds in low/middle-income states unable to read a simple text</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-4);">44M</div>
+                        <div class="stat-desc">Primary and secondary teachers needed globally to achieve universal education</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-4);">$97B</div>
+                        <div class="stat-desc">Annual financing gap in low- and lower-middle-income countries for education</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(197, 25, 45, 0.15); color: var(--sdg-4);">Target 4.1</span>
+                            <p class="target-desc">Ensure free, equitable, and quality primary and secondary education leading to relevant learning outcomes.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(197, 25, 45, 0.15); color: var(--sdg-4);">Target 4.5</span>
+                            <p class="target-desc">Eliminate gender disparities in education and ensure equal access to all levels of education for vulnerable persons.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(197, 25, 45, 0.15); color: var(--sdg-4);">Target 4.c</span>
+                            <p class="target-desc">Substantially increase the supply of qualified teachers, including through international cooperation for teacher training.</p>
+                        </div>
+
+                        <h3>Learning Poverty &amp; Digital Apartheid</h3>
+                        <p>The global education crisis is characterized not merely by school enrollment gaps, but by acute "learning poverty." Millions of children attend school without acquiring basic literacy or numeracy skills. The divide is further deepened by the digital transition: two-thirds of school-age children worldwide have no internet access at home.</p>
+                        <p>In conflict zones (such as Afghanistan, Sudan, and Gaza), systematic bans on female secondary education and military destruction of school facilities have reversed decades of gender parity gains.</p>
+
+                        <h3>Policy Interventions &amp; Foundational Learning</h3>
+                        <p><strong>RAPID Framework for Foundational Learning:</strong> UNESCO and UNICEF endorse the RAPID model: Reach every child, Assess learning levels, Prioritize teaching the fundamentals, Increase catch-up learning efficiency, and Develop psychosocial health.</p>
+                        <p><strong>Progressive Domestic Tax Mobilization:</strong> Ring-fencing a statutory 15–20% of public expenditure and 4–6% of GDP for public education insulates school operational budgets from austerity.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-4);">
+                            <h4>Localizing SDG 4: California LCFF</h4>
+                            <p><strong>Equity Funding Formula:</strong> California's Local Control Funding Formula (LCFF) directs supplementary and concentration state grants directly to school districts serving high concentrations of English learners, low-income students, and foster youth.</p>
+                            <p><strong>Higher Education Pipelines:</strong> The California Community Colleges dual-enrollment and transfer guarantee pathways to CSU and UC campuses operationalize lifelong vocational mobility.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://en.unesco.org/gem-report/" target="_blank">UNESCO Global Education Monitoring Report ↗</a></li>
+                                <li><a href="https://www.unicef.org/education" target="_blank">UNICEF Global Learning Poverty Database ↗</a></li>
+                                <li><a href="https://www.globalpartnership.org/" target="_blank">Global Partnership for Education (GPE) ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-3')">← Goal 3: Health &amp; Well-Being</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-5')">Goal 5: Gender Equality →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 5: GENDER EQUALITY -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-5">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-5);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-5);">Goal 5 · People</span>
+                        <span class="status-tag slow">Slow Progress</span>
+                    </div>
+                    <h2>SDG 5: Achieve Gender Equality and Empower All Women and Girls</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-5);">End all forms of discrimination and violence against all women and girls in the public and private spheres, recognize and value unpaid care work, and ensure full and effective participation and equal opportunities for leadership at all levels of decision-making.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-5);">300 Yrs</div>
+                        <div class="stat-desc">Time needed to end child marriage at the current rate of progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-5);">26.7%</div>
+                        <div class="stat-desc">Women representation in national parliaments globally</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-5);">2.5x</div>
+                        <div class="stat-desc">More hours spent on unpaid domestic and care work by women than men</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-5);">54%</div>
+                        <div class="stat-desc">Of countries lack laws providing equal rights to inherit property or land</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(255, 58, 33, 0.15); color: var(--sdg-5);">Target 5.1</span>
+                            <p class="target-desc">End all forms of discrimination against all women and girls everywhere.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(255, 58, 33, 0.15); color: var(--sdg-5);">Target 5.4</span>
+                            <p class="target-desc">Recognize and value unpaid care and domestic work through the provision of public services, infrastructure, and social protection policies.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(255, 58, 33, 0.15); color: var(--sdg-5);">Target 5.5</span>
+                            <p class="target-desc">Ensure women's full and effective participation and equal opportunities for leadership in political, economic, and public life.</p>
+                        </div>
+
+                        <h3>Structural Barriers &amp; The Care Economy Deficit</h3>
+                        <p>Women's economic autonomy is systematically constrained by the invisible burden of the unpaid care economy. Globally, women perform 12.5 billion hours of unpaid care work daily—an economic contribution valued at over $10.8 trillion annually, yet unrecognized in national GDP calculations.</p>
+                        <p>In addition, legal barriers persist: in 43 economies, women cannot enter the same jobs as men; in dozens of nations, legal marital guardianship laws restrict women's freedom of movement, credit access, and land ownership.</p>
+
+                        <h3>Policy Interventions &amp; Care Infrastructure</h3>
+                        <p><strong>Public Care Infrastructure:</strong> Publicly subsidized universal childcare, paid parental leave for both parents, and eldercare services free women to participate in the formal labor market while creating dignified care sector jobs.</p>
+                        <p><strong>Gender-Responsive Budgeting &amp; Quotas:</strong> Mandating legislative gender quotas and auditing national budgets through a gender lens ensures public capital allocations actively close wage and asset ownership gaps.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-5);">
+                            <h4>Localizing SDG 5: Pay Equity &amp; Board Diversity</h4>
+                            <p><strong>California Precedents:</strong> California's Equal Pay Act and statutory corporate board gender diversity mandates (SB 826) positioned the state as an international laboratory for gender parity legislation.</p>
+                            <p><strong>Paid Family Leave:</strong> California established the nation's first state-mandated Paid Family Leave program, financed through employee payroll contributions.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://data.unwomen.org/" target="_blank">UN Women: Global Gender Data Portal ↗</a></li>
+                                <li><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-elimination-all-forms-discrimination-against-women" target="_blank">CEDAW Convention Text &amp; Reports ↗</a></li>
+                                <li><a href="https://wbl.worldbank.org/" target="_blank">World Bank: Women, Business and the Law ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-4')">← Goal 4: Quality Education</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-6')">Goal 6: Clean Water &amp; Sanitation →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 6: CLEAN WATER AND SANITATION -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-6">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-6);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-6);">Goal 6 · Planet</span>
+                        <span class="status-tag critical">Critical Off-Track</span>
+                    </div>
+                    <h2>SDG 6: Ensure Availability and Sustainable Management of Water and Sanitation for All</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-6);">Achieve universal and equitable access to safe and affordable drinking water, adequate and equitable sanitation and hygiene for all, and substantially increase water-use efficiency across all sectors while protecting water-related ecosystems.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-6);">2.2B</div>
+                        <div class="stat-desc">People lack safely managed drinking water services worldwide</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-6);">3.5B</div>
+                        <div class="stat-desc">People lack safely managed sanitation services (almost half of humanity)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-6);">4B</div>
+                        <div class="stat-desc">Experience severe physical water scarcity for at least 1 month per year</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-6);">80%</div>
+                        <div class="stat-desc">Of wastewater globally discharged untreated into waterways</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(38, 189, 226, 0.15); color: var(--sdg-6);">Target 6.1</span>
+                            <p class="target-desc">Achieve universal and equitable access to safe and affordable drinking water for all.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(38, 189, 226, 0.15); color: var(--sdg-6);">Target 6.4</span>
+                            <p class="target-desc">Substantially increase water-use efficiency across all sectors and ensure sustainable withdrawals of freshwater to address water scarcity.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(38, 189, 226, 0.15); color: var(--sdg-6);">Target 6.5</span>
+                            <p class="target-desc">Implement integrated water resources management (IWRM) at all levels, including through transboundary cooperation.</p>
+                        </div>
+
+                        <h3>Depletion of Aquifers &amp; Municipal Infrastructure Deficits</h3>
+                        <p>Global water stress is reaching catastrophic thresholds due to climate volatility and agricultural over-extraction. Agriculture accounts for 70% of freshwater withdrawals globally, heavily subsidized by policies that encourage flood irrigation over precision micro-drip technology. Non-renewable fossil aquifers across the Middle East, North Africa, and the North China Plain are being depleted at rates far exceeding natural recharge.</p>
+                        <p>In developing cities, municipal sewage networks have failed to keep pace with rapid urbanization, causing untreated industrial effluent and raw sewage to contaminate vital river basins, fueling cholera and diarrheal epidemics.</p>
+
+                        <h3>Policy Interventions &amp; Circular Water Management</h3>
+                        <p><strong>Integrated Water Resources Management (IWRM):</strong> Managing river basins as single ecological units—balancing upstream agricultural allocations with downstream urban access and environmental flow requirements.</p>
+                        <p><strong>Advanced Wastewater Recycling:</strong> Mandating municipal water reuse and tertiary recycling (converting wastewater into potable water for aquifer recharge) radically decouples urban growth from freshwater river withdrawals.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-6);">
+                            <h4>Localizing SDG 6: California Water &amp; SGMA</h4>
+                            <p><strong>Human Right to Water:</strong> California AB 685 declared water a fundamental human right. However, over 1 million rural Central Valley residents still rely on failing wells contaminated with agricultural nitrates.</p>
+                            <p><strong>Groundwater Protection:</strong> California's Sustainable Groundwater Management Act (SGMA) mandates local Groundwater Sustainability Agencies (GSAs) to achieve aquifer basin balance by 2040.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.sdg6data.org/" target="_blank">UN-Water: Integrated Monitoring Initiative ↗</a></li>
+                                <li><a href="https://washdata.org/" target="_blank">WHO/UNICEF Joint Monitoring Programme (JMP) ↗</a></li>
+                                <li><a href="https://www.unwater.org/water-facts" target="_blank">UN Water Scarcity &amp; Climate Portal ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-5')">← Goal 5: Gender Equality</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-7')">Goal 7: Clean Energy →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 7: AFFORDABLE AND CLEAN ENERGY -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-7">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-7);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-7); color: #0f172a;">Goal 7 · Prosperity</span>
+                        <span class="status-tag moderate">Moderate Progress</span>
+                    </div>
+                    <h2>SDG 7: Ensure Access to Affordable, Reliable, Sustainable and Modern Energy for All</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-7);">Ensure universal access to affordable, reliable and modern energy services, increase substantially the share of renewable energy in the global energy mix, and double the global rate of improvement in energy efficiency by 2030.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-7);">675M</div>
+                        <div class="stat-desc">People still live without any access to electricity (80% in Sub-Saharan Africa)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-7);">2.3B</div>
+                        <div class="stat-desc">People rely on polluting biomass, kerosene, or coal for cooking</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-7);">30%</div>
+                        <div class="stat-desc">Share of global electricity generated from renewable sources in 2023</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-7);">$1.8T</div>
+                        <div class="stat-desc">Invested globally in clean energy technologies in 2023 (new record)</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(252, 195, 11, 0.2); color: #FCC30B;">Target 7.1</span>
+                            <p class="target-desc">Ensure universal access to affordable, reliable and modern energy services.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(252, 195, 11, 0.2); color: #FCC30B;">Target 7.2</span>
+                            <p class="target-desc">Increase substantially the share of renewable energy in the global energy mix.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(252, 195, 11, 0.2); color: #FCC30B;">Target 7.3</span>
+                            <p class="target-desc">Double the global rate of improvement in energy efficiency.</p>
+                        </div>
+
+                        <h3>The Energy Trilemma: Affordability, Security, &amp; Decarbonization</h3>
+                        <p>While utility-scale solar and wind costs have plummeted by over 80% in the past decade—making renewables the cheapest source of new power generation across most of the world—the geographic distribution of investment is overwhelmingly skewed. More than 85% of clean energy investments flow into advanced economies and China, leaving Africa with only 2% of global clean tech capital despite holding 60% of the planet's prime solar resources.</p>
+                        <p>Grid infrastructure bottlenecks, transmission interconnection queues, and the lack of low-cost capital (cost of capital is 3–5x higher in developing nations due to perceived sovereign risk) severely impede the phase-out of coal-fired generation.</p>
+
+                        <h3>Policy Interventions &amp; Grid Modernization</h3>
+                        <p><strong>Concessional Clean Energy Finance:</strong> De-risking private capital through multilateral guarantees and green sovereign bonds brings capital costs in emerging economies down to parity with OECD nations.</p>
+                        <p><strong>Decentralized Mini-Grids:</strong> For remote rural communities, modular solar mini-grids with lithium-iron-phosphate (LFP) battery storage provide electricity years faster than extending centralized fossil grids.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-7);">
+                            <h4>Localizing SDG 7: California Clean Energy</h4>
+                            <p><strong>SB 100 Mandate:</strong> California law requires 100% zero-carbon electricity retail sales by 2045, with a 60% interim mandate by 2030.</p>
+                            <p><strong>Battery Storage Leadership:</strong> California deployed over 10,000 MW of battery storage by 2024, enabling the state grid to operate on up to 100% renewable energy for substantial portions of spring and summer afternoons.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.iea.org/reports/sdg7-data-and-projections" target="_blank">IEA: SDG 7 Global Progress Tracking ↗</a></li>
+                                <li><a href="https://www.irena.org/Data" target="_blank">IRENA Renewable Energy Statistics ↗</a></li>
+                                <li><a href="https://trackingsdg7.esmap.org/" target="_blank">World Bank ESMAP: Tracking SDG 7 ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-6')">← Goal 6: Clean Water</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-8')">Goal 8: Decent Work &amp; Economic Growth →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 8: DECENT WORK AND ECONOMIC GROWTH -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-8">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-8);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-8);">Goal 8 · Prosperity</span>
+                        <span class="status-tag slow">Slow Progress</span>
+                    </div>
+                    <h2>SDG 8: Promote Sustained, Inclusive and Sustainable Economic Growth, Full and Productive Employment</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-8);">Sustain per capita economic growth in accordance with national circumstances, achieve full and productive employment and decent work for all women and men, and protect labor rights while eradicating forced labor and modern slavery.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-8);">2.0B</div>
+                        <div class="stat-desc">Workers in informal employment (58% of total global workforce)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-8);">22%</div>
+                        <div class="stat-desc">Of global youth (aged 15–24) are NEET (Not in Education, Employment, or Training)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-8);">50M</div>
+                        <div class="stat-desc">People living in conditions of modern slavery or forced labor globally</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-8);">1.5%</div>
+                        <div class="stat-desc">Average annual labor productivity growth in developing regions (well below target)</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(162, 25, 66, 0.15); color: var(--sdg-8);">Target 8.1</span>
+                            <p class="target-desc">Sustain per capita economic growth, with at least 7% annual GDP growth in the least developed countries.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(162, 25, 66, 0.15); color: var(--sdg-8);">Target 8.5</span>
+                            <p class="target-desc">Achieve full and productive employment and decent work for all, including equal pay for work of equal value.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(162, 25, 66, 0.15); color: var(--sdg-8);">Target 8.8</span>
+                            <p class="target-desc">Protect labor rights and promote safe and secure working environments for all workers, including migrant workers and those in precarious employment.</p>
+                        </div>
+
+                        <h3>Informality, Platform Precariat, &amp; De-industrialization</h3>
+                        <p>Global labor markets face profound structural dislocations. In the Global South, high informality deprives workers of sick pay, workplace safety standards, and collective bargaining rights. In advanced economies, the expansion of algorithmic platform labor (the "gig economy") has fragmented traditional employer-employee relationships, shifting business overhead and risk entirely onto individual independent contractors.</p>
+                        <p>Furthermore, premature de-industrialization across Africa and Latin America—caused by automation and concentrated East Asian manufacturing supply chains—limits traditional pathways for developing economies to transition labor from subsistence farming into high-productivity factory employment.</p>
+
+                        <h3>Policy Interventions &amp; Just Transitions</h3>
+                        <p><strong>Formalization Incentives:</strong> Simplifying tax registration, extending contributory social security to informal workers, and enforcing labor supply chain transparency dismantles exploitative contracting tiers.</p>
+                        <p><strong>Just Transition Compacts:</strong> Investing public capital in worker reskilling and community reinvestment funds ensures that fossil-fuel industry workers are not abandoned during clean energy industrial transitions.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-8);">
+                            <h4>Localizing SDG 8: California Labor Standards</h4>
+                            <p><strong>Worker Classification &amp; Sectoral Bargaining:</strong> California's AB 5 (codifying the ABC test for independent contractor status) and the Fast Food Sectoral Bargaining Council (AB 1228 establishing a $20/hr minimum wage) represent landmark subnational policy experiments in labor market regulation.</p>
+                            <p><strong>Apprenticeship Pipelines:</strong> California's investments in union-affiliated climate career apprenticeships anchor living-wage green jobs.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://ilostat.ilo.org/" target="_blank">ILOSTAT: International Labour Organization Portal ↗</a></li>
+                                <li><a href="https://www.ilo.org/global/topics/decent-work/lang--en/index.htm" target="_blank">ILO Decent Work Agenda &amp; Conventions ↗</a></li>
+                                <li><a href="https://www.walkfree.org/global-slavery-index/" target="_blank">Global Slavery Index &amp; Forced Labor Database ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-7')">← Goal 7: Clean Energy</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-9')">Goal 9: Industry &amp; Infrastructure →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 9: INDUSTRY, INNOVATION AND INFRASTRUCTURE -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-9">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-9);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-9);">Goal 9 · Prosperity</span>
+                        <span class="status-tag moderate">Moderate Progress</span>
+                    </div>
+                    <h2>SDG 9: Build Resilient Infrastructure, Promote Inclusive Industrialization, and Foster Innovation</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-9);">Develop quality, reliable, sustainable and resilient infrastructure, promote inclusive and sustainable industrialization, upgrade technological capabilities of industrial sectors, and facilitate sustainable and resilient infrastructure development in developing countries.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-9);">2.6B</div>
+                        <div class="stat-desc">People worldwide remain completely offline without internet connectivity</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-9);">1.93%</div>
+                        <div class="stat-desc">Global GDP spent on Research &amp; Development (heavily skewed to top 10 economies)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-9);">16%</div>
+                        <div class="stat-desc">Share of manufacturing value-added in LDCs (stagnant since 2015)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-9);">95%</div>
+                        <div class="stat-desc">Of global population covered by a mobile broadband network (usage gap remains)</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(253, 105, 37, 0.15); color: var(--sdg-9);">Target 9.1</span>
+                            <p class="target-desc">Develop quality, reliable, sustainable and resilient infrastructure to support economic development and human well-being.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(253, 105, 37, 0.15); color: var(--sdg-9);">Target 9.4</span>
+                            <p class="target-desc">Upgrade infrastructure and retrofit industries to make them sustainable, with increased resource-use efficiency and clean technologies.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(253, 105, 37, 0.15); color: var(--sdg-9);">Target 9.c</span>
+                            <p class="target-desc">Significantly increase access to information and communications technology and provide universal and affordable access to the internet.</p>
+                        </div>
+
+                        <h3>The Green Industrial Race &amp; Technological Fragmentation</h3>
+                        <p>Industrialization is undergoing an epochal transformation driven by AI automation, green hydrogen, and advanced semiconductor manufacturing. However, developing economies face a dual hazard: their existing industrial infrastructure is vulnerable to carbon border adjustment taxes (like the EU CBAM), while they lack the fiscal space to compete with massive domestic subsidy packages deployed by the US (Inflation Reduction Act) and China.</p>
+                        <p>In addition, climate extremes routinely destroy un-reinforced roads, bridges, and power lines in the Global South, wiping out billions in economic assets and deterring private fixed-capital investment.</p>
+
+                        <h3>Strategic Industrial Policies &amp; Digital Commons</h3>
+                        <p><strong>Mission-Oriented Green Industrial Policy:</strong> Developing domestic value-addition for critical mineral reserves (such as refining lithium and nickel locally rather than exporting raw ore) captures higher margins and fosters local engineering capacity.</p>
+                        <p><strong>Digital Public Infrastructure (DPI):</strong> Implementing open-source digital identification, instant payment rails (such as India's UPI or Brazil's Pix), and open data registries empowers small enterprises to access credit and global value chains.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-9);">
+                            <h4>Localizing SDG 9: Silicon Valley &amp; Infrastructure</h4>
+                            <p><strong>Innovation Capital:</strong> California represents the world's 5th largest economy, generating over $400B in annual tech innovation, venture funding, and clean tech patents.</p>
+                            <p><strong>Infrastructure Modernization:</strong> California's Broadband for All ($6B public fiber network) and the High-Speed Rail electrified rail spine embody subnational green transport and digital equity investments.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://stat.unido.org/" target="_blank">UNIDO: Industrial Statistics Database ↗</a></li>
+                                <li><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx" target="_blank">ITU: Global Connectivity Reports ↗</a></li>
+                                <li><a href="https://www.wipo.int/global_innovation_index/en/" target="_blank">WIPO: Global Innovation Index (GII) ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-8')">← Goal 8: Decent Work</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-10')">Goal 10: Reduced Inequalities →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 10: REDUCED INEQUALITIES -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-10">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-10);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-10);">Goal 10 · Prosperity</span>
+                        <span class="status-tag critical">Critical Off-Track</span>
+                    </div>
+                    <h2>SDG 10: Reduce Inequality Within and Among Countries</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-10);">Progressively achieve and sustain income growth of the bottom 40 per cent of the population at a rate higher than the national average, empower and promote the social, economic and political inclusion of all, and ensure equal opportunity and reduce inequalities of outcome.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-10);">10%</div>
+                        <div class="stat-desc">Of global population owns 76% of total global wealth, while bottom 50% owns 2%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-10);">114M</div>
+                        <div class="stat-desc">Forcibly displaced persons worldwide fleeing war, persecution, and climate shocks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-10);">6.2%</div>
+                        <div class="stat-desc">Average transaction fee for sending remittances (UN target is &lt;3%)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-10);">1 in 6</div>
+                        <div class="stat-desc">Persons worldwide report experiencing discrimination on grounds of race, sex, or origin</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(221, 19, 103, 0.15); color: var(--sdg-10);">Target 10.1</span>
+                            <p class="target-desc">Sustain income growth of the bottom 40% of the population at a rate higher than the national average.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(221, 19, 103, 0.15); color: var(--sdg-10);">Target 10.4</span>
+                            <p class="target-desc">Adopt policies, especially fiscal, wage, and social protection policies, and progressively achieve greater equality.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(221, 19, 103, 0.15); color: var(--sdg-10);">Target 10.7</span>
+                            <p class="target-desc">Facilitate orderly, safe, regular and responsible migration and mobility of people, including through planned migration policies.</p>
+                        </div>
+
+                        <h3>Wealth Hyper-Concentration &amp; Global Financial Asymmetries</h3>
+                        <p>Economic inequality operates on two distinct axes: between nations and within nations. The income gap between advanced economies and low-income countries has widened for the first time in three decades. Domestically, the labor share of national income has steadily declined as returns to capital and digital monopolies skyrocket.</p>
+                        <p>Furthermore, the global financial architecture enforces a structural inequality: developing nations borrow at interest rates up to 800 basis points higher than OECD states with equivalent debt-to-GDP ratios, forcing severe domestic budget cuts to basic public services.</p>
+
+                        <h3>Redistributive Fiscal Policies &amp; Migration Reform</h3>
+                        <p><strong>Progressive Wealth &amp; Capital Gains Taxation:</strong> Establishing a coordinated global minimum tax on billionaires (promoted by the G20 under Brazil's presidency) prevents tax evasion and generates funds for global public goods.</p>
+                        <p><strong>Remittance Cost Reduction:</strong> Mandating fee caps and adopting mobile money remittance interoperability saves migrant worker families over $25 billion annually in parasitic bank transfer fees.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-10);">
+                            <h4>Localizing SDG 10: California Wealth Gap</h4>
+                            <p><strong>Income Divergence:</strong> California exhibits one of the highest poverty rates in the US when adjusted for cost of living (California Poverty Measure), reflecting severe wealth polarization between coastal tech/finance enclaves and inland agricultural valleys.</p>
+                            <p><strong>Sanctuary Policies &amp; In-State Tuition:</strong> Policies like SB 54 (California Values Act) and AB 540 (in-state tuition for undocumented students) model institutional protections for marginalized migrant populations.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://wid.world/" target="_blank">World Inequality Database (WID.world) ↗</a></li>
+                                <li><a href="https://www.unhcr.org/global-trends" target="_blank">UNHCR: Global Trends in Forced Displacement ↗</a></li>
+                                <li><a href="https://www.oxfam.org/en/research/inequality-inc" target="_blank">Oxfam: Global Inequality Reports ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-9')">← Goal 9: Industry &amp; Inno</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-11')">Goal 11: Sustainable Cities →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 11: SUSTAINABLE CITIES AND COMMUNITIES -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-11">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-11);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-11);">Goal 11 · Prosperity</span>
+                        <span class="status-tag slow">Slow Progress</span>
+                    </div>
+                    <h2>SDG 11: Make Cities and Human Settlements Inclusive, Safe, Resilient and Sustainable</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-11);">Ensure access for all to adequate, safe and affordable housing and basic services and upgrade slums, provide access to safe, affordable, accessible and sustainable transport systems for all, and enhance inclusive and sustainable urbanization.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-11);">1.1B</div>
+                        <div class="stat-desc">Urban residents live in informal slums without adequate sanitation or security of tenure</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-11);">70%</div>
+                        <div class="stat-desc">Of global greenhouse gas emissions generated by urban centers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-11);">50%</div>
+                        <div class="stat-desc">Of global urban population has convenient access to public transit</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-11);">99%</div>
+                        <div class="stat-desc">Of world's urban population breathes air exceeding WHO pollution guideline limits</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(253, 157, 36, 0.15); color: var(--sdg-11);">Target 11.1</span>
+                            <p class="target-desc">Ensure access for all to adequate, safe and affordable housing and basic services and upgrade slums.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(253, 157, 36, 0.15); color: var(--sdg-11);">Target 11.2</span>
+                            <p class="target-desc">Provide access to safe, affordable, accessible and sustainable transport systems for all, notably by expanding public transport.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(253, 157, 36, 0.15); color: var(--sdg-11);">Target 11.6</span>
+                            <p class="target-desc">Reduce the adverse per capita environmental impact of cities, including by paying special attention to air quality and municipal waste management.</p>
+                        </div>
+
+                        <h3>The Urban Housing Affordability Crisis &amp; Climate Exposure</h3>
+                        <p>The 21st century is predominantly urban: by 2050, 70% of the world's population will live in metropolitan regions. Yet cities across both developed and developing regions face a profound housing affordability catastrophe. Speculative institutional real estate investment and restrictive zoning have transformed housing from a human right into an asset class, pricing out essential workforce communities.</p>
+                        <p>Simultaneously, informal urban settlements are overwhelmingly located in high-risk climate disaster zones—on steep landslide-prone hillsides, river floodplains, and unshaded heat-island basins lacking stormwater drainage or green canopy.</p>
+
+                        <h3>Policy Interventions &amp; Transit-Oriented Urbanism</h3>
+                        <p><strong>Upzoning &amp; Social Housing Trust Funds:</strong> Legalizing multi-family infill density around transit corridors (ending exclusionary single-family zoning) paired with public social housing development stabilizes rents and curbs automobile sprawl.</p>
+                        <p><strong>In-Situ Slum Upgrading:</strong> Granting formal legal land tenure to informal settlement residents and retrofitting piped water, paved pedestrian pathways, and solar streetlighting delivers immediate quality of life improvements without traumatic mass evictions.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-11);">
+                            <h4>Localizing SDG 11: Thousand Oaks &amp; RHNA</h4>
+                            <p><strong>Suburban Mandates:</strong> As analyzed in our California Housing Affordability Dossier, cities like Thousand Oaks grapple with balancing slow-growth voter initiatives (Measure E) against state-mandated Regional Housing Needs Allocations (RHNA 2,621 units).</p>
+                            <p><strong>Transit Densification:</strong> Reallocating density into commercial corridors and shopping malls demonstrates how suburban communities adapt to SDG 11 requirements.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://unhabitat.org/world-cities-report" target="_blank">UN-Habitat: World Cities Report ↗</a></li>
+                                <li><a href="https://www.c40.org/" target="_blank">C40 Cities Climate Leadership Group ↗</a></li>
+                                <li><a href="https://uclg.org/" target="_blank">United Cities and Local Governments (UCLG) ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-10')">← Goal 10: Reduced Inequalities</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-12')">Goal 12: Responsible Consumption →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 12: RESPONSIBLE CONSUMPTION AND PRODUCTION -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-12">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-12);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-12);">Goal 12 · Planet</span>
+                        <span class="status-tag critical">Critical Off-Track</span>
+                    </div>
+                    <h2>SDG 12: Ensure Sustainable Consumption and Production Patterns</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-12);">Achieve the sustainable management and efficient use of natural resources, halve per capita global food waste at the retail and consumer levels, reduce waste generation through prevention, reduction, recycling and reuse, and phase out fossil fuel subsidies.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-12);">100B+</div>
+                        <div class="stat-desc">Metric tons of virgin natural resources extracted annually (triple 1970 levels)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-12);">13.2%</div>
+                        <div class="stat-desc">Of global food lost post-harvest before reaching retail shelves</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-12);">$1.3T</div>
+                        <div class="stat-desc">Annual global public subsidies for fossil fuels (distorting energy markets)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-12);">22.3%</div>
+                        <div class="stat-desc">Of electronic waste formally collected and recycled globally</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(191, 139, 46, 0.15); color: var(--sdg-12);">Target 12.2</span>
+                            <p class="target-desc">Achieve the sustainable management and efficient use of natural resources by 2030.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(191, 139, 46, 0.15); color: var(--sdg-12);">Target 12.3</span>
+                            <p class="target-desc">Halve per capita global food waste at retail and consumer levels and reduce food losses along supply chains.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(191, 139, 46, 0.15); color: var(--sdg-12);">Target 12.5</span>
+                            <p class="target-desc">Substantially reduce waste generation through prevention, reduction, recycling and reuse.</p>
+                        </div>
+
+                        <h3>The Linear "Take-Make-Waste" Metabolism</h3>
+                        <p>Humanity is currently consuming ecological resources at an unsustainable rate equivalent to 1.75 Earths. The dominant economic model remains strictly linear: extracting virgin finite minerals and petrochemicals, manufacturing single-use items with planned obsolescence, and discarding toxic waste into municipal landfills and oceans.</p>
+                        <p>Food waste alone generates roughly 8–10% of global greenhouse gas emissions. Meanwhile, pervasive fossil fuel subsidies actively incentivize petroleum over-consumption, undermining circular alternative materials.</p>
+
+                        <h3>Circular Economy &amp; Extended Producer Responsibility</h3>
+                        <p><strong>Extended Producer Responsibility (EPR):</strong> Legally requiring consumer packaged goods and electronics manufacturers to fund the complete lifecycle collection, recycling, and safe disposal of their packaging eliminates corporate externalization of waste costs.</p>
+                        <p><strong>Right to Repair &amp; Modular Product Design:</strong> Mandating open access to replacement parts, repair schematics, and modular product architecture extends consumer device lifespans, cutting e-waste.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-12);">
+                            <h4>Localizing SDG 12: California SB 1383 &amp; SB 54</h4>
+                            <p><strong>Mandatory Organics Recycling (SB 1383):</strong> California requires all cities, businesses, and residents to divert 75% of organic food waste from landfills into commercial composting and rescue 20% of edible surplus food for food banks.</p>
+                            <p><strong>Plastic Packaging Producer Mandate (SB 54):</strong> Mandates that 100% of packaging in the state be recyclable or compostable by 2032, funded directly by plastic producers.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.resourcepanel.org/" target="_blank">UNEP International Resource Panel (IRP) ↗</a></li>
+                                <li><a href="https://www.circularity-gap.world/" target="_blank">Circularity Gap Reporting Initiative ↗</a></li>
+                                <li><a href="https://www.fao.org/platform-food-loss-waste/" target="_blank">FAO Food Loss and Waste Database ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-11')">← Goal 11: Sustainable Cities</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-13')">Goal 13: Climate Action →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 13: CLIMATE ACTION -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-13">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-13);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-13);">Goal 13 · Planet</span>
+                        <span class="status-tag critical">Planetary Emergency</span>
+                    </div>
+                    <h2>SDG 13: Take Urgent Action to Combat Climate Change and Its Impacts</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-13);">Strengthen resilience and adaptive capacity to climate-related hazards and natural disasters, integrate climate change measures into national policies, strategies and planning, and implement the commitment of the Paris Agreement.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-13);">1.45°C</div>
+                        <div class="stat-desc">Global average temperature anomaly above pre-industrial baseline (near 1.5°C limit)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-13);">57.4 Gt</div>
+                        <div class="stat-desc">Total global annual greenhouse gas emissions in CO2 equivalent (record high)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-13);">-43%</div>
+                        <div class="stat-desc">Required cut in global GHG emissions by 2030 to preserve 1.5°C pathway</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-13);">$387B</div>
+                        <div class="stat-desc">Annual adaptation finance gap facing developing countries alone</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(63, 126, 68, 0.15); color: var(--sdg-13);">Target 13.1</span>
+                            <p class="target-desc">Strengthen resilience and adaptive capacity to climate-related hazards and natural disasters in all countries.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(63, 126, 68, 0.15); color: var(--sdg-13);">Target 13.2</span>
+                            <p class="target-desc">Integrate climate change measures into national policies, strategies, and Nationally Determined Contributions (NDCs).</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(63, 126, 68, 0.15); color: var(--sdg-13);">Target 13.a</span>
+                            <p class="target-desc">Implement the commitment of developed-country parties to the UNFCCC to mobilize $100+ billion annually for developing countries.</p>
+                        </div>
+
+                        <h3>The Emissions Gap &amp; The Adaptation Deficit</h3>
+                        <p>The UNEP Emissions Gap Report confirms that current Nationally Determined Contributions (NDCs) under the Paris Agreement place the planet on track for a catastrophic 2.5°C to 2.9°C warming trajectory. Irreversible climate tipping points—including the collapse of the West Antarctic ice sheet, dieback of the Amazon rainforest, and permafrost methane thawing—threaten to transition the Earth system into a self-reinforcing hothouse state.</p>
+                        <p>Simultaneously, the climate justice divide is glaring: the 50 least developed nations contribute less than 4% of historical emissions, yet suffer 70% of climate-related mortalities and severe economic loss from cyclones, desertification, and sea-level rise.</p>
+
+                        <h3>Policy Interventions &amp; Rapid Decarbonization</h3>
+                        <p><strong>Fossil Fuel Phase-Out &amp; Robust Carbon Pricing:</strong> Ending all international public financing for unabated coal, oil, and gas exploration and implementing border-adjusted carbon pricing redirects trillions into clean power.</p>
+                        <p><strong>Operationalization of the Loss &amp; Damage Fund:</strong> Fully capitalizing the multilateral Loss and Damage Fund agreed at COP28 ensures vulnerable island nations and African states receive non-debt grant financing to rebuild following climate disasters.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-13);">
+                            <h4>Localizing SDG 13: California Cap-and-Trade</h4>
+                            <p><strong>Pioneering Climate Frameworks:</strong> California operates the Western Climate Initiative (WCI) cap-and-trade carbon market, generating over $25B in Greenhouse Gas Reduction Funds (GGRF) invested heavily into disadvantaged communities.</p>
+                            <p><strong>Mandatory Corporate Climate Disclosure:</strong> California SB 253 and SB 261 mandate comprehensive Scope 1, 2, and 3 carbon accounting and climate financial risk reporting for large corporations.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://unfccc.int/process-and-meetings/the-paris-agreement" target="_blank">UNFCCC: Paris Agreement Registry ↗</a></li>
+                                <li><a href="https://www.ipcc.ch/" target="_blank">IPCC Sixth Assessment Report (AR6) ↗</a></li>
+                                <li><a href="https://climateactiontracker.org/" target="_blank">Climate Action Tracker (Global NDCs) ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-12')">← Goal 12: Responsible Consumption</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-14')">Goal 14: Life Below Water →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 14: LIFE BELOW WATER -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-14">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-14);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-14);">Goal 14 · Planet</span>
+                        <span class="status-tag critical">Critical Off-Track</span>
+                    </div>
+                    <h2>SDG 14: Conserve and Sustainably Use the Oceans, Seas and Marine Resources</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-14);">Prevent and significantly reduce marine pollution of all kinds, sustainably manage and protect marine and coastal ecosystems, minimize and address the impacts of ocean acidification, and end overfishing and illegal, unreported, and unregulated (IUU) fishing.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-14);">17M T</div>
+                        <div class="stat-desc">Plastic waste entering the world's oceans every year (expected to double by 2040)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-14);">37.7%</div>
+                        <div class="stat-desc">Of global marine fish stocks are currently fished at biologically unsustainable levels</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-14);">30%</div>
+                        <div class="stat-desc">Increase in ocean surface water acidity since the Industrial Revolution</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-14);">8%</div>
+                        <div class="stat-desc">Of global ocean currently designated as Marine Protected Areas (MPAs)</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(10, 151, 217, 0.15); color: var(--sdg-14);">Target 14.1</span>
+                            <p class="target-desc">Prevent and significantly reduce marine pollution of all kinds, particularly from land-based activities, including marine debris and nutrient pollution.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(10, 151, 217, 0.15); color: var(--sdg-14);">Target 14.4</span>
+                            <p class="target-desc">Effectively regulate harvesting and end overfishing, illegal, unreported and unregulated (IUU) fishing, and destructive fishing practices.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(10, 151, 217, 0.15); color: var(--sdg-14);">Target 14.5</span>
+                            <p class="target-desc">Conserve at least 10% of coastal and marine areas, aligned with international law (expanded to 30% by 2030 under the CBD).</p>
+                        </div>
+
+                        <h3>Acidification, Bottom Trawling, &amp; The High Seas Vacuum</h3>
+                        <p>Oceans have absorbed over 90% of excess heat trapped by greenhouse gases and 30% of anthropogenic carbon dioxide emissions, driving thermal marine heatwaves that trigger catastrophic global coral bleaching events. Agricultural fertilizer runoff creates over 500 hypoxic "dead zones" in coastal estuaries where oxygen levels cannot support marine life.</p>
+                        <p>On the high seas—areas beyond national jurisdiction (ABNJ)—distant-water industrial fishing fleets utilize destructive bottom-trawling that annihilates fragile benthic ecosystems, heavily subsidized by public fisheries funding.</p>
+
+                        <h3>Policy Interventions &amp; Marine Conservation</h3>
+                        <p><strong>The High Seas Treaty (BBNJ):</strong> Rapid ratification of the landmark UN Agreement on Marine Biological Diversity of Areas Beyond National Jurisdiction allows the establishment of vast ocean sanctuaries in international waters.</p>
+                        <p><strong>WTO Fisheries Subsidies Agreement:</strong> Enforcing strict bans on government subsidies for fleets engaged in illegal fishing and overfished stock exploitation restores natural marine biomass replenishment.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-14);">
+                            <h4>Localizing SDG 14: California Marine Protected Areas</h4>
+                            <p><strong>Global MPA Benchmark:</strong> California's Marine Life Protection Act (MLPA) established the largest ecologically connected network of 124 Marine Protected Areas in North America, covering 16% of state coastal waters.</p>
+                            <p><strong>Kelp Forest Restoration:</strong> Subnational initiatives across the Channel Islands and Central Coast restore giant kelp forests decimated by urchin barrens and marine heatwaves.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.un.org/bbnj/" target="_blank">UN High Seas Treaty (BBNJ) Official Text ↗</a></li>
+                                <li><a href="https://globalfishingwatch.org/" target="_blank">Global Fishing Watch (Satellite Tracking) ↗</a></li>
+                                <li><a href="https://www.iucn.org/our-work/topic/oceans" target="_blank">IUCN Ocean &amp; Marine Ecosystems Portal ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-13')">← Goal 13: Climate Action</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-15')">Goal 15: Life On Land →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 15: LIFE ON LAND -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-15">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-15);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-15);">Goal 15 · Planet</span>
+                        <span class="status-tag critical">Biodiversity Crisis</span>
+                    </div>
+                    <h2>SDG 15: Protect, Restore and Promote Sustainable Use of Terrestrial Ecosystems</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-15);">Sustainably manage forests, combat desertification, halt and reverse land degradation, halt biodiversity loss, and take urgent action to prevent the extinction of threatened species.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-15);">1M</div>
+                        <div class="stat-desc">Plant and animal species currently threatened with extinction worldwide</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-15);">10M Ha</div>
+                        <div class="stat-desc">Of forest destroyed every year, primarily driven by agricultural clearance</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-15);">100M Ha</div>
+                        <div class="stat-desc">Of healthy, productive land degraded annually, affecting 3.2 billion people</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-15);">70%</div>
+                        <div class="stat-desc">Average decline in global monitored wildlife populations since 1970 (WWF LPI)</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(86, 192, 43, 0.15); color: var(--sdg-15);">Target 15.1</span>
+                            <p class="target-desc">Ensure the conservation, restoration, and sustainable use of terrestrial and inland freshwater ecosystems.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(86, 192, 43, 0.15); color: var(--sdg-15);">Target 15.2</span>
+                            <p class="target-desc">Promote the implementation of sustainable management of all types of forests, halt deforestation, and restore degraded forests.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(86, 192, 43, 0.15); color: var(--sdg-15);">Target 15.5</span>
+                            <p class="target-desc">Take urgent and significant action to reduce the degradation of natural habitats, halt biodiversity loss, and prevent species extinction.</p>
+                        </div>
+
+                        <h3>Habitat Fragmentation &amp; The Sixth Mass Extinction</h3>
+                        <p>Earth is experiencing its sixth mass extinction event—the first in planetary history driven entirely by anthropogenic activity. Land-use change (converting ancient forests, savannas, and wetlands into cattle pastures, soy fields, and palm oil plantations) remains the primary driver of biodiversity collapse. Land degradation impairs soil organic carbon, exacerbating desertification and dust storms across dryland regions.</p>
+                        <p>Moreover, the degradation of ecological buffer zones significantly escalates the risk of zoonotic viral spillover from wild mammalian populations into domestic livestock and human communities.</p>
+
+                        <h3>Policy Interventions &amp; Rights-Based Conservation</h3>
+                        <p><strong>Kunming-Montreal Global Biodiversity Framework (30x30):</strong> Conserving 30% of terrestrial land and freshwater habitats by 2030 through legally binding protected corridors and indigenous land stewardship.</p>
+                        <p><strong>Deforestation-Free Due Diligence Regulations:</strong> Mandating satellite verification to bar agricultural commodities sourced from deforested plots from international consumer markets.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-15);">
+                            <h4>Localizing SDG 15: California 30x30 &amp; SOAR</h4>
+                            <p><strong>Executive Order 30x30:</strong> California committed to conserving 30% of its lands and coastal waters by 2030, safeguarding iconic ecosystems like the Sierra Nevada and coastal redwoods.</p>
+                            <p><strong>Ventura County SOAR:</strong> Ventura County's voter-approved Save Open-Space &amp; Agricultural Resources (SOAR) initiatives legally protect agricultural greenbelts and open spaces from suburban sprawl without citywide voter consent.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.cbd.int/gbf" target="_blank">CBD: Kunming-Montreal Global Biodiversity Framework ↗</a></li>
+                                <li><a href="https://www.globalforestwatch.org/" target="_blank">Global Forest Watch (Real-time Deforestation) ↗</a></li>
+                                <li><a href="https://www.iucnredlist.org/" target="_blank">IUCN Red List of Threatened Species ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-14')">← Goal 14: Life Below Water</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-16')">Goal 16: Peace &amp; Justice →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 16: PEACE, JUSTICE AND STRONG INSTITUTIONS -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-16">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-16);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-16);">Goal 16 · Peace</span>
+                        <span class="status-tag critical">Severe Conflict Surge</span>
+                    </div>
+                    <h2>SDG 16: Promote Peaceful and Inclusive Societies for Sustainable Development</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-16);">Significantly reduce all forms of violence, promote the rule of law at national and international levels, ensure equal access to justice for all, develop effective, accountable and transparent institutions, and ensure responsive, inclusive, participatory decision-making at all levels.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-16);">120+</div>
+                        <div class="stat-desc">Active armed conflicts globally (highest number since World War II)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-16);">72%</div>
+                        <div class="stat-desc">Surge in civilian casualties in armed conflicts in recent years</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-16);">1 in 4</div>
+                        <div class="stat-desc">Citizens worldwide forced to pay a bribe when accessing basic public services</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-16);">25%</div>
+                        <div class="stat-desc">Of global prison population held in unsentenced pre-trial detention</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(0, 104, 157, 0.15); color: var(--sdg-16);">Target 16.1</span>
+                            <p class="target-desc">Significantly reduce all forms of violence and related death rates everywhere.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(0, 104, 157, 0.15); color: var(--sdg-16);">Target 16.3</span>
+                            <p class="target-desc">Promote the rule of law at national and international levels and ensure equal access to justice for all.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(0, 104, 157, 0.15); color: var(--sdg-16);">Target 16.6</span>
+                            <p class="target-desc">Develop effective, accountable and transparent institutions at all levels.</p>
+                        </div>
+
+                        <h3>Geopolitical Fragmentation, Autocracy, &amp; Institutional Decay</h3>
+                        <p>SDG 16 is the foundational enabler of the entire 2030 Agenda; without peace and accountable legal institutions, development gains evaporate overnight. The contemporary geopolitical landscape is marked by the erosion of multilateral norms, contempt for international humanitarian law, and the proliferation of proxy conflicts across Eastern Europe, the Middle East, and the Sahel.</p>
+                        <p>Domestically, democratic backsliding, judicial weaponization, and systemic corruption siphons off over $2.6 trillion annually from public coffers—resources that could otherwise finance schools, clinics, and clean water.</p>
+
+                        <h3>Policy Interventions &amp; Restorative Justice</h3>
+                        <p><strong>Open Governance &amp; Beneficial Ownership Registries:</strong> Mandating beneficial ownership transparency for shell companies and real estate trusts terminates illicit financial flows and cross-border money laundering.</p>
+                        <p><strong>Community-Led Violence Prevention:</strong> Investing in community violence intervention (CVI), public defender funding, and alternative dispute resolution significantly cuts homicide rates without mass incarceration.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-16);">
+                            <h4>Localizing SDG 16: California Justice Reform</h4>
+                            <p><strong>Bail Reform &amp; Public Transparency:</strong> California's Brown Act mandates open public municipal meetings, while legislative initiatives to curtail predatory cash bail and expand diversion courts operationalize Target 16.3.</p>
+                            <p><strong>Gun Safety Standards:</strong> Robust red-flag laws and universal background checks have reduced California's firearm mortality rate to 37% below the national average.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://www.transparency.org/en/cpi" target="_blank">Transparency International: Corruption Perceptions Index ↗</a></li>
+                                <li><a href="https://worldjusticeproject.org/rule-of-law-index/" target="_blank">World Justice Project: Rule of Law Index ↗</a></li>
+                                <li><a href="https://www.sipri.org/" target="_blank">SIPRI: Military Expenditure &amp; Arms Transfer Database ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-15')">← Goal 15: Life On Land</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-17')">Goal 17: Partnerships For Goals →</button>
+                </div>
+            </section>
+
+            <!-- ======================================================== -->
+            <!-- GOAL 17: PARTNERSHIPS FOR THE GOALS -->
+            <!-- ======================================================== -->
+            <section class="sdg-panel" id="sdg-17">
+                <div class="sdg-header-card">
+                    <div class="color-strip" style="background: var(--sdg-17);"></div>
+                    <div class="goal-meta">
+                        <span class="goal-pill" style="background: var(--sdg-17);">Goal 17 · Partnerships</span>
+                        <span class="status-tag critical">Financing Emergency</span>
+                    </div>
+                    <h2>SDG 17: Strengthen the Means of Implementation and Revitalize the Global Partnership</h2>
+                    <p class="target-statement" style="border-left-color: var(--sdg-17);">Strengthen domestic resource mobilization, fully implement official development assistance (ODA) commitments, mobilize additional financial resources for developing countries, and promote the development, transfer, dissemination and diffusion of environmentally sound technologies.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-17);">$4.2T</div>
+                        <div class="stat-desc">Annual SDG financing gap in developing countries (up from $2.5T pre-pandemic)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-17);">0.37%</div>
+                        <div class="stat-desc">Average ODA provided by OECD DAC donors (well below 0.7% UN target)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-17);">$1.4T</div>
+                        <div class="stat-desc">External debt service payments paid by developing nations in 2023</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-val" style="color: var(--sdg-17);">3.3B</div>
+                        <div class="stat-desc">People live in countries spending more on debt service than health or education</div>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="main-analysis">
+                        <h3>Core Targets &amp; UN Indicators</h3>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(25, 72, 106, 0.25); color: #38bdf8;">Target 17.1</span>
+                            <p class="target-desc">Strengthen domestic resource mobilization, including through international support to developing countries, to improve tax collection capacity.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(25, 72, 106, 0.25); color: #38bdf8;">Target 17.2</span>
+                            <p class="target-desc">Developed countries to fully implement their official development assistance commitments, including achieving the target of 0.7% of GNI for ODA.</p>
+                        </div>
+                        <div class="target-item">
+                            <span class="target-tag" style="background: rgba(25, 72, 106, 0.25); color: #38bdf8;">Target 17.6</span>
+                            <p class="target-desc">Enhance North-South, South-South and triangular regional and international cooperation on and access to science, technology and innovation.</p>
+                        </div>
+
+                        <h3>The Global Financing Divide &amp; MDB Bretton Woods Reform</h3>
+                        <p>The achievement of the 2030 Agenda is fundamentally constrained by an unequal international financial architecture established in 1944. Multilateral Development Banks (MDBs) lack sufficient balance sheet capitalization to issue low-cost long-term loans at the scale required for climate transitions. In addition, credit rating agencies routinely penalize developing economies, creating prohibitive borrowing spreads.</p>
+                        <p>Instead of receiving net positive capital transfers, developing nations are currently experiencing net negative resource transfers—sending more capital back to private Wall Street and European creditors in debt interest payments than they receive in total foreign aid and investment.</p>
+
+                        <h3>Policy Interventions &amp; The Bridgetown Initiative</h3>
+                        <p><strong>The Bridgetown Initiative &amp; SDR Reallocation:</strong> Championed by Barbados Prime Minister Mia Mottley, this framework advocates rechanneling IMF Special Drawing Rights (SDRs), expanding MDB callable capital to unleash $1 trillion in concessional loans, and embedding natural disaster climate pause clauses into all sovereign debt contracts.</p>
+                        <p><strong>UN Framework Convention on International Tax Cooperation:</strong> Moving global tax rule-making from the OECD to the United Nations gives developing nations an equal vote in taxing multinational tech monopolies and closing offshore secrecy jurisdictions.</p>
+                    </div>
+
+                    <div class="sidebar-stack">
+                        <div class="panel-box local-focus-box" style="border-top-color: var(--sdg-17);">
+                            <h4>Localizing SDG 17: Subnational Diplomacy</h4>
+                            <p><strong>Subnational Alliances:</strong> California leads subnational multilateralism through the Under2 Coalition—a global memorandum of understanding uniting over 270 state and regional governments representing 1.75 billion people and 50% of the world economy.</p>
+                            <p><strong>Climate Bilateralism:</strong> Direct bilateral climate agreements between California and national ministries in China, Japan, and Canada demonstrate the diplomatic power of state-level partnerships.</p>
+                        </div>
+
+                        <div class="panel-box">
+                            <h4>Multilateral Treaties &amp; Portals</h4>
+                            <ul class="resource-link-list">
+                                <li><a href="https://dashboards.sdgindex.org/" target="_blank">SDSN: Sustainable Development Report &amp; SDG Index ↗</a></li>
+                                <li><a href="https://www.un.org/development/desa/financing/" target="_blank">UN Financing for Sustainable Development (FFD) ↗</a></li>
+                                <li><a href="https://www.under2coalition.org/" target="_blank">The Under2 Coalition Subnational Alliance ↗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jump-container">
+                    <button class="jump-btn" onclick="switchTab('sdg-16')">← Goal 16: Peace &amp; Justice</button>
+                    <button class="jump-btn" onclick="switchTab('sdg-1')">Goal 1: No Poverty →</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 José Marichal. United Nations 17 Sustainable Development Goals Policy &amp; Data Resource. Data sourced from UN Stats, World Bank, WHO, UNEP, and SDSN.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation & Filtering Script -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(targetId) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.sdg-panel');
+
+            tabs.forEach(tab => {
+                const isTarget = tab.getAttribute('data-target') === targetId;
+                tab.classList.toggle('active', isTarget);
+                tab.setAttribute('aria-selected', isTarget);
+                if (isTarget) {
+                    const color = tab.style.getPropertyValue('--accent-color');
+                    tab.style.background = color;
+                    tab.style.borderColor = color;
+                } else {
+                    tab.style.background = '';
+                    tab.style.borderColor = '';
+                }
+            });
+
+            panels.forEach(panel => {
+                panel.classList.toggle('active', panel.id === targetId);
+            });
+
+            // Smooth scroll up to navigation if below viewport
+            const navWrapper = document.querySelector('.tab-navigation-wrapper');
+            if (navWrapper) {
+                const navPos = navWrapper.getBoundingClientRect().top + window.pageYOffset - 110;
+                if (window.pageYOffset > navPos) {
+                    window.scrollTo({ top: navPos, behavior: 'smooth' });
+                }
+            }
+
+            // Sync URL hash
+            history.replaceState(null, null, '#' + targetId);
+        }
+
+        // Attach click listeners to all tab buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = btn.getAttribute('data-target');
+                switchTab(targetId);
+            });
+        });
+
+        // Attach click listeners to visual grid tiles
+        document.querySelectorAll('.sdg-tile').forEach(tile => {
+            tile.addEventListener('click', (e) => {
+                const goalId = tile.getAttribute('data-goal');
+                if (goalId) {
+                    e.preventDefault();
+                    switchTab(goalId);
+                    const panel = document.getElementById(goalId);
+                    if (panel) {
+                        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // 5 Ps Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const tiles = document.querySelectorAll('.sdg-tile[data-cat]');
+        const tabs = document.querySelectorAll('.tab-btn');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                tiles.forEach(tile => {
+                    const cat = tile.getAttribute('data-cat');
+                    if (filter === 'all' || cat === filter) {
+                        tile.classList.remove('dimmed');
+                    } else {
+                        tile.classList.add('dimmed');
+                    }
+                });
+
+                tabs.forEach(tab => {
+                    const targetId = tab.getAttribute('data-target');
+                    const matchingTile = document.querySelector(`.sdg-tile[data-goal="${targetId}"]`);
+                    if (matchingTile) {
+                        const cat = matchingTile.getAttribute('data-cat');
+                        if (filter === 'all' || cat === filter) {
+                            tab.style.display = 'inline-flex';
+                        } else {
+                            tab.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Initial setup on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Activate tab styling for initial active tab
+            const initialActiveTab = document.querySelector('.tab-btn.active');
+            if (initialActiveTab) {
+                const color = initialActiveTab.style.getPropertyValue('--accent-color');
+                initialActiveTab.style.background = color;
+                initialActiveTab.style.borderColor = color;
+            }
+
+            // Check URL Hash
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                switchTab(hash);
+            }
+        });
+    </script>
+</body>
+
+</html>
