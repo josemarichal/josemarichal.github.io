@@ -260,7 +260,7 @@ COURSE SCHEDULE
 **Fri, Oct. 2**
 * **Required:**
   * **Stone**, Chapter 6 ("Symbols").
-* **Case Study:** Housing & Homelessness
+* **Exam Review:** Midterm Exam Review
 * ***Discussion Prompt:** How do political symbols associated with 'Silicon Valley tech wealth' versus 'unhoused encampments' shape the legislative debate over housing inequality?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
 
