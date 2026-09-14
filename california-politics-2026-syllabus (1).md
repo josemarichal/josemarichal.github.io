@@ -173,6 +173,7 @@ COURSE SCHEDULE
 * **Required:**
   * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/)*
   * **Stone**, Chapter 9 ("Interests").
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSrX7swUaGTCX2Cv8NjObanltm2dwsiUiAzMAFmXz5Xb8uW18g0GbLVy1MLJ1Eqm0VmJfspzcsVWSXw/pub?start=false&loop=false&delayms=3000)
   * *[California Housing Affordability: Core Issue 4 (Financing Complexity and Capital Stacking)](california_housing_affordability.html#issue-4)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 4: Financing Complexity and "Capital Stacking" in Affordable Housing](california_housing_affordability.html#issue-4)* — **Role & Scenario:** You work for Many Mansions, a Thousand Oaks non-profit organization trying to build an affordable apartment community for lower-income families.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *capital stacking*, and what is the *Low-Income Housing Tax Credit (LIHTC)*? (2) Why can't affordable housing just be built with a standard commercial bank loan? (3) How many different government funding sources do developers typically have to piece together (3.5 to 11), and how much delay (+10 months) and extra cost (+$20,460/unit) does each additional layer add?
