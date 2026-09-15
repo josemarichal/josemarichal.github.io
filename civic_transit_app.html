@@ -981,6 +981,138 @@
             justify-content: flex-end;
             gap: 0.75rem;
         }
+
+        /* Career Pathways Showcase Grid */
+        .pathways-showcase {
+            grid-column: 1 / -1;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.75rem 2rem;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .pathways-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            color: #fff;
+            margin: 0 0 0.4rem 0;
+            font-weight: 600;
+        }
+
+        .pathways-header p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            max-width: 900px;
+        }
+
+        .pathways-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .pathway-card {
+            background: rgba(30, 41, 59, 0.35);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            position: relative;
+        }
+
+        .pathway-card:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(56, 189, 248, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .pathway-card.active {
+            background: rgba(14, 116, 144, 0.15);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .pathway-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pathway-card-icon {
+            font-size: 1.5rem;
+        }
+
+        .pathway-status-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .pathway-card.active .pathway-status-tag {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        .pathway-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .pathway-card-desc {
+            font-size: 0.84rem;
+            color: #94a3b8;
+            margin: 0;
+            line-height: 1.45;
+            flex: 1;
+        }
+
+        .pathway-role-badge {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            color: #fde68a;
+            padding: 0.45rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            line-height: 1.35;
+            margin-top: 0.25rem;
+        }
+
+        .pathway-role-badge span {
+            color: var(--accent-amber);
+            font-weight: 700;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+        }
+
     </style>
 </head>
 <body>
@@ -1025,32 +1157,110 @@
             </div>
         </section>
 
-        <!-- Scope Bar (Starting Point: Target Role & Location) -->
-        <section class="scope-bar">
-            <div class="scope-item">
-                <span class="scope-label">1. Choose Syllabus Career Pathway</span>
-                <select id="pathwaySelect" class="scope-select" onchange="onPathwayChange()">
-                    <option value="law-gov" selected>🏛️ Law & Government (Legislative, Municipal & Administration)</option>
-                    <option value="global">🌐 International & Global Affairs (Diplomacy, NGOs & Think Tanks)</option>
-                    <option value="policy">📊 Policy & Research (Analysis, Institutes & Program Evaluation)</option>
-                    <option value="advocacy">✊ Community Advocacy & Organizing (Labor, Housing & Justice)</option>
-                    <option value="prelaw">⚖️ Pre-Law & Legal Professions (Courts, Prosecution, Public Defense & Law)</option>
-                </select>
+        
+        <!-- Core Career Pathways Section -->
+        <section class="pathways-showcase">
+            <div class="pathways-header">
+                <div class="pathways-eyebrow">POLS Curriculum &amp; Career Framework</div>
+                <h2>Career Pathways in Political Science</h2>
+                <p>This course develops skills applicable to five core career pathways. Select your pathway below to calibrate all 7 "Acting Like a Local" modules, local ecosystem maps, outreach templates, and proof-of-work deliverables:</p>
             </div>
 
-            <div class="scope-item">
-                <span class="scope-label">2. Target Geographic Region (Rule: Defaults to 805 / LA)</span>
+            <div class="pathways-grid" id="pathwaysGrid">
+                <!-- 1. Law & Government -->
+                <div class="pathway-card active" data-pathway="law-gov" onclick="selectPathwayCard('law-gov')">
+                    <div class="pathway-card-header">
+                        <span class="pathway-card-icon">🏛️</span>
+                        <span class="pathway-status-tag">ACTIVE PATHWAY</span>
+                    </div>
+                    <h3 class="pathway-card-title">Law &amp; Government</h3>
+                    <p class="pathway-card-desc">Law school, courts, legislative offices, public administration, campaigns.</p>
+                    <div class="pathway-role-badge">
+                        <span>Example:</span> Legislative Aide for a State Senator
+                    </div>
+                </div>
+
+                <!-- 2. International & Global Affairs -->
+                <div class="pathway-card" data-pathway="global" onclick="selectPathwayCard('global')">
+                    <div class="pathway-card-header">
+                        <span class="pathway-card-icon">🌐</span>
+                        <span class="pathway-status-tag">SELECT</span>
+                    </div>
+                    <h3 class="pathway-card-title">International &amp; Global Affairs</h3>
+                    <p class="pathway-card-desc">Diplomacy, NGOs, human rights, international organizations, foreign service.</p>
+                    <div class="pathway-role-badge">
+                        <span>Example:</span> Foreign Service Officer for the State Department
+                    </div>
+                </div>
+
+                <!-- 3. Policy & Research -->
+                <div class="pathway-card" data-pathway="policy" onclick="selectPathwayCard('policy')">
+                    <div class="pathway-card-header">
+                        <span class="pathway-card-icon">📊</span>
+                        <span class="pathway-status-tag">SELECT</span>
+                    </div>
+                    <h3 class="pathway-card-title">Policy &amp; Research</h3>
+                    <p class="pathway-card-desc">Think tanks, policy institutes, government analysis, program evaluation.</p>
+                    <div class="pathway-role-badge">
+                        <span>Example:</span> Policy Analyst at a Non-Partisan Think Tank
+                    </div>
+                </div>
+
+                <!-- 4. Community Development & Advocacy -->
+                <div class="pathway-card" data-pathway="advocacy" onclick="selectPathwayCard('advocacy')">
+                    <div class="pathway-card-header">
+                        <span class="pathway-card-icon">✊</span>
+                        <span class="pathway-status-tag">SELECT</span>
+                    </div>
+                    <h3 class="pathway-card-title">Community Development &amp; Advocacy</h3>
+                    <p class="pathway-card-desc">Nonprofits, advocacy, community organizing, civic engagement.</p>
+                    <div class="pathway-role-badge">
+                        <span>Example:</span> Community Organizer for a Regional Housing Advocacy Group
+                    </div>
+                </div>
+
+                <!-- 5. Pre-Law & JD/Legal Professions -->
+                <div class="pathway-card" data-pathway="prelaw" onclick="selectPathwayCard('prelaw')">
+                    <div class="pathway-card-header">
+                        <span class="pathway-card-icon">⚖️</span>
+                        <span class="pathway-status-tag">SELECT</span>
+                    </div>
+                    <h3 class="pathway-card-title">Pre-Law &amp; JD/Legal Professions</h3>
+                    <p class="pathway-card-desc">LSAT preparation and fellowships, legal and paralegal internships, law school readiness.</p>
+                    <div class="pathway-role-badge">
+                        <span>Example:</span> Assistant Public Defender
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Scoping Bar (Target City/Region) -->
+        <section class="scope-bar">
+            <div class="scope-item" style="max-width: 480px;">
+                <span class="scope-label">📍 Location Scoping: Where would you like to build your career?</span>
                 <select id="locationSelect" class="scope-select" onchange="onLocationChange()">
-                    <option value="thousand-oaks" selected>Thousand Oaks & Conejo Valley (Local Backyard)</option>
+                    <option value="thousand-oaks" selected>Thousand Oaks &amp; Conejo Valley (Default Local Backyard)</option>
                     <option value="ventura">Ventura County (Oxnard, Camarillo, Ventura - 805)</option>
                     <option value="los-angeles">Greater Los Angeles (Metro, San Fernando Valley, DTLA)</option>
                     <option value="sacramento">Sacramento, CA (State Capitol Corridors)</option>
-                    <option value="washington">Washington, D.C. (Federal Agencies & Hill)</option>
+                    <option value="washington">Washington, D.C. (Federal Agencies &amp; The Hill)</option>
+                </select>
+                <span style="font-size:0.75rem; color:var(--text-muted); font-style:italic;">* Rule: If open or undecided, defaults to Thousand Oaks, CA, Ventura County, or Greater LA.</span>
+            </div>
+
+            <div class="scope-item" style="display:none;">
+                <!-- Hidden select kept for backwards JS state binding -->
+                <select id="pathwaySelect" onchange="onPathwayChange()">
+                    <option value="law-gov">Law &amp; Government</option>
+                    <option value="global">International &amp; Global Affairs</option>
+                    <option value="policy">Policy &amp; Research</option>
+                    <option value="advocacy">Community Development &amp; Advocacy</option>
+                    <option value="prelaw">Pre-Law &amp; JD/Legal Professions</option>
                 </select>
             </div>
 
             <div class="scope-summary-pill" id="scopePill">
-                <span>📍 Target: <strong id="scopePillText" style="color:#fff;">Law & Government | Thousand Oaks / Conejo Valley</strong></span>
+                <span>Active Target: <strong id="scopePillText" style="color:#fff;">Law &amp; Government | Thousand Oaks &amp; Conejo Valley</strong></span>
             </div>
         </section>
 
@@ -2340,7 +2550,7 @@
                 ]
             },
             'advocacy': {
-                title: 'Community Advocacy & Organizing',
+                title: 'Community Development & Advocacy',
                 icon: '✊',
                 description: 'Grassroots nonprofits, labor unions, affordable housing coalitions, environmental justice networks, and civic empowerment groups.',
                 localJargon: ['Base Building', 'Relational Organizing', '1-on-1 Intake', 'Coalition Steering Committee', 'Direct Action Protocol', 'Underserved Constituency', 'Tenant Bill of Rights'],
@@ -2373,7 +2583,7 @@
                 ]
             },
             'prelaw': {
-                title: 'Pre-Law & Legal Professions',
+                title: 'Pre-Law & JD/Legal Professions',
                 icon: '⚖️',
                 description: 'Courts, prosecution, public defenders, legal aid clinics, civil rights litigation, and private law practice preparation.',
                 localJargon: ['Probable Cause', 'Amicus Curiae', 'Preliminary Hearing', 'Indigent Defense', 'Discovery Motion', 'Statutory Preemption', 'Judicial Clerkship', 'Paralegal Protocol'],
@@ -2419,11 +2629,49 @@
             if (studentData.currentStep) currentStep = studentData.currentStep;
 
             document.getElementById('pathwaySelect').value = selectedPathway;
+            const cards = document.querySelectorAll('#pathwaysGrid .pathway-card');
+            cards.forEach(card => {
+                if (card.getAttribute('data-pathway') === selectedPathway) {
+                    card.classList.add('active');
+                    card.querySelector('.pathway-status-tag').innerText = 'ACTIVE PATHWAY';
+                } else {
+                    card.classList.remove('active');
+                    card.querySelector('.pathway-status-tag').innerText = 'SELECT';
+                }
+            });
             document.getElementById('locationSelect').value = selectedLocation;
 
             updateScopeDisplay();
             renderModule(currentStep);
             updateSidebar();
+        }
+
+        
+        function selectPathwayCard(pathwayId) {
+            selectedPathway = pathwayId;
+            studentData.pathway = pathwayId;
+            saveState();
+
+            // Update Pathway Card UI
+            const cards = document.querySelectorAll('#pathwaysGrid .pathway-card');
+            cards.forEach(card => {
+                if (card.getAttribute('data-pathway') === pathwayId) {
+                    card.classList.add('active');
+                    card.querySelector('.pathway-status-tag').innerText = 'ACTIVE PATHWAY';
+                } else {
+                    card.classList.remove('active');
+                    card.querySelector('.pathway-status-tag').innerText = 'SELECT';
+                }
+            });
+
+            // Sync hidden dropdown if present
+            const pSel = document.getElementById('pathwaySelect');
+            if (pSel) pSel.value = pathwayId;
+
+            updateScopeDisplay();
+            renderModule(currentStep);
+            updateSidebar();
+            showToast(`Pathway selected: ${pathwayMeta[pathwayId].title}`);
         }
 
         function onPathwayChange() {
