@@ -102,15 +102,15 @@ COURSE SCHEDULE
 
 **Wed, Aug. 26**
 * **Required:**
-  * Read: Adam Tooze, *["What is a polycrisis? Historian Adam Tooze explains"](https://www.weforum.org/stories/2023/03/polycrisis-adam-tooze-historian-explains/)* (World Economic Forum, 2023)
-  * Listen: [Adam Tooze on the Polycrisis (Podcast)](https://www.podtrac.com/pts/redirect.mp3/media.blubrry.com/radioopensource/content.blubrry.com/radioopensource/221103-OS-PODCAST-ADAM_TOOZE.mp3)
+  * **Assigned Reading:** Adam Tooze, *["What is a polycrisis? Historian Adam Tooze explains"](https://www.weforum.org/stories/2023/03/polycrisis-adam-tooze-historian-explains/)* (World Economic Forum, 2023)
+  * **Assigned Reading:** [Adam Tooze on the Polycrisis (Podcast)](https://www.podtrac.com/pts/redirect.mp3/media.blubrry.com/radioopensource/content.blubrry.com/radioopensource/221103-OS-PODCAST-ADAM_TOOZE.mp3)
   * Review: [discussion slides](https://docs.google.com/presentation/d/e/2PACX-1vRmM0c1sASAoaxBO7QDmHVR3LSbeGs51DPzXwiiHMXHnq6tdanpyqwrceJ0Dhnh9FldpjzRWiXwEoF8/pub?start=false&loop=false&delayms=3000)
 * ***Discussion Prompt:** How does the concept of a "polycrisis" differ from simply facing multiple separate problems simultaneously?*
 
 **Fri, Aug. 28**
 * **Required:**
-  * Read: Derek Thompson, *["A Simple Plan to Solve All of America’s Problems: The Abundance Agenda"](https://drive.google.com/file/d/1MxfSqTiK1Jzq18FwQqxycUPniVJLeh8Z/view?usp=sharing)* (*The Atlantic*, 2022)
-  * Watch: [The Abundance Agenda (YouTube)](https://www.youtube.com/watch?v=VwjxVRfUV_4&t=3s)
+  * **Assigned Reading:** Derek Thompson, *["A Simple Plan to Solve All of America’s Problems: The Abundance Agenda"](https://drive.google.com/file/d/1MxfSqTiK1Jzq18FwQqxycUPniVJLeh8Z/view?usp=sharing)* (*The Atlantic*, 2022)
+  * **Assigned Reading:** [The Abundance Agenda (YouTube)](https://www.youtube.com/watch?v=VwjxVRfUV_4&t=3s)
   * Review: [discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSydd6YN1AFK1hzWeGQ4YKRmLaXIK69DtUCdPB8Anh8AJ77Ba5Ykhezq_FK83EElzLL-7jSydwvSk-f/pub?start=false&loop=false&delayms=3000)
 * ***Discussion Prompt:** Is California’s primary governance problem a lack of progressive values, or a failure of the state’s capacity to build?*
 
@@ -118,22 +118,22 @@ COURSE SCHEDULE
 
 **Mon, Aug. 31**
 * **Required:**
-  * **Stone**, Chapter 1 ("The Market and the Polis") & Chapter 2 ("Equity").
-  * Read: [The road to housing in California runs through the federal government (CalMatters)](https://calmatters.org/housing/2026/07/road-housing-california-federal/)
+  * **Assigned Reading:** **Stone**, Chapter 1 ("The Market and the Polis") & Chapter 2 ("Equity").
+  * **Assigned Reading:** [The road to housing in California runs through the federal government (CalMatters)](https://calmatters.org/housing/2026/07/road-housing-california-federal/)
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vTC2LAnblq_uSUmE33RVbSqoBwlaydFgRZ7sDRaqw67WfdvcsooRr-63IEo4PkWFqlntTiVSVO36-te/pub?start=false&loop=false&delayms=3000)
 
 * **Case Study:** Housing & Homelessness
 
 **Wed, Sep. 2**
 * **Required:**
-  * **Stone**, Chapter 3 ("Efficiency")
-  * *[OSU OER, Chapter 1 ("Introduction and Themes")](https://open.oregonstate.education/statelocal/chapter/chapter-1/)*.
+  * **Assigned Reading:** **Stone**, Chapter 3 ("Efficiency")
+  * **Assigned Reading:** *[OSU OER, Chapter 1 ("Introduction and Themes")](https://open.oregonstate.education/statelocal/chapter/chapter-1/)*.
 
 * **Case Study:** Housing & Homelessness
 
 **Fri, Sep. 4**
 * **Required:**
-  * *[OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/)* & *[Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/)*.
+  * **Assigned Reading:** *[OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/)* & *[Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/)*.
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/1cF4ey7LNfdM289BAeOEuKBtEU9IYwaKSxdnlK6uyuvs/edit?slide=id.g3fb251d7d21_0_19#slide=id.g3fb251d7d21_0_19)
 * **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How does federalism constrain California's ability to solve its affordable housing crisis locally, and how does the Polis conceptualize 'equity' in housing access compared to the Market?*
@@ -147,16 +147,16 @@ COURSE SCHEDULE
 
 **Wed, Sep. 9**
 * **Required:**
-  * **OSU OER**, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."
+  * **Assigned Reading:** **OSU OER**, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."
 
 * **Case Study:** Housing & Homelessness
 
 **Fri, Sep. 11**
 * **Required:**
-  * Peter Schrag, *[Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost)* [Book/Library] (Chapter 1: "The Tax Revolt")
-  * **Stone**, Chapter 7 ("Numbers").
+  * **Assigned Reading:** Peter Schrag, *[Paradise Lost](https://www.ucpress.edu/book/9780520243637/paradise-lost)* [Book/Library] (Chapter 1: "The Tax Revolt")
+  * **Assigned Reading:** **Stone**, Chapter 7 ("Numbers").
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vQbZ2UO4RX4GzvDV9lfZwSRhNa-awl93fvyeGgscJSR-OOy7-W1_DbRzna67Pi1cp-34xr0a5y9CNjB/pub?start=false&loop=false&delayms=3000)
-  * *[California Housing Affordability: Core Issue 3 (Development Impact Fees and Proposition 13)](california_housing_affordability.html#issue-3)*
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 3 (Development Impact Fees and Proposition 13)](california_housing_affordability.html#issue-3)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 3: Development Impact Fees and the Shadow of Proposition 13](california_housing_affordability.html#issue-3)* — **Role & Scenario:** You are a housing developer trying to build a 40-unit apartment building in Thousand Oaks.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is an *impact fee*, and what is *Proposition 13*? (2) How much do impact fees cost per unit in California compared to the national average? (3) As a developer, how do high impact fees ($48,000/unit in Thousand Oaks) make it harder for you to build or keep rents affordable?
   * *• 15 min (Pair Discussion):* With a partner (one developer, one city planner), discuss: If the city charges $48,000 per unit in impact fees before construction even starts, who actually ends up paying that cost, and what happens if a project can no longer afford to build?
@@ -171,10 +171,10 @@ COURSE SCHEDULE
 
 **Mon, Sep. 14**
 * **Required:**
-  * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/)*
-  * **Stone**, Chapter 9 ("Interests").
+  * **Assigned Reading:** *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/statelocal/chapter/chapter-5/)*
+  * **Assigned Reading:** **Stone**, Chapter 9 ("Interests").
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSrX7swUaGTCX2Cv8NjObanltm2dwsiUiAzMAFmXz5Xb8uW18g0GbLVy1MLJ1Eqm0VmJfspzcsVWSXw/pub?start=false&loop=false&delayms=3000)
-  * *[California Housing Affordability: Core Issue 4 (Financing Complexity and Capital Stacking)](california_housing_affordability.html#issue-4)*
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 4 (Financing Complexity and Capital Stacking)](california_housing_affordability.html#issue-4)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 4: Financing Complexity and "Capital Stacking" in Affordable Housing](california_housing_affordability.html#issue-4)* — **Role & Scenario:** You work for Many Mansions, a Thousand Oaks non-profit organization trying to build an affordable apartment community for lower-income families.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *capital stacking*, and what is the *Low-Income Housing Tax Credit (LIHTC)*? (2) Why can't affordable housing just be built with a standard commercial bank loan? (3) How many different government funding sources do developers typically have to piece together (3.5 to 11), and how much delay (+10 months) and extra cost (+$20,460/unit) does each additional layer add?
   * *• 15 min (Pair Discussion):* With a partner, discuss: Why does having to apply for 4 or 5 separate public funding programs make building affordable housing take years longer and cost over $500,000 per unit?
@@ -182,9 +182,9 @@ COURSE SCHEDULE
 
 **Wed, Sep. 16**
 * **Required:**
-  * *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/statelocal/chapter/chapter-7/)*
-  * **Stone**, Chapter 6 ("Symbols").
-  * *[California Housing Affordability: Core Issue 5 (Hard Construction Costs and Labor Economics)](california_housing_affordability.html#issue-5)*
+  * **Assigned Reading:** *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/statelocal/chapter/chapter-7/)*
+  * **Assigned Reading:** **Stone**, Chapter 6 ("Symbols").
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 5 (Hard Construction Costs and Labor Economics)](california_housing_affordability.html#issue-5)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 5: Hard Construction Costs, Labor Economics, and Prescriptive Codes](california_housing_affordability.html#issue-5)* — **Role & Scenario:** You are an infill developer planning a new apartment complex near Janss Marketplace in Thousand Oaks.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What are *hard costs*, and what is a *prevailing wage*? (2) How much does it cost to build a single apartment in California compared to states like Texas (2.3× higher)? (3) What is the trade-off between paying higher union prevailing wages to get fast-track state approval vs. using cheaper non-union labor that risks long local delays?
   * *• 15 min (Pair Discussion):* In pairs, discuss: As a developer in Thousand Oaks, would you choose to pay higher prevailing wages to guarantee faster approval, or use cheaper non-union labor and risk two years of city hearings and delays? Why?
@@ -195,9 +195,9 @@ COURSE SCHEDULE
 
 **Fri, Sep. 18**
 * **Required:**
-  * *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/)*
-  * **Stone**, Chapter 8 ("Causes").
-  * *[California Housing Affordability: Core Issue 6 (Constitutional Roadblocks and Article 34)](california_housing_affordability.html#issue-6)*
+  * **Assigned Reading:** *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/)*
+  * **Assigned Reading:** **Stone**, Chapter 8 ("Causes").
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 6 (Constitutional Roadblocks and Article 34)](california_housing_affordability.html#issue-6)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 6: Constitutional Roadblocks and the Legacy of Article 34](california_housing_affordability.html#issue-6)* — **Role & Scenario:** You are an affordable housing advocate advising the Thousand Oaks City Council on building homes for local workforce families on city-owned land (near the Civic Arts Plaza).
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *Article 34* of the California Constitution, and what is *public housing*? (2) Why was Article 34 originally passed in 1950, and how did it reinforce racial and economic segregation in California suburbs? (3) How do modern projects avoid triggering a mandatory citywide public vote (such as keeping subsidized units under 49%)?
   * *• 15 min (Pair Discussion):* In pairs, discuss: If Thousand Oaks wanted to build 100% city-owned housing for teachers and service workers, why would city leaders be nervous about holding a public vote? Is Article 34 democratic oversight or an exclusionary roadblock?
@@ -213,8 +213,8 @@ COURSE SCHEDULE
 
 **Wed, Sep. 23**
 * **Required:**
-  * *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
-  * *[California Housing Affordability: Core Issue 7 (Water Verification and Parking Mandates)](california_housing_affordability.html#issue-7)*
+  * **Assigned Reading:** *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 7 (Water Verification and Parking Mandates)](california_housing_affordability.html#issue-7)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 7: Layered Regulatory Mandates (Water Verification and Parking Minimums)](california_housing_affordability.html#issue-7)* — **Role & Scenario:** You are a Thousand Oaks homeowner living in a residential neighborhood near Thousand Oaks Boulevard.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *AB 2097* (parking reform), and what is a *Water Supply Assessment (WSA)*? (2) Why are structured parking spaces so expensive ($25,000 to $75,000 per space)? (3) What do state water laws (SB 221 / SB 610) require large developments to prove about drought water supplies?
   * *• 15 min (Pair Discussion):* With a partner (one homeowner, one developer), discuss: The homeowner worries the new building will cause street parking headaches and strain local water supplies. The developer explains that AB 2097 legally forbids the city from requiring parking spaces. How do state mandates override local neighborhood concerns?
@@ -223,8 +223,8 @@ COURSE SCHEDULE
 
 **Fri, Sep. 25**
 * **Required:**
-  * *[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-4/)*.
-  * *[California Housing Affordability: Core Issue 8 (RHNA Enforcement and Builder's Remedy)](california_housing_affordability.html#issue-8)*
+  * **Assigned Reading:** *[OSU OER, Chapter 4 ("Small and Rural Local Government Environmental Sustainability Plans, Programs and Policies in Cascadia" by Steel et al.)](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-4/)*.
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 8 (RHNA Enforcement and Builder's Remedy)](california_housing_affordability.html#issue-8)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 8: The State-Local Power Struggle, Enforcement, and Social Housing](california_housing_affordability.html#issue-8)* — **Role & Scenario:** You are a Thousand Oaks resident attending a neighborhood meeting about a new 5-story apartment proposal on an old commercial lot.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *RHNA (Regional Housing Needs Allocation)*, and what is the *Builder's Remedy*? (2) What happens to a city's zoning power if it fails to adopt a state-approved Housing Element? (3) What is "ministerial approval" (SB 35), and why can't neighbors or cities use CEQA environmental lawsuits or public hearings to stop qualifying projects?
   * *• 15 min (Pair Discussion):* In pairs, discuss: Thousand Oaks has historically maintained strict slow-growth limits. Why did the state legislature create aggressive penalties like the Builder's Remedy and SB 35, and who holds more power today: the local city council or Sacramento?
@@ -241,8 +241,8 @@ COURSE SCHEDULE
 
 **Mon, Sep. 28**
 * **Required:**
-  * *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-5/)*
-  * *[California Housing Affordability: Core Issue 9 (Thousand Oaks Local Growth Realities & Measure E)](california_housing_affordability.html#issue-9)*
+  * **Assigned Reading:** *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-5/)*
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 9 (Thousand Oaks Local Growth Realities & Measure E)](california_housing_affordability.html#issue-9)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 9: Thousand Oaks Local Growth Realities & Measure E Constraints](california_housing_affordability.html#issue-9)* — **Role & Scenario:** You are a Thousand Oaks City Councilmember preparing for a major vote on the city's General Plan.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *Measure E* (the 1996 Thousand Oaks voter initiative), and what is a city's *Housing Element*? (2) How many total new homes is Thousand Oaks mandated by the state to plan for (2,621 units)? (3) How did city planners solve this dilemma by reallocating density into commercial "Areas of Change" (like Thousand Oaks Blvd, Janss Marketplace, and The Oaks Mall) that make up less than 8% of the city?
   * *• 15 min (Pair Discussion):* In small groups (councilmembers), discuss: Why did the city council choose to concentrate all new apartment density into shopping centers rather than asking voters to amend Measure E in a citywide election?
@@ -251,8 +251,8 @@ COURSE SCHEDULE
 
 **Wed, Sep. 30**
 * **Required:**
-  * **Stone**, Chapter 9 ("Interests").
-  * *[California Housing Affordability: Core Issue 10 (Federal Vouchers and Fair Housing Mandates)](california_housing_affordability.html#issue-10)*
+  * **Assigned Reading:** **Stone**, Chapter 9 ("Interests").
+  * **Assigned Reading:** *[California Housing Affordability: Core Issue 10 (Federal Vouchers and Fair Housing Mandates)](california_housing_affordability.html#issue-10)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 10: Federal Interventions, Funding, and Fair Housing Mandates](california_housing_affordability.html#issue-10)* — **Role & Scenario:** You are a low-income renter or senior in Thousand Oaks searching for an apartment with a federal Section 8 Housing Choice Voucher.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is a *Section 8 Housing Choice Voucher*, and what is *Affirmatively Furthering Fair Housing (AFFH)*? (2) How does the voucher payment work (tenant pays 30% of income, government pays the rest)? (3) Why is it difficult for voucher holders to find housing in suburban areas like Thousand Oaks, and how do California fair housing laws protect tenants from being rejected?
   * *• 15 min (Pair Discussion):* With a partner (one voucher holder, one private landlord), discuss: Why might private landlords be reluctant to accept housing vouchers, and how do California fair housing laws protect tenants from being turned away just because they use a voucher?
@@ -261,7 +261,7 @@ COURSE SCHEDULE
 
 **Fri, Oct. 2**
 * **Required:**
-  * **Stone**, Chapter 6 ("Symbols").
+  * **Assigned Reading:** **Stone**, Chapter 6 ("Symbols").
 * **Exam Review:** Midterm Exam Review
 * ***Discussion Prompt:** How do political symbols associated with 'Silicon Valley tech wealth' versus 'unhoused encampments' shape the legislative debate over housing inequality?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
@@ -275,7 +275,7 @@ COURSE SCHEDULE
 
 **Wed, Oct. 7**
 * **Required:**
-  * *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-8/)*
+  * **Assigned Reading:** *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-8/)*
 * **Case Study:** Economy & Labor
 * ***Discussion Prompt:** How can the Governor and local executives utilize their power to compel reluctant municipalities to meet their Regional Housing Needs Allocation (RHNA) targets?*
 
@@ -288,20 +288,20 @@ COURSE SCHEDULE
 
 **Mon, Oct. 12**
 * **Required:**
-  * *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-7/)*
+  * **Assigned Reading:** *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-7/)*
 * **Case Study:** Economy & Labor
 * ***Discussion Prompt:** What specific legislative and institutional mechanisms explain why California public agencies struggle to deliver affordable housing projects on time and on budget?*
 
 **Wed, Oct. 14**
 * **Required:**
-  * **Stone**, Chapter 8 ("Causes").
+  * **Assigned Reading:** **Stone**, Chapter 8 ("Causes").
 * **Case Study:** Health & Safety Net
 * ***Discussion Prompt:** How do competing political narratives attribute the 'causes' of homelessness to either individual moral failure or systemic housing shortages, and how does this affect policy solutions?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section.
 
 **Fri, Oct. 16**
 * **Required:**
-  * **Stone**, Chapter 15 ("Powers").
+  * **Assigned Reading:** **Stone**, Chapter 15 ("Powers").
 * **Case Study:** Housing & Homelessness
 
 ---
@@ -310,17 +310,17 @@ COURSE SCHEDULE
 
 **Mon, Oct. 19**
 * **Required:**
-  * *[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-11/)*; Legislative Analyst’s Office (LAO), *[California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf)*.
+  * **Assigned Reading:** *[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-11/)*; Legislative Analyst’s Office (LAO), *[California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf)*.
 * **Case Study:** Housing & Homelessness
 
 **Wed, Oct. 21**
 * **Required:**
-  * **Stone**, Chapter 11 ("Decisions").
+  * **Assigned Reading:** **Stone**, Chapter 11 ("Decisions").
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section.
 
 **Fri, Oct. 23**
 * **Required:**
-  * *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-9/)*
+  * **Assigned Reading:** *[OSU OER, Chapter 9 ("Courts")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-9/)*
 
 ---
 
@@ -334,8 +334,8 @@ COURSE SCHEDULE
 
 **Wed, Oct. 28**
 * **Required:**
-  * **OSU OER**, Chapter 13 (cont.)
-  * **Stone**, Chapter 14 ("Rights & Powers").
+  * **Assigned Reading:** **OSU OER**, Chapter 13 (cont.)
+  * **Assigned Reading:** **Stone**, Chapter 14 ("Rights & Powers").
 
 **Fri, Oct. 30**
 * **Required:**
@@ -347,7 +347,7 @@ COURSE SCHEDULE
 
 **Mon, Nov. 2**
 * **Required:**
-  * **OSU OER**, Chapter 13 (cont.); Ethan Elkind, *Railtown: The Fight for the LA Metro Rail* (Excerpts).
+  * **Assigned Reading:** **OSU OER**, Chapter 13 (cont.); Ethan Elkind, *Railtown: The Fight for the LA Metro Rail* (Excerpts).
 
 **Wed, Nov. 4**
 * [Placeholder: California FLOCK cameras]
@@ -361,7 +361,7 @@ COURSE SCHEDULE
 
 **Mon, Nov. 9**
 * **Required:**
-  * *[OSU OER, Chapter 3 ("The New Margins")](https://open.oregonstate.education/statelocal/chapter/chapter-3/)*; PPIC, *[Income Inequality and the Middle Class in California](https://www.ppic.org/publication/income-inequality-in-california/)*.
+  * **Assigned Reading:** *[OSU OER, Chapter 3 ("The New Margins")](https://open.oregonstate.education/statelocal/chapter/chapter-3/)*; PPIC, *[Income Inequality and the Middle Class in California](https://www.ppic.org/publication/income-inequality-in-california/)*.
 
 **Wed, Nov. 11**
 * **Required:**
@@ -377,7 +377,7 @@ COURSE SCHEDULE
 
 **Mon, Nov. 16**
 * **Required:**
-  * *[OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/)*
+  * **Assigned Reading:** *[OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/)*
 * **Case Study:** Health & Safety Net
 
 **Wed, Nov. 18**
@@ -386,15 +386,15 @@ COURSE SCHEDULE
 
 **Fri, Nov. 20**
 * **Required:**
-  * **Stone**, Chapter 4 ("Welfare"); LAO, *[An Overview of the Local Control Funding Formula](https://lao.ca.gov/reports/2013/edu/lcff/lcff-072913.aspx)*.
+  * **Assigned Reading:** **Stone**, Chapter 4 ("Welfare"); LAO, *[An Overview of the Local Control Funding Formula](https://lao.ca.gov/reports/2013/edu/lcff/lcff-072913.aspx)*.
 * ***Discussion Prompt:** How can the Governor and local executives utilize their power to compel reluctant municipalities to meet their Regional Housing Needs Allocation (RHNA) targets?*
 
 ### **Week 14: Security and Social Welfare**
 
 **Mon, Nov. 23**
 * **Required:**
-  * *[OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/)*
-  * **Stone**, Chapter 5 ("Security").
+  * **Assigned Reading:** *[OSU OER, Chapter 13 ("Traditional and Visible Services")](https://open.oregonstate.education/statelocal/chapter/chapter-13/)*
+  * **Assigned Reading:** **Stone**, Chapter 5 ("Security").
 
 **Wed, Nov. 25**
 * **Required:**
@@ -408,7 +408,7 @@ COURSE SCHEDULE
 
 **Mon, Nov. 30**
 * **Required:**
-  * **Stone**, Chapter 8 ("Causes") & Chapter 12 ("Decisions").
+  * **Assigned Reading:** **Stone**, Chapter 8 ("Causes") & Chapter 12 ("Decisions").
 * ***Discussion Prompt:** How do competing political narratives attribute the 'causes' of homelessness to either individual moral failure or systemic housing shortages, and how does this affect policy solutions?*
 
 **Wed, Dec. 2**
