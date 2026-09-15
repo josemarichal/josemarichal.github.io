@@ -3,548 +3,3146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civic Transit | Political Science Internship Game</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Civic Career Navigator: The "Acting Like a Local" Framework | Jose Marichal</title>
+    <meta name="description" content="An interactive career strategy and networking companion for Political Science and Pre-Law majors at California Lutheran University. Transition from university tourist to industry local across 5 core career pathways.">
+    <link rel="stylesheet" href="style.css?v=4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #090e17;
-            --panel-bg: rgba(15, 23, 42, 0.6);
-            --line-red: #ef4444;
-            --line-blue: #3b82f6;
-            --line-green: #10b981;
-            --line-gold: #f59e0b;
+            --bg-base: #090e17;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(56, 189, 248, 0.3);
+            --text-main: #94a3b8;
+            --text-heading: #f8fafc;
+            --text-muted: #64748b;
+            --accent-cyan: #38bdf8;
+            --accent-indigo: #818cf8;
+            --accent-purple: #c084fc;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-sans);
             margin: 0;
             padding: 0;
-            height: 100vh;
+            line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(129, 140, 248, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        .header {
-            background-color: #0f172a;
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+        /* Header Navigation */
+        .app-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.85rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .header h1 span {
-            background: rgba(255,255,255,0.1);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-family: var(--font-mono);
-            letter-spacing: 1px;
-            color: var(--accent-color);
-        }
-
-        .user-profile {
+        .brand-group {
             display: flex;
             align-items: center;
             gap: 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
         }
 
-        .user-points {
-            color: var(--accent-color);
-            font-weight: 700;
-        }
-
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        /* Panels */
-        .panel {
-            background: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #fff;
+            text-decoration: none;
             display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .panel-header {
-            font-size: 1.1rem;
+        .brand-badge {
+            background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(129,140,248,0.2));
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 9999px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            font-size: 0.88rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-header {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: #e2e8f0;
+            font-size: 0.82rem;
+            font-family: var(--font-sans);
             font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-heading);
+            padding: 0.45rem 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-export:hover {
+            background: linear-gradient(135deg, #0369a1, #1d4ed8);
+            transform: translateY(-1px);
+        }
+
+        /* Main App Grid */
+        .app-container {
+            max-width: 1540px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.75rem 2rem 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        @media (max-width: 1180px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.75));
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.75rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo), var(--accent-purple));
+        }
+
+        .hero-header-content {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
-        /* Map Area */
-        .map-panel {
-            grid-column: 1 / 2;
-            overflow-y: auto;
+        .hero-text h1 {
+            font-family: var(--font-serif);
+            font-size: 2.1rem;
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
-        .transit-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 1rem;
+        .hero-text p {
+            margin: 0;
+            font-size: 1.02rem;
+            color: #cbd5e1;
+            max-width: 860px;
         }
 
-        .transit-line {
-            background: rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.03);
+        .mentor-badge {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.75rem 1.25rem;
             border-radius: 8px;
-            padding: 1.5rem;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .mentor-badge strong {
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mentor-badge span {
+            color: #f1f5f9;
+            font-weight: 500;
+        }
+
+        /* Scope Bar (Starting Point: Pathway + Location) */
+        .scope-bar {
+            grid-column: 1 / -1;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .scope-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .scope-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .scope-select, .scope-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-subtle);
+            color: #f8fafc;
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .scope-select:focus, .scope-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.15);
+        }
+
+        .scope-summary-pill {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        /* Module Stepper Navigation */
+        .stepper-container {
+            grid-column: 1 / -1;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+        }
+
+        .stepper-list {
+            display: flex;
+            gap: 0.75rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            min-width: 860px;
+        }
+
+        .step-tab {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 0.75rem 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
             position: relative;
         }
 
-        .transit-line.red { border-top: 4px solid var(--line-red); }
-        .transit-line.blue { border-top: 4px solid var(--line-blue); }
-        .transit-line.green { border-top: 4px solid var(--line-green); }
-        .transit-line.gold { border-top: 4px solid var(--line-gold); }
+        .step-tab:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
 
-        .transit-line h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1.1rem;
+        .step-tab.active {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+
+        .step-tab.completed {
+            border-color: rgba(52, 211, 153, 0.4);
+        }
+
+        .step-tab.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            font-size: 0.75rem;
+            color: var(--accent-emerald);
+            font-weight: 800;
+        }
+
+        .step-num {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .step-tab.active .step-num {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Module Workspace Card */
+        .module-workspace {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .module-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-step-tag {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .module-title {
+            font-family: var(--font-serif);
+            font-size: 1.85rem;
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .module-subtitle {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            margin: 0;
+            max-width: 800px;
+        }
+
+        /* Core Sections inside Module */
+        .mindset-card {
+            background: rgba(30, 41, 59, 0.4);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mindset-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mindset-box h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .mindset-box.tourist h4 {
+            color: #f87171;
+        }
+
+        .mindset-box.local h4 {
+            color: var(--accent-emerald);
+        }
+
+        .mindset-box p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+
+        /* Interactive Workbenches */
+        .workbench-panel {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .workbench-panel h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        /* Headline Generator Styles */
+        .headline-result-box {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px dashed var(--accent-cyan);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .headline-text {
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: 600;
+            font-family: var(--font-sans);
+        }
+
+        .btn-copy {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            align-self: flex-start;
+            font-family: var(--font-mono);
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        /* Jargon / Keyword Pill Cloud */
+        .pill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .jargon-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            padding: 0.35rem 0.7rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .jargon-pill:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent-cyan);
+            color: #fff;
+        }
+
+        /* Directory Map Grid inside Module 2 */
+        .directory-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .org-mini-card {
+            background: rgba(30, 41, 59, 0.35);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .org-mini-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            background: rgba(30, 41, 59, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .org-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        .org-card-meta {
+            font-size: 0.78rem;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+        }
+
+        .org-card-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin: 0;
+            line-height: 1.45;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .org-card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-add-target {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--accent-cyan);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-add-target:hover {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        /* Email Generator Layout */
+        .generator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 860px) {
+            .generator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .email-preview-box {
+            background: #020617;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 8px;
+            padding: 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+
+        /* Homework Card */
+        .homework-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 10px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .homework-card::before {
+            content: '📌 ACTION-ORIENTED CLOSURE (HOMEWORK)';
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--accent-amber);
             letter-spacing: 1px;
         }
 
-        .station-list {
+        .homework-task {
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .homework-input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .homework-textarea {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: #f8fafc;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            min-height: 90px;
+            resize: vertical;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .homework-textarea:focus {
+            border-color: var(--accent-amber);
+            box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.15);
+        }
+
+        /* Navigation Buttons */
+        .module-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1.5rem;
+        }
+
+        .btn-nav {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-next:hover:not(:disabled) {
+            background: linear-gradient(135deg, #0369a1, #1d4ed8);
+            transform: translateX(2px);
+        }
+
+        /* Right Sidebar (Pipeline & Blueprint) */
+        .app-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-count {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.1rem 0.5rem;
+            border-radius: 9999px;
+        }
+
+        /* Target Organizations Pipeline */
+        .target-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-        }
-
-        .station {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 0.75rem 1rem;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            position: relative;
-        }
-
-        .station::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        .red .station::before { background: var(--line-red); box-shadow: 0 0 10px var(--line-red); }
-        .blue .station::before { background: var(--line-blue); box-shadow: 0 0 10px var(--line-blue); }
-        .green .station::before { background: var(--line-green); box-shadow: 0 0 10px var(--line-green); }
-        .gold .station::before { background: var(--line-gold); box-shadow: 0 0 10px var(--line-gold); }
-
-        .capture-badge {
-            font-size: 0.7rem;
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-        }
-
-        /* Right Sidebar Layout */
-        .right-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            max-height: 380px;
             overflow-y: auto;
         }
 
-        /* Logger Form */
-        .logger-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .form-group {
+        .target-item {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 0.85rem;
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
+            position: relative;
         }
 
-        .form-group label {
+        .target-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-right: 1.5rem;
+        }
+
+        .target-status-select {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-subtle);
+            color: #cbd5e1;
+            font-size: 0.75rem;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-main);
-            opacity: 0.8;
-        }
-
-        .form-group select, .form-group input {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 0.6rem;
+            padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            font-family: var(--font-body);
             outline: none;
         }
 
-        .form-group select:focus, .form-group input:focus {
-            border-color: var(--accent-color);
+        .btn-remove-target {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.2rem;
+            transition: color 0.2s;
         }
 
-        .btn-swipe {
-            background: var(--accent-color);
-            color: #000;
-            border: none;
-            padding: 0.75rem;
+        .btn-remove-target:hover {
+            color: #f87171;
+        }
+
+        /* Blueprint Summary Card */
+        .blueprint-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        .blueprint-label {
             font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 0.9rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
+            font-size: 0.72rem;
+            color: var(--text-muted);
             text-transform: uppercase;
         }
 
-        .btn-swipe:hover {
-            background: #0ea5e9; /* Slight shift */
-            transform: translateY(-1px);
+        .blueprint-val {
+            color: #e2e8f0;
+            font-weight: 500;
+            word-break: break-word;
         }
 
-        /* Missions */
-        .mission-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .mission-card {
-            background: rgba(255,255,255,0.03);
-            border-left: 3px solid #8b5cf6;
-            padding: 1rem;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .mission-card h4 {
-            margin: 0 0 0.4rem 0;
-            font-size: 0.9rem;
-            color: var(--text-heading);
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .mission-bounty {
-            color: #8b5cf6;
-            font-family: var(--font-mono);
-        }
-
-        .mission-card p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: var(--text-main);
-            line-height: 1.4;
-        }
-
-        /* Leaderboard */
-        .leaderboard-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .leaderboard-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-        }
-
-        .leaderboard-list li span:last-child {
-            color: var(--accent-color);
-        }
-        
         /* Toast Notification */
         #toast {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: var(--accent-color);
-            color: #000;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #fff;
             padding: 1rem 1.5rem;
-            border-radius: 4px;
+            border-radius: 8px;
             font-family: var(--font-mono);
-            font-weight: bold;
+            font-size: 0.88rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 100;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         #toast.show {
             transform: translateY(0);
             opacity: 1;
         }
+
+        /* Modal for Export */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 500;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #0f172a;
+            border: 1px solid var(--border-accent);
+            border-radius: 12px;
+            max-width: 760px;
+            width: 100%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #fff;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <h1>Civic Transit <span>INTERNSHIP TRACKER</span></h1>
-        <div class="user-profile">
-            <span>Team: <span style="color: #fff;">The Federalists</span></span> | 
-            <span>Score: <span class="user-points" id="nav-points">0</span> pts</span>
+    <!-- Header Navigation -->
+    <header class="app-header">
+        <div class="brand-group">
+            <a href="index.html" class="brand-logo">
+                <span>🏛️</span>
+                <span>Civic Career Navigator</span>
+            </a>
+            <span class="brand-badge">Acting Like a Local</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="teaching.html">← Teaching</a>
+            <a href="syllabus.html" title="Global Politics Syllabus">🌐 Global Politics</a>
+            <a href="syllabus_california_politics.html" title="California Politics Syllabus">🐻 CA Politics</a>
+            <a href="internships.html" style="color: var(--accent-cyan); font-weight: 600;" title="Political Science & Pre-Law Internship Master Directory">📋 Master Directory (60+ Orgs)</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn-header" onclick="resetPlan()">↺ Reset Plan</button>
+            <button class="btn-header btn-export" onclick="openExportModal()">📄 Export Blueprint</button>
         </div>
     </header>
 
-    <div class="dashboard-container">
+    <div class="app-container">
         
-        <!-- Left: The Map -->
-        <div class="panel map-panel">
-            <div class="panel-header">System Map</div>
-            <p style="margin: 0 0 1rem 0; font-size: 0.9rem; opacity: 0.8;">Explore the ecosystem. Complete actions to capture stations for your team.</p>
-            
-            <div class="transit-grid" id="transit-grid">
-                <!-- Javascript populates -->
-            </div>
-        </div>
-
-        <!-- Right: Actions & Leaderboards -->
-        <div class="right-sidebar">
-            
-            <!-- Activity Logger -->
-            <div class="panel">
-                <div class="panel-header">Swipe Oyster Card</div>
-                <div class="logger-form">
-                    <div class="form-group">
-                        <label>Action Type</label>
-                        <select id="action-type">
-                            <option value="10">Submit Application (+10 pts)</option>
-                            <option value="20">Cold Email Alumnus (+20 pts)</option>
-                            <option value="50">Informational Interview (+50 pts)</option>
-                            <option value="100">Official Interview (+100 pts)</option>
-                            <option value="200">Complete Mission (+200 pts)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Target Station</label>
-                        <select id="target-station">
-                            <!-- Populated by JS -->
-                        </select>
-                    </div>
-                    <button class="btn-swipe" onclick="logAction()">Log Action</button>
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <div class="hero-header-content">
+                <div class="hero-text">
+                    <h1>The "Acting Like a Local" Framework</h1>
+                    <p>Transition from a <em>"university tourist"</em> (submitting cold resumes on portals) to an <em>"industry local"</em> (speaking the language, understanding power corridors, and building authentic reciprocity). Powered by the 5 Core Political Science Pathways and the Internship Master Directory.</p>
+                </div>
+                <div class="mentor-badge">
+                    <strong>Career Strategist & Mentor</strong>
+                    <span>Dr. José Marichal</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Political Science, Cal Lutheran</span>
                 </div>
             </div>
+        </section>
 
-            <!-- Missions -->
-            <div class="panel">
-                <div class="panel-header">Active Missions</div>
-                <div class="mission-list">
-                    <div class="mission-card">
-                        <h4>The Gadfly <span class="mission-bounty">200 pts</span></h4>
-                        <p>Attend a local City Council meeting in person and log a 'Mission' action at City Hall.</p>
-                    </div>
-                    <div class="mission-card">
-                        <h4>The Swamp Tour <span class="mission-bounty">150 pts</span></h4>
-                        <p>Log actions at a Lobbying Firm AND a Public Defender's office in the same week.</p>
-                    </div>
-                </div>
+        <!-- Scope Bar (Starting Point: Target Role & Location) -->
+        <section class="scope-bar">
+            <div class="scope-item">
+                <span class="scope-label">1. Choose Syllabus Career Pathway</span>
+                <select id="pathwaySelect" class="scope-select" onchange="onPathwayChange()">
+                    <option value="law-gov" selected>🏛️ Law & Government (Legislative, Municipal & Administration)</option>
+                    <option value="global">🌐 International & Global Affairs (Diplomacy, NGOs & Think Tanks)</option>
+                    <option value="policy">📊 Policy & Research (Analysis, Institutes & Program Evaluation)</option>
+                    <option value="advocacy">✊ Community Advocacy & Organizing (Labor, Housing & Justice)</option>
+                    <option value="prelaw">⚖️ Pre-Law & Legal Professions (Courts, Prosecution, Public Defense & Law)</option>
+                </select>
             </div>
 
-            <!-- Leaderboard -->
-            <div class="panel">
-                <div class="panel-header">Team Standings</div>
-                <ul class="leaderboard-list">
-                    <li><span>1. The Federalists</span> <span>2,450 pts</span></li>
-                    <li><span>2. The Progressives</span> <span>2,100 pts</span></li>
-                    <li><span>3. Policy Wonks</span> <span>1,850 pts</span></li>
-                    <li><span>4. Campaigners</span> <span>1,200 pts</span></li>
+            <div class="scope-item">
+                <span class="scope-label">2. Target Geographic Region (Rule: Defaults to 805 / LA)</span>
+                <select id="locationSelect" class="scope-select" onchange="onLocationChange()">
+                    <option value="thousand-oaks" selected>Thousand Oaks & Conejo Valley (Local Backyard)</option>
+                    <option value="ventura">Ventura County (Oxnard, Camarillo, Ventura - 805)</option>
+                    <option value="los-angeles">Greater Los Angeles (Metro, San Fernando Valley, DTLA)</option>
+                    <option value="sacramento">Sacramento, CA (State Capitol Corridors)</option>
+                    <option value="washington">Washington, D.C. (Federal Agencies & Hill)</option>
+                </select>
+            </div>
+
+            <div class="scope-summary-pill" id="scopePill">
+                <span>📍 Target: <strong id="scopePillText" style="color:#fff;">Law & Government | Thousand Oaks / Conejo Valley</strong></span>
+            </div>
+        </section>
+
+        <!-- Module Stepper Navigation (1 to 7 Modules) -->
+        <section class="stepper-container">
+            <ul class="stepper-list" id="stepperList">
+                <li class="step-tab active" onclick="goToStep(1)">
+                    <span class="step-num">Module 1</span>
+                    <span class="step-title">Presence (Signaling)</span>
+                </li>
+                <li class="step-tab" onclick="goToStep(2)">
+                    <span class="step-num">Module 2</span>
+                    <span class="step-title">Landscape (Ecosystem)</span>
+                </li>
+                <li class="step-tab" onclick="goToStep(3)">
+                    <span class="step-num">Module 3</span>
+                    <span class="step-title">Outreach (Reciprocity)</span>
+                </li>
+                <li class="step-tab" onclick="goToStep(4)">
+                    <span class="step-num">Module 4</span>
+                    <span class="step-title">Community (Watercooler)</span>
+                </li>
+                <li class="step-tab" onclick="goToStep(5)">
+                    <span class="step-num">Module 5</span>
+                    <span class="step-title">Subcultures (Niche)</span>
+                </li>
+                <li class="step-tab" onclick="goToStep(6)">
+                    <span class="step-num">Module 6</span>
+                    <span class="step-title">Ambient Exposure (Ears)</span>
+                </li>
+                <li class="step-tab" onclick="goToStep(7)">
+                    <span class="step-num">Module 7</span>
+                    <span class="step-title">Ownership (Proof of Work)</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Center: Active Module Workspace -->
+        <main class="module-workspace" id="moduleWorkspace">
+            <!-- Dynamic module content injected here -->
+        </main>
+
+        <!-- Right: Pipeline & Blueprint Sidebar -->
+        <aside class="app-sidebar">
+            
+            <!-- My Target Organizations -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <h3>🎯 Target Organizations <span class="badge-count" id="targetCount">0</span></h3>
+                    <a href="internships.html" style="font-size: 0.78rem; color: var(--accent-cyan); text-decoration: none;" target="_blank">Browse All ↗</a>
+                </div>
+                <p style="font-size: 0.82rem; margin: 0; color: var(--text-muted);">Add organizations from Module 2 (Ecosystem) to track your relationship building pipeline.</p>
+                <ul class="target-list" id="targetList">
+                    <li style="font-size: 0.82rem; color: var(--text-muted); font-style: italic; text-align: center; padding: 1.5rem 0;">No organizations saved yet. Go to Module 2 to pin organizations from the Master Directory.</li>
                 </ul>
             </div>
 
+            <!-- My Active Blueprint Preview -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <h3>📋 Blueprint Status</h3>
+                    <span style="font-size: 0.78rem; font-family: var(--font-mono); color: var(--accent-emerald);" id="completedStepCount">0/7 Complete</span>
+                </div>
+
+                <div class="blueprint-field">
+                    <span class="blueprint-label">Target Role & Pathway</span>
+                    <span class="blueprint-val" id="bpPathway">Law & Government</span>
+                </div>
+
+                <div class="blueprint-field">
+                    <span class="blueprint-label">Geographic Scope</span>
+                    <span class="blueprint-val" id="bpLocation">Thousand Oaks & Conejo Valley</span>
+                </div>
+
+                <div class="blueprint-field">
+                    <span class="blueprint-label">LinkedIn Headline (Mod 1)</span>
+                    <span class="blueprint-val" id="bpHeadline" style="font-style: italic; color: var(--text-muted);">Not formulated yet</span>
+                </div>
+
+                <div class="blueprint-field">
+                    <span class="blueprint-label">Target Outreach Draft (Mod 3)</span>
+                    <span class="blueprint-val" id="bpOutreach" style="font-style: italic; color: var(--text-muted);">Pending draft</span>
+                </div>
+
+                <div class="blueprint-field">
+                    <span class="blueprint-label">Proof of Work (Mod 7)</span>
+                    <span class="blueprint-val" id="bpProof" style="font-style: italic; color: var(--text-muted);">Pending project concept</span>
+                </div>
+
+                <button class="btn-header btn-export" style="margin-top: 0.5rem; justify-content: center;" onclick="openExportModal()">Review & Print Blueprint</button>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal-overlay" id="exportModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>My "Acting Like a Local" Blueprint</h3>
+                <button onclick="closeExportModal()" style="background: none; border: none; color: #fff; font-size: 1.25rem; cursor: pointer;">✕</button>
+            </div>
+            <div class="modal-body" id="exportContent">
+                <!-- Injected printable report -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-header" onclick="copyBlueprintMarkdown()">Copy Markdown</button>
+                <button class="btn-header" onclick="window.print()">Print / Save PDF</button>
+                <button class="btn-header btn-export" onclick="closeExportModal()">Close</button>
+            </div>
         </div>
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast">Action Logged! +Points</div>
+    <div id="toast"><span>✓</span> <span id="toastMsg">Saved!</span></div>
 
+    <!-- Embedded Master Directory Data from internships.html -->
     <script>
-        // State
-        let userPoints = parseInt(localStorage.getItem('civicTransitPoints')) || 0;
-        
-        // Map Data
-        const mapData = [
+        const directoryData = [
+            // ==================== PATHWAY 1: LAW & GOVERNMENT ====================
             {
-                id: 'red',
-                name: 'Electoral Line',
-                color: 'red',
-                stations: [
-                    { id: 'campaign_hq', name: 'Campaign HQ', capturedBy: 'The Federalists', points: 300 },
-                    { id: 'party_comm', name: 'Party Committee', capturedBy: 'Policy Wonks', points: 150 },
-                    { id: 'pollster', name: 'Polling Firm', capturedBy: 'None', points: 0 }
-                ]
+                id: "rep-brownley",
+                title: "U.S. House of Representatives – Rep. Julia Brownley (CA-26)",
+                subtitle: "Federal Congressional Casework & Legislative Affairs",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks & Oxnard",
+                description: "Handle constituent casework involving federal agencies (VA, USCIS, Social Security, State Department), draft congressional inquiry letters, attend community events with field representatives, and monitor district press coverage.",
+                contactName: "District Internship Coordinator",
+                contactPhone: "(805) 379-1779",
+                contactEmail: "",
+                address: "223 E. Thousand Oaks Blvd, Suite 220, Thousand Oaks, CA 91360 / 201 E. 4th St, Suite 209B, Oxnard, CA 93030",
+                portalUrl: "https://juliabrownley.house.gov/services/internships/",
+                note: "Requires cover letter, resume, 1-2 page writing sample, and 3 references. Open Fall, Spring, Summer."
             },
             {
-                id: 'blue',
-                name: 'Governance Line',
-                color: 'blue',
-                stations: [
-                    { id: 'city_hall', name: 'City Hall', capturedBy: 'The Progressives', points: 500 },
-                    { id: 'state_cap', name: 'State Capitol', capturedBy: 'The Federalists', points: 450 },
-                    { id: 'fed_agency', name: 'Federal Agency', capturedBy: 'None', points: 100 }
-                ]
+                id: "sen-limon",
+                title: "California State Senate – Senator Monique Limón (District 19)",
+                subtitle: "State Legislative Office & Constituent Casework",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard & Santa Barbara",
+                description: "Track state legislation impacting Ventura County, draft legislative resolutions, assist field staff with constituent casework (EDD, Caltrans, DMV, Dept of Insurance), and staff community roundtables.",
+                contactName: "District Office Intern Coordinator",
+                contactPhone: "(805) 988-1940",
+                contactEmail: "Senator.Limon@senate.ca.gov",
+                address: "300 E. Esplanade Dr, Suite 430, Oxnard, CA 93036",
+                portalUrl: "https://sd19.senate.ca.gov/",
+                note: "Apply via Senate District Internship Interest Form under 'Get In Touch'."
             },
             {
-                id: 'green',
-                name: 'Advocacy Line',
-                color: 'green',
-                stations: [
-                    { id: 'aclu', name: 'ACLU', capturedBy: 'The Progressives', points: 350 },
-                    { id: 'think_tank', name: 'Think Tank', capturedBy: 'Campaigners', points: 200 },
-                    { id: 'grassroots', name: 'Grassroots Org', capturedBy: 'None', points: 50 }
-                ]
+                id: "asm-irwin",
+                title: "California State Assembly – Assemblymember Jacqui Irwin (AD-42)",
+                subtitle: "State Legislative Research & Constituent Advocacy",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks & Camarillo",
+                description: "Research state legislative proposals (cybersecurity, higher ed, veteran affairs, water policy), prepare background memos for legislative staff, manage constituent outreach, and attend local civic hearings.",
+                contactName: "District Director / Intern Coordinator",
+                contactPhone: "(805) 370-0542",
+                contactEmail: "",
+                address: "223 E. Thousand Oaks Blvd, Suite 412, Thousand Oaks, CA 91360",
+                portalUrl: "https://irwin.asmdc.org/",
+                note: "8-12 hours/week. Bilingual Spanish proficiency is strongly encouraged."
             },
             {
-                id: 'gold',
-                name: 'Legal/Lobby Line',
-                color: 'gold',
-                stations: [
-                    { id: 'law_firm', name: 'Corporate Law Firm', capturedBy: 'None', points: 0 },
-                    { id: 'pub_def', name: 'Public Defender', capturedBy: 'The Federalists', points: 250 },
-                    { id: 'k_street', name: 'Lobbying Shop', capturedBy: 'None', points: 0 }
-                ]
+                id: "asm-bennett",
+                title: "California State Assembly – Assemblymember Steve Bennett (AD-38)",
+                subtitle: "Environmental, Agricultural & Open Space Policy",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard & Ventura",
+                description: "Specialize in environmental policy, agricultural labor oversight, SOAR (Save Open-space and Agricultural Resources) regional land-use monitoring, and local agency coordination.",
+                contactName: "Field Representative / Intern Coordinator",
+                contactPhone: "(805) 485-4745",
+                contactEmail: "",
+                address: "300 E. Esplanade Dr, Suite 1790, Oxnard, CA 93036",
+                portalUrl: "https://bennett.asmdc.org/",
+                note: "Applications available online or in-person at the Oxnard office."
+            },
+            {
+                id: "sen-stern",
+                title: "California State Senate – Senator Henry Stern (District 27)",
+                subtitle: "Environmental Protection, Wildfire Policy & Grid Reliability",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura / LA Border",
+                city: "Calabasas, Thousand Oaks, Simi Valley",
+                description: "Covers Eastern Ventura County (Thousand Oaks, Moorpark, Simi Valley) and Western LA County (Calabasas, Agoura Hills, Malibu). Work on wildfire mitigation policy, grid reliability, climate resilience, and public safety oversight.",
+                contactName: "District Intern Coordinator",
+                contactPhone: "(818) 876-3352",
+                contactEmail: "",
+                address: "5016 N. Parkway Calabasas, Suite 222, Calabasas, CA 91302",
+                portalUrl: "https://sd27.senate.ca.gov/",
+                note: "Excellent placement for environmental, energy, and open space policy."
+            },
+            {
+                id: "sen-padilla",
+                title: "U.S. Senate – Senator Alex Padilla (Los Angeles Regional Office)",
+                subtitle: "Federal Legislation, Immigration & Judicial Nominations",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "West Los Angeles",
+                description: "Serves the Greater LA and Ventura County region. Interns track federal casework, immigration relief petitions, federal appropriations requests, judicial nominations, and regional environmental projects.",
+                contactName: "Regional Intern Coordinator",
+                contactPhone: "(310) 231-4494",
+                contactEmail: "",
+                address: "11845 W. Olympic Blvd, Suite 1250W, Los Angeles, CA 90064",
+                portalUrl: "https://www.padilla.senate.gov/services/internships/",
+                note: "Competitive federal internship. Apply 3 months in advance."
+            },
+            {
+                id: "rep-carbajal",
+                title: "U.S. House of Representatives – Rep. Salud Carbajal (CA-24)",
+                subtitle: "Armed Services, Coastal Agriculture & Transportation",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara / Ventura",
+                city: "Goleta, Santa Barbara & Ventura",
+                description: "Represents Western Ventura County (City of Ventura, Ojai) and Santa Barbara County. Work on maritime infrastructure, offshore oil decommissioning, defense affairs, and federal veterans casework.",
+                contactName: "District Intern Coordinator",
+                contactPhone: "(805) 730-1710",
+                contactEmail: "",
+                address: "360 Campus Dr, Suite 201, Goleta, CA 93117",
+                portalUrl: "https://carbajal.house.gov/services/internships.htm",
+                note: "Covers Western Ventura County coastal issues."
+            },
+            {
+                id: "rep-garcia",
+                title: "U.S. House of Representatives – Rep. Mike Garcia (CA-27)",
+                subtitle: "Defense Appropriations, Aerospace & Water Infrastructure",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Santa Clarita & Palmdale",
+                description: "Represents Santa Clarita, Antelope Valley, and the northwest LA/Simi border. Focus on defense manufacturing oversight, military veterans affairs, and regional high-desert water allocations.",
+                contactName: "District Staff Director",
+                contactPhone: "(661) 568-4855",
+                contactEmail: "",
+                address: "23734 Valencia Blvd, Suite 301, Santa Clarita, CA 91355 / 1008 W. Avenue M-14, Palmdale, CA 93551",
+                portalUrl: "https://mikegarcia.house.gov/",
+                note: "Federal district casework and legislative tracking."
+            },
+            {
+                id: "ventura-county-ceo",
+                title: "County of Ventura – County Executive Office & Board of Supervisors",
+                subtitle: "County Administration, Public Policy & Budget Analysis",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Government Center)",
+                description: "Intern directly with a County Supervisor (Matt LaVere, Jeff Gorell, Kelly Long, Janice Parvin, Vianey Lopez) or within the Resource Management Agency (Planning Division: 805-654-2493). Work on regional housing, CEQA compliance, public health, and county budget hearings.",
+                contactName: "County HR Student Coordinator",
+                contactPhone: "(805) 654-5129",
+                contactEmail: "interns@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Administration, Ventura, CA 93009",
+                portalUrl: "https://hr.ventura.org",
+                note: "Countywide civil service internship program across 26 agencies."
+            },
+            {
+                id: "city-thousand-oaks",
+                title: "City of Thousand Oaks – City Manager's Office & HR",
+                subtitle: "Municipal Administration, Housing & Sustainability",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks",
+                description: "Assist with City Council agenda preparation, sustainability master plan monitoring, general plan updates, affordable housing allocations, and community engagement. Close proximity to Cal Lutheran.",
+                contactName: "Human Resources Department",
+                contactPhone: "(805) 449-2144",
+                contactEmail: "humanresources@toaks.gov",
+                address: "2100 Thousand Oaks Blvd, Thousand Oaks, CA 91362",
+                portalUrl: "https://www.toaks.gov/departments/human-resources",
+                note: "Open to enrolled college students. Also manages the Youth Commission."
+            },
+            {
+                id: "city-santa-clarita",
+                title: "City of Santa Clarita – Intergovernmental Affairs & Planning",
+                subtitle: "Full-Service Municipal Government & Legislative Platform",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Santa Clarita",
+                description: "The 3rd largest city in LA County. Intern in the City Manager's Intergovernmental Relations division (tracking state/federal bills), Planning/Land Use, or Santa Clarita Transit administration.",
+                contactName: "Human Resources Division",
+                contactPhone: "(661) 284-1418",
+                contactEmail: "",
+                address: "23920 Valencia Blvd, Suite 110, Santa Clarita, CA 91355",
+                portalUrl: "https://www.santaclarita.gov/human-resources",
+                note: "Large municipal employer with formal student internship cohorts."
+            },
+            {
+                id: "campaign-vcdems",
+                title: "Democratic Party of Ventura County (VCDCC)",
+                subtitle: "Electoral Organizing, VAN Database & Field Campaigns",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Camarillo",
+                description: "Runs a structured Campaign & Organizing Fellowship every election cycle. Students learn VAN (Voter Activation Network) database management, digital campaigning, phone bank coordination, and field canvassing.",
+                contactName: "Campaign & Fellowship Director",
+                contactPhone: "(805) 419-0139",
+                contactEmail: "Info@VenturaCountyDemocrats.com",
+                address: "817 Camarillo Springs Rd, Suite D, Camarillo, CA 93012",
+                portalUrl: "https://www.venturacountydemocrats.com/",
+                note: "Spring, Summer, and Fall electoral campaign cycles."
+            },
+            {
+                id: "campaign-vcgop",
+                title: "Republican Party of Ventura County (VCGOP)",
+                subtitle: "Voter Turnout, Campaign Headquarters & Grassroots Outreach",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Camarillo / Simi Valley",
+                description: "Coordinates Republican campaigns, precinct walks, voter registration drives, headquarters logistics, and ballot tracking across Ventura County and the Simi Valley corridor.",
+                contactName: "Headquarters Operations",
+                contactPhone: "(805) 628-2386",
+                contactEmail: "info@venturagop.org",
+                address: "79 E. Daily Dr, #118, Camarillo, CA 93010",
+                portalUrl: "https://venturagop.org/",
+                note: "Active campaign volunteer and field director internship pipelines."
+            },
+            {
+                id: "campaign-ca27",
+                title: "California’s 27th Congressional Campaign Committees (Battleground)",
+                subtitle: "High-Profile National Swing District Campaign Operations",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Santa Clarita & Palmdale",
+                description: "One of the most competitive, expensive, and nationally watched congressional swing districts in the United States. Both Democratic and Republican campaigns operate high-capacity field programs recruiting deputy field organizers and student fellows.",
+                contactName: "Campaign Field Directors",
+                contactPhone: "Varies by campaign",
+                contactEmail: "",
+                address: "Multiple field offices in Santa Clarita, Palmdale, and Lancaster",
+                portalUrl: "https://www.fec.gov/",
+                note: "High-intensity campaign experience with national political impact."
+            },
+
+            // ==================== PATHWAY 2: INTERNATIONAL & GLOBAL AFFAIRS ====================
+            {
+                id: "port-hueneme",
+                title: "The Port of Hueneme (Oxnard Harbor District)",
+                subtitle: "Maritime Commerce, International Trade & Foreign-Trade Zone",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Port Hueneme",
+                description: "The only commercial deepwater port between LA and SF, administering Foreign-Trade Zone #205 and billions in global trade. Interns assist with international maritime environmental policy (zero-emission green port), trade delegation logistics, and international supply chain analysis.",
+                contactName: "Robin Campos, Admin Coordinator",
+                contactPhone: "(805) 488-3677",
+                contactEmail: "rcampos@portofh.org",
+                address: "333 Ponoma St, Port Hueneme, CA 93041",
+                portalUrl: "https://www.portofhueneme.org/",
+                note: "Foreign language proficiency and international business/relations coursework valued."
+            },
+            {
+                id: "direct-relief",
+                title: "Direct Relief (Global Headquarters)",
+                subtitle: "Global Health Policy, Humanitarian Supply Chain & Disaster Relief",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara / 805",
+                city: "Goleta / Santa Barbara",
+                description: "One of the world's leading humanitarian healthcare NGOs operating in 80+ countries in partnership with the WHO. Interns track global health policy, cross-border customs regulations for pharmaceuticals, and emergency logistics.",
+                contactName: "Volunteer & Internship Services",
+                contactPhone: "(805) 964-4767",
+                contactEmail: "",
+                address: "6100 Wallace Becknell Rd, Santa Barbara, CA 93117",
+                portalUrl: "https://www.directrelief.org/careers/",
+                note: "Accessible directly along the 101 corridor. High-impact global humanitarian operations."
+            },
+            {
+                id: "la-consular-corps",
+                title: "The Los Angeles Consular Corps (Foreign Consulates-General)",
+                subtitle: "Bilateral Diplomacy, Consular Affairs & International Relations",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Los Angeles & Century City",
+                description: "LA hosts over 100 foreign consulates-general (second largest in the world). Prominent consulates offering formal diplomatic internships: Consulate General of Mexico (213-351-6800), British Consulate-General (310-789-0031), Consulate General of Canada (213-346-2700), and Consulate General of Japan (213-617-6700).",
+                contactName: "Consular Public Affairs Divisions",
+                contactPhone: "(213) 351-6800",
+                contactEmail: "",
+                address: "Various Consulates in Downtown LA, Century City, and Miracle Mile",
+                portalUrl: "https://www.dfpni.gov.uk/contacts/los-angeles-consular-corps",
+                note: "Direct exposure to diplomatic statecraft, foreign policy, and consular protection."
+            },
+            {
+                id: "pacific-council",
+                title: "Pacific Council on International Policy",
+                subtitle: "Foreign Policy Think Tank & West Coast Partner to CFR",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Downtown Los Angeles",
+                description: "The premier non-partisan international policy council on the West Coast. Interns help organize high-level diplomatic briefings, research Indo-Pacific geopolitics and transatlantic trade, and edit international policy publications.",
+                contactName: "Engagement Team",
+                contactPhone: "(213) 221-2000",
+                contactEmail: "engagement@pacificcouncil.org",
+                address: "725 S. Figueroa St, Suite 450, Los Angeles, CA 90017",
+                portalUrl: "https://www.pacificcouncil.org/",
+                note: "Leading forum for international diplomacy and global affairs research."
+            },
+            {
+                id: "irc-la",
+                title: "International Rescue Committee (IRC) – Los Angeles Office",
+                subtitle: "Refugee Resettlement, Asylum Advocacy & UN Coordination",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "los-angeles",
+                countyLabel: "Northern LA / Glendale",
+                city: "Glendale",
+                description: "Global NGO working directly with the UN High Commissioner for Refugees (UNHCR). Interns assist newly arrived refugees with asylum documentation, work authorization filings, community orientation, and state legislative advocacy.",
+                contactName: "Volunteer & Resettlement Coordinator",
+                contactPhone: "(818) 550-6220",
+                contactEmail: "",
+                address: "625 N. Maryland Ave, Glendale, CA 91206",
+                portalUrl: "https://www.rescue.org/united-states/los-angeles-ca",
+                note: "Convenient to northern LA. Exceptional placement for human rights and immigration."
+            },
+            {
+                id: "una-usa",
+                title: "UNA-USA: United Nations Association (Santa Barbara & Tri-Counties)",
+                subtitle: "UN Sustainable Development Goals & Grassroots Diplomacy",
+                pathway: "global",
+                pathwayLabel: "International & Global",
+                county: "ventura",
+                countyLabel: "Tri-Counties (805)",
+                city: "Ventura & Santa Barbara",
+                description: "Represents Ventura, Santa Barbara, and San Luis Obispo counties. Coordinates regional programming on UN SDGs, hosts the annual Peace Prize ceremony, and organizes youth diplomacy summits.",
+                contactName: "Chapter Leadership",
+                contactPhone: "",
+                contactEmail: "info@unasb.org",
+                address: "Tri-Counties Regional Chapter",
+                portalUrl: "https://unasb.org/",
+                note: "Student memberships and youth delegation opportunities available."
+            },
+
+            // ==================== PATHWAY 3: POLICY & RESEARCH ====================
+            {
+                id: "rand-corp",
+                title: "RAND Corporation (Global Headquarters)",
+                subtitle: "Public Policy Analysis, Quantitative Modeling & Defense Studies",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Santa Monica",
+                description: "The world's leading non-partisan public policy research organization. College graduates and upper-division students work as Research Assistants (RAs) and project aides supporting senior researchers across defense, education, health policy, and civil justice.",
+                contactName: "Summer Associate Director / HR",
+                contactPhone: "(310) 393-0411",
+                contactEmail: "Summer_Director@rand.org",
+                address: "1776 Main St, Santa Monica, CA 90401",
+                portalUrl: "https://www.rand.org/jobs",
+                note: "Quantitative data cleaning, Stata/R modeling, and literature reviews."
+            },
+            {
+                id: "cerf-clucerf",
+                title: "Center for Economic Research & Forecasting (CERF) – Cal Lutheran",
+                subtitle: "Macroeconomic Modeling, Land Use & Water Market Policy",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks",
+                description: "Nationally recognized forecasting institute at Cal Lutheran. Interns compile quantitative time-series data, assist in econometric modeling, and analyze California housing, environmental, and water policies (Fox Canyon groundwater market).",
+                contactName: "Dr. Matthew Fienup, Executive Director",
+                contactPhone: "(805) 493-3668",
+                contactEmail: "",
+                address: "California Lutheran University, 60 W. Olsen Rd, Thousand Oaks, CA 91360",
+                portalUrl: "https://clucerf.org/",
+                note: "Located right on Cal Lutheran's campus. Strong quantitative focus."
+            },
+            {
+                id: "milken-inst",
+                title: "Milken Institute (Global Headquarters)",
+                subtitle: "Regional Economic Performance & Public Health Policy",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Santa Monica",
+                description: "Major economic think tank known for the Best-Performing Cities Index and FasterCures center. Interns compile economic time-series data, analyze municipal fiscal health, and draft policy briefs for civic and corporate leaders.",
+                contactName: "Career & Internship Inquiries",
+                contactPhone: "(310) 570-4600",
+                contactEmail: "inquiries@milkeninstitute.org",
+                address: "1250 Fourth St, Santa Monica, CA 90401",
+                portalUrl: "https://milkeninstitute.org/careers",
+                note: "Year-round and summer internships in economics, health, and global conferences."
+            },
+            {
+                id: "ucla-lppi",
+                title: "UCLA Latino Policy & Politics Institute (LPPI)",
+                subtitle: "Data-Driven Voting Rights, Criminal Justice & Economic Mobility",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Westwood / Los Angeles",
+                description: "The nation's leading research institute addressing domestic policy issues impacting Latino communities. Interns analyze U.S. Census data, conduct voting rights research, and draft policy briefs distributed to state legislators.",
+                contactName: "Research Operations",
+                contactPhone: "(310) 794-5555",
+                contactEmail: "latino@luskin.ucla.edu",
+                address: "UCLA Luskin, 3326 Murphy Hall, Los Angeles, CA 90095",
+                portalUrl: "https://latino.ucla.edu/",
+                note: "Premier quantitative social science and policy advocacy institute."
+            },
+            {
+                id: "lmu-studyla",
+                title: "Center for the Study of Los Angeles (StudyLA) – LMU",
+                subtitle: "Public Opinion Polling, Survey Methodology & Civic Indicators",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Westchester / Los Angeles",
+                description: "The definitive public opinion polling center in Southern California. Conducts the annual Los Angeles Public Opinion Survey and election exit polls. Student research assistants learn sampling methodology, survey weighting, and data synthesis.",
+                contactName: "Brianne Gilbert, Managing Director",
+                contactPhone: "(310) 338-4565",
+                contactEmail: "brianne.gilbert@lmu.edu",
+                address: "Loyola Marymount University, 1 LMU Dr, Suite 4119, Los Angeles, CA 90045",
+                portalUrl: "https://academics.lmu.edu/studyla",
+                note: "Specializes in undergraduate survey research assistantships."
+            },
+            {
+                id: "catalyst-ca",
+                title: "Catalyst California (formerly Advancement Project)",
+                subtitle: "RACE COUNTS, Civil Rights & Budget Equity Analytics",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Los Angeles (Echo Park)",
+                description: "Data-driven civil rights policy research non-profit. Created the statewide RACE COUNTS benchmarking tool tracking racial disparities across all 58 California counties. Interns analyze municipal budgets and build GIS maps.",
+                contactName: "Research & Talent Team",
+                contactPhone: "(213) 989-1300",
+                contactEmail: "info@catalystcalifornia.org",
+                address: "1910 W. Sunset Blvd, Suite 500, Los Angeles, CA 90026",
+                portalUrl: "https://www.catalystcalifornia.org/careers",
+                note: "Leading research shop in California budget and racial equity."
+            },
+            {
+                id: "vcca-alliance",
+                title: "Ventura County Civic Alliance (VCCA)",
+                subtitle: "State of the Region Report & Tri-Counties Civic Health",
+                pathway: "policy",
+                pathwayLabel: "Policy & Research",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura",
+                description: "Regional civic collaborative that publishes the biennial State of the Region Report. Student researchers gather demographic, housing, wage, water, and educational data across all 10 cities in Ventura County.",
+                contactName: "Research Committee Coordinator",
+                contactPhone: "(805) 665-3834",
+                contactEmail: "Info@CivicAlliance.org",
+                address: "P.O. Box 23412, Ventura, CA 93002",
+                portalUrl: "https://www.civicalliance.org",
+                note: "Direct research contribution to countywide quality of life indicators."
+            },
+
+            // ==================== PATHWAY 4: COMMUNITY ADVOCACY & ORGANIZING ====================
+            {
+                id: "cause-oxnard",
+                title: "CAUSE: Central Coast Alliance for a Sustainable Economy",
+                subtitle: "Grassroots Organizing, Rent Control & Farmworker Rights",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard & Santa Paula",
+                description: "The premier community-labor coalition on the Central Coast. Interns conduct door-to-door community surveys, organize tenant rights workshops, draft talking points for City Council hearings, and participate in grassroots lobbying.",
+                contactName: "Organizing & Internship Team",
+                contactPhone: "(805) 486-4383",
+                contactEmail: "",
+                address: "4225 Saviers Rd, Suite 2, Oxnard, CA 93033 / 121 N. 8th St, Santa Paula, CA",
+                portalUrl: "https://www.causenow.org/jobs-internships/",
+                note: "Paid and volunteer community organizing internships available."
+            },
+            {
+                id: "micop-oxnard",
+                title: "MICOP: Mixteco/Indígena Community Organizing Project",
+                subtitle: "Indigenous Migrant Rights, Language Justice & Health Policy",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard",
+                description: "Advocates for the 30,000+ indigenous Mexican migrant farmworkers residing in Ventura County who speak Mixteco, Zapoteco, and Triqui. Support indigenous language rights, community health workshops, and Radio Indígena 94.1 FM broadcasts.",
+                contactName: "Liza Diniakos / Norma Gomez",
+                contactPhone: "(805) 483-1166",
+                contactEmail: "liza.diniakos@mixteco.org",
+                address: "505 S. A St, Oxnard, CA 93030",
+                portalUrl: "https://mixteco.org/careers/",
+                note: "Norma Gomez direct: (805) 280-6509, norma.gomez@mixteco.org."
+            },
+            {
+                id: "cabrillo-edc",
+                title: "Cabrillo Economic Development Corporation (CEDC)",
+                subtitle: "Affordable Housing Development & Resident Leadership Organizing",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura",
+                description: "The largest non-profit affordable housing developer and resident empowerment organization in Ventura County. Interns work in the Resident and Community Services Division organizing Resident Councils, youth programs, and housing advocacy.",
+                contactName: "Community Services Coordinator",
+                contactPhone: "(805) 659-3791",
+                contactEmail: "info@cabrilloedc.org",
+                address: "702 County Square Dr, Suite 200, Ventura, CA 93003",
+                portalUrl: "https://www.cabrilloedc.org",
+                note: "Focus on affordable housing policy and community empowerment."
+            },
+            {
+                id: "one-step-fillmore",
+                title: "One Step A La Vez (Santa Clara River Valley)",
+                subtitle: "Youth Restorative Justice, Diversion & Rural Equity",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Fillmore & Piru",
+                description: "Youth-led community advocacy and social justice center serving Fillmore, Piru, and Santa Paula. Interns support juvenile justice diversion programs, rural public transit advocacy (Highway 126 corridor), and youth mental health equity.",
+                contactName: "Executive Leadership",
+                contactPhone: "(805) 625-7067",
+                contactEmail: "info@myonestep.org",
+                address: "421 Sespe Ave, Fillmore, CA 93015",
+                portalUrl: "https://www.myonestep.org/",
+                note: "P.O. Box 803, Fillmore, CA 93016. High-impact rural youth organizing."
+            },
+            {
+                id: "cec-sb",
+                title: "Community Environmental Council (CEC)",
+                subtitle: "Regional Climate Policy, Decarbonization & Resilience",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara",
+                description: "Founded in 1970, CEC is one of California's oldest and most influential regional environmental policy organizations. Interns draft building decarbonization policies, organize climate resilience campaigns, and engage local city councils.",
+                contactName: "Internship & Volunteer Program",
+                contactPhone: "(805) 963-0583",
+                contactEmail: "",
+                address: "1219 State St, Suite A, Santa Barbara, CA 93101",
+                portalUrl: "https://cecsb.org/careers",
+                note: "Regional climate action hub for Ventura, SB, and SLO counties."
+            },
+            {
+                id: "sbcan",
+                title: "Santa Barbara County Action Network (SBCAN)",
+                subtitle: "Countywide Labor, Housing & Environmental Justice",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara & Santa Maria",
+                description: "Grassroots membership network advocating for social, economic, and environmental justice across North and South Santa Barbara County. Interns organize community roundtables, advocate for farmworker housing, and track planning dockets.",
+                contactName: "Nancy Avoce, Executive Director",
+                contactPhone: "(805) 739-1836",
+                contactEmail: "nancy@sbcan.org",
+                address: "P.O. Box 6174, Santa Maria, CA 93456",
+                portalUrl: "http://www.sbcan.org/",
+                note: "General inquiries: info@sbcan.org."
+            },
+            {
+                id: "pacoima-beautiful",
+                title: "Pacoima Beautiful (Northeast San Fernando Valley)",
+                subtitle: "Environmental Justice, Toxic Remediation & Shade Equity",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Pacoima (SFV)",
+                description: "Historic environmental justice organization right across the Ventura County border in the Northeast Valley. Interns organize community members to remediate toxic industrial sites, advocate for shade equity, and testify at air quality hearings.",
+                contactName: "Community Programs Team",
+                contactPhone: "(818) 899-2454",
+                contactEmail: "",
+                address: "13520 Van Nuys Blvd, Suite 200, Pacoima, CA 91331",
+                portalUrl: "https://www.pacoimabeautiful.org/",
+                note: "Grassroots environmental justice in low-income communities of color."
+            },
+            {
+                id: "chirla-sfv-av",
+                title: "CHIRLA: Coalition for Humane Immigrant Rights (SFV & AV)",
+                subtitle: "Immigrant Organizing, DACA Advocacy & State Lobbying",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Pacoima & Palmdale",
+                description: "One of the nation's premier immigrant rights organizations. Regional offices in Pacoima (11243 Glenoaks Blvd) and Palmdale (1305 E. Palmdale Blvd). Interns lead student organizing, legislative lobbying delegations in Sacramento, and deportation defense triage.",
+                contactName: "Youth & Regional Organizing",
+                contactPhone: "(213) 353-1333",
+                contactEmail: "",
+                address: "Regional Offices in Pacoima and Palmdale; Main HQ in LA",
+                portalUrl: "https://www.chirla.org/",
+                note: "Massive youth network and legislative advocacy pipeline."
+            },
+            {
+                id: "turnup-civic-activism",
+                title: "TurnUp: Youth Civic Education & Activism",
+                subtitle: "Civic and Activism Remote Internship (Year-Round)",
+                pathway: "advocacy",
+                pathwayLabel: "Community Advocacy",
+                county: "all",
+                countyLabel: "Remote / Nationwide",
+                city: "Remote (Open to CLU Students)",
+                description: "TurnUp is a 501(c)(3) non-partisan non-profit organization dedicated to increasing youth civic education, empowerment, and activism, recognized in Forbes as a standout non-profit. The remote internship engages students year-round from hundreds of colleges nationwide in youth voter turnout, grassroots advocacy campaigns, digital organizing, and civic leadership training.",
+                contactName: "Internship Director",
+                contactPhone: "",
+                contactEmail: "",
+                address: "Remote Nationwide Program (Welcoming California Lutheran University Students)",
+                portalUrl: "https://us.list-manage.com/O2RDHjr6ozV?e=18a6586fd8&c2id=e008e8b07d8c129cc34b43225a3bfe92",
+                note: "Remote, flexible schedule; year-round cohorts (Fall, Spring, Summer) since 2019. Apply via link."
+            },
+
+            // ==================== PATHWAY 5: PRE-LAW & LEGAL PROFESSIONS ====================
+            {
+                id: "vc-public-defender",
+                title: "Ventura County Public Defender’s Office",
+                subtitle: "Undergraduate Investigative Internships & Case Preparation",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Hall of Justice)",
+                description: "One of the most competitive pre-law internships in California. Shadow Senior Investigators, review police body-worn camera footage, assist in subpoena service and witness interviews, locate defense evidence, and observe felony/misdemeanor court proceedings.",
+                contactName: "Aron Miller & Erika Villa, Senior Investigators",
+                contactPhone: "(805) 654-2201",
+                contactEmail: "Aron.Miller@ventura.org",
+                address: "Hall of Justice, Room 207, 800 S. Victoria Ave, Ventura, CA 93009",
+                portalUrl: "https://pubdef.ventura.org",
+                note: "Email resume and cover letter to both Aron.Miller@ventura.org and Erika.Villa@ventura.org. Deadlines: Nov (Spring), Feb (Summer), July (Fall)."
+            },
+            {
+                id: "sb-public-defender",
+                title: "Santa Barbara County Public Defender’s Office",
+                subtitle: "Undergraduate Criminal Defense & Courtroom Discovery",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara & Santa Maria",
+                description: "Undergraduate interns assist public defenders with case preparation, review police discovery, organize criminal history records, and observe courtroom trial proceedings across South and North County offices.",
+                contactName: "Dee Engler, Intern Coordinator",
+                contactPhone: "(805) 568-3470",
+                contactEmail: "dengler@publicdefendersb.org",
+                address: "1100 Anacapa St, Santa Barbara, CA 93101 / 312 E. Cook St, Santa Maria, CA",
+                portalUrl: "https://www.countyofsb.org/3129/InternExtern",
+                note: "Deadlines: August 1st (Fall), December 1st (Spring), May 1st (Summer)."
+            },
+            {
+                id: "la-public-defender",
+                title: "Los Angeles County Public Defender’s Office",
+                subtitle: "Paralegal & Investigator Student Tracks",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "San Fernando, Van Nuys, Lancaster & Downtown LA",
+                description: "The nation's largest public defender agency. Five dedicated student tracks: Legal, Investigator, Paralegal, Communications, and Administrative. Interns assist with motion filing, client interviews, and exhibit assembly across branch courthouses.",
+                contactName: "County HR Intern Coordinator",
+                contactPhone: "(213) 974-2811",
+                contactEmail: "interns@hr.lacounty.gov",
+                address: "210 W. Temple St, 19th Floor, Los Angeles, CA 90012 (and Valley branches)",
+                portalUrl: "https://pubdef.lacounty.gov/",
+                note: "Requires 16 hours/week commitment. Rolling applications accepted year-round."
+            },
+            {
+                id: "vc-district-attorney",
+                title: "Ventura County District Attorney’s Office",
+                subtitle: "Prosecutorial Litigation, Crime Victims & Investigation",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Hall of Justice)",
+                description: "Assist Deputy DAs with trial binder preparation, case digest research, evidence indexing, and courtroom motions. Crime Victims' Assistance Unit provides court accompaniment and restitution assistance during violent crime cases.",
+                contactName: "Chief Asst DA Lisa Lyytikainen / Vianey Valdez",
+                contactPhone: "(805) 654-3622",
+                contactEmail: "Vianey.Valdez@venturacounty.gov",
+                address: "Hall of Justice, Room 311, 800 S. Victoria Ave, Ventura, CA 93009",
+                portalUrl: "https://da.venturacounty.gov/",
+                note: "Bureau of Investigation LiveScan takes 6-8 weeks; apply 2 months early. Volunteers barred from defense work."
+            },
+            {
+                id: "ca-court-appeal-div6",
+                title: "California Court of Appeal – 2nd District, Division Six (Ventura)",
+                subtitle: "Judicial Externship & Appellate Research Chambers",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Downtown)",
+                description: "Division Six is located right on Santa Clara St in Ventura and hears all state appellate matters from Ventura, Santa Barbara, and San Luis Obispo counties. Externs review trial records, write legal research memoranda, draft bench briefs, and observe oral arguments.",
+                contactName: "Clerk’s Office / Chambers",
+                contactPhone: "(805) 641-4700",
+                contactEmail: "",
+                address: "200 E. Santa Clara St, Ventura, CA 93001",
+                portalUrl: "https://appellate.courts.ca.gov/district-courts/2dca",
+                note: "One of the most prestigious legal research placements in the 805 region."
+            },
+            {
+                id: "crla-oxnard",
+                title: "California Rural Legal Assistance (CRLA) – Oxnard Office",
+                subtitle: "Civil Rights, Farmworker Eviction Defense & Labor Law",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Oxnard",
+                description: "Paralegal support in housing defense—interviewing farmworker tenants facing unlawful detainers, filing answers in court, drafting wage-theft complaints for the Labor Commissioner, and verifying employer compliance with agricultural labor laws.",
+                contactName: "Central Pro Bono Coordinator",
+                contactPhone: "(805) 486-1068",
+                contactEmail: "probonosupport@crla.org",
+                address: "338 S. A St, Oxnard, CA 93030",
+                portalUrl: "https://crla.org/careers/internships",
+                note: "Specify 'Oxnard Regional Office' in application. Bilingual Spanish/Mixteco highly valued."
+            },
+            {
+                id: "conejo-free-clinic",
+                title: "Conejo Free Clinic Legal Services (Thousand Oaks)",
+                subtitle: "Pro Bono Client Intake, Triage & Attorney Shadowing",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Thousand Oaks",
+                description: "Located adjacent to Cal Lutheran. Pre-law interns conduct initial client intake interviews, triage disputes (family law, immigration, bankruptcy, tenant-landlord), and shadow pro bono attorneys during weekly consultation sessions.",
+                contactName: "Eileen Harris, Legal Coordinator",
+                contactPhone: "(805) 807-3614",
+                contactEmail: "eileenharris@conejofreeclinic.org",
+                address: "80 E. Hillcrest Dr, Suite 213, Thousand Oaks, CA 91360",
+                portalUrl: "https://www.conejofreeclinic.org/",
+                note: "Clinic main phone: (805) 497-3575. Excellent entry-level client intake experience."
+            },
+            {
+                id: "lafsbc-legal-aid",
+                title: "Legal Aid Foundation of Santa Barbara County (LAFSBC)",
+                subtitle: "Eviction Defense, Domestic Violence Restraining Orders & Intake",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara, Santa Maria & Lompoc",
+                description: "Volunteer internships for college and law students. Assist paralegals with client intakes, prepare emergency petitions for Domestic Violence Restraining Orders (DVRO), draft elder abuse declarations, and support tenant eviction defense.",
+                contactName: "Personnel & Volunteer Coordinator",
+                contactPhone: "(805) 963-6754",
+                contactEmail: "personnel@lafsbc.org",
+                address: "301 E. Canon Perdido St, Santa Barbara, CA 93101 / 301 S. Miller St, Santa Maria, CA",
+                portalUrl: "https://lafsbc.org",
+                note: "Send resume and cover letter to personnel@lafsbc.org."
+            },
+            {
+                id: "nlsla-sfv-av",
+                title: "Neighborhood Legal Services of LA County (NLSLA)",
+                subtitle: "Courthouse Self-Help Centers & Healthcare Access Advocacy",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Northern LA County",
+                city: "Pacoima, Palmdale & Van Nuys",
+                description: "Primary civil legal aid provider for the San Fernando, Antelope, and Santa Clarita Valleys. Interns staff the Self-Help Legal Access Centers inside the Van Nuys, San Fernando, Chatsworth, and Antelope Valley courthouses.",
+                contactName: "Volunteer Coordinator",
+                contactPhone: "(818) 291-1762",
+                contactEmail: "volunteers@nlsla.org",
+                address: "13327 Van Nuys Blvd, Pacoima, CA 91331 / 1104 E. Avenue R, Palmdale, CA",
+                portalUrl: "https://nlsla.org",
+                note: "Huge provider of paralegal and pre-law student fellowships."
+            },
+            {
+                id: "bet-tzedek",
+                title: "Bet Tzedek Legal Services",
+                subtitle: "Pro Bono Legal Intake, Elder Justice & Worker Protection",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Los Angeles",
+                description: "One of the nation's premier pro bono legal organizations. Interns conduct client intake in elder abuse and conservatorships, research Holocaust reparations, support the Employment Rights Project, and file housing defense petitions.",
+                contactName: "Rachael Ettinger, Pro Bono Coordinator",
+                contactPhone: "(323) 939-0506",
+                contactEmail: "volunteer@bettzedek.org",
+                address: "3250 Wilshire Blvd, 13th Floor, Los Angeles, CA 90010",
+                portalUrl: "https://www.bettzedek.org",
+                note: "Rachael Ettinger direct: (323) 549-5838, rettinger@bettzedek.org."
+            },
+            {
+                id: "immdef-la",
+                title: "ImmDef: Immigrant Defenders Law Center",
+                subtitle: "Universal Deportation Defense & Removal Court Shadowing",
+                pathway: "prelaw",
+                pathwayLabel: "Pre-Law & Legal",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Downtown Los Angeles",
+                description: "California's largest deportation defense firm, committed to universal legal representation. Interns shadow defense attorneys in federal immigration court, draft declarations for asylum seekers, and compile country conditions dossiers.",
+                contactName: "Internship & Volunteer Program",
+                contactPhone: "(213) 542-0100",
+                contactEmail: "",
+                address: "634 S. Spring St, 10th Floor, Los Angeles, CA 90014",
+                portalUrl: "https://www.immdef.org/",
+                note: "Premier training ground for immigration defense litigation."
+            },
+
+            // ==================== PATHWAY 6: PRIVATE LAW FIRMS ====================
+            {
+                id: "firm-fcop",
+                title: "Ferguson Case Orr Paterson LLP (FCOP)",
+                subtitle: "Full-Service Commercial, Real Estate, Water & Employment Law",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura & Westlake Village",
+                description: "The largest full-service private law partnership in Ventura County with 40+ attorneys. Practice groups include Business Transactions, Commercial Litigation, Land Use, Employment Defense, Trusts & Estates, and Agricultural Water Law.",
+                contactName: "Firm Administrator / Hiring Partner",
+                contactPhone: "(805) 659-6800",
+                contactEmail: "",
+                address: "1052 S. Seaward Ave, Ventura, CA 93001 / 2801 Townsgate Rd, Westlake Village, CA",
+                portalUrl: "https://www.fcoplaw.com",
+                note: "Hires undergraduate legal assistants, file clerks, and summer clerks."
+            },
+            {
+                id: "firm-mullen-henzell",
+                title: "Mullen & Henzell L.L.P.",
+                subtitle: "Corporate Law, Civil Litigation, Real Estate & Labor",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara",
+                description: "Serving the Central Coast since 1953. Full-service practice representing regional corporations, agricultural estates, and educational institutions in corporate governance, civil trials, real estate entitlements, and labor defense.",
+                contactName: "Office Administrator",
+                contactPhone: "(805) 966-1501",
+                contactEmail: "",
+                address: "112 E. Victoria St, Santa Barbara, CA 93101",
+                portalUrl: "https://www.mullenlaw.com/",
+                note: "Premier Central Coast private firm with deep institutional ties."
+            },
+            {
+                id: "firm-price-postel",
+                title: "Price, Postel & Parma LLP",
+                subtitle: "Water Rights, Complex Land Use, Environmental & Business Law",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "santa-barbara",
+                countyLabel: "Santa Barbara County",
+                city: "Santa Barbara",
+                description: "Established in 1852, this is the oldest continuously operating law firm in California. Renowned statewide for groundwater rights adjudication, environmental compliance, and high-net-worth estate planning.",
+                contactName: "Managing Partner / Administrator",
+                contactPhone: "(805) 962-0011",
+                contactEmail: "",
+                address: "200 E. Carrillo St, Suite 400, Santa Barbara, CA 93101",
+                portalUrl: "https://www.ppplaw.com/",
+                note: "Historical leader in California water law and agricultural entitlements."
+            },
+            {
+                id: "firm-lightgabler",
+                title: "LightGabler LLP",
+                subtitle: "Corporate Labor & Employment Defense Boutique",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Camarillo",
+                description: "Ventura County's premier labor and employment defense firm. Defends regional employers and executives in wage-and-hour class actions, PAGA claims, wrongful termination trials, and workplace discrimination lawsuits.",
+                contactName: "Firm Administrator",
+                contactPhone: "(805) 248-7208",
+                contactEmail: "",
+                address: "760 Paseo Camarillo, Suite 300, Camarillo, CA 93010",
+                portalUrl: "https://www.lightgablerlaw.com/",
+                note: "Leading employment litigation practice in the 805 corridor."
+            },
+            {
+                id: "firm-lewitt-hackman",
+                title: "Lewitt Hackman (Lewitt, Hackman, Shapiro, Marshall & Harlan)",
+                subtitle: "Commercial Litigation, Franchise Law & Corporate Transactions",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "los-angeles",
+                countyLabel: "San Fernando Valley",
+                city: "Encino",
+                description: "The largest commercial law firm headquartered in the San Fernando Valley. Heavy practice in Franchise Law, Business Litigation, Employment Defense, Corporate Mergers, and Commercial Real Estate.",
+                contactName: "Human Resources / Office Administrator",
+                contactPhone: "(818) 990-2120",
+                contactEmail: "",
+                address: "16633 Ventura Blvd, 11th Floor, Encino, CA 91436",
+                portalUrl: "https://www.lewitthackman.com/",
+                note: "Convenient along the 101 corridor for Conejo Valley / SFV students."
+            },
+            {
+                id: "firm-biglaw-la",
+                title: "Los Angeles 'BigLaw' Gap-Year Paralegal Programs",
+                subtitle: "Latham & Watkins • Gibson Dunn • O'Melveny & Myers • Quinn Emanuel",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "los-angeles",
+                countyLabel: "Los Angeles County",
+                city: "Century City & Downtown LA",
+                description: "Elite global corporate powerhouses regularly recruit graduating seniors for paid, 1-2 year Project Assistant / Paralegal programs before law school. Search NALP Directory and firm portals between January and April.",
+                contactName: "Paralegal Recruiting Coordinators",
+                contactPhone: "Varies by firm",
+                contactEmail: "",
+                address: "Offices in Century City and Downtown Los Angeles",
+                portalUrl: "https://www.nalpdirectory.com/",
+                note: "Paid pre-law gap-year pipeline with intensive corporate & trial litigation training."
+            },
+            {
+                id: "bar-directories",
+                title: "Official Regional Bar Association Searchable Directories",
+                subtitle: "VCBA • SBCBA • LACBA • SFVBA • State Bar of California",
+                pathway: "private-law",
+                pathwayLabel: "Private Law Firms",
+                county: "all",
+                countyLabel: "Tri-Counties",
+                city: "Searchable by Practice & City",
+                description: "Use official bar directories to locate specialized private firms: Ventura County Bar (vcba.org / 805-650-7599), Santa Barbara County Bar (sblaw.org / 805-569-5511), LA County Bar (lacba.org / 213-243-1525), and San Fernando Valley Bar (sfvba.org / 818-227-0490).",
+                contactName: "Bar Association Lawyer Referral Services",
+                contactPhone: "(805) 650-7599",
+                contactEmail: "",
+                address: "Ventura, Santa Barbara, and Los Angeles Bar Offices",
+                portalUrl: "https://www.vcba.org/",
+                note: "Search attorneys by practice specialty (e.g. IP, Environmental, Real Estate)."
+            },
+
+            // ==================== PATHWAY 7: ALUMNI CAREER OUTCOMES ====================
+            {
+                id: "alumni-gov-assembly",
+                title: "Legislative Aide & Policy Director",
+                subtitle: "California State Legislature Alumni Pathways",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "California Statewide",
+                city: "Sacramento & Ventura County",
+                description: "Alumni have served as Legislative Aides, Policy Directors, and Committee Consultants across the California State Assembly and California State Senate, drafting statutes and analyzing state appropriations.",
+                contactName: "Cal Lutheran Poli-Sci Alumni Network",
+                contactPhone: "",
+                contactEmail: "",
+                address: "California State Capitol & District Offices",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Legislative Aide, California State Assembly."
+            },
+            {
+                id: "alumni-house-counsel",
+                title: "Legislative Director & Counsel",
+                subtitle: "U.S. House of Representatives Alumni Pathways",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "los-angeles",
+                countyLabel: "Federal & Regional",
+                city: "Washington, D.C. & District Offices",
+                description: "Alumni serve as Legislative Directors, Committee Counsels, and Legislative Correspondents for members of Congress, directing policy portfolios on defense, healthcare, and budget oversight.",
+                contactName: "Poli-Sci Alumni Network",
+                contactPhone: "",
+                contactEmail: "",
+                address: "U.S. House of Representatives",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Legislative Director & Counsel, U.S. House of Representatives."
+            },
+            {
+                id: "alumni-public-defender",
+                title: "Assistant Public Defender & Deputy District Attorney",
+                subtitle: "Trial Attorneys & Criminal Justice Reformers",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "Ventura & Tri-Counties",
+                city: "Ventura & Los Angeles",
+                description: "Graduates have attended top law schools and serve as Assistant Public Defenders, Deputy District Attorneys, and civil rights litigators in county and federal courtrooms across California.",
+                contactName: "Pre-Law Alumni Mentors",
+                contactPhone: "",
+                contactEmail: "",
+                address: "County Government Centers",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Assistant Public Defender, Ventura County."
+            },
+            {
+                id: "alumni-city-manager",
+                title: "City Manager & Municipal Administrator",
+                subtitle: "Local Government Executive Leadership",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "Municipal Governments",
+                city: "Southern California Cities",
+                description: "Alumni lead municipal operations as City Managers, Assistant City Managers, and Community Development Directors, managing public works budgets, emergency response, and urban planning.",
+                contactName: "Public Administration Alumni",
+                contactPhone: "",
+                contactEmail: "",
+                address: "Various Municipalities",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: City Manager & Assistant City Administrator."
+            },
+            {
+                id: "alumni-foreign-service",
+                title: "Foreign Service & International NGO Officer",
+                subtitle: "Diplomatic Corps & Transnational Policy",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "los-angeles",
+                countyLabel: "Global / International",
+                city: "Global Placements",
+                description: "Alumni have pursued careers as Foreign Service Officers with the U.S. Department of State, international humanitarian logistics coordinators, and United Nations program liaisons.",
+                contactName: "International Relations Alumni",
+                contactPhone: "",
+                contactEmail: "",
+                address: "U.S. State Department & International NGOs",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Foreign Service Officer, U.S. Department of State."
+            },
+            {
+                id: "alumni-think-tank",
+                title: "Policy Analyst & Research Fellow",
+                subtitle: "Think Tanks & Public Policy Institutes",
+                pathway: "alumni",
+                pathwayLabel: "Alumni Outcomes",
+                county: "ventura",
+                countyLabel: "Regional & National",
+                city: "Los Angeles & Sacramento",
+                description: "Graduates conduct quantitative and qualitative policy research at non-partisan think tanks, economic development corporations, and doctoral research laboratories across the UC and CSU systems.",
+                contactName: "Research Alumni Network",
+                contactPhone: "",
+                contactEmail: "",
+                address: "Think Tanks & University Policy Labs",
+                portalUrl: "https://www.callutheran.edu/political-science",
+                note: "Sample Role: Senior Research & Policy Analyst, Public Policy Labs."
             }
         ];
 
-        // Initialization
-        function init() {
-            document.getElementById('nav-points').innerText = userPoints.toLocaleString();
-            renderMap();
-            populateSelects();
-        }
+    </script>
 
-        // Render Map UI
-        function renderMap() {
-            const grid = document.getElementById('transit-grid');
-            grid.innerHTML = '';
+    <!-- App Engine Logic -->
+    <script>
+        // State
+        let currentStep = 1;
+        let selectedPathway = 'law-gov';
+        let selectedLocation = 'thousand-oaks';
+        
+        let studentData = JSON.parse(localStorage.getItem('clu_local_student_plan')) || {
+            pathway: 'law-gov',
+            location: 'thousand-oaks',
+            currentStep: 1,
+            completedSteps: [],
+            headline: '',
+            targetOrgs: [],
+            outreachDraft: '',
+            watercoolerEvent: '',
+            subcultureNiche: '',
+            ambientDiet: '',
+            proofOfWork: '',
+            homeworkAnswers: {
+                1: '',
+                2: '',
+                3: '',
+                4: '',
+                5: '',
+                6: '',
+                7: ''
+            }
+        };
 
-            mapData.forEach(line => {
-                let html = `<div class="transit-line ${line.color}">
-                    <h3>${line.name}</h3>
-                    <ul class="station-list">`;
-                
-                line.stations.forEach(station => {
-                    let badge = station.capturedBy !== 'None' 
-                        ? `<span class="capture-badge" style="background: ${getBadgeColor(station.capturedBy)}">${station.capturedBy}</span>` 
-                        : '';
-                    
-                    html += `
-                        <li class="station">
-                            <span>${station.name}</span>
-                            ${badge}
-                        </li>
-                    `;
-                });
-
-                html += `</ul></div>`;
-                grid.innerHTML += html;
-            });
-        }
-
-        // Populate Form Selects
-        function populateSelects() {
-            const select = document.getElementById('target-station');
-            mapData.forEach(line => {
-                const optgroup = document.createElement('optgroup');
-                optgroup.label = line.name;
-                line.stations.forEach(station => {
-                    const opt = document.createElement('option');
-                    opt.value = station.id;
-                    opt.text = station.name;
-                    optgroup.appendChild(opt);
-                });
-                select.appendChild(optgroup);
-            });
-        }
-
-        // Handle Swiping Card
-        function logAction() {
-            const pointsSelector = document.getElementById('action-type');
-            const stationSelector = document.getElementById('target-station');
-            
-            const pointsGained = parseInt(pointsSelector.value);
-            const stationId = stationSelector.value;
-            
-            // Update Points
-            userPoints += pointsGained;
-            localStorage.setItem('civicTransitPoints', userPoints);
-            document.getElementById('nav-points').innerText = userPoints.toLocaleString();
-
-            // Simulate Territory Capture if high points
-            simulateCapture(stationId, pointsGained);
-
-            // Show Toast
-            const toast = document.getElementById('toast');
-            toast.innerText = `Card Swiped! +${pointsGained} pts`;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
-        function simulateCapture(stationId, pointsGained) {
-            // Find station and increase points
-            mapData.forEach(line => {
-                line.stations.forEach(station => {
-                    if(station.id === stationId) {
-                        station.points += pointsGained;
-                        // If they dump a lot of points or accumulate enough, Federalist takes it
-                        if(station.points > 200 && station.capturedBy !== 'The Federalists') {
-                            station.capturedBy = 'The Federalists';
-                        }
+        // Pathways Configuration (5 Core Pathways from syllabus.html & syllabus_california_politics.html)
+        const pathwayMeta = {
+            'law-gov': {
+                title: 'Law & Government',
+                icon: '🏛️',
+                description: 'Legislative offices, county governance, city management, election administration, and public agency operations.',
+                localJargon: ['Constituent Casework', 'Sponsor Analysis', 'Floor Alert', 'Budget Trailer Bill', 'RHNA Allocation', 'CEQA Exemption', 'General Plan Amendment', 'Charter City Authority'],
+                touristPitch: '"I am a PoliSci student at Cal Lutheran looking for an internship in government to get experience."',
+                localPitch: '"CLU Political Science Scholar researching Conejo Valley housing elements, municipal fiscal capacity, and state legislative policy under Jacqui Irwin and Monique Limón."',
+                subcultures: [
+                    {
+                        name: 'Institutional Mechanics (Staffers & Bureaucracy)',
+                        desc: 'Focuses on the administrative machinery of government: drafting ordinances, handling casework, writing policy memos for city councils and legislative committees.'
+                    },
+                    {
+                        name: 'Electoral & Campaign Strategy',
+                        desc: 'Focuses on coalition building, voter mobilization, campaign fundraising, field operations, and ballot proposition campaigns.'
                     }
-                });
+                ],
+                ambientDiet: [
+                    { title: 'Politico California Playbook', type: 'Daily Newsletter', desc: 'The gold standard insider morning memo for Sacramento and California state politics.' },
+                    { title: 'CalMatters "WhatMatters"', type: 'Daily Briefing', desc: 'Deep-dive investigative analysis on state policy battles and budget mechanics.' },
+                    { title: 'Thousand Oaks Acorn & VC Star', type: 'Local Paper', desc: 'Crucial coverage of Thousand Oaks City Council debates, Measure E, and Conejo Valley development.' }
+                ],
+                watercoolers: [
+                    { name: 'Thousand Oaks City Council Hearings', cadence: 'Alternate Tuesdays @ 6:00 PM', location: 'Civic Arts Plaza, 2100 E. TO Blvd', desc: 'Sit in rows 2-4, watch public comment on zoning and housing, and speak with council aids.' },
+                    { name: 'Conejo Valley Chamber Civic Forums', cadence: 'Monthly Breakfasts & Forums', location: 'Lundring Events Center / Chamber Offices', desc: 'Key networking venue for regional business leaders, civic officials, and legislative liaisons.' },
+                    { name: 'Ventura County Board of Supervisors', cadence: 'Tuesdays @ 8:30 AM', location: 'Ventura Government Center (Hall of Admin)', desc: 'Oversees public safety, social services, and agricultural land preserves across the county.' }
+                ],
+                proofIdeas: [
+                    '2-Page City Council Brief: Pick a recent Thousand Oaks City Council agenda item (e.g. Housing Element or General Plan) and draft an executive briefing memo analyzing stakeholder arguments.',
+                    'AD-42 / SD-19 Legislative Tracker: Analyze an active state bill authored by Assemblymember Jacqui Irwin or Senator Monique Limón with a 1-page staff review.',
+                    'Ventura County Municipal Comparison: Compare impact fees and sales tax distribution between Thousand Oaks, Oxnard, and Camarillo.'
+                ]
+            },
+            'global': {
+                title: 'International & Global Affairs',
+                icon: '🌐',
+                description: 'Diplomacy, foreign service, international NGOs, human rights advocacy, global trade, and security policy think tanks.',
+                localJargon: ['Track II Diplomacy', 'Multilateral Compliance', 'UN SDG Indicator', 'Polycrisis Analysis', 'Foreign Service Examination', 'Sanctions Regimes', 'NGO Shadow Report', 'Refugee Resettlement'],
+                touristPitch: '"I want to work internationally and travel with the United Nations or State Department."',
+                localPitch: '"International Affairs researcher specializing in multilateral polycrisis governance, regional refugee integration in Southern California, and global supply chain resilience."',
+                subcultures: [
+                    {
+                        name: 'Diplomatic & Multilateral Governance',
+                        desc: 'State Department, Foreign Service, consular corps, and intergovernmental bodies managing treaty compliance and diplomatic protocols.'
+                    },
+                    {
+                        name: 'Humanitarian & Global Human Rights Advocacy',
+                        desc: 'International NGOs and grassroots advocacy organizations addressing refugee displacement, climate migration, and transnational civil rights.'
+                    }
+                ],
+                ambientDiet: [
+                    { title: 'Foreign Policy Morning Brief', type: 'Daily Briefing', desc: 'Essential briefing on global geopolitical maneuvers, diplomatic summits, and conflicts.' },
+                    { title: 'Adam Tooze "Chartbook" & Podcast', type: 'Substack / Audio', desc: 'Macro-economic and geopolitical dissection of contemporary global polycrisis dynamics.' },
+                    { title: 'Los Angeles World Affairs Council Updates', type: 'Regional Think Tank', desc: 'Regional lectures, webinars, and policy debates with foreign ambassadors in Greater LA.' }
+                ],
+                watercoolers: [
+                    { name: 'World Affairs Council of Greater Los Angeles', cadence: 'Bi-weekly Evening Briefings', location: 'Downtown Los Angeles & Virtual', desc: 'Network with foreign consuls, international policy scholars, and Pacific Rim trade analysts.' },
+                    { name: 'Pacific Council on International Policy', cadence: 'Monthly Roundtables', location: 'Century City & West LA', desc: 'The leading premier West Coast international affairs think tank.' },
+                    { name: 'Ventura County United Nations Association Chapter', cadence: 'Quarterly Assemblies', location: 'Thousand Oaks / Westlake Village', desc: 'Grassroots international affairs forum supporting global human rights and local education.' }
+                ],
+                proofIdeas: [
+                    'Global-to-Local Impact Brief: Connect a UN Sustainable Development Goal (e.g. SDG 11 Sustainable Cities or SDG 13 Climate Action) directly to Ventura County policy.',
+                    'Podcast Interview Synthesis: Draft a 3-page policy brief summarizing your 45-minute interview from the Global Politics Podcast Project.',
+                    'Consular Economic Brief: Profile bilateral trade and cultural ties between Southern California and a target international partner.'
+                ]
+            },
+            'policy': {
+                title: 'Policy & Research',
+                icon: '📊',
+                description: 'Public policy institutes, non-partisan think tanks, data analytics, fiscal evaluation, and legislative research agencies.',
+                localJargon: ['Counterfactual Evaluation', 'Difference-in-Differences', 'Cost-Benefit Ratio', 'Legislative Analyst (LAO) Primer', 'PPIC Benchmark', 'Evidence-Based Intervention', 'Data Pipeline'],
+                touristPitch: '"I am interested in public policy and looking for research positions."',
+                localPitch: '"Applied Policy Analyst specializing in quantitative evaluation of California housing subsidies, educational LCFF equity formulas, and municipal water allocations."',
+                subcultures: [
+                    {
+                        name: 'Quantitative Policy Analysis & Micro-Econometrics',
+                        desc: 'Synthesizing state datasets, statistical regressions, and econometric modeling to assess whether programs actually achieved their statutory targets.'
+                    },
+                    {
+                        name: 'Qualitative Policy Translation & Communication',
+                        desc: 'Translating complex legislative statutes, budgetary numbers, and scientific research into compelling white papers for decision-makers.'
+                    }
+                ],
+                ambientDiet: [
+                    { title: 'PPIC (Public Policy Institute of California) Blog', type: 'Research Portal', desc: 'Authoritative, non-partisan research on demographics, poverty, housing, and California water.' },
+                    { title: 'LAO (Legislative Analyst’s Office) Reports', type: 'Fiscal Primers', desc: 'The Legislature’s premier non-partisan budget analysis and program evaluation.' },
+                    { title: 'Ezra Klein & Derek Thompson Podcasts', type: 'Policy Podcast', desc: 'Deep dive into state capacity, supply-side progressivism, and the Abundance Agenda.' }
+                ],
+                watercoolers: [
+                    { name: 'SCAG (Southern California Association of Governments) Committee', cadence: 'Monthly Regional Sessions', location: 'Los Angeles / Hybrid', desc: 'The nations largest MPO; where Southern California cities negotiate RHNA and transit money.' },
+                    { name: 'CLU Center for Economics of Social Issues (CESI)', cadence: 'On-Campus Colloquiums', location: 'Swenson Hall, Cal Lutheran', desc: 'Join campus seminars on regional labor, housing affordability, and Ventura County wealth disparities.' },
+                    { name: 'California Association of Public Data Analysts Meetings', cadence: 'Quarterly Seminars', location: 'Virtual / Regional', desc: 'Connect with researchers manipulating state database files.' }
+                ],
+                proofIdeas: [
+                    'Ventura County Housing Supply White Paper: Analyze local RHNA fulfillment numbers across Thousand Oaks and Simi Valley using HCD data.',
+                    'LCFF School Funding Assessment: Compare per-pupil funding allocations between Conejo Valley Unified and Oxnard School Districts.',
+                    'Interactive Policy Data Dashboard: Build a visual charts page highlighting demographic trends in Ventura County.'
+                ]
+            },
+            'advocacy': {
+                title: 'Community Advocacy & Organizing',
+                icon: '✊',
+                description: 'Grassroots nonprofits, labor unions, affordable housing coalitions, environmental justice networks, and civic empowerment groups.',
+                localJargon: ['Base Building', 'Relational Organizing', '1-on-1 Intake', 'Coalition Steering Committee', 'Direct Action Protocol', 'Underserved Constituency', 'Tenant Bill of Rights'],
+                touristPitch: '"I like social justice and want to help the community."',
+                localPitch: '"Community Organizer focusing on Ventura County farmworker labor protections, bilingual tenant rights in Oxnard, and youth civic engagement in the Conejo Valley."',
+                subcultures: [
+                    {
+                        name: 'Grassroots Base-Building & Direct Action',
+                        desc: 'Knocking doors, conducting relational 1-on-1 conversations, mobilizing rallies, and organizing impacted communities to speak at hearings.'
+                    },
+                    {
+                        name: 'Systemic Policy Advocacy & Coalition Management',
+                        desc: 'Uniting multiple non-profit organizations to negotiate directly with county supervisors and state legislators on funding appropriations.'
+                    }
+                ],
+                ambientDiet: [
+                    { title: 'Capital & Main California', type: 'Investigative News', desc: 'Investigative reporting focused on income inequality, climate justice, and labor in California.' },
+                    { title: 'VC Reporter & L.A. Taco', type: 'Regional Culture & Action', desc: 'Hyper-local coverage of grassroots tenant coalitions, labor actions, and community struggles.' },
+                    { title: 'The Dig (Jacobin Podcast) & Pod Save the People', type: 'Movement Media', desc: 'In-depth interviews on organizing theory, civil rights history, and modern campaign tactics.' }
+                ],
+                watercoolers: [
+                    { name: 'CAUSE (Central Coast Alliance for a Sustainable Economy) Rallies', cadence: 'Monthly Action Nights', location: 'Oxnard / Ventura', desc: 'The leading progressive grassroots organizing powerhouse in Ventura and Santa Barbara Counties.' },
+                    { name: 'Buen Vecino Community Organizing Forums', cadence: 'Sundays @ 4 PM', location: 'Westlake Village & Conejo Valley', desc: 'Local community forums addressing immigration advocacy and rights for immigrant neighbors.' },
+                    { name: 'Many Mansions Affordable Housing Roundtables', cadence: 'Bi-monthly Events', location: 'Thousand Oaks (Hillcrest Dr)', desc: 'Engage with local non-profit leaders building and managing subsidized housing in the Conejo Valley.' }
+                ],
+                proofIdeas: [
+                    'Tenant Resource Guide: Create a bilingual, 2-page know-your-rights flyer summarizing California tenant protections (AB 1482) for Ventura County renters.',
+                    'Community Needs Assessment: Survey 25 local residents or students on transit accessibility in Thousand Oaks and compile the results.',
+                    'Coalition Comment Letter: Draft a sample public comment letter on behalf of local environmental or housing justice advocates.'
+                ]
+            },
+            'prelaw': {
+                title: 'Pre-Law & Legal Professions',
+                icon: '⚖️',
+                description: 'Courts, prosecution, public defenders, legal aid clinics, civil rights litigation, and private law practice preparation.',
+                localJargon: ['Probable Cause', 'Amicus Curiae', 'Preliminary Hearing', 'Indigent Defense', 'Discovery Motion', 'Statutory Preemption', 'Judicial Clerkship', 'Paralegal Protocol'],
+                touristPitch: '"I want to go to law school and become a lawyer."',
+                localPitch: '"Pre-Law Scholar & Aspiring Litigator with coursework in Constitutional Law; researching California indigent defense, public defender caseloads, and civil mediation."',
+                subcultures: [
+                    {
+                        name: 'Public Defense & Civil Rights Advocacy',
+                        desc: 'Standing with clients who cannot afford private counsel, investigating police reports, and protecting due process in county courts.'
+                    },
+                    {
+                        name: 'Prosecution & Public Integrity',
+                        desc: 'Representing the People in criminal matters, managing victim advocacy programs, and ensuring ethical prosecution standards.'
+                    },
+                    {
+                        name: 'Civil Litigation & Private Practice',
+                        desc: 'Managing business disputes, real estate transactions, estate planning, and tort claims in regional law firms.'
+                    }
+                ],
+                ambientDiet: [
+                    { title: 'SCOTUSblog & California Supreme Court Blog', type: 'Legal Analysis', desc: 'Real-time analysis and commentary on high-stakes judicial opinions and certiorari petitions.' },
+                    { title: 'Strict Scrutiny Podcast', type: 'Legal Audio', desc: 'Insightful, accessible feminist analysis of constitutional litigation and Supreme Court politics.' },
+                    { title: 'Ventura County Bar Association "Citations" Magazine', type: 'Local Bar Journal', desc: 'Monthly articles, case updates, and judicial profiles by practicing Ventura County attorneys.' }
+                ],
+                watercoolers: [
+                    { name: 'Ventura County Bar Association (VCBA) Luncheons', cadence: 'Monthly (3rd Thursday)', location: 'Tower Club, Oxnard', desc: 'Network with over 100 practicing local attorneys, magistrates, and superior court judges.' },
+                    { name: 'Ventura County Superior Court Arraignments', cadence: 'Mon-Fri Mornings', location: 'Hall of Justice, Ventura', desc: 'Open to the public. Sit in Department 11, watch public defenders and DAs conduct live hearings.' },
+                    { name: 'Conejo Valley Legal Aid Clinic', cadence: 'Alternate Tuesday Evenings', location: 'Thousand Oaks Community Center', desc: 'Volunteer to staff intake tables for pro bono legal consultations for low-income residents.' }
+                ],
+                proofIdeas: [
+                    'Case Brief Portfolio: Write three 2-page judicial briefs analyzing landmark California Supreme Court statutory interpretation decisions.',
+                    'Arraignment Observation Memo: Spend 3 hours observing criminal arraignments at the Ventura Hall of Justice and write an ethnographic summary of procedural justice.',
+                    'LSAT & Law School Roadmap: Draft a structured 12-month timeline covering diagnostic testing, letter of recommendation strategy, and personal statement themes.'
+                ]
+            }
+        };
+
+        // Initialize App
+        function initApp() {
+            // Restore saved values
+            if (studentData.pathway) selectedPathway = studentData.pathway;
+            if (studentData.location) selectedLocation = studentData.location;
+            if (studentData.currentStep) currentStep = studentData.currentStep;
+
+            document.getElementById('pathwaySelect').value = selectedPathway;
+            document.getElementById('locationSelect').value = selectedLocation;
+
+            updateScopeDisplay();
+            renderModule(currentStep);
+            updateSidebar();
+        }
+
+        function onPathwayChange() {
+            selectedPathway = document.getElementById('pathwaySelect').value;
+            studentData.pathway = selectedPathway;
+            saveState();
+            updateScopeDisplay();
+            renderModule(currentStep);
+            updateSidebar();
+            showToast(`Pathway updated to ${pathwayMeta[selectedPathway].title}`);
+        }
+
+        function onLocationChange() {
+            selectedLocation = document.getElementById('locationSelect').value;
+            studentData.location = selectedLocation;
+            saveState();
+            updateScopeDisplay();
+            renderModule(currentStep);
+            updateSidebar();
+            showToast(`Target region updated`);
+        }
+
+        function updateScopeDisplay() {
+            const pw = pathwayMeta[selectedPathway];
+            const locText = document.getElementById('locationSelect').options[document.getElementById('locationSelect').selectedIndex].text;
+            document.getElementById('scopePillText').innerText = `${pw.icon} ${pw.title} | ${locText}`;
+            document.getElementById('bpPathway').innerText = `${pw.icon} ${pw.title}`;
+            document.getElementById('bpLocation').innerText = locText;
+        }
+
+        function goToStep(step) {
+            currentStep = step;
+            studentData.currentStep = step;
+            saveState();
+            
+            // Update Stepper List UI
+            const tabs = document.querySelectorAll('#stepperList .step-tab');
+            tabs.forEach((tab, index) => {
+                tab.classList.remove('active');
+                if (index + 1 === step) {
+                    tab.classList.add('active');
+                }
+                if (studentData.completedSteps.includes(index + 1)) {
+                    tab.classList.add('completed');
+                } else {
+                    tab.classList.remove('completed');
+                }
             });
-            renderMap(); // Re-render to show capture badge updates
+
+            renderModule(step);
+            window.scrollTo({ top: 380, behavior: 'smooth' });
         }
 
-        // Helper for Badge Colors
-        function getBadgeColor(team) {
-            if(team === 'The Federalists') return '#3b82f6';
-            if(team === 'The Progressives') return '#10b981';
-            if(team === 'Policy Wonks') return '#ef4444';
-            if(team === 'Campaigners') return '#f59e0b';
-            return 'rgba(255,255,255,0.1)';
+        // Render Individual Module Workspaces
+        function renderModule(step) {
+            const pw = pathwayMeta[selectedPathway];
+            const container = document.getElementById('moduleWorkspace');
+            const locText = document.getElementById('locationSelect').options[document.getElementById('locationSelect').selectedIndex].text;
+
+            let html = `
+                <div class="module-header">
+                    <div>
+                        <div class="module-badge-row">
+                            <span class="module-step-tag">Module ${step} of 7</span>
+                            <span class="badge badge-pathway" style="background:rgba(56,189,248,0.1); color:var(--accent-cyan); border:1px solid rgba(56,189,248,0.3); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.75rem; font-family:var(--font-mono);">${pw.icon} ${pw.title}</span>
+                        </div>
+                        <h2 class="module-title">${getModuleTitle(step)}</h2>
+                        <p class="module-subtitle">${getModuleSubtitle(step, pw, locText)}</p>
+                    </div>
+                </div>
+            `;
+
+            // Mindset Shift
+            html += `
+                <div class="mindset-card">
+                    <div class="mindset-box tourist">
+                        <h4>🚫 University Tourist</h4>
+                        <p>${getTouristMindset(step, pw)}</p>
+                    </div>
+                    <div class="mindset-box local">
+                        <h4>⭐ Industry Local</h4>
+                        <p>${getLocalMindset(step, pw)}</p>
+                    </div>
+                </div>
+            `;
+
+            // Dynamic Interactive Workbench per Module
+            html += getWorkbenchHtml(step, pw, locText);
+
+            // Action-Oriented Homework Card
+            html += `
+                <div class="homework-card">
+                    <h3 class="homework-task">${getHomeworkTask(step, pw, locText)}</h3>
+                    <div class="homework-input-wrapper">
+                        <textarea class="homework-textarea" id="hwInput_${step}" placeholder="Type your response / homework completion notes here (auto-saved to your blueprint)..." oninput="saveHomeworkAnswer(${step})">${studentData.homeworkAnswers[step] || ''}</textarea>
+                    </div>
+                </div>
+            `;
+
+            // Navigation Buttons
+            const isFirst = step === 1;
+            const isLast = step === 7;
+            html += `
+                <div class="module-nav-row">
+                    <button class="btn-nav" onclick="goToStep(${step - 1})" ${isFirst ? 'disabled' : ''}>← Previous Module</button>
+                    <button class="btn-nav btn-next" onclick="completeStep(${step})">
+                        ${isLast ? 'Complete Full Blueprint 🏆' : 'Mark Complete & Next Module →'}
+                    </button>
+                </div>
+            `;
+
+            container.innerHTML = html;
+
+            // Setup helper hooks if needed
+            if (step === 1) generateCustomHeadline();
+            if (step === 3) updateEmailPreview();
         }
 
-        // Run
-        init();
+        function getModuleTitle(step) {
+            switch(step) {
+                case 1: return 'Presence: Signaling You Belong';
+                case 2: return 'Landscape: Mapping the Local Ecosystem';
+                case 3: return 'Outreach: The Mutual Reciprocity Approach';
+                case 4: return 'Community: Finding the Local Watercooler';
+                case 5: return 'Subcultures: Finding Your Tribe & Niche';
+                case 6: return 'Ambient Exposure: Listening to the Locals';
+                case 7: return 'Ownership: Building Proof of Work';
+            }
+        }
+
+        function getModuleSubtitle(step, pw, loc) {
+            switch(step) {
+                case 1: return `Establish your digital & professional signature for ${pw.title} so practitioners recognize you as a peer, not a student begging for a resume look.`;
+                case 2: return `Map the major agencies, non-profits, boutique firms, and CLU alumni hubs across ${loc}. Grounded directly in the Political Science Master Directory.`;
+                case 3: return `Draft genuine, non-presumptuous informational request letters that NEVER ask for an internship, but offer intellectual curiosity and mutual reciprocity.`;
+                case 4: return `Move beyond university clubs into low-stakes, high-repetition public environments in ${loc} where practitioners congregate every month.`;
+                case 5: return `Explore the internal philosophies and working methodologies within ${pw.title} to find where your natural intellectual strengths thrive.`;
+                case 6: return `Immerse your daily routine in the exact morning newsletters, policy podcasts, and feeds consumed by decision-makers in ${pw.title}.`;
+                case 7: return `Build tangible, unglamorous, highly useful work samples that prove your capabilities before an employer even posts an opening.`;
+            }
+        }
+
+        function getTouristMindset(step, pw) {
+            switch(step) {
+                case 1: return 'Headline says: "PoliSci Student at Cal Lutheran | Seeking Internship Opportunities". Signals inexperience and passivity.';
+                case 2: return 'Only applies to massive brand-name federal portals on USAJOBS or generic LinkedIn Easy Apply buttons with 500 other applicants.';
+                case 3: return 'Sends cold emails attaching a resume: "Dear Sir/Madam, I am looking for an internship at your office. Do you have openings?"';
+                case 4: return 'Only attends on-campus student club meetings and stays safely inside the university bubble until graduation day.';
+                case 5: return 'Believes political science is just one generic job title: "politician" or "working for the government."';
+                case 6: return 'Gets political news randomly from TikTok or Twitter outrage algorithms with zero local or state context.';
+                case 7: return 'Waits to be assigned work by a supervisor; shows up with an empty portfolio and promises they are a "hard worker."';
+            }
+        }
+
+        function getLocalMindset(step, pw) {
+            switch(step) {
+                case 1: return `Signals competence: "${pw.localPitch}" Speaks using specific policy levers and regional jurisdictions.`;
+                case 2: return 'Maps specific district directors, city clerks, and non-profit attorneys in Thousand Oaks, Oxnard, and Ventura with verified direct contacts.';
+                case 3: return 'Requests a 15-minute coffee or call to ask about a specific recent vote, zoning policy, or report, offering thoughtful questions.';
+                case 4: return 'Regularly attends local City Council hearings or Bar Association lunches; staffers and attorneys start recognizing their face.';
+                case 5: return 'Understands whether they are an institutional policy analyst, grassroots coalition builder, or courtroom trial strategist.';
+                case 6: return 'Reads Politico Playbook and local papers every morning before 8:00 AM; knows current bill numbers and local city council agendas.';
+                case 7: return 'Brings a self-published 2-page legislative brief or council memo to the conversation: "I prepared this summary of the recent Measure E hearing."';
+            }
+        }
+
+        function getWorkbenchHtml(step, pw, loc) {
+            switch(step) {
+                case 1:
+                    return `
+                        <div class="workbench-panel">
+                            <h3>⚡ Interactive Headline & Bio Transformer</h3>
+                            <p style="margin:0; font-size:0.9rem;">Type your current draft or pick your target focus to instantly generate an insider, local-grade LinkedIn headline:</p>
+                            
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+                                <div>
+                                    <label class="scope-label" style="margin-bottom:0.4rem;">Your Specialization / Interest</label>
+                                    <input type="text" id="customInterestInput" class="scope-input" placeholder="e.g. Housing Affordability, Water Policy, Civil Litigation" value="Housing & Municipal Policy" oninput="generateCustomHeadline()">
+                                </div>
+                                <div>
+                                    <label class="scope-label" style="margin-bottom:0.4rem;">Current Standing</label>
+                                    <select id="studentYearSelect" class="scope-select" onchange="generateCustomHeadline()">
+                                        <option value="Political Science Scholar">CLU Political Science Scholar</option>
+                                        <option value="Pre-Law Researcher">CLU Pre-Law Researcher</option>
+                                        <option value="Aspiring Policy Analyst">Aspiring Policy Analyst</option>
+                                        <option value="Civic Engagement Fellow">Civic Engagement Fellow</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="headline-result-box">
+                                <span style="font-size:0.75rem; font-family:var(--font-mono); color:var(--accent-cyan); text-transform:uppercase;">Generated "Local" Headline:</span>
+                                <div class="headline-text" id="generatedHeadlineText">${pw.localPitch}</div>
+                                <button class="btn-copy" onclick="adoptHeadline()">Use This in My Blueprint ✓</button>
+                            </div>
+
+                            <div>
+                                <label class="scope-label" style="margin-bottom:0.6rem;">Local Industry Jargon Cloud (Click any to integrate):</label>
+                                <div class="pill-cloud">
+                                    ${pw.localJargon.map(j => `<span class="jargon-pill" onclick="appendJargon('${j}')">+ ${j}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                case 2:
+                    // Filter directoryData by pathway and county/city
+                    const filteredOrgs = getFilteredDirectoryOrgs(selectedPathway, selectedLocation);
+                    return `
+                        <div class="workbench-panel">
+                            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                                <h3>🗺️ Local Ecosystem Map: ${pw.title} in ${loc}</h3>
+                                <a href="internships.html" class="btn-header" target="_blank">Open Full Directory (${directoryData.length} Listings) ↗</a>
+                            </div>
+                            <p style="margin:0; font-size:0.9rem;">These verified organizations have active internships, constituent casework, or research programs in your target area. Click <strong>"+ Add to Pipeline"</strong> to save them to your active outreach list.</p>
+                            
+                            <div class="directory-mini-grid">
+                                ${filteredOrgs.map(org => `
+                                    <div class="org-mini-card">
+                                        <span class="org-card-meta">${org.city} • ${org.countyLabel}</span>
+                                        <h4 class="org-card-title">${org.title}</h4>
+                                        <div style="font-size:0.8rem; color:var(--accent-cyan);">${org.subtitle || ''}</div>
+                                        <p class="org-card-desc">${org.description}</p>
+                                        <div class="org-card-actions">
+                                            <a href="${org.portalUrl || 'internships.html'}" target="_blank" style="font-size:0.78rem; color:var(--text-muted); text-decoration:none;">Website ↗</a>
+                                            <button class="btn-add-target" onclick="addTargetOrg('${org.id}', '${org.title.replace(/'/g, "\'")}')">+ Add to Pipeline</button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+
+                case 3:
+                    return `
+                        <div class="workbench-panel">
+                            <h3>✉️ The Mutual Reciprocity Outreach Composer</h3>
+                            <p style="margin:0; font-size:0.9rem;">Never ask for a job on the first touch. Ask for 15 minutes of insight into their work, grounded in a specific, recent project or policy problem.</p>
+                            
+                            <div class="generator-grid">
+                                <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                                    <div>
+                                        <label class="scope-label">Recipient Name & Title</label>
+                                        <input type="text" id="outreachContact" class="scope-input" placeholder="e.g. Maria Gonzalez, District Director" value="District Director" oninput="updateEmailPreview()">
+                                    </div>
+                                    <div>
+                                        <label class="scope-label">Organization</label>
+                                        <input type="text" id="outreachOrg" class="scope-input" placeholder="e.g. Office of Assemblymember Jacqui Irwin" value="Office of Assemblymember Jacqui Irwin" oninput="updateEmailPreview()">
+                                    </div>
+                                    <div>
+                                        <label class="scope-label">Recent Project / Intellectual Hook</label>
+                                        <input type="text" id="outreachHook" class="scope-input" placeholder="e.g. the recent committee hearing on regional water policy" value="your recent district roundtable on local housing and CEQA streamlining" oninput="updateEmailPreview()">
+                                    </div>
+                                    <button class="btn-copy" onclick="adoptOutreach()">Save Draft to Blueprint ✓</button>
+                                </div>
+
+                                <div>
+                                    <label class="scope-label" style="margin-bottom:0.4rem;">Live Email Preview (Ready to Send)</label>
+                                    <div class="email-preview-box" id="emailPreviewBox"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                case 4:
+                    return `
+                        <div class="workbench-panel">
+                            <h3>📍 Local "Watercoolers": High-Repetition Professional Venues</h3>
+                            <p style="margin:0; font-size:0.9rem;">To become a local, you have to be seen regularly where practitioners congregate. Here are 3 verified high-value environments in your geographic target:</p>
+                            
+                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+                                ${pw.watercoolers.map(w => `
+                                    <div style="background:rgba(30,41,59,0.4); border:1px solid var(--border-subtle); border-radius:8px; padding:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
+                                        <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">${w.cadence}</span>
+                                        <h4 style="margin:0; color:#fff; font-size:1.05rem;">${w.name}</h4>
+                                        <div style="font-size:0.82rem; color:var(--text-muted);">📍 ${w.location}</div>
+                                        <p style="font-size:0.85rem; margin:0.25rem 0 0 0; color:#cbd5e1; line-height:1.45;">${w.desc}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <div style="background:rgba(56,189,248,0.08); border-left:3px solid var(--accent-cyan); padding:1rem; border-radius:0 6px 6px 0; font-size:0.88rem; color:#e2e8f0;">
+                                <strong>💡 Field Protocol:</strong> Arrive 15 minutes early. Download and skim the published agenda packet on your phone. Sit in rows 2 to 4. Take notes in a physical notebook. Afterward, walk up to the staff liaison: <em>"Hi, my name is [Name], I study Political Science at Cal Lutheran. I was fascinated by item #4 on the agenda."</em>
+                            </div>
+                        </div>
+                    `;
+
+                case 5:
+                    return `
+                        <div class="workbench-panel">
+                            <h3>🧩 Subcultures: Find Your Tribe within ${pw.title}</h3>
+                            <p style="margin:0; font-size:0.9rem;">Political Science is not monolithic. Every career path splits into distinct tribes with different working hours, personality profiles, and daily tasks. Which one resonates with you?</p>
+                            
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem;">
+                                ${pw.subcultures.map((sub, i) => `
+                                    <div style="background:rgba(30,41,59,0.35); border:1px solid var(--border-subtle); border-radius:8px; padding:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+                                        <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-purple); font-weight:700;">Tribe Option ${i+1}</span>
+                                        <h4 style="margin:0; font-size:1.1rem; color:#fff;">${sub.name}</h4>
+                                        <p style="margin:0; font-size:0.9rem; color:#cbd5e1; line-height:1.5;">${sub.desc}</p>
+                                        <button class="btn-copy" style="margin-top:auto;" onclick="selectSubculture('${sub.name.replace(/'/g, "\'")}')">Select This Tribe ✓</button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+
+                case 6:
+                    return `
+                        <div class="workbench-panel">
+                            <h3>📻 Ambient Exposure: Daily Intelligence Briefings</h3>
+                            <p style="margin:0; font-size:0.9rem;">Industry locals start their day by reading what their peers read. Spend 15 minutes every morning with these 3 essential media feeds for ${pw.title}:</p>
+                            
+                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+                                ${pw.ambientDiet.map(feed => `
+                                    <div style="background:rgba(30,41,59,0.4); border:1px solid var(--border-subtle); border-radius:8px; padding:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
+                                        <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--accent-amber); font-weight:700;">${feed.type}</span>
+                                        <h4 style="margin:0; color:#fff; font-size:1rem;">${feed.title}</h4>
+                                        <p style="font-size:0.85rem; margin:0; color:#cbd5e1; line-height:1.45;">${feed.desc}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+
+                case 7:
+                    return `
+                        <div class="workbench-panel">
+                            <h3>🛠️ Ownership: Unglamorous Proof of Work</h3>
+                            <p style="margin:0; font-size:0.9rem;">The fastest way to stand out is to do the job before you are hired. Choose one of these 3 concrete "Proof of Work" projects to complete and bring to your informational interviews:</p>
+                            
+                            <div style="display:flex; flex-direction:column; gap:1rem;">
+                                ${pw.proofIdeas.map((idea, i) => `
+                                    <div style="background:rgba(30,41,59,0.35); border-left:3px solid var(--accent-emerald); border-radius:0 8px 8px 0; padding:1.25rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+                                        <div>
+                                            <strong style="color:#fff; font-size:0.95rem;">Project Model ${i+1}:</strong>
+                                            <p style="margin:0.25rem 0 0 0; font-size:0.88rem; color:#cbd5e1;">${idea}</p>
+                                        </div>
+                                        <button class="btn-copy" style="white-space:nowrap;" onclick="selectProofProject('${idea.split(':')[0].replace(/'/g, "\'")}')">Adopt Project ✓</button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+            }
+        }
+
+        function getHomeworkTask(step, pw, loc) {
+            switch(step) {
+                case 1: return 'Homework 1: Write down your newly transformed LinkedIn headline incorporating at least one local jargon term. (Save below)';
+                case 2: return `Homework 2: Name 3 target organizations in ${loc} from the Master Directory and write the name of one staff member at each.`;
+                case 3: return 'Homework 3: Finalize your personalized 15-minute informational interview outreach note for one target professional. Paste it below.';
+                case 4: return `Homework 4: Pick one local public meeting (e.g. Thousand Oaks City Council or VCBA) and add the exact date & time to your calendar. Record it below.`;
+                case 5: return 'Homework 5: Which subculture tribe fits your personality better, and what are 2 concrete reasons why? Record below.';
+                case 6: return 'Homework 6: Subscribe to 1 local newsletter (e.g. Politico CA Playbook or CalMatters) and listen to 1 relevant podcast episode this week. Record what you subscribed to below.';
+                case 7: return 'Homework 7: Select your Proof of Work project and write a 3-sentence abstract of what data or hearing you will analyze. Record below.';
+            }
+        }
+
+        function getFilteredDirectoryOrgs(pathway, location) {
+            return directoryData.filter(item => {
+                // Match pathway
+                let matchesPathway = false;
+                if (pathway === 'law-gov') matchesPathway = (item.pathway === 'law-gov');
+                else if (pathway === 'global') matchesPathway = (item.pathway === 'global');
+                else if (pathway === 'policy') matchesPathway = (item.pathway === 'policy');
+                else if (pathway === 'advocacy') matchesPathway = (item.pathway === 'advocacy');
+                else if (pathway === 'prelaw') matchesPathway = (item.pathway === 'prelaw' || item.pathway === 'private-law');
+
+                // Match county / location if specific
+                let matchesLoc = true;
+                if (location === 'thousand-oaks') {
+                    matchesLoc = item.city.toLowerCase().includes('thousand oaks') || item.county === 'ventura';
+                } else if (location === 'ventura') {
+                    matchesLoc = item.county === 'ventura';
+                } else if (location === 'los-angeles') {
+                    matchesLoc = item.county === 'los-angeles';
+                }
+
+                return matchesPathway && matchesLoc;
+            }).slice(0, 8); // Top 8 relevant orgs
+        }
+
+        // Headline Generator Helpers
+        function generateCustomHeadline() {
+            const interest = document.getElementById('customInterestInput') ? document.getElementById('customInterestInput').value : 'Housing & Municipal Policy';
+            const year = document.getElementById('studentYearSelect') ? document.getElementById('studentYearSelect').value : 'Political Science Scholar';
+            const targetLoc = document.getElementById('locationSelect').options[document.getElementById('locationSelect').selectedIndex].text.split('(')[0].trim();
+            
+            const text = `${year} | Focus on ${interest} | Active in ${targetLoc} Civic Networks`;
+            const box = document.getElementById('generatedHeadlineText');
+            if (box) box.innerText = text;
+        }
+
+        function appendJargon(term) {
+            const input = document.getElementById('customInterestInput');
+            if (input) {
+                input.value = `${term}, ${input.value}`;
+                generateCustomHeadline();
+            }
+        }
+
+        function adoptHeadline() {
+            const headline = document.getElementById('generatedHeadlineText').innerText;
+            studentData.headline = headline;
+            document.getElementById('hwInput_1').value = `Adopted Headline: ${headline}`;
+            studentData.homeworkAnswers[1] = `Adopted Headline: ${headline}`;
+            saveState();
+            updateSidebar();
+            showToast('Headline saved to your Blueprint!');
+        }
+
+        // Outreach Composer Helpers
+        function updateEmailPreview() {
+            const contact = document.getElementById('outreachContact') ? document.getElementById('outreachContact').value : 'District Director';
+            const org = document.getElementById('outreachOrg') ? document.getElementById('outreachOrg').value : 'Office of Assemblymember Jacqui Irwin';
+            const hook = document.getElementById('outreachHook') ? document.getElementById('outreachHook').value : 'your recent district work on local housing streamlining';
+            
+            const preview = `Subject: Quick question regarding ${hook} from a Cal Lutheran student
+
+Dear ${contact},
+
+I hope your week is off to a great start. My name is [My Name], and I am a Political Science student at California Lutheran University here in Thousand Oaks. 
+
+I have been following ${org}'s work closely—particularly ${hook}. In Dr. Marichal's seminar, we have been analyzing state and local policy levers, and your team's approach to this challenge stood out to me.
+
+I know your schedule is exceptionally demanding, but would you have 15 minutes in the next couple of weeks for a brief phone conversation or coffee near Thousand Oaks Blvd? I would love to ask two or three targeted questions about how your office navigates these challenges on the ground.
+
+I have no expectation of an internship or job opening—I am simply eager to learn from your experience as I prepare for a career in California public service.
+
+Thank you very much for your time and for your service to our community.
+
+Warm regards,
+
+[My Name]
+Political Science Major | California Lutheran University
+LinkedIn: [My Profile Link]
+Phone: [My Number]`;
+
+            const box = document.getElementById('emailPreviewBox');
+            if (box) box.innerText = preview;
+        }
+
+        function adoptOutreach() {
+            const box = document.getElementById('emailPreviewBox');
+            if (box) {
+                studentData.outreachDraft = box.innerText;
+                document.getElementById('hwInput_3').value = box.innerText;
+                studentData.homeworkAnswers[3] = box.innerText;
+                saveState();
+                updateSidebar();
+                showToast('Outreach email draft saved to Blueprint!');
+            }
+        }
+
+        function selectSubculture(name) {
+            studentData.subcultureNiche = name;
+            const input = document.getElementById('hwInput_5');
+            if (input) {
+                input.value = `Selected Tribe: ${name}
+Why: This methodology aligns with my analytical strengths and career priorities.`;
+                studentData.homeworkAnswers[5] = input.value;
+            }
+            saveState();
+            updateSidebar();
+            showToast(`Selected ${name}!`);
+        }
+
+        function selectProofProject(title) {
+            studentData.proofOfWork = title;
+            const input = document.getElementById('hwInput_7');
+            if (input) {
+                input.value = `Project: ${title}
+Abstract: A 2-page brief analyzing local policy data and stakeholder arguments to demonstrate immediate value to regional employers.`;
+                studentData.homeworkAnswers[7] = input.value;
+            }
+            saveState();
+            updateSidebar();
+            showToast(`Adopted ${title}!`);
+        }
+
+        // Save Homework Text
+        function saveHomeworkAnswer(step) {
+            const val = document.getElementById(`hwInput_${step}`).value;
+            studentData.homeworkAnswers[step] = val;
+            saveState();
+        }
+
+        // Step Completion
+        function completeStep(step) {
+            saveHomeworkAnswer(step);
+
+            if (!studentData.completedSteps.includes(step)) {
+                studentData.completedSteps.push(step);
+            }
+
+            saveState();
+            updateSidebar();
+            showToast(`Module ${step} marked complete!`);
+
+            if (step < 7) {
+                goToStep(step + 1);
+            } else {
+                openExportModal();
+            }
+        }
+
+        // Target Organizations Management
+        function addTargetOrg(id, title) {
+            const exists = studentData.targetOrgs.some(o => o.id === id);
+            if (exists) {
+                showToast('Organization already in your pipeline!');
+                return;
+            }
+
+            studentData.targetOrgs.push({
+                id: id,
+                title: title,
+                status: 'Identified'
+            });
+
+            saveState();
+            updateSidebar();
+            showToast(`Added "${title}" to Pipeline!`);
+        }
+
+        function removeTargetOrg(id) {
+            studentData.targetOrgs = studentData.targetOrgs.filter(o => o.id !== id);
+            saveState();
+            updateSidebar();
+            showToast('Organization removed from Pipeline.');
+        }
+
+        function updateTargetStatus(id, newStatus) {
+            const org = studentData.targetOrgs.find(o => o.id === id);
+            if (org) {
+                org.status = newStatus;
+                saveState();
+                showToast(`Status updated to ${newStatus}`);
+            }
+        }
+
+        // Update Sidebar Data
+        function updateSidebar() {
+            document.getElementById('completedStepCount').innerText = `${studentData.completedSteps.length}/7 Complete`;
+            document.getElementById('targetCount').innerText = studentData.targetOrgs.length;
+
+            if (studentData.headline) {
+                document.getElementById('bpHeadline').innerText = studentData.headline;
+                document.getElementById('bpHeadline').style.fontStyle = 'normal';
+                document.getElementById('bpHeadline').style.color = '#fff';
+            }
+            if (studentData.outreachDraft) {
+                document.getElementById('bpOutreach').innerText = 'Draft saved (Ready to send)';
+                document.getElementById('bpOutreach').style.fontStyle = 'normal';
+                document.getElementById('bpOutreach').style.color = '#34d399';
+            }
+            if (studentData.proofOfWork) {
+                document.getElementById('bpProof').innerText = studentData.proofOfWork;
+                document.getElementById('bpProof').style.fontStyle = 'normal';
+                document.getElementById('bpProof').style.color = '#fff';
+            }
+
+            // Render Target List
+            const list = document.getElementById('targetList');
+            if (studentData.targetOrgs.length === 0) {
+                list.innerHTML = `<li style="font-size: 0.82rem; color: var(--text-muted); font-style: italic; text-align: center; padding: 1.5rem 0;">No organizations saved yet. Go to Module 2 to pin organizations from the Master Directory.</li>`;
+            } else {
+                list.innerHTML = studentData.targetOrgs.map(org => `
+                    <li class="target-item">
+                        <span class="target-title">${org.title}</span>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.2rem;">
+                            <select class="target-status-select" onchange="updateTargetStatus('${org.id}', this.value)">
+                                <option value="Identified" ${org.status === 'Identified' ? 'selected' : ''}>1. Identified</option>
+                                <option value="Outreached" ${org.status === 'Outreached' ? 'selected' : ''}>2. Outreached</option>
+                                <option value="Interviewed" ${org.status === 'Interviewed' ? 'selected' : ''}>3. Interview Completed</option>
+                                <option value="Followed Up" ${org.status === 'Followed Up' ? 'selected' : ''}>4. Follow-Up Sent</option>
+                                <option value="Offer Secured" ${org.status === 'Offer Secured' ? 'selected' : ''}>5. Opportunity Secured 🎉</option>
+                            </select>
+                            <button class="btn-remove-target" onclick="removeTargetOrg('${org.id}')">✕</button>
+                        </div>
+                    </li>
+                `).join('');
+            }
+        }
+
+        // Save & Reset State
+        function saveState() {
+            localStorage.setItem('clu_local_student_plan', JSON.stringify(studentData));
+        }
+
+        function resetPlan() {
+            if (confirm('Are you sure you want to reset your local networking plan? All saved answers will be cleared.')) {
+                localStorage.removeItem('clu_local_student_plan');
+                studentData = {
+                    pathway: 'law-gov',
+                    location: 'thousand-oaks',
+                    currentStep: 1,
+                    completedSteps: [],
+                    headline: '',
+                    targetOrgs: [],
+                    outreachDraft: '',
+                    watercoolerEvent: '',
+                    subcultureNiche: '',
+                    ambientDiet: '',
+                    proofOfWork: '',
+                    homeworkAnswers: { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '' }
+                };
+                initApp();
+                showToast('Plan reset successfully.');
+            }
+        }
+
+        // Export Modal Helpers
+        function openExportModal() {
+            const pw = pathwayMeta[selectedPathway];
+            const locText = document.getElementById('locationSelect').options[document.getElementById('locationSelect').selectedIndex].text;
+            
+            const reportHtml = `
+                <div style="border-bottom: 2px solid var(--accent-cyan); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                    <h2 style="margin:0 0 0.25rem 0; color:#fff;">California Lutheran University — Political Science & Pre-Law</h2>
+                    <h3 style="margin:0; color:var(--accent-cyan); font-size:1.2rem;">"Acting Like a Local" Career & Networking Blueprint</h3>
+                    <p style="margin:0.5rem 0 0 0; font-size:0.85rem; color:var(--text-muted);">Advising Record for Dr. José Marichal's Office Hours • Generated: ${new Date().toLocaleDateString()}</p>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1.5rem; background:rgba(0,0,0,0.3); padding:1rem; border-radius:8px;">
+                    <div><strong>Career Pathway:</strong> ${pw.icon} ${pw.title}</div>
+                    <div><strong>Geographic Focus:</strong> ${locText}</div>
+                    <div><strong>Modules Completed:</strong> ${studentData.completedSteps.length} of 7 Modules</div>
+                    <div><strong>Active Pipeline Orgs:</strong> ${studentData.targetOrgs.length} Organizations</div>
+                </div>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">1. Professional Presence & Signal (LinkedIn)</h4>
+                <p style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:6px; margin:0;">${studentData.headline || studentData.homeworkAnswers[1] || 'Pending formulation'}</p>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">2. Target Pipeline Organizations</h4>
+                <ul style="padding-left:1.25rem; margin:0;">
+                    ${studentData.targetOrgs.length > 0 ? studentData.targetOrgs.map(o => `<li><strong>${o.title}</strong> — <em>Status: ${o.status}</em></li>`).join('') : '<li>None selected yet.</li>'}
+                </ul>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">3. Mutual Reciprocity Outreach Note</h4>
+                <pre style="background:rgba(0,0,0,0.4); padding:0.75rem; border-radius:6px; font-size:0.8rem; white-space:pre-wrap; font-family:var(--font-mono); margin:0;">${studentData.outreachDraft || studentData.homeworkAnswers[3] || 'Pending draft'}</pre>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">4. Local Watercooler Presence</h4>
+                <p style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:6px; margin:0;">${studentData.homeworkAnswers[4] || 'Pending event selection'}</p>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">5. Subculture Tribe Alignment</h4>
+                <p style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:6px; margin:0;">${studentData.subcultureNiche || studentData.homeworkAnswers[5] || 'Pending tribe selection'}</p>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">6. Ambient Media Diet</h4>
+                <p style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:6px; margin:0;">${studentData.homeworkAnswers[6] || 'Pending subscriptions'}</p>
+
+                <h4 style="color:var(--accent-cyan); margin:1.25rem 0 0.5rem 0; text-transform:uppercase; font-size:0.85rem; font-family:var(--font-mono);">7. Proof of Work Deliverable</h4>
+                <p style="background:rgba(255,255,255,0.03); padding:0.75rem; border-radius:6px; margin:0;">${studentData.proofOfWork || studentData.homeworkAnswers[7] || 'Pending project abstract'}</p>
+            `;
+
+            document.getElementById('exportContent').innerHTML = reportHtml;
+            document.getElementById('exportModal').classList.add('active');
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportModal').classList.remove('active');
+        }
+
+        function copyBlueprintMarkdown() {
+            const pw = pathwayMeta[selectedPathway];
+            const locText = document.getElementById('locationSelect').options[document.getElementById('locationSelect').selectedIndex].text;
+            
+            const md = `# "Acting Like a Local" Career & Networking Blueprint
+**Student Advising File** | Political Science & Pre-Law, California Lutheran University
+**Faculty Mentor:** Dr. José Marichal
+**Target Pathway:** ${pw.icon} ${pw.title}
+**Geographic Target:** ${locText}
+**Date:** ${new Date().toLocaleDateString()}
+
+---
+
+### Module 1: Presence (LinkedIn & Signal)
+${studentData.headline || studentData.homeworkAnswers[1] || 'Pending'}
+
+### Module 2: Target Organizations Pipeline
+${studentData.targetOrgs.map(o => `- **${o.title}** (Status: ${o.status})`).join('\n') || 'None selected'}
+
+### Module 3: Mutual Reciprocity Outreach Draft
+\`\`\`
+${studentData.outreachDraft || studentData.homeworkAnswers[3] || 'Pending'}
+\`\`\`
+
+### Module 4: Local Watercooler Event
+${studentData.homeworkAnswers[4] || 'Pending'}
+
+### Module 5: Subculture Tribe
+${studentData.subcultureNiche || studentData.homeworkAnswers[5] || 'Pending'}
+
+### Module 6: Ambient Daily Intelligence Diet
+${studentData.homeworkAnswers[6] || 'Pending'}
+
+### Module 7: Proof of Work Project
+${studentData.proofOfWork || studentData.homeworkAnswers[7] || 'Pending'}
+`;
+
+            navigator.clipboard.writeText(md).then(() => {
+                showToast('Markdown copied to clipboard!');
+            });
+        }
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Start
+        document.addEventListener('DOMContentLoaded', () => {
+            initApp();
+        });
     </script>
 </body>
 </html>
