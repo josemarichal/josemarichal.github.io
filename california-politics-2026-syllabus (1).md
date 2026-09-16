@@ -184,6 +184,7 @@ COURSE SCHEDULE
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/statelocal/chapter/chapter-7/)*
   * **Assigned Reading:** **Stone**, Chapter 6 ("Symbols").
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vRjYBVSaPQtYExd8ClbTs1C6p7Ux-CKZhO2Ap3S7YcCA49pleDnJWhcVdSmHu8_HPYXEb8StyTiaWC6/pub?start=false&loop=false&delayms=3000)
   * **Assigned Reading:** *[California Housing Affordability: Core Issue 5 (Hard Construction Costs and Labor Economics)](california_housing_affordability.html#issue-5)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 5: Hard Construction Costs, Labor Economics, and Prescriptive Codes](california_housing_affordability.html#issue-5)* — **Role & Scenario:** You are an infill developer planning a new apartment complex near Janss Marketplace in Thousand Oaks.
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What are *hard costs*, and what is a *prevailing wage*? (2) How much does it cost to build a single apartment in California compared to states like Texas (2.3× higher)? (3) What is the trade-off between paying higher union prevailing wages to get fast-track state approval vs. using cheaper non-union labor that risks long local delays?
