@@ -198,6 +198,7 @@ COURSE SCHEDULE
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/statelocal/chapter/chapter-8/)*
   * **Assigned Reading:** **Stone**, Chapter 8 ("Causes").
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vTAE52HTjA8Q6ydMw-w8HXMfb3tW2kU5l1qzU5jKdJko98g16bymJXKfmhpT71Ck3RU9nTWx6WiI1VI/pub?start=false&loop=false&delayms=3000)
   * **Assigned Reading:** *[California Housing Affordability: Core Issue 6 (Constitutional Roadblocks and Article 34)](california_housing_affordability.html#issue-6)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 6: Constitutional Roadblocks and the Legacy of Article 34](california_housing_affordability.html#issue-6)* — **Role & Scenario:** You are an affordable housing advocate advising the Thousand Oaks City Council on building homes for local workforce families on city-owned land (near the Civic Arts Plaza).
   * *• 5 min (Review & Key Terms):* Based on the assigned reading, confirm: (1) **Define the key terms:** What is *Article 34* of the California Constitution, and what is *public housing*? (2) Why was Article 34 originally passed in 1950, and how did it reinforce racial and economic segregation in California suburbs? (3) How do modern projects avoid triggering a mandatory citywide public vote (such as keeping subsidized units under 49%)?
@@ -211,6 +212,7 @@ COURSE SCHEDULE
 **Mon, Sep. 21**
 * **Required:**
   * *No Class*
+  * **Video:** [Ezra Klein Grills CA’s Possible Governors | The Ezra Klein Show](https://www.youtube.com/watch?v=6HETwu7Kfu8)
 
 **Wed, Sep. 23**
 * **Required:**
