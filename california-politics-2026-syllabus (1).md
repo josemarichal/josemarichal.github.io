@@ -216,6 +216,7 @@ COURSE SCHEDULE
 
 **Wed, Sep. 23**
 * **Required:**
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vTYbONPM-leoQNvG8EObBo3Aooy7TYbQdQGD1kga8DIcZ-LA4qGZLshkcCoMbrBJMZETF1HbHQvvB82/pub?start=false&loop=false&delayms=3000)
   * **Assigned Reading:** *[OSU OER, Chapter 10 ("State and Local Bureaucracy and Administration")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-10/)*; Ezra Klein, *["The Problem with Everything-Bagel Liberalism"](https://www.nytimes.com/2023/04/02/opinion/democrats-liberalism.html)*.
   * **Assigned Reading:** *[California Housing Affordability: Core Issue 7 (Water Verification and Parking Mandates)](california_housing_affordability.html#issue-7)*
 * **In-Class Module (30-Min Sprint):** *[Core Issue 7: Layered Regulatory Mandates (Water Verification and Parking Minimums)](california_housing_affordability.html#issue-7)* — **Role & Scenario:** You are a Thousand Oaks homeowner living in a residential neighborhood near Thousand Oaks Boulevard.
