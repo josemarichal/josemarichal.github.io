@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Housing Laws (2021–2026) | Student Guide | Jose Marichal</title>
+    <meta name="description" content="Comprehensive student guide to major California supply-side housing legislation passed from 2021 to 2026. Explore SB 9, SB 10, HAA strengthening (SB 1, SB 8), CEQA infill reforms (SB 7, SB 423), and statewide ADU laws.">
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        /* --- California Housing Laws Custom Theme & Styles --- */
+        :root {
+            --hl-accent: #ff7043;          /* Warm Terracotta / Coral */
+            --hl-accent-glow: rgba(255, 112, 67, 0.25);
+            --hl-blue: #38bdf8;            /* Streamlining Blue */
+            --hl-purple: #a855f7;          /* Accountability Purple */
+            --hl-green: #10b981;           /* Environmental / Infill Green */
+            --hl-amber: #f59e0b;           /* ADU Amber */
+            --hl-card-bg: rgba(30, 41, 59, 0.7);
+            --hl-card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        .guide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem 1.5rem;
+        }
+
+        /* Hero Header */
+        .guide-hero {
+            text-align: center;
+            padding: 3.5rem 1rem 2.5rem 1rem;
+            position: relative;
+        }
+
+        .guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 112, 67, 0.12);
+            color: var(--hl-accent);
+            border: 1px solid rgba(255, 112, 67, 0.35);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            color: var(--text-heading);
+            background: linear-gradient(135deg, #ffffff 35%, #ffab91 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-hero p.lead {
+            font-size: 1.22rem;
+            color: var(--text-main);
+            max-width: 860px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.7;
+        }
+
+        .quick-nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .nav-pill-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-heading);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .nav-pill-btn:hover {
+            border-color: var(--hl-accent);
+            color: var(--hl-accent);
+            background: rgba(255, 112, 67, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Metric Highlights */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin: 2.5rem 0 3.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--hl-card-bg);
+            border: 1px solid var(--hl-card-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--card-accent, var(--hl-accent)), transparent);
+        }
+
+        .metric-card:hover {
+            border-color: rgba(255, 112, 67, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .metric-num {
+            font-size: 2.2rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--card-accent, var(--hl-accent));
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 0.35rem;
+        }
+
+        .metric-desc {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            line-height: 1.45;
+        }
+
+        /* Conceptual Shift Framework */
+        .framework-section {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .framework-section h2 {
+            font-size: 1.9rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+            margin-top: 1.75rem;
+        }
+
+        .framework-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--hl-card-border);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+        }
+
+        .framework-card h3 {
+            font-size: 1.25rem;
+            color: var(--text-heading);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .framework-card p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        /* Controls & Filter Bar */
+        .controls-wrapper {
+            position: sticky;
+            top: var(--header-height);
+            z-index: 90;
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(16px);
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.65rem 1rem 0.65rem 2.5rem;
+            border-radius: 50px;
+            color: var(--text-heading);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all var(--transition-fast);
+        }
+
+        .search-box input:focus {
+            border-color: var(--hl-accent);
+            box-shadow: 0 0 12px var(--hl-accent-glow);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-main);
+            pointer-events: none;
+            font-size: 0.95rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.55rem 1.05rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(255, 112, 67, 0.4);
+            color: var(--text-heading);
+        }
+
+        .filter-btn.active {
+            background: var(--hl-accent);
+            color: #ffffff;
+            border-color: var(--hl-accent);
+            box-shadow: 0 0 18px var(--hl-accent-glow);
+        }
+
+        /* Pillar Sections */
+        .pillar-group {
+            margin-bottom: 4rem;
+        }
+
+        .pillar-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--pillar-color, var(--border-color));
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .pillar-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pillar-icon-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--pillar-bg, rgba(255, 112, 67, 0.15));
+            color: var(--pillar-color, var(--hl-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .pillar-header h2 {
+            font-size: 1.85rem;
+            margin: 0;
+            color: var(--text-heading);
+        }
+
+        .pillar-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* Legislation Cards */
+        .law-card {
+            background: var(--hl-card-bg);
+            border: 1px solid var(--hl-card-border);
+            border-radius: var(--radius-md);
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+        }
+
+        .law-card:hover {
+            border-color: var(--card-border-hover, rgba(255, 112, 67, 0.35));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .law-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .law-identifier {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .law-pill {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 0.3rem 0.85rem;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--card-accent, var(--hl-accent));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .law-card h3 {
+            font-size: 1.6rem;
+            margin: 0;
+            color: var(--text-heading);
+            font-family: var(--font-display);
+        }
+
+        .law-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            font-size: 0.78rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-year {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .tag-status-mandate {
+            background: rgba(16, 185, 129, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .tag-status-optin {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .tag-status-enforcement {
+            background: rgba(168, 85, 247, 0.12);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .tag-status-streamlining {
+            background: rgba(245, 158, 11, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .law-summary-quote {
+            font-size: 1.08rem;
+            line-height: 1.65;
+            color: var(--text-heading);
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.025);
+            border-left: 3px solid var(--card-accent, var(--hl-accent));
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-bottom: 1.75rem;
+        }
+
+        /* 3-Column Breakdown Inside Card */
+        .law-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .law-detail-box {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+        }
+
+        .law-detail-box h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--card-accent, var(--hl-accent));
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .law-detail-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .law-detail-box ul li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--text-main);
+        }
+
+        .law-detail-box ul li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--card-accent, var(--hl-accent));
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .law-detail-box p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 0;
+        }
+
+        /* Student Case Scenario */
+        .case-scenario-box {
+            background: rgba(255, 112, 67, 0.04);
+            border: 1px dashed rgba(255, 112, 67, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 1.1rem 1.35rem;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+
+        .case-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .case-scenario-box strong {
+            color: var(--text-heading);
+        }
+
+        /* Comparison Table Section */
+        .table-section {
+            margin: 4.5rem 0;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--hl-card-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.88rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text-heading);
+            padding: 1.1rem 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        table.comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        table.comparison-table td strong {
+            color: var(--text-heading);
+        }
+
+        /* Student Policy Discussion Questions */
+        .discussion-section {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .discussion-section h2 {
+            font-size: 1.8rem;
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .question-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-left: 4px solid var(--hl-accent);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .question-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-card p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 0;
+        }
+
+        /* Footer Callout */
+        .bottom-nav-box {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.3), rgba(15, 23, 42, 0.8));
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-top: 4rem;
+        }
+
+        .bottom-nav-box h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+        }
+
+        .bottom-nav-box p {
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .btn-primary-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--hl-accent);
+            color: #ffffff;
+            padding: 0.85rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            box-shadow: 0 4px 15px var(--hl-accent-glow);
+        }
+
+        .btn-primary-action:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--hl-accent-glow);
+        }
+
+        @media (max-width: 768px) {
+            .guide-hero h1 {
+                font-size: 2.3rem;
+            }
+            .controls-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-buttons {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Site Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">José <span>Marichal</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="about.html">Civic AI Working Group</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="guide-container">
+
+            <!-- Hero Section -->
+            <section class="guide-hero">
+                <span class="guide-badge">🏛️ California Policy & Urban Planning Student Dossier</span>
+                <h1>Major Supply-Side Housing Laws (2021–2026)</h1>
+                <p class="lead">From Single-Family Exclusivity to Objective Rules-Based Density: An Analytical Guide to Five Years of Landmark Housing Reforms in California for Students of Public Policy and Political Science.</p>
+                
+                <div class="quick-nav-bar">
+                    <a href="california_policy_dashboard.html" class="nav-pill-btn">← California Policy Dashboard</a>
+                    <a href="california_housing_affordability.html" class="nav-pill-btn">📘 Housing Affordability Deep Dive</a>
+                    <a href="#comparison-matrix" class="nav-pill-btn">📊 Legislative Comparison Matrix</a>
+                    <a href="#discussion-questions" class="nav-pill-btn">💡 Policy Discussion Questions</a>
+                </div>
+            </section>
+
+            <!-- Metrics Highlight Grid -->
+            <section class="metrics-grid">
+                <div class="metric-card" style="--card-accent: #ff7043;">
+                    <div class="metric-num">4 Pillars</div>
+                    <div class="metric-label">Systemic Battlefronts</div>
+                    <div class="metric-desc">Zoning densification, HAA accountability, CEQA infill exemptions, and ADU deregulation.</div>
+                </div>
+                <div class="metric-card" style="--card-accent: #38bdf8;">
+                    <div class="metric-num">11+ Statutes</div>
+                    <div class="metric-label">Key Laws Analyzed</div>
+                    <div class="metric-desc">From flagship bills (SB 9, SB 10) to procedural hammers (SB 1, SB 8, SB 423, AB 2221).</div>
+                </div>
+                <div class="metric-card" style="--card-accent: #a855f7;">
+                    <div class="metric-num">By-Right</div>
+                    <div class="metric-label">The Core Paradigm Shift</div>
+                    <div class="metric-desc">Replacement of arbitrary local political vetoes with statewide objective standards.</div>
+                </div>
+                <div class="metric-card" style="--card-accent: #10b981;">
+                    <div class="metric-num">2021–2026</div>
+                    <div class="metric-label">Legislative Window</div>
+                    <div class="metric-desc">The most aggressive era of state housing preemption in California history.</div>
+                </div>
+            </section>
+
+            <!-- Conceptual Shifts for Students -->
+            <section class="framework-section">
+                <h2>The 3 Foundational Shifts Every Policy Student Must Understand</h2>
+                <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 0;">
+                    Between 2021 and 2026, California housing law underwent an unprecedented structural transformation. The State Legislature moved decisively away from decades of deference to local municipal zoning control, establishing state statutory preemption across four complementary fronts.
+                </p>
+
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <h3><span style="color: #ff7043;">01.</span> Dismantling Single-Family Exclusivity</h3>
+                        <p>Historically, up to 70% of residential land in California cities was zoned exclusively for single detached homes (R-1). Laws like <strong>SB 9</strong> and the <strong>ADU statutory packages</strong> eliminated single-family zoning as an absolute barrier, legally unlocking by-right duplexes, fourplexes, and accessory units.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h3><span style="color: #a855f7;">02.</span> Discretionary Veto ➔ Objective Rules</h3>
+                        <p>Cities traditionally used subjective design reviews, infinite environmental hearings, and neighborhood opposition to delay or kill projects. Strengthening the <strong>Housing Accountability Act (HAA)</strong> via <strong>SB 1</strong> and <strong>SB 8</strong> makes denials illegal if a project complies with written objective zoning standards.</p>
+                    </div>
+                    <div class="framework-card">
+                        <h3><span style="color: #10b981;">03.</span> Reining in CEQA Weaponization</h3>
+                        <p>The California Environmental Quality Act (CEQA) was frequently weaponized by NIMBY plaintiffs to block infill housing in urban areas. Statutes like <strong>SB 7</strong> and <strong>SB 423</strong> established categorical exemptions and streamlined ministerial pathways for transit and infill projects.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter & Search Controls -->
+            <section class="controls-wrapper" id="laws-browser">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="billSearchInput" placeholder="Search by bill (e.g. SB 9), year, keyword (ADU, CEQA, transit)...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Legislation (11)</button>
+                    <button class="filter-btn" data-filter="pillar-zoning">1. Supply & Zoning</button>
+                    <button class="filter-btn" data-filter="pillar-haa">2. HAA Enforcement</button>
+                    <button class="filter-btn" data-filter="pillar-ceqa">3. CEQA Reform</button>
+                    <button class="filter-btn" data-filter="pillar-adu">4. ADU Revolution</button>
+                </div>
+            </section>
+
+            <!-- ================================================================= -->
+            <!-- PILLAR 1: MAJOR SUPPLY-SIDE & ZONING REFORMS -->
+            <!-- ================================================================= -->
+            <section class="pillar-group" id="pillar-zoning" data-group="pillar-zoning" style="--pillar-color: #ff7043; --pillar-bg: rgba(255, 112, 67, 0.15);">
+                <div class="pillar-header">
+                    <div class="pillar-title-wrap">
+                        <div class="pillar-icon-badge">1</div>
+                        <div>
+                            <h2>Pillar 1: Major Supply-Side & Zoning Reforms</h2>
+                            <span class="pillar-subtitle">Chipping away at single-family exclusivity and enabling transit-oriented infill</span>
+                        </div>
+                    </div>
+                    <span class="meta-tag" style="background: rgba(255, 112, 67, 0.1); color: #ff7043; border: 1px solid rgba(255, 112, 67, 0.3);">3 Key Statutes</span>
+                </div>
+
+                <!-- 1. SB 9 -->
+                <article class="law-card" data-keywords="sb 9 sb9 lot split duplex fourplex single family zoning supply 2021 by right" style="--card-accent: #ff7043;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">SB 9</span>
+                            <h3>Urban Lot Splits & By-Right Duplexes</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2021 • Effective Jan 1, 2022</span>
+                            <span class="meta-tag tag-status-mandate">Mandatory Statewide By-Right</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Permit qualifying single-family residential lots to be split into two parcels and/or developed with up to two residential units by right, stripping municipal discretionary vetoes.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li><strong>Lot Splits:</strong> Allows a single-family lot to be subdivided into two roughly equal parcels (minimum 40% / 60% split, minimum 1,200 sq ft each).</li>
+                                <li><strong>Two Units per Lot:</strong> Permits two residential units per parcel without discretionary public hearings.</li>
+                                <li><strong>Fourplex Potential:</strong> Combining a lot split with two units on each parcel enables up to <strong>four homes</strong> where only one was previously allowed.</li>
+                                <li><strong>Objective Standards:</strong> Cities must evaluate proposals using clear, objective standards (e.g., maximum 4-foot rear/side setbacks).</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Limits & Exclusions</h4>
+                            <ul>
+                                <li><strong>Sensitive Hazard Areas:</strong> Does not apply in prime farmland, wetlands, floodways, earthquake fault rupture zones, or very high fire hazard severity zones (VHFHSZ).</li>
+                                <li><strong>Historic Preservation:</strong> Excluded in state or local historic districts and landmark sites.</li>
+                                <li><strong>Anti-Displacement Safeguards:</strong> Demolition of deed-restricted affordable housing or rent-controlled units occupied by tenants within the past 3 years is strictly prohibited.</li>
+                                <li><strong>Owner-Occupancy:</strong> Requires lot-split applicants to sign an affidavit intending to reside in one unit for at least 3 years.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                SB 9 was one of the most culturally symbolic statutes in California history because it legally dismantled the absolute hegemony of R-1 single-family zoning. While municipal anti-growth tactics (such as onerous utility connection requirements and deed restrictions) initially suppressed unit output, SB 9 cemented the legal principle that exclusionary single-family zoning cannot stand absolute in urbanized California.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A homeowner with an 8,000 sq. ft. lot in a suburban neighborhood uses SB 9 to split the parcel into two 4,000 sq. ft. lots. They retain the primary home and permit a new detached two-unit building on the newly created rear lot. The local city council cannot hold a discretionary hearing or deny the permit on "neighborhood character" grounds as long as objective setback and height limits are satisfied.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. AB 2221 -->
+                <article class="law-card" data-keywords="ab 2221 ab2221 sb 9 refinements adu standards lot splits setbacks 2022" style="--card-accent: #ff8a65;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">AB 2221</span>
+                            <h3>SB 9 Refinements & ADU Barrier Reduction</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2022</span>
+                            <span class="meta-tag tag-status-mandate">Statutory Tightening</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Clarify implementation loopholes in SB 9, prevent hostile municipal ordinances, and further curtail local barriers to ADU approvals and lot splits.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li>Clarified front setbacks and building dimensions to prevent cities from establishing impossible building envelopes.</li>
+                                <li>Standardized lot split procedures, constraining cities from imposing discretionary subdivision mapping requirements.</li>
+                                <li>Aligned ADU timelines and prohibited local agencies from imposing arbitrary utility or parking hurdles.</li>
+                                <li>Established state default provisions that automatically supersede local non-compliant municipal ordinances.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Limits & Clarifications</h4>
+                            <ul>
+                                <li>Preserved environmental hazard exclusions established under SB 9.</li>
+                                <li>Clarified that local governments cannot use design review boards or architectural commissions to indefinitely stall ministerial permits.</li>
+                                <li>Mandated that agency comments on permit submittals must provide an exhaustive list of deficiencies within 60 days.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                In political science, this demonstrates the <em>statutory cat-and-mouse game</em> between state legislators and municipal governments. When cities enacted "poison pill" local ordinances (e.g., requiring 10-foot side setbacks or impossible architectural mimics), the legislature responded with follow-up legislation like AB 2221 to close loopholes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A city attempts to block a lot-split application by claiming its un-updated 1985 municipal code requires a discretionary public hearing for all new water hookups. Under AB 2221, state default ministerial rules preempt the local code, compelling public works to issue utility permits objectively within statutory deadlines.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. SB 10 -->
+                <article class="law-card" data-keywords="sb 10 sb10 transit infill opt in local government density 10 units 2021" style="--card-accent: #ffab91;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">SB 10</span>
+                            <h3>Optional Higher-Density Infill Near Transit</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2021</span>
+                            <span class="meta-tag tag-status-optin">Local Opt-In Tool</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Provide pro-housing cities and counties with an optional fast-track tool to upzone qualifying urban infill and transit-rich parcels up to 10 units per lot, bypassing CEQA for the rezoning action.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li>Allows a city or county legislative body to adopt an ordinance rezoning qualifying parcels for up to <strong>10 residential units</strong>.</li>
+                                <li>Eligible parcels must be in a <strong>transit-rich area</strong> (within 1/2 mile of a rail station or ferry terminal, or along a high-frequency bus corridor) or an <strong>urban infill site</strong>.</li>
+                                <li>Critically, the municipal rezoning action itself is <strong>exempt from CEQA review</strong>, insulating city leaders from environmental lawsuits by anti-growth groups.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Limits & Vulnerabilities</h4>
+                            <ul>
+                                <li><strong>Optional / Discretionary for Cities:</strong> Unlike SB 9, SB 10 does not mandate upzoning; cities must voluntarily adopt it by council resolution.</li>
+                                <li>Prohibited on parcels located in very high fire hazard severity zones or public parklands.</li>
+                                <li>May include local affordability requirements and height controls as determined by the adopting jurisdiction.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                SB 10 represents the "carrot" approach to state housing policy. Its key policy lesson is the <em>limitation of voluntary state incentives</em>: because SB 10 is optional, suburban and anti-growth municipalities simply ignored it. Only pro-housing jurisdictions (such as San Diego) aggressively utilized SB 10 to establish missing-middle transit corridors.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> The City of San Diego votes to opt into SB 10 along a light-rail corridor. A small commercial parcel previously restricted to a single-story office is purchased by an infill builder. Using SB 10, the developer rapidly secures permits for an 8-unit townhome community without facing a 2-year Environmental Impact Report (EIR) challenge.
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+
+            <!-- ================================================================= -->
+            <!-- PILLAR 2: HOUSING ACCOUNTABILITY ACT (HAA) STRENGTHENING -->
+            <!-- ================================================================= -->
+            <section class="pillar-group" id="pillar-haa" data-group="pillar-haa" style="--pillar-color: #a855f7; --pillar-bg: rgba(168, 85, 247, 0.15);">
+                <div class="pillar-header">
+                    <div class="pillar-title-wrap">
+                        <div class="pillar-icon-badge">2</div>
+                        <div>
+                            <h2>Pillar 2: Housing Accountability Act (HAA) Strengthening</h2>
+                            <span class="pillar-subtitle">Eliminating pretextual denials and arming developers with legal teeth</span>
+                        </div>
+                    </div>
+                    <span class="meta-tag" style="background: rgba(168, 85, 247, 0.1); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">2 Core Reforms</span>
+                </div>
+
+                <div class="framework-card" style="margin-bottom: 2rem; border-left: 4px solid #a855f7;">
+                    <h3 style="color: #c084fc;">Statutory Background: What is the Housing Accountability Act (HAA)?</h3>
+                    <p>
+                        Codified in <strong>Government Code § 65589.5</strong> and often called the "Anti-NIMBY Law," the HAA establishes that if a housing development project complies with applicable, objective general plan and zoning standards, a local government <em>cannot</em> deny the project or reduce its density unless it makes written findings supported by substantial evidence that the project would cause a specific, adverse, and unavoidable impact on public health or safety. Recent legislation dramatically escalated the legal consequences for cities violating this mandate.
+                    </p>
+                </div>
+
+                <!-- 4. SB 1 -->
+                <article class="law-card" data-keywords="sb 1 sb1 haa housing accountability act enforcement attorney fees penalties fines 2023" style="--card-accent: #a855f7;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">SB 1</span>
+                            <h3>Aggressive HAA Enforcement & Developer Remedies</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2023</span>
+                            <span class="meta-tag tag-status-enforcement">Strict Enforcement Hammer</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Make bad-faith municipal denials prohibitively expensive by escalating local financial liabilities, awarding mandatory attorney's fees, and curtailing vague planning pretexts.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li><strong>Elevated Burden of Proof:</strong> Elevates the legal standard required for a city to defend a denial in superior court. Vague claims of "traffic congestion" or "loss of neighborhood character" are inadmissible.</li>
+                                <li><strong>Mandatory Fee Shifting:</strong> Compels courts to award attorney's fees to prevailing housing developers and pro-housing public interest groups (e.g., YIMBY Law, CalHCD).</li>
+                                <li><strong>Substantial Fines:</strong> Authorizes court-imposed fines of $10,000+ per unit against cities that act in bad faith or refuse to comply with judicial orders.</li>
+                                <li><strong>Limits Delay Profitability:</strong> Expedites court hearing schedules so cities cannot win through attritional delay.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Triggers & Mechanics</h4>
+                            <ul>
+                                <li>Applies to both market-rate and affordable housing proposals that satisfy objective general plan and zoning standards.</li>
+                                <li>Severely restricts cities from retroactively modifying zoning standards or imposing new building moratoriums after a preliminary application is submitted (vested rights protections).</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                Prior to SB 1, wealthy suburban municipalities often calculated that being sued was worth the price: defending a lawsuit for three years cost a few hundred thousand dollars in legal defense while successfully bankrupting the developer or running out the loan clock. SB 1 changed the political economy by making intentional obstruction fiscally catastrophic for municipal general funds.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A developer proposes an 80-unit apartment building consistent with the city's downtown commercial zoning. Facing vocal neighborhood outcry, the city council votes 4-1 to reject the design. The developer sues under the HAA. Under SB 1, the judge orders the city to immediately issue the permit, slaps the city with an $800,000 municipal fine, and orders the city to pay $350,000 in developer legal fees.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. SB 8 -->
+                <article class="law-card" data-keywords="sb 8 sb8 haa discretionary denial objective standards vesting preliminary application 2023" style="--card-accent: #c084fc;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">SB 8</span>
+                            <h3>Locking in Vested Rights & Barring Discretionary Denial</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2023 (Extending SB 330)</span>
+                            <span class="meta-tag tag-status-mandate">Vested Rights & Certainty</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Extend the Housing Crisis Act (SB 330) protections through 2030, locking in development standards at the preliminary application phase and barring post-hoc downzonings.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li><strong>Vested Rights Locking:</strong> Once a developer submits a completed "Preliminary Application" (listing parcel, unit count, and building envelope), the city cannot apply any new fees, zoning rules, or exactions enacted after that date.</li>
+                                <li><strong>Hearing Limits:</strong> Restricts local governments to a maximum of <strong>five public hearings</strong> on a compliant housing project.</li>
+                                <li><strong>No Density Reductions:</strong> Prohibits cities from downzoning parcels or reducing allowable residential density across the jurisdiction without concurrently upzoning equal capacity elsewhere.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Protections & Guardrails</h4>
+                            <ul>
+                                <li>Mandates that objective standards must be verifiable by reference to an external, uniform benchmark available prior to submittal.</li>
+                                <li>Protects repeatable housing products (modular, mass timber, preapproved plans) from subjective architectural vetoes.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                This legislation shifts California toward a Northern European "rules-based" planning regime. In traditional American planning, zoning codes are treated as mere starting negotiations for discretionary horse-trading. SB 8 ensures that if a developer meets the written rules, approval is a legal right, not a political favor.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A developer submits a preliminary application under SB 8 for 40 apartments. Panicked by neighbor letters, the planning commission votes two weeks later to halve allowable building heights in that zone from 45 feet to 25 feet. Because the preliminary application was already timestamped, the downzoning is legally void against this project.
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+
+            <!-- ================================================================= -->
+            <!-- PILLAR 3: CEQA REFORM FOR HOUSING -->
+            <!-- ================================================================= -->
+            <section class="pillar-group" id="pillar-ceqa" data-group="pillar-ceqa" style="--pillar-color: #10b981; --pillar-bg: rgba(168, 185, 129, 0.15);">
+                <div class="pillar-header">
+                    <div class="pillar-title-wrap">
+                        <div class="pillar-icon-badge">3</div>
+                        <div>
+                            <h2>Pillar 3: CEQA Reform for Housing</h2>
+                            <span class="pillar-subtitle">Carving out statutory exemptions for infill and transit-oriented development</span>
+                        </div>
+                    </div>
+                    <span class="meta-tag" style="background: rgba(168, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(168, 185, 129, 0.3);">3 Major Statutes</span>
+                </div>
+
+                <div class="framework-card" style="margin-bottom: 2rem; border-left: 4px solid #10b981;">
+                    <h3 style="color: #34d399;">Statutory Context: Why CEQA Reform is Crucial to Housing Policy</h3>
+                    <p>
+                        The California Environmental Quality Act (CEQA, 1970) was passed to protect wild lands and air quality from mega-infrastructure projects. Over decades, however, CEQA became the weapon of choice for anti-growth homeowner associations and rival labor unions to delay urban infill housing. Because an Environmental Impact Report (EIR) takes 1–3 years and costs hundreds of thousands of dollars, the threat of a CEQA lawsuit was often fatal. Recent legislation created targeted <strong>statutory and categorical exemptions</strong> for climate-smart infill.
+                    </p>
+                </div>
+
+                <!-- 6. SB 7 -->
+                <article class="law-card" data-keywords="sb 7 sb7 ceqa infill exemption 50 units environmental review 2023" style="--card-accent: #10b981;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">SB 7</span>
+                            <h3>CEQA Categorical Exemption for Small Infill Housing</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2023</span>
+                            <span class="meta-tag tag-status-streamlining">Categorical CEQA Exemption</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Completely exempt smaller infill housing developments (typically up to 50 units) from CEQA review if the site is already urbanized and consistent with local plans.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li>Establishes a statutory CEQA exemption for qualifying urban residential infill projects up to <strong>50 units</strong>.</li>
+                                <li>Insulates qualifying projects from CEQA lawsuits, eliminating the risk of multi-year litigation delays.</li>
+                                <li>Replaces discretionary environmental reviews with compliance with existing local building, storm water, and health codes.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Eligibility Criteria & Conditions</h4>
+                            <ul>
+                                <li><strong>Site Location:</strong> Must be an infill site surrounded by urbanized uses on at least 75% of its perimeter.</li>
+                                <li><strong>Hazard Exclusions:</strong> Cannot be on protected wetlands, historic landmarks, or unstable fault rupture zones.</li>
+                                <li><strong>Infrastructure:</strong> Must have immediate access to existing water, sewer, and dry utilities.</li>
+                                <li><strong>General Plan Consistency:</strong> Must comply with applicable general plan land use designations.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                Prior to SB 7, a 30-unit apartment building could be tied up in CEQA court just as easily as a 2,000-unit master planned subdivision. This disproportionately punished small and local developers who lacked legal war chests. SB 7 lowered the barrier to entry for missing-middle housing builders.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A non-profit affordable housing group proposes 42 units of workforce apartments on an abandoned parking lot in an urban corridor. Neighbors file a petition demanding a full Environmental Impact Report claiming potential shadows and noise. Under SB 7, the project is certified as categorically exempt; the lawsuit is dismissed on demurrer within weeks.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. SB 423 -->
+                <article class="law-card" data-keywords="sb 423 sb423 sb 35 extension transit oriented housing ceqa ministerial coastal zone 2023" style="--card-accent: #34d399;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">SB 423</span>
+                            <h3>Expansion & Extension of SB 35 Transit Streamlining</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2023 • Effective Jan 1, 2024</span>
+                            <span class="meta-tag tag-status-mandate">Ministerial Approval Hammer</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Extend California’s premier housing streamlining statute (SB 35) through 2036, expanding ministerial (CEQA-exempt) approvals into non-compliant cities and qualifying coastal zones.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li><strong>Expands SB 35:</strong> Extends sunset date to 2036 and applies streamlining to jurisdictions failing to meet their Regional Housing Needs Allocation (RHNA) goals.</li>
+                                <li><strong>Ministerial By-Right:</strong> Bypasses discretionary planning approvals and completely bypasses CEQA review for qualifying mixed-income and affordable housing.</li>
+                                <li><strong>Coastal Zone Expansion:</strong> For the first time, applies streamlining in secondary coastal zone areas (outside of direct shoreline/wetlands), curbing historic coastal NIMBY immunity.</li>
+                                <li><strong>Labor Standards:</strong> Establishes prevailing wage and healthcare requirements for builders on larger projects.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Triggers</h4>
+                            <ul>
+                                <li>Triggered when a municipality falls behind on state RHNA production quotas (e.g. San Francisco, Beverly Hills, coastal enclaves).</li>
+                                <li>Projects must dedicate either 10%, 20%, or 50%+ of units to below-market-rate households depending on the specific municipal deficit.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                SB 423 is widely considered by land-use attorneys to be the most powerful supply-side tool in California. It directly penalizes jurisdictions that drag their feet on building permits by stripping them of their zoning authority and handing developers an automatic ministerial green light.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A city fails to approve enough low-income housing permits under its state-mandated RHNA schedule. A developer proposes a 120-unit building with 20% affordable units near a commuter train station. Under SB 423, the city must approve the building ministerially within 90 days—no CEQA lawsuits, no planning commission veto, no public comment filibuster.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8. AB 1033 -->
+                <article class="law-card" data-keywords="ab 1033 ab1033 ceqa adu condo separate conveyance housing element 2023" style="--card-accent: #6ee7b7;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">AB 1033</span>
+                            <h3>ADU Separate Conveyance as Condominiums</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2023 • Effective 2024</span>
+                            <span class="meta-tag tag-status-optin">Local Opt-In Ownership</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Allow local jurisdictions to permit homeowners to sell Accessory Dwelling Units (ADUs) separately as condominiums, unlocking starter homeownership opportunities.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li>Enables cities to adopt an ordinance allowing ADUs to be subdivided and sold independently from the primary house as residential condominiums.</li>
+                                <li>Creates an entry-level homeownership tier for young families and first-time buyers who cannot afford a $1M+ detached single-family home.</li>
+                                <li>Streamlines subdivision map approvals for participating properties without triggering full-scale discretionary CEQA reviews.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Limitations</h4>
+                            <ul>
+                                <li>Requires notice to existing mortgage lenders and separate utility metering before condominium deeds can be recorded.</li>
+                                <li>Jurisdictions must explicitly opt in through local ordinance.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                AB 1033 addresses the wealth-building divide. Previously, ADUs could only be rented out, which benefited existing property owners. By allowing ADUs to be sold as condominiums, it creates an affordable equity ladder in otherwise unaffordable neighborhoods.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> In an opt-in city, an elderly homeowner builds a detached 2-bedroom backyard cottage. Rather than acting as a landlord, she sells the ADU as a condominium to a teacher for $350,000. The teacher gains homeownership in a high-opportunity school district, and the senior receives capital to fund retirement.
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+
+            <!-- ================================================================= -->
+            <!-- PILLAR 4: ADU DEREGULATION: THE PRACTICAL REVOLUTION -->
+            <!-- ================================================================= -->
+            <section class="pillar-group" id="pillar-adu" data-group="pillar-adu" style="--pillar-color: #f59e0b; --pillar-bg: rgba(245, 158, 11, 0.15);">
+                <div class="pillar-header">
+                    <div class="pillar-title-wrap">
+                        <div class="pillar-icon-badge">4</div>
+                        <div>
+                            <h2>Pillar 4: The ADU Revolution</h2>
+                            <span class="pillar-subtitle">Statewide preemption turning backyards and garages into California's fastest-growing housing sector</span>
+                        </div>
+                    </div>
+                    <span class="meta-tag" style="background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3);">3 Reform Cycles</span>
+                </div>
+
+                <div class="framework-card" style="margin-bottom: 2rem; border-left: 4px solid #f59e0b;">
+                    <h3 style="color: #fbbf24;">Why ADU Law Has Been California's Most Productive Reform</h3>
+                    <p>
+                        While major apartment complexes face complex financial capital stacking and multi-year entitlement battles, Accessory Dwelling Units (ADUs—granny flats, backyard cottages, garage conversions) represent distributed, decentralized housing production. Since the legislature stripped cities of discretionary vetoes, ADU permits exploded from roughly 1,000 per year statewide in 2016 to over <strong>25,000+ units annually today</strong>, accounting for nearly one in five new housing units built in California.
+                    </p>
+                </div>
+
+                <!-- 9. AB 68 -->
+                <article class="law-card" data-keywords="ab 68 ab68 adu ordinance deadline state defaults ministerial 60 days 2021" style="--card-accent: #f59e0b;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">AB 68</span>
+                            <h3>Mandatory 60-Day Review & State Default Rules</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2021</span>
+                            <span class="meta-tag tag-status-mandate">Statutory Deadlines</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Force local agencies to act on ADU applications within 60 days ministerially or have the permit deemed approved, while establishing state default rules that void non-compliant city ordinances.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li><strong>Strict 60-Day Shot Clock:</strong> Cities must approve or deny completed ADU applications within 60 days; failure to act results in the application being deemed approved by operation of law.</li>
+                                <li><strong>Preemption of Local Rules:</strong> If a municipality fails to adopt an updated ADU ordinance compliant with state standards, the local ordinance is voided and the city must use state default standards.</li>
+                                <li><strong>Multi-Unit Parcels:</strong> Expanded ADU rights to multifamily buildings, allowing interior conversions (basements, boiler rooms) plus up to two detached ADUs.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Provisions</h4>
+                            <ul>
+                                <li>Guaranteed right to build at least an 800 sq ft ADU with 4-foot side and rear setbacks regardless of local lot coverage or floor area ratio (FAR) restrictions.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                AB 68 demonstrated the power of self-enforcing administrative deadlines. By establishing a "deemed approved" rule, the state eliminated pocket-vetoes where city planning departments simply refused to process applications.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A homeowner submits plans for an 800 sq. ft. detached backyard ADU. The city planning counter takes 75 days without issuing a correction notice. Under AB 68, the applicant demands an immediate building permit because the 60-day statutory clock expired, bypassing local bureaucratic foot-dragging.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10. AB 2221 ADU Provisions -->
+                <article class="law-card" data-keywords="ab 2221 ab2221 adu local barriers setbacks parking fees heights 2022" style="--card-accent: #fbbf24;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">AB 2221 (ADU Focus)</span>
+                            <h3>Prohibiting Local De Facto Bans & Fee Gouging</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2022</span>
+                            <span class="meta-tag tag-status-mandate">Anti-Obstruction Hammer</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Ban municipalities from using front setbacks, excessive utility impact fees, parking mandates, and restrictive height caps to make ADUs practically unbuildable.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What It Does</h4>
+                            <ul>
+                                <li><strong>No Minimum Lot Sizes:</strong> Cities cannot require a minimum lot size (e.g., "must have 10,000 sq ft lot to build an ADU").</li>
+                                <li><strong>Eliminates Parking Mandates:</strong> No parking spaces can be required if the ADU is within 1/2 mile of public transit or converted from existing garage space.</li>
+                                <li><strong>Impact Fee Relief:</strong> ADUs under 750 sq. ft. are completely exempt from local impact fees (school, traffic, park fees); larger ADUs must be charged proportionally to the primary residence.</li>
+                                <li><strong>Front Setback Safeguard:</strong> Prohibits cities from enforcing front setbacks if doing so precludes an 800 sq. ft. ADU.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Protections</h4>
+                            <ul>
+                                <li>Protects 16-foot detached ADU heights, increasing to 18–25 feet near transit or on multifamily lots.</li>
+                                <li>Prevents utility districts from requiring dedicated water meters for interior conversions.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                Prior to AB 2221, cities used "soft costs" (such as charging a $40,000 sewer hookup fee or requiring a $15,000 traffic study) to kill ADUs without technically banning them. AB 2221 systematically stripped these financial and regulatory choke points.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A homeowner converts an attached two-car garage into an apartment. The local water district attempts to levy a $22,000 "new connection fee." Under AB 2221, conversion of existing space cannot be charged new connection fees or capacity charges, saving the homeowner thousands in upfront capital.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 11. 2023–2024 ADU Reforms -->
+                <article class="law-card" data-keywords="2023 2024 adu preapproved plans height increases ab 976 ab 1668 unbundling 2024" style="--card-accent: #fcd34d;">
+                    <div class="law-card-top">
+                        <div class="law-identifier">
+                            <span class="law-pill">2023–2024 Statutes</span>
+                            <h3>Preapproved Plans, Height Increases & Permanent Owner-Occupancy Repeal</h3>
+                        </div>
+                        <div class="law-meta-tags">
+                            <span class="meta-tag tag-year">Enacted 2023–2024 (AB 976, AB 1668, SB 477)</span>
+                            <span class="meta-tag tag-status-streamlining">Scale & Standardization</span>
+                        </div>
+                    </div>
+
+                    <div class="law-summary-quote">
+                        <strong>Main Idea:</strong> Make owner-occupancy exemptions permanent, allow two-story ADUs near transit, mandate state-preapproved plan catalogs, and eliminate utility barriers.
+                    </div>
+
+                    <div class="law-details-grid">
+                        <div class="law-detail-box">
+                            <h4>⚙️ What They Do</h4>
+                            <ul>
+                                <li><strong>Permanent Owner-Occupancy Ban (AB 976):</strong> Made permanent the rule that cities cannot require the property owner to live on site, unlocking institutional lending and investor capital for ADU construction.</li>
+                                <li><strong>Preapproved ADU Catalogs:</strong> Directs the California Department of Housing and Community Development (HCD) to develop a statewide directory of pre-approved architectural plans, slashing architectural fees and review timelines.</li>
+                                <li><strong>Height Allowances:</strong> Expanded detached ADU height ceilings up to 18–25 feet near transit and multifamily sites, facilitating two-story units with lower footprints.</li>
+                                <li><strong>Junior ADUs (JADUs):</strong> Streamlined rules for 500 sq. ft. units carved out of existing primary home bedrooms with separate exterior entrances.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🛡️ Statutory Safeguards</h4>
+                            <ul>
+                                <li>Mandates that unpermitted ADUs built prior to 2018 receive health and safety pathways to legalization rather than demolition orders.</li>
+                            </ul>
+                        </div>
+
+                        <div class="law-detail-box">
+                            <h4>🎓 Policy Student Significance</h4>
+                            <p>
+                                The elimination of the owner-occupancy requirement was pivotal. Previously, banks were reluctant to issue 30-year mortgages for properties with ADUs because future buyers might not want to live in the main home. AB 976 made ADUs a permanent, liquid real estate asset class.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-scenario-box">
+                        <span class="case-icon">💡</span>
+                        <div>
+                            <strong>Student Case Scenario:</strong> A homeowner selects a two-story 1,000 sq. ft. design from the city's preapproved ADU catalog. Because the architectural engineering was pre-cleared by the state, the city must approve the building permit within two weeks, cutting soft architectural and permitting costs by over $15,000.
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ================================================================= -->
+            <!-- COMPARATIVE LEGISLATIVE MATRIX TABLE -->
+            <!-- ================================================================= -->
+            <section class="table-section" id="comparison-matrix">
+                <div class="pillar-header" style="--pillar-color: #38bdf8;">
+                    <div class="pillar-title-wrap">
+                        <div class="pillar-icon-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">📊</div>
+                        <div>
+                            <h2>Comparative Legislative Matrix (2021–2026)</h2>
+                            <span class="pillar-subtitle">High-level student summary of statutory mechanisms, scope, and enforcement</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Bill / Statute</th>
+                                <th>Enacted</th>
+                                <th>Category</th>
+                                <th>Primary Mechanism</th>
+                                <th>Local Discretion?</th>
+                                <th>Key Exemptions & Carveouts</th>
+                                <th>Student Takeaway</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SB 9</strong></td>
+                                <td>2021</td>
+                                <td>Supply & Zoning</td>
+                                <td>Urban lot splits + up to 2 units per parcel (potential fourplex)</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Objective standards only)</td>
+                                <td>High fire zones, wetlands, historic districts, farmland</td>
+                                <td>Dismantled absolute single-family R-1 exclusivity statewide.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AB 2221</strong></td>
+                                <td>2022</td>
+                                <td>Supply & ADU</td>
+                                <td>Closed SB 9 setbacks/dimensions loopholes; streamlined ADU reviews</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (State defaults preempt)</td>
+                                <td>Standard environmental hazards preserved</td>
+                                <td>Shows state response to municipal "poison pill" ordinances.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SB 10</strong></td>
+                                <td>2021</td>
+                                <td>Supply & Zoning</td>
+                                <td>Up to 10 units per lot on infill/transit sites with CEQA-free rezoning</td>
+                                <td><span style="color: #10b981; font-weight: 700;">Yes</span> (Voluntary local opt-in)</td>
+                                <td>High fire zones, public parklands</td>
+                                <td>Highlights limits of optional incentives vs. mandatory state preemption.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SB 1</strong></td>
+                                <td>2023</td>
+                                <td>HAA Enforcement</td>
+                                <td>Elevated burden of proof for denials, $10K/unit fines, fee shifting</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Strict judicial enforcement)</td>
+                                <td>Projects must comply with objective general plan rules</td>
+                                <td>Made municipal bad-faith obstruction financially hazardous.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SB 8</strong></td>
+                                <td>2023</td>
+                                <td>HAA Enforcement</td>
+                                <td>Locks in rules at preliminary app, max 5 public hearings, bans downzoning</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Vested rights protections)</td>
+                                <td>Project must proceed within statutory milestones</td>
+                                <td>Transitions California toward European "rules-based" planning certainty.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SB 7</strong></td>
+                                <td>2023</td>
+                                <td>CEQA Reform</td>
+                                <td>Categorical CEQA exemption for infill housing up to 50 units</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Statutory exemption)</td>
+                                <td>Sensitive habitats, lack of utilities, non-urban perimeters</td>
+                                <td>Protects small/local missing-middle builders from frivolous CEQA lawsuits.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SB 423</strong></td>
+                                <td>2023</td>
+                                <td>CEQA & Infill</td>
+                                <td>Extends SB 35 to 2036; ministerial by-right in RHNA-lagging cities & coastal zone</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Mandatory ministerial)</td>
+                                <td>Wetlands, prime farmland; prevailing wage required</td>
+                                <td>California's most feared streamlining tool against recalcitrant cities.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AB 1033</strong></td>
+                                <td>2023</td>
+                                <td>ADU & Ownership</td>
+                                <td>Allows separate conveyance of ADUs as condominiums</td>
+                                <td><span style="color: #10b981; font-weight: 700;">Yes</span> (Requires local opt-in)</td>
+                                <td>Lender approval, separate utility metering</td>
+                                <td>Unlocks starter homeownership equity rather than rental-only units.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AB 68</strong></td>
+                                <td>2021</td>
+                                <td>ADU Deregulation</td>
+                                <td>Strict 60-day shot clock, deemed approved trigger, multifamily ADUs</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (State defaults apply)</td>
+                                <td>Health and safety building codes apply</td>
+                                <td>Eliminated municipal pocket vetoes through automatic approval.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AB 2221 (ADU)</strong></td>
+                                <td>2022</td>
+                                <td>ADU Deregulation</td>
+                                <td>Banned minimum lot sizes, parking rules near transit, fee caps under 750 sq ft</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Direct state prohibition)</td>
+                                <td>Very limited local historic district design reviews</td>
+                                <td>Dismantled local "soft cost" extortion that killed small builds.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2023–24 ADU Reforms</strong></td>
+                                <td>2023–24</td>
+                                <td>ADU Deregulation</td>
+                                <td>Permanent owner-occupancy ban (AB 976), preapproved plans, 2-story heights</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">No</span> (Statewide mandate)</td>
+                                <td>Health/safety legalization pathways for pre-2018 builds</td>
+                                <td>Turned ADUs into an institutional, liquid real estate asset class.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ================================================================= -->
+            <!-- STUDENT DISCUSSION & ANALYTICAL QUESTIONS -->
+            <!-- ================================================================= -->
+            <section class="discussion-section" id="discussion-questions">
+                <h2>Policy Seminar Discussion & Essay Prompts</h2>
+                <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+                    For students in California Politics, Public Policy Analysis, and Urban Governance: use these analytical prompts to interrogate the tensions between state mandates and local democracy.
+                </p>
+
+                <div class="question-card">
+                    <h3>1. Federalism & The Erosion of Municipal Home Rule</h3>
+                    <p>For over a century, California municipalities enjoyed near-total deference over land use under constitutional "police powers." Does state preemption through SB 9, SB 423, and the HAA represent a necessary correction to regional exclusionary cartels, or does it dangerously erode grassroots civic participation and local accountability?</p>
+                </div>
+
+                <div class="question-card">
+                    <h3>2. Supply-Side Deregulation vs. Deep Income Subsidies</h3>
+                    <p>Supply-side housing advocates (YIMBYs) argue that eliminating procedural vetoes lowers the cost of building, eventually stabilizing rents through market filtering. Housing justice advocates contend that by-right market-rate development fails to produce deeply affordable housing for households earning under 30% AMI. How do bills like SB 423 attempt to synthesize these competing philosophies?</p>
+                </div>
+
+                <div class="question-card">
+                    <h3>3. Environmental Conflict: CEQA as Conservation vs. Climate Infill</h3>
+                    <p>CEQA was drafted to protect wild nature from environmental destruction. However, researchers show that blocking infill housing in transit-rich coastal cities pushes workers into sprawling, car-dependent inland valleys with extreme heat and long commutes. Did early environmental law inadvertently create a worse climate outcome, and do SB 7 and SB 423 adequately resolve this paradox?</p>
+                </div>
+
+                <div class="question-card">
+                    <h3>4. The ADU Success Story: Why Did ADUs Succeed Where SB 9 Struggled?</h3>
+                    <p>Data from HCD shows that ADU production exploded to 25,000+ units annually, while SB 9 lot-split applications remained comparatively modest in their first two years. Analyze the institutional, financial, and sociological factors that made backyard cottages popular with suburban voters while lot-splits faced resistance.</p>
+                </div>
+            </section>
+
+            <!-- Bottom Navigation Box -->
+            <section class="bottom-nav-box">
+                <h2>Continue Your Policy Exploration</h2>
+                <p>Integrate these legislative frameworks with our empirical data dossiers, regional case studies, and municipal policy tracking.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="california_policy_dashboard.html" class="btn-primary-action">🏛️ Return to California Policy Dashboard</a>
+                    <a href="california_housing_affordability.html" class="nav-pill-btn" style="background: rgba(255, 255, 255, 0.08);">📘 Deep Dive: Housing Affordability & Thousand Oaks</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 José Marichal. All Rights Reserved. • California Lutheran University</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script for Live Search and Tab Filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('billSearchInput');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.law-card');
+            const pillarGroups = document.querySelectorAll('.pillar-group');
+
+            let currentFilter = 'all';
+
+            // Filter button click handling
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.getAttribute('data-filter');
+                    filterContent();
+                });
+            });
+
+            // Search input handling
+            searchInput.addEventListener('input', () => {
+                filterContent();
+            });
+
+            function filterContent() {
+                const query = searchInput.value.toLowerCase().trim();
+
+                pillarGroups.forEach(group => {
+                    const groupId = group.getAttribute('data-group');
+                    let groupVisibleCards = 0;
+
+                    // Check if group matches pillar filter
+                    const matchesPillar = (currentFilter === 'all' || currentFilter === groupId);
+
+                    const groupCards = group.querySelectorAll('.law-card');
+                    groupCards.forEach(card => {
+                        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                        const text = card.innerText.toLowerCase();
+                        const matchesSearch = !query || keywords.includes(query) || text.includes(query);
+
+                        if (matchesPillar && matchesSearch) {
+                            card.style.display = 'block';
+                            groupVisibleCards++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Hide entire pillar group if no matching cards
+                    if (groupVisibleCards > 0) {
+                        group.style.display = 'block';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
