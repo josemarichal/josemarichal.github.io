@@ -224,6 +224,7 @@ COURSE SCHEDULE
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 5 ("Key Actors and the Policy Process in State and Local Governments")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-5/)*
   * **Assigned Reading:** *[California Housing Affordability: Core Issue 9 (Thousand Oaks Local Growth Realities & Measure E)](california_housing_affordability.html#issue-9)*
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSZMuj6vbT37bchS61JWz3qhdYjq33VxKc6Zi50mKSD6bHEm_Rfj3ZSc6w3qMmI4hYs7BwOQ-aEH2x4/pub?start=false&loop=false&delayms=3000)
 * ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting existing neighborhood character and the urgent need to build high-density affordable housing?*
 
 **Wed, Sep. 30**
