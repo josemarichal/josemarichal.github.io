@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Assemblage Studio — Inspired by Betye Saar</title>
+    <meta name="description" content="A writing and conceptual synthesis environment inspired by the assemblage art of Betye Saar. Collide fragments, found objects, and theories into emergent writing.">
+    <link rel="stylesheet" href="style.css?v=5">
+    
+    <style>
+        :root {
+            --shadowbox-bg: #0d1117;
+            --shadowbox-wood: #2c1d11;
+            --shadowbox-wood-border: #4a321e;
+            --shadowbox-gold: #c99738;
+            --shadowbox-gold-dim: #7a5b1f;
+            --shadowbox-velvet: #1a1625;
+            --card-parchment: #1c2430;
+            --card-parchment-border: #334155;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --text-gold: #f3d48d;
+        }
+
+        body {
+            background-color: var(--shadowbox-bg);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(201, 151, 56, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.04) 0%, transparent 40%),
+                linear-gradient(rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.95));
+            min-height: 100vh;
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header & Top Bar --- */
+        .assemblage-header {
+            background: linear-gradient(180deg, #18120c 0%, #0d1117 100%);
+            border-bottom: 2px solid var(--shadowbox-wood-border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .assemblage-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .brand-icon {
+            font-size: 1.8rem;
+            filter: drop-shadow(0 2px 4px rgba(201, 151, 56, 0.4));
+        }
+
+        .brand-title h1 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--text-gold);
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-title .tagline {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: #94a3b8;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .saar-btn {
+            background: rgba(201, 151, 56, 0.12);
+            border: 1px solid var(--shadowbox-gold-dim);
+            color: var(--text-gold);
+            padding: 0.45rem 0.9rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.15s ease;
+            text-decoration: none;
+        }
+
+        .saar-btn:hover {
+            background: var(--shadowbox-gold);
+            color: #1a1208;
+            border-color: var(--shadowbox-gold);
+            box-shadow: 0 0 12px rgba(201, 151, 56, 0.35);
+            text-decoration: none;
+        }
+
+        .saar-btn.primary {
+            background: linear-gradient(135deg, #c99738 0%, #9e7323 100%);
+            color: #120d06;
+            font-weight: 600;
+            border-color: #e5b352;
+        }
+
+        .saar-btn.primary:hover {
+            filter: brightness(1.15);
+            box-shadow: 0 0 15px rgba(201, 151, 56, 0.5);
+        }
+
+        .saar-btn.danger {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+
+        .saar-btn.danger:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        /* --- Quote Banner --- */
+        .saar-quote-bar {
+            background: rgba(44, 29, 17, 0.35);
+            border-bottom: 1px solid rgba(201, 151, 56, 0.15);
+            padding: 0.4rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        .saar-quote-bar span.author {
+            font-family: var(--font-mono);
+            font-style: normal;
+            font-size: 0.72rem;
+            color: var(--shadowbox-gold);
+            margin-left: 0.5rem;
+        }
+
+        /* --- Main Layout --- */
+        .assemblage-workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr 380px;
+            gap: 1.25rem;
+            padding: 1.25rem;
+            flex: 1;
+            max-width: 1920px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 1400px) {
+            .assemblage-workspace {
+                grid-template-columns: 280px 1fr 340px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .assemblage-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Shadowbox Compartment Tray (Left / Yard Sale Drawer) --- */
+        .yard-sale-drawer {
+            background: rgba(24, 18, 12, 0.6);
+            border: 2px solid var(--shadowbox-wood-border);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+
+        .drawer-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(201, 151, 56, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .drawer-title h2 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--text-gold);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .brass-badge {
+            background: linear-gradient(180deg, #d4af37 0%, #8b6d1f 100%);
+            color: #1a1208;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.45rem;
+            border-radius: 3px;
+            border: 1px solid #ffe28a;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .energy-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .energy-filter-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--shadowbox-wood-border);
+            color: #94a3b8;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .energy-filter-pill:hover,
+        .energy-filter-pill.active {
+            background: rgba(201, 151, 56, 0.2);
+            border-color: var(--shadowbox-gold);
+            color: var(--text-gold);
+        }
+
+        /* --- Fragment Cards --- */
+        .fragment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 0.25rem;
+        }
+
+        .fragment-card {
+            background: var(--card-parchment);
+            border: 1px solid var(--card-parchment-border);
+            border-radius: 5px;
+            padding: 0.85rem;
+            cursor: grab;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            user-select: none;
+        }
+
+        .fragment-card:hover {
+            border-color: var(--shadowbox-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(201, 151, 56, 0.2);
+        }
+
+        .fragment-card.selected {
+            border-color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.08);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .fragment-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+        }
+
+        .fragment-provenance {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--shadowbox-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .energy-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .energy-ancestral { background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.4); }
+        .energy-empirical { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); }
+        .energy-mystical { background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .energy-weapon { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .energy-organic { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+        .fragment-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: #f8fafc;
+            margin-bottom: 0.35rem;
+            line-height: 1.3;
+        }
+
+        .fragment-snippet {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            line-height: 1.45;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .fragment-actions {
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: #64748b;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            padding-top: 0.35rem;
+        }
+
+        .btn-collide-add {
+            background: none;
+            border: none;
+            color: var(--accent-green);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-collide-add:hover {
+            color: #34d399;
+            text-decoration: underline;
+        }
+
+        /* --- Center Canvas: The Assemblage Shadowbox --- */
+        .assemblage-canvas {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .shadowbox-tray {
+            background: #140e09;
+            border: 4px solid var(--shadowbox-wood-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: 
+                inset 0 0 25px rgba(0, 0, 0, 0.9),
+                0 10px 30px rgba(0, 0, 0, 0.7);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .shadowbox-tray::before {
+            content: "BETYE SAAR // SHADOWBOX ASSEMBLAGE CHAMBER";
+            position: absolute;
+            top: 6px;
+            left: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--shadowbox-gold-dim);
+            letter-spacing: 0.15em;
+        }
+
+        .compartments-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            flex: 1;
+        }
+
+        @media (max-width: 800px) {
+            .compartments-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .compartment {
+            background: rgba(18, 24, 34, 0.65);
+            border: 2px dashed rgba(201, 151, 56, 0.25);
+            border-radius: 6px;
+            padding: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 220px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .compartment.drag-over {
+            border-color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .compartment-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 0.4rem;
+        }
+
+        .compartment-label {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--text-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .compartment-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .empty-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            color: #475569;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-align: center;
+            border: 1px dashed rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            padding: 1rem;
+        }
+
+        /* --- Right Column: The Collision & Writing Crucible --- */
+        .crucible-panel {
+            background: rgba(24, 18, 12, 0.7);
+            border: 2px solid var(--shadowbox-wood-border);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+
+        .crucible-header {
+            border-bottom: 1px solid rgba(201, 151, 56, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .crucible-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--text-gold);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .collision-stage {
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid var(--card-parchment-border);
+            border-radius: 6px;
+            padding: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .colliding-pair {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .collision-operator {
+            align-self: center;
+            background: var(--shadowbox-wood-border);
+            color: var(--text-gold);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--shadowbox-gold-dim);
+            margin: -0.25rem 0;
+            z-index: 2;
+        }
+
+        .colliding-card {
+            background: var(--card-parchment);
+            border: 1px solid rgba(201, 151, 56, 0.3);
+            border-radius: 4px;
+            padding: 0.6rem 0.75rem;
+            font-size: 0.82rem;
+            position: relative;
+        }
+
+        .colliding-card .remove-btn {
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .colliding-card .remove-btn:hover {
+            color: #f87171;
+        }
+
+        .emergent-prompt-box {
+            background: rgba(201, 151, 56, 0.08);
+            border-left: 3px solid var(--shadowbox-gold);
+            padding: 0.65rem 0.85rem;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.82rem;
+            color: #f1f5f9;
+            line-height: 1.45;
+        }
+
+        .emergent-prompt-box strong {
+            color: var(--text-gold);
+            display: block;
+            margin-bottom: 0.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-editor {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .synthesis-editor label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .synthesis-textarea {
+            width: 100%;
+            height: 160px;
+            background: rgba(13, 17, 23, 0.9);
+            border: 1px solid var(--card-parchment-border);
+            border-radius: 4px;
+            color: #f8fafc;
+            padding: 0.75rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            resize: vertical;
+            outline: none;
+        }
+
+        .synthesis-textarea:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+
+        /* --- Modals --- */
+        .assemblage-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .assemblage-modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #141a22;
+            border: 2px solid var(--shadowbox-gold-dim);
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            padding: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(201, 151, 56, 0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--text-gold);
+            margin: 0;
+        }
+
+        .close-modal-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .close-modal-btn:hover {
+            color: white;
+        }
+
+        /* --- Intuition Oracle Cards Grid --- */
+        .oracle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .oracle-card {
+            background: linear-gradient(145deg, #1e1710 0%, #111620 100%);
+            border: 1px solid var(--shadowbox-gold-dim);
+            border-radius: 6px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oracle-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--shadowbox-gold);
+            box-shadow: 0 6px 18px rgba(201, 151, 56, 0.3);
+        }
+
+        .oracle-card .oracle-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .oracle-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-gold);
+            margin: 0 0 0.35rem 0;
+        }
+
+        .oracle-card p {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            line-height: 1.4;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="assemblage-header">
+        <div class="assemblage-brand">
+            <span class="brand-icon">🏺</span>
+            <div class="brand-title">
+                <h1>Idea Assemblage Studio</h1>
+                <div class="tagline">An Alchemical Writing Box // Inspired by Betye Saar</div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button type="button" class="saar-btn" id="btn-oracle" title="Draw inspiration from Betye Saar's artistic intuition">
+                🔮 Betye's Intuition Oracle
+            </button>
+            <button type="button" class="saar-btn" id="btn-collide-random" title="Randomly collide 2 disparate ideas">
+                ⚡ Collide Ideas
+            </button>
+            <button type="button" class="saar-btn primary" id="btn-new-fragment">
+                + Spot New Fragment
+            </button>
+            <button type="button" class="saar-btn" id="btn-export-post" title="Convert active synthesis into a blog post">
+                ✍️ Send to Blog Post
+            </button>
+            <button type="button" class="saar-btn" id="btn-reset-demo" title="Restore default sample fragments">
+                ↺ Sample Set
+            </button>
+            <a href="projects.html" class="saar-btn" style="border-color: var(--border-color); color: #94a3b8;">
+                ← Projects
+            </a>
+        </div>
+    </header>
+
+    <!-- Saar Transcript Quote Banner -->
+    <div class="saar-quote-bar">
+        <div>
+            "I'm basically a recycler... I mix up materials, objects, ideas. Sometimes they tell a story and sometimes they don't. I prefer when they don't tell the story so the viewer can invent their own."
+            <span class="author">— BETYE SAAR</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #64748b;">
+            <span id="stat-total-fragments">0</span> Fragments Collected
+        </div>
+    </div>
+
+    <!-- Workspace Grid -->
+    <main class="assemblage-workspace">
+
+        <!-- Left Column: The Yard Sale Drawer -->
+        <section class="yard-sale-drawer">
+            <div class="drawer-title">
+                <h2><span>🧺</span> The Yard Sale <span class="brass-badge" id="badge-count">0</span></h2>
+                <button type="button" class="saar-btn" style="padding: 0.2rem 0.5rem; font-size: 0.72rem;" onclick="openNewFragmentModal()">+ Add</button>
+            </div>
+
+            <!-- Energy Filter Pills -->
+            <div class="energy-filters">
+                <button type="button" class="energy-filter-pill active" data-filter="all">All Energy</button>
+                <button type="button" class="energy-filter-pill" data-filter="ancestral">Ancestral</button>
+                <button type="button" class="energy-filter-pill" data-filter="empirical">Empirical</button>
+                <button type="button" class="energy-filter-pill" data-filter="mystical">Mystical</button>
+                <button type="button" class="energy-filter-pill" data-filter="weapon">Subversive</button>
+                <button type="button" class="energy-filter-pill" data-filter="organic">Organic</button>
+            </div>
+
+            <!-- Scrollable Fragment List -->
+            <div class="fragment-list" id="yard-sale-list">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Center Column: The Shadowbox Assemblage Chamber -->
+        <section class="assemblage-canvas">
+            <div class="shadowbox-tray">
+                <div class="compartments-grid">
+                    <!-- Compartment 1: Ancestral Roots -->
+                    <div class="compartment" id="comp-ancestral" data-comp="ancestral">
+                        <div class="compartment-header">
+                            <span class="compartment-label"><span>🏛️</span> Ancestral &amp; Deep Theory</span>
+                            <span class="brass-badge comp-count">0</span>
+                        </div>
+                        <div class="compartment-items" id="items-ancestral"></div>
+                    </div>
+
+                    <!-- Compartment 2: The Modern Machinery -->
+                    <div class="compartment" id="comp-modern" data-comp="modern">
+                        <div class="compartment-header">
+                            <span class="compartment-label"><span>⚙️</span> The Computational Machine</span>
+                            <span class="brass-badge comp-count">0</span>
+                        </div>
+                        <div class="compartment-items" id="items-modern"></div>
+                    </div>
+
+                    <!-- Compartment 3: Found Objects & Artifacts -->
+                    <div class="compartment" id="comp-artifacts" data-comp="artifacts">
+                        <div class="compartment-header">
+                            <span class="compartment-label"><span>🪵</span> Found Objects &amp; Empirical Data</span>
+                            <span class="brass-badge comp-count">0</span>
+                        </div>
+                        <div class="compartment-items" id="items-artifacts"></div>
+                    </div>
+
+                    <!-- Compartment 4: Subversive Weapons / Transformations -->
+                    <div class="compartment" id="comp-subversive" data-comp="subversive">
+                        <div class="compartment-header">
+                            <span class="compartment-label"><span>🗡️</span> Political Weapons &amp; Inversions</span>
+                            <span class="brass-badge comp-count">0</span>
+                        </div>
+                        <div class="compartment-items" id="items-subversive"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: The Collision & Writing Crucible -->
+        <aside class="crucible-panel">
+            <div class="crucible-header">
+                <h2><span>⚡</span> The Collision Crucible</h2>
+                <p style="font-size: 0.78rem; color: #94a3b8; margin: 0.2rem 0 0 0;">
+                    Select 2 or more fragments to force a dialectical collision and spark new thesis arguments.
+                </p>
+            </div>
+
+            <!-- Active Colliding Pair -->
+            <div class="collision-stage" id="collision-stage">
+                <div class="colliding-pair" id="colliding-pair-container">
+                    <div style="text-align: center; color: #64748b; font-size: 0.8rem; padding: 1rem 0;">
+                        Click <strong>"+ Collide"</strong> on any fragment card or hit <strong>"⚡ Collide Ideas"</strong> above to load a spark pair.
+                    </div>
+                </div>
+
+                <!-- Emergent Prompt -->
+                <div class="emergent-prompt-box" id="emergent-prompt-box" style="display: none;">
+                    <strong>💡 Emergent Synthesis Inquiry:</strong>
+                    <span id="prompt-text">What happens when the predictability of the machine collides with human autonomy?</span>
+                </div>
+            </div>
+
+            <!-- Synthesis Writing Pad -->
+            <div class="synthesis-editor">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label for="synthesis-text">Synthesis &amp; Paragraph Drafting</label>
+                    <span id="synthesis-word-count" style="font-family: var(--font-mono); font-size: 0.72rem; color: #64748b;">0 words</span>
+                </div>
+                <textarea id="synthesis-text" class="synthesis-textarea" placeholder="Draft your synthesis paragraph here. What new insight emerges from the friction between these fragments?"></textarea>
+            </div>
+
+            <!-- Crucible Actions -->
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button type="button" class="saar-btn primary" id="btn-save-as-new-fragment" style="flex: 1;">
+                    📥 Save as New Fragment
+                </button>
+                <button type="button" class="saar-btn" id="btn-copy-synthesis" style="flex: 1;">
+                    📋 Copy Text
+                </button>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Modal 1: Add New Fragment -->
+    <div class="assemblage-modal" id="modal-new-fragment">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><span>🧺</span> Spot a New Fragment</h3>
+                <button type="button" class="close-modal-btn" onclick="closeNewFragmentModal()">×</button>
+            </div>
+            <form id="form-new-fragment" onsubmit="handleCreateFragment(event)">
+                <div class="form-group">
+                    <label for="frag-title">Fragment Title / Concept</label>
+                    <input type="text" id="frag-title" class="form-control" placeholder="e.g. Max Weber's Disenchantment" required>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1 1 200px;">
+                        <label for="frag-provenance">Provenance / Source</label>
+                        <input type="text" id="frag-provenance" class="form-control" placeholder="e.g. Science as a Vocation (1919)">
+                    </div>
+                    <div class="form-group" style="flex: 1 1 180px;">
+                        <label for="frag-energy">Energy Type</label>
+                        <select id="frag-energy" class="form-control">
+                            <option value="ancestral">Ancestral / Historical</option>
+                            <option value="empirical">Empirical / Machine</option>
+                            <option value="mystical">Mystical / Speculative</option>
+                            <option value="weapon">Subversive / Weapon</option>
+                            <option value="organic">Organic / Fleeting</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="frag-content">The Fragment / Excerpt / Note</label>
+                    <textarea id="frag-content" class="form-control" style="min-height: 120px;" placeholder="Paste the quote, research data, historical note, or raw idea here..." required></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
+                    <button type="button" class="saar-btn" onclick="closeNewFragmentModal()">Cancel</button>
+                    <button type="submit" class="saar-btn primary">Add to Yard Sale</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Betye Saar's Intuition Oracle -->
+    <div class="assemblage-modal" id="modal-oracle">
+        <div class="modal-content" style="max-width: 780px;">
+            <div class="modal-header">
+                <h3><span>🔮</span> Betye Saar's Intuition Oracle</h3>
+                <button type="button" class="close-modal-btn" onclick="closeOracleModal()">×</button>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">
+                When your writing hits an impasse, draw an intuition card from Betye Saar's artistic playbook to break habits and uncover non-linear connections.
+            </p>
+            <div class="oracle-grid" id="oracle-cards-container">
+                <!-- Oracle cards injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Export to Blog Post Dialog -->
+    <div class="assemblage-modal" id="modal-export-blog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><span>✍️</span> Export Assemblage as Blog Post</h3>
+                <button type="button" class="close-modal-btn" onclick="closeExportModal()">×</button>
+            </div>
+            <div id="export-modal-body">
+                <div class="form-group">
+                    <label for="export-post-title">Blog Post Title</label>
+                    <input type="text" id="export-post-title" class="form-control" placeholder="e.g. Notes on the Machine and the Soul">
+                </div>
+                <div class="form-group">
+                    <label for="export-post-tags">Tags</label>
+                    <input type="text" id="export-post-tags" class="form-control" value="Assemblage, Machine Liberalism, Philosophy of AI">
+                </div>
+                <div class="form-group">
+                    <label for="export-post-preview">Generated Post Preview (Markdown)</label>
+                    <textarea id="export-post-preview" class="form-control" style="min-height: 180px; font-family: var(--font-mono); font-size: 0.82rem;"></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
+                    <button type="button" class="saar-btn" onclick="closeExportModal()">Cancel</button>
+                    <button type="button" class="saar-btn primary" id="btn-confirm-send-blog">🚀 Send to Blog Publisher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Audio synthesis for organic wooden clicks
+        const AudioKit = (function() {
+            let ctx = null;
+            function init() {
+                if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            function playWoodClick(pitch = 280) {
+                try {
+                    init();
+                    if (!ctx) return;
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(pitch + (Math.random() * 40 - 20), ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.04);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.05);
+                } catch(e) {}
+            }
+            return { click: playWoodClick };
+        })();
+
+        // Default Sample Set Inspired by Betye Saar & José Marichal's Research
+        const DEFAULT_FRAGMENTS = [
+            {
+                id: 'frag-1',
+                title: "The Recycler's Intuition",
+                provenance: "Betye Saar (Transcript)",
+                energy: "organic",
+                content: "I'm basically a recycler. I find other people's stuff and junk and recycle it into my stuff and junk. I can't pass a yard sale... I rarely look for a specific thing; I just kind of build on my intuition.",
+                compartment: 'artifacts'
+            },
+            {
+                id: 'frag-2',
+                title: "Object Energy & Past Life",
+                provenance: "Betye Saar (Transcript)",
+                energy: "mystical",
+                content: "Everything has a past so I feel that that energy is somehow clothed with the object. When you look at materials from Africa or the flea market, you feel that energy sitting there waiting for you to assemble it.",
+                compartment: 'artifacts'
+            },
+            {
+                id: 'frag-3',
+                title: "Art as a Liberatory Weapon",
+                provenance: "The Liberation of Aunt Jemima (1972)",
+                energy: "weapon",
+                content: "Dr. King's murder was horrific for me... but I had a weapon, and that was art. I took the caricature that people thought of as comical, and made her a warrior with a rifle and a hand grenade taking care of business.",
+                compartment: 'subversive'
+            },
+            {
+                id: 'frag-4',
+                title: "Disenchantment of the World",
+                provenance: "Max Weber (1946)",
+                energy: "ancestral",
+                content: "Replacing a religious understanding of the world with a scientific one created 'disenchantment' in modernity. Instead of seeing the world as magical and divinely inspired, we use scientific language to explain transcendent phenomena.",
+                compartment: 'ancestral'
+            },
+            {
+                id: 'frag-5',
+                title: "Human Autonomy as an End in Itself",
+                provenance: "Immanuel Kant (Groundwork)",
+                energy: "ancestral",
+                content: "The Enlightenment project proposes that humans are ends in themselves and should have the ability to reflect on their condition and change it. Algorithms frustrate this by anticipating our desires before we know them ourselves.",
+                compartment: 'ancestral'
+            },
+            {
+                id: 'frag-6',
+                title: "AlphaFold & 200M Protein Structures",
+                provenance: "DeepMind / Science (2022)",
+                energy: "empirical",
+                content: "Predicted all possible 3D structures of proteins based on amino acid sequences, saving hundreds of years of research time. If prediction solves biology, does it solve human behavior as well?",
+                compartment: 'modern'
+            },
+            {
+                id: 'frag-7',
+                title: "The Agentic Loop & Intelligence Explosion",
+                provenance: "Bengio, Hinton et al. (2024)",
+                energy: "empirical",
+                content: "Posits that hundreds of recursive autonomous agents set upon a task can arrive at optimal solutions through feedback loops, moving beyond code into scientific discovery and social prediction.",
+                compartment: 'modern'
+            },
+            {
+                id: 'frag-8',
+                title: "Mandatory Prompt Engineering at JP Morgan",
+                provenance: "Levitt (2024)",
+                energy: "empirical",
+                content: "Financial firm announced that every new hire must receive prompt engineering training for AI, reflecting the tech race where employees must adapt their cognition to maintain market competitiveness.",
+                compartment: 'modern'
+            },
+            {
+                id: 'frag-9',
+                title: "The Scale / Weight of Racism",
+                provenance: "Betye Saar (Transcript)",
+                energy: "weapon",
+                content: "My daughter found this scale for me: the weight of racism. I will probably paint the outside green and the inside red so it looks like a watermelon. That's my sense of humor. Racism hasn't gone away, so you still have to keep repeating things.",
+                compartment: 'subversive'
+            },
+            {
+                id: 'frag-10',
+                title: "The Mystery of the Antlers",
+                provenance: "Betye Saar (Transcript)",
+                energy: "organic",
+                content: "Antlers, that's my latest thing. It's always a puzzlement when I start collecting things like 'what can I do with these?' And then I'll find another component and say, 'Oh yeah, I can use it here.'",
+                compartment: 'artifacts'
+            }
+        ];
+
+        // Saar Intuition Oracle Deck
+        const ORACLE_CARDS = [
+            {
+                icon: "🧺",
+                title: "The Yard Sale Principle",
+                quote: "I'm basically a recycler... I find other people's stuff and junk.",
+                directive: "Look for discarded, overlooked, or forgotten arguments from an earlier era. What antique theory can you recycle into your modern critique?"
+            },
+            {
+                icon: "🦌",
+                title: "The Antler Puzzlement",
+                quote: "Antlers, that's my latest thing... what can you do with these?",
+                directive: "Introduce a foreign, bizarre, or seemingly irrelevant concept into this argument. Don't force an immediate fit; let it sit until a catalyst appears."
+            },
+            {
+                icon: "⚖️",
+                title: "The Subversive Scale",
+                quote: "Paint the outside green and inside red... that's my sense of humor.",
+                directive: "Use irony, dark humor, or aesthetic reversal. What solemn premise in tech policy can you subvert by inverting its visual or verbal metaphor?"
+            },
+            {
+                icon: "🗡️",
+                title: "The Warrior Transformation",
+                quote: "I didn't have a weapon, and that was art... taking care of business.",
+                directive: "Take a passive or caricatured victim of algorithmic systems and re-arm them with intellectual agency. How do they seize the offensive?"
+            },
+            {
+                icon: "🏛️",
+                title: "The Basement Energy",
+                quote: "Down in the basement... all this energy from tribal materials.",
+                directive: "Descend into the suppressed or marginalized archives. What voices did Enlightenment rationalism relegate to the basement?"
+            },
+            {
+                icon: "🧵",
+                title: "The Quilt Stitches",
+                quote: "In her era women made quilts, they crocheted with their hands.",
+                directive: "Do not strive for a monolithic, seamless argument. Let the seams, tension, and contrasting patches remain visible to the reader."
+            },
+            {
+                icon: "🦁",
+                title: "The Lion's Roar",
+                quote: "I am a Leo. It means I am like the lion; it's best you not hear me roar.",
+                directive: "Drop the timid academic hedging. State your sharpest, most unapologetic political conclusion with absolute force."
+            },
+            {
+                icon: "🔮",
+                title: "Re-Enchantment",
+                quote: "Strong mystical quality... palmistry, phrenology, astrology.",
+                directive: "Notice where hyper-rational technology starts behaving like magic or religion. How is the predictive algorithm serving as a new digital oracle?"
+            }
+        ];
+
+        // State Management
+        let fragments = [];
+        let activeCollidingIds = [];
+        let currentFilter = 'all';
+
+        function loadFragments() {
+            const saved = localStorage.getItem('saar_idea_assemblage');
+            if (saved) {
+                try {
+                    fragments = JSON.parse(saved);
+                } catch(e) {
+                    fragments = [...DEFAULT_FRAGMENTS];
+                }
+            } else {
+                fragments = [...DEFAULT_FRAGMENTS];
+            }
+        }
+
+        function saveFragments() {
+            localStorage.setItem('saar_idea_assemblage', JSON.stringify(fragments));
+            updateCounts();
+        }
+
+        function updateCounts() {
+            document.getElementById('stat-total-fragments').textContent = fragments.length;
+            document.getElementById('badge-count').textContent = fragments.length;
+
+            ['ancestral', 'modern', 'artifacts', 'subversive'].forEach(comp => {
+                const count = fragments.filter(f => f.compartment === comp).length;
+                const badge = document.querySelector(`#comp-${comp} .comp-count`);
+                if (badge) badge.textContent = count;
+            });
+        }
+
+        // Render Cards in Yard Sale Drawer
+        function renderYardSaleList() {
+            const container = document.getElementById('yard-sale-list');
+            const filtered = fragments.filter(f => currentFilter === 'all' || f.energy === currentFilter);
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:2rem 1rem; color:#64748b; font-size:0.8rem;">No fragments match this energy filter.</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(f => {
+                const isSelected = activeCollidingIds.includes(f.id);
+                return `
+                    <div class="fragment-card ${isSelected ? 'selected' : ''}" 
+                         id="card-${f.id}" 
+                         draggable="true" 
+                         ondragstart="handleDragStart(event, '${f.id}')"
+                         onclick="selectForCollision('${f.id}')">
+                        <div class="fragment-header">
+                            <span class="fragment-provenance">${escapeHtml(f.provenance || 'Fragment')}</span>
+                            <span class="energy-tag energy-${f.energy}">${f.energy}</span>
+                        </div>
+                        <div class="fragment-title">${escapeHtml(f.title)}</div>
+                        <div class="fragment-snippet">${escapeHtml(f.content)}</div>
+                        <div class="fragment-actions">
+                            <button type="button" class="btn-collide-add" onclick="event.stopPropagation(); toggleCollision('${f.id}')">
+                                ${isSelected ? '✓ In Crucible' : '+ Collide'}
+                            </button>
+                            <span style="font-size:0.7rem; color:#64748b;">${f.compartment}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render Compartment Trays
+        function renderCompartments() {
+            ['ancestral', 'modern', 'artifacts', 'subversive'].forEach(comp => {
+                const container = document.getElementById(`items-${comp}`);
+                const items = fragments.filter(f => f.compartment === comp);
+
+                if (items.length === 0) {
+                    container.innerHTML = `<div class="empty-slot">Drag fragments here to arrange your shadowbox</div>`;
+                } else {
+                    container.innerHTML = items.map(f => {
+                        const isSelected = activeCollidingIds.includes(f.id);
+                        return `
+                            <div class="fragment-card ${isSelected ? 'selected' : ''}" 
+                                 id="comp-item-${f.id}" 
+                                 draggable="true" 
+                                 ondragstart="handleDragStart(event, '${f.id}')"
+                                 onclick="selectForCollision('${f.id}')">
+                                <div class="fragment-header">
+                                    <span class="fragment-provenance">${escapeHtml(f.provenance || '')}</span>
+                                    <span class="energy-tag energy-${f.energy}">${f.energy}</span>
+                                </div>
+                                <div class="fragment-title" style="font-size:0.92rem;">${escapeHtml(f.title)}</div>
+                                <div class="fragment-snippet" style="-webkit-line-clamp: 2;">${escapeHtml(f.content)}</div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            });
+            updateCounts();
+        }
+
+        // Collision Logic
+        function toggleCollision(id) {
+            AudioKit.click(380);
+            if (activeCollidingIds.includes(id)) {
+                activeCollidingIds = activeCollidingIds.filter(item => item !== id);
+            } else {
+                if (activeCollidingIds.length >= 3) {
+                    activeCollidingIds.shift(); // Keep max 3
+                }
+                activeCollidingIds.push(id);
+            }
+            renderCollisionStage();
+            renderYardSaleList();
+            renderCompartments();
+        }
+
+        function selectForCollision(id) {
+            toggleCollision(id);
+        }
+
+        function removeColliding(id) {
+            AudioKit.click(220);
+            activeCollidingIds = activeCollidingIds.filter(item => item !== id);
+            renderCollisionStage();
+            renderYardSaleList();
+            renderCompartments();
+        }
+
+        function renderCollisionStage() {
+            const container = document.getElementById('colliding-pair-container');
+            const promptBox = document.getElementById('emergent-prompt-box');
+            const promptText = document.getElementById('prompt-text');
+
+            if (activeCollidingIds.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; color: #64748b; font-size: 0.8rem; padding: 1.5rem 0;">
+                        Click <strong>"+ Collide"</strong> on fragments or hit <strong>"⚡ Collide Ideas"</strong> above to load elements into the crucible.
+                    </div>
+                `;
+                promptBox.style.display = 'none';
+                return;
+            }
+
+            const activeItems = activeCollidingIds.map(id => fragments.find(f => f.id === id)).filter(Boolean);
+
+            let cardsHtml = '';
+            for (let i = 0; i < activeItems.length; i++) {
+                const item = activeItems[i];
+                cardsHtml += `
+                    <div class="colliding-card">
+                        <button type="button" class="remove-btn" onclick="removeColliding('${item.id}')">×</button>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                            <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--shadowbox-gold);">${escapeHtml(item.provenance)}</span>
+                            <span class="energy-tag energy-${item.energy}" style="font-size:0.6rem;">${item.energy}</span>
+                        </div>
+                        <strong style="color:#f8fafc; font-size:0.88rem; display:block;">${escapeHtml(item.title)}</strong>
+                        <div style="font-size:0.78rem; color:#94a3b8; margin-top:0.25rem;">${escapeHtml(item.content)}</div>
+                    </div>
+                `;
+                if (i < activeItems.length - 1) {
+                    cardsHtml += `<div class="collision-operator">⚡</div>`;
+                }
+            }
+
+            container.innerHTML = cardsHtml;
+
+            // Generate contextual collision inquiry
+            if (activeItems.length >= 2) {
+                promptBox.style.display = 'block';
+                promptText.textContent = generateCollisionInquiry(activeItems[0], activeItems[1]);
+            } else {
+                promptBox.style.display = 'none';
+            }
+        }
+
+        function generateCollisionInquiry(itemA, itemB) {
+            const inquiries = [
+                `How does ${itemB.title} expose the unexamined contradictions in ${itemA.title}?`,
+                `If ${itemA.title} represents the architecture, what subversive role does ${itemB.title} play?`,
+                `Where does the predictive rationality of ${itemA.title} break down when confronted with ${itemB.title}?`,
+                `What third conceptual category is born when we treat ${itemA.title} and ${itemB.title} as pieces of the same shadowbox?`,
+                `If Betye Saar placed ${itemA.title} and ${itemB.title} into an assemblage box, what would be the weapon and what would be the target?`
+            ];
+            const hash = (itemA.id + itemB.id).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            return inquiries[hash % inquiries.length];
+        }
+
+        // Random Collision Spark
+        document.getElementById('btn-collide-random').addEventListener('click', function() {
+            AudioKit.click(440);
+            if (fragments.length < 2) return;
+            const shuffled = [...fragments].sort(() => 0.5 - Math.random());
+            activeCollidingIds = [shuffled[0].id, shuffled[1].id];
+            renderCollisionStage();
+            renderYardSaleList();
+            renderCompartments();
+        });
+
+        // Drag and Drop Logic
+        let draggedId = null;
+
+        function handleDragStart(e, id) {
+            draggedId = id;
+            e.dataTransfer.setData('text/plain', id);
+            AudioKit.click(200);
+        }
+
+        document.querySelectorAll('.compartment').forEach(compEl => {
+            compEl.addEventListener('dragover', e => {
+                e.preventDefault();
+                compEl.classList.add('drag-over');
+            });
+            compEl.addEventListener('dragleave', () => {
+                compEl.classList.remove('drag-over');
+            });
+            compEl.addEventListener('drop', e => {
+                e.preventDefault();
+                compEl.classList.remove('drag-over');
+                const targetComp = compEl.getAttribute('data-comp');
+                const frag = fragments.find(f => f.id === draggedId);
+                if (frag) {
+                    frag.compartment = targetComp;
+                    saveFragments();
+                    renderCompartments();
+                    renderYardSaleList();
+                    AudioKit.click(320);
+                }
+            });
+        });
+
+        // Filter Pills
+        document.querySelectorAll('.energy-filter-pill').forEach(btn => {
+            btn.addEventListener('click', function() {
+                AudioKit.click(260);
+                document.querySelectorAll('.energy-filter-pill').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.getAttribute('data-filter');
+                renderYardSaleList();
+            });
+        });
+
+        // Synthesis Word Count
+        const synthText = document.getElementById('synthesis-text');
+        synthText.addEventListener('input', function() {
+            const count = (this.value.trim().split(/\s+/).filter(Boolean) || []).length;
+            document.getElementById('synthesis-word-count').textContent = `${count} words`;
+        });
+
+        // Save Synthesis as a New Fragment
+        document.getElementById('btn-save-as-new-fragment').addEventListener('click', function() {
+            const text = synthText.value.trim();
+            if (!text) {
+                alert('Please write a synthesis paragraph in the box first!');
+                return;
+            }
+            const lines = text.split('\n').filter(Boolean);
+            const title = lines[0].length < 60 ? lines[0] : 'Assemblage Synthesis: ' + text.slice(0, 30) + '...';
+
+            const newFrag = {
+                id: 'frag-' + Date.now(),
+                title: title,
+                provenance: 'Crucible Synthesis',
+                energy: 'weapon',
+                content: text,
+                compartment: 'subversive'
+            };
+
+            fragments.unshift(newFrag);
+            saveFragments();
+            renderYardSaleList();
+            renderCompartments();
+            AudioKit.click(500);
+            alert(`Saved "${title}" into your Yard Sale collection!`);
+        });
+
+        // Copy Synthesis Text
+        document.getElementById('btn-copy-synthesis').addEventListener('click', function() {
+            const text = synthText.value.trim();
+            if (!text) {
+                alert('No synthesis drafted yet.');
+                return;
+            }
+            navigator.clipboard.writeText(text).then(() => {
+                AudioKit.click(440);
+                alert('Copied synthesis to clipboard!');
+            });
+        });
+
+        // Modal Controls: New Fragment
+        function openNewFragmentModal() {
+            document.getElementById('modal-new-fragment').classList.add('open');
+        }
+        function closeNewFragmentModal() {
+            document.getElementById('modal-new-fragment').classList.remove('open');
+            document.getElementById('form-new-fragment').reset();
+        }
+        document.getElementById('btn-new-fragment').addEventListener('click', openNewFragmentModal);
+
+        function handleCreateFragment(e) {
+            e.preventDefault();
+            const title = document.getElementById('frag-title').value.trim();
+            const provenance = document.getElementById('frag-provenance').value.trim() || 'Yard Sale Item';
+            const energy = document.getElementById('frag-energy').value;
+            const content = document.getElementById('frag-content').value.trim();
+
+            const newFrag = {
+                id: 'frag-' + Date.now(),
+                title: title,
+                provenance: provenance,
+                energy: energy,
+                content: content,
+                compartment: 'artifacts'
+            };
+
+            fragments.unshift(newFrag);
+            saveFragments();
+            renderYardSaleList();
+            renderCompartments();
+            closeNewFragmentModal();
+            AudioKit.click(420);
+        }
+
+        // Modal Controls: Oracle Deck
+        function openOracleModal() {
+            AudioKit.click(360);
+            const container = document.getElementById('oracle-cards-container');
+            container.innerHTML = ORACLE_CARDS.map(card => `
+                <div class="oracle-card" onclick="applyOracleCard('${escapeHtml(card.title)}', '${escapeHtml(card.directive)}')">
+                    <div class="oracle-icon">${card.icon}</div>
+                    <h4>${escapeHtml(card.title)}</h4>
+                    <p style="font-style:italic; color:#c99738; margin-bottom:0.35rem;">"${escapeHtml(card.quote)}"</p>
+                    <p>${escapeHtml(card.directive)}</p>
+                </div>
+            `).join('');
+            document.getElementById('modal-oracle').classList.add('open');
+        }
+        function closeOracleModal() {
+            document.getElementById('modal-oracle').classList.remove('open');
+        }
+        document.getElementById('btn-oracle').addEventListener('click', openOracleModal);
+
+        function applyOracleCard(title, directive) {
+            AudioKit.click(480);
+            closeOracleModal();
+            const promptBox = document.getElementById('emergent-prompt-box');
+            const promptText = document.getElementById('prompt-text');
+            promptBox.style.display = 'block';
+            promptText.innerHTML = `<span style="color:#c99738; font-weight:700;">[ORACLE: ${title}]</span> ${directive}`;
+            promptBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Controls: Export to Blog
+        function openExportModal() {
+            AudioKit.click(320);
+            const activeItems = activeCollidingIds.map(id => fragments.find(f => f.id === id)).filter(Boolean);
+            const synthesis = synthText.value.trim();
+
+            const title = activeItems.length > 0 
+                ? `Assemblage: ${activeItems.map(i => i.title).join(' × ')}`
+                : 'Assemblage Dispatch';
+
+            document.getElementById('export-post-title').value = title;
+
+            let draftMarkdown = `> *"I'm basically a recycler... I mix up materials, objects, ideas. Sometimes they tell a story and sometimes they don't."* — Betye Saar\n\n`;
+
+            if (activeItems.length > 0) {
+                draftMarkdown += `### The Colliding Fragments\n\n`;
+                activeItems.forEach(item => {
+                    draftMarkdown += `#### ${item.title} (${item.provenance})\n> ${item.content}\n\n`;
+                });
+            }
+
+            if (synthesis) {
+                draftMarkdown += `### Emergent Synthesis\n\n${synthesis}\n`;
+            } else {
+                draftMarkdown += `### Emergent Synthesis\n\n[Write your synthesis here...]\n`;
+            }
+
+            document.getElementById('export-post-preview').value = draftMarkdown;
+            document.getElementById('modal-export-blog').classList.add('open');
+        }
+        function closeExportModal() {
+            document.getElementById('modal-export-blog').classList.remove('open');
+        }
+        document.getElementById('btn-export-post').addEventListener('click', openExportModal);
+
+        // Send to Blog Publisher
+        document.getElementById('btn-confirm-send-blog').addEventListener('click', function() {
+            const title = document.getElementById('export-post-title').value.trim() || 'Assemblage Dispatch';
+            const tags = document.getElementById('export-post-tags').value.trim();
+            const content = document.getElementById('export-post-preview').value;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(content);
+
+            // Redirect to publish.html with params or open GitHub Draft
+            const dateVal = new Date().toISOString().split('T')[0];
+            const slug = title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-');
+            const draftMd = `---\ntitle: ${title}\ndate: ${dateVal}\ntags: [${tags}]\n---\n\n${content}`;
+            
+            const githubUrl = `https://github.com/josemarichal/github.io/new/main?filename=blog_drafts/${dateVal}-${slug}.md&value=${encodeURIComponent(draftMd)}`;
+
+            const choice = confirm(`Copied post markdown to your clipboard!\n\nClick OK to open GitHub to commit this new post immediately, or Cancel to open publish.html.`);
+            if (choice) {
+                window.open(githubUrl, '_blank');
+            } else {
+                window.location.href = 'publish.html';
+            }
+        });
+
+        // Reset to default sample set
+        document.getElementById('btn-reset-demo').addEventListener('click', function() {
+            if (confirm('Restore the original Betye Saar & Algorithmic Politics sample fragments? (Custom items will be reset).')) {
+                fragments = JSON.parse(JSON.stringify(DEFAULT_FRAGMENTS));
+                activeCollidingIds = ['frag-4', 'frag-6'];
+                saveFragments();
+                renderYardSaleList();
+                renderCompartments();
+                renderCollisionStage();
+                AudioKit.click(300);
+            }
+        });
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Initialize on load
+        (function initApp() {
+            loadFragments();
+            activeCollidingIds = ['frag-4', 'frag-6']; // Weber + AlphaFold
+            renderYardSaleList();
+            renderCompartments();
+            renderCollisionStage();
+        })();
+    </script>
+</body>
+
+</html>
