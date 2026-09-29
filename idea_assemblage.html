@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idea Assemblage Studio — Inspired by Betye Saar</title>
-    <meta name="description" content="A writing and conceptual synthesis environment inspired by the assemblage art of Betye Saar. Collide fragments, found objects, and theories into emergent writing.">
+    <title>Idea Assemblage Studio — The Liberal Arts Quadrivium (Inspired by Betye Saar)</title>
+    <meta name="description" content="A writing and conceptual synthesis environment inspired by artist Betye Saar. Collide found objects and passages across the four subareas of the liberal arts: Science, Humanities, Arts, and Social Science.">
     <link rel="stylesheet" href="style.css?v=5">
     
     <style>
@@ -18,23 +18,27 @@
             --shadowbox-velvet: #1a1625;
             --card-parchment: #1c2430;
             --card-parchment-border: #334155;
-            --accent-green: #10b981;
-            --accent-red: #ef4444;
-            --accent-amber: #f59e0b;
-            --accent-purple: #8b5cf6;
             --text-gold: #f3d48d;
+
+            /* Subarea Accent Colors */
+            --color-science: #38bdf8;
+            --color-humanities: #c084fc;
+            --color-arts: #fbbf24;
+            --color-social: #34d399;
         }
 
         body {
             background-color: var(--shadowbox-bg);
             background-image: 
                 radial-gradient(circle at 15% 20%, rgba(201, 151, 56, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.04) 0%, transparent 40%),
-                linear-gradient(rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.95));
+                radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%),
+                linear-gradient(rgba(13, 17, 23, 0.96), rgba(13, 17, 23, 0.96));
             min-height: 100vh;
             color: #e2e8f0;
             display: flex;
             flex-direction: column;
+            margin: 0;
+            font-family: var(--font-body);
         }
 
         /* --- Header & Top Bar --- */
@@ -66,7 +70,7 @@
 
         .brand-title h1 {
             font-family: var(--font-display);
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-gold);
             margin: 0;
             line-height: 1.1;
@@ -84,7 +88,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.55rem;
             flex-wrap: wrap;
         }
 
@@ -92,7 +96,7 @@
             background: rgba(201, 151, 56, 0.12);
             border: 1px solid var(--shadowbox-gold-dim);
             color: var(--text-gold);
-            padding: 0.45rem 0.9rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 4px;
             font-family: var(--font-mono);
             font-size: 0.8rem;
@@ -102,6 +106,7 @@
             gap: 0.4rem;
             transition: all 0.15s ease;
             text-decoration: none;
+            user-select: none;
         }
 
         .saar-btn:hover {
@@ -115,38 +120,47 @@
         .saar-btn.primary {
             background: linear-gradient(135deg, #c99738 0%, #9e7323 100%);
             color: #120d06;
-            font-weight: 600;
+            font-weight: 700;
             border-color: #e5b352;
+            box-shadow: 0 2px 8px rgba(201, 151, 56, 0.25);
         }
 
         .saar-btn.primary:hover {
             filter: brightness(1.15);
-            box-shadow: 0 0 15px rgba(201, 151, 56, 0.5);
+            box-shadow: 0 0 16px rgba(201, 151, 56, 0.55);
         }
 
-        .saar-btn.danger {
-            background: rgba(239, 68, 68, 0.12);
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #f87171;
+        .saar-btn.sparkle {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            color: #ffffff;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            animation: pulse-glow 3s infinite alternate;
         }
 
-        .saar-btn.danger:hover {
-            background: #ef4444;
-            color: white;
-            border-color: #ef4444;
+        .saar-btn.sparkle:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 18px rgba(168, 85, 247, 0.6);
         }
 
-        /* --- Quote Banner --- */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 6px rgba(139, 92, 246, 0.3); }
+            100% { box-shadow: 0 0 14px rgba(236, 72, 153, 0.5); }
+        }
+
+        /* --- Quote & Quadrivium Ribbon --- */
         .saar-quote-bar {
             background: rgba(44, 29, 17, 0.35);
             border-bottom: 1px solid rgba(201, 151, 56, 0.15);
-            padding: 0.4rem 1.5rem;
+            padding: 0.45rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 0.8rem;
             color: #cbd5e1;
             font-style: italic;
+            gap: 1rem;
         }
 
         .saar-quote-bar span.author {
@@ -156,6 +170,29 @@
             color: var(--shadowbox-gold);
             margin-left: 0.5rem;
         }
+
+        .quadrivium-pills {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-style: normal;
+        }
+
+        .quad-pill {
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .quad-pill.sci { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35); }
+        .quad-pill.hum { background: rgba(192, 132, 252, 0.15); color: #d8b4fe; border: 1px solid rgba(192, 132, 252, 0.35); }
+        .quad-pill.art { background: rgba(251, 191, 36, 0.15); color: #fde68a; border: 1px solid rgba(251, 191, 36, 0.35); }
+        .quad-pill.soc { background: rgba(52, 211, 153, 0.15); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.35); }
 
         /* --- Main Layout --- */
         .assemblage-workspace {
@@ -172,7 +209,7 @@
 
         @media (max-width: 1400px) {
             .assemblage-workspace {
-                grid-template-columns: 280px 1fr 340px;
+                grid-template-columns: 290px 1fr 340px;
             }
         }
 
@@ -182,48 +219,48 @@
             }
         }
 
-        /* --- Shadowbox Compartment Tray (Left / Yard Sale Drawer) --- */
+        /* --- Left Column: The Yard Sale Drawer --- */
         .yard-sale-drawer {
-            background: rgba(24, 18, 12, 0.6);
-            border: 2px solid var(--shadowbox-wood-border);
-            border-radius: 6px;
+            background: rgba(22, 27, 34, 0.85);
+            border: 1px solid rgba(201, 151, 56, 0.25);
+            border-radius: 8px;
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
-            max-height: calc(100vh - 150px);
-            overflow-y: auto;
+            gap: 0.85rem;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+            max-height: calc(100vh - 145px);
+            position: sticky;
+            top: 75px;
         }
 
         .drawer-title {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(201, 151, 56, 0.2);
-            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--shadowbox-wood-border);
+            padding-bottom: 0.6rem;
         }
 
         .drawer-title h2 {
             font-family: var(--font-display);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-gold);
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .brass-badge {
-            background: linear-gradient(180deg, #d4af37 0%, #8b6d1f 100%);
-            color: #1a1208;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            font-weight: 700;
+            background: #2c1d11;
+            color: var(--shadowbox-gold);
+            border: 1px solid var(--shadowbox-gold-dim);
             padding: 0.15rem 0.45rem;
-            border-radius: 3px;
-            border: 1px solid #ffe28a;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
         }
 
         .energy-filters {
@@ -233,12 +270,12 @@
         }
 
         .energy-filter-pill {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--shadowbox-wood-border);
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid #334155;
             color: #94a3b8;
+            font-size: 0.7rem;
             font-family: var(--font-mono);
-            font-size: 0.68rem;
-            padding: 0.2rem 0.5rem;
+            padding: 0.25rem 0.55rem;
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.15s ease;
@@ -264,7 +301,7 @@
         .fragment-card {
             background: var(--card-parchment);
             border: 1px solid var(--card-parchment-border);
-            border-radius: 5px;
+            border-radius: 6px;
             padding: 0.85rem;
             cursor: grab;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -280,7 +317,7 @@
         }
 
         .fragment-card.selected {
-            border-color: var(--accent-green);
+            border-color: #34d399;
             background: rgba(16, 185, 129, 0.08);
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
         }
@@ -298,26 +335,30 @@
             color: var(--shadowbox-gold);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 170px;
         }
 
-        .energy-tag {
+        .subarea-tag {
             font-family: var(--font-mono);
             font-size: 0.65rem;
-            padding: 0.1rem 0.4rem;
+            padding: 0.1rem 0.45rem;
             border-radius: 3px;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
 
-        .energy-ancestral { background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.4); }
-        .energy-empirical { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); }
-        .energy-mystical { background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.4); }
-        .energy-weapon { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
-        .energy-organic { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .subarea-science { background: rgba(56, 189, 248, 0.18); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); }
+        .subarea-humanities { background: rgba(192, 132, 252, 0.18); color: #d8b4fe; border: 1px solid rgba(192, 132, 252, 0.4); }
+        .subarea-arts { background: rgba(251, 191, 36, 0.18); color: #fde68a; border: 1px solid rgba(251, 191, 36, 0.4); }
+        .subarea-social { background: rgba(52, 211, 153, 0.18); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.4); }
 
         .fragment-title {
             font-family: var(--font-display);
-            font-size: 1rem;
+            font-size: 0.98rem;
             color: #f8fafc;
             margin-bottom: 0.35rem;
             line-height: 1.3;
@@ -347,7 +388,7 @@
         .btn-collide-add {
             background: none;
             border: none;
-            color: var(--accent-green);
+            color: #34d399;
             cursor: pointer;
             font-family: var(--font-mono);
             font-size: 0.75rem;
@@ -355,10 +396,11 @@
             display: flex;
             align-items: center;
             gap: 0.25rem;
+            font-weight: 600;
         }
 
         .btn-collide-add:hover {
-            color: #34d399;
+            color: #6ee7b7;
             text-decoration: underline;
         }
 
@@ -367,6 +409,35 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+        }
+
+        .generator-banner {
+            background: linear-gradient(90deg, rgba(44, 29, 17, 0.9) 0%, rgba(26, 22, 37, 0.9) 50%, rgba(13, 27, 42, 0.9) 100%);
+            border: 2px solid var(--shadowbox-gold-dim);
+            border-radius: 8px;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .generator-banner-text h3 {
+            margin: 0;
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--text-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .generator-banner-text p {
+            margin: 0.2rem 0 0 0;
+            font-size: 0.78rem;
+            color: #94a3b8;
         }
 
         .shadowbox-tray {
@@ -384,10 +455,10 @@
         }
 
         .shadowbox-tray::before {
-            content: "BETYE SAAR // SHADOWBOX ASSEMBLAGE CHAMBER";
+            content: "THE LIBERAL ARTS QUADRIVIUM // SHADOWBOX ASSEMBLAGE CHAMBER";
             position: absolute;
-            top: 6px;
-            left: 12px;
+            top: 7px;
+            left: 14px;
             font-family: var(--font-mono);
             font-size: 0.65rem;
             color: var(--shadowbox-gold-dim);
@@ -402,7 +473,7 @@
             flex: 1;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 850px) {
             .compartments-grid {
                 grid-template-columns: 1fr;
             }
@@ -416,13 +487,18 @@
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
-            min-height: 220px;
+            min-height: 230px;
             position: relative;
             transition: all 0.2s ease;
         }
 
+        .compartment.comp-sci { border-top: 3px solid var(--color-science); }
+        .compartment.comp-hum { border-top: 3px solid var(--color-humanities); }
+        .compartment.comp-art { border-top: 3px solid var(--color-arts); }
+        .compartment.comp-soc { border-top: 3px solid var(--color-social); }
+
         .compartment.drag-over {
-            border-color: var(--accent-green);
+            border-color: #34d399;
             background: rgba(16, 185, 129, 0.1);
         }
 
@@ -431,7 +507,8 @@
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 0.4rem;
+            padding-bottom: 0.45rem;
+            gap: 0.5rem;
         }
 
         .compartment-label {
@@ -443,96 +520,105 @@
             gap: 0.4rem;
         }
 
+        .compartment-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .roll-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #cbd5e1;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-size: 0.68rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: var(--font-mono);
+        }
+
+        .roll-btn:hover {
+            background: var(--shadowbox-gold);
+            color: #120d06;
+            border-color: var(--shadowbox-gold);
+        }
+
         .compartment-items {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
             flex: 1;
+            overflow-y: auto;
+            max-height: 280px;
         }
 
         .empty-slot {
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1;
+            height: 100%;
+            min-height: 90px;
             color: #475569;
+            font-size: 0.75rem;
             font-family: var(--font-mono);
-            font-size: 0.78rem;
             text-align: center;
-            border: 1px dashed rgba(255, 255, 255, 0.06);
+            border: 1px dashed rgba(255, 255, 255, 0.05);
             border-radius: 4px;
             padding: 1rem;
         }
 
         /* --- Right Column: The Collision & Writing Crucible --- */
         .crucible-panel {
-            background: rgba(24, 18, 12, 0.7);
-            border: 2px solid var(--shadowbox-wood-border);
-            border-radius: 6px;
-            padding: 1rem;
+            background: rgba(22, 27, 34, 0.85);
+            border: 1px solid rgba(201, 151, 56, 0.25);
+            border-radius: 8px;
+            padding: 1.1rem;
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            max-height: calc(100vh - 150px);
-            overflow-y: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            max-height: calc(100vh - 145px);
+            position: sticky;
+            top: 75px;
         }
 
         .crucible-header {
-            border-bottom: 1px solid rgba(201, 151, 56, 0.2);
-            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--shadowbox-wood-border);
+            padding-bottom: 0.6rem;
         }
 
         .crucible-header h2 {
             font-family: var(--font-display);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-gold);
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .collision-stage {
-            background: rgba(13, 17, 23, 0.8);
-            border: 1px solid var(--card-parchment-border);
+            background: rgba(13, 17, 23, 0.75);
+            border: 1px solid rgba(201, 151, 56, 0.2);
             border-radius: 6px;
             padding: 0.85rem;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.65rem;
         }
 
         .colliding-pair {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            position: relative;
-        }
-
-        .collision-operator {
-            align-self: center;
-            background: var(--shadowbox-wood-border);
-            color: var(--text-gold);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--shadowbox-gold-dim);
-            margin: -0.25rem 0;
-            z-index: 2;
+            gap: 0.65rem;
         }
 
         .colliding-card {
-            background: var(--card-parchment);
-            border: 1px solid rgba(201, 151, 56, 0.3);
-            border-radius: 4px;
-            padding: 0.6rem 0.75rem;
-            font-size: 0.82rem;
+            background: #1c2430;
+            border: 1px solid rgba(201, 151, 56, 0.4);
+            border-radius: 5px;
+            padding: 0.65rem 0.85rem;
             position: relative;
         }
 
@@ -542,13 +628,21 @@
             right: 6px;
             background: none;
             border: none;
-            color: #64748b;
-            cursor: pointer;
+            color: #94a3b8;
             font-size: 0.85rem;
+            cursor: pointer;
         }
 
         .colliding-card .remove-btn:hover {
-            color: #f87171;
+            color: #ef4444;
+        }
+
+        .collision-operator {
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--shadowbox-gold);
+            font-weight: 700;
         }
 
         .emergent-prompt-box {
@@ -556,7 +650,7 @@
             border-left: 3px solid var(--shadowbox-gold);
             padding: 0.65rem 0.85rem;
             border-radius: 0 4px 4px 0;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: #f1f5f9;
             line-height: 1.45;
         }
@@ -564,16 +658,17 @@
         .emergent-prompt-box strong {
             color: var(--text-gold);
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .synthesis-editor {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem;
             flex: 1;
         }
 
@@ -587,22 +682,23 @@
 
         .synthesis-textarea {
             width: 100%;
-            height: 160px;
-            background: rgba(13, 17, 23, 0.9);
-            border: 1px solid var(--card-parchment-border);
-            border-radius: 4px;
-            color: #f8fafc;
+            background: #131922;
+            border: 1px solid #334155;
+            border-radius: 5px;
             padding: 0.75rem;
+            color: #f8fafc;
             font-family: var(--font-body);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.86rem;
+            line-height: 1.5;
             resize: vertical;
-            outline: none;
+            min-height: 140px;
+            box-sizing: border-box;
         }
 
         .synthesis-textarea:focus {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+            outline: none;
+            border-color: var(--shadowbox-gold);
+            box-shadow: 0 0 10px rgba(201, 151, 56, 0.2);
         }
 
         /* --- Modals --- */
@@ -611,14 +707,14 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 200;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(4px);
         }
 
         .assemblage-modal.open {
@@ -626,14 +722,13 @@
         }
 
         .modal-content {
-            background: #141a22;
-            border: 2px solid var(--shadowbox-gold-dim);
+            background: #161b22;
+            border: 2px solid var(--shadowbox-wood-border);
             border-radius: 8px;
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
             padding: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(201, 151, 56, 0.2);
-            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
             max-height: 90vh;
             overflow-y: auto;
         }
@@ -649,56 +744,80 @@
 
         .modal-header h3 {
             font-family: var(--font-display);
-            font-size: 1.3rem;
             color: var(--text-gold);
             margin: 0;
+            font-size: 1.25rem;
         }
 
         .close-modal-btn {
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             cursor: pointer;
+            line-height: 1;
         }
 
-        .close-modal-btn:hover {
-            color: white;
+        .form-group {
+            margin-bottom: 1rem;
         }
 
-        /* --- Intuition Oracle Cards Grid --- */
+        .form-group label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            padding: 0.55rem 0.75rem;
+            color: #f8fafc;
+            font-family: inherit;
+            font-size: 0.85rem;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--shadowbox-gold);
+        }
+
         .oracle-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
         }
 
         .oracle-card {
-            background: linear-gradient(145deg, #1e1710 0%, #111620 100%);
-            border: 1px solid var(--shadowbox-gold-dim);
+            background: #1c2430;
+            border: 1px solid #334155;
             border-radius: 6px;
-            padding: 1rem;
+            padding: 0.85rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .oracle-card:hover {
-            transform: translateY(-3px);
             border-color: var(--shadowbox-gold);
-            box-shadow: 0 6px 18px rgba(201, 151, 56, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 151, 56, 0.25);
         }
 
-        .oracle-card .oracle-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+        .oracle-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.35rem;
         }
 
         .oracle-card h4 {
             font-family: var(--font-display);
-            font-size: 1rem;
+            font-size: 0.98rem;
             color: var(--text-gold);
             margin: 0 0 0.35rem 0;
         }
@@ -708,6 +827,34 @@
             color: #94a3b8;
             line-height: 1.4;
             margin: 0;
+        }
+
+        /* Toast notification */
+        .toast-notify {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--shadowbox-gold);
+            padding: 0.65rem 1.25rem;
+            border-radius: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+            z-index: 500;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast-notify.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -720,40 +867,48 @@
             <span class="brand-icon">🏺</span>
             <div class="brand-title">
                 <h1>Idea Assemblage Studio</h1>
-                <div class="tagline">An Alchemical Writing Box // Inspired by Betye Saar</div>
+                <div class="tagline">The Liberal Arts Quadrivium // Inspired by Betye Saar</div>
             </div>
         </div>
 
         <div class="header-actions">
-            <button type="button" class="saar-btn" id="btn-oracle" title="Draw inspiration from Betye Saar's artistic intuition">
-                🔮 Betye's Intuition Oracle
+            <!-- 4-Quadrant Assemblage Generator -->
+            <button type="button" class="saar-btn sparkle" id="btn-quadrant-gen" title="Generate 1 found object from each of the four subareas: Science, Humanities, Arts, Social Science">
+                🎲 4-Quadrant Assemblage
             </button>
-            <button type="button" class="saar-btn" id="btn-collide-random" title="Randomly collide 2 disparate ideas">
+            <button type="button" class="saar-btn" id="btn-oracle" title="Draw inspiration from Betye Saar's creative assemblage methods">
+                💡 Saar Methods
+            </button>
+            <button type="button" class="saar-btn" id="btn-collide-random" title="Randomly collide ideas in the crucible">
                 ⚡ Collide Ideas
             </button>
             <button type="button" class="saar-btn primary" id="btn-new-fragment">
-                + Spot New Fragment
+                + Spot Fragment
             </button>
             <button type="button" class="saar-btn" id="btn-export-post" title="Convert active synthesis into a blog post">
                 ✍️ Send to Blog Post
             </button>
-            <button type="button" class="saar-btn" id="btn-reset-demo" title="Restore default sample fragments">
-                ↺ Sample Set
+            <button type="button" class="saar-btn" id="btn-reset-demo" title="Restore default liberal arts fragments">
+                ↺ Default Set
             </button>
-            <a href="projects.html" class="saar-btn" style="border-color: var(--border-color); color: #94a3b8;">
+            <a href="projects.html" class="saar-btn" style="border-color: #334155; color: #94a3b8;">
                 ← Projects
             </a>
         </div>
     </header>
 
-    <!-- Saar Transcript Quote Banner -->
+    <!-- Saar Transcript Quote & Quadrivium Ribbon -->
     <div class="saar-quote-bar">
         <div>
             "I'm basically a recycler... I mix up materials, objects, ideas. Sometimes they tell a story and sometimes they don't. I prefer when they don't tell the story so the viewer can invent their own."
             <span class="author">— BETYE SAAR</span>
         </div>
-        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #64748b;">
-            <span id="stat-total-fragments">0</span> Fragments Collected
+        <div class="quadrivium-pills">
+            <span class="quad-pill sci">🔬 Science</span>
+            <span class="quad-pill hum">📚 Humanities</span>
+            <span class="quad-pill art">🎨 Arts</span>
+            <span class="quad-pill soc">🏛️ Social Science</span>
+            <span style="color: #64748b; margin-left: 0.5rem;"><span id="stat-total-fragments">0</span> Found Objects</span>
         </div>
     </div>
 
@@ -767,14 +922,13 @@
                 <button type="button" class="saar-btn" style="padding: 0.2rem 0.5rem; font-size: 0.72rem;" onclick="openNewFragmentModal()">+ Add</button>
             </div>
 
-            <!-- Energy Filter Pills -->
+            <!-- Subarea Filter Pills -->
             <div class="energy-filters">
-                <button type="button" class="energy-filter-pill active" data-filter="all">All Energy</button>
-                <button type="button" class="energy-filter-pill" data-filter="ancestral">Ancestral</button>
-                <button type="button" class="energy-filter-pill" data-filter="empirical">Empirical</button>
-                <button type="button" class="energy-filter-pill" data-filter="mystical">Mystical</button>
-                <button type="button" class="energy-filter-pill" data-filter="weapon">Subversive</button>
-                <button type="button" class="energy-filter-pill" data-filter="organic">Organic</button>
+                <button type="button" class="energy-filter-pill active" data-filter="all">All Subareas</button>
+                <button type="button" class="energy-filter-pill" data-filter="science">🔬 Science</button>
+                <button type="button" class="energy-filter-pill" data-filter="humanities">📚 Humanities</button>
+                <button type="button" class="energy-filter-pill" data-filter="arts">🎨 Arts</button>
+                <button type="button" class="energy-filter-pill" data-filter="social">🏛️ Social Science</button>
             </div>
 
             <!-- Scrollable Fragment List -->
@@ -785,43 +939,72 @@
 
         <!-- Center Column: The Shadowbox Assemblage Chamber -->
         <section class="assemblage-canvas">
+            
+            <!-- Quick Quadrivium Generator Banner -->
+            <div class="generator-banner">
+                <div class="generator-banner-text">
+                    <h3><span>✨</span> The Quadrivium Idea Engine</h3>
+                    <p>Spawn an unexpected constellation of four found objects—one from each liberal arts quadrant—and discover emergent dialectics.</p>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button type="button" class="saar-btn primary" onclick="generateFourQuadrants()">
+                        🎲 Spin 4 Found Objects
+                    </button>
+                </div>
+            </div>
+
+            <!-- Wooden Shadowbox Tray -->
             <div class="shadowbox-tray">
                 <div class="compartments-grid">
-                    <!-- Compartment 1: Ancestral Roots -->
-                    <div class="compartment" id="comp-ancestral" data-comp="ancestral">
+                    
+                    <!-- Compartment 1: Science -->
+                    <div class="compartment comp-sci" id="comp-science" data-comp="science">
                         <div class="compartment-header">
-                            <span class="compartment-label"><span>🏛️</span> Ancestral &amp; Deep Theory</span>
-                            <span class="brass-badge comp-count">0</span>
+                            <span class="compartment-label"><span>🔬</span> Science</span>
+                            <div class="compartment-controls">
+                                <button type="button" class="roll-btn" onclick="rollRandomSubarea('science')" title="Roll a random Science found object">🎲 Roll</button>
+                                <span class="brass-badge comp-count">0</span>
+                            </div>
                         </div>
-                        <div class="compartment-items" id="items-ancestral"></div>
+                        <div class="compartment-items" id="items-science"></div>
                     </div>
 
-                    <!-- Compartment 2: The Modern Machinery -->
-                    <div class="compartment" id="comp-modern" data-comp="modern">
+                    <!-- Compartment 2: Humanities -->
+                    <div class="compartment comp-hum" id="comp-humanities" data-comp="humanities">
                         <div class="compartment-header">
-                            <span class="compartment-label"><span>⚙️</span> The Computational Machine</span>
-                            <span class="brass-badge comp-count">0</span>
+                            <span class="compartment-label"><span>📚</span> Humanities</span>
+                            <div class="compartment-controls">
+                                <button type="button" class="roll-btn" onclick="rollRandomSubarea('humanities')" title="Roll a random Humanities found object">🎲 Roll</button>
+                                <span class="brass-badge comp-count">0</span>
+                            </div>
                         </div>
-                        <div class="compartment-items" id="items-modern"></div>
+                        <div class="compartment-items" id="items-humanities"></div>
                     </div>
 
-                    <!-- Compartment 3: Found Objects & Artifacts -->
-                    <div class="compartment" id="comp-artifacts" data-comp="artifacts">
+                    <!-- Compartment 3: Arts -->
+                    <div class="compartment comp-art" id="comp-arts" data-comp="arts">
                         <div class="compartment-header">
-                            <span class="compartment-label"><span>🪵</span> Found Objects &amp; Empirical Data</span>
-                            <span class="brass-badge comp-count">0</span>
+                            <span class="compartment-label"><span>🎨</span> Arts</span>
+                            <div class="compartment-controls">
+                                <button type="button" class="roll-btn" onclick="rollRandomSubarea('arts')" title="Roll a random Arts found object">🎲 Roll</button>
+                                <span class="brass-badge comp-count">0</span>
+                            </div>
                         </div>
-                        <div class="compartment-items" id="items-artifacts"></div>
+                        <div class="compartment-items" id="items-arts"></div>
                     </div>
 
-                    <!-- Compartment 4: Subversive Weapons / Transformations -->
-                    <div class="compartment" id="comp-subversive" data-comp="subversive">
+                    <!-- Compartment 4: Social Science -->
+                    <div class="compartment comp-soc" id="comp-social" data-comp="social">
                         <div class="compartment-header">
-                            <span class="compartment-label"><span>🗡️</span> Political Weapons &amp; Inversions</span>
-                            <span class="brass-badge comp-count">0</span>
+                            <span class="compartment-label"><span>🏛️</span> Social Science</span>
+                            <div class="compartment-controls">
+                                <button type="button" class="roll-btn" onclick="rollRandomSubarea('social')" title="Roll a random Social Science found object">🎲 Roll</button>
+                                <span class="brass-badge comp-count">0</span>
+                            </div>
                         </div>
-                        <div class="compartment-items" id="items-subversive"></div>
+                        <div class="compartment-items" id="items-social"></div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -831,7 +1014,7 @@
             <div class="crucible-header">
                 <h2><span>⚡</span> The Collision Crucible</h2>
                 <p style="font-size: 0.78rem; color: #94a3b8; margin: 0.2rem 0 0 0;">
-                    Select 2 or more fragments to force a dialectical collision and spark new thesis arguments.
+                    Select 2 or more fragments across disciplines to force a dialectical collision and spark new thesis arguments.
                 </p>
             </div>
 
@@ -839,14 +1022,14 @@
             <div class="collision-stage" id="collision-stage">
                 <div class="colliding-pair" id="colliding-pair-container">
                     <div style="text-align: center; color: #64748b; font-size: 0.8rem; padding: 1rem 0;">
-                        Click <strong>"+ Collide"</strong> on any fragment card or hit <strong>"⚡ Collide Ideas"</strong> above to load a spark pair.
+                        Click <strong>"+ Collide"</strong> on any fragment card or hit <strong>"⚡ Collide Ideas"</strong> above to load elements into the crucible.
                     </div>
                 </div>
 
                 <!-- Emergent Prompt -->
                 <div class="emergent-prompt-box" id="emergent-prompt-box" style="display: none;">
-                    <strong>💡 Emergent Synthesis Inquiry:</strong>
-                    <span id="prompt-text">What happens when the predictability of the machine collides with human autonomy?</span>
+                    <strong>💡 Cross-Disciplinary Synthesis Inquiry:</strong>
+                    <span id="prompt-text">What happens when the empirical predictability of Science collides with the ethical autonomy of Humanities?</span>
                 </div>
             </div>
 
@@ -856,13 +1039,13 @@
                     <label for="synthesis-text">Synthesis &amp; Paragraph Drafting</label>
                     <span id="synthesis-word-count" style="font-family: var(--font-mono); font-size: 0.72rem; color: #64748b;">0 words</span>
                 </div>
-                <textarea id="synthesis-text" class="synthesis-textarea" placeholder="Draft your synthesis paragraph here. What new insight emerges from the friction between these fragments?"></textarea>
+                <textarea id="synthesis-text" class="synthesis-textarea" placeholder="Draft your synthesis paragraph here. What new conceptual insight emerges from the friction between these disciplines?"></textarea>
             </div>
 
             <!-- Crucible Actions -->
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                 <button type="button" class="saar-btn primary" id="btn-save-as-new-fragment" style="flex: 1;">
-                    📥 Save as New Fragment
+                    📥 Save as Fragment
                 </button>
                 <button type="button" class="saar-btn" id="btn-copy-synthesis" style="flex: 1;">
                     📋 Copy Text
@@ -872,37 +1055,41 @@
 
     </main>
 
+    <!-- Toast Notification -->
+    <div class="toast-notify" id="toast-notify">
+        <span>✨</span> <span id="toast-msg">Generated 4-Quadrant Assemblage!</span>
+    </div>
+
     <!-- Modal 1: Add New Fragment -->
     <div class="assemblage-modal" id="modal-new-fragment">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><span>🧺</span> Spot a New Fragment</h3>
+                <h3><span>🧺</span> Spot a New Found Object</h3>
                 <button type="button" class="close-modal-btn" onclick="closeNewFragmentModal()">×</button>
             </div>
             <form id="form-new-fragment" onsubmit="handleCreateFragment(event)">
                 <div class="form-group">
                     <label for="frag-title">Fragment Title / Concept</label>
-                    <input type="text" id="frag-title" class="form-control" placeholder="e.g. Max Weber's Disenchantment" required>
+                    <input type="text" id="frag-title" class="form-control" placeholder="e.g. Gödel's Incompleteness or Benjamin's Angel" required>
                 </div>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <div class="form-group" style="flex: 1 1 200px;">
                         <label for="frag-provenance">Provenance / Source</label>
-                        <input type="text" id="frag-provenance" class="form-control" placeholder="e.g. Science as a Vocation (1919)">
+                        <input type="text" id="frag-provenance" class="form-control" placeholder="e.g. Kurt Gödel (1931) or Walter Benjamin (1940)">
                     </div>
                     <div class="form-group" style="flex: 1 1 180px;">
-                        <label for="frag-energy">Energy Type</label>
+                        <label for="frag-energy">Liberal Arts Subarea</label>
                         <select id="frag-energy" class="form-control">
-                            <option value="ancestral">Ancestral / Historical</option>
-                            <option value="empirical">Empirical / Machine</option>
-                            <option value="mystical">Mystical / Speculative</option>
-                            <option value="weapon">Subversive / Weapon</option>
-                            <option value="organic">Organic / Fleeting</option>
+                            <option value="science">🔬 Science</option>
+                            <option value="humanities">📚 Humanities</option>
+                            <option value="arts">🎨 Arts</option>
+                            <option value="social">🏛️ Social Science</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="frag-content">The Fragment / Excerpt / Note</label>
-                    <textarea id="frag-content" class="form-control" style="min-height: 120px;" placeholder="Paste the quote, research data, historical note, or raw idea here..." required></textarea>
+                    <label for="frag-content">The Passage / Note / Excerpt</label>
+                    <textarea id="frag-content" class="form-control" style="min-height: 120px;" placeholder="Paste the theoretical passage, empirical finding, artistic insight, or field note here..." required></textarea>
                 </div>
                 <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
                     <button type="button" class="saar-btn" onclick="closeNewFragmentModal()">Cancel</button>
@@ -912,15 +1099,15 @@
         </div>
     </div>
 
-    <!-- Modal 2: Betye Saar's Intuition Oracle -->
+    <!-- Modal 2: Betye Saar's Creative Assemblage Methods -->
     <div class="assemblage-modal" id="modal-oracle">
         <div class="modal-content" style="max-width: 780px;">
             <div class="modal-header">
-                <h3><span>🔮</span> Betye Saar's Intuition Oracle</h3>
+                <h3><span>💡</span> Betye Saar's Creative Assemblage Methods</h3>
                 <button type="button" class="close-modal-btn" onclick="closeOracleModal()">×</button>
             </div>
             <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">
-                When your writing hits an impasse, draw an intuition card from Betye Saar's artistic playbook to break habits and uncover non-linear connections.
+                When your writing hits an impasse, draw an assemblage strategy directly from Betye Saar's artistic playbook to collide ideas and synthesize unexpected connections.
             </p>
             <div class="oracle-grid" id="oracle-cards-container">
                 <!-- Oracle cards injected via JS -->
@@ -938,11 +1125,11 @@
             <div id="export-modal-body">
                 <div class="form-group">
                     <label for="export-post-title">Blog Post Title</label>
-                    <input type="text" id="export-post-title" class="form-control" placeholder="e.g. Notes on the Machine and the Soul">
+                    <input type="text" id="export-post-title" class="form-control" placeholder="e.g. Colliding the Machine with Moral Autonomy">
                 </div>
                 <div class="form-group">
                     <label for="export-post-tags">Tags</label>
-                    <input type="text" id="export-post-tags" class="form-control" value="Assemblage, Machine Liberalism, Philosophy of AI">
+                    <input type="text" id="export-post-tags" class="form-control" value="Assemblage, Liberal Arts, Science, Humanities, Arts, Social Science">
                 </div>
                 <div class="form-group">
                     <label for="export-post-preview">Generated Post Preview (Markdown)</label>
@@ -958,7 +1145,7 @@
 
     <!-- Application Logic -->
     <script>
-        // Audio synthesis for organic wooden clicks
+        // Tactile Audio Kit for Wooden Clicks
         const AudioKit = (function() {
             let ctx = null;
             function init() {
@@ -984,107 +1171,313 @@
             return { click: playWoodClick };
         })();
 
-        // Default Sample Set Inspired by Betye Saar & José Marichal's Research
+        // Curated Library of Found Objects across the 4 Liberal Arts Quadrants
+        const LIBERAL_ARTS_FOUND_OBJECTS = {
+            science: [
+                {
+                    title: "Entropy & The Second Law of Thermodynamics",
+                    provenance: "Clausius & Boltzmann (1865)",
+                    content: "In any isolated system, entropy inevitably increases over time. Living organisms, social institutions, and informational architectures are rare, temporary islands of negative entropy sustained only by expending energy."
+                },
+                {
+                    title: "AlphaFold & The Protein Prediction Horizon",
+                    provenance: "DeepMind / Science (2022)",
+                    content: "Predicted 200M+ 3D protein structures from amino acid sequences. Represents the epistemological pivot where deep predictive models succeed without providing a simple, human-interpretable mechanistic explanation."
+                },
+                {
+                    title: "Cybernetic Feedback & Homeostasis",
+                    provenance: "Norbert Wiener (1948)",
+                    content: "Systems maintain equilibrium through continuous feedback loops that measure divergence from a goal and steer behavior. When feedback loops become runaway and decoupled from physical constraints, systemic collapse occurs."
+                },
+                {
+                    title: "Gödel's Incompleteness Theorems",
+                    provenance: "Kurt Gödel (1931)",
+                    content: "In any consistent formal axiomatic system capable of arithmetic, there are true mathematical propositions that cannot be proved within the system itself. Formal rational systems can never be both complete and fully self-verifying."
+                },
+                {
+                    title: "Mycelial Resource Translocation",
+                    provenance: "Suzanne Simard (2018)",
+                    content: "Forest trees are linked by subterranean mycorrhizal fungal networks that redistribute carbon, nitrogen, and water from mature 'mother trees' to shaded saplings, refuting the dogma of purely selfish competition in nature."
+                },
+                {
+                    title: "The Observer Effect & Quantum Complementarity",
+                    provenance: "Niels Bohr (1928)",
+                    content: "The apparatus used to observe a physical system fundamentally enters into the constitution of the measured phenomenon. The observer is never a detached, neutral bystander but an active participant."
+                },
+                {
+                    title: "The Agentic Loop & Computational Limits",
+                    provenance: "Bengio, Hinton et al. (2024)",
+                    content: "Posits that hundreds of recursive autonomous agents set upon a task can arrive at optimal solutions through feedback loops. Yet this mathematical optimization is physically tethered to massive freshwater and electrical megawatt consumption."
+                },
+                {
+                    title: "Cellular Automata & Irreducible Complexity",
+                    provenance: "Stephen Wolfram (2002)",
+                    content: "Extremely simple deterministic local rules generate intricate, lifelike patterns whose future states cannot be mathematically shortcut or predicted without running every step of the computation in real time."
+                },
+                {
+                    title: "Information Theory & Shannon Entropy",
+                    provenance: "Claude Shannon (1948)",
+                    content: "Information is measured as the reduction of uncertainty. The most informative message is not the most predictable one, but the one with maximum surprise."
+                },
+                {
+                    title: "Planetary Thermodynamic Cost of AI",
+                    provenance: "Nature Energy / Grid Audits (2024)",
+                    content: "Modern AI hyper-scale training clusters consume more electricity than entire small nations and millions of gallons of potable water daily for cooling, anchoring cloud abstractions directly into planetary geology."
+                }
+            ],
+
+            humanities: [
+                {
+                    title: "Kant's Moral Autonomy as an End in Itself",
+                    provenance: "Immanuel Kant (Groundwork, 1785)",
+                    content: "The Enlightenment project proposes that human beings are ends in themselves, possessing dignity rather than a market price. Algorithms frustrate this autonomy by predicting and anticipating our desires before we can consciously reflect on them."
+                },
+                {
+                    title: "The Disenchantment of the World",
+                    provenance: "Max Weber (Science as a Vocation, 1919)",
+                    content: "Replacing a sacred or mysterious understanding of the world with instrumental calculation creates modernity's 'disenchantment.' We forfeit transcendent meaning in exchange for technical control over external objects."
+                },
+                {
+                    title: "The Angel of History & The Storm of Progress",
+                    provenance: "Walter Benjamin (Theses on History, 1940)",
+                    content: "The angel looks back at the past, seeing a single catastrophic wreckage piling up at his feet. A storm blowing from Paradise—which we call 'progress'—propels him irresistibly backward into the future while debris climbs skyward."
+                },
+                {
+                    title: "Hannah Arendt's Vita Activa & Natality",
+                    provenance: "Hannah Arendt (The Human Condition, 1958)",
+                    content: "Natality is the capacity of human beings to initiate the entirely unexpected and unprecedented. Action is distinct from mechanical labor; it requires a public realm of speech where new beginnings remain possible."
+                },
+                {
+                    title: "The Hermeneutics of Suspicion",
+                    provenance: "Paul Ricoeur (Freud and Philosophy, 1965)",
+                    content: "An interpretive method that refuses to accept the transparent surface meaning of a text or institution, seeking instead to unmask the hidden motives, material interests, and psychological repressions operating underneath."
+                },
+                {
+                    title: "Panoptic Discipline & Docile Bodies",
+                    provenance: "Michel Foucault (Discipline & Punish, 1975)",
+                    content: "Disciplinary power operates not through spectacular sovereign punishment, but through continuous architectural surveillance, metric categorization, and the internalization of the gaze, producing compliant subjects."
+                },
+                {
+                    title: "Simone Weil on Radical Attentive Silence",
+                    provenance: "Simone Weil (Gravity and Grace, 1947)",
+                    content: "Attention, taken to its highest degree, is the same thing as prayer. It presupposes faith and love. It requires emptying the mind of personal ego and instrumental ambition to truly witness the affliction of another."
+                },
+                {
+                    title: "The Technology as Pharmakon (Poison and Cure)",
+                    provenance: "Jacques Derrida / Bernard Stiegler",
+                    content: "Every technical apparatus is fundamentally a pharmakon: both an curative tool for human extension and an alienating poison that exteriorizes and degrades human cognitive capacity."
+                },
+                {
+                    title: "Dialectic of Enlightenment & Instrumental Reason",
+                    provenance: "Adorno & Horkheimer (1947)",
+                    content: "Enlightenment, which aimed at liberating humanity from fear and myth, turns back upon itself as instrumental reason, reducing nature and humans alike to mere material for industrial mastery."
+                },
+                {
+                    title: "The Phenomenological Lived Body",
+                    provenance: "Maurice Merleau-Ponty (1945)",
+                    content: "We do not merely have bodies; we are bodily beings through whom the world is perceived and enacted. Knowledge is never pure disembodied symbolic manipulation; it is visceral and anchored in flesh."
+                }
+            ],
+
+            arts: [
+                {
+                    title: "The Recycler Method & Scavenger Intuition",
+                    provenance: "Betye Saar (Interview)",
+                    content: "I'm basically a recycler. I find other people's stuff and junk and recycle it into my stuff and junk. I rarely look for a specific thing; I just kind of build on my intuition when a found object has energy."
+                },
+                {
+                    title: "The Liberation of Aunt Jemima (The Warrior Weapon)",
+                    provenance: "Betye Saar (1972)",
+                    content: "Dr. King's murder was horrific for me... but I had a weapon, and that was art. I took the caricature that people thought of as comical, and made her a warrior with a rifle and a hand grenade taking care of business."
+                },
+                {
+                    title: "The Subversive Scale (Green Outside, Red Inside)",
+                    provenance: "Betye Saar (Interview)",
+                    content: "My daughter found this scale for me: the weight of racism. I will probably paint the outside green and the inside red so it looks like a watermelon. That's my sense of humor. Racism hasn't gone away, so you still have to keep repeating things."
+                },
+                {
+                    title: "The Mystery of the Antlers (Unresolved Fragments)",
+                    provenance: "Betye Saar (Interview)",
+                    content: "Antlers, that's my latest thing. It's always a puzzlement when I start collecting things like 'what can I do with these?' And then I'll find another component and say, 'Oh yeah, I can use it here.'"
+                },
+                {
+                    title: "The Dada Readymade as Epistemological Shock",
+                    provenance: "Marcel Duchamp (1917)",
+                    content: "Plucking an ordinary manufactured object from utility and placing it into an exhibition space strips away its functional invisibility, forcing the viewer to confront it as a conceptual question mark."
+                },
+                {
+                    title: "Kintsugi & The Golden Joinery of Brokenness",
+                    provenance: "Japanese Aesthetic Tradition",
+                    content: "The practice of repairing broken ceramic vessels with lacquer dusted with powdered gold or silver. Fractures, scars, and collisions are not concealed as defects, but illuminated as the history and soul of the object."
+                },
+                {
+                    title: "The Cut-Up Method & Dialectical Collision",
+                    provenance: "William S. Burroughs / Romare Bearden",
+                    content: "Severing linear texts or visual archives with scissors and reassembling them by chance. Colliding fragments bypasses the rational ego's habits and reveals latent historical subtexts."
+                },
+                {
+                    title: "Brecht's Alienation Effect (Verfremdung)",
+                    provenance: "Bertolt Brecht (1936)",
+                    content: "A theatrical technique designed to puncture emotional immersion, making the familiar strange so that spectators are provoked into questioning social structures rather than passively empathizing."
+                },
+                {
+                    title: "Negative Space & The Japanese Concept of Ma",
+                    provenance: "Aesthetic Philosophy",
+                    content: "Ma is the pure interval, silence, or empty space between things. It is not an absence or void, but a fertile tension that gives form, breath, and meaning to the objects surrounding it."
+                },
+                {
+                    title: "Open Assemblage & Viewer Authorship",
+                    provenance: "Betye Saar (Interview)",
+                    content: "Sometimes they tell a story and sometimes they don't. I prefer when they don't tell the story so the viewer can invent their own story."
+                }
+            ],
+
+            social: [
+                {
+                    title: "The Iron Cage of Bureaucracy",
+                    provenance: "Max Weber (Protestant Ethic, 1905)",
+                    content: "The relentless drive for bureaucratic calculability and efficiency imprisons modern humanity in an 'iron cage' of rationalized procedures, extinguishing individual spontaneous agency in the name of administrative order."
+                },
+                {
+                    title: "Fictitious Commodities & The Double Movement",
+                    provenance: "Karl Polanyi (The Great Transformation, 1944)",
+                    content: "Land, labor, and money are not commodities produced for sale, but the very fabric of human life and nature. Subordinating them to unregulated market mechanisms induces society to spontaneously launch counter-movements to protect itself."
+                },
+                {
+                    title: "Behavioral Surplus & Surveillance Extraction",
+                    provenance: "Shoshana Zuboff (Surveillance Capitalism, 2019)",
+                    content: "Tech platforms unilaterally claim private human experience as free raw material for translation into behavioral data. This data is fed into predictive computational factories to manufacture behavioral prediction products."
+                },
+                {
+                    title: "Algorithmic Anticipation & Machine Liberalism",
+                    provenance: "José Marichal (2024)",
+                    content: "Algorithms frustrate the principle of liberal autonomy in that they interfere with our ends by predicting and anticipating our desires, possibly before we even know them ourselves, framing human selfhood as an engineering problem."
+                },
+                {
+                    title: "Governing the Commons without Coercion",
+                    provenance: "Elinor Ostrom (Governing the Commons, 1990)",
+                    content: "Empirical field studies demonstrate that communities routinely manage shared natural and knowledge resources sustainably through polycentric, self-negotiated rules, refuting both state-command and private-property dogmas."
+                },
+                {
+                    title: "State Making & Organized Extraction",
+                    provenance: "Charles Tilly (1985)",
+                    content: "War making and state making resemble organized crime: governments produce the very threats of instability or violence from which they subsequently offer to protect their citizens, securing legitimacy for continuous tax extraction."
+                },
+                {
+                    title: "The Decolonial Counter-Force & Emancipation",
+                    provenance: "Frantz Fanon (The Wretched of the Earth, 1961)",
+                    content: "Colonial order is maintained through physical, linguistic, and psychological partition. True decolonization cannot be a polite administrative negotiation; it requires a radical structural transformation of social relations."
+                },
+                {
+                    title: "Polyarchy & Contestation",
+                    provenance: "Robert Dahl (Polyarchy, 1971)",
+                    content: "Democratic governance is not a single unified expression of the 'popular will,' but a perpetual contestation among shifting coalitions, requiring open public opposition and inclusive participation to prevent autocratic consolidation."
+                },
+                {
+                    title: "The Social Construction of Technological Systems (SCOTS)",
+                    provenance: "Bijker & Pinch (1987)",
+                    content: "Technologies do not follow a self-evident trajectory of 'natural efficiency.' Their ultimate design is determined through social negotiation, regulatory conflict, and the interpretive flexibility of competing stakeholder groups."
+                },
+                {
+                    title: "Exit, Voice, and Loyalty Dynamics",
+                    provenance: "Albert O. Hirschman (1970)",
+                    content: "When organizations or civic systems decay, members respond either by exiting (market defection) or expressing voice (political agitation). Excessive ease of exit weakens the voice mechanism necessary to reform institutions."
+                }
+            ]
+        };
+
+        // Default Starter Set (2 from each quadrant)
         const DEFAULT_FRAGMENTS = [
+            // Science
             {
-                id: 'frag-1',
-                title: "The Recycler's Intuition",
-                provenance: "Betye Saar (Transcript)",
-                energy: "organic",
-                content: "I'm basically a recycler. I find other people's stuff and junk and recycle it into my stuff and junk. I can't pass a yard sale... I rarely look for a specific thing; I just kind of build on my intuition.",
-                compartment: 'artifacts'
+                id: 'frag-sci-1',
+                title: "Entropy & The Second Law",
+                provenance: "Clausius & Boltzmann (1865)",
+                energy: "science",
+                content: "In any isolated system, entropy inevitably increases over time. Living organisms, social institutions, and informational architectures are rare, temporary islands of negative entropy sustained only by expending energy.",
+                compartment: 'science'
             },
             {
-                id: 'frag-2',
-                title: "Object Energy & Past Life",
-                provenance: "Betye Saar (Transcript)",
-                energy: "mystical",
-                content: "Everything has a past so I feel that that energy is somehow clothed with the object. When you look at materials from Africa or the flea market, you feel that energy sitting there waiting for you to assemble it.",
-                compartment: 'artifacts'
-            },
-            {
-                id: 'frag-3',
-                title: "Art as a Liberatory Weapon",
-                provenance: "The Liberation of Aunt Jemima (1972)",
-                energy: "weapon",
-                content: "Dr. King's murder was horrific for me... but I had a weapon, and that was art. I took the caricature that people thought of as comical, and made her a warrior with a rifle and a hand grenade taking care of business.",
-                compartment: 'subversive'
-            },
-            {
-                id: 'frag-4',
-                title: "Disenchantment of the World",
-                provenance: "Max Weber (1946)",
-                energy: "ancestral",
-                content: "Replacing a religious understanding of the world with a scientific one created 'disenchantment' in modernity. Instead of seeing the world as magical and divinely inspired, we use scientific language to explain transcendent phenomena.",
-                compartment: 'ancestral'
-            },
-            {
-                id: 'frag-5',
-                title: "Human Autonomy as an End in Itself",
-                provenance: "Immanuel Kant (Groundwork)",
-                energy: "ancestral",
-                content: "The Enlightenment project proposes that humans are ends in themselves and should have the ability to reflect on their condition and change it. Algorithms frustrate this by anticipating our desires before we know them ourselves.",
-                compartment: 'ancestral'
-            },
-            {
-                id: 'frag-6',
-                title: "AlphaFold & 200M Protein Structures",
+                id: 'frag-sci-2',
+                title: "AlphaFold & The Prediction Horizon",
                 provenance: "DeepMind / Science (2022)",
-                energy: "empirical",
-                content: "Predicted all possible 3D structures of proteins based on amino acid sequences, saving hundreds of years of research time. If prediction solves biology, does it solve human behavior as well?",
-                compartment: 'modern'
+                energy: "science",
+                content: "Predicted 200M+ 3D protein structures from amino acid sequences. Represents the epistemological pivot where deep predictive models succeed without providing a simple, human-interpretable mechanistic explanation.",
+                compartment: 'science'
+            },
+
+            // Humanities
+            {
+                id: 'frag-hum-1',
+                title: "Kant's Moral Autonomy",
+                provenance: "Immanuel Kant (1785)",
+                energy: "humanities",
+                content: "The Enlightenment project proposes that human beings are ends in themselves, possessing dignity rather than a market price. Algorithms frustrate this autonomy by predicting and anticipating our desires before we can consciously reflect on them.",
+                compartment: 'humanities'
             },
             {
-                id: 'frag-7',
-                title: "The Agentic Loop & Intelligence Explosion",
-                provenance: "Bengio, Hinton et al. (2024)",
-                energy: "empirical",
-                content: "Posits that hundreds of recursive autonomous agents set upon a task can arrive at optimal solutions through feedback loops, moving beyond code into scientific discovery and social prediction.",
-                compartment: 'modern'
+                id: 'frag-hum-2',
+                title: "The Disenchantment of Modernity",
+                provenance: "Max Weber (1919)",
+                energy: "humanities",
+                content: "Replacing a sacred or mysterious understanding of the world with instrumental calculation creates modernity's 'disenchantment.' We forfeit transcendent meaning in exchange for technical control over external objects.",
+                compartment: 'humanities'
+            },
+
+            // Arts
+            {
+                id: 'frag-art-1',
+                title: "The Recycler Method",
+                provenance: "Betye Saar (Interview)",
+                energy: "arts",
+                content: "I'm basically a recycler. I find other people's stuff and junk and recycle it into my stuff and junk. I rarely look for a specific thing; I just kind of build on my intuition when a found object has energy.",
+                compartment: 'arts'
             },
             {
-                id: 'frag-8',
-                title: "Mandatory Prompt Engineering at JP Morgan",
-                provenance: "Levitt (2024)",
-                energy: "empirical",
-                content: "Financial firm announced that every new hire must receive prompt engineering training for AI, reflecting the tech race where employees must adapt their cognition to maintain market competitiveness.",
-                compartment: 'modern'
+                id: 'frag-art-2',
+                title: "The Liberation of Aunt Jemima",
+                provenance: "Betye Saar (1972)",
+                energy: "arts",
+                content: "Dr. King's murder was horrific for me... but I had a weapon, and that was art. I took the caricature that people thought of as comical, and made her a warrior with a rifle and a hand grenade taking care of business.",
+                compartment: 'arts'
+            },
+
+            // Social Science
+            {
+                id: 'frag-soc-1',
+                title: "The Iron Cage of Bureaucracy",
+                provenance: "Max Weber (1905)",
+                energy: "social",
+                content: "The relentless drive for bureaucratic calculability and efficiency imprisons modern humanity in an 'iron cage' of rationalized procedures, extinguishing individual spontaneous agency in the name of administrative order.",
+                compartment: 'social'
             },
             {
-                id: 'frag-9',
-                title: "The Scale / Weight of Racism",
-                provenance: "Betye Saar (Transcript)",
-                energy: "weapon",
-                content: "My daughter found this scale for me: the weight of racism. I will probably paint the outside green and the inside red so it looks like a watermelon. That's my sense of humor. Racism hasn't gone away, so you still have to keep repeating things.",
-                compartment: 'subversive'
-            },
-            {
-                id: 'frag-10',
-                title: "The Mystery of the Antlers",
-                provenance: "Betye Saar (Transcript)",
-                energy: "organic",
-                content: "Antlers, that's my latest thing. It's always a puzzlement when I start collecting things like 'what can I do with these?' And then I'll find another component and say, 'Oh yeah, I can use it here.'",
-                compartment: 'artifacts'
+                id: 'frag-soc-2',
+                title: "Algorithmic Anticipation",
+                provenance: "José Marichal (2024)",
+                energy: "social",
+                content: "Algorithms frustrate the principle of liberal autonomy in that they interfere with our ends by predicting and anticipating our desires, possibly before we even know them ourselves, framing human selfhood as an engineering problem.",
+                compartment: 'social'
             }
         ];
 
-        // Saar Intuition Oracle Deck
+        // Betye Saar Assemblage Methods Deck
         const ORACLE_CARDS = [
             {
                 icon: "🧺",
-                title: "The Yard Sale Principle",
+                title: "The Yard Sale Scavenger",
                 quote: "I'm basically a recycler... I find other people's stuff and junk.",
-                directive: "Look for discarded, overlooked, or forgotten arguments from an earlier era. What antique theory can you recycle into your modern critique?"
+                directive: "Look for discarded, overlooked, or forgotten arguments from an earlier era. What antique empirical finding or theory can you recycle into your critique?"
             },
             {
                 icon: "🦌",
                 title: "The Antler Puzzlement",
                 quote: "Antlers, that's my latest thing... what can you do with these?",
-                directive: "Introduce a foreign, bizarre, or seemingly irrelevant concept into this argument. Don't force an immediate fit; let it sit until a catalyst appears."
+                directive: "Introduce a foreign, bizarre, or seemingly mismatched concept from another quadrant. Don't force an immediate fit; let it sit until a catalyst appears."
             },
             {
                 icon: "⚖️",
-                title: "The Subversive Scale",
+                title: "The Subversive Inversion",
                 quote: "Paint the outside green and inside red... that's my sense of humor.",
                 directive: "Use irony, dark humor, or aesthetic reversal. What solemn premise in tech policy can you subvert by inverting its visual or verbal metaphor?"
             },
@@ -1092,19 +1485,19 @@
                 icon: "🗡️",
                 title: "The Warrior Transformation",
                 quote: "I didn't have a weapon, and that was art... taking care of business.",
-                directive: "Take a passive or caricatured victim of algorithmic systems and re-arm them with intellectual agency. How do they seize the offensive?"
+                directive: "Take a passive or caricatured subject in the literature and re-arm them with intellectual agency. How do they seize the offensive?"
             },
             {
                 icon: "🏛️",
-                title: "The Basement Energy",
+                title: "The Basement Archive",
                 quote: "Down in the basement... all this energy from tribal materials.",
-                directive: "Descend into the suppressed or marginalized archives. What voices did Enlightenment rationalism relegate to the basement?"
+                directive: "Descend into the suppressed or marginalized archives. What voices did mainstream scientific or bureaucratic rationalism relegate to the basement?"
             },
             {
                 icon: "🧵",
                 title: "The Quilt Stitches",
                 quote: "In her era women made quilts, they crocheted with their hands.",
-                directive: "Do not strive for a monolithic, seamless argument. Let the seams, tension, and contrasting patches remain visible to the reader."
+                directive: "Do not strive for a monolithic, seamless argument. Let the seams, tension, and contrasting patches between disciplines remain visible."
             },
             {
                 icon: "🦁",
@@ -1113,10 +1506,10 @@
                 directive: "Drop the timid academic hedging. State your sharpest, most unapologetic political conclusion with absolute force."
             },
             {
-                icon: "🔮",
-                title: "Re-Enchantment",
-                quote: "Strong mystical quality... palmistry, phrenology, astrology.",
-                directive: "Notice where hyper-rational technology starts behaving like magic or religion. How is the predictive algorithm serving as a new digital oracle?"
+                icon: "🔄",
+                title: "The Open Ending",
+                quote: "I prefer when they don't tell the story so the viewer can invent their own.",
+                directive: "Resist wrapping the essay in a neat, totalizing bow. Leave an unresolved paradox so the reader must construct their own synthesis."
             }
         ];
 
@@ -1126,28 +1519,37 @@
         let currentFilter = 'all';
 
         function loadFragments() {
-            const saved = localStorage.getItem('saar_idea_assemblage');
+            const saved = localStorage.getItem('liberal_arts_assemblage');
             if (saved) {
                 try {
                     fragments = JSON.parse(saved);
                 } catch(e) {
-                    fragments = [...DEFAULT_FRAGMENTS];
+                    fragments = JSON.parse(JSON.stringify(DEFAULT_FRAGMENTS));
                 }
             } else {
-                fragments = [...DEFAULT_FRAGMENTS];
+                fragments = JSON.parse(JSON.stringify(DEFAULT_FRAGMENTS));
             }
         }
 
         function saveFragments() {
-            localStorage.setItem('saar_idea_assemblage', JSON.stringify(fragments));
+            localStorage.setItem('liberal_arts_assemblage', JSON.stringify(fragments));
             updateCounts();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notify');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.classList.add('visible');
+            setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 3000);
         }
 
         function updateCounts() {
             document.getElementById('stat-total-fragments').textContent = fragments.length;
             document.getElementById('badge-count').textContent = fragments.length;
 
-            ['ancestral', 'modern', 'artifacts', 'subversive'].forEach(comp => {
+            ['science', 'humanities', 'arts', 'social'].forEach(comp => {
                 const count = fragments.filter(f => f.compartment === comp).length;
                 const badge = document.querySelector(`#comp-${comp} .comp-count`);
                 if (badge) badge.textContent = count;
@@ -1160,7 +1562,7 @@
             const filtered = fragments.filter(f => currentFilter === 'all' || f.energy === currentFilter);
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:2rem 1rem; color:#64748b; font-size:0.8rem;">No fragments match this energy filter.</div>`;
+                container.innerHTML = `<div style="text-align:center; padding:2rem 1rem; color:#64748b; font-size:0.8rem;">No fragments match this subarea filter.</div>`;
                 return;
             }
 
@@ -1174,7 +1576,7 @@
                          onclick="selectForCollision('${f.id}')">
                         <div class="fragment-header">
                             <span class="fragment-provenance">${escapeHtml(f.provenance || 'Fragment')}</span>
-                            <span class="energy-tag energy-${f.energy}">${f.energy}</span>
+                            <span class="subarea-tag subarea-${f.energy}">${formatSubareaName(f.energy)}</span>
                         </div>
                         <div class="fragment-title">${escapeHtml(f.title)}</div>
                         <div class="fragment-snippet">${escapeHtml(f.content)}</div>
@@ -1182,21 +1584,31 @@
                             <button type="button" class="btn-collide-add" onclick="event.stopPropagation(); toggleCollision('${f.id}')">
                                 ${isSelected ? '✓ In Crucible' : '+ Collide'}
                             </button>
-                            <span style="font-size:0.7rem; color:#64748b;">${f.compartment}</span>
+                            <span style="font-size:0.7rem; color:#64748b; text-transform:capitalize;">${formatSubareaName(f.compartment)}</span>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
+        function formatSubareaName(sub) {
+            switch(sub) {
+                case 'science': return 'Science';
+                case 'humanities': return 'Humanities';
+                case 'arts': return 'Arts';
+                case 'social': return 'Social Science';
+                default: return sub;
+            }
+        }
+
         // Render Compartment Trays
         function renderCompartments() {
-            ['ancestral', 'modern', 'artifacts', 'subversive'].forEach(comp => {
+            ['science', 'humanities', 'arts', 'social'].forEach(comp => {
                 const container = document.getElementById(`items-${comp}`);
                 const items = fragments.filter(f => f.compartment === comp);
 
                 if (items.length === 0) {
-                    container.innerHTML = `<div class="empty-slot">Drag fragments here to arrange your shadowbox</div>`;
+                    container.innerHTML = `<div class="empty-slot">Drag fragments here or click 🎲 Roll</div>`;
                 } else {
                     container.innerHTML = items.map(f => {
                         const isSelected = activeCollidingIds.includes(f.id);
@@ -1208,7 +1620,7 @@
                                  onclick="selectForCollision('${f.id}')">
                                 <div class="fragment-header">
                                     <span class="fragment-provenance">${escapeHtml(f.provenance || '')}</span>
-                                    <span class="energy-tag energy-${f.energy}">${f.energy}</span>
+                                    <span class="subarea-tag subarea-${f.energy}">${formatSubareaName(f.energy)}</span>
                                 </div>
                                 <div class="fragment-title" style="font-size:0.92rem;">${escapeHtml(f.title)}</div>
                                 <div class="fragment-snippet" style="-webkit-line-clamp: 2;">${escapeHtml(f.content)}</div>
@@ -1218,6 +1630,75 @@
                 }
             });
             updateCounts();
+        }
+
+        // 🎲 RANDOM IDEA / CONCEPT GENERATOR: 4-QUADRANT ASSEMBLAGE
+        function generateFourQuadrants() {
+            AudioKit.click(480);
+
+            // Pull 1 random item from each of the 4 subareas
+            const newFrags = [];
+            ['science', 'humanities', 'arts', 'social'].forEach(subarea => {
+                const pool = LIBERAL_ARTS_FOUND_OBJECTS[subarea];
+                const picked = pool[Math.floor(Math.random() * pool.length)];
+
+                // Check if already in fragments
+                const existing = fragments.find(f => f.title === picked.title);
+                if (existing) {
+                    existing.compartment = subarea;
+                    newFrags.push(existing);
+                } else {
+                    const newObj = {
+                        id: `frag-${subarea}-${Date.now()}-${Math.floor(Math.random()*1000)}`,
+                        title: picked.title,
+                        provenance: picked.provenance,
+                        energy: subarea,
+                        content: picked.content,
+                        compartment: subarea
+                    };
+                    fragments.unshift(newObj);
+                    newFrags.push(newObj);
+                }
+            });
+
+            // Set active collision to 2 interesting ones from this quartet (e.g. Science + Humanities or Science + Social)
+            activeCollidingIds = [newFrags[0].id, newFrags[1].id];
+
+            saveFragments();
+            renderYardSaleList();
+            renderCompartments();
+            renderCollisionStage();
+
+            showToast("✨ Generated 4-Quadrant Assemblage! 1 Found Object placed in each subarea.");
+        }
+
+        // 🎲 ROLL A SINGLE SUBAREA FRAGMENT
+        function rollRandomSubarea(subarea) {
+            AudioKit.click(420);
+            const pool = LIBERAL_ARTS_FOUND_OBJECTS[subarea];
+            const picked = pool[Math.floor(Math.random() * pool.length)];
+
+            // Check if already in fragments
+            let item = fragments.find(f => f.title === picked.title);
+            if (item) {
+                item.compartment = subarea;
+            } else {
+                item = {
+                    id: `frag-${subarea}-${Date.now()}-${Math.floor(Math.random()*1000)}`,
+                    title: picked.title,
+                    provenance: picked.provenance,
+                    energy: subarea,
+                    content: picked.content,
+                    compartment: subarea
+                };
+                fragments.unshift(item);
+            }
+
+            saveFragments();
+            renderYardSaleList();
+            renderCompartments();
+
+            showToast(`🎲 Placed "${picked.title}" into ${formatSubareaName(subarea)}!`);
         }
 
         // Collision Logic
@@ -1273,38 +1754,49 @@
                         <button type="button" class="remove-btn" onclick="removeColliding('${item.id}')">×</button>
                         <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
                             <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--shadowbox-gold);">${escapeHtml(item.provenance)}</span>
-                            <span class="energy-tag energy-${item.energy}" style="font-size:0.6rem;">${item.energy}</span>
+                            <span class="subarea-tag subarea-${item.energy}" style="font-size:0.6rem;">${formatSubareaName(item.energy)}</span>
                         </div>
                         <strong style="color:#f8fafc; font-size:0.88rem; display:block;">${escapeHtml(item.title)}</strong>
                         <div style="font-size:0.78rem; color:#94a3b8; margin-top:0.25rem;">${escapeHtml(item.content)}</div>
                     </div>
                 `;
                 if (i < activeItems.length - 1) {
-                    cardsHtml += `<div class="collision-operator">⚡</div>`;
+                    cardsHtml += `<div class="collision-operator">⚡ CROSS-DISCIPLINARY FRICTION ⚡</div>`;
                 }
             }
 
             container.innerHTML = cardsHtml;
 
-            // Generate contextual collision inquiry
+            // Generate cross-disciplinary collision inquiry
             if (activeItems.length >= 2) {
                 promptBox.style.display = 'block';
-                promptText.textContent = generateCollisionInquiry(activeItems[0], activeItems[1]);
+                promptText.textContent = generateCrossDisciplinaryInquiry(activeItems[0], activeItems[1]);
             } else {
                 promptBox.style.display = 'none';
             }
         }
 
-        function generateCollisionInquiry(itemA, itemB) {
-            const inquiries = [
-                `How does ${itemB.title} expose the unexamined contradictions in ${itemA.title}?`,
-                `If ${itemA.title} represents the architecture, what subversive role does ${itemB.title} play?`,
-                `Where does the predictive rationality of ${itemA.title} break down when confronted with ${itemB.title}?`,
-                `What third conceptual category is born when we treat ${itemA.title} and ${itemB.title} as pieces of the same shadowbox?`,
-                `If Betye Saar placed ${itemA.title} and ${itemB.title} into an assemblage box, what would be the weapon and what would be the target?`
-            ];
-            const hash = (itemA.id + itemB.id).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-            return inquiries[hash % inquiries.length];
+        // Cross-Disciplinary Collision Inquiry Engine
+        function generateCrossDisciplinaryInquiry(itemA, itemB) {
+            const eA = itemA.energy;
+            const eB = itemB.energy;
+            const pairKey = [eA, eB].sort().join('-');
+
+            if (pairKey === 'humanities-science') {
+                return `How does the empirical determinism or physical limit of ${itemA.title} (${formatSubareaName(itemA.energy)}) challenge the moral autonomy or interpretive freedom of ${itemB.title} (${formatSubareaName(itemB.energy)})?`;
+            } else if (pairKey === 'arts-social') {
+                return `How does the aesthetic form or assemblage of ${itemA.title} (${formatSubareaName(itemA.energy)}) subvert, mock, or weaponize critique against the institutional power structure of ${itemB.title} (${formatSubareaName(itemB.energy)})?`;
+            } else if (pairKey === 'science-social') {
+                return `Where does ${itemA.title}'s computational/cybernetic model attempt to convert ${itemB.title}'s messy political conflict into a purely technical engineering problem?`;
+            } else if (pairKey === 'arts-humanities') {
+                return `How does the tactile craft and material shock of ${itemA.title} (${formatSubareaName(itemA.energy)}) ground or disrupt the abstract philosophical concepts in ${itemB.title} (${formatSubareaName(itemB.energy)})?`;
+            } else if (pairKey === 'arts-science') {
+                return `If ${itemA.title} (${formatSubareaName(itemA.energy)}) measures objective reality, how does ${itemB.title} (${formatSubareaName(itemB.energy)}) re-enchant, defamiliarize, or challenge the meaning of what is being measured?`;
+            } else if (pairKey === 'humanities-social') {
+                return `How does the normative ethical framework of ${itemA.title} (${formatSubareaName(itemA.energy)}) judge the distribution of power and structural extraction described by ${itemB.title} (${formatSubareaName(itemB.energy)})?`;
+            } else {
+                return `When we force ${itemA.title} and ${itemB.title} into the same shadowbox compartment, what unexamined assumption in both fields is shattered?`;
+            }
         }
 
         // Random Collision Spark
@@ -1376,15 +1868,15 @@
                 return;
             }
             const lines = text.split('\n').filter(Boolean);
-            const title = lines[0].length < 60 ? lines[0] : 'Assemblage Synthesis: ' + text.slice(0, 30) + '...';
+            const title = lines[0].length < 60 ? lines[0] : 'Synthesis: ' + text.slice(0, 30) + '...';
 
             const newFrag = {
                 id: 'frag-' + Date.now(),
                 title: title,
                 provenance: 'Crucible Synthesis',
-                energy: 'weapon',
+                energy: 'arts',
                 content: text,
-                compartment: 'subversive'
+                compartment: 'arts'
             };
 
             fragments.unshift(newFrag);
@@ -1392,7 +1884,7 @@
             renderYardSaleList();
             renderCompartments();
             AudioKit.click(500);
-            alert(`Saved "${title}" into your Yard Sale collection!`);
+            showToast(`Saved "${title}" into your Yard Sale collection!`);
         });
 
         // Copy Synthesis Text
@@ -1404,7 +1896,7 @@
             }
             navigator.clipboard.writeText(text).then(() => {
                 AudioKit.click(440);
-                alert('Copied synthesis to clipboard!');
+                showToast('Copied synthesis paragraph to clipboard!');
             });
         });
 
@@ -1421,7 +1913,7 @@
         function handleCreateFragment(e) {
             e.preventDefault();
             const title = document.getElementById('frag-title').value.trim();
-            const provenance = document.getElementById('frag-provenance').value.trim() || 'Yard Sale Item';
+            const provenance = document.getElementById('frag-provenance').value.trim() || 'Found Object';
             const energy = document.getElementById('frag-energy').value;
             const content = document.getElementById('frag-content').value.trim();
 
@@ -1431,7 +1923,7 @@
                 provenance: provenance,
                 energy: energy,
                 content: content,
-                compartment: 'artifacts'
+                compartment: energy
             };
 
             fragments.unshift(newFrag);
@@ -1440,9 +1932,10 @@
             renderCompartments();
             closeNewFragmentModal();
             AudioKit.click(420);
+            showToast(`Added "${title}" to ${formatSubareaName(energy)}!`);
         }
 
-        // Modal Controls: Oracle Deck
+        // Modal Controls: Betye Saar Methods Deck
         function openOracleModal() {
             AudioKit.click(360);
             const container = document.getElementById('oracle-cards-container');
@@ -1467,7 +1960,7 @@
             const promptBox = document.getElementById('emergent-prompt-box');
             const promptText = document.getElementById('prompt-text');
             promptBox.style.display = 'block';
-            promptText.innerHTML = `<span style="color:#c99738; font-weight:700;">[ORACLE: ${title}]</span> ${directive}`;
+            promptText.innerHTML = `<span style="color:#c99738; font-weight:700;">[SAAR METHOD: ${title}]</span> ${directive}`;
             promptBox.scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1479,16 +1972,16 @@
 
             const title = activeItems.length > 0 
                 ? `Assemblage: ${activeItems.map(i => i.title).join(' × ')}`
-                : 'Assemblage Dispatch';
+                : 'Liberal Arts Assemblage Dispatch';
 
             document.getElementById('export-post-title').value = title;
 
             let draftMarkdown = `> *"I'm basically a recycler... I mix up materials, objects, ideas. Sometimes they tell a story and sometimes they don't."* — Betye Saar\n\n`;
 
             if (activeItems.length > 0) {
-                draftMarkdown += `### The Colliding Fragments\n\n`;
+                draftMarkdown += `### The Colliding Quadrivium Fragments\n\n`;
                 activeItems.forEach(item => {
-                    draftMarkdown += `#### ${item.title} (${item.provenance})\n> ${item.content}\n\n`;
+                    draftMarkdown += `#### ${item.title} (${item.provenance} — ${formatSubareaName(item.energy)})\n> ${item.content}\n\n`;
                 });
             }
 
@@ -1508,14 +2001,13 @@
 
         // Send to Blog Publisher
         document.getElementById('btn-confirm-send-blog').addEventListener('click', function() {
-            const title = document.getElementById('export-post-title').value.trim() || 'Assemblage Dispatch';
+            const title = document.getElementById('export-post-title').value.trim() || 'Liberal Arts Assemblage';
             const tags = document.getElementById('export-post-tags').value.trim();
             const content = document.getElementById('export-post-preview').value;
 
             // Copy to clipboard
             navigator.clipboard.writeText(content);
 
-            // Redirect to publish.html with params or open GitHub Draft
             const dateVal = new Date().toISOString().split('T')[0];
             const slug = title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-');
             const draftMd = `---\ntitle: ${title}\ndate: ${dateVal}\ntags: [${tags}]\n---\n\n${content}`;
@@ -1532,16 +2024,20 @@
 
         // Reset to default sample set
         document.getElementById('btn-reset-demo').addEventListener('click', function() {
-            if (confirm('Restore the original Betye Saar & Algorithmic Politics sample fragments? (Custom items will be reset).')) {
+            if (confirm('Restore the original Liberal Arts Quadrivium fragments? (Custom items will be reset).')) {
                 fragments = JSON.parse(JSON.stringify(DEFAULT_FRAGMENTS));
-                activeCollidingIds = ['frag-4', 'frag-6'];
+                activeCollidingIds = ['frag-sci-2', 'frag-hum-1']; // AlphaFold + Kant
                 saveFragments();
                 renderYardSaleList();
                 renderCompartments();
                 renderCollisionStage();
                 AudioKit.click(300);
+                showToast('Restored default Liberal Arts set.');
             }
         });
+
+        // 4-Quadrant Button Listener
+        document.getElementById('btn-quadrant-gen').addEventListener('click', generateFourQuadrants);
 
         function escapeHtml(str) {
             if (!str) return '';
@@ -1556,7 +2052,7 @@
         // Initialize on load
         (function initApp() {
             loadFragments();
-            activeCollidingIds = ['frag-4', 'frag-6']; // Weber + AlphaFold
+            activeCollidingIds = ['frag-sci-2', 'frag-hum-1']; // AlphaFold + Kant
             renderYardSaleList();
             renderCompartments();
             renderCollisionStage();
