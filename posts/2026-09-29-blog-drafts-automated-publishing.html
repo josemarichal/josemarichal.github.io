@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Drafts & Automated Publishing | José Marichal</title>
+    <meta name="description" content="Drop any text file ( .txt or .md ) into this folder to publish it to your blog! How It Works Option 1: Upload via GitHub (Zero Setup / Works from Phone or...">
+    <link rel="stylesheet" href="../style.css?v=5">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">José <span>Marichal</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../cv.html">CV</a></li>
+                    <li><a href="../teaching.html">Teaching</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li><a href="../about.html">Civic AI Working Group</a></li>
+                    <li><a href="../books.html">Books</a></li>
+                    <li><a href="../media.html">Media</a></li>
+                    <li><a href="../invited_talks.html">Invited Talks</a></li>
+                    <li><a href="../ai_tools.html">AI Tools</a></li>
+                    <li><a href="../just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <article class="single-post-wrapper">
+                <a href="../blog.html" class="back-to-blog">← Back to Blog</a>
+
+                <header class="post-header">
+                    <div class="post-meta-bar">
+                        <span class="meta-date">September 29, 2026</span>
+                        <span class="meta-dot">•</span>
+                        <span>2 min read</span>
+                        <span class="meta-dot">•</span>
+                        <div class="blog-tags" style="display:inline-flex;">
+                            <span class="blog-tag">Machine Liberalism</span><span class="blog-tag">Algorithmic Politics</span>
+                        </div>
+                    </div>
+                    <h1>Blog Drafts & Automated Publishing</h1>
+                </header>
+
+                <div class="post-body">
+<p>Drop any text file (<code>.txt</code> or <code>.md</code>) into this folder to publish it to your blog!</p>
+<h2>How It Works</h2>
+<h3>Option 1: Upload via GitHub (Zero Setup / Works from Phone or Browser)</h3>
+<ol>
+<li>Go to your repository on GitHub: <code>https://github.com/josemarichal/github.io</code></li>
+<li>Open the <code>blog_drafts</code> folder.</li>
+<li>Click <strong>Add file</strong> -&gt; <strong>Upload files</strong>.</li>
+<li>Drag and drop your text or markdown file (e.g., <code>my_notes.txt</code> or <code>essay.md</code>) and click <strong>Commit changes</strong>.</li>
+<li>GitHub Actions will automatically:<br />
+   - Convert your text into a formatted HTML post in <code>posts/</code>.<br />
+   - Add it to <code>posts/posts.json</code> and <code>blog.html</code>.<br />
+   - Move the draft to <code>blog_drafts/published/</code>.<br />
+   - Your post is live on <code>josemarichal.github.io/blog.html</code>!</li>
+</ol>
+<h3>Option 2: Run the Local Python Script</h3>
+<p>From your local project directory:</p>
+<pre><code class="language-bash">python publish_post.py &quot;blog_drafts/my_post.txt&quot; --push
+</code></pre>
+<p>Or process all drafts at once:</p>
+<pre><code class="language-bash">python publish_post.py --all-drafts --push
+</code></pre>
+<h3>Option 3: Browser Publisher Studio</h3>
+<p>Open <code>publish.html</code> in your browser to write, paste text, or drag-and-drop a file with live preview!</p>
+<hr />
+<h2>Formatting Guidelines (Optional)</h2>
+<p>You can upload completely plain text, or you can add optional YAML frontmatter at the top:</p>
+<pre><code class="language-markdown">---
+title: The Rise of Machine Liberalism
+date: 2026-09-29
+tags: [Machine Liberalism, Algorithmic Politics, AI]
+excerpt: A brief summary of the main argument.
+---
+
+Your content goes here... Use headings (#, ##), bullet points, blockquotes (&gt;), or regular paragraphs.
+</code></pre>
+<p>If you don't include frontmatter:<br />
+- The first line or <code># Header</code> automatically becomes the title.<br />
+- The date automatically defaults to today.<br />
+- The first paragraph automatically becomes the summary.</p>
+                </div>
+
+                <div class="post-author-box">
+                    <img src="../images/profile_sharpened.png" alt="José Marichal" class="post-author-img">
+                    <div class="post-author-info">
+                        <h3>José Marichal</h3>
+                        <p>Professor of Political Science at California Lutheran University. Author of <em>You Must Become an Algorithmic Problem</em> (Bristol University Press, 2025) and the forthcoming <em>Machine Liberalism</em> (2027).</p>
+                        <a href="../index.html">Return to Home Overview →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 José Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
