@@ -1129,6 +1129,57 @@ footer p {
     margin-bottom: 1.65rem;
 }
 
+.post-body a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+    transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.post-body a:hover {
+    color: #34d399;
+    text-decoration-color: #34d399;
+}
+
+.post-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin: 2rem auto 0.75rem;
+    display: block;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.post-body figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.post-body figure img {
+    margin: 0 auto 0.5rem;
+}
+
+.post-body figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-main);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.post-featured-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
 .post-body h2 {
     font-family: var(--font-display);
     font-size: 1.85rem;

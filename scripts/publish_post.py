@@ -75,10 +75,10 @@ def slugify(text):
 
 
 def markdown_to_html(md_text):
-    """Convert markdown to semantic HTML with fallback."""
+    """Convert markdown to semantic HTML with image path adjustments and link support."""
     try:
         import markdown
-        return markdown.markdown(
+        html = markdown.markdown(
             md_text,
             extensions=["fenced_code", "tables", "nl2br", "sane_lists"]
         )
@@ -126,7 +126,9 @@ def markdown_to_html(md_text):
                 if in_list:
                     html_lines.append("</ul>")
                     in_list = False
-                p = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", line)
+                # Format images in fallback: ![alt](src)
+                p = re.sub(r"!\[(.*?)\]\((.*?)\)", r'<img src="\2" alt="\1">', line)
+                p = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", p)
                 p = re.sub(r"\*(.*?)\*", r"<em>\1</em>", p)
                 p = re.sub(r"\[(.*?)\]\((.*?)\)", r'<a href="\2">\1</a>', p)
                 html_lines.append(f"<p>{p}</p>")
@@ -136,7 +138,35 @@ def markdown_to_html(md_text):
         if in_list:
             html_lines.append("</ul>")
 
-        return "\n".join(html_lines)
+        html = "\n".join(html_lines)
+
+    # 1. Fix relative image paths so they resolve from the posts/ directory:
+    # e.g. src="images/chart.png" or src="./images/chart.png" -> src="../images/chart.png"
+    html = re.sub(r'src=["\'](?:\./)?images/([^"\']+)["\']', r'src="../images/\1"', html)
+
+    # 2. Wrap standalone images in <figure> and <figcaption> if alt text exists
+    def wrap_figure(match):
+        img_tag = match.group(1)
+        alt_m = re.search(r'alt=["\']([^"\']+)["\']', img_tag)
+        if alt_m and alt_m.group(1).strip() and alt_m.group(1).strip().lower() not in ("image", "photo", "img"):
+            caption = alt_m.group(1).strip()
+            return f'<figure>{img_tag}<figcaption>{caption}</figcaption></figure>'
+        return f'<p>{img_tag}</p>'
+
+    html = re.sub(r'<p>\s*(<img[^>]+>)\s*</p>', wrap_figure, html)
+
+    # 3. Add target="_blank" and rel to external links if not already present
+    def add_external_target(match):
+        full_tag = match.group(0)
+        href = match.group(1)
+        if href.startswith("http://") or href.startswith("https://"):
+            if 'target=' not in full_tag:
+                return full_tag[:-1] + ' target="_blank" rel="noopener noreferrer">'
+        return full_tag
+
+    html = re.sub(r'<a\s+[^>]*href=["\']([^"\']+)["\'][^>]*>', add_external_target, html)
+
+    return html
 
 
 def clean_text_for_excerpt(text, max_len=180):
@@ -177,9 +207,19 @@ def save_posts_metadata(posts):
         json.dump(posts, f, indent=2, ensure_ascii=False)
 
 
-def generate_post_html(title, date_str, display_date, read_time, tags, body_html, slug):
+def generate_post_html(title, date_str, display_date, read_time, tags, body_html, slug, featured_image=None):
     """Build the final HTML for an individual post."""
     tags_html = "".join([f'<span class="blog-tag">{t}</span>' for t in tags])
+
+    banner_html = ""
+    if featured_image:
+        img_src = featured_image.strip()
+        if not (img_src.startswith("http://") or img_src.startswith("https://") or img_src.startswith("../")):
+            if img_src.startswith("images/"):
+                img_src = f"../{img_src}"
+            else:
+                img_src = f"../images/{img_src}"
+        banner_html = f'<img src="{img_src}" alt="{title}" class="post-featured-image">\n'
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -234,7 +274,7 @@ def generate_post_html(title, date_str, display_date, read_time, tags, body_html
                 </header>
 
                 <div class="post-body">
-{body_html}
+{banner_html}{body_html}
                 </div>
 
                 <div class="post-author-box">
@@ -384,6 +424,9 @@ def process_raw_text(raw_content, title=None, tags=None, date_override=None, exc
     # Convert Markdown to HTML
     body_html = markdown_to_html(body)
 
+    # Featured Image
+    featured_image = metadata.get("image") or metadata.get("featured_image") or metadata.get("banner")
+
     # Generate Post HTML
     post_html = generate_post_html(
         title=post_title,
@@ -392,7 +435,8 @@ def process_raw_text(raw_content, title=None, tags=None, date_override=None, exc
         read_time=read_time,
         tags=post_tags,
         body_html=body_html,
-        slug=slug_name
+        slug=slug_name,
+        featured_image=featured_image
     )
 
     with open(post_file_path, "w", encoding="utf-8") as f:
@@ -414,6 +458,7 @@ def process_raw_text(raw_content, title=None, tags=None, date_override=None, exc
         "excerpt": excerpt,
         "tags": post_tags,
         "readTime": read_time,
+        "image": featured_image or "",
         "url": relative_url
     }
     posts.insert(0, new_entry)
@@ -460,7 +505,9 @@ def process_all_drafts():
     """Scans blog_drafts/ and processes all pending .txt and .md files."""
     files = [
         f for f in os.listdir(DRAFTS_DIR)
-        if os.path.isfile(os.path.join(DRAFTS_DIR, f)) and f.lower().endswith((".txt", ".md", ".markdown"))
+        if os.path.isfile(os.path.join(DRAFTS_DIR, f))
+        and f.lower().endswith((".txt", ".md", ".markdown"))
+        and not f.lower().startswith("readme")
     ]
 
     if not files:

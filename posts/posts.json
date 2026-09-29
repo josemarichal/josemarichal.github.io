@@ -1,35 +1,5 @@
 [
   {
-    "id": "is-humanity-an-engineering-problem",
-    "slug": "2026-09-29-is-humanity-an-engineering-problem",
-    "title": "Is Humanity an Engineering Problem?",
-    "date": "2026-09-29",
-    "displayDate": "September 29, 2026",
-    "excerpt": "If predictive algorithms and recursive agentic loops can anticipate our desires before we know them ourselves, has humanity been reduced to an engineering problem?",
-    "tags": [
-      "Machine Liberalism",
-      "Algorithmic Problem",
-      "Philosophy of AI",
-      "Enlightenment"
-    ],
-    "readTime": "6 min read",
-    "url": "posts/2026-09-29-is-humanity-an-engineering-problem.html"
-  },
-  {
-    "id": "blog-drafts-automated-publishing",
-    "slug": "2026-09-29-blog-drafts-automated-publishing",
-    "title": "Blog Drafts & Automated Publishing",
-    "date": "2026-09-29",
-    "displayDate": "September 29, 2026",
-    "excerpt": "Drop any text file (.txt or .md) into this folder to publish it to your blog! 1. Go to your repository on GitHub: https://github.com/josemarichal/github.io 2. Open the blogdrafts...",
-    "tags": [
-      "Machine Liberalism",
-      "Algorithmic Politics"
-    ],
-    "readTime": "2 min read",
-    "url": "posts/2026-09-29-blog-drafts-automated-publishing.html"
-  },
-  {
     "id": "the-architecture-of-algorithmic-discretion",
     "slug": "2026-09-29-the-architecture-of-algorithmic-discretion",
     "title": "The Architecture of Algorithmic Discretion",
