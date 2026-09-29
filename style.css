@@ -38,6 +38,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     font-family: var(--font-body);
     font-size: 17px; 
@@ -60,22 +70,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
     margin-bottom: var(--spacing-sm);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin-top: var(--spacing-md);
+    word-break: break-word;
 }
 
 h2.sub-heading {
-    font-size: 1.25rem;
+    font-size: clamp(0.95rem, 3vw, 1.25rem);
     font-family: var(--font-mono);
     color: var(--accent-color);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
+    word-break: break-word;
 }
 
 h3 {
@@ -151,12 +165,19 @@ a:hover {
     margin-top: 1.5rem;
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+}
+
+.schematic-links li {
+    max-width: 100%;
 }
 
 .schematic-links li a {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 .research-trajectory {
@@ -244,7 +265,7 @@ header .container {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 2.5rem;
+    gap: 1.8rem;
 }
 
 nav ul li a {
@@ -374,7 +395,7 @@ section {
 /* --- Projects Page --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 3rem;
 }
 
@@ -579,15 +600,85 @@ footer p {
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+    nav ul {
+        gap: 1.2rem;
+    }
+    nav ul li a {
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        position: sticky;
+        top: 0;
+        height: auto;
+    }
+    
+    body {
+        padding-top: 0;
+    }
+    
+    header .container {
+        flex-direction: column;
+        height: auto;
+        padding: 0.75rem 1rem 0.5rem;
+        gap: 0.4rem;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0.2rem 0;
+    }
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.45rem;
+        padding: 0.15rem 0.25rem 0.35rem;
+        margin: 0;
+        width: max-content;
+    }
+
+    nav ul li a {
+        white-space: nowrap;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        padding: 0.35rem 0.65rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        display: inline-block;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        background: rgba(16, 185, 129, 0.18);
+        border-color: var(--accent-color);
+        color: var(--primary-color);
+    }
+
     .bio-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
     
     .bio-image {
         order: -1;
-        max-width: 400px;
+        max-width: 300px;
         margin: 0 auto;
     }
     
@@ -603,25 +694,111 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
+    .container {
+        padding: 0 1.25rem;
     }
-    
-    nav ul {
-        margin-top: 1.5rem;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+
+    main {
+        padding: 24px 0 50px;
     }
-    
-    h1 { font-size: 3rem; }
-    .bio-text h1 { font-size: 3rem; }
-    h2.page-title { font-size: 2.5rem; }
-    
-    .stats-grid {
+
+    .algorithmic-hero {
+        margin-top: 1rem;
         gap: 1.5rem;
+    }
+
+    .bio-image {
+        max-width: 240px;
+    }
+
+    .bio-image::before {
+        width: 80px;
+        height: 80px;
+        top: -10px;
+        right: -10px;
+    }
+
+    .bio-text h1 {
+        font-size: clamp(2.1rem, 7.5vw, 2.6rem);
+    }
+
+    .research-statement {
+        font-size: 1.02rem;
+        padding: 1.1rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .schematic-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .schematic-links li a {
+        font-size: 0.8rem;
+    }
+
+    .research-trajectory {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+
+    .timeline {
+        padding-left: 1.25rem;
+        margin-top: 1.5rem;
+    }
+
+    .timeline-node {
+        margin-bottom: 2rem;
+    }
+
+    .timeline-node::before {
+        left: -1.6rem;
+    }
+
+    h2.page-title {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        gap: 1.25rem;
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-content {
+        padding: 1.25rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .bio-image {
+        max-width: 200px;
+    }
+
+    .image-wrapper {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    .bio-text h1 {
+        font-size: 2.1rem;
     }
 }
 
