@@ -1,0 +1,9 @@
+The Architecture of Algorithmic Discretion
+
+When public sector agencies adopt automated decision-making systems, discretion does not disappear; it migrates.
+
+Rather than frontline caseworkers exercising professional judgment in dialogue with residents, discretion is codified into risk-scoring matrices, thresholds, and training datasets.
+
+This migration of discretion has profound implications for due process. If an applicant cannot inspect the weights or causal assumptions underpinning an eligibility determination, the traditional administrative remedy of a fair hearing becomes largely symbolic.
+
+In our current work with the Civic AI Working Group at California Lutheran University, we are examining how local governments in Southern California are navigating state guidelines around automated procurement. The challenge is not merely technical; it is fundamentally constitutional.

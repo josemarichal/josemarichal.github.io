@@ -4,71 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine Liberalism - Blog | Jose Marichal</title>
-    <link rel="stylesheet" href="style.css?v=3">
-    
-    <style>
-        .blog-post-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .blog-post-item:last-child {
-            border-bottom: none;
-        }
-
-        .blog-date {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .blog-title {
-            font-size: 1.75rem;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-title a {
-            color: var(--text-heading);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        .blog-title a:hover {
-            color: var(--accent-color);
-        }
-
-        .blog-excerpt {
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-    </style>
+    <title>Blog & Project Log | José Marichal</title>
+    <meta name="description" content="Research notes, essays, and field dispatches on algorithms, artificial intelligence, and democratic theory by José Marichal.">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Jose Marichal</a>
+                <a href="index.html">José <span>Marichal</span></a>
             </div>
             <nav>
                 <ul>
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
                     <li><a href="about.html">Civic AI Working Group</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="media.html">Media</a></li>
                     <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
                 </ul>
             </nav>
         </div>
@@ -76,48 +34,182 @@
 
     <main>
         <div class="container">
-            <div class="content-page">
-                <h1 class="page-title" style="text-align: center;">Machine Liberalism</h1>
-                <p class="subtitle"
-                    style="text-align: center; color: var(--secondary-color); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-                    A project log and running commentary on the intersection of algorithms, artificial intelligence, and
-                    democratic theory.
+            <section class="blog-hero">
+                <span class="blog-tagline">RESEARCH NOTEBOOK & DISPATCHES</span>
+                <h1 class="page-title">Machine Liberalism</h1>
+                <p class="subtitle">
+                    A project log and running commentary exploring the intersection of algorithms, artificial intelligence, and democratic theory.
                 </p>
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <img src="images/machine_liberalism_header.png" alt="Machine Liberalism - Retro Sci-Fi Art"
-                        style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-height: 400px; width: auto;">
+
+                <div class="blog-banner">
+                    <img src="images/machine_liberalism_header.png" alt="Machine Liberalism Banner">
+                </div>
+            </section>
+
+            <div class="blog-controls">
+                <div class="blog-search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="blog-search-input" placeholder="Search dispatches, keywords, or topics..." aria-label="Search blog posts">
                 </div>
 
-                <div class="blog-list">
-                    <!-- Example Post Entry -->
-                    <!-- 
-                    <article class="blog-post-item">
-                        <span class="blog-date">January 20, 2026</span>
-                        <h2 class="blog-title"><a href="posts/example-post.html">Welcome to Machine Liberalism</a></h2>
-                        <p class="blog-excerpt">
-                            This is the start of a new digital garden exploring the themes of my upcoming book. We'll be discussing how AI is reshaping our political expectations...
-                        </p>
-                        <a href="posts/example-post.html" class="read-more">Read Article →</a>
+                <a href="publish.html" class="blog-action-btn">
+                    <span>✍️</span>
+                    <span>Upload / New Post</span>
+                </a>
+
+                <div class="blog-tag-filters" id="tag-filters">
+                    <button type="button" class="tag-filter-btn active" data-tag="all">All Topics</button>
+                    <button type="button" class="tag-filter-btn" data-tag="Machine Liberalism">Machine Liberalism</button>
+                    <button type="button" class="tag-filter-btn" data-tag="Algorithmic Politics">Algorithmic Politics</button>
+                    <button type="button" class="tag-filter-btn" data-tag="Digital Garden">Digital Garden</button>
+                    <button type="button" class="tag-filter-btn" data-tag="Civic AI">Civic AI</button>
+                </div>
+            </div>
+
+            <div class="blog-list" id="blog-posts-container">
+<!-- BLOG_POSTS_START -->
+                    <article class="blog-card" data-tags="Machine Liberalism,Algorithmic Politics">
+                        <div class="blog-card-meta">
+                            <span class="meta-date">September 29, 2026</span>
+                            <span class="meta-dot">•</span>
+                            <span>1 min read</span>
+                        </div>
+                        <h2 class="blog-card-title"><a href="posts/2026-09-29-the-architecture-of-algorithmic-discretion.html" style="color:inherit;text-decoration:none;">The Architecture of Algorithmic Discretion</a></h2>
+                        <p class="blog-card-excerpt">When public sector agencies adopt automated decisionmaking systems, discretion does not disappear; it migrates. Rather than frontline caseworkers exercising professional judgment...</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Machine Liberalism</span><span class="blog-tag">Algorithmic Politics</span>
+                            </div>
+                            <a href="posts/2026-09-29-the-architecture-of-algorithmic-discretion.html" class="read-link">Read Dispatch →</a>
+                        </div>
                     </article>
-                    -->
 
-                    <div
-                        style="text-align: center; padding: 3rem; background-color: var(--bg-color); border-radius: 8px;">
-                        <p>Total entries: 0</p>
-                        <p style="color: var(--secondary-color);">Check back soon for the first entry in the Machine
-                            Liberalism logs.</p>
-                    </div>
-
-                </div>
+                    <article class="blog-card" data-tags="Machine Liberalism,Algorithmic Politics,Digital Garden">
+                        <div class="blog-card-meta">
+                            <span class="meta-date">September 29, 2026</span>
+                            <span class="meta-dot">•</span>
+                            <span>2 min read</span>
+                        </div>
+                        <h2 class="blog-card-title"><a href="posts/2026-09-29-welcome-to-machine-liberalism-notes-from-the-algorithmic-frontier.html" style="color:inherit;text-decoration:none;">Welcome to Machine Liberalism: Notes from the Algorithmic Frontier</a></h2>
+                        <p class="blog-card-excerpt">Launching this digital notebook to explore how algorithmic scoring, predictive architectures, and AI systems are restructuring classical liberal democratic expectations.</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-tags">
+                                <span class="blog-tag">Machine Liberalism</span><span class="blog-tag">Algorithmic Politics</span><span class="blog-tag">Digital Garden</span>
+                            </div>
+                            <a href="posts/2026-09-29-welcome-to-machine-liberalism-notes-from-the-algorithmic-frontier.html" class="read-link">Read Dispatch →</a>
+                        </div>
+                    </article>
+                    <!-- BLOG_POSTS_END -->
             </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>© 2025 Jose Marichal. All rights reserved.</p>
+            <p>© 2026 José Marichal. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Interactive Live Search & Tag Filtering
+        (function() {
+            let postsData = [];
+            const container = document.getElementById('blog-posts-container');
+            const searchInput = document.getElementById('blog-search-input');
+            const tagButtons = document.querySelectorAll('.tag-filter-btn');
+            let activeTag = 'all';
+
+            function renderCards(posts) {
+                if (!posts || posts.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 3rem; background-color: var(--surface-color); border-radius: 8px; border: 1px solid var(--border-color);">
+                            <p style="font-size: 1.1rem; color: var(--text-heading); margin-bottom: 0.5rem;">No dispatches match your filter.</p>
+                            <p style="color: var(--text-main); font-size: 0.95rem;">Try a different keyword or reset tags.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = posts.map(p => {
+                    const tagsHtml = (p.tags || []).map(t => `<span class="blog-tag">${escapeHtml(t)}</span>`).join('');
+                    return `
+                        <article class="blog-card" data-tags="${(p.tags || []).join(',')}">
+                            <div class="blog-card-meta">
+                                <span class="meta-date">${escapeHtml(p.displayDate || p.date)}</span>
+                                <span class="meta-dot">•</span>
+                                <span>${escapeHtml(p.readTime || '3 min read')}</span>
+                            </div>
+                            <h2 class="blog-card-title"><a href="${escapeHtml(p.url)}" style="color:inherit;text-decoration:none;">${escapeHtml(p.title)}</a></h2>
+                            <p class="blog-card-excerpt">${escapeHtml(p.excerpt || '')}</p>
+                            <div class="blog-card-footer">
+                                <div class="blog-tags">
+                                    ${tagsHtml}
+                                </div>
+                                <a href="${escapeHtml(p.url)}" class="read-link">Read Dispatch →</a>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            }
+
+            function filterPosts() {
+                const query = (searchInput.value || '').toLowerCase().trim();
+                const filtered = postsData.filter(p => {
+                    const matchesQuery = !query || 
+                        (p.title && p.title.toLowerCase().includes(query)) ||
+                        (p.excerpt && p.excerpt.toLowerCase().includes(query)) ||
+                        ((p.tags || []).some(t => t.toLowerCase().includes(query)));
+                    
+                    const matchesTag = activeTag === 'all' || 
+                        ((p.tags || []).some(t => t.toLowerCase() === activeTag.toLowerCase()));
+
+                    return matchesQuery && matchesTag;
+                });
+                renderCards(filtered);
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            // Fetch dynamic posts.json
+            fetch('posts/posts.json?v=' + Date.now())
+                .then(r => {
+                    if (!r.ok) throw new Error('Network response not ok');
+                    return r.json();
+                })
+                .then(data => {
+                    if (Array.isArray(data) && data.length > 0) {
+                        postsData = data;
+                        renderCards(postsData);
+                    }
+                })
+                .catch(err => {
+                    console.log('Using static pre-rendered cards fallback.', err);
+                });
+
+            // Search event
+            if (searchInput) {
+                searchInput.addEventListener('input', filterPosts);
+            }
+
+            // Tag filter click
+            tagButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tagButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    activeTag = this.getAttribute('data-tag');
+                    filterPosts();
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
