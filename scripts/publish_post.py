@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
 Blog Publishing Engine for josemarichal.github.io
-Converts plain text or Markdown files into beautifully styled static blog posts,
+Converts plain text or Markdown files/text into beautifully styled static blog posts,
 updates posts/posts.json, and synchronizes blog.html.
 
 Usage:
-    python scripts/publish_post.py path/to/file.txt
-    python scripts/publish_post.py path/to/file.md --title "Custom Title" --tags "AI,Democracy"
-    python scripts/publish_post.py --all-drafts
-    python scripts/publish_post.py --push
+    python publish_post.py path/to/file.txt
+    python publish_post.py --clipboard --push      # Publishes whatever is in your clipboard!
+    python publish_post.py --paste --push          # Lets you paste text directly in terminal
+    python publish_post.py --server                # Opens browser studio with 1-click publishing
+    python publish_post.py --all-drafts --push
 """
 
 import os
@@ -52,7 +53,6 @@ def parse_frontmatter(content):
             if isinstance(parsed, dict):
                 metadata = parsed
         except Exception:
-            # Simple line-by-line fallback parser
             for line in raw_yaml.splitlines():
                 if ":" in line:
                     key, val = line.split(":", 1)
@@ -126,7 +126,6 @@ def markdown_to_html(md_text):
                 if in_list:
                     html_lines.append("</ul>")
                     in_list = False
-                # Format bold and italics
                 p = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", line)
                 p = re.sub(r"\*(.*?)\*", r"<em>\1</em>", p)
                 p = re.sub(r"\[(.*?)\]\((.*?)\)", r'<a href="\2">\1</a>', p)
@@ -173,7 +172,6 @@ def load_posts_metadata():
 
 
 def save_posts_metadata(posts):
-    # Sort posts by date descending
     posts.sort(key=lambda x: x.get("date", ""), reverse=True)
     with open(POSTS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(posts, f, indent=2, ensure_ascii=False)
@@ -270,7 +268,6 @@ def update_blog_html(posts):
     with open(BLOG_HTML_PATH, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # Build post cards
     cards_html = []
     for post in posts:
         tags_markup = "".join([f'<span class="blog-tag">{t}</span>' for t in post.get("tags", [])])
@@ -296,12 +293,10 @@ def update_blog_html(posts):
                         <p style="color: var(--text-main);">Check back soon for upcoming field notes.</p>
                     </div>"""
 
-    # Replace within blog-list container
     container_pattern = r'(<!-- BLOG_POSTS_START -->)(.*?)(<!-- BLOG_POSTS_END -->)'
     if re.search(container_pattern, html, re.DOTALL):
         html = re.sub(container_pattern, f'\\1\n{rendered_cards}\n                    \\3', html, flags=re.DOTALL)
     else:
-        # Fallback to replacing inside .blog-list
         list_pattern = r'(<div class="blog-list"[^>]*>)(.*?)(</div>\s*</div>\s*</div>\s*</main>)'
         if re.search(list_pattern, html, re.DOTALL):
             html = re.sub(
@@ -315,11 +310,8 @@ def update_blog_html(posts):
         f.write(html)
 
 
-def process_file(filepath, title=None, tags=None, date_override=None):
-    """Parses a text or markdown file and produces a blog post."""
-    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
-        raw_content = f.read()
-
+def process_raw_text(raw_content, title=None, tags=None, date_override=None, excerpt_override=None, filename_hint="post"):
+    """Core logic to transform any raw text or markdown into a published blog post."""
     metadata, body = parse_frontmatter(raw_content)
 
     # Resolve Title
@@ -340,7 +332,10 @@ def process_file(filepath, title=None, tags=None, date_override=None):
             lines.pop(0)
             body = "\n".join(lines).strip()
         else:
-            post_title = os.path.splitext(os.path.basename(filepath))[0].replace("_", " ").replace("-", " ").title()
+            post_title = filename_hint.replace("_", " ").replace("-", " ").title()
+
+    if not post_title:
+        post_title = "Untitled Dispatch"
 
     # Resolve Date
     raw_date = date_override or metadata.get("date")
@@ -373,7 +368,7 @@ def process_file(filepath, title=None, tags=None, date_override=None):
         post_tags = ["Machine Liberalism", "Algorithmic Politics"]
 
     # Resolve Excerpt
-    excerpt = metadata.get("excerpt")
+    excerpt = excerpt_override or metadata.get("excerpt")
     if not excerpt:
         excerpt = clean_text_for_excerpt(body, 180)
 
@@ -431,6 +426,36 @@ def process_file(filepath, title=None, tags=None, date_override=None):
     return post_file_path, new_entry
 
 
+def process_file(filepath, title=None, tags=None, date_override=None):
+    """Parses a file and produces a blog post."""
+    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
+        raw_content = f.read()
+    hint = os.path.splitext(os.path.basename(filepath))[0]
+    return process_raw_text(raw_content, title=title, tags=tags, date_override=date_override, filename_hint=hint)
+
+
+def get_clipboard_text():
+    """Retrieve text from OS clipboard."""
+    try:
+        res = subprocess.run(
+            ["powershell", "-NoProfile", "-Command", "Get-Clipboard"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        return res.stdout.strip()
+    except Exception:
+        pass
+    try:
+        import tkinter as tk
+        root = tk.Tk()
+        root.withdraw()
+        return root.clipboard_get().strip()
+    except Exception:
+        pass
+    return ""
+
+
 def process_all_drafts():
     """Scans blog_drafts/ and processes all pending .txt and .md files."""
     files = [
@@ -449,7 +474,6 @@ def process_all_drafts():
         try:
             post_path, entry = process_file(filepath)
             processed.append(entry)
-            # Move to published folder
             dest_path = os.path.join(PUBLISHED_DRAFTS_DIR, filename)
             shutil.move(filepath, dest_path)
             print(f"Moved {filename} to blog_drafts/published/")
@@ -471,16 +495,123 @@ def git_commit_and_push(commit_msg="Publish new blog post"):
         print(f"Git push failed: {e}", file=sys.stderr)
 
 
+def start_local_server(port=8080):
+    """Launches a local publisher server so publish.html can directly publish and push with 1 click."""
+    import http.server
+    import webbrowser
+
+    class PublishHandler(http.server.SimpleHTTPRequestHandler):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, directory=ROOT_DIR, **kwargs)
+
+        def do_POST(self):
+            if self.path == "/api/publish":
+                length = int(self.headers.get("Content-Length", 0))
+                body_bytes = self.rfile.read(length)
+                try:
+                    data = json.loads(body_bytes.decode("utf-8"))
+                    text = data.get("content", "")
+                    title = data.get("title") or None
+                    tags = data.get("tags") or None
+                    date_val = data.get("date") or None
+                    excerpt_val = data.get("excerpt") or None
+                    do_push = data.get("push", True)
+
+                    post_path, entry = process_raw_text(
+                        text,
+                        title=title,
+                        tags=tags,
+                        date_override=date_val,
+                        excerpt_override=excerpt_val,
+                        filename_hint="post"
+                    )
+
+                    if do_push:
+                        git_commit_and_push(f"Publish blog post: {entry.get('title')}")
+
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({
+                        "status": "success",
+                        "post": entry,
+                        "url": entry.get("url")
+                    }).encode("utf-8"))
+                except Exception as e:
+                    self.send_response(500)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode("utf-8"))
+            else:
+                self.send_response(404)
+                self.end_headers()
+
+    server = http.server.HTTPServer(("127.0.0.1", port), PublishHandler)
+    url = f"http://localhost:{port}/publish.html"
+    print(f"\n=======================================================")
+    print(f"🚀 Publishing Studio running at: {url}")
+    print(f"Paste text into the browser and click Publish to deploy!")
+    print(f"Press Ctrl+C to stop the server.")
+    print(f"=======================================================\n")
+    try:
+        webbrowser.open(url)
+    except Exception:
+        pass
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nStopping server...")
+        server.server_close()
+
+
 def main():
     parser = argparse.ArgumentParser(description="Blog publishing tool for josemarichal.github.io")
     parser.add_argument("file", nargs="?", help="Path to text or markdown draft file")
     parser.add_argument("--all-drafts", action="store_true", help="Process all files in blog_drafts/")
+    parser.add_argument("--clipboard", "-c", action="store_true", help="Publish text currently in your clipboard")
+    parser.add_argument("--paste", "-p", action="store_true", help="Paste text interactively in the terminal")
+    parser.add_argument("--server", "-s", action="store_true", help="Launch local browser studio on http://localhost:8080")
+    parser.add_argument("--port", type=int, default=8080, help="Port for local server (default: 8080)")
     parser.add_argument("--title", help="Explicit post title")
     parser.add_argument("--tags", help="Comma-separated tags")
     parser.add_argument("--date", help="Date in YYYY-MM-DD format")
     parser.add_argument("--push", action="store_true", help="Commit and push changes to GitHub Pages")
 
     args = parser.parse_args()
+
+    if args.server:
+        start_local_server(args.port)
+        return
+
+    if args.clipboard:
+        clip_text = get_clipboard_text()
+        if not clip_text:
+            print("Error: Clipboard is empty.", file=sys.stderr)
+            sys.exit(1)
+        print(f"Found {len(clip_text)} characters in clipboard.")
+        post_path, entry = process_raw_text(clip_text, title=args.title, tags=args.tags, date_override=args.date)
+        if args.push:
+            git_commit_and_push(f"Publish blog post: {entry.get('title')}")
+        else:
+            choice = input(f"Commit and push '{entry.get('title')}' to GitHub Pages? [Y/n]: ").strip().lower()
+            if choice in ("", "y", "yes"):
+                git_commit_and_push(f"Publish blog post: {entry.get('title')}")
+        return
+
+    if args.paste:
+        print("Paste your text below. When done, press Enter, then Ctrl+Z (Windows) or Ctrl+D (Mac/Linux) and Enter:")
+        lines = sys.stdin.read()
+        if not lines.strip():
+            print("No text received.")
+            sys.exit(1)
+        post_path, entry = process_raw_text(lines, title=args.title, tags=args.tags, date_override=args.date)
+        if args.push:
+            git_commit_and_push(f"Publish blog post: {entry.get('title')}")
+        else:
+            choice = input(f"Commit and push '{entry.get('title')}' to GitHub Pages? [Y/n]: ").strip().lower()
+            if choice in ("", "y", "yes"):
+                git_commit_and_push(f"Publish blog post: {entry.get('title')}")
+        return
 
     if args.all_drafts:
         processed = process_all_drafts()
@@ -496,25 +627,30 @@ def main():
     else:
         # Interactive mode or check drafts
         print("=== José Marichal Blog Publisher ===")
-        drafts = [
-            f for f in os.listdir(DRAFTS_DIR)
-            if os.path.isfile(os.path.join(DRAFTS_DIR, f)) and f.lower().endswith((".txt", ".md", ".markdown"))
-        ]
-        if drafts:
-            print(f"Found {len(drafts)} pending draft(s) in blog_drafts/: {', '.join(drafts)}")
-            choice = input("Do you want to process all drafts? [Y/n]: ").strip().lower()
+        print("Options:")
+        print("  1. Process clipboard content:  python publish_post.py --clipboard --push")
+        print("  2. Open browser studio:        python publish_post.py --server")
+        print("  3. Process a file:             python publish_post.py <path> --push")
+        print("  4. Process all drafts:         python publish_post.py --all-drafts --push\n")
+
+        clip_text = get_clipboard_text()
+        if clip_text:
+            first_line = clip_text.splitlines()[0][:60] if clip_text.splitlines() else "content"
+            print(f"Clipboard preview: \"{first_line}...\" ({len(clip_text)} chars)")
+            choice = input("Do you want to publish the text currently in your clipboard? [Y/n]: ").strip().lower()
             if choice in ("", "y", "yes"):
-                process_all_drafts()
+                post_path, entry = process_raw_text(clip_text)
+                choice_push = input(f"Push '{entry.get('title')}' to GitHub Pages? [Y/n]: ").strip().lower()
+                if choice_push in ("", "y", "yes"):
+                    git_commit_and_push(f"Publish blog post: {entry.get('title')}")
                 return
 
-        file_input = input("Enter path to draft text or markdown file: ").strip().strip("'\"")
+        file_input = input("Enter path to draft text or markdown file (or press Enter to cancel): ").strip().strip("'\"")
         if file_input and os.path.exists(file_input):
             post_path, entry = process_file(file_input)
             choice = input("Commit and push to GitHub Pages now? [Y/n]: ").strip().lower()
             if choice in ("", "y", "yes"):
                 git_commit_and_push(f"Publish blog post: {entry.get('title')}")
-        else:
-            print("No file specified. Use --help for options.")
 
 
 if __name__ == "__main__":
