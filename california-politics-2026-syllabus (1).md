@@ -229,6 +229,7 @@ COURSE SCHEDULE
 
 **Wed, Sep. 30**
 * *Catch Up Day*
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vTEM0mLsrms3o8arkuQzjt0HHn4C_JAHvh3qIIARWVwuQMaM3chy3JLjOqJc2Aku8uX7ai9wF5ucMnN/pub?start=false&loop=false&delayms=3000)
 
 **Fri, Oct. 2**
 * **Required:**
