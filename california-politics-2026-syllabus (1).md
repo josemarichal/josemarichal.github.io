@@ -247,11 +247,7 @@ COURSE SCHEDULE
 * **Midterm Examination**
 
 **Wed, Oct. 7**
-* **Required:**
-  * **Assigned Reading:** *[OSU OER, Chapter 8 ("Executives")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-8/)*
-  * **Assigned Video:** *[Rewiring Democracy: How AI Will Transform Our Politics, Government, and Citizenship](https://www.youtube.com/watch?v=gy-w4C6vfOc)*
-* **Case Study:** Economy & Labor
-* ***Discussion Prompt:** How can the Governor and local executives utilize their power to compel reluctant municipalities to meet their Regional Housing Needs Allocation (RHNA) targets?*
+* **Assigned Video:** *[Rewiring Democracy: How AI Will Transform Our Politics, Government, and Citizenship](https://www.youtube.com/watch?v=gy-w4C6vfOc)*
 
 **Fri, Oct. 9**
 * *No Class - Fall Holiday*
