@@ -1,0 +1,238 @@
+{
+  "video_id": "FUlwNDEP5ME",
+  "title": "COSCA Board Meeting - September 16, 2026",
+  "body_name": "Conejo Open Space Conservation Agency (COSCA)",
+  "meeting_date": "2026-09-17",
+  "display_date": "September 17, 2026",
+  "url": "https://www.youtube.com/watch?v=FUlwNDEP5ME",
+  "duration_str": "01:02:31",
+  "roll_call": [
+    {
+      "name": "David Newman",
+      "short_name": "Newman",
+      "status": "Present"
+    },
+    {
+      "name": "Nichols",
+      "short_name": "Nichols",
+      "status": "Present"
+    },
+    {
+      "name": "Huffer",
+      "short_name": "Huffer",
+      "status": "Present"
+    },
+    {
+      "name": "Sullivan",
+      "short_name": "Sullivan",
+      "status": "Present"
+    }
+  ],
+  "agenda_items": [
+    {
+      "type": "Development / Project",
+      "identifier": "Conejo Open Space Foundation",
+      "title": "Conejo Open Space Native Plant Palooza & Eco Fest",
+      "timestamp": "12:48",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=768s",
+      "context": "? Yes, we have one card. Elaine Hagan. Good evening. Elaine. Yes, I'm Elaine Hagan. I represent the Conejo Open Space Foundation, and I'm here to talk briefly about native plant palooza and Eco Fest. You all have cards that I delivered and we hope to see you all there. This is the fifth year that we've had this event. It is coming on October 10th, and it'll run for from 10:00 to 1:00 at Conejo Creek North. And we this year, it's going to be bigger and better than ever. We have at least 35 exhibi",
+      "status": "Public Hearing / Review"
+    },
+    {
+      "type": "Development / Project",
+      "identifier": "Conejo Creek North",
+      "title": "Conejo Creek North Regional Park",
+      "timestamp": "13:11",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=791s",
+      "context": "ar that we've had this event. It is coming on October 10th, and it'll run for from 10:00 to 1:00 at Conejo Creek North. And we this year, it's going to be bigger and better than ever. We have at least 35 exhibitors, including the Ojai Raptor Center and lots of native plant vendors and exhibitors. So something for everyone. Lots of events for kids, lots of things for adults to learn about. So please come and tell all your friends and for details, you can look at Conejo Open Space Foundation websi",
+      "status": "Public Hearing / Review"
+    },
+    {
+      "type": "Public Comment",
+      "identifier": "Speaker: Public Commenter",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "12:32",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=752s",
+      "context": "llivan. Here, chair. Newman. Here. Do we have any public comments this evening? Yes, we have one card. Elaine Hagan. Good evening. Elaine. Yes, I'm Elaine Hagan. I represent the Conejo Open Space Foundation, and I'm here to talk briefly about native plant palooza and Eco Fest. You all have cards that I delivered and we hope to see you all there. This is the fifth year that we've had this event. It",
+      "status": "Received"
+    },
+    {
+      "type": "Public Comment",
+      "identifier": "Speaker: Elaine Hagan",
+      "title": "Public Testimony by Elaine Hagan",
+      "timestamp": "12:37",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=757s",
+      "context": "lic comments this evening? Yes, we have one card. Elaine Hagan. Good evening. Elaine. Yes, I'm Elaine Hagan. I represent the Conejo Open Space Foundation, and I'm here to talk briefly about native plant palooza and Eco Fest. You all have cards that I delivered and we hope to see you all there. This is the fifth year that we've had this event. It is coming on October 10th, and it'll run for from 10",
+      "status": "Received"
+    },
+    {
+      "type": "Public Comment",
+      "identifier": "Speaker: Elaine Hagan",
+      "title": "Public Testimony by Elaine Hagan",
+      "timestamp": "12:47",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=767s",
+      "context": "ard. Elaine Hagan. Good evening. Elaine. Yes, I'm Elaine Hagan. I represent the Conejo Open Space Foundation, and I'm here to talk briefly about native plant palooza and Eco Fest. You all have cards that I delivered and we hope to see you all there. This is the fifth year that we've had this event. It is coming on October 10th, and it'll run for from 10:00 to 1:00 at Conejo Creek North. And we thi",
+      "status": "Received"
+    }
+  ],
+  "votes": [],
+  "executive_summary": "The Conejo Open Space Conservation Agency (COSCA) convened on September 17, 2026 to address municipal governance items. Key actions centered on **Conejo Open Space Native Plant Palooza & Eco Fest** (introduced at 12:48), **Conejo Creek North Regional Park** (introduced at 13:11), **Public Testimony by Public Commenter** (introduced at 12:32). The full recording spans 01:02:31 with complete timestamped remarks accessible via CTO Meetings.",
+  "graph_elements": {
+    "nodes": [
+      {
+        "id": "meeting_FUlwNDEP5ME",
+        "label": "Conejo Open Space Conservation Agency (COSCA) (2026-09-17)",
+        "type": "meeting",
+        "date": "2026-09-17",
+        "url": "https://www.youtube.com/watch?v=FUlwNDEP5ME",
+        "body": "Conejo Open Space Conservation Agency (COSCA)"
+      },
+      {
+        "id": "official_david_newman",
+        "label": "David Newman",
+        "type": "official",
+        "status": "Present",
+        "role": "Councilmember"
+      },
+      {
+        "id": "official_nichols",
+        "label": "Nichols",
+        "type": "official",
+        "status": "Present",
+        "role": "Elected Official"
+      },
+      {
+        "id": "official_huffer",
+        "label": "Huffer",
+        "type": "official",
+        "status": "Present",
+        "role": "Elected Official"
+      },
+      {
+        "id": "official_sullivan",
+        "label": "Sullivan",
+        "type": "official",
+        "status": "Present",
+        "role": "Elected Official"
+      },
+      {
+        "id": "item_FUlwNDEP5ME_0",
+        "label": "Conejo Open Space Foundation",
+        "type": "agenda_item",
+        "item_type": "Development / Project",
+        "title": "Conejo Open Space Native Plant Palooza & Eco Fest",
+        "timestamp": "12:48",
+        "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=768s",
+        "status": "Public Hearing / Review"
+      },
+      {
+        "id": "org_cosf",
+        "label": "Conejo Open Space Foundation",
+        "type": "organization",
+        "subtype": "Non-Profit / Conservation"
+      },
+      {
+        "id": "item_FUlwNDEP5ME_1",
+        "label": "Conejo Creek North",
+        "type": "agenda_item",
+        "item_type": "Development / Project",
+        "title": "Conejo Creek North Regional Park",
+        "timestamp": "13:11",
+        "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=791s",
+        "status": "Public Hearing / Review"
+      },
+      {
+        "id": "item_FUlwNDEP5ME_2",
+        "label": "Speaker: Public Commenter",
+        "type": "agenda_item",
+        "item_type": "Public Comment",
+        "title": "Public Testimony by Public Commenter",
+        "timestamp": "12:32",
+        "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=752s",
+        "status": "Received"
+      },
+      {
+        "id": "item_FUlwNDEP5ME_3",
+        "label": "Speaker: Elaine Hagan",
+        "type": "agenda_item",
+        "item_type": "Public Comment",
+        "title": "Public Testimony by Elaine Hagan",
+        "timestamp": "12:37",
+        "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=757s",
+        "status": "Received"
+      },
+      {
+        "id": "item_FUlwNDEP5ME_4",
+        "label": "Speaker: Elaine Hagan",
+        "type": "agenda_item",
+        "item_type": "Public Comment",
+        "title": "Public Testimony by Elaine Hagan",
+        "timestamp": "12:47",
+        "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=767s",
+        "status": "Received"
+      }
+    ],
+    "edges": [
+      {
+        "source": "official_david_newman",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "official_nichols",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "official_huffer",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "official_sullivan",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_0",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "HEARD_IN",
+        "label": "12:48"
+      },
+      {
+        "source": "org_cosf",
+        "target": "item_FUlwNDEP5ME_0",
+        "relation": "ADVOCATE",
+        "label": "Community Partner"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_1",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "HEARD_IN",
+        "label": "13:11"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_2",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "HEARD_IN",
+        "label": "12:32"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_3",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "HEARD_IN",
+        "label": "12:37"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_4",
+        "target": "meeting_FUlwNDEP5ME",
+        "relation": "HEARD_IN",
+        "label": "12:47"
+      }
+    ]
+  }
+}

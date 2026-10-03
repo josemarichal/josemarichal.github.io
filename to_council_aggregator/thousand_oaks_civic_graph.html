@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thousand Oaks Civic Knowledge Graph &amp; Meeting Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: #131b2e;
+      --bg-card-hover: #1c2742;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.25);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-purple: #a855f7;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-indigo: #6366f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(19, 27, 46, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .badge-live {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--accent-emerald);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .badge-live::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .source-sub {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.3rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 7px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-cyan);
+      color: #090d16;
+    }
+
+    .app-body {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 72px);
+      position: relative;
+    }
+
+    #view-graph {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    #network-container {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #151e36 0%, #090d16 100%);
+    }
+
+    .graph-controls {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 10;
+      background: rgba(19, 27, 46, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 290px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-input {
+      width: 100%;
+      background: #090d16;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .legend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .inspector-panel {
+      width: 420px;
+      background: var(--bg-card);
+      border-left: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+      padding: 1.5rem;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .inspector-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .node-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .badge-official { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
+    .badge-meeting { background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+    .badge-agenda_item { background: rgba(99, 102, 241, 0.2); color: var(--accent-indigo); border: 1px solid var(--accent-indigo); }
+    .badge-organization { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); border: 1px solid var(--accent-amber); }
+
+    .dossier-card {
+      background: rgba(9, 13, 22, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .dossier-card h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .relations-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .rel-item {
+      background: var(--bg-card-hover);
+      padding: 0.65rem 0.85rem;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+    }
+
+    .rel-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #dc2626;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.55rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+      transition: background 0.2s;
+    }
+
+    .yt-btn:hover {
+      background: #b91c1c;
+    }
+
+    #view-briefings {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+      padding: 2.5rem;
+      background: var(--bg-dark);
+    }
+
+    .briefings-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .briefing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .briefing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .briefing-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 0.35rem;
+    }
+
+    .item-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .item-chip a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <h1>Thousand Oaks Civic Graph</h1>
+          <span class="badge-live">Live Feed: @ctomeetings</span>
+        </div>
+        <div class="source-sub">Automated Municipal Intelligence &bull; City Council, Planning Commission, COSCA</div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('graph')">&#127760; Interactive Knowledge Graph</button>
+      <button class="tab-btn" onclick="switchTab('briefings')">&#128240; Meeting Briefings &amp; News</button>
+    </div>
+  </header>
+
+  <div class="app-body">
+    <!-- GRAPH VIEW -->
+    <div id="view-graph">
+      <div id="network-container">
+        <div class="graph-controls">
+          <input type="text" id="nodeSearch" class="search-input" placeholder="&#128269; Search official, project, developer..." oninput="handleSearch(this.value)">
+          <div class="legend-list">
+            <div class="legend-item" onclick="filterType('all')">
+              <span class="legend-color" style="background: white;"></span> Show All (40 Nodes)
+            </div>
+            <div class="legend-item" onclick="filterType('official')">
+              <span class="legend-color" style="background: var(--accent-emerald);"></span> Officials &amp; Staff
+            </div>
+            <div class="legend-item" onclick="filterType('agenda_item')">
+              <span class="legend-color" style="background: var(--accent-indigo);"></span> Ordinances &amp; Projects
+            </div>
+            <div class="legend-item" onclick="filterType('organization')">
+              <span class="legend-color" style="background: var(--accent-amber);"></span> Organizations &amp; Applicants
+            </div>
+            <div class="legend-item" onclick="filterType('meeting')">
+              <span class="legend-color" style="background: var(--accent-cyan);"></span> Council &amp; Commission Meetings
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR INSPECTOR -->
+      <div class="inspector-panel" id="inspector">
+        <div id="empty-state" style="text-align: center; color: var(--text-muted); margin-top: 4rem;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">&#127963;&#65039;</div>
+          <h3>Select a Civic Entity</h3>
+          <p style="font-size: 0.85rem; margin-top: 0.5rem; line-height: 1.5;">Click on any Councilmember, Ordinance, Meeting, or Developer node in the graph to view voting dossiers, relations, and exact video jump points.</p>
+        </div>
+
+        <div id="dossier-content" style="display: none;">
+          <div id="dossier-badge" class="node-badge"></div>
+          <h2 id="dossier-title" class="inspector-title"></h2>
+          <div id="dossier-sub" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;"></div>
+
+          <div class="dossier-card">
+            <h4>Primary Dossier</h4>
+            <div id="dossier-attributes" style="font-size: 0.85rem; line-height: 1.6;"></div>
+            <div id="dossier-action-btn"></div>
+          </div>
+
+          <div class="dossier-card">
+            <h4 id="relations-heading">Connected Entities &amp; Actions</h4>
+            <div class="relations-list" id="dossier-relations"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRIEFINGS VIEW -->
+    <div id="view-briefings">
+      <div class="briefings-grid">
+        <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">Recent Municipal Briefings</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Synthesized summaries and timestamped roll calls extracted directly from the City of Thousand Oaks YouTube broadcasts.</p>
+
+        
+        <div class="briefing-card">
+          <div class="briefing-header">
+            <div>
+              <div class="briefing-title">Thousand Oaks City Council Meeting - September 29, 2026</div>
+              <div style="color: var(--text-muted); font-size: 0.85rem;">&#128197; September 30, 2026 &bull; &#9201; 02:28:00 &bull; Thousand Oaks City Council</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE" target="_blank" class="yt-btn" style="margin-top: 0;">&#9654; Watch Broadcast</a>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1;">
+            The Thousand Oaks City Council convened on September 30, 2026 to address municipal governance items. Key actions centered on **Ordinance Number 1750-Ns: Municipal Code Amendment** (introduced at 01:59:42), **Amgen Life Science Campus & Specific Plan Amendment** (introduced at 02:25:07), **Hillcrest Homes Housing Development Agreement** (introduced at 02:25:14). Council recorded 2 formal vote actions, including a unanimous 5-0 vote. The full recording spans 02:28:00 with complete timestamped remarks accessible via CTO Meetings.
+          </div>
+
+          <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem;">Key Agenda Actions &amp; Timestamps</h4>
+          <div>
+            
+              <div class="item-chip">
+                <span>Ordinance 1750-NS: Ordinance Number 1750-Ns: Municipal Code Amendment</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=7182s" target="_blank">&#9201; 01:59:42</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Amgen Building 50: Amgen Life Science Campus & Specific Plan Amendment</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8707s" target="_blank">&#9201; 02:25:07</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Hillcrest Homes Dda: Hillcrest Homes Housing Development Agreement</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8714s" target="_blank">&#9201; 02:25:14</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>12 Canal: 12 Canal Boulevard Property Negotiations</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=840s" target="_blank">&#9201; 14:00</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5895s" target="_blank">&#9201; 01:38:15</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5898s" target="_blank">&#9201; 01:38:18</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5907s" target="_blank">&#9201; 01:38:27</a>
+              </div>
+            
+          </div>
+        </div>
+        
+        <div class="briefing-card">
+          <div class="briefing-header">
+            <div>
+              <div class="briefing-title">Planning Commission Meeting - September 28, 2026</div>
+              <div style="color: var(--text-muted); font-size: 0.85rem;">&#128197; September 29, 2026 &bull; &#9201; 01:48:33 &bull; Planning Commission</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=nJuS1nenvzA" target="_blank" class="yt-btn" style="margin-top: 0;">&#9654; Watch Broadcast</a>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1;">
+            The Planning Commission convened on September 29, 2026 to address municipal governance items. Key actions centered on **Hillcrest Homes Housing Development Agreement** (introduced at 01:45:43), **Public Testimony by Public Commenter** (introduced at 12:40), **Public Testimony by Public Commenter** (introduced at 12:59). The full recording spans 01:48:33 with complete timestamped remarks accessible via CTO Meetings.
+          </div>
+
+          <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem;">Key Agenda Actions &amp; Timestamps</h4>
+          <div>
+            
+              <div class="item-chip">
+                <span>Hillcrest Homes Dda: Hillcrest Homes Housing Development Agreement</span>
+                <a href="https://www.youtube.com/watch?v=nJuS1nenvzA&t=6343s" target="_blank">&#9201; 01:45:43</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=nJuS1nenvzA&t=760s" target="_blank">&#9201; 12:40</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=nJuS1nenvzA&t=779s" target="_blank">&#9201; 12:59</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=nJuS1nenvzA&t=780s" target="_blank">&#9201; 13:00</a>
+              </div>
+            
+          </div>
+        </div>
+        
+        <div class="briefing-card">
+          <div class="briefing-header">
+            <div>
+              <div class="briefing-title">COSCA Board Meeting - September 16, 2026</div>
+              <div style="color: var(--text-muted); font-size: 0.85rem;">&#128197; September 17, 2026 &bull; &#9201; 01:02:31 &bull; Conejo Open Space Conservation Agency (COSCA)</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=FUlwNDEP5ME" target="_blank" class="yt-btn" style="margin-top: 0;">&#9654; Watch Broadcast</a>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1;">
+            The Conejo Open Space Conservation Agency (COSCA) convened on September 17, 2026 to address municipal governance items. Key actions centered on **Conejo Open Space Native Plant Palooza & Eco Fest** (introduced at 12:48), **Conejo Creek North Regional Park** (introduced at 13:11), **Public Testimony by Public Commenter** (introduced at 12:32). The full recording spans 01:02:31 with complete timestamped remarks accessible via CTO Meetings.
+          </div>
+
+          <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem;">Key Agenda Actions &amp; Timestamps</h4>
+          <div>
+            
+              <div class="item-chip">
+                <span>Conejo Open Space Foundation: Conejo Open Space Native Plant Palooza & Eco Fest</span>
+                <a href="https://www.youtube.com/watch?v=FUlwNDEP5ME&t=768s" target="_blank">&#9201; 12:48</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Conejo Creek North: Conejo Creek North Regional Park</span>
+                <a href="https://www.youtube.com/watch?v=FUlwNDEP5ME&t=791s" target="_blank">&#9201; 13:11</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=FUlwNDEP5ME&t=752s" target="_blank">&#9201; 12:32</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Elaine Hagan: Public Testimony by Elaine Hagan</span>
+                <a href="https://www.youtube.com/watch?v=FUlwNDEP5ME&t=757s" target="_blank">&#9201; 12:37</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Elaine Hagan: Public Testimony by Elaine Hagan</span>
+                <a href="https://www.youtube.com/watch?v=FUlwNDEP5ME&t=767s" target="_blank">&#9201; 12:47</a>
+              </div>
+            
+          </div>
+        </div>
+        
+        <div class="briefing-card">
+          <div class="briefing-header">
+            <div>
+              <div class="briefing-title">Thousand Oaks City Council Meeting - September 15, 2026</div>
+              <div style="color: var(--text-muted); font-size: 0.85rem;">&#128197; September 16, 2026 &bull; &#9201; 02:31:34 &bull; Thousand Oaks City Council</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=N_t80T7Ttdw" target="_blank" class="yt-btn" style="margin-top: 0;">&#9654; Watch Broadcast</a>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1;">
+            The Thousand Oaks City Council convened on September 16, 2026 to address municipal governance items. Key actions centered on **Public Testimony by Public Commenter** (introduced at 58:24), **Public Testimony by Public Commenter** (introduced at 58:26), **Public Testimony by Public Commenter** (introduced at 58:32). The full recording spans 02:31:34 with complete timestamped remarks accessible via CTO Meetings.
+          </div>
+
+          <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem;">Key Agenda Actions &amp; Timestamps</h4>
+          <div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3504s" target="_blank">&#9201; 58:24</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3506s" target="_blank">&#9201; 58:26</a>
+              </div>
+            
+              <div class="item-chip">
+                <span>Speaker: Public Commenter: Public Testimony by Public Commenter</span>
+                <a href="https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3512s" target="_blank">&#9201; 58:32</a>
+              </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Raw graph data injected from Python
+    const graphData = {"meta": {"municipality": "Thousand Oaks, California", "source_channel": "https://www.youtube.com/@ctomeetings", "node_count": 40, "edge_count": 41}, "nodes": [{"id": "meeting_FUlwNDEP5ME", "label": "Conejo Open Space Conservation Agency (COSCA) (2026-09-17)", "type": "meeting", "date": "2026-09-17", "url": "https://www.youtube.com/watch?v=FUlwNDEP5ME", "body": "Conejo Open Space Conservation Agency (COSCA)", "centrality": 0.2308}, {"id": "official_david_newman", "label": "David Newman", "type": "official", "status": "Present", "role": "Councilmember", "centrality": 0.0769}, {"id": "official_nichols", "label": "Nichols", "type": "official", "status": "Present", "role": "Elected Official", "centrality": 0.0256}, {"id": "official_huffer", "label": "Huffer", "type": "official", "status": "Present", "role": "Elected Official", "centrality": 0.0256}, {"id": "official_sullivan", "label": "Sullivan", "type": "official", "status": "Present", "role": "Elected Official", "centrality": 0.0256}, {"id": "item_FUlwNDEP5ME_0", "label": "Conejo Open Space Foundation", "type": "agenda_item", "item_type": "Development / Project", "title": "Conejo Open Space Native Plant Palooza & Eco Fest", "timestamp": "12:48", "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=768s", "status": "Public Hearing / Review", "centrality": 0.0513}, {"id": "org_cosf", "label": "Conejo Open Space Foundation", "type": "organization", "subtype": "Non-Profit / Conservation", "centrality": 0.0256}, {"id": "item_FUlwNDEP5ME_1", "label": "Conejo Creek North", "type": "agenda_item", "item_type": "Development / Project", "title": "Conejo Creek North Regional Park", "timestamp": "13:11", "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=791s", "status": "Public Hearing / Review", "centrality": 0.0256}, {"id": "item_FUlwNDEP5ME_2", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "12:32", "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=752s", "status": "Received", "centrality": 0.0256}, {"id": "item_FUlwNDEP5ME_3", "label": "Speaker: Elaine Hagan", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Elaine Hagan", "timestamp": "12:37", "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=757s", "status": "Received", "centrality": 0.0256}, {"id": "item_FUlwNDEP5ME_4", "label": "Speaker: Elaine Hagan", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Elaine Hagan", "timestamp": "12:47", "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=767s", "status": "Received", "centrality": 0.0256}, {"id": "meeting_nJuS1nenvzA", "label": "Planning Commission (2026-09-29)", "type": "meeting", "date": "2026-09-29", "url": "https://www.youtube.com/watch?v=nJuS1nenvzA", "body": "Planning Commission", "centrality": 0.2308}, {"id": "official_farris", "label": "Farris", "type": "official", "status": "Absent", "role": "Elected Official", "centrality": 0.0256}, {"id": "official_lanson", "label": "Lanson", "type": "official", "status": "Absent", "role": "Elected Official", "centrality": 0.0256}, {"id": "official_mcmahon", "label": "McMahon", "type": "official", "status": "Absent", "role": "Elected Official", "centrality": 0.0256}, {"id": "official_busse", "label": "Busse", "type": "official", "status": "Absent", "role": "Elected Official", "centrality": 0.0256}, {"id": "official_kettelhut", "label": "Kettelhut", "type": "official", "status": "Absent", "role": "Elected Official", "centrality": 0.0256}, {"id": "item_nJuS1nenvzA_0", "label": "Hillcrest Homes Dda", "type": "agenda_item", "item_type": "Development / Project", "title": "Hillcrest Homes Housing Development Agreement", "timestamp": "01:45:43", "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=6343s", "status": "Public Hearing / Review", "centrality": 0.0513}, {"id": "org_hillcrest", "label": "Hillcrest Homes Developer", "type": "organization", "subtype": "Housing Developer", "centrality": 0.0513}, {"id": "item_nJuS1nenvzA_1", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "12:40", "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=760s", "status": "Received", "centrality": 0.0256}, {"id": "item_nJuS1nenvzA_2", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "12:59", "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=779s", "status": "Received", "centrality": 0.0256}, {"id": "item_nJuS1nenvzA_3", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "13:00", "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=780s", "status": "Received", "centrality": 0.0256}, {"id": "meeting_N_t80T7Ttdw", "label": "Thousand Oaks City Council (2026-09-16)", "type": "meeting", "date": "2026-09-16", "url": "https://www.youtube.com/watch?v=N_t80T7Ttdw", "body": "Thousand Oaks City Council", "centrality": 0.1795}, {"id": "official_mikey_taylor", "label": "Mikey Taylor", "type": "official", "status": "Present", "role": "Mayor / Councilmember", "centrality": 0.0513}, {"id": "official_bob_engler", "label": "Bob Engler", "type": "official", "status": "Present", "role": "Mayor Pro Tem / Councilmember", "centrality": 0.0256}, {"id": "official_al_adam", "label": "Al Adam", "type": "official", "status": "Present", "role": "Councilmember", "centrality": 0.0513}, {"id": "item_N_t80T7Ttdw_0", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "58:24", "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3504s", "status": "Received", "centrality": 0.0256}, {"id": "item_N_t80T7Ttdw_1", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "58:26", "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3506s", "status": "Received", "centrality": 0.0256}, {"id": "item_N_t80T7Ttdw_2", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "58:32", "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3512s", "status": "Received", "centrality": 0.0256}, {"id": "meeting_UcblgJ3lTIE", "label": "Thousand Oaks City Council (2026-09-30)", "type": "meeting", "date": "2026-09-30", "url": "https://www.youtube.com/watch?v=UcblgJ3lTIE", "body": "Thousand Oaks City Council", "centrality": 0.3077}, {"id": "official_kyle_gutierrez", "label": "Kyle Gutierrez", "type": "official", "status": "Present", "role": "Councilmember", "centrality": 0.0256}, {"id": "official_tracy_noonan", "label": "Tracy Noonan", "type": "official", "status": "Present", "role": "City Attorney", "centrality": 0.0256}, {"id": "item_UcblgJ3lTIE_0", "label": "Ordinance 1750-NS", "type": "agenda_item", "item_type": "Ordinance", "title": "Ordinance Number 1750-Ns: Municipal Code Amendment", "timestamp": "01:59:42", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=7182s", "status": "Action Taken", "centrality": 0.0256}, {"id": "item_UcblgJ3lTIE_1", "label": "Amgen Building 50", "type": "agenda_item", "item_type": "Development / Project", "title": "Amgen Life Science Campus & Specific Plan Amendment", "timestamp": "02:25:07", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8707s", "status": "Public Hearing / Review", "centrality": 0.0513}, {"id": "org_amgen", "label": "Amgen Inc.", "type": "organization", "subtype": "Corporate / Life Sciences", "centrality": 0.0256}, {"id": "item_UcblgJ3lTIE_2", "label": "Hillcrest Homes Dda", "type": "agenda_item", "item_type": "Development / Project", "title": "Hillcrest Homes Housing Development Agreement", "timestamp": "02:25:14", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8714s", "status": "Public Hearing / Review", "centrality": 0.0513}, {"id": "item_UcblgJ3lTIE_3", "label": "12 Canal", "type": "agenda_item", "item_type": "Development / Project", "title": "12 Canal Boulevard Property Negotiations", "timestamp": "14:00", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=840s", "status": "Public Hearing / Review", "centrality": 0.0256}, {"id": "item_UcblgJ3lTIE_4", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "01:38:15", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5895s", "status": "Received", "centrality": 0.0256}, {"id": "item_UcblgJ3lTIE_5", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "01:38:18", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5898s", "status": "Received", "centrality": 0.0256}, {"id": "item_UcblgJ3lTIE_6", "label": "Speaker: Public Commenter", "type": "agenda_item", "item_type": "Public Comment", "title": "Public Testimony by Public Commenter", "timestamp": "01:38:27", "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5907s", "status": "Received", "centrality": 0.0256}], "links": [{"source": "official_david_newman", "target": "meeting_FUlwNDEP5ME", "relation": "ATTENDED", "label": "Present"}, {"source": "official_david_newman", "target": "meeting_N_t80T7Ttdw", "relation": "ATTENDED", "label": "Present"}, {"source": "official_david_newman", "target": "meeting_UcblgJ3lTIE", "relation": "ATTENDED", "label": "Present"}, {"source": "official_nichols", "target": "meeting_FUlwNDEP5ME", "relation": "ATTENDED", "label": "Present"}, {"source": "official_huffer", "target": "meeting_FUlwNDEP5ME", "relation": "ATTENDED", "label": "Present"}, {"source": "official_sullivan", "target": "meeting_FUlwNDEP5ME", "relation": "ATTENDED", "label": "Present"}, {"source": "item_FUlwNDEP5ME_0", "target": "meeting_FUlwNDEP5ME", "relation": "HEARD_IN", "label": "12:48"}, {"source": "org_cosf", "target": "item_FUlwNDEP5ME_0", "relation": "ADVOCATE", "label": "Community Partner"}, {"source": "item_FUlwNDEP5ME_1", "target": "meeting_FUlwNDEP5ME", "relation": "HEARD_IN", "label": "13:11"}, {"source": "item_FUlwNDEP5ME_2", "target": "meeting_FUlwNDEP5ME", "relation": "HEARD_IN", "label": "12:32"}, {"source": "item_FUlwNDEP5ME_3", "target": "meeting_FUlwNDEP5ME", "relation": "HEARD_IN", "label": "12:37"}, {"source": "item_FUlwNDEP5ME_4", "target": "meeting_FUlwNDEP5ME", "relation": "HEARD_IN", "label": "12:47"}, {"source": "official_farris", "target": "meeting_nJuS1nenvzA", "relation": "ABSENT_FROM", "label": "Absent"}, {"source": "official_lanson", "target": "meeting_nJuS1nenvzA", "relation": "ABSENT_FROM", "label": "Absent"}, {"source": "official_mcmahon", "target": "meeting_nJuS1nenvzA", "relation": "ABSENT_FROM", "label": "Absent"}, {"source": "official_busse", "target": "meeting_nJuS1nenvzA", "relation": "ABSENT_FROM", "label": "Absent"}, {"source": "official_kettelhut", "target": "meeting_nJuS1nenvzA", "relation": "ABSENT_FROM", "label": "Absent"}, {"source": "item_nJuS1nenvzA_0", "target": "meeting_nJuS1nenvzA", "relation": "HEARD_IN", "label": "01:45:43"}, {"source": "org_hillcrest", "target": "item_nJuS1nenvzA_0", "relation": "APPLICANT", "label": "Developer Partner"}, {"source": "org_hillcrest", "target": "item_UcblgJ3lTIE_2", "relation": "APPLICANT", "label": "Developer Partner"}, {"source": "item_nJuS1nenvzA_1", "target": "meeting_nJuS1nenvzA", "relation": "HEARD_IN", "label": "12:40"}, {"source": "item_nJuS1nenvzA_2", "target": "meeting_nJuS1nenvzA", "relation": "HEARD_IN", "label": "12:59"}, {"source": "item_nJuS1nenvzA_3", "target": "meeting_nJuS1nenvzA", "relation": "HEARD_IN", "label": "13:00"}, {"source": "official_mikey_taylor", "target": "meeting_N_t80T7Ttdw", "relation": "ATTENDED", "label": "Present"}, {"source": "official_mikey_taylor", "target": "meeting_UcblgJ3lTIE", "relation": "ATTENDED", "label": "Present"}, {"source": "official_bob_engler", "target": "meeting_N_t80T7Ttdw", "relation": "ATTENDED", "label": "Present"}, {"source": "official_al_adam", "target": "meeting_N_t80T7Ttdw", "relation": "ATTENDED", "label": "Present"}, {"source": "official_al_adam", "target": "meeting_UcblgJ3lTIE", "relation": "ATTENDED", "label": "Present"}, {"source": "item_N_t80T7Ttdw_0", "target": "meeting_N_t80T7Ttdw", "relation": "HEARD_IN", "label": "58:24"}, {"source": "item_N_t80T7Ttdw_1", "target": "meeting_N_t80T7Ttdw", "relation": "HEARD_IN", "label": "58:26"}, {"source": "item_N_t80T7Ttdw_2", "target": "meeting_N_t80T7Ttdw", "relation": "HEARD_IN", "label": "58:32"}, {"source": "official_kyle_gutierrez", "target": "meeting_UcblgJ3lTIE", "relation": "ATTENDED", "label": "Present"}, {"source": "official_tracy_noonan", "target": "meeting_UcblgJ3lTIE", "relation": "ATTENDED", "label": "Present"}, {"source": "item_UcblgJ3lTIE_0", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "01:59:42"}, {"source": "item_UcblgJ3lTIE_1", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "02:25:07"}, {"source": "org_amgen", "target": "item_UcblgJ3lTIE_1", "relation": "APPLICANT", "label": "Project Proponent"}, {"source": "item_UcblgJ3lTIE_2", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "02:25:14"}, {"source": "item_UcblgJ3lTIE_3", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "14:00"}, {"source": "item_UcblgJ3lTIE_4", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "01:38:15"}, {"source": "item_UcblgJ3lTIE_5", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "01:38:18"}, {"source": "item_UcblgJ3lTIE_6", "target": "meeting_UcblgJ3lTIE", "relation": "HEARD_IN", "label": "01:38:27"}]};
+
+    // Map node types to visual styles
+    const typeColors = {
+      official: { background: '#10b981', border: '#059669', font: '#ffffff' },
+      agenda_item: { background: '#6366f1', border: '#4f46e5', font: '#ffffff' },
+      organization: { background: '#f59e0b', border: '#d97706', font: '#ffffff' },
+      meeting: { background: '#38bdf8', border: '#0284c7', font: '#090d16' }
+    };
+
+    // Prepare Vis.js DataSet
+    const visNodes = new vis.DataSet(
+      (graphData.nodes || []).map(n => {
+        const style = typeColors[n.type] || { background: '#64748b', border: '#475569', font: '#fff' };
+        return {
+          id: n.id,
+          label: n.label,
+          type: n.type,
+          shape: n.type === 'meeting' ? 'box' : (n.type === 'official' ? 'circle' : 'dot'),
+          size: n.type === 'meeting' ? 24 : (n.type === 'official' ? 20 : 15),
+          color: {
+            background: style.background,
+            border: style.border,
+            highlight: { background: '#ffffff', border: style.background }
+          },
+          font: { color: style.font || '#fff', size: 12, face: 'Plus Jakarta Sans', bold: true },
+          raw: n
+        };
+      })
+    );
+
+    const visEdges = new vis.DataSet(
+      (graphData.links || []).map(l => ({
+        from: l.source,
+        to: l.target,
+        label: l.relation || l.label || '',
+        font: { size: 9, color: '#94a3b8', strokeWidth: 0, align: 'top' },
+        color: { color: 'rgba(255, 255, 255, 0.2)', highlight: '#38bdf8' },
+        arrows: 'to',
+        raw: l
+      }))
+    );
+
+    // Initialize Network
+    const container = document.getElementById('network-container');
+    const options = {
+      nodes: { borderWidth: 2 },
+      edges: { smooth: { type: 'continuous' } },
+      physics: {
+        barnesHut: {
+          gravitationalConstant: -3500,
+          centralGravity: 0.35,
+          springLength: 130,
+          springConstant: 0.04
+        },
+        stabilization: { iterations: 150 }
+      },
+      interaction: { hover: true, tooltipDelay: 200 }
+    };
+
+    const network = new vis.Network(container, { nodes: visNodes, edges: visEdges }, options);
+
+    // Click handler for sidebar inspector
+    network.on('click', function(params) {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0];
+        showNodeInspector(nodeId);
+      }
+    });
+
+    function showNodeInspector(nodeId) {
+      const node = visNodes.get(nodeId);
+      if (!node) return;
+      const raw = node.raw;
+
+      document.getElementById('empty-state').style.display = 'none';
+      document.getElementById('dossier-content').style.display = 'block';
+
+      // Title & Badge
+      document.getElementById('dossier-title').innerText = raw.label;
+      const badge = document.getElementById('dossier-badge');
+      badge.innerText = (raw.type || '').replace('_', ' ');
+      badge.className = `node-badge badge-${raw.type}`;
+
+      // Attributes
+      let attrHtml = '';
+      if (raw.type === 'official') {
+        attrHtml = `<strong>Role:</strong> ${raw.role || 'City Official'}<br><strong>Status:</strong> ${raw.status || 'Active'}<br><strong>Centrality Score:</strong> ${raw.centrality || 'N/A'}`;
+      } else if (raw.type === 'meeting') {
+        attrHtml = `<strong>Body:</strong> ${raw.body || 'Municipal'}<br><strong>Date:</strong> ${raw.date || 'Recent'}<br><strong>Video Broadcast:</strong> Available`;
+      } else if (raw.type === 'agenda_item') {
+        attrHtml = `<strong>Item Type:</strong> ${raw.item_type || 'Ordinance / Hearing'}<br><strong>Action:</strong> ${raw.status || 'Deliberated'}<br><strong>Timestamp:</strong> ${raw.timestamp || 'N/A'}`;
+      } else if (raw.type === 'organization') {
+        attrHtml = `<strong>Category:</strong> ${raw.subtype || 'Organization'}<br><strong>Jurisdiction:</strong> Conejo Valley / Ventura County`;
+      }
+      document.getElementById('dossier-attributes').innerHTML = attrHtml;
+
+      // Jump Button
+      const actionContainer = document.getElementById('dossier-action-btn');
+      if (raw.jump_url) {
+        actionContainer.innerHTML = `<a href="${raw.jump_url}" target="_blank" class="yt-btn">&#9654; Jump to Timestamp (${raw.timestamp})</a>`;
+      } else if (raw.url) {
+        actionContainer.innerHTML = `<a href="${raw.url}" target="_blank" class="yt-btn">&#9654; Open Full Meeting Recording</a>`;
+      } else {
+        actionContainer.innerHTML = '';
+      }
+
+      // Connected Links
+      const connectedEdges = visEdges.get({
+        filter: e => e.from === nodeId || e.to === nodeId
+      });
+
+      let relHtml = '';
+      connectedEdges.forEach(e => {
+        const otherId = e.from === nodeId ? e.to : e.from;
+        const otherNode = visNodes.get(otherId);
+        const direction = e.from === nodeId ? '⟶' : '⟵';
+        const label = e.label || (e.from === nodeId ? 'CONNECTED_TO' : 'REFERENCED_BY');
+
+        relHtml += `
+          <div class="rel-item" onclick="network.selectNodes(['${otherId}']); showNodeInspector('${otherId}');">
+            <span class="rel-tag">${direction} ${label}</span>
+            <strong>${otherNode ? otherNode.label : otherId}</strong>
+          </div>
+        `;
+      });
+
+      document.getElementById('dossier-relations').innerHTML = relHtml || '<p style="color: var(--text-muted); font-size: 0.8rem;">No direct connections recorded.</p>';
+    }
+
+    // Search
+    function handleSearch(query) {
+      if (!query.trim()) return;
+      const matched = visNodes.get({
+        filter: n => n.label.toLowerCase().includes(query.toLowerCase())
+      });
+      if (matched.length > 0) {
+        const targetId = matched[0].id;
+        network.selectNodes([targetId]);
+        network.focus(targetId, { scale: 1.2, animation: true });
+        showNodeInspector(targetId);
+      }
+    }
+
+    // Filter
+    function filterType(type) {
+      if (type === 'all') {
+        visNodes.forEach(n => visNodes.update({ id: n.id, hidden: false }));
+      } else {
+        visNodes.forEach(n => {
+          visNodes.update({ id: n.id, hidden: n.type !== type });
+        });
+      }
+    }
+
+    // Tab switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (tab === 'graph') {
+        document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+        document.getElementById('view-graph').style.display = 'flex';
+        document.getElementById('view-briefings').style.display = 'none';
+        network.fit();
+      } else {
+        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+        document.getElementById('view-graph').style.display = 'none';
+        document.getElementById('view-briefings').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

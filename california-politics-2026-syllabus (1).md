@@ -247,6 +247,7 @@ COURSE SCHEDULE
 * **Midterm Examination**
 
 **Wed, Oct. 7**
+* *No in-person class*
 * **Assigned Video:** *[Rewiring Democracy: How AI Will Transform Our Politics, Government, and Citizenship](https://www.youtube.com/watch?v=gy-w4C6vfOc)*
 
 **Fri, Oct. 9**

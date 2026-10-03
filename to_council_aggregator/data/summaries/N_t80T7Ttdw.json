@@ -1,0 +1,176 @@
+{
+  "video_id": "N_t80T7Ttdw",
+  "title": "Thousand Oaks City Council Meeting - September 15, 2026",
+  "body_name": "Thousand Oaks City Council",
+  "meeting_date": "2026-09-16",
+  "display_date": "September 16, 2026",
+  "url": "https://www.youtube.com/watch?v=N_t80T7Ttdw",
+  "duration_str": "02:31:34",
+  "roll_call": [
+    {
+      "name": "Mikey Taylor",
+      "short_name": "Taylor",
+      "status": "Present"
+    },
+    {
+      "name": "Bob Engler",
+      "short_name": "Engler",
+      "status": "Present"
+    },
+    {
+      "name": "Al Adam",
+      "short_name": "Adam",
+      "status": "Present"
+    },
+    {
+      "name": "David Newman",
+      "short_name": "Newman",
+      "status": "Present"
+    }
+  ],
+  "agenda_items": [
+    {
+      "type": "Public Comment",
+      "identifier": "Speaker: Public Commenter",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "58:24",
+      "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3504s",
+      "context": "ally appreciate it. Right. Next up is going to be public comments. Will the city clerk please announce public comments? This is the time and place for public comments. Speakers are requested to state their name and community of residents for the record. Four individuals have requested to speak and pursuant to council standards, speakers are allowed three minutes. >> I beg your pardon, there are 11",
+      "status": "Received"
+    },
+    {
+      "type": "Public Comment",
+      "identifier": "Speaker: Public Commenter",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "58:26",
+      "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3506s",
+      "context": "lic comments. Will the city clerk please announce public comments? This is the time and place for public comments. Speakers are requested to state their name and community of residents for the record. Four individuals have requested to speak and pursuant to council standards, speakers are allowed three minutes. >> I beg your pardon, there are 11 speakers. >> There's 11 speakers. Um, I'm going to c",
+      "status": "Received"
+    },
+    {
+      "type": "Public Comment",
+      "identifier": "Speaker: Public Commenter",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "58:32",
+      "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3512s",
+      "context": "e public comments? This is the time and place for public comments. Speakers are requested to state their name and community of residents for the record. Four individuals have requested to speak and pursuant to council standards, speakers are allowed three minutes. >> I beg your pardon, there are 11 speakers. >> There's 11 speakers. Um, I'm going to call all in-person speakers first and then we wil",
+      "status": "Received"
+    }
+  ],
+  "votes": [],
+  "executive_summary": "The Thousand Oaks City Council convened on September 16, 2026 to address municipal governance items. Key actions centered on **Public Testimony by Public Commenter** (introduced at 58:24), **Public Testimony by Public Commenter** (introduced at 58:26), **Public Testimony by Public Commenter** (introduced at 58:32). The full recording spans 02:31:34 with complete timestamped remarks accessible via CTO Meetings.",
+  "graph_elements": {
+    "nodes": [
+      {
+        "id": "meeting_N_t80T7Ttdw",
+        "label": "Thousand Oaks City Council (2026-09-16)",
+        "type": "meeting",
+        "date": "2026-09-16",
+        "url": "https://www.youtube.com/watch?v=N_t80T7Ttdw",
+        "body": "Thousand Oaks City Council"
+      },
+      {
+        "id": "official_mikey_taylor",
+        "label": "Mikey Taylor",
+        "type": "official",
+        "status": "Present",
+        "role": "Mayor / Councilmember"
+      },
+      {
+        "id": "official_bob_engler",
+        "label": "Bob Engler",
+        "type": "official",
+        "status": "Present",
+        "role": "Mayor Pro Tem / Councilmember"
+      },
+      {
+        "id": "official_al_adam",
+        "label": "Al Adam",
+        "type": "official",
+        "status": "Present",
+        "role": "Councilmember"
+      },
+      {
+        "id": "official_david_newman",
+        "label": "David Newman",
+        "type": "official",
+        "status": "Present",
+        "role": "Councilmember"
+      },
+      {
+        "id": "item_N_t80T7Ttdw_0",
+        "label": "Speaker: Public Commenter",
+        "type": "agenda_item",
+        "item_type": "Public Comment",
+        "title": "Public Testimony by Public Commenter",
+        "timestamp": "58:24",
+        "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3504s",
+        "status": "Received"
+      },
+      {
+        "id": "item_N_t80T7Ttdw_1",
+        "label": "Speaker: Public Commenter",
+        "type": "agenda_item",
+        "item_type": "Public Comment",
+        "title": "Public Testimony by Public Commenter",
+        "timestamp": "58:26",
+        "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3506s",
+        "status": "Received"
+      },
+      {
+        "id": "item_N_t80T7Ttdw_2",
+        "label": "Speaker: Public Commenter",
+        "type": "agenda_item",
+        "item_type": "Public Comment",
+        "title": "Public Testimony by Public Commenter",
+        "timestamp": "58:32",
+        "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3512s",
+        "status": "Received"
+      }
+    ],
+    "edges": [
+      {
+        "source": "official_mikey_taylor",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "official_bob_engler",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "ATTENDED",
+        "label": "Present"
+      },
+      {
+        "source": "item_N_t80T7Ttdw_0",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "HEARD_IN",
+        "label": "58:24"
+      },
+      {
+        "source": "item_N_t80T7Ttdw_1",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "HEARD_IN",
+        "label": "58:26"
+      },
+      {
+        "source": "item_N_t80T7Ttdw_2",
+        "target": "meeting_N_t80T7Ttdw",
+        "relation": "HEARD_IN",
+        "label": "58:32"
+      }
+    ]
+  }
+}

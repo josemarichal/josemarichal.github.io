@@ -1,0 +1,636 @@
+{
+  "meta": {
+    "municipality": "Thousand Oaks, California",
+    "source_channel": "https://www.youtube.com/@ctomeetings",
+    "node_count": 40,
+    "edge_count": 41
+  },
+  "nodes": [
+    {
+      "id": "meeting_FUlwNDEP5ME",
+      "label": "Conejo Open Space Conservation Agency (COSCA) (2026-09-17)",
+      "type": "meeting",
+      "date": "2026-09-17",
+      "url": "https://www.youtube.com/watch?v=FUlwNDEP5ME",
+      "body": "Conejo Open Space Conservation Agency (COSCA)",
+      "centrality": 0.2308
+    },
+    {
+      "id": "official_david_newman",
+      "label": "David Newman",
+      "type": "official",
+      "status": "Present",
+      "role": "Councilmember",
+      "centrality": 0.0769
+    },
+    {
+      "id": "official_nichols",
+      "label": "Nichols",
+      "type": "official",
+      "status": "Present",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_huffer",
+      "label": "Huffer",
+      "type": "official",
+      "status": "Present",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_sullivan",
+      "label": "Sullivan",
+      "type": "official",
+      "status": "Present",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_FUlwNDEP5ME_0",
+      "label": "Conejo Open Space Foundation",
+      "type": "agenda_item",
+      "item_type": "Development / Project",
+      "title": "Conejo Open Space Native Plant Palooza & Eco Fest",
+      "timestamp": "12:48",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=768s",
+      "status": "Public Hearing / Review",
+      "centrality": 0.0513
+    },
+    {
+      "id": "org_cosf",
+      "label": "Conejo Open Space Foundation",
+      "type": "organization",
+      "subtype": "Non-Profit / Conservation",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_FUlwNDEP5ME_1",
+      "label": "Conejo Creek North",
+      "type": "agenda_item",
+      "item_type": "Development / Project",
+      "title": "Conejo Creek North Regional Park",
+      "timestamp": "13:11",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=791s",
+      "status": "Public Hearing / Review",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_FUlwNDEP5ME_2",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "12:32",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=752s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_FUlwNDEP5ME_3",
+      "label": "Speaker: Elaine Hagan",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Elaine Hagan",
+      "timestamp": "12:37",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=757s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_FUlwNDEP5ME_4",
+      "label": "Speaker: Elaine Hagan",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Elaine Hagan",
+      "timestamp": "12:47",
+      "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=767s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "meeting_nJuS1nenvzA",
+      "label": "Planning Commission (2026-09-29)",
+      "type": "meeting",
+      "date": "2026-09-29",
+      "url": "https://www.youtube.com/watch?v=nJuS1nenvzA",
+      "body": "Planning Commission",
+      "centrality": 0.2308
+    },
+    {
+      "id": "official_farris",
+      "label": "Farris",
+      "type": "official",
+      "status": "Absent",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_lanson",
+      "label": "Lanson",
+      "type": "official",
+      "status": "Absent",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_mcmahon",
+      "label": "McMahon",
+      "type": "official",
+      "status": "Absent",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_busse",
+      "label": "Busse",
+      "type": "official",
+      "status": "Absent",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_kettelhut",
+      "label": "Kettelhut",
+      "type": "official",
+      "status": "Absent",
+      "role": "Elected Official",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_nJuS1nenvzA_0",
+      "label": "Hillcrest Homes Dda",
+      "type": "agenda_item",
+      "item_type": "Development / Project",
+      "title": "Hillcrest Homes Housing Development Agreement",
+      "timestamp": "01:45:43",
+      "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=6343s",
+      "status": "Public Hearing / Review",
+      "centrality": 0.0513
+    },
+    {
+      "id": "org_hillcrest",
+      "label": "Hillcrest Homes Developer",
+      "type": "organization",
+      "subtype": "Housing Developer",
+      "centrality": 0.0513
+    },
+    {
+      "id": "item_nJuS1nenvzA_1",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "12:40",
+      "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=760s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_nJuS1nenvzA_2",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "12:59",
+      "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=779s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_nJuS1nenvzA_3",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "13:00",
+      "jump_url": "https://www.youtube.com/watch?v=nJuS1nenvzA&t=780s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "meeting_N_t80T7Ttdw",
+      "label": "Thousand Oaks City Council (2026-09-16)",
+      "type": "meeting",
+      "date": "2026-09-16",
+      "url": "https://www.youtube.com/watch?v=N_t80T7Ttdw",
+      "body": "Thousand Oaks City Council",
+      "centrality": 0.1795
+    },
+    {
+      "id": "official_mikey_taylor",
+      "label": "Mikey Taylor",
+      "type": "official",
+      "status": "Present",
+      "role": "Mayor / Councilmember",
+      "centrality": 0.0513
+    },
+    {
+      "id": "official_bob_engler",
+      "label": "Bob Engler",
+      "type": "official",
+      "status": "Present",
+      "role": "Mayor Pro Tem / Councilmember",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_al_adam",
+      "label": "Al Adam",
+      "type": "official",
+      "status": "Present",
+      "role": "Councilmember",
+      "centrality": 0.0513
+    },
+    {
+      "id": "item_N_t80T7Ttdw_0",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "58:24",
+      "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3504s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_N_t80T7Ttdw_1",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "58:26",
+      "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3506s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_N_t80T7Ttdw_2",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "58:32",
+      "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3512s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "meeting_UcblgJ3lTIE",
+      "label": "Thousand Oaks City Council (2026-09-30)",
+      "type": "meeting",
+      "date": "2026-09-30",
+      "url": "https://www.youtube.com/watch?v=UcblgJ3lTIE",
+      "body": "Thousand Oaks City Council",
+      "centrality": 0.3077
+    },
+    {
+      "id": "official_kyle_gutierrez",
+      "label": "Kyle Gutierrez",
+      "type": "official",
+      "status": "Present",
+      "role": "Councilmember",
+      "centrality": 0.0256
+    },
+    {
+      "id": "official_tracy_noonan",
+      "label": "Tracy Noonan",
+      "type": "official",
+      "status": "Present",
+      "role": "City Attorney",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_UcblgJ3lTIE_0",
+      "label": "Ordinance 1750-NS",
+      "type": "agenda_item",
+      "item_type": "Ordinance",
+      "title": "Ordinance Number 1750-Ns: Municipal Code Amendment",
+      "timestamp": "01:59:42",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=7182s",
+      "status": "Action Taken",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_UcblgJ3lTIE_1",
+      "label": "Amgen Building 50",
+      "type": "agenda_item",
+      "item_type": "Development / Project",
+      "title": "Amgen Life Science Campus & Specific Plan Amendment",
+      "timestamp": "02:25:07",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8707s",
+      "status": "Public Hearing / Review",
+      "centrality": 0.0513
+    },
+    {
+      "id": "org_amgen",
+      "label": "Amgen Inc.",
+      "type": "organization",
+      "subtype": "Corporate / Life Sciences",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_UcblgJ3lTIE_2",
+      "label": "Hillcrest Homes Dda",
+      "type": "agenda_item",
+      "item_type": "Development / Project",
+      "title": "Hillcrest Homes Housing Development Agreement",
+      "timestamp": "02:25:14",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8714s",
+      "status": "Public Hearing / Review",
+      "centrality": 0.0513
+    },
+    {
+      "id": "item_UcblgJ3lTIE_3",
+      "label": "12 Canal",
+      "type": "agenda_item",
+      "item_type": "Development / Project",
+      "title": "12 Canal Boulevard Property Negotiations",
+      "timestamp": "14:00",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=840s",
+      "status": "Public Hearing / Review",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_UcblgJ3lTIE_4",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "01:38:15",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5895s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_UcblgJ3lTIE_5",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "01:38:18",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5898s",
+      "status": "Received",
+      "centrality": 0.0256
+    },
+    {
+      "id": "item_UcblgJ3lTIE_6",
+      "label": "Speaker: Public Commenter",
+      "type": "agenda_item",
+      "item_type": "Public Comment",
+      "title": "Public Testimony by Public Commenter",
+      "timestamp": "01:38:27",
+      "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5907s",
+      "status": "Received",
+      "centrality": 0.0256
+    }
+  ],
+  "links": [
+    {
+      "source": "official_david_newman",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_david_newman",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_david_newman",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_nichols",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_huffer",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_sullivan",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "item_FUlwNDEP5ME_0",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "HEARD_IN",
+      "label": "12:48"
+    },
+    {
+      "source": "org_cosf",
+      "target": "item_FUlwNDEP5ME_0",
+      "relation": "ADVOCATE",
+      "label": "Community Partner"
+    },
+    {
+      "source": "item_FUlwNDEP5ME_1",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "HEARD_IN",
+      "label": "13:11"
+    },
+    {
+      "source": "item_FUlwNDEP5ME_2",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "HEARD_IN",
+      "label": "12:32"
+    },
+    {
+      "source": "item_FUlwNDEP5ME_3",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "HEARD_IN",
+      "label": "12:37"
+    },
+    {
+      "source": "item_FUlwNDEP5ME_4",
+      "target": "meeting_FUlwNDEP5ME",
+      "relation": "HEARD_IN",
+      "label": "12:47"
+    },
+    {
+      "source": "official_farris",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "ABSENT_FROM",
+      "label": "Absent"
+    },
+    {
+      "source": "official_lanson",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "ABSENT_FROM",
+      "label": "Absent"
+    },
+    {
+      "source": "official_mcmahon",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "ABSENT_FROM",
+      "label": "Absent"
+    },
+    {
+      "source": "official_busse",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "ABSENT_FROM",
+      "label": "Absent"
+    },
+    {
+      "source": "official_kettelhut",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "ABSENT_FROM",
+      "label": "Absent"
+    },
+    {
+      "source": "item_nJuS1nenvzA_0",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "HEARD_IN",
+      "label": "01:45:43"
+    },
+    {
+      "source": "org_hillcrest",
+      "target": "item_nJuS1nenvzA_0",
+      "relation": "APPLICANT",
+      "label": "Developer Partner"
+    },
+    {
+      "source": "org_hillcrest",
+      "target": "item_UcblgJ3lTIE_2",
+      "relation": "APPLICANT",
+      "label": "Developer Partner"
+    },
+    {
+      "source": "item_nJuS1nenvzA_1",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "HEARD_IN",
+      "label": "12:40"
+    },
+    {
+      "source": "item_nJuS1nenvzA_2",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "HEARD_IN",
+      "label": "12:59"
+    },
+    {
+      "source": "item_nJuS1nenvzA_3",
+      "target": "meeting_nJuS1nenvzA",
+      "relation": "HEARD_IN",
+      "label": "13:00"
+    },
+    {
+      "source": "official_mikey_taylor",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_mikey_taylor",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_bob_engler",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_al_adam",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_al_adam",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "item_N_t80T7Ttdw_0",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "HEARD_IN",
+      "label": "58:24"
+    },
+    {
+      "source": "item_N_t80T7Ttdw_1",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "HEARD_IN",
+      "label": "58:26"
+    },
+    {
+      "source": "item_N_t80T7Ttdw_2",
+      "target": "meeting_N_t80T7Ttdw",
+      "relation": "HEARD_IN",
+      "label": "58:32"
+    },
+    {
+      "source": "official_kyle_gutierrez",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "official_tracy_noonan",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "ATTENDED",
+      "label": "Present"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_0",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "01:59:42"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_1",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "02:25:07"
+    },
+    {
+      "source": "org_amgen",
+      "target": "item_UcblgJ3lTIE_1",
+      "relation": "APPLICANT",
+      "label": "Project Proponent"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_2",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "02:25:14"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_3",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "14:00"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_4",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "01:38:15"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_5",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "01:38:18"
+    },
+    {
+      "source": "item_UcblgJ3lTIE_6",
+      "target": "meeting_UcblgJ3lTIE",
+      "relation": "HEARD_IN",
+      "label": "01:38:27"
+    }
+  ]
+}
