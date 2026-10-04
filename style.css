@@ -1441,3 +1441,118 @@ textarea.form-control {
     }
 }
 
+/* --- Social Media Links & Badges --- */
+.bio-social-links {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+}
+
+.social-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.social-badge svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.social-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    border-bottom: 1px solid transparent;
+}
+
+.social-badge.bsky:hover {
+    border-color: #0284c7;
+    background: rgba(2, 132, 199, 0.15);
+    color: #38bdf8;
+}
+.social-badge.bsky svg {
+    color: #38bdf8;
+}
+
+.social-badge.linkedin:hover {
+    border-color: #0a66c2;
+    background: rgba(10, 102, 194, 0.15);
+    color: #60a5fa;
+}
+.social-badge.linkedin svg {
+    color: #60a5fa;
+}
+
+.social-badge.x-twitter:hover {
+    border-color: #94a3b8;
+    background: rgba(148, 163, 184, 0.15);
+    color: #f8fafc;
+}
+.social-badge.x-twitter svg {
+    color: #e2e8f0;
+}
+
+/* Footer Styling */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2.5rem 0;
+    margin-top: 5rem;
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-content p {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.footer-social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.footer-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-social-links a:hover {
+    border-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    background: rgba(16, 185, 129, 0.12);
+}
+
+
