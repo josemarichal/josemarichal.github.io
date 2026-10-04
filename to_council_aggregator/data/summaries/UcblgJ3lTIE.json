@@ -175,11 +175,22 @@
         "role": "City Attorney"
       },
       {
+        "id": "topic_housing",
+        "label": "\ud83c\udfe0 Affordable Housing & Land Use",
+        "raw_label": "Affordable Housing & Land Use",
+        "type": "topic",
+        "icon": "\ud83c\udfe0",
+        "color_accent": "#f43f5e",
+        "description": "Housing affordability, impact fee exemptions, residential developments, and zoning ordinances."
+      },
+      {
         "id": "item_UcblgJ3lTIE_0",
         "label": "Ordinance 1750-NS",
         "type": "agenda_item",
         "item_type": "Ordinance",
         "title": "Ordinance Number 1750-Ns: Municipal Code Amendment",
+        "topic_id": "topic_housing",
+        "topic_label": "Affordable Housing & Land Use",
         "timestamp": "01:59:42",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=7182s",
         "status": "Action Taken"
@@ -190,6 +201,8 @@
         "type": "agenda_item",
         "item_type": "Development / Project",
         "title": "Amgen Life Science Campus & Specific Plan Amendment",
+        "topic_id": "topic_housing",
+        "topic_label": "Affordable Housing & Land Use",
         "timestamp": "02:25:07",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8707s",
         "status": "Public Hearing / Review"
@@ -206,6 +219,8 @@
         "type": "agenda_item",
         "item_type": "Development / Project",
         "title": "Hillcrest Homes Housing Development Agreement",
+        "topic_id": "topic_housing",
+        "topic_label": "Affordable Housing & Land Use",
         "timestamp": "02:25:14",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8714s",
         "status": "Public Hearing / Review"
@@ -217,14 +232,34 @@
         "subtype": "Housing Developer"
       },
       {
+        "id": "topic_infrastructure",
+        "label": "\ud83d\udca7 Infrastructure & Utilities",
+        "raw_label": "Infrastructure & Utilities",
+        "type": "topic",
+        "icon": "\ud83d\udca7",
+        "color_accent": "#06b6d4",
+        "description": "Water service, municipal utilities, capital improvement projects, and public works."
+      },
+      {
         "id": "item_UcblgJ3lTIE_3",
         "label": "12 Canal",
         "type": "agenda_item",
         "item_type": "Development / Project",
         "title": "12 Canal Boulevard Property Negotiations",
+        "topic_id": "topic_infrastructure",
+        "topic_label": "Infrastructure & Utilities",
         "timestamp": "14:00",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=840s",
         "status": "Public Hearing / Review"
+      },
+      {
+        "id": "topic_governance",
+        "label": "\ud83c\udfdb\ufe0f Governance & Legal Affairs",
+        "raw_label": "Governance & Legal Affairs",
+        "type": "topic",
+        "icon": "\ud83c\udfdb\ufe0f",
+        "color_accent": "#38bdf8",
+        "description": "Municipal litigation, closed session legal conferences, city appointments, and council procedures."
       },
       {
         "id": "item_UcblgJ3lTIE_4",
@@ -232,6 +267,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_governance",
+        "topic_label": "Governance & Legal Affairs",
         "timestamp": "01:38:15",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5895s",
         "status": "Received"
@@ -242,6 +279,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_governance",
+        "topic_label": "Governance & Legal Affairs",
         "timestamp": "01:38:18",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5898s",
         "status": "Received"
@@ -252,6 +291,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_governance",
+        "topic_label": "Governance & Legal Affairs",
         "timestamp": "01:38:27",
         "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5907s",
         "status": "Received"
@@ -290,9 +331,57 @@
       },
       {
         "source": "item_UcblgJ3lTIE_0",
+        "target": "topic_housing",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_0",
         "target": "meeting_UcblgJ3lTIE",
         "relation": "HEARD_IN",
         "label": "01:59:42"
+      },
+      {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_housing",
+        "relation": "COVERED_TOPIC",
+        "label": "01:59:42"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_1",
+        "target": "topic_housing",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
       },
       {
         "source": "item_UcblgJ3lTIE_1",
@@ -301,10 +390,58 @@
         "label": "02:25:07"
       },
       {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_housing",
+        "relation": "COVERED_TOPIC",
+        "label": "02:25:07"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
         "source": "org_amgen",
         "target": "item_UcblgJ3lTIE_1",
         "relation": "APPLICANT",
         "label": "Project Proponent"
+      },
+      {
+        "source": "org_amgen",
+        "target": "topic_economy",
+        "relation": "STAKEHOLDER",
+        "label": "Life Sciences Proponent"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_2",
+        "target": "topic_housing",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
       },
       {
         "source": "item_UcblgJ3lTIE_2",
@@ -313,10 +450,58 @@
         "label": "02:25:14"
       },
       {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_housing",
+        "relation": "COVERED_TOPIC",
+        "label": "02:25:14"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
         "source": "org_hillcrest",
         "target": "item_UcblgJ3lTIE_2",
         "relation": "APPLICANT",
         "label": "Developer Partner"
+      },
+      {
+        "source": "org_hillcrest",
+        "target": "topic_housing",
+        "relation": "STAKEHOLDER",
+        "label": "Housing Developer"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_3",
+        "target": "topic_infrastructure",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
       },
       {
         "source": "item_UcblgJ3lTIE_3",
@@ -325,10 +510,94 @@
         "label": "14:00"
       },
       {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_infrastructure",
+        "relation": "COVERED_TOPIC",
+        "label": "14:00"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_infrastructure",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_infrastructure",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_infrastructure",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_infrastructure",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_infrastructure",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_4",
+        "target": "topic_governance",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
         "source": "item_UcblgJ3lTIE_4",
         "target": "meeting_UcblgJ3lTIE",
         "relation": "HEARD_IN",
         "label": "01:38:15"
+      },
+      {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_governance",
+        "relation": "COVERED_TOPIC",
+        "label": "01:38:15"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_5",
+        "target": "topic_governance",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
       },
       {
         "source": "item_UcblgJ3lTIE_5",
@@ -337,10 +606,88 @@
         "label": "01:38:18"
       },
       {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_governance",
+        "relation": "COVERED_TOPIC",
+        "label": "01:38:18"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_UcblgJ3lTIE_6",
+        "target": "topic_governance",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
         "source": "item_UcblgJ3lTIE_6",
         "target": "meeting_UcblgJ3lTIE",
         "relation": "HEARD_IN",
         "label": "01:38:27"
+      },
+      {
+        "source": "meeting_UcblgJ3lTIE",
+        "target": "topic_governance",
+        "relation": "COVERED_TOPIC",
+        "label": "01:38:27"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_kyle_gutierrez",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_tracy_noonan",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
       }
     ]
   }

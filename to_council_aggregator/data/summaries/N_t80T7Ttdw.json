@@ -98,11 +98,22 @@
         "role": "Councilmember"
       },
       {
+        "id": "topic_governance",
+        "label": "\ud83c\udfdb\ufe0f Governance & Legal Affairs",
+        "raw_label": "Governance & Legal Affairs",
+        "type": "topic",
+        "icon": "\ud83c\udfdb\ufe0f",
+        "color_accent": "#38bdf8",
+        "description": "Municipal litigation, closed session legal conferences, city appointments, and council procedures."
+      },
+      {
         "id": "item_N_t80T7Ttdw_0",
         "label": "Speaker: Public Commenter",
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_governance",
+        "topic_label": "Governance & Legal Affairs",
         "timestamp": "58:24",
         "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3504s",
         "status": "Received"
@@ -113,6 +124,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_governance",
+        "topic_label": "Governance & Legal Affairs",
         "timestamp": "58:26",
         "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3506s",
         "status": "Received"
@@ -123,6 +136,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_governance",
+        "topic_label": "Governance & Legal Affairs",
         "timestamp": "58:32",
         "jump_url": "https://www.youtube.com/watch?v=N_t80T7Ttdw&t=3512s",
         "status": "Received"
@@ -155,9 +170,51 @@
       },
       {
         "source": "item_N_t80T7Ttdw_0",
+        "target": "topic_governance",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
+        "source": "item_N_t80T7Ttdw_0",
         "target": "meeting_N_t80T7Ttdw",
         "relation": "HEARD_IN",
         "label": "58:24"
+      },
+      {
+        "source": "meeting_N_t80T7Ttdw",
+        "target": "topic_governance",
+        "relation": "COVERED_TOPIC",
+        "label": "58:24"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_bob_engler",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_N_t80T7Ttdw_1",
+        "target": "topic_governance",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
       },
       {
         "source": "item_N_t80T7Ttdw_1",
@@ -166,10 +223,76 @@
         "label": "58:26"
       },
       {
+        "source": "meeting_N_t80T7Ttdw",
+        "target": "topic_governance",
+        "relation": "COVERED_TOPIC",
+        "label": "58:26"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_bob_engler",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_N_t80T7Ttdw_2",
+        "target": "topic_governance",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
         "source": "item_N_t80T7Ttdw_2",
         "target": "meeting_N_t80T7Ttdw",
         "relation": "HEARD_IN",
         "label": "58:32"
+      },
+      {
+        "source": "meeting_N_t80T7Ttdw",
+        "target": "topic_governance",
+        "relation": "COVERED_TOPIC",
+        "label": "58:32"
+      },
+      {
+        "source": "official_mikey_taylor",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_bob_engler",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_al_adam",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_governance",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
       }
     ]
   }

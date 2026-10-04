@@ -116,11 +116,22 @@
         "role": "Elected Official"
       },
       {
+        "id": "topic_openspace",
+        "label": "\ud83c\udf33 Open Space & Environment",
+        "raw_label": "Open Space & Environment",
+        "type": "topic",
+        "icon": "\ud83c\udf33",
+        "color_accent": "#10b981",
+        "description": "Conejo open space preservation, native habitat protection, trail networks, and environmental review."
+      },
+      {
         "id": "item_FUlwNDEP5ME_0",
         "label": "Conejo Open Space Foundation",
         "type": "agenda_item",
         "item_type": "Development / Project",
         "title": "Conejo Open Space Native Plant Palooza & Eco Fest",
+        "topic_id": "topic_openspace",
+        "topic_label": "Open Space & Environment",
         "timestamp": "12:48",
         "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=768s",
         "status": "Public Hearing / Review"
@@ -132,11 +143,22 @@
         "subtype": "Non-Profit / Conservation"
       },
       {
+        "id": "topic_housing",
+        "label": "\ud83c\udfe0 Affordable Housing & Land Use",
+        "raw_label": "Affordable Housing & Land Use",
+        "type": "topic",
+        "icon": "\ud83c\udfe0",
+        "color_accent": "#f43f5e",
+        "description": "Housing affordability, impact fee exemptions, residential developments, and zoning ordinances."
+      },
+      {
         "id": "item_FUlwNDEP5ME_1",
         "label": "Conejo Creek North",
         "type": "agenda_item",
         "item_type": "Development / Project",
         "title": "Conejo Creek North Regional Park",
+        "topic_id": "topic_housing",
+        "topic_label": "Affordable Housing & Land Use",
         "timestamp": "13:11",
         "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=791s",
         "status": "Public Hearing / Review"
@@ -147,6 +169,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Public Commenter",
+        "topic_id": "topic_openspace",
+        "topic_label": "Open Space & Environment",
         "timestamp": "12:32",
         "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=752s",
         "status": "Received"
@@ -157,6 +181,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Elaine Hagan",
+        "topic_id": "topic_openspace",
+        "topic_label": "Open Space & Environment",
         "timestamp": "12:37",
         "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=757s",
         "status": "Received"
@@ -167,6 +193,8 @@
         "type": "agenda_item",
         "item_type": "Public Comment",
         "title": "Public Testimony by Elaine Hagan",
+        "topic_id": "topic_openspace",
+        "topic_label": "Open Space & Environment",
         "timestamp": "12:47",
         "jump_url": "https://www.youtube.com/watch?v=FUlwNDEP5ME&t=767s",
         "status": "Received"
@@ -199,9 +227,45 @@
       },
       {
         "source": "item_FUlwNDEP5ME_0",
+        "target": "topic_openspace",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_0",
         "target": "meeting_FUlwNDEP5ME",
         "relation": "HEARD_IN",
         "label": "12:48"
+      },
+      {
+        "source": "meeting_FUlwNDEP5ME",
+        "target": "topic_openspace",
+        "relation": "COVERED_TOPIC",
+        "label": "12:48"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_nichols",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_huffer",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_sullivan",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
       },
       {
         "source": "org_cosf",
@@ -210,10 +274,58 @@
         "label": "Community Partner"
       },
       {
+        "source": "org_cosf",
+        "target": "topic_openspace",
+        "relation": "STAKEHOLDER",
+        "label": "Open Space Partner"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_1",
+        "target": "topic_housing",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
         "source": "item_FUlwNDEP5ME_1",
         "target": "meeting_FUlwNDEP5ME",
         "relation": "HEARD_IN",
         "label": "13:11"
+      },
+      {
+        "source": "meeting_FUlwNDEP5ME",
+        "target": "topic_housing",
+        "relation": "COVERED_TOPIC",
+        "label": "13:11"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_nichols",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_huffer",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_sullivan",
+        "target": "topic_housing",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_2",
+        "target": "topic_openspace",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
       },
       {
         "source": "item_FUlwNDEP5ME_2",
@@ -222,16 +334,118 @@
         "label": "12:32"
       },
       {
+        "source": "meeting_FUlwNDEP5ME",
+        "target": "topic_openspace",
+        "relation": "COVERED_TOPIC",
+        "label": "12:32"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_nichols",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_huffer",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_sullivan",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_3",
+        "target": "topic_openspace",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
         "source": "item_FUlwNDEP5ME_3",
         "target": "meeting_FUlwNDEP5ME",
         "relation": "HEARD_IN",
         "label": "12:37"
       },
       {
+        "source": "meeting_FUlwNDEP5ME",
+        "target": "topic_openspace",
+        "relation": "COVERED_TOPIC",
+        "label": "12:37"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_nichols",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_huffer",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_sullivan",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "item_FUlwNDEP5ME_4",
+        "target": "topic_openspace",
+        "relation": "POLICY_DOMAIN",
+        "label": "Categorized Under"
+      },
+      {
         "source": "item_FUlwNDEP5ME_4",
         "target": "meeting_FUlwNDEP5ME",
         "relation": "HEARD_IN",
         "label": "12:47"
+      },
+      {
+        "source": "meeting_FUlwNDEP5ME",
+        "target": "topic_openspace",
+        "relation": "COVERED_TOPIC",
+        "label": "12:47"
+      },
+      {
+        "source": "official_david_newman",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_nichols",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_huffer",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
+      },
+      {
+        "source": "official_sullivan",
+        "target": "topic_openspace",
+        "relation": "DELIBERATED",
+        "label": "Deliberated Issue"
       }
     ]
   }

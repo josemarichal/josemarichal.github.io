@@ -74,12 +74,27 @@ def main():
         if args.sync:
             sync_transcripts(limit=args.limit)
         if args.analyze:
-            videos = fetch_channel_feed(limit=args.limit)
-            for v in videos:
-                try:
-                    analyze_meeting(v["video_id"], v)
-                except Exception as e:
-                    print(f"Skipping {v['video_id']}: {e}")
+            import glob
+            import os
+            import json
+            from config import SUMMARIES_DIR
+            existing = glob.glob(os.path.join(SUMMARIES_DIR, "*.json"))
+            if existing:
+                print(f"Re-analyzing {len(existing)} cached meetings with updated topic taxonomy...")
+                for s_file in existing:
+                    try:
+                        with open(s_file, "r", encoding="utf-8") as f:
+                            m = json.load(f)
+                        analyze_meeting(m["video_id"], m)
+                    except Exception as e:
+                        print(f"Error re-analyzing {s_file}: {e}")
+            else:
+                videos = fetch_channel_feed(limit=args.limit)
+                for v in videos:
+                    try:
+                        analyze_meeting(v["video_id"], v)
+                    except Exception as e:
+                        print(f"Skipping {v['video_id']}: {e}")
         if args.graph:
             build_knowledge_graph()
         if args.reports:

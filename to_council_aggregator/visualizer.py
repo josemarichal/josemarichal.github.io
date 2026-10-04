@@ -1,6 +1,8 @@
 """
 Visualizer for Thousand Oaks Municipal Knowledge Graph & Civic Dashboard.
-Generates an expansive, full-screen, highly aesthetic interactive HTML application.
+Generates an expansive, full-screen, topic-centric interactive HTML application.
+Supports viewing the graph organized by Policy Domain (Housing, Economy, Environment, etc.)
+or by Council Session.
 """
 
 import os
@@ -93,7 +95,7 @@ def generate_dashboard_html():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thousand Oaks Civic Knowledge Graph &amp; Meeting Tracker</title>
+  <title>Thousand Oaks Civic Knowledge Graph &amp; Policy Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -221,7 +223,6 @@ def generate_dashboard_html():
       color: #090d16;
     }}
 
-    /* Main Container */
     .app-body {{
       position: relative;
       width: 100%;
@@ -230,7 +231,6 @@ def generate_dashboard_html():
       display: flex;
     }}
 
-    /* View: Knowledge Graph */
     #view-graph {{
       position: relative;
       width: 100%;
@@ -262,8 +262,38 @@ def generate_dashboard_html():
       display: flex;
       flex-direction: column;
       gap: 0.65rem;
-      width: 280px;
+      width: 300px;
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }}
+
+    /* Perspective Mode Switcher */
+    .perspective-switcher {{
+      display: flex;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 0.25rem;
+    }}
+
+    .perspective-btn {{
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.4rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }}
+
+    .perspective-btn.active {{
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
     }}
 
     .search-input {{
@@ -295,13 +325,13 @@ def generate_dashboard_html():
       color: var(--text-muted);
       cursor: pointer;
       user-select: none;
-      padding: 0.2rem 0.35rem;
-      border-radius: 4px;
+      padding: 0.25rem 0.4rem;
+      border-radius: 5px;
       transition: background 0.15s;
     }}
 
     .legend-item:hover {{
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text-main);
     }}
 
@@ -350,7 +380,7 @@ def generate_dashboard_html():
       top: 1rem;
       right: 1rem;
       bottom: 1rem;
-      width: 390px;
+      width: 410px;
       max-width: 90vw;
       background: var(--bg-card);
       backdrop-filter: blur(16px);
@@ -399,7 +429,7 @@ def generate_dashboard_html():
     }}
 
     .inspector-title {{
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 0.25rem;
       color: var(--text-main);
@@ -415,6 +445,7 @@ def generate_dashboard_html():
       margin-bottom: 0.85rem;
     }}
 
+    .badge-topic {{ background: rgba(244, 63, 94, 0.2); color: var(--accent-rose); border: 1px solid var(--accent-rose); }}
     .badge-official {{ background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }}
     .badge-meeting {{ background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }}
     .badge-agenda_item {{ background: rgba(129, 140, 248, 0.2); color: var(--accent-indigo); border: 1px solid var(--accent-indigo); }}
@@ -487,7 +518,6 @@ def generate_dashboard_html():
       background: #b91c1c;
     }}
 
-    /* Toggle Inspector Button (When Collapsed) */
     .toggle-inspector-pill {{
       position: absolute;
       top: 1rem;
@@ -506,7 +536,6 @@ def generate_dashboard_html():
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }}
 
-    /* View: News & Briefings Tab */
     #view-briefings {{
       display: none;
       position: absolute;
@@ -576,15 +605,15 @@ def generate_dashboard_html():
     <div class="logo-area">
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <h1>Thousand Oaks Civic Knowledge Graph</h1>
+          <h1>Thousand Oaks Civic Policy Graph</h1>
           <span class="badge-live">Live: @ctomeetings</span>
         </div>
-        <div class="source-sub">Automated Municipal Intelligence &bull; {node_count} Entities &bull; {edge_count} Civic Relationships</div>
+        <div class="source-sub">Topic-Centric Municipal Governance &bull; {node_count} Entities &bull; {edge_count} Policy Connections</div>
       </div>
     </div>
 
     <div class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('graph')">&#127760; Full-Screen Knowledge Graph</button>
+      <button class="tab-btn active" onclick="switchTab('graph')">&#127760; Policy Knowledge Graph</button>
       <button class="tab-btn" onclick="switchTab('briefings')">&#128240; Meeting Briefings &amp; News</button>
     </div>
   </header>
@@ -596,22 +625,32 @@ def generate_dashboard_html():
 
       <!-- FLOATING CONTROLS -->
       <div class="graph-controls">
-        <input type="text" id="nodeSearch" class="search-input" placeholder="&#128269; Search official, project, developer..." oninput="handleSearch(this.value)">
+        <label style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em;">Graph Organization Mode</label>
+        <div class="perspective-switcher">
+          <button class="perspective-btn active" id="btnModeTopic" onclick="setOrganizationMode('topic')">&#127991;&#65039; Policy Topics</button>
+          <button class="perspective-btn" id="btnModeSession" onclick="setOrganizationMode('session')">&#128197; Council Sessions</button>
+        </div>
+
+        <input type="text" id="nodeSearch" class="search-input" placeholder="&#128269; Search housing, Amgen, Taylor, tree..." oninput="handleSearch(this.value)">
+
         <div class="legend-list">
           <div class="legend-item" onclick="filterType('all')">
-            <span class="legend-color" style="background: white;"></span> Show All ({node_count} Nodes)
+            <span class="legend-color" style="background: white;"></span> Show All Entities ({node_count})
+          </div>
+          <div class="legend-item" onclick="filterType('topic')">
+            <span class="legend-color" style="background: var(--accent-rose);"></span> Policy Topic Hubs
           </div>
           <div class="legend-item" onclick="filterType('official')">
-            <span class="legend-color" style="background: var(--accent-emerald);"></span> Officials &amp; Staff
+            <span class="legend-color" style="background: var(--accent-emerald);"></span> Councilmembers &amp; Officials
           </div>
           <div class="legend-item" onclick="filterType('agenda_item')">
-            <span class="legend-color" style="background: var(--accent-indigo);"></span> Ordinances &amp; Projects
+            <span class="legend-color" style="background: var(--accent-indigo);"></span> Specific Ordinances &amp; Projects
           </div>
           <div class="legend-item" onclick="filterType('organization')">
-            <span class="legend-color" style="background: var(--accent-amber);"></span> Organizations &amp; Applicants
+            <span class="legend-color" style="background: var(--accent-amber);"></span> Developers &amp; Stakeholders
           </div>
           <div class="legend-item" onclick="filterType('meeting')">
-            <span class="legend-color" style="background: var(--accent-cyan);"></span> Council &amp; Commission Meetings
+            <span class="legend-color" style="background: var(--accent-cyan);"></span> Council Sessions
           </div>
         </div>
       </div>
@@ -624,22 +663,21 @@ def generate_dashboard_html():
         <button class="action-chip-btn" onclick="resetPhysics()">&#128260; Re-cluster</button>
       </div>
 
-      <!-- FLOATING INSPECTOR TOGGLE PILL (When drawer closed) -->
       <button class="toggle-inspector-pill" id="toggleInspectorPill" onclick="toggleInspector(true)">
-        &#128203; Open Dossier Inspector
+        &#128203; Open Policy Dossier
       </button>
 
       <!-- FLOATING SIDEBAR INSPECTOR -->
       <div class="inspector-panel" id="inspector">
         <div class="inspector-header">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700;">Entity Dossier</span>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700;">Policy &amp; Civic Dossier</span>
           <button class="close-inspector-btn" onclick="toggleInspector(false)" title="Collapse Panel">&times;</button>
         </div>
 
         <div id="empty-state" style="text-align: center; color: var(--text-muted); margin-top: 3rem;">
           <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">&#127963;&#65039;</div>
-          <h3 style="font-size: 1.05rem; color: #cbd5e1;">Select Any Node</h3>
-          <p style="font-size: 0.8rem; margin-top: 0.5rem; line-height: 1.5;">Click on any Councilmember, Ordinance, Meeting, or Developer node in the graph to view voting dossiers, relations, and exact video jump points.</p>
+          <h3 style="font-size: 1.05rem; color: #cbd5e1;">Select a Policy or Official</h3>
+          <p style="font-size: 0.8rem; margin-top: 0.5rem; line-height: 1.5;">Click any <strong>Policy Topic</strong> (Housing, Economy, Open Space), <strong>Councilmember</strong>, or <strong>Ordinance</strong> to inspect voting records, developer connections, and video timestamps.</p>
         </div>
 
         <div id="dossier-content" style="display: none;">
@@ -675,35 +713,60 @@ def generate_dashboard_html():
   <script>
     const graphData = {graph_json_str};
 
+    let currentMode = 'topic'; // 'topic' or 'session'
+
+    // Node Visual Styling
     const typeColors = {{
+      topic: {{ background: '#f43f5e', border: '#e11d48', font: '#ffffff' }},
       official: {{ background: '#10b981', border: '#059669', font: '#ffffff' }},
-      agenda_item: {{ background: '#6366f1', border: '#4f46e5', font: '#ffffff' }},
+      agenda_item: {{ background: '#818cf8', border: '#6366f1', font: '#ffffff' }},
       organization: {{ background: '#f59e0b', border: '#d97706', font: '#ffffff' }},
       meeting: {{ background: '#38bdf8', border: '#0284c7', font: '#090d16' }}
     }};
 
+    // Topic Custom Color Mapping
+    const topicColors = {{
+      topic_housing: {{ bg: '#f43f5e', border: '#e11d48' }},
+      topic_economy: {{ bg: '#a855f7', border: '#9333ea' }},
+      topic_openspace: {{ bg: '#10b981', border: '#059669' }},
+      topic_publicsafety: {{ bg: '#f59e0b', border: '#d97706' }},
+      topic_infrastructure: {{ bg: '#06b6d4', border: '#0891b2' }},
+      topic_governance: {{ bg: '#38bdf8', border: '#0284c7' }}
+    }};
+
     const visNodes = new vis.DataSet(
       (graphData.nodes || []).map(n => {{
-        const style = typeColors[n.type] || {{ background: '#64748b', border: '#475569', font: '#fff' }};
+        const isTopic = n.type === 'topic';
         const isOfficial = n.type === 'official';
         const isMeeting = n.type === 'meeting';
+        const isOrg = n.type === 'organization';
+
+        let bg = typeColors[n.type]?.background || '#64748b';
+        let border = typeColors[n.type]?.border || '#475569';
+        let fontColor = '#ffffff';
+
+        if (isTopic && topicColors[n.id]) {{
+          bg = topicColors[n.id].bg;
+          border = topicColors[n.id].border;
+        }}
+
         return {{
           id: n.id,
           label: n.label,
           type: n.type,
-          shape: isMeeting ? 'box' : (isOfficial ? 'circle' : 'dot'),
-          size: isMeeting ? 30 : (isOfficial ? 26 : 18),
-          margin: isMeeting ? 10 : 5,
+          shape: isTopic ? 'diamond' : (isMeeting ? 'box' : (isOfficial ? 'circle' : (isOrg ? 'hexagon' : 'dot'))),
+          size: isTopic ? 38 : (isMeeting ? 26 : (isOfficial ? 24 : 16)),
+          margin: isMeeting ? 8 : (isTopic ? 12 : 5),
           color: {{
-            background: style.background,
-            border: style.border,
-            highlight: {{ background: '#ffffff', border: style.background }}
+            background: bg,
+            border: border,
+            highlight: {{ background: '#ffffff', border: bg }}
           }},
           font: {{
-            color: style.font || '#fff',
-            size: isMeeting ? 14 : (isOfficial ? 13 : 11),
+            color: fontColor,
+            size: isTopic ? 14 : (isMeeting ? 12 : (isOfficial ? 13 : 11)),
             face: 'Plus Jakarta Sans',
-            bold: true
+            bold: isTopic || isOfficial
           }},
           raw: n
         }};
@@ -716,8 +779,9 @@ def generate_dashboard_html():
         to: l.target,
         label: l.relation || l.label || '',
         font: {{ size: 9, color: '#94a3b8', strokeWidth: 0, align: 'top' }},
-        color: {{ color: 'rgba(255, 255, 255, 0.25)', highlight: '#38bdf8' }},
+        color: {{ color: l.relation === 'POLICY_DOMAIN' ? 'rgba(244, 63, 94, 0.4)' : 'rgba(255, 255, 255, 0.2)', highlight: '#38bdf8' }},
         arrows: 'to',
+        width: l.relation === 'POLICY_DOMAIN' ? 2 : 1.2,
         raw: l
       }}))
     );
@@ -726,13 +790,12 @@ def generate_dashboard_html():
     const options = {{
       nodes: {{ borderWidth: 2 }},
       edges: {{
-        smooth: {{ type: 'continuous' }},
-        width: 1.5
+        smooth: {{ type: 'continuous' }}
       }},
       physics: {{
         barnesHut: {{
           gravitationalConstant: -7500,
-          centralGravity: 0.18,
+          centralGravity: 0.16,
           springLength: 220,
           springConstant: 0.035,
           damping: 0.1
@@ -752,8 +815,9 @@ def generate_dashboard_html():
 
     const network = new vis.Network(container, {{ nodes: visNodes, edges: visEdges }}, options);
 
-    // Auto-fit on initial stabilization
+    // Initial setup: Default to Topic-centric layout
     network.once('stabilized', function() {{
+      setOrganizationMode('topic');
       fitGraph();
     }});
 
@@ -780,6 +844,34 @@ def generate_dashboard_html():
     function resetPhysics() {{
       network.stabilize(100);
       setTimeout(fitGraph, 300);
+    }}
+
+    // Switch between Policy Topic Mode and Council Session Mode
+    function setOrganizationMode(mode) {{
+      currentMode = mode;
+      document.getElementById('btnModeTopic').classList.toggle('active', mode === 'topic');
+      document.getElementById('btnModeSession').classList.toggle('active', mode === 'session');
+
+      if (mode === 'topic') {{
+        // In Topic Mode: De-emphasize or hide meeting session nodes to put Policy Topics at the center
+        visNodes.forEach(n => {{
+          if (n.type === 'meeting') {{
+            visNodes.update({{ id: n.id, hidden: true }});
+          }} else if (n.type === 'topic') {{
+            visNodes.update({{ id: n.id, hidden: false, size: 42 }});
+          }} else {{
+            visNodes.update({{ id: n.id, hidden: false }});
+          }}
+        }});
+      }} else {{
+        // In Session Mode: Show all meeting nodes as chronological hubs
+        visNodes.forEach(n => {{
+          visNodes.update({{ id: n.id, hidden: false }});
+        }});
+      }}
+
+      network.stabilize(80);
+      setTimeout(fitGraph, 250);
     }}
 
     // Toggle Inspector Drawer
@@ -818,12 +910,14 @@ def generate_dashboard_html():
       badge.className = `node-badge badge-${{raw.type}}`;
 
       let attrHtml = '';
-      if (raw.type === 'official') {{
+      if (raw.type === 'topic') {{
+        attrHtml = `<strong>Policy Domain:</strong> ${{raw.raw_label || raw.label}}<br><strong>Description:</strong> ${{raw.description || 'Major municipal policy area.'}}<br><strong>Centrality Score:</strong> ${{raw.centrality || '0.22'}}`;
+      }} else if (raw.type === 'official') {{
         attrHtml = `<strong>Role:</strong> ${{raw.role || 'City Official'}}<br><strong>Status:</strong> ${{raw.status || 'Active'}}<br><strong>Centrality Score:</strong> ${{raw.centrality || 'N/A'}}`;
       }} else if (raw.type === 'meeting') {{
         attrHtml = `<strong>Body:</strong> ${{raw.body || 'Municipal'}}<br><strong>Date:</strong> ${{raw.date || 'Recent'}}<br><strong>Broadcaster:</strong> CTO Meetings`;
       }} else if (raw.type === 'agenda_item') {{
-        attrHtml = `<strong>Item Type:</strong> ${{raw.item_type || 'Ordinance / Hearing'}}<br><strong>Action:</strong> ${{raw.status || 'Deliberated'}}<br><strong>Timestamp:</strong> ${{raw.timestamp || 'N/A'}}`;
+        attrHtml = `<strong>Item Type:</strong> ${{raw.item_type || 'Ordinance / Hearing'}}<br><strong>Primary Topic:</strong> ${{raw.topic_label || 'Municipal'}}<br><strong>Action:</strong> ${{raw.status || 'Deliberated'}}<br><strong>Timestamp:</strong> ${{raw.timestamp || 'N/A'}}`;
       }} else if (raw.type === 'organization') {{
         attrHtml = `<strong>Category:</strong> ${{raw.subtype || 'Organization'}}<br><strong>Jurisdiction:</strong> Conejo Valley / Ventura County`;
       }}
@@ -838,6 +932,7 @@ def generate_dashboard_html():
         actionContainer.innerHTML = '';
       }}
 
+      // Find Connected Entities
       const connectedEdges = visEdges.get({{
         filter: e => e.from === nodeId || e.to === nodeId
       }});
@@ -875,7 +970,7 @@ def generate_dashboard_html():
 
     function filterType(type) {{
       if (type === 'all') {{
-        visNodes.forEach(n => visNodes.update({{ id: n.id, hidden: false }}));
+        visNodes.forEach(n => visNodes.update({{ id: n.id, hidden: currentMode === 'topic' && n.type === 'meeting' }}));
       }} else {{
         visNodes.forEach(n => {{
           visNodes.update({{ id: n.id, hidden: n.type !== type }});

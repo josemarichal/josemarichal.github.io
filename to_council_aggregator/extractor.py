@@ -233,8 +233,62 @@ def extract_votes(full_text: str, roll_call: List[Dict]) -> List[Dict[str, Any]]
     return votes
 
 
+def classify_policy_topic(title: str, context: str = "", item_type: str = "") -> Dict[str, str]:
+    """Classify agenda item or debate into a core municipal policy domain."""
+    text = f"{title} {context}".lower()
+
+    if any(k in text for k in ["affordable housing", "housing", "impact fee", "hillcrest", "residential", "tenant", "rent", "zoning", "subdivision", "adu"]):
+        return {
+            "id": "topic_housing",
+            "label": "Affordable Housing & Land Use",
+            "icon": "🏠",
+            "color": "#f43f5e",
+            "description": "Housing affordability, impact fee exemptions, residential developments, and zoning ordinances."
+        }
+    elif any(k in text for k in ["amgen", "biotech", "life science", "specific plan", "commercial", "business", "downtown master plan", "jobs", "economic"]):
+        return {
+            "id": "topic_economy",
+            "label": "Economic Development & Biotech",
+            "icon": "🧬",
+            "color": "#a855f7",
+            "description": "Life sciences, commercial campus expansions, specific plans, and local business development."
+        }
+    elif any(k in text for k in ["open space", "cosca", "native plant", "conejo creek", "parks", "oak tree", "trail", "conservation", "wildlife", "ceqa", "environment"]):
+        return {
+            "id": "topic_openspace",
+            "label": "Open Space & Environment",
+            "icon": "🌳",
+            "color": "#10b981",
+            "description": "Conejo open space preservation, native habitat protection, trail networks, and environmental review."
+        }
+    elif any(k in text for k in ["police", "crime", "sheriff", "traffic", "speed limit", "crosswalk", "code enforcement", "fire", "emergency", "pedestrian"]):
+        return {
+            "id": "topic_publicsafety",
+            "label": "Public Safety & Traffic",
+            "icon": "🛡️",
+            "color": "#f59e0b",
+            "description": "Community safety, law enforcement, pedestrian infrastructure, and traffic management."
+        }
+    elif any(k in text for k in ["water", "rates", "sewer", "storm drain", "paving", "capital improvement", "public works", "canal boulevard"]):
+        return {
+            "id": "topic_infrastructure",
+            "label": "Infrastructure & Utilities",
+            "icon": "💧",
+            "color": "#06b6d4",
+            "description": "Water service, municipal utilities, capital improvement projects, and public works."
+        }
+    else:
+        return {
+            "id": "topic_governance",
+            "label": "Governance & Legal Affairs",
+            "icon": "🏛️",
+            "color": "#38bdf8",
+            "description": "Municipal litigation, closed session legal conferences, city appointments, and council procedures."
+        }
+
+
 def extract_entities_for_graph(meeting_data: Dict[str, Any], items: List[Dict], roll_call: List[Dict]) -> Dict[str, Any]:
-    """Compile graph nodes and edges for the knowledge graph."""
+    """Compile graph nodes and edges for the knowledge graph with Topic-Centric architecture."""
     nodes = []
     edges = []
     
@@ -265,31 +319,75 @@ def extract_entities_for_graph(meeting_data: Dict[str, Any], items: List[Dict], 
             "label": member.get("status", "Present")
         })
         
-    # 2. Agenda Items, Projects, and Ordinances
+    # 2. Agenda Items, Ordinances, and Policy Topics
     for idx, itm in enumerate(items):
         item_id = f"item_{meeting_data['video_id']}_{idx}"
+        topic_info = classify_policy_topic(itm["title"], itm.get("context", ""), itm.get("type", ""))
+        topic_id = topic_info["id"]
+
+        # Add or ensure Topic node exists
+        nodes.append({
+            "id": topic_id,
+            "label": f"{topic_info['icon']} {topic_info['label']}",
+            "raw_label": topic_info["label"],
+            "type": "topic",
+            "icon": topic_info["icon"],
+            "color_accent": topic_info["color"],
+            "description": topic_info["description"]
+        })
+
+        # Add Agenda Item Node
         nodes.append({
             "id": item_id,
             "label": itm["identifier"],
             "type": "agenda_item",
             "item_type": itm["type"],
             "title": itm["title"],
+            "topic_id": topic_id,
+            "topic_label": topic_info["label"],
             "timestamp": itm["timestamp"],
             "jump_url": itm["jump_url"],
             "status": itm.get("status", "Discussed")
         })
+
+        # Link Item -> Topic (The core policy relationship!)
+        edges.append({
+            "source": item_id,
+            "target": topic_id,
+            "relation": "POLICY_DOMAIN",
+            "label": "Categorized Under"
+        })
+
+        # Link Item -> Meeting session
         edges.append({
             "source": item_id,
             "target": meeting_node_id,
             "relation": "HEARD_IN",
             "label": itm["timestamp"]
         })
-        
-        # Link present officials with unanimous votes
-        if itm["type"] == "Ordinance" and "passes 5" in itm.get("status", "").lower():
-            for member in roll_call:
-                if member.get("status") == "Present":
-                    official_id = f"official_{member['name'].replace(' ', '_').lower()}"
+
+        # Link Meeting -> Topic
+        edges.append({
+            "source": meeting_node_id,
+            "target": topic_id,
+            "relation": "COVERED_TOPIC",
+            "label": itm["timestamp"]
+        })
+
+        # Link Voting Officials directly to the Topic & Item
+        for member in roll_call:
+            if member.get("status") == "Present":
+                official_id = f"official_{member['name'].replace(' ', '_').lower()}"
+                
+                # Link Official -> Topic (Councilmember's policy engagement)
+                edges.append({
+                    "source": official_id,
+                    "target": topic_id,
+                    "relation": "DELIBERATED",
+                    "label": "Deliberated Issue"
+                })
+
+                if itm["type"] == "Ordinance" and "passes" in itm.get("status", "").lower():
                     edges.append({
                         "source": official_id,
                         "target": item_id,
@@ -297,7 +395,7 @@ def extract_entities_for_graph(meeting_data: Dict[str, Any], items: List[Dict], 
                         "label": "Vote: AYE"
                     })
                     
-        # Check for related Organizations / Developers
+        # Check for related Organizations / Developers & Link to Topic
         if "Amgen" in itm["title"]:
             org_id = "org_amgen"
             nodes.append({
@@ -311,6 +409,12 @@ def extract_entities_for_graph(meeting_data: Dict[str, Any], items: List[Dict], 
                 "target": item_id,
                 "relation": "APPLICANT",
                 "label": "Project Proponent"
+            })
+            edges.append({
+                "source": org_id,
+                "target": "topic_economy",
+                "relation": "STAKEHOLDER",
+                "label": "Life Sciences Proponent"
             })
         elif "Hillcrest" in itm["title"]:
             org_id = "org_hillcrest"
@@ -326,6 +430,12 @@ def extract_entities_for_graph(meeting_data: Dict[str, Any], items: List[Dict], 
                 "relation": "APPLICANT",
                 "label": "Developer Partner"
             })
+            edges.append({
+                "source": org_id,
+                "target": "topic_housing",
+                "relation": "STAKEHOLDER",
+                "label": "Housing Developer"
+            })
         elif "Conejo Open Space" in itm["title"]:
             org_id = "org_cosf"
             nodes.append({
@@ -340,16 +450,26 @@ def extract_entities_for_graph(meeting_data: Dict[str, Any], items: List[Dict], 
                 "relation": "ADVOCATE",
                 "label": "Community Partner"
             })
+            edges.append({
+                "source": org_id,
+                "target": "topic_openspace",
+                "relation": "STAKEHOLDER",
+                "label": "Open Space Partner"
+            })
             
-    # Deduplicate nodes by ID
+    # Deduplicate nodes by ID, merging attributes
     unique_nodes = {}
     for n in nodes:
-        unique_nodes[n["id"]] = n
+        if n["id"] in unique_nodes:
+            unique_nodes[n["id"]].update(n)
+        else:
+            unique_nodes[n["id"]] = n
         
     return {
         "nodes": list(unique_nodes.values()),
         "edges": edges
     }
+
 
 
 def analyze_meeting(video_id: str, metadata: Dict[str, Any]) -> Dict[str, Any]:
