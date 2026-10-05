@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STS 2026 Conference Navigator & Personal Itinerary | José Marichal</title>
+    <meta name="description" content="Personal interactive conference itinerary and theoretical navigator for José Marichal at the 4S / STS Annual Meeting.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #080c14;
+            --bg-surface: #0f172a;
+            --bg-surface-elevated: #162036;
+            --bg-card: rgba(22, 32, 54, 0.7);
+            --bg-card-hover: rgba(30, 41, 69, 0.85);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.25);
+            --primary-light: #34d399;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --gold: #f59e0b;
+            --gold-glow: rgba(245, 158, 11, 0.3);
+            --purple: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.2);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-subtle: #64748b;
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation Bar */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 12, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.85rem 1.5rem;
+        }
+
+        .nav-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .nav-brand-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: #041017;
+            font-size: 1.1rem;
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-brand-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Header */
+        .hero {
+            padding: 3rem 0 2rem;
+            position: relative;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .chip-conference {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .chip-dates {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* VIP Spotlight: Your Presentation */
+        .spotlight-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(16, 185, 129, 0.08));
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--gold), var(--primary));
+        }
+
+        .spotlight-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .spotlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .spotlight-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .spotlight-meta {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+        }
+
+        .spotlight-meta strong {
+            color: var(--gold);
+        }
+
+        .btn-spotlight {
+            background: var(--gold);
+            color: #0b0f19;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-spotlight:hover {
+            background: #fbbf24;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Schedule Control Dashboard */
+        .dashboard-bar {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-card);
+            position: sticky;
+            top: 60px;
+            z-index: 90;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .dashboard-row-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        /* Day Selector Tabs */
+        .day-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .day-tab {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .day-tab:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+        }
+
+        .day-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #041410;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+        }
+
+        .day-tab .tab-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 9999px;
+            background: rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+        }
+
+        /* Dashboard Actions (Export, Print, Clear) */
+        .dashboard-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-strong);
+            transform: translateY(-1px);
+        }
+
+        .btn-action.primary {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #ffffff;
+            border-color: #10b981;
+            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-action.primary:hover {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Filter Controls */
+        .dashboard-row-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 240px;
+            max-width: 420px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(8, 12, 20, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0.5rem 1rem 0.5rem 2.4rem;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-subtle);
+            pointer-events: none;
+        }
+
+        .view-toggles {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-btn {
+            background: rgba(8, 12, 20, 0.6);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 0.45rem 0.85rem;
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Selection Progress Tracker */
+        .selection-tracker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar-wrap {
+            width: 120px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 5%;
+            transition: width 0.3s ease;
+        }
+
+        /* Day Schedule Container */
+        .day-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .day-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .day-header .day-badge {
+            font-size: 0.78rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        /* Time Slot Block */
+        .slot-block {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            margin-bottom: 1.75rem;
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.2s ease;
+        }
+
+        .slot-block.has-selection {
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+
+        .slot-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slot-time-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .slot-time {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .slot-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .slot-status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .slot-status.selected {
+            color: var(--primary);
+        }
+
+        .slot-status.undecided {
+            color: var(--text-subtle);
+        }
+
+        /* Options Comparison Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 860px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Option Card */
+        .option-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Selected State */
+        .option-card.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(22, 32, 54, 0.9));
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.18);
+        }
+
+        /* VIP User Panel State */
+        .option-card.user-presentation {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(22, 32, 54, 0.95));
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.22);
+        }
+
+        .option-card.user-presentation.selected {
+            border-color: #fbbf24;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.35);
+        }
+
+        .card-top {
+            margin-bottom: 1rem;
+        }
+
+        .card-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .option-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .option-1-badge {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .option-2-badge {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--purple);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .location-badge svg {
+            color: var(--primary);
+        }
+
+        .panel-number {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-subtle);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .panel-title {
+            font-family: var(--font-display);
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 0.85rem;
+        }
+
+        /* The Hook Box */
+        .hook-box {
+            background: rgba(8, 12, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-sm);
+            padding: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-card.selected .hook-box {
+            border-left-color: var(--primary);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .option-card.user-presentation .hook-box {
+            border-left-color: var(--gold);
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .hook-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .option-card.selected .hook-header {
+            color: var(--primary);
+        }
+
+        .option-card.user-presentation .hook-header {
+            color: var(--gold);
+        }
+
+        .hook-text {
+            font-size: 0.86rem;
+            color: #e2e8f0;
+            line-height: 1.45;
+        }
+
+        /* Key Speakers */
+        .speakers-row {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .speakers-row strong {
+            color: #fff;
+        }
+
+        /* Tags */
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag-pill {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            color: var(--text-subtle);
+            padding: 0.15rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+        }
+
+        /* Choose Button */
+        .card-bottom {
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-select {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-select:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-strong);
+        }
+
+        .option-card.selected .btn-select {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #041410;
+            font-weight: 700;
+            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .option-card.user-presentation.selected .btn-select {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #0b0f19;
+            box-shadow: 0 3px 15px rgba(245, 158, 11, 0.35);
+        }
+
+        /* Notes Section per Slot */
+        .slot-notes-drawer {
+            margin-top: 1.25rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.07);
+        }
+
+        .notes-toggle {
+            background: none;
+            border: none;
+            color: var(--text-subtle);
+            font-size: 0.78rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.2rem 0;
+            transition: color 0.2s;
+        }
+
+        .notes-toggle:hover {
+            color: var(--text-muted);
+        }
+
+        .notes-panel {
+            display: none;
+            margin-top: 0.6rem;
+        }
+
+        .notes-panel.open {
+            display: block;
+        }
+
+        .notes-textarea {
+            width: 100%;
+            background: rgba(8, 12, 20, 0.7);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 0.85rem;
+            color: #e2e8f0;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .notes-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Venue Directory Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            max-width: 650px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .modal-close:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .floor-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .floor-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .floor-rooms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .room-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            color: var(--text-main);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+            background: rgba(8, 12, 20, 0.8);
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-inner a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-inner a:hover {
+            color: var(--primary);
+        }
+
+        /* Print Mode Optimization */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            .site-nav, .dashboard-bar, .spotlight-card, .btn-select, .slot-notes-drawer, .site-footer {
+                display: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            .hero h1 {
+                color: #000000 !important;
+                -webkit-text-fill-color: initial !important;
+                font-size: 20pt !important;
+            }
+            .slot-block {
+                background: #ffffff !important;
+                border: 1px solid #ccc !important;
+                page-break-inside: avoid;
+                margin-bottom: 12pt !important;
+                padding: 10pt !important;
+            }
+            .option-card {
+                background: #f8fafc !important;
+                border: 1px solid #ddd !important;
+                color: #000 !important;
+            }
+            .hook-box {
+                background: #f1f5f9 !important;
+                border-left: 3px solid #000 !important;
+                color: #000 !important;
+            }
+            .hook-text {
+                color: #222 !important;
+            }
+            .panel-title {
+                color: #000 !important;
+            }
+            .location-badge {
+                background: #eee !important;
+                color: #000 !important;
+                border-color: #ccc !important;
+            }
+            .option-card.selected {
+                border: 2px solid #000 !important;
+                background: #eef2ff !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-logo">JM</div>
+                <div class="nav-brand-text">José <span>Marichal</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">&larr; Back to Portfolio</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">Civic AI Group</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="badge-row">
+                <span class="chip chip-conference">4S / STS Annual Meeting 2026</span>
+                <span class="chip chip-dates">October 7–10, 2026</span>
+                <span class="chip" style="background: rgba(16, 185, 129, 0.12); color: var(--primary); border: 1px solid rgba(16, 185, 129, 0.25);">
+                    Curated Personal Navigator
+                </span>
+            </div>
+            <h1>Conference Schedule & Theoretical Navigator</h1>
+            <p class="lead">
+                Curated session recommendations mapped directly to your research agenda—including <em>Machine Liberalism</em>, 
+                technological sovereignty, algorithmic habitus, preemption, and critical AI literacy.
+            </p>
+
+            <!-- Spotlight Card for José's Panel -->
+            <div class="spotlight-card" id="myPanelSpotlight">
+                <div class="spotlight-content">
+                    <span class="spotlight-badge">⭐ Your Presentation Panel • Thursday, October 8</span>
+                    <div class="spotlight-title">Session 198. We Have Never Been Democratic: STS for the Contemporary Age</div>
+                    <div class="spotlight-meta">
+                        Time: <strong>8:00 AM – 10:00 AM</strong> &bull; Room: <strong>2nd Floor, Kenora</strong> &bull; Presenting: <strong>Machine Liberalism</strong> alongside Fenwick McKelvey and Saul Halfon
+                    </div>
+                </div>
+                <button class="btn-spotlight" onclick="jumpToPanel('thu-1')">View Panel in Schedule &rarr;</button>
+            </div>
+        </header>
+
+        <!-- Control Dashboard Sticky Bar -->
+        <div class="dashboard-bar">
+            <!-- Row 1: Day Tabs & Actions -->
+            <div class="dashboard-row-top">
+                <div class="day-tabs">
+                    <button class="day-tab active" data-day="all" onclick="setDayFilter('all')">
+                        All Days <span class="tab-badge">20 Slots</span>
+                    </button>
+                    <button class="day-tab" data-day="wednesday" onclick="setDayFilter('wednesday')">
+                        Wed, Oct 7 <span class="tab-badge">5</span>
+                    </button>
+                    <button class="day-tab" data-day="thursday" onclick="setDayFilter('thursday')">
+                        Thu, Oct 8 <span class="tab-badge" style="background: var(--gold); color: #000;">★ Presentation</span>
+                    </button>
+                    <button class="day-tab" data-day="friday" onclick="setDayFilter('friday')">
+                        Fri, Oct 9 <span class="tab-badge">5</span>
+                    </button>
+                    <button class="day-tab" data-day="saturday" onclick="setDayFilter('saturday')">
+                        Sat, Oct 10 <span class="tab-badge">5</span>
+                    </button>
+                </div>
+
+                <div class="dashboard-actions">
+                    <button class="btn-action primary" onclick="exportToCalendarICS()" title="Export all selected sessions as a calendar file">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Export .ICS Calendar</span>
+                    </button>
+                    <button class="btn-action" onclick="copyScheduleMarkdown()" title="Copy your itinerary text to clipboard">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy Summary</span>
+                    </button>
+                    <button class="btn-action" onclick="window.print()" title="Print or save as pocket PDF">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                        <span>Print Pocket Guide</span>
+                    </button>
+                    <button class="btn-action" onclick="openVenueModal()" title="View rooms by floor">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                        <span>Floor Map</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Row 2: Search, Filters & Selection Progress -->
+            <div class="dashboard-row-bottom">
+                <div class="search-box">
+                    <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="scheduleSearch" placeholder="Search speaker (Alondra Nelson, Ranjit Singh), theme (Preemption), room..." oninput="handleSearch()">
+                </div>
+
+                <div class="view-toggles">
+                    <button class="toggle-btn active" id="viewModeAll" onclick="setViewMode('all')">Compare Both Options</button>
+                    <button class="toggle-btn" id="viewModeSelected" onclick="setViewMode('selected')">My Selected Itinerary Only</button>
+                </div>
+
+                <div class="selection-tracker">
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar-fill" id="progressFill"></div>
+                    </div>
+                    <span id="progressText">1 / 20 Selected</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule Container populated via JavaScript -->
+        <main id="scheduleContainer"></main>
+    </div>
+
+    <!-- Venue Directory Modal -->
+    <div class="modal-overlay" id="venueModal" onclick="closeVenueModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>Venue Floor & Room Directory</h3>
+                <button class="modal-close" onclick="closeVenueModal()">&times;</button>
+            </div>
+            
+            <div class="floor-group">
+                <div class="floor-title">Mezzanine Level</div>
+                <div class="floor-rooms">
+                    <span class="room-pill">Willow Centre</span>
+                    <span class="room-pill">Willow East</span>
+                    <span class="room-pill">Peel</span>
+                    <span class="room-pill">Linden</span>
+                    <span class="room-pill">Oxford</span>
+                    <span class="room-pill">York</span>
+                    <span class="room-pill">Spruce</span>
+                    <span class="room-pill">Cedar</span>
+                    <span class="room-pill">Maple West</span>
+                    <span class="room-pill">Chestnut West</span>
+                </div>
+            </div>
+
+            <div class="floor-group">
+                <div class="floor-title">2nd Floor Level</div>
+                <div class="floor-rooms">
+                    <span class="room-pill" style="border-color: var(--gold); color: #fbbf24;">Kenora (Your Panel)</span>
+                    <span class="room-pill">Huron</span>
+                    <span class="room-pill">Wentworth</span>
+                    <span class="room-pill">Simcoe</span>
+                    <span class="room-pill">Elgin</span>
+                    <span class="room-pill">Kent</span>
+                    <span class="room-pill">City Hall Room</span>
+                </div>
+            </div>
+
+            <div class="floor-group">
+                <div class="floor-title">4th Floor Level</div>
+                <div class="floor-rooms">
+                    <span class="room-pill">Kensington</span>
+                    <span class="room-pill">Leaside</span>
+                </div>
+            </div>
+
+            <div class="floor-group">
+                <div class="floor-title">Lower Concourse</div>
+                <div class="floor-rooms">
+                    <span class="room-pill">Grand Centre</span>
+                    <span class="room-pill">Grand West</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toastNotification">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span id="toastMsg">Schedule updated</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 José Marichal &bull; Professor of Political Science, California Lutheran University</p>
+            <div>
+                <a href="index.html">Portfolio Home</a> &bull; 
+                <a href="https://bsky.app/profile/josemarichal.bsky.social" target="_blank" rel="noopener">Bluesky</a> &bull; 
+                <a href="https://www.linkedin.com/in/jose-marichal-713b302" target="_blank" rel="noopener">LinkedIn</a> &bull; 
+                <a href="https://x.com/profmarichal" target="_blank" rel="noopener">X</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schedule Data & App Logic -->
+    <script>
+        const SCHEDULE_DATA = [{"day_id": "wednesday", "day_name": "Wednesday, October 7", "date_iso": "2026-10-07", "badge": "Day 1", "slots": [{"slot_id": "wed-1", "time": "8:00 AM \u2013 10:00 AM", "time_badge": "Morning Session 1", "start_time": "08:00", "end_time": "10:00", "opt1": {"number": "Panel 12", "type": "Panel", "title": "Digital sovereignty in the age of technopowers 1", "location": "Mezzanine, Willow Centre", "floor": "Mezzanine", "room": "Willow Centre", "hook": "Focuses on the clash between State Sovereignty and Tech Infrastructure. Directly maps to your argument about the 'Network State.'", "speakers": [], "tags": ["Digital Sovereignty", "Network State", "Technopowers", "Infrastructure"]}, "opt2": {"number": "Panel 8", "type": "Panel", "title": "Critical AI Literacy 1", "location": "2nd Floor, Huron", "floor": "2nd Floor", "room": "Huron", "hook": "Features Dominic Zappia on 'The Epistemic Power of Tech Manifestos.' Good for the 'Techno-Romanticism' critique.", "speakers": ["Dominic Zappia"], "tags": ["Critical AI Literacy", "Tech Manifestos", "Techno-Romanticism", "Epistemic Power"]}}, {"slot_id": "wed-2", "time": "10:20 AM \u2013 12:20 PM", "time_badge": "Morning Session 2", "start_time": "10:20", "end_time": "12:20", "opt1": {"number": "Panel 40", "type": "Panel", "title": "Assemblages, Discourses, and Imaginaries of Power and Control", "location": "Mezzanine, Peel", "floor": "Mezzanine", "room": "Peel", "hook": "Features Tatiana Lysova on the 'Authoritarian Surveillant Assemblage.' Perfect for your Chapter 5 (Preemption) research.", "speakers": ["Tatiana Lysova"], "tags": ["Preemption (Ch. 5)", "Surveillant Assemblage", "Power & Control", "Authoritarian Tech"]}, "opt2": {"number": "Panel 49", "type": "Panel", "title": "Digital sovereignty... 2: Institutions and governments", "location": "Mezzanine, Willow Centre", "floor": "Mezzanine", "room": "Willow Centre", "hook": "A continuation of Panel 12. Features Matheus Nunes on the 'sovereigntization' of infrastructure.", "speakers": ["Matheus Nunes"], "tags": ["Digital Sovereignty", "Institutions & Gov", "Infrastructure Sovereignty"]}}, {"slot_id": "wed-3", "time": "12:20 PM \u2013 1:30 PM", "time_badge": "Lunchtime Session", "start_time": "12:20", "end_time": "13:30", "opt1": {"number": "Roundtable 73", "type": "Roundtable", "title": "Beyond the Algorithm: Models, Technopower, and the Sociotechnical Governance of AI", "location": "Mezzanine, Willow East", "floor": "Mezzanine", "room": "Willow East", "hook": "A networking goldmine. Discussing how models (not just code) govern human subjects.", "speakers": [], "tags": ["Networking Goldmine", "Sociotechnical Governance", "Models & Technopower"]}, "opt2": {"number": "Panel 71", "type": "Panel", "title": "Algorithmic Bias, Techno-political Futures, and Power in South Asia", "location": "4th Floor, Kensington", "floor": "4th Floor", "room": "Kensington", "hook": "Features Ranjit Singh on the 'Enclosure of Legibility.' This is the exact equivalent of your 'Machine Habitus' concept (forcing users into legible categories).", "speakers": ["Ranjit Singh"], "tags": ["Machine Habitus", "Enclosure of Legibility", "South Asia", "Algorithmic Bias"]}}, {"slot_id": "wed-4", "time": "1:30 PM \u2013 3:20 PM", "time_badge": "Afternoon Session 1", "start_time": "13:30", "end_time": "15:20", "opt1": {"number": "Panel 98", "type": "Panel", "title": "AI Governance and Public Policy 3", "location": "2nd Floor, Wentworth", "floor": "2nd Floor", "room": "Wentworth", "hook": "Features Chuncheng Liu on 'Power in the Loop: The Legitimacy of Human Intervention in Authoritarian Algorithmic Governance.' Highly relevant to your New_Public memo.", "speakers": ["Chuncheng Liu"], "tags": ["AI Governance", "Human in the Loop", "New_Public Memo", "Authoritarian Tech"]}, "opt2": {"number": "Panel 107", "type": "Panel", "title": "Critical AI Literacy 3", "location": "2nd Floor, Huron", "floor": "2nd Floor", "room": "Huron", "hook": "Features Faye-Marie Vassel on 'Critical AI Literacy as Epistemic Resistance.' This is exactly how you are framing your Participatory AI Lab.", "speakers": ["Faye-Marie Vassel"], "tags": ["Epistemic Resistance", "Participatory AI Lab", "Critical AI Literacy"]}}, {"slot_id": "wed-5", "time": "3:40 PM \u2013 5:30 PM", "time_badge": "Afternoon Session 2", "start_time": "15:40", "end_time": "17:30", "opt1": {"number": "Panel 139", "type": "Panel", "title": "Critical AI Literacy 4", "location": "2nd Floor, Huron", "floor": "2nd Floor", "room": "Huron", "hook": "Features papers on the 'Normalization of Algorithmic Ignorance' and the 'Political Economy of Helplessness.' Hits your 'Quiet Quitting Democracy' theme.", "speakers": [], "tags": ["Quiet Quitting Democracy", "Algorithmic Ignorance", "Political Economy of Helplessness"]}, "opt2": {"number": "Panel 138", "type": "Panel", "title": "Computational Code-Switching 2", "location": "Mezzanine, Linden", "floor": "Mezzanine", "room": "Linden", "hook": "Features Spencer Kaplan on 'The Managerial Registers of LLM Agents.' Great for the 'Optimization of Labor' (Chapter 2) argument.", "speakers": ["Spencer Kaplan"], "tags": ["Optimization of Labor (Ch. 2)", "LLM Agents", "Managerial Registers"]}}]}, {"day_id": "thursday", "day_name": "Thursday, October 8", "date_iso": "2026-10-08", "badge": "Day 2 \u2022 Presentation Day", "slots": [{"slot_id": "thu-1", "time": "8:00 AM \u2013 10:00 AM", "time_badge": "Morning Session 1", "start_time": "08:00", "end_time": "10:00", "opt1": {"number": "Session 198", "type": "Featured Panel", "is_user_panel": true, "title": "YOUR PANEL! We Have Never Been Democratic: STS for the Contemporary Age", "location": "2nd Floor, Kenora", "floor": "2nd Floor", "room": "Kenora", "hook": "You are presenting Machine Liberalism here alongside Fenwick McKelvey and Saul Halfon (Illiberal Technocracy).", "speakers": ["Jos\u00e9 Marichal ('Machine Liberalism')", "Fenwick McKelvey", "Saul Halfon ('Illiberal Technocracy')"], "tags": ["\u2605 YOUR PRESENTATION", "Machine Liberalism", "STS Contemporary Age", "Must Attend"]}, "opt2": {"number": "Panel 178", "type": "Panel", "title": "Does Generative AI Flip the Script? 1: Resistance and Refusal", "location": "Mezzanine, Peel", "floor": "Mezzanine", "room": "Peel", "hook": "If you weren't presenting, you'd be here. Nicolas Baya-Laffite presents on 'Cognitive Delegation, Refusal, and the Politics of LLMs.'", "speakers": ["Nicolas Baya-Laffite"], "tags": ["Resistance & Refusal", "Cognitive Delegation", "Politics of LLMs"]}}, {"slot_id": "thu-2", "time": "10:20 AM \u2013 12:20 PM", "time_badge": "Morning Session 2", "start_time": "10:20", "end_time": "12:20", "opt1": {"number": "Panel 228", "type": "Panel", "title": "How Critique Stabilizes Technoscientific Power 2", "location": "Mezzanine, Willow East", "floor": "Mezzanine", "room": "Willow East", "hook": "Fascinating premise: Does our complaining about AI just help corporations legitimize it? Features Leonardo Moura on the 'Managerial Capture of Techno-Futures.'", "speakers": ["Leonardo Moura"], "tags": ["Critique & Power", "Managerial Capture", "Techno-Futures", "Legitimation"]}, "opt2": {"number": "Panel 215", "type": "Panel", "title": "Data Activism: Repairing and Imagining Collective Futures 1", "location": "Lower Concourse, Grand Centre", "floor": "Lower Concourse", "room": "Grand Centre", "hook": "Practical applications of resistance (Chapter 7). Features Marika Cifor on 'Insurgent Information Infrastructures.'", "speakers": ["Marika Cifor"], "tags": ["Resistance (Ch. 7)", "Data Activism", "Insurgent Infrastructures"]}}, {"slot_id": "thu-3", "time": "12:20 PM \u2013 1:30 PM", "time_badge": "Lunchtime Session", "start_time": "12:20", "end_time": "13:30", "opt1": {"number": "Roundtable 240", "type": "Roundtable", "title": "Algorithmic Silence and Technoscientific Power: Platform Governance, Censorship, and the Politics of Speech", "location": "Mezzanine, Oxford", "floor": "Mezzanine", "room": "Oxford", "hook": "Directly tackles how optimization creates algorithmic silence (erasing the outlier).", "speakers": [], "tags": ["Algorithmic Silence", "Erasing the Outlier", "Platform Governance", "Free Speech"]}, "opt2": {"number": "Roundtable 265", "type": "Roundtable", "title": "Science in the Face of the Post-Truth Condition", "location": "Mezzanine, York", "floor": "Mezzanine", "room": "York", "hook": "A philosophical dive into Social Epistemology. Essential for your 'Machine Certainty' and 'Vibes vs. Truth' arguments.", "speakers": [], "tags": ["Social Epistemology", "Machine Certainty", "Vibes vs. Truth", "Post-Truth"]}}, {"slot_id": "thu-4", "time": "1:30 PM \u2013 3:20 PM", "time_badge": "Afternoon Session 1", "start_time": "13:30", "end_time": "15:20", "opt1": {"number": "Panel 295", "type": "Panel", "title": "Sociotechnical Imaginaries of AI: Genres, Methods, and Artifacts", "location": "2nd Floor, Simcoe", "floor": "2nd Floor", "room": "Simcoe", "hook": "Heavy hitters. Features Alondra Nelson on 'The Tech Manifesto' and Moira Weigel on 'The Ontologies and Political Philosophies of Palantir' (perfect for your Preemption chapter).", "speakers": ["Alondra Nelson", "Moira Weigel"], "tags": ["Heavy Hitters", "Alondra Nelson", "Moira Weigel", "Palantir", "Preemption (Ch. 5)"]}, "opt2": {"number": "Panel 289", "type": "Panel", "title": "How Critique Stabilizes Technoscientific Power 3", "location": "Mezzanine, Willow East", "floor": "Mezzanine", "room": "Willow East", "hook": "Features Maxime Hardy on 'Explainability as Alibi' (treating AI transparency as a trick to maintain power).", "speakers": ["Maxime Hardy"], "tags": ["Explainability as Alibi", "AI Transparency Tricks", "Technoscientific Power"]}}, {"slot_id": "thu-5", "time": "3:40 PM \u2013 5:30 PM", "time_badge": "Afternoon Session 2", "start_time": "15:40", "end_time": "17:30", "opt1": {"number": "Panel 321", "type": "Panel", "title": "How Critique Stabilizes Technoscientific Power 4", "location": "Mezzanine, Willow East", "floor": "Mezzanine", "room": "Willow East", "hook": "Features Eunji Kim on 'Constructing Algorithmic-Rational Authority.' Addresses why we submit to the algorithmic contract.", "speakers": ["Eunji Kim"], "tags": ["Algorithmic-Rational Authority", "Algorithmic Contract", "Power Legitimation"]}, "opt2": {"number": "Panel 334", "type": "Panel", "title": "Tech infrastructures & organizing structures", "location": "Mezzanine, Spruce", "floor": "Mezzanine", "room": "Spruce", "hook": "Features Tamara Spitzer-Hobeika on 'Democratizing Democracy' via the NationBuilder platform. Good empirical grounding for political organizing.", "speakers": ["Tamara Spitzer-Hobeika"], "tags": ["Democratizing Democracy", "NationBuilder", "Political Organizing"]}}]}, {"day_id": "friday", "day_name": "Friday, October 9", "date_iso": "2026-10-09", "badge": "Day 3", "slots": [{"slot_id": "fri-1", "time": "8:00 AM \u2013 10:00 AM", "time_badge": "Morning Session 1", "start_time": "08:00", "end_time": "10:00", "opt1": {"number": "Panel 348", "type": "Panel", "title": "Affect and Artificial Intelligence 1 - Intimate Machines", "location": "2nd Floor, Wentworth", "floor": "2nd Floor", "room": "Wentworth", "hook": "Features Dayeon Eom on 'Intimacy as Service, Harm as Externality.' The perfect empirical companion to your Chapter 6 (Relationship over Relationality).", "speakers": ["Dayeon Eom"], "tags": ["Relationship vs Relationality (Ch. 6)", "Intimate Machines", "Affective AI"]}, "opt2": {"number": "Panel 366", "type": "Panel", "title": "Reworking TechnoPower: Everyday Digital Practices in Marginalized Worlds 1", "location": "Mezzanine, Linden", "floor": "Mezzanine", "room": "Linden", "hook": "Features Samuel Mayworm on 'Contesting Platform Rigidity.' This is the 'Right to be a Problem' in action.", "speakers": ["Samuel Mayworm"], "tags": ["Right to be a Problem", "Contesting Rigidity", "Everyday Resistance"]}}, {"slot_id": "fri-2", "time": "10:20 AM \u2013 12:20 PM", "time_badge": "Morning Session 2", "start_time": "10:20", "end_time": "12:20", "opt1": {"number": "Panel 398", "type": "Panel", "title": "Remaking the State: Moral Economies of Gov-Tech and Automated Governance 1", "location": "Mezzanine, Cedar", "floor": "Mezzanine", "room": "Cedar", "hook": "Features Sandeep Mertia on 'Derivative Sovereignty: the State, the Stack, and their Shadows.' A must-attend for your political theory framing.", "speakers": ["Sandeep Mertia"], "tags": ["Derivative Sovereignty", "The Stack & Shadows", "Gov-Tech", "Automated Governance"]}, "opt2": {"number": "Panel 383", "type": "Panel", "title": "Affect and Artificial Intelligence 2", "location": "2nd Floor, Wentworth", "floor": "2nd Floor", "room": "Wentworth", "hook": "Features L.E. Horgan on 'Exhausted Systems: AI as a Technology of Burnout.' Connects beautifully to Byung-Chul Han and the 'Toil of Choice.'", "speakers": ["L.E. Horgan"], "tags": ["Byung-Chul Han", "Toil of Choice", "Burnout & Exhaustion", "Affective AI"]}}, {"slot_id": "fri-3", "time": "12:20 PM \u2013 1:30 PM", "time_badge": "Lunchtime Session", "start_time": "12:20", "end_time": "13:30", "opt1": {"number": "Panel 413", "type": "Panel", "title": "Against the Cloud: Small Data, Personal Archives, and Alternative Computing", "location": "2nd Floor, Elgin", "floor": "2nd Floor", "room": "Elgin", "hook": "Features Nathan Schneider on 'Emergence, Interpretability, and Capture Resistance.' Technical architectures of refusal.", "speakers": ["Nathan Schneider"], "tags": ["Small Data", "Nathan Schneider", "Capture Resistance", "Alternative Computing"]}, "opt2": {"number": "Panel 445", "type": "Panel", "title": "Citizens\u2019 Participation: Making Citizens Part of the Dialogue Around AI", "location": "2nd Floor, Kent", "floor": "2nd Floor", "room": "Kent", "hook": "Features Xinbo Lin on 'Public Imaginaries of Judicial AI and Trust.' Directly feeds your Participatory AI Lab work.", "speakers": ["Xinbo Lin"], "tags": ["Participatory AI Lab", "Citizens' Dialogue", "Judicial AI & Trust"]}}, {"slot_id": "fri-4", "time": "1:30 PM \u2013 3:20 PM", "time_badge": "Afternoon Session 1", "start_time": "13:30", "end_time": "15:20", "opt1": {"number": "Panel 462", "type": "Panel", "title": "Semi-Visible Worlds, A Practice Between the Private and Public 1", "location": "Mezzanine, Maple West", "floor": "Mezzanine", "room": "Maple West", "hook": "Features Cheng-Hsiu Yang on 'Governing Without Exposure.' Deals with the privatization of the public sphere.", "speakers": ["Cheng-Hsiu Yang"], "tags": ["Privatization of Public Sphere", "Governing Without Exposure", "Semi-Visible Worlds"]}, "opt2": {"number": "Panel 456", "type": "Panel", "title": "Resisting the Datafied University", "location": "Mezzanine, Chestnut West", "floor": "Mezzanine", "room": "Chestnut West", "hook": "Features Martha Kenney on 'Resisting Generative AI in Higher Education.' Great for your pedagogical focus.", "speakers": ["Martha Kenney"], "tags": ["Higher Ed Resistance", "Datafied University", "Pedagogy"]}}, {"slot_id": "fri-5", "time": "3:40 PM \u2013 5:30 PM", "time_badge": "Afternoon Session 2", "start_time": "15:40", "end_time": "17:30", "opt1": {"number": "Panel 488", "type": "Panel", "title": "Remaking the State: Moral Economies of Gov-Tech 3", "location": "Mezzanine, Cedar", "floor": "Mezzanine", "room": "Cedar", "hook": "Features Gijs van Maanen on 'Algo-resist: civil servants\u2019 propensity and capacity to resist tech-fueled public policy.' The resistance inside the state.", "speakers": ["Gijs van Maanen"], "tags": ["Algo-resist", "Bureaucratic Resistance", "Gov-Tech"]}, "opt2": {"number": "Panel 503", "type": "Panel", "title": "Whose Future? Religious and Technoscientific Imaginaries in Contest", "location": "2nd Floor, Huron", "floor": "2nd Floor", "room": "Huron", "hook": "Features Anthony Nairn on 'Digital Immortality and Religious Soteriology.' Hits the core of your Journal of Lutheran Ethics 'Machine Certainty' essay.", "speakers": ["Anthony Nairn"], "tags": ["Machine Certainty", "Digital Immortality", "Lutheran Ethics Essay", "Religious Imaginaries"]}}]}, {"day_id": "saturday", "day_name": "Saturday, October 10", "date_iso": "2026-10-10", "badge": "Day 4 \u2022 Final Day", "slots": [{"slot_id": "sat-1", "time": "8:00 AM \u2013 10:00 AM", "time_badge": "Morning Session 1", "start_time": "08:00", "end_time": "10:00", "opt1": {"number": "Panel 510", "type": "Panel", "title": "Constitutional Futures for Technoscience 1", "location": "Lower Concourse, Grand West", "floor": "Lower Concourse", "room": "Grand West", "hook": "Features Anna M. Agathangelou on 'Military AI and Constitutional Moments.' Uses the exact Kalyvas/Extraordinary Politics framing you use.", "speakers": ["Anna M. Agathangelou"], "tags": ["Extraordinary Politics", "Kalyvas Framing", "Military AI", "Constitutional Moments"]}, "opt2": {"number": "Panel 529", "type": "Panel", "title": "Polycentric Futures: Governing AI Beyond Monocentric Control", "location": "2nd Floor, Simcoe", "floor": "2nd Floor", "room": "Simcoe", "hook": "Features Mona Garrel on 'Governing by Algorithm.'", "speakers": ["Mona Garrel"], "tags": ["Polycentric Governance", "Governing by Algorithm", "Decentralized Control"]}}, {"slot_id": "sat-2", "time": "10:20 AM \u2013 12:20 PM", "time_badge": "Morning Session 2", "start_time": "10:20", "end_time": "12:20", "opt1": {"number": "Panel 545", "type": "Panel", "title": "Disconnections, Dishonesty, and other Network Persistences", "location": "4th Floor, Kensington", "floor": "4th Floor", "room": "Kensington", "hook": "Features Alexander Fedorov on 'AI Withdrawal as Method: Designed Disconnection.' The tactical manual for algorithmic refusal.", "speakers": ["Alexander Fedorov"], "tags": ["Designed Disconnection", "Algorithmic Refusal", "AI Withdrawal as Method"]}, "opt2": {"number": "Panel 546", "type": "Panel", "title": "Artificial Intelligence as performative phenomenon 2", "location": "Mezzanine, Willow Centre", "floor": "Mezzanine", "room": "Willow Centre", "hook": "Features Yang Zhao on 'Religious Performance, Disembodiment, and Structural Untraceability in AI.'", "speakers": ["Yang Zhao"], "tags": ["Religious Performance", "Disembodiment", "Performative AI"]}}, {"slot_id": "sat-3", "time": "12:20 PM \u2013 1:30 PM", "time_badge": "Lunchtime Session", "start_time": "12:20", "end_time": "13:30", "opt1": {"number": "Panel 586", "type": "Panel", "title": "Infodemic Publics. Techno-Scientific Management as a Politics of Truth", "location": "Mezzanine, Linden", "floor": "Mezzanine", "room": "Linden", "hook": "Features Aditi Upadhyaya on 'Artificial Intelligence and the Politics of Threat Construction.' The mechanics of Preemption.", "speakers": ["Aditi Upadhyaya"], "tags": ["Threat Construction", "Preemption Mechanics", "Politics of Truth"]}, "opt2": {"number": "Roundtable 585", "type": "Roundtable", "title": "Epistemological Dialogues between STS and International Relations", "location": "4th Floor, Leaside", "floor": "4th Floor", "room": "Leaside", "hook": "A high-level discussion on 'Interdisciplinary Encounters for Emancipations.'", "speakers": [], "tags": ["STS & IR", "Interdisciplinary Dialogue", "Emancipation"]}}, {"slot_id": "sat-4", "time": "1:30 PM \u2013 3:20 PM", "time_badge": "Afternoon Session 1", "start_time": "13:30", "end_time": "15:20", "opt1": {"number": "Panel 637", "type": "Panel", "title": "Who\u2019s in the Loop? Reconfiguring Epistemic Spaces in the Age of Algorithms 1", "location": "Mezzanine, Oxford", "floor": "Mezzanine", "room": "Oxford", "hook": "Features Luis Lozano Paredes on 'Epistemic Inflation and the Reconfiguration of Institutional Knowing.' Spot-on for your Epistemic Shift chapter.", "speakers": ["Luis Lozano Paredes"], "tags": ["Epistemic Shift", "Epistemic Inflation", "Institutional Knowing"]}, "opt2": {"number": "Panel 605", "type": "Panel", "title": "AI, Language, Imaginaries, and Technopower in Africa 1", "location": "2nd Floor, City Hall Room", "floor": "2nd Floor", "room": "City Hall Room", "hook": "Features Adjua Akinwumi on 'Prediction as Postcolonial Infrastructure: Genealogies of Anticipatory Governance.' The global reality of Preemption.", "speakers": ["Adjua Akinwumi"], "tags": ["Postcolonial Prediction", "Anticipatory Governance", "Preemption"]}}, {"slot_id": "sat-5", "time": "3:40 PM \u2013 5:30 PM", "time_badge": "Afternoon Session 2", "start_time": "15:40", "end_time": "17:30", "opt1": {"number": "Panel 645", "type": "Panel", "title": "Constitutional Futures for Technoscience 4", "location": "Lower Concourse, Grand West", "floor": "Lower Concourse", "room": "Grand West", "hook": "Features Mason Barnard on 'Private Governance, and the New Tech Oligarchy.' A great closing session on the clash of sovereignties.", "speakers": ["Mason Barnard"], "tags": ["Tech Oligarchy", "Clash of Sovereignties", "Private Governance"]}, "opt2": {"number": "Panel 660", "type": "Panel", "title": "Operationalizing Care: Feminist STS on Companion/Affective AI", "location": "2nd Floor, Simcoe", "floor": "2nd Floor", "room": "Simcoe", "hook": "Features Wing Yee Yau on 'Algorithmic Misrecognition... and the Politics of Identity in AI Companionship.' Final thoughts on synthetic relationships.", "speakers": ["Wing Yee Yau"], "tags": ["Feminist STS", "Synthetic Relationships", "Affective AI", "Misrecognition"]}}]}];
+
+        // State Management
+        let currentDayFilter = 'all';
+        let currentViewMode = 'all'; // 'all' or 'selected'
+        let currentSearchQuery = '';
+
+        // Load selections from localStorage
+        const STORAGE_KEY = 'sts_conference_selections_2026';
+        const NOTES_KEY = 'sts_conference_notes_2026';
+        
+        let selections = {};
+        let notes = {};
+
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) selections = JSON.parse(saved);
+            const savedNotes = localStorage.getItem(NOTES_KEY);
+            if (savedNotes) notes = JSON.parse(savedNotes);
+        } catch (e) {
+            console.warn('Could not load localStorage', e);
+        }
+
+        // Default: Preset Thursday 8:00 AM to Option 1 (Your Panel)
+        if (!selections['thu-1']) {
+            selections['thu-1'] = 'opt1';
+            saveSelections();
+        }
+
+        function saveSelections() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(selections));
+            } catch(e) {}
+            updateProgress();
+        }
+
+        function saveNotes(slotId, text) {
+            notes[slotId] = text;
+            try {
+                localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+            } catch(e) {}
+            showToast('Note saved');
+        }
+
+        function selectOption(slotId, optKey) {
+            if (selections[slotId] === optKey) {
+                // Clicking already selected: leave or toggle? Let's keep it selected or allow toggling off if not user panel
+                if (slotId === 'thu-1' && optKey === 'opt1') {
+                    showToast('This is your presentation session!');
+                    return;
+                }
+                delete selections[slotId];
+                showToast('Session unselected');
+            } else {
+                selections[slotId] = optKey;
+                showToast(optKey === 'opt1' ? 'Option 1 selected' : 'Option 2 selected');
+            }
+            saveSelections();
+            renderSchedule();
+        }
+
+        function setDayFilter(dayId) {
+            currentDayFilter = dayId;
+            document.querySelectorAll('.day-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.getAttribute('data-day') === dayId);
+            });
+            renderSchedule();
+        }
+
+        function setViewMode(mode) {
+            currentViewMode = mode;
+            document.getElementById('viewModeAll').classList.toggle('active', mode === 'all');
+            document.getElementById('viewModeSelected').classList.toggle('active', mode === 'selected');
+            renderSchedule();
+        }
+
+        function handleSearch() {
+            currentSearchQuery = document.getElementById('scheduleSearch').value.toLowerCase().trim();
+            renderSchedule();
+        }
+
+        function updateProgress() {
+            const totalSlots = 20;
+            const chosenCount = Object.keys(selections).length;
+            const pct = Math.round((chosenCount / totalSlots) * 100);
+            
+            const fill = document.getElementById('progressFill');
+            const txt = document.getElementById('progressText');
+            if (fill) fill.style.width = pct + '%';
+            if (txt) txt.textContent = `${chosenCount} / ${totalSlots} Selected`;
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMsg');
+            if (!toast || !toastMsg) return;
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function jumpToPanel(slotId) {
+            setDayFilter('thursday');
+            setTimeout(() => {
+                const el = document.getElementById('slot-' + slotId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.style.outline = '2px solid var(--gold)';
+                    setTimeout(() => el.style.outline = 'none', 2500);
+                }
+            }, 150);
+        }
+
+        function openVenueModal() {
+            document.getElementById('venueModal').classList.add('open');
+        }
+
+        function closeVenueModal(e) {
+            document.getElementById('venueModal').classList.remove('open');
+        }
+
+        function toggleNotesPanel(slotId) {
+            const panel = document.getElementById('notes-' + slotId);
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+        // Render schedule to DOM
+        function renderSchedule() {
+            const container = document.getElementById('scheduleContainer');
+            if (!container) return;
+
+            let html = '';
+            let visibleSlotsCount = 0;
+
+            SCHEDULE_DATA.forEach(day => {
+                // Check day filter
+                if (currentDayFilter !== 'all' && currentDayFilter !== day.day_id) {
+                    return;
+                }
+
+                let daySlotsHtml = '';
+
+                day.slots.forEach(slot => {
+                    const userPick = selections[slot.slot_id]; // 'opt1' or 'opt2' or undefined
+                    
+                    // Filter: view mode
+                    if (currentViewMode === 'selected' && !userPick) {
+                        return; // Only show slots where user picked an option
+                    }
+
+                    // Search filtering
+                    if (currentSearchQuery) {
+                        const query = currentSearchQuery;
+                        const matchOpt1 = (
+                            slot.opt1.title.toLowerCase().includes(query) ||
+                            slot.opt1.hook.toLowerCase().includes(query) ||
+                            slot.opt1.location.toLowerCase().includes(query) ||
+                            slot.opt1.tags.some(t => t.toLowerCase().includes(query)) ||
+                            slot.opt1.speakers.some(s => s.toLowerCase().includes(query))
+                        );
+                        const matchOpt2 = (
+                            slot.opt2.title.toLowerCase().includes(query) ||
+                            slot.opt2.hook.toLowerCase().includes(query) ||
+                            slot.opt2.location.toLowerCase().includes(query) ||
+                            slot.opt2.tags.some(t => t.toLowerCase().includes(query)) ||
+                            slot.opt2.speakers.some(s => s.toLowerCase().includes(query))
+                        );
+
+                        if (!matchOpt1 && !matchOpt2) {
+                            return;
+                        }
+                    }
+
+                    visibleSlotsCount++;
+
+                    // Render Slot
+                    const isOpt1Selected = userPick === 'opt1';
+                    const isOpt2Selected = userPick === 'opt2';
+                    const slotStatusText = userPick 
+                        ? (userPick === 'opt1' ? '✓ ' + slot.opt1.number + ' Selected' : '✓ ' + slot.opt2.number + ' Selected')
+                        : '○ Undecided';
+
+                    const slotNote = notes[slot.slot_id] || '';
+
+                    // In 'selected' view mode, if an option is picked, we can either highlight it or only show that option
+                    const showOnlyPicked = currentViewMode === 'selected';
+
+                    daySlotsHtml += `
+                        <div class="slot-block ${userPick ? 'has-selection' : ''}" id="slot-${slot.slot_id}">
+                            <div class="slot-header">
+                                <div class="slot-time-group">
+                                    <div class="slot-time">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <span>${slot.time}</span>
+                                    </div>
+                                    <span class="slot-badge">${slot.time_badge}</span>
+                                </div>
+                                <div class="slot-status ${userPick ? 'selected' : 'undecided'}">
+                                    ${slotStatusText}
+                                </div>
+                            </div>
+
+                            <div class="options-grid">
+                                <!-- Option 1 -->
+                                <div class="option-card ${isOpt1Selected ? 'selected' : ''} ${slot.opt1.is_user_panel ? 'user-presentation' : ''}" 
+                                     onclick="selectOption('${slot.slot_id}', 'opt1')">
+                                    <div class="card-top">
+                                        <div class="card-meta-row">
+                                            <span class="option-label option-1-badge">Option 1</span>
+                                            <span class="location-badge">
+                                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                                ${slot.opt1.location}
+                                            </span>
+                                        </div>
+                                        <div class="panel-number">${slot.opt1.number} &bull; ${slot.opt1.type}</div>
+                                        <h3 class="panel-title">${slot.opt1.title}</h3>
+
+                                        <div class="hook-box">
+                                            <div class="hook-header">
+                                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                                                <span>The Theoretical Hook</span>
+                                            </div>
+                                            <div class="hook-text">${slot.opt1.hook}</div>
+                                        </div>
+
+                                        ${slot.opt1.speakers.length ? `
+                                            <div class="speakers-row">
+                                                <span>Featuring: <strong>${slot.opt1.speakers.join(', ')}</strong></span>
+                                            </div>
+                                        ` : ''}
+
+                                        <div class="tags-row">
+                                            ${slot.opt1.tags.map(t => `<span class="tag-pill">#${t}</span>`).join('')}
+                                        </div>
+                                    </div>
+
+                                    <div class="card-bottom">
+                                        <button class="btn-select" onclick="event.stopPropagation(); selectOption('${slot.slot_id}', 'opt1')">
+                                            ${isOpt1Selected 
+                                                ? (slot.opt1.is_user_panel ? '★ Your Panel (Selected)' : '✓ Selected for Itinerary')
+                                                : (slot.opt1.is_user_panel ? 'Select Your Presentation' : 'Choose Option 1')}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Option 2 -->
+                                <div class="option-card ${isOpt2Selected ? 'selected' : ''}" 
+                                     onclick="selectOption('${slot.slot_id}', 'opt2')">
+                                    <div class="card-top">
+                                        <div class="card-meta-row">
+                                            <span class="option-label option-2-badge">Option 2</span>
+                                            <span class="location-badge">
+                                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                                ${slot.opt2.location}
+                                            </span>
+                                        </div>
+                                        <div class="panel-number">${slot.opt2.number} &bull; ${slot.opt2.type}</div>
+                                        <h3 class="panel-title">${slot.opt2.title}</h3>
+
+                                        <div class="hook-box">
+                                            <div class="hook-header">
+                                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                                                <span>The Theoretical Hook</span>
+                                            </div>
+                                            <div class="hook-text">${slot.opt2.hook}</div>
+                                        </div>
+
+                                        ${slot.opt2.speakers.length ? `
+                                            <div class="speakers-row">
+                                                <span>Featuring: <strong>${slot.opt2.speakers.join(', ')}</strong></span>
+                                            </div>
+                                        ` : ''}
+
+                                        <div class="tags-row">
+                                            ${slot.opt2.tags.map(t => `<span class="tag-pill">#${t}</span>`).join('')}
+                                        </div>
+                                    </div>
+
+                                    <div class="card-bottom">
+                                        <button class="btn-select" onclick="event.stopPropagation(); selectOption('${slot.slot_id}', 'opt2')">
+                                            ${isOpt2Selected ? '✓ Selected for Itinerary' : 'Choose Option 2'}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scratchpad Notes Drawer -->
+                            <div class="slot-notes-drawer">
+                                <button class="notes-toggle" onclick="toggleNotesPanel('${slot.slot_id}')">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                    <span>${slotNote ? 'Edit Notes / Questions (Has Note)' : 'Add Session Notes & Question Ideas'}</span>
+                                </button>
+                                <div class="notes-panel ${slotNote ? 'open' : ''}" id="notes-${slot.slot_id}">
+                                    <textarea class="notes-textarea" placeholder="Jot down notes, questions to ask, or speaker ideas for this session..." 
+                                        onchange="saveNotes('${slot.slot_id}', this.value)">${slotNote}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (daySlotsHtml) {
+                    html += `
+                        <section class="day-section" id="day-${day.day_id}">
+                            <div class="day-header">
+                                <h2>${day.day_name}</h2>
+                                <span class="day-badge">${day.badge}</span>
+                            </div>
+                            ${daySlotsHtml}
+                        </section>
+                    `;
+                }
+            });
+
+            if (!html) {
+                html = `
+                    <div style="text-align: center; padding: 4rem 1rem; color: var(--text-muted); background: var(--bg-surface); border-radius: var(--radius-xl); border: 1px dashed var(--border-subtle);">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-subtle)" stroke-width="1.5" style="margin-bottom: 1rem;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <h3 style="color: #fff; margin-bottom: 0.5rem; font-family: var(--font-display);">No Sessions Found</h3>
+                        <p>No panels match your current filter criteria ("${currentSearchQuery}"). Try clearing your search.</p>
+                        <button class="btn-action" style="margin-top: 1rem;" onclick="document.getElementById('scheduleSearch').value=''; handleSearch();">Clear Filters</button>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        // Export to iCalendar (.ics) format
+        function exportToCalendarICS() {
+            const chosenKeys = Object.keys(selections);
+            if (chosenKeys.length === 0) {
+                showToast('Please select at least one session to export!');
+                return;
+            }
+
+            let icsLines = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Jose Marichal//STS Conference Navigator 2026//EN',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH'
+            ];
+
+            SCHEDULE_DATA.forEach(day => {
+                day.slots.forEach(slot => {
+                    const pick = selections[slot.slot_id];
+                    if (!pick) return;
+
+                    const opt = slot[pick];
+                    if (!opt) return;
+
+                    // Parse Date & Time
+                    // Example: date_iso = "2026-10-07", start_time = "08:00", end_time = "10:00"
+                    const dateClean = day.date_iso.replace(/-/g, '');
+                    const startClean = slot.start_time.replace(/:/g, '') + '00';
+                    const endClean = slot.end_time.replace(/:/g, '') + '00';
+
+                    const dtStart = `${dateClean}T${startClean}`;
+                    const dtEnd = `${dateClean}T${endClean}`;
+                    const uid = `sts-2026-${slot.slot_id}-${pick}@josemarichal.github.io`;
+
+                    const summary = opt.is_user_panel 
+                        ? `[PRESENTER] ${opt.title}` 
+                        : `${opt.number}: ${opt.title}`;
+
+                    const description = `THE HOOK: ${opt.hook}\n\nLOCATION: ${opt.location}\nFEATURING: ${opt.speakers.join(', ') || 'N/A'}\nTAGS: ${opt.tags.join(', ')}`;
+
+                    icsLines.push('BEGIN:VEVENT');
+                    icsLines.push(`UID:${uid}`);
+                    icsLines.push(`DTSTAMP:${dateClean}T000000Z`);
+                    icsLines.push(`DTSTART:${dtStart}`);
+                    icsLines.push(`DTEND:${dtEnd}`);
+                    icsLines.push(`SUMMARY:${summary}`);
+                    icsLines.push(`LOCATION:${opt.location}`);
+                    icsLines.push(`DESCRIPTION:${description}`);
+                    icsLines.push('STATUS:CONFIRMED');
+                    icsLines.push('END:VEVENT');
+                });
+            });
+
+            icsLines.push('END:VCALENDAR');
+            const icsContent = icsLines.join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Jose_Marichal_STS_2026_Schedule.ics';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast('Downloaded .ICS Calendar file!');
+        }
+
+        // Copy schedule summary as Markdown text
+        function copyScheduleMarkdown() {
+            let text = `# José Marichal - STS 2026 Conference Itinerary\n\n`;
+
+            SCHEDULE_DATA.forEach(day => {
+                let dayHasSelections = false;
+                let dayText = `## ${day.day_name}\n\n`;
+
+                day.slots.forEach(slot => {
+                    const pick = selections[slot.slot_id];
+                    if (!pick) return;
+
+                    dayHasSelections = true;
+                    const opt = slot[pick];
+                    dayText += `### ${slot.time} — ${opt.number}: ${opt.title}\n`;
+                    dayText += `- **Location**: ${opt.location}\n`;
+                    dayText += `- **The Hook**: ${opt.hook}\n`;
+                    if (opt.speakers && opt.speakers.length) {
+                        dayText += `- **Speakers**: ${opt.speakers.join(', ')}\n`;
+                    }
+                    if (notes[slot.slot_id]) {
+                        dayText += `- **Notes**: ${notes[slot.slot_id]}\n`;
+                    }
+                    dayText += `\n`;
+                });
+
+                if (dayHasSelections) {
+                    text += dayText;
+                }
+            });
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Schedule copied to clipboard!');
+            }).catch(() => {
+                showToast('Could not copy automatically');
+            });
+        }
+
+        // Initialize app on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSchedule();
+        });
+    </script>
+</body>
+</html>

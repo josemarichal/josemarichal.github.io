@@ -1,0 +1,863 @@
+[
+  {
+    "day_id": "wednesday",
+    "day_name": "Wednesday, October 7",
+    "date_iso": "2026-10-07",
+    "badge": "Day 1",
+    "slots": [
+      {
+        "slot_id": "wed-1",
+        "time": "8:00 AM \u2013 10:00 AM",
+        "time_badge": "Morning Session 1",
+        "start_time": "08:00",
+        "end_time": "10:00",
+        "opt1": {
+          "number": "Panel 12",
+          "type": "Panel",
+          "title": "Digital sovereignty in the age of technopowers 1",
+          "location": "Mezzanine, Willow Centre",
+          "floor": "Mezzanine",
+          "room": "Willow Centre",
+          "hook": "Focuses on the clash between State Sovereignty and Tech Infrastructure. Directly maps to your argument about the 'Network State.'",
+          "speakers": [],
+          "tags": [
+            "Digital Sovereignty",
+            "Network State",
+            "Technopowers",
+            "Infrastructure"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 8",
+          "type": "Panel",
+          "title": "Critical AI Literacy 1",
+          "location": "2nd Floor, Huron",
+          "floor": "2nd Floor",
+          "room": "Huron",
+          "hook": "Features Dominic Zappia on 'The Epistemic Power of Tech Manifestos.' Good for the 'Techno-Romanticism' critique.",
+          "speakers": [
+            "Dominic Zappia"
+          ],
+          "tags": [
+            "Critical AI Literacy",
+            "Tech Manifestos",
+            "Techno-Romanticism",
+            "Epistemic Power"
+          ]
+        }
+      },
+      {
+        "slot_id": "wed-2",
+        "time": "10:20 AM \u2013 12:20 PM",
+        "time_badge": "Morning Session 2",
+        "start_time": "10:20",
+        "end_time": "12:20",
+        "opt1": {
+          "number": "Panel 40",
+          "type": "Panel",
+          "title": "Assemblages, Discourses, and Imaginaries of Power and Control",
+          "location": "Mezzanine, Peel",
+          "floor": "Mezzanine",
+          "room": "Peel",
+          "hook": "Features Tatiana Lysova on the 'Authoritarian Surveillant Assemblage.' Perfect for your Chapter 5 (Preemption) research.",
+          "speakers": [
+            "Tatiana Lysova"
+          ],
+          "tags": [
+            "Preemption (Ch. 5)",
+            "Surveillant Assemblage",
+            "Power & Control",
+            "Authoritarian Tech"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 49",
+          "type": "Panel",
+          "title": "Digital sovereignty... 2: Institutions and governments",
+          "location": "Mezzanine, Willow Centre",
+          "floor": "Mezzanine",
+          "room": "Willow Centre",
+          "hook": "A continuation of Panel 12. Features Matheus Nunes on the 'sovereigntization' of infrastructure.",
+          "speakers": [
+            "Matheus Nunes"
+          ],
+          "tags": [
+            "Digital Sovereignty",
+            "Institutions & Gov",
+            "Infrastructure Sovereignty"
+          ]
+        }
+      },
+      {
+        "slot_id": "wed-3",
+        "time": "12:20 PM \u2013 1:30 PM",
+        "time_badge": "Lunchtime Session",
+        "start_time": "12:20",
+        "end_time": "13:30",
+        "opt1": {
+          "number": "Roundtable 73",
+          "type": "Roundtable",
+          "title": "Beyond the Algorithm: Models, Technopower, and the Sociotechnical Governance of AI",
+          "location": "Mezzanine, Willow East",
+          "floor": "Mezzanine",
+          "room": "Willow East",
+          "hook": "A networking goldmine. Discussing how models (not just code) govern human subjects.",
+          "speakers": [],
+          "tags": [
+            "Networking Goldmine",
+            "Sociotechnical Governance",
+            "Models & Technopower"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 71",
+          "type": "Panel",
+          "title": "Algorithmic Bias, Techno-political Futures, and Power in South Asia",
+          "location": "4th Floor, Kensington",
+          "floor": "4th Floor",
+          "room": "Kensington",
+          "hook": "Features Ranjit Singh on the 'Enclosure of Legibility.' This is the exact equivalent of your 'Machine Habitus' concept (forcing users into legible categories).",
+          "speakers": [
+            "Ranjit Singh"
+          ],
+          "tags": [
+            "Machine Habitus",
+            "Enclosure of Legibility",
+            "South Asia",
+            "Algorithmic Bias"
+          ]
+        }
+      },
+      {
+        "slot_id": "wed-4",
+        "time": "1:30 PM \u2013 3:20 PM",
+        "time_badge": "Afternoon Session 1",
+        "start_time": "13:30",
+        "end_time": "15:20",
+        "opt1": {
+          "number": "Panel 98",
+          "type": "Panel",
+          "title": "AI Governance and Public Policy 3",
+          "location": "2nd Floor, Wentworth",
+          "floor": "2nd Floor",
+          "room": "Wentworth",
+          "hook": "Features Chuncheng Liu on 'Power in the Loop: The Legitimacy of Human Intervention in Authoritarian Algorithmic Governance.' Highly relevant to your New_Public memo.",
+          "speakers": [
+            "Chuncheng Liu"
+          ],
+          "tags": [
+            "AI Governance",
+            "Human in the Loop",
+            "New_Public Memo",
+            "Authoritarian Tech"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 107",
+          "type": "Panel",
+          "title": "Critical AI Literacy 3",
+          "location": "2nd Floor, Huron",
+          "floor": "2nd Floor",
+          "room": "Huron",
+          "hook": "Features Faye-Marie Vassel on 'Critical AI Literacy as Epistemic Resistance.' This is exactly how you are framing your Participatory AI Lab.",
+          "speakers": [
+            "Faye-Marie Vassel"
+          ],
+          "tags": [
+            "Epistemic Resistance",
+            "Participatory AI Lab",
+            "Critical AI Literacy"
+          ]
+        }
+      },
+      {
+        "slot_id": "wed-5",
+        "time": "3:40 PM \u2013 5:30 PM",
+        "time_badge": "Afternoon Session 2",
+        "start_time": "15:40",
+        "end_time": "17:30",
+        "opt1": {
+          "number": "Panel 139",
+          "type": "Panel",
+          "title": "Critical AI Literacy 4",
+          "location": "2nd Floor, Huron",
+          "floor": "2nd Floor",
+          "room": "Huron",
+          "hook": "Features papers on the 'Normalization of Algorithmic Ignorance' and the 'Political Economy of Helplessness.' Hits your 'Quiet Quitting Democracy' theme.",
+          "speakers": [],
+          "tags": [
+            "Quiet Quitting Democracy",
+            "Algorithmic Ignorance",
+            "Political Economy of Helplessness"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 138",
+          "type": "Panel",
+          "title": "Computational Code-Switching 2",
+          "location": "Mezzanine, Linden",
+          "floor": "Mezzanine",
+          "room": "Linden",
+          "hook": "Features Spencer Kaplan on 'The Managerial Registers of LLM Agents.' Great for the 'Optimization of Labor' (Chapter 2) argument.",
+          "speakers": [
+            "Spencer Kaplan"
+          ],
+          "tags": [
+            "Optimization of Labor (Ch. 2)",
+            "LLM Agents",
+            "Managerial Registers"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "day_id": "thursday",
+    "day_name": "Thursday, October 8",
+    "date_iso": "2026-10-08",
+    "badge": "Day 2 \u2022 Presentation Day",
+    "slots": [
+      {
+        "slot_id": "thu-1",
+        "time": "8:00 AM \u2013 10:00 AM",
+        "time_badge": "Morning Session 1",
+        "start_time": "08:00",
+        "end_time": "10:00",
+        "opt1": {
+          "number": "Session 198",
+          "type": "Featured Panel",
+          "is_user_panel": true,
+          "title": "YOUR PANEL! We Have Never Been Democratic: STS for the Contemporary Age",
+          "location": "2nd Floor, Kenora",
+          "floor": "2nd Floor",
+          "room": "Kenora",
+          "hook": "You are presenting Machine Liberalism here alongside Fenwick McKelvey and Saul Halfon (Illiberal Technocracy).",
+          "speakers": [
+            "Jos\u00e9 Marichal ('Machine Liberalism')",
+            "Fenwick McKelvey",
+            "Saul Halfon ('Illiberal Technocracy')"
+          ],
+          "tags": [
+            "\u2605 YOUR PRESENTATION",
+            "Machine Liberalism",
+            "STS Contemporary Age",
+            "Must Attend"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 178",
+          "type": "Panel",
+          "title": "Does Generative AI Flip the Script? 1: Resistance and Refusal",
+          "location": "Mezzanine, Peel",
+          "floor": "Mezzanine",
+          "room": "Peel",
+          "hook": "If you weren't presenting, you'd be here. Nicolas Baya-Laffite presents on 'Cognitive Delegation, Refusal, and the Politics of LLMs.'",
+          "speakers": [
+            "Nicolas Baya-Laffite"
+          ],
+          "tags": [
+            "Resistance & Refusal",
+            "Cognitive Delegation",
+            "Politics of LLMs"
+          ]
+        }
+      },
+      {
+        "slot_id": "thu-2",
+        "time": "10:20 AM \u2013 12:20 PM",
+        "time_badge": "Morning Session 2",
+        "start_time": "10:20",
+        "end_time": "12:20",
+        "opt1": {
+          "number": "Panel 228",
+          "type": "Panel",
+          "title": "How Critique Stabilizes Technoscientific Power 2",
+          "location": "Mezzanine, Willow East",
+          "floor": "Mezzanine",
+          "room": "Willow East",
+          "hook": "Fascinating premise: Does our complaining about AI just help corporations legitimize it? Features Leonardo Moura on the 'Managerial Capture of Techno-Futures.'",
+          "speakers": [
+            "Leonardo Moura"
+          ],
+          "tags": [
+            "Critique & Power",
+            "Managerial Capture",
+            "Techno-Futures",
+            "Legitimation"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 215",
+          "type": "Panel",
+          "title": "Data Activism: Repairing and Imagining Collective Futures 1",
+          "location": "Lower Concourse, Grand Centre",
+          "floor": "Lower Concourse",
+          "room": "Grand Centre",
+          "hook": "Practical applications of resistance (Chapter 7). Features Marika Cifor on 'Insurgent Information Infrastructures.'",
+          "speakers": [
+            "Marika Cifor"
+          ],
+          "tags": [
+            "Resistance (Ch. 7)",
+            "Data Activism",
+            "Insurgent Infrastructures"
+          ]
+        }
+      },
+      {
+        "slot_id": "thu-3",
+        "time": "12:20 PM \u2013 1:30 PM",
+        "time_badge": "Lunchtime Session",
+        "start_time": "12:20",
+        "end_time": "13:30",
+        "opt1": {
+          "number": "Roundtable 240",
+          "type": "Roundtable",
+          "title": "Algorithmic Silence and Technoscientific Power: Platform Governance, Censorship, and the Politics of Speech",
+          "location": "Mezzanine, Oxford",
+          "floor": "Mezzanine",
+          "room": "Oxford",
+          "hook": "Directly tackles how optimization creates algorithmic silence (erasing the outlier).",
+          "speakers": [],
+          "tags": [
+            "Algorithmic Silence",
+            "Erasing the Outlier",
+            "Platform Governance",
+            "Free Speech"
+          ]
+        },
+        "opt2": {
+          "number": "Roundtable 265",
+          "type": "Roundtable",
+          "title": "Science in the Face of the Post-Truth Condition",
+          "location": "Mezzanine, York",
+          "floor": "Mezzanine",
+          "room": "York",
+          "hook": "A philosophical dive into Social Epistemology. Essential for your 'Machine Certainty' and 'Vibes vs. Truth' arguments.",
+          "speakers": [],
+          "tags": [
+            "Social Epistemology",
+            "Machine Certainty",
+            "Vibes vs. Truth",
+            "Post-Truth"
+          ]
+        }
+      },
+      {
+        "slot_id": "thu-4",
+        "time": "1:30 PM \u2013 3:20 PM",
+        "time_badge": "Afternoon Session 1",
+        "start_time": "13:30",
+        "end_time": "15:20",
+        "opt1": {
+          "number": "Panel 295",
+          "type": "Panel",
+          "title": "Sociotechnical Imaginaries of AI: Genres, Methods, and Artifacts",
+          "location": "2nd Floor, Simcoe",
+          "floor": "2nd Floor",
+          "room": "Simcoe",
+          "hook": "Heavy hitters. Features Alondra Nelson on 'The Tech Manifesto' and Moira Weigel on 'The Ontologies and Political Philosophies of Palantir' (perfect for your Preemption chapter).",
+          "speakers": [
+            "Alondra Nelson",
+            "Moira Weigel"
+          ],
+          "tags": [
+            "Heavy Hitters",
+            "Alondra Nelson",
+            "Moira Weigel",
+            "Palantir",
+            "Preemption (Ch. 5)"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 289",
+          "type": "Panel",
+          "title": "How Critique Stabilizes Technoscientific Power 3",
+          "location": "Mezzanine, Willow East",
+          "floor": "Mezzanine",
+          "room": "Willow East",
+          "hook": "Features Maxime Hardy on 'Explainability as Alibi' (treating AI transparency as a trick to maintain power).",
+          "speakers": [
+            "Maxime Hardy"
+          ],
+          "tags": [
+            "Explainability as Alibi",
+            "AI Transparency Tricks",
+            "Technoscientific Power"
+          ]
+        }
+      },
+      {
+        "slot_id": "thu-5",
+        "time": "3:40 PM \u2013 5:30 PM",
+        "time_badge": "Afternoon Session 2",
+        "start_time": "15:40",
+        "end_time": "17:30",
+        "opt1": {
+          "number": "Panel 321",
+          "type": "Panel",
+          "title": "How Critique Stabilizes Technoscientific Power 4",
+          "location": "Mezzanine, Willow East",
+          "floor": "Mezzanine",
+          "room": "Willow East",
+          "hook": "Features Eunji Kim on 'Constructing Algorithmic-Rational Authority.' Addresses why we submit to the algorithmic contract.",
+          "speakers": [
+            "Eunji Kim"
+          ],
+          "tags": [
+            "Algorithmic-Rational Authority",
+            "Algorithmic Contract",
+            "Power Legitimation"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 334",
+          "type": "Panel",
+          "title": "Tech infrastructures & organizing structures",
+          "location": "Mezzanine, Spruce",
+          "floor": "Mezzanine",
+          "room": "Spruce",
+          "hook": "Features Tamara Spitzer-Hobeika on 'Democratizing Democracy' via the NationBuilder platform. Good empirical grounding for political organizing.",
+          "speakers": [
+            "Tamara Spitzer-Hobeika"
+          ],
+          "tags": [
+            "Democratizing Democracy",
+            "NationBuilder",
+            "Political Organizing"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "day_id": "friday",
+    "day_name": "Friday, October 9",
+    "date_iso": "2026-10-09",
+    "badge": "Day 3",
+    "slots": [
+      {
+        "slot_id": "fri-1",
+        "time": "8:00 AM \u2013 10:00 AM",
+        "time_badge": "Morning Session 1",
+        "start_time": "08:00",
+        "end_time": "10:00",
+        "opt1": {
+          "number": "Panel 348",
+          "type": "Panel",
+          "title": "Affect and Artificial Intelligence 1 - Intimate Machines",
+          "location": "2nd Floor, Wentworth",
+          "floor": "2nd Floor",
+          "room": "Wentworth",
+          "hook": "Features Dayeon Eom on 'Intimacy as Service, Harm as Externality.' The perfect empirical companion to your Chapter 6 (Relationship over Relationality).",
+          "speakers": [
+            "Dayeon Eom"
+          ],
+          "tags": [
+            "Relationship vs Relationality (Ch. 6)",
+            "Intimate Machines",
+            "Affective AI"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 366",
+          "type": "Panel",
+          "title": "Reworking TechnoPower: Everyday Digital Practices in Marginalized Worlds 1",
+          "location": "Mezzanine, Linden",
+          "floor": "Mezzanine",
+          "room": "Linden",
+          "hook": "Features Samuel Mayworm on 'Contesting Platform Rigidity.' This is the 'Right to be a Problem' in action.",
+          "speakers": [
+            "Samuel Mayworm"
+          ],
+          "tags": [
+            "Right to be a Problem",
+            "Contesting Rigidity",
+            "Everyday Resistance"
+          ]
+        }
+      },
+      {
+        "slot_id": "fri-2",
+        "time": "10:20 AM \u2013 12:20 PM",
+        "time_badge": "Morning Session 2",
+        "start_time": "10:20",
+        "end_time": "12:20",
+        "opt1": {
+          "number": "Panel 398",
+          "type": "Panel",
+          "title": "Remaking the State: Moral Economies of Gov-Tech and Automated Governance 1",
+          "location": "Mezzanine, Cedar",
+          "floor": "Mezzanine",
+          "room": "Cedar",
+          "hook": "Features Sandeep Mertia on 'Derivative Sovereignty: the State, the Stack, and their Shadows.' A must-attend for your political theory framing.",
+          "speakers": [
+            "Sandeep Mertia"
+          ],
+          "tags": [
+            "Derivative Sovereignty",
+            "The Stack & Shadows",
+            "Gov-Tech",
+            "Automated Governance"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 383",
+          "type": "Panel",
+          "title": "Affect and Artificial Intelligence 2",
+          "location": "2nd Floor, Wentworth",
+          "floor": "2nd Floor",
+          "room": "Wentworth",
+          "hook": "Features L.E. Horgan on 'Exhausted Systems: AI as a Technology of Burnout.' Connects beautifully to Byung-Chul Han and the 'Toil of Choice.'",
+          "speakers": [
+            "L.E. Horgan"
+          ],
+          "tags": [
+            "Byung-Chul Han",
+            "Toil of Choice",
+            "Burnout & Exhaustion",
+            "Affective AI"
+          ]
+        }
+      },
+      {
+        "slot_id": "fri-3",
+        "time": "12:20 PM \u2013 1:30 PM",
+        "time_badge": "Lunchtime Session",
+        "start_time": "12:20",
+        "end_time": "13:30",
+        "opt1": {
+          "number": "Panel 413",
+          "type": "Panel",
+          "title": "Against the Cloud: Small Data, Personal Archives, and Alternative Computing",
+          "location": "2nd Floor, Elgin",
+          "floor": "2nd Floor",
+          "room": "Elgin",
+          "hook": "Features Nathan Schneider on 'Emergence, Interpretability, and Capture Resistance.' Technical architectures of refusal.",
+          "speakers": [
+            "Nathan Schneider"
+          ],
+          "tags": [
+            "Small Data",
+            "Nathan Schneider",
+            "Capture Resistance",
+            "Alternative Computing"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 445",
+          "type": "Panel",
+          "title": "Citizens\u2019 Participation: Making Citizens Part of the Dialogue Around AI",
+          "location": "2nd Floor, Kent",
+          "floor": "2nd Floor",
+          "room": "Kent",
+          "hook": "Features Xinbo Lin on 'Public Imaginaries of Judicial AI and Trust.' Directly feeds your Participatory AI Lab work.",
+          "speakers": [
+            "Xinbo Lin"
+          ],
+          "tags": [
+            "Participatory AI Lab",
+            "Citizens' Dialogue",
+            "Judicial AI & Trust"
+          ]
+        }
+      },
+      {
+        "slot_id": "fri-4",
+        "time": "1:30 PM \u2013 3:20 PM",
+        "time_badge": "Afternoon Session 1",
+        "start_time": "13:30",
+        "end_time": "15:20",
+        "opt1": {
+          "number": "Panel 462",
+          "type": "Panel",
+          "title": "Semi-Visible Worlds, A Practice Between the Private and Public 1",
+          "location": "Mezzanine, Maple West",
+          "floor": "Mezzanine",
+          "room": "Maple West",
+          "hook": "Features Cheng-Hsiu Yang on 'Governing Without Exposure.' Deals with the privatization of the public sphere.",
+          "speakers": [
+            "Cheng-Hsiu Yang"
+          ],
+          "tags": [
+            "Privatization of Public Sphere",
+            "Governing Without Exposure",
+            "Semi-Visible Worlds"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 456",
+          "type": "Panel",
+          "title": "Resisting the Datafied University",
+          "location": "Mezzanine, Chestnut West",
+          "floor": "Mezzanine",
+          "room": "Chestnut West",
+          "hook": "Features Martha Kenney on 'Resisting Generative AI in Higher Education.' Great for your pedagogical focus.",
+          "speakers": [
+            "Martha Kenney"
+          ],
+          "tags": [
+            "Higher Ed Resistance",
+            "Datafied University",
+            "Pedagogy"
+          ]
+        }
+      },
+      {
+        "slot_id": "fri-5",
+        "time": "3:40 PM \u2013 5:30 PM",
+        "time_badge": "Afternoon Session 2",
+        "start_time": "15:40",
+        "end_time": "17:30",
+        "opt1": {
+          "number": "Panel 488",
+          "type": "Panel",
+          "title": "Remaking the State: Moral Economies of Gov-Tech 3",
+          "location": "Mezzanine, Cedar",
+          "floor": "Mezzanine",
+          "room": "Cedar",
+          "hook": "Features Gijs van Maanen on 'Algo-resist: civil servants\u2019 propensity and capacity to resist tech-fueled public policy.' The resistance inside the state.",
+          "speakers": [
+            "Gijs van Maanen"
+          ],
+          "tags": [
+            "Algo-resist",
+            "Bureaucratic Resistance",
+            "Gov-Tech"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 503",
+          "type": "Panel",
+          "title": "Whose Future? Religious and Technoscientific Imaginaries in Contest",
+          "location": "2nd Floor, Huron",
+          "floor": "2nd Floor",
+          "room": "Huron",
+          "hook": "Features Anthony Nairn on 'Digital Immortality and Religious Soteriology.' Hits the core of your Journal of Lutheran Ethics 'Machine Certainty' essay.",
+          "speakers": [
+            "Anthony Nairn"
+          ],
+          "tags": [
+            "Machine Certainty",
+            "Digital Immortality",
+            "Lutheran Ethics Essay",
+            "Religious Imaginaries"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "day_id": "saturday",
+    "day_name": "Saturday, October 10",
+    "date_iso": "2026-10-10",
+    "badge": "Day 4 \u2022 Final Day",
+    "slots": [
+      {
+        "slot_id": "sat-1",
+        "time": "8:00 AM \u2013 10:00 AM",
+        "time_badge": "Morning Session 1",
+        "start_time": "08:00",
+        "end_time": "10:00",
+        "opt1": {
+          "number": "Panel 510",
+          "type": "Panel",
+          "title": "Constitutional Futures for Technoscience 1",
+          "location": "Lower Concourse, Grand West",
+          "floor": "Lower Concourse",
+          "room": "Grand West",
+          "hook": "Features Anna M. Agathangelou on 'Military AI and Constitutional Moments.' Uses the exact Kalyvas/Extraordinary Politics framing you use.",
+          "speakers": [
+            "Anna M. Agathangelou"
+          ],
+          "tags": [
+            "Extraordinary Politics",
+            "Kalyvas Framing",
+            "Military AI",
+            "Constitutional Moments"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 529",
+          "type": "Panel",
+          "title": "Polycentric Futures: Governing AI Beyond Monocentric Control",
+          "location": "2nd Floor, Simcoe",
+          "floor": "2nd Floor",
+          "room": "Simcoe",
+          "hook": "Features Mona Garrel on 'Governing by Algorithm.'",
+          "speakers": [
+            "Mona Garrel"
+          ],
+          "tags": [
+            "Polycentric Governance",
+            "Governing by Algorithm",
+            "Decentralized Control"
+          ]
+        }
+      },
+      {
+        "slot_id": "sat-2",
+        "time": "10:20 AM \u2013 12:20 PM",
+        "time_badge": "Morning Session 2",
+        "start_time": "10:20",
+        "end_time": "12:20",
+        "opt1": {
+          "number": "Panel 545",
+          "type": "Panel",
+          "title": "Disconnections, Dishonesty, and other Network Persistences",
+          "location": "4th Floor, Kensington",
+          "floor": "4th Floor",
+          "room": "Kensington",
+          "hook": "Features Alexander Fedorov on 'AI Withdrawal as Method: Designed Disconnection.' The tactical manual for algorithmic refusal.",
+          "speakers": [
+            "Alexander Fedorov"
+          ],
+          "tags": [
+            "Designed Disconnection",
+            "Algorithmic Refusal",
+            "AI Withdrawal as Method"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 546",
+          "type": "Panel",
+          "title": "Artificial Intelligence as performative phenomenon 2",
+          "location": "Mezzanine, Willow Centre",
+          "floor": "Mezzanine",
+          "room": "Willow Centre",
+          "hook": "Features Yang Zhao on 'Religious Performance, Disembodiment, and Structural Untraceability in AI.'",
+          "speakers": [
+            "Yang Zhao"
+          ],
+          "tags": [
+            "Religious Performance",
+            "Disembodiment",
+            "Performative AI"
+          ]
+        }
+      },
+      {
+        "slot_id": "sat-3",
+        "time": "12:20 PM \u2013 1:30 PM",
+        "time_badge": "Lunchtime Session",
+        "start_time": "12:20",
+        "end_time": "13:30",
+        "opt1": {
+          "number": "Panel 586",
+          "type": "Panel",
+          "title": "Infodemic Publics. Techno-Scientific Management as a Politics of Truth",
+          "location": "Mezzanine, Linden",
+          "floor": "Mezzanine",
+          "room": "Linden",
+          "hook": "Features Aditi Upadhyaya on 'Artificial Intelligence and the Politics of Threat Construction.' The mechanics of Preemption.",
+          "speakers": [
+            "Aditi Upadhyaya"
+          ],
+          "tags": [
+            "Threat Construction",
+            "Preemption Mechanics",
+            "Politics of Truth"
+          ]
+        },
+        "opt2": {
+          "number": "Roundtable 585",
+          "type": "Roundtable",
+          "title": "Epistemological Dialogues between STS and International Relations",
+          "location": "4th Floor, Leaside",
+          "floor": "4th Floor",
+          "room": "Leaside",
+          "hook": "A high-level discussion on 'Interdisciplinary Encounters for Emancipations.'",
+          "speakers": [],
+          "tags": [
+            "STS & IR",
+            "Interdisciplinary Dialogue",
+            "Emancipation"
+          ]
+        }
+      },
+      {
+        "slot_id": "sat-4",
+        "time": "1:30 PM \u2013 3:20 PM",
+        "time_badge": "Afternoon Session 1",
+        "start_time": "13:30",
+        "end_time": "15:20",
+        "opt1": {
+          "number": "Panel 637",
+          "type": "Panel",
+          "title": "Who\u2019s in the Loop? Reconfiguring Epistemic Spaces in the Age of Algorithms 1",
+          "location": "Mezzanine, Oxford",
+          "floor": "Mezzanine",
+          "room": "Oxford",
+          "hook": "Features Luis Lozano Paredes on 'Epistemic Inflation and the Reconfiguration of Institutional Knowing.' Spot-on for your Epistemic Shift chapter.",
+          "speakers": [
+            "Luis Lozano Paredes"
+          ],
+          "tags": [
+            "Epistemic Shift",
+            "Epistemic Inflation",
+            "Institutional Knowing"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 605",
+          "type": "Panel",
+          "title": "AI, Language, Imaginaries, and Technopower in Africa 1",
+          "location": "2nd Floor, City Hall Room",
+          "floor": "2nd Floor",
+          "room": "City Hall Room",
+          "hook": "Features Adjua Akinwumi on 'Prediction as Postcolonial Infrastructure: Genealogies of Anticipatory Governance.' The global reality of Preemption.",
+          "speakers": [
+            "Adjua Akinwumi"
+          ],
+          "tags": [
+            "Postcolonial Prediction",
+            "Anticipatory Governance",
+            "Preemption"
+          ]
+        }
+      },
+      {
+        "slot_id": "sat-5",
+        "time": "3:40 PM \u2013 5:30 PM",
+        "time_badge": "Afternoon Session 2",
+        "start_time": "15:40",
+        "end_time": "17:30",
+        "opt1": {
+          "number": "Panel 645",
+          "type": "Panel",
+          "title": "Constitutional Futures for Technoscience 4",
+          "location": "Lower Concourse, Grand West",
+          "floor": "Lower Concourse",
+          "room": "Grand West",
+          "hook": "Features Mason Barnard on 'Private Governance, and the New Tech Oligarchy.' A great closing session on the clash of sovereignties.",
+          "speakers": [
+            "Mason Barnard"
+          ],
+          "tags": [
+            "Tech Oligarchy",
+            "Clash of Sovereignties",
+            "Private Governance"
+          ]
+        },
+        "opt2": {
+          "number": "Panel 660",
+          "type": "Panel",
+          "title": "Operationalizing Care: Feminist STS on Companion/Affective AI",
+          "location": "2nd Floor, Simcoe",
+          "floor": "2nd Floor",
+          "room": "Simcoe",
+          "hook": "Features Wing Yee Yau on 'Algorithmic Misrecognition... and the Politics of Identity in AI Companionship.' Final thoughts on synthetic relationships.",
+          "speakers": [
+            "Wing Yee Yau"
+          ],
+          "tags": [
+            "Feminist STS",
+            "Synthetic Relationships",
+            "Affective AI",
+            "Misrecognition"
+          ]
+        }
+      }
+    ]
+  }
+]
