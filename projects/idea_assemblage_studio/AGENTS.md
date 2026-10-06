@@ -26,13 +26,14 @@ A tactile writing & thinking crucible inspired by artist Betye Saar. Collide fou
 | :--- | :--- | :--- |
 | 2026-09-29 | **Betye Saar Found-Object Methodology** | Structured the idea collision crucible around 4 liberal arts quadrants: Science, Humanities, Arts, and Social Science. |
 | 2026-09-29 | **Local Desktop App & Web Deployment** | Built standalone HTML/JS canvas application with local python launcher (`launch_assemblage.py`). |
+| 2026-10-06 | **Showcase Realignment to AI Tools** | Realigned from the Civic AI Working Group research focus in `projects.html` into `ai_tools.html` under Featured Applications and Custom AI Tools & Assistants. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 
 ---
 
 ## 4. Current Status & Next Steps
-- [x] Registered in `projects.html` showcase grid
+- [x] Registered in `ai_tools.html` featured showcase grid
 - [ ] Detail data collection / code implementation
 - [ ] Create interactive demonstrator / policy report
 
