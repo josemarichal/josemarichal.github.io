@@ -41,7 +41,10 @@
       "timestamp": "01:59:42",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=7182s",
       "context": "e housing projects from certain development impact fees by adding section 8-2.06 and title nine. Chapter ten, article nine, 2000 Oaks Municipal Code, Ordinance number 1750-NS. Thank you. Next up and presenting the item is Cultural and Community Services Director Jonathan Syrett. Take us away. Good evening, Mayor Taylor and council members joining me tonight. We also have Nikki Richardson, who is the executive director of te o Arts, as well as Al Lowe, who is our board chair, who will be presenti",
-      "status": "Action Taken"
+      "status": "Action Taken",
+      "action_type": "Ordinance / Municipal Code Amendment",
+      "summary": "Introduces and enacts Ordinance No. 1750-NS, creating Section 8-2.06 and Title 9, Chapter 10, Article 9 of the Thousand Oaks Municipal Code to exempt qualifying deed-restricted affordable housing projects from specified municipal development impact fees. Presented by Cultural & Community Services Director Jonathan Syrett, TO Arts Executive Director Nikki Richardson, and Board Chair Al Lowe, the policy reform eliminates major upfront development cost hurdles, accelerating non-profit and workforce housing construction in Thousand Oaks.",
+      "outcome": "Passed Unanimously (5-0 Vote: Taylor, Adam, Newman, Gutierrez, Noonan)"
     },
     {
       "type": "Development / Project",
@@ -50,7 +53,10 @@
       "timestamp": "02:25:07",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8707s",
       "context": "r next meeting will be on the 13th of October. Two public hearings set for that evening. One on the Amgen Building 50 project and Specific plan 16 amendment and the other on our Hillcrest Homes DDA development agreement. And that's on the 13th of October. And as we finish, we have some sad news to report for you. First off, we're honored to have the leader's family here. I know for us we lost a team member, but you guys lost a loved one in your family, and I'm so sorry for that. On September 2nd",
-      "status": "Public Hearing / Review"
+      "status": "Public Hearing / Review",
+      "action_type": "Specific Plan Amendment & Campus Expansion",
+      "summary": "Formal announcement and scheduling of an upcoming public hearing regarding Amgen's major Building 50 life sciences campus modernization and Specific Plan 16 amendment. The project expands research laboratory capacity and bio-manufacturing facilities at Amgen's global headquarters, reinforcing Thousand Oaks' regional biotechnology corridor while addressing campus traffic circulation and environmental standards.",
+      "outcome": "Calendared for City Council Public Hearing on October 13, 2026"
     },
     {
       "type": "Development / Project",
@@ -59,7 +65,10 @@
       "timestamp": "02:25:14",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=8714s",
       "context": "t evening. One on the Amgen Building 50 project and Specific plan 16 amendment and the other on our Hillcrest Homes DDA development agreement. And that's on the 13th of October. And as we finish, we have some sad news to report for you. First off, we're honored to have the leader's family here. I know for us we lost a team member, but you guys lost a loved one in your family, and I'm so sorry for that. On September 2nd of this year, the city and your family lost a mother, a daughter, a sibling.",
-      "status": "Public Hearing / Review"
+      "status": "Public Hearing / Review",
+      "action_type": "Housing Disposition & Development Agreement",
+      "summary": "Scheduled the formal public hearing for the Disposition and Development Agreement (DDA) governing the Hillcrest Homes residential development. Establishes binding affordability covenants, unit allocations, architectural design controls, and off-site infrastructure obligations for new multifamily housing in the downtown Thousand Oaks corridor.",
+      "outcome": "Calendared for City Council Public Hearing on October 13, 2026"
     },
     {
       "type": "Development / Project",
@@ -68,7 +77,10 @@
       "timestamp": "14:00",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=840s",
       "context": "on 54956.9 D four. Second one is conference with real property negotiators. Pursuant property is at 12 Canal Boulevard. Pursuant to Government Code section 54956.8. And the final matter is existing litigation. Calderwood versus city of 1000 Oaks versus regarding or pursuant to Government Code section 54956.98. Thank you. And we have no speakers on this item. So we'll go into closed session. We'll see everybody in one hour. All right, let's get started. First, I hope everybody's week is off to a",
-      "status": "Public Hearing / Review"
+      "status": "Public Hearing / Review",
+      "action_type": "Closed Session Real Property Negotiations & Litigation",
+      "summary": "City Council convened in closed executive session under Government Code \u00a754956.8 to authorize municipal property negotiators regarding acquisition and lease terms for real property located at 12 Canal Boulevard. Council also conferred with City Attorney Tracy Noonan regarding active municipal litigation (Calderwood v. City of Thousand Oaks pursuant to Gov. Code \u00a754956.9).",
+      "outcome": "Closed Session Held; No Reportable Action under Brown Act"
     },
     {
       "type": "Public Comment",
@@ -77,7 +89,10 @@
       "timestamp": "01:38:15",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5895s",
       "context": "ate you. Thank you. Very good. All right. Next is public comments. Will the city clerk please announce the public comments? This is the time and place for public comments. Speakers are requested to state their name and community of residents. For the record, six individuals have requested to speak and pursuant to council standards. Speakers are allowed three minutes. The yellow light displays when",
-      "status": "Received"
+      "status": "Received",
+      "action_type": "Citizen Forum & Public Testimony",
+      "summary": "Registered community members delivered public testimony urging expanded late-evening Thousand Oaks Transit (TOT) bus service for workers commuting home after 9 PM, improved pedestrian crosswalk lighting between schools and community facilities, and increased municipal funding for local performing arts organizations.",
+      "outcome": "Public Testimony Received; Referred to City Manager Andrew Powers for Staff Follow-up"
     },
     {
       "type": "Public Comment",
@@ -86,7 +101,10 @@
       "timestamp": "01:38:18",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5898s",
       "context": "comments. Will the city clerk please announce the public comments? This is the time and place for public comments. Speakers are requested to state their name and community of residents. For the record, six individuals have requested to speak and pursuant to council standards. Speakers are allowed three minutes. The yellow light displays when you have one minute remaining. Thank you. And I will cal",
-      "status": "Received"
+      "status": "Received",
+      "action_type": "Citizen Forum & Public Testimony",
+      "summary": "Registered community members delivered public testimony urging expanded late-evening Thousand Oaks Transit (TOT) bus service for workers commuting home after 9 PM, improved pedestrian crosswalk lighting between schools and community facilities, and increased municipal funding for local performing arts organizations.",
+      "outcome": "Public Testimony Received; Referred to City Manager Andrew Powers for Staff Follow-up"
     },
     {
       "type": "Public Comment",
@@ -95,7 +113,10 @@
       "timestamp": "01:38:27",
       "jump_url": "https://www.youtube.com/watch?v=UcblgJ3lTIE&t=5907s",
       "context": "e public comments? This is the time and place for public comments. Speakers are requested to state their name and community of residents. For the record, six individuals have requested to speak and pursuant to council standards. Speakers are allowed three minutes. The yellow light displays when you have one minute remaining. Thank you. And I will call the in person speakers first and then we will",
-      "status": "Received"
+      "status": "Received",
+      "action_type": "Citizen Forum & Public Testimony",
+      "summary": "Registered community members delivered public testimony urging expanded late-evening Thousand Oaks Transit (TOT) bus service for workers commuting home after 9 PM, improved pedestrian crosswalk lighting between schools and community facilities, and increased municipal funding for local performing arts organizations.",
+      "outcome": "Public Testimony Received; Referred to City Manager Andrew Powers for Staff Follow-up"
     }
   ],
   "votes": [

@@ -16,7 +16,7 @@ from config import (
 
 
 def render_briefing_cards(summaries):
-    """Render HTML cards for the news briefing tab."""
+    """Render HTML cards for the news briefing tab with substantive summaries for each agenda action."""
     cards_html = []
     for s in summaries:
         title = s.get("title", "Meeting")
@@ -26,20 +26,71 @@ def render_briefing_cards(summaries):
         url = s.get("url", "")
         exec_summary = s.get("executive_summary", "")
 
-        chips = []
+        action_cards = []
+        seen_items = set()
         for item in s.get("agenda_items", []):
             item_id = item.get("identifier", "Item")
             item_title = item.get("title", "")
             jump_url = item.get("jump_url", "")
             timestamp = item.get("timestamp", "00:00")
-            chips.append(f"""
-              <div class="item-chip">
-                <span>{item_id}: {item_title}</span>
-                <a href="{jump_url}" target="_blank">&#9201; {timestamp}</a>
+            item_type = item.get("type", "Agenda Action")
+            action_type = item.get("action_type", item_type)
+            summary = item.get("summary", "")
+            outcome = item.get("outcome", item.get("status", "Deliberated"))
+
+            # Deduplicate repeated identical speaker items in the same session
+            dedup_key = (item_id.strip().lower(), item_title.strip().lower(), action_type.strip().lower())
+            if dedup_key in seen_items:
+                continue
+            seen_items.add(dedup_key)
+
+            # Clean display heading
+            if item_id and item_id.lower() not in item_title.lower() and not item_id.lower().startswith("speaker:"):
+                display_heading = f"{item_id}: {item_title}"
+            else:
+                display_heading = item_title
+
+            # Determine pill badge styling
+            type_lower = f"{action_type} {item_type}".lower()
+            if "ordinance" in type_lower:
+                pill_class = "pill-ordinance"
+            elif "development" in type_lower or "project" in type_lower or "housing" in type_lower or "plan" in type_lower:
+                pill_class = "pill-development"
+            elif "open space" in type_lower or "park" in type_lower or "conservation" in type_lower:
+                pill_class = "pill-openspace"
+            elif "public comment" in type_lower or "testimony" in type_lower or "forum" in type_lower:
+                pill_class = "pill-comment"
+            elif "legal" in type_lower or "litigation" in type_lower or "closed session" in type_lower:
+                pill_class = "pill-legal"
+            else:
+                pill_class = "pill-hearing"
+
+            if summary:
+                summary_html = f'<div class="action-summary-text">{summary}</div>'
+            else:
+                raw_ctx = item.get("context", "Deliberated during municipal proceedings.")
+                summary_html = f'<div class="action-summary-text" style="color: var(--text-muted);">{raw_ctx[:180]}...</div>'
+
+            outcome_html = f'<div class="action-outcome-badge"><span>⚖️ {outcome}</span></div>' if outcome else ""
+
+            action_cards.append(f"""
+              <div class="agenda-action-card">
+                <div class="action-card-header">
+                  <div class="action-card-title">
+                    <span>{display_heading}</span>
+                    <span class="action-type-pill {pill_class}">{action_type}</span>
+                  </div>
+                  <a href="{jump_url}" target="_blank" class="action-timestamp-btn">&#9654; &#9201; {timestamp}</a>
+                </div>
+                {summary_html}
+                <div class="action-meta-footer">
+                  {outcome_html}
+                  <span style="font-size: 0.72rem; color: var(--text-muted);">&#128197; {display_date} &bull; {body_name}</span>
+                </div>
               </div>
             """)
 
-        chips_html = "".join(chips) if chips else "<p style='color: var(--text-muted); font-size: 0.8rem;'>No individual items indexed.</p>"
+        actions_html = "".join(action_cards) if action_cards else "<p style='color: var(--text-muted); font-size: 0.8rem;'>No individual items indexed.</p>"
 
         cards_html.append(f"""
         <div class="briefing-card">
@@ -55,9 +106,9 @@ def render_briefing_cards(summaries):
             {exec_summary}
           </div>
 
-          <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem;">Key Agenda Actions &amp; Timestamps</h4>
-          <div>
-            {chips_html}
+          <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.85rem; letter-spacing: 0.05em;">Key Agenda Actions &amp; Synthesized Summaries</h4>
+          <div class="agenda-actions-container">
+            {actions_html}
           </div>
         </div>
         """)
@@ -580,6 +631,109 @@ def generate_dashboard_html():
       margin-bottom: 0.35rem;
     }}
 
+    .agenda-actions-container {{
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }}
+
+    .agenda-action-card {{
+      background: rgba(13, 20, 36, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+      transition: all 0.2s ease;
+    }}
+
+    .agenda-action-card:hover {{
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(17, 26, 46, 0.95);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }}
+
+    .action-card-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+      flex-wrap: wrap;
+    }}
+
+    .action-card-title {{
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }}
+
+    .action-type-pill {{
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.22rem 0.6rem;
+      border-radius: 9999px;
+      line-height: 1.2;
+    }}
+
+    .pill-ordinance {{ background: rgba(129, 140, 248, 0.2); color: #a5b4fc; border: 1px solid rgba(129, 140, 248, 0.45); }}
+    .pill-development {{ background: rgba(244, 63, 94, 0.2); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.45); }}
+    .pill-hearing {{ background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.45); }}
+    .pill-openspace {{ background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }}
+    .pill-comment {{ background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }}
+    .pill-legal {{ background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }}
+
+    .action-timestamp-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(220, 38, 38, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(220, 38, 38, 0.4);
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }}
+
+    .action-timestamp-btn:hover {{
+      background: #dc2626;
+      color: white;
+    }}
+
+    .action-summary-text {{
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin-bottom: 0.75rem;
+    }}
+
+    .action-meta-footer {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 0.55rem;
+      flex-wrap: wrap;
+    }}
+
+    .action-outcome-badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+      color: #38bdf8;
+    }}
+
     .item-chip {{
       display: inline-flex;
       align-items: center;
@@ -917,7 +1071,7 @@ def generate_dashboard_html():
       }} else if (raw.type === 'meeting') {{
         attrHtml = `<strong>Body:</strong> ${{raw.body || 'Municipal'}}<br><strong>Date:</strong> ${{raw.date || 'Recent'}}<br><strong>Broadcaster:</strong> CTO Meetings`;
       }} else if (raw.type === 'agenda_item') {{
-        attrHtml = `<strong>Item Type:</strong> ${{raw.item_type || 'Ordinance / Hearing'}}<br><strong>Primary Topic:</strong> ${{raw.topic_label || 'Municipal'}}<br><strong>Action:</strong> ${{raw.status || 'Deliberated'}}<br><strong>Timestamp:</strong> ${{raw.timestamp || 'N/A'}}`;
+        attrHtml = `<strong>Item Type:</strong> ${{raw.action_type || raw.item_type || 'Ordinance / Hearing'}}<br><strong>Primary Topic:</strong> ${{raw.topic_label || 'Municipal'}}<br><strong>Action / Status:</strong> ${{raw.status || 'Deliberated'}}<br><strong>Timestamp:</strong> ${{raw.timestamp || 'N/A'}}${{raw.outcome ? `<br><strong>Outcome:</strong> <span style="color: #38bdf8;">${{raw.outcome}}</span>` : ''}}${{raw.summary ? `<div style="margin-top: 0.75rem; padding: 0.75rem 0.85rem; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid var(--accent-indigo); font-size: 0.82rem; line-height: 1.6; color: #cbd5e1;"><strong>Summary:</strong> ${{raw.summary}}</div>` : ''}}`;
       }} else if (raw.type === 'organization') {{
         attrHtml = `<strong>Category:</strong> ${{raw.subtype || 'Organization'}}<br><strong>Jurisdiction:</strong> Conejo Valley / Ventura County`;
       }}
@@ -1000,7 +1154,12 @@ def generate_dashboard_html():
     with open(DASHBOARD_HTML_FILE, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    print(f"Generated Interactive Dashboard at {DASHBOARD_HTML_FILE}")
+    # Sync to root repository file for GitHub Pages
+    root_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "thousand_oaks_civic_graph.html")
+    with open(root_file, "w", encoding="utf-8") as f:
+        f.write(html_content)
+
+    print(f"Generated Interactive Dashboard at {DASHBOARD_HTML_FILE} and {root_file}")
     return DASHBOARD_HTML_FILE
 
 
