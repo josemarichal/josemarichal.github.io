@@ -28,6 +28,7 @@ An automated civic intelligence pipeline and interactive knowledge graph trackin
 | 2026-10-03 | **Restructured Knowledge Graph by Policy Topics** | Reorganized the visual graph from purely meeting-session nodes to policy domain hubs: Affordable Housing, Open Space, Economic Development, Public Safety, and Governance. |
 | 2026-10-03 | **Deployed Fullscreen Interactive Graph on GitHub Pages** | Added full-screen cytoscape canvas, auto-fit controls, searchable topic dossiers, and timestamped video deep links at `thousand_oaks_civic_graph.html`. |
 | 2026-10-05 | **Synthesized Agenda Action Summaries in Municipal Briefings** | Enhanced both the Briefings view and Graph Node Inspector with in-depth summaries, formal outcomes (e.g. Ordinance 1750-NS 5-0 vote, Amgen Specific Plan Oct 13 hearing, Hillcrest Homes DDA, COSCA Native Plant Palooza), policy category pills, and deep timestamp links. |
+| 2026-10-05 | **Universal Paragraph Summaries Across All Graph Nodes** | Enriched every node in the knowledge graph (all 45 topics, elected officials, planning commissioners, COSCA trustees, organizations, and meeting sessions) with dedicated substantive paragraph summaries displayed in the inspector drawer upon opening. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

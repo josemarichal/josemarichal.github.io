@@ -1071,10 +1071,28 @@ def generate_dashboard_html():
       }} else if (raw.type === 'meeting') {{
         attrHtml = `<strong>Body:</strong> ${{raw.body || 'Municipal'}}<br><strong>Date:</strong> ${{raw.date || 'Recent'}}<br><strong>Broadcaster:</strong> CTO Meetings`;
       }} else if (raw.type === 'agenda_item') {{
-        attrHtml = `<strong>Item Type:</strong> ${{raw.action_type || raw.item_type || 'Ordinance / Hearing'}}<br><strong>Primary Topic:</strong> ${{raw.topic_label || 'Municipal'}}<br><strong>Action / Status:</strong> ${{raw.status || 'Deliberated'}}<br><strong>Timestamp:</strong> ${{raw.timestamp || 'N/A'}}${{raw.outcome ? `<br><strong>Outcome:</strong> <span style="color: #38bdf8;">${{raw.outcome}}</span>` : ''}}${{raw.summary ? `<div style="margin-top: 0.75rem; padding: 0.75rem 0.85rem; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid var(--accent-indigo); font-size: 0.82rem; line-height: 1.6; color: #cbd5e1;"><strong>Summary:</strong> ${{raw.summary}}</div>` : ''}}`;
+        attrHtml = `<strong>Item Type:</strong> ${{raw.action_type || raw.item_type || 'Ordinance / Hearing'}}<br><strong>Primary Topic:</strong> ${{raw.topic_label || 'Municipal'}}<br><strong>Action / Status:</strong> ${{raw.status || 'Deliberated'}}<br><strong>Timestamp:</strong> ${{raw.timestamp || 'N/A'}}${{raw.outcome ? `<br><strong>Outcome:</strong> <span style="color: #38bdf8;">${{raw.outcome}}</span>` : ''}}`;
       }} else if (raw.type === 'organization') {{
         attrHtml = `<strong>Category:</strong> ${{raw.subtype || 'Organization'}}<br><strong>Jurisdiction:</strong> Conejo Valley / Ventura County`;
       }}
+
+      // Universal Substantive Paragraph Summary for every node
+      if (raw.summary) {{
+        let accentBorder = '#38bdf8';
+        if (raw.type === 'topic') accentBorder = '#f43f5e';
+        else if (raw.type === 'official') accentBorder = '#10b981';
+        else if (raw.type === 'agenda_item') accentBorder = '#818cf8';
+        else if (raw.type === 'organization') accentBorder = '#f59e0b';
+        else if (raw.type === 'meeting') accentBorder = '#06b6d4';
+
+        attrHtml += `<div style="margin-top: 0.85rem; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid ${{accentBorder}}; border-top: 1px solid rgba(255,255,255,0.06); border-right: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+          <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: ${{accentBorder}}; margin-bottom: 0.4rem;">
+            &#128203; Summary &amp; Civic Context
+          </div>
+          <p style="font-size: 0.82rem; line-height: 1.6; color: #cbd5e1; margin: 0;">${{raw.summary}}</p>
+        </div>`;
+      }}
+
       document.getElementById('dossier-attributes').innerHTML = attrHtml;
 
       const actionContainer = document.getElementById('dossier-action-btn');
