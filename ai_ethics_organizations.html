@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics, Algorithmic Justice & Public Interest Tech Organizations | Teaching Resource | Jose Marichal</title>
+    <meta name="description" content="A curated academic directory of leading AI ethics, algorithmic justice, platform accountability, and public interest tech organizations for students and researchers.">
+    <link rel="stylesheet" href="style.css?v=6">
+    <style>
+        :root {
+            --ethics-accent: #6366f1;
+            --ethics-cyan: #38bdf8;
+            --ethics-emerald: #10b981;
+            --ethics-rose: #f43f5e;
+            --ethics-amber: #f59e0b;
+            --ethics-purple: #a855f7;
+            --ethics-card-bg: rgba(22, 27, 34, 0.85);
+            --ethics-border: rgba(255, 255, 255, 0.1);
+        }
+
+        .resource-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-top: 1rem;
+        }
+
+        .resource-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            padding: 0.35rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .resource-header h1 {
+            font-size: 2.8rem;
+            line-height: 1.18;
+            margin-bottom: 1.1rem;
+            color: var(--text-heading);
+            background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .resource-header p.lead {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            max-width: 860px;
+            margin: 0 auto 1.5rem auto;
+            line-height: 1.65;
+            opacity: 0.92;
+        }
+
+        /* Metric Counters */
+        .metrics-strip {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .metric-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--ethics-border);
+            border-radius: 12px;
+            padding: 0.75rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .metric-num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ethics-cyan);
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Search & Filter Controls */
+        .controls-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--ethics-border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            position: sticky;
+            top: 75px;
+            z-index: 90;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1.25rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1.2rem 0.85rem 2.85rem;
+            background: rgba(13, 17, 23, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.98rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--ethics-accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-main);
+            padding: 0.45rem 0.95rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--ethics-cyan);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: var(--ethics-accent);
+            border-color: var(--ethics-accent);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.35);
+        }
+
+        /* Organization Cards Grid */
+        .orgs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .org-card {
+            background: var(--ethics-card-bg);
+            border: 1px solid var(--ethics-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent, var(--ethics-accent));
+            opacity: 0.85;
+        }
+
+        .org-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .org-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .org-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.25;
+        }
+
+        .org-title a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .org-title a:hover {
+            color: var(--ethics-cyan);
+        }
+
+        .cat-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        .cat-justice { background: rgba(244, 63, 94, 0.15); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.35); }
+        .cat-labor { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35); }
+        .cat-rights { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35); }
+        .cat-humane { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.35); }
+        .cat-academic { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.35); }
+
+        .key-figures {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .key-figures strong {
+            color: #cbd5e1;
+        }
+
+        .org-desc {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        .org-highlight {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--card-accent, var(--ethics-accent));
+            padding: 0.65rem 0.85rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.83rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .tag-pill {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.18rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--ethics-cyan);
+            text-decoration: none;
+            margin-top: 0.75rem;
+            transition: gap 0.15s ease;
+        }
+
+        .visit-link:hover {
+            gap: 0.6rem;
+            text-decoration: underline;
+        }
+
+        /* Pedagogical Module / Syllabus Links */
+        .pedagogy-section {
+            background: rgba(30, 41, 59, 0.45);
+            border: 1px solid var(--ethics-border);
+            border-radius: 14px;
+            padding: 2.2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .pedagogy-section h2 {
+            font-size: 1.65rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .pedagogy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .pedagogy-card {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+
+        .pedagogy-card h3 {
+            font-size: 1.05rem;
+            color: var(--ethics-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .pedagogy-card p {
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: #cbd5e1;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html" class="active">Teaching</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">Civic AI Working Group</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="resource-header">
+                <div class="resource-badge">📚 Course Resource &bull; Technology &amp; Politics &bull; Civic AI</div>
+                <h1>AI Ethics, Algorithmic Justice &amp; Public Interest Tech Organizations</h1>
+                <p class="lead">
+                    A curated academic directory of leading research institutes, civil liberties watchdogs, labor collectives, and policy think tanks investigating the societal, racial, economic, and democratic consequences of artificial intelligence.
+                </p>
+                
+                <div class="metrics-strip">
+                    <div class="metric-pill">
+                        <span class="metric-num" id="totalCount">25</span>
+                        <span class="metric-label">Leading Organizations</span>
+                    </div>
+                    <div class="metric-pill">
+                        <span class="metric-num">5</span>
+                        <span class="metric-label">Critical Domains</span>
+                    </div>
+                    <div class="metric-pill">
+                        <span class="metric-num">100%</span>
+                        <span class="metric-label">Open-Access Research</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Search & Filter Controls -->
+            <div class="controls-card">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by organization name, founder, research keyword (e.g., surveillance, labor, facial recognition, antitrust)...">
+                </div>
+                <div class="category-filters" id="filterContainer">
+                    <button class="filter-btn active" data-category="all">All Organizations</button>
+                    <button class="filter-btn" data-category="justice">Critical Algorithmic Justice &amp; Civil Rights</button>
+                    <button class="filter-btn" data-category="labor">Platform Accountability &amp; Supply-Chain Labor</button>
+                    <button class="filter-btn" data-category="rights">Digital Civil Liberties &amp; Legal Advocacy</button>
+                    <button class="filter-btn" data-category="humane">Attention Economy &amp; Democratic Commons</button>
+                    <button class="filter-btn" data-category="academic">Academic Interdisciplinary Hubs</button>
+                </div>
+            </div>
+
+            <!-- Organizations Cards Grid -->
+            <div class="orgs-grid" id="orgsGrid">
+
+                <!-- 1. Data & Society -->
+                <div class="org-card" data-category="justice" style="--card-accent: #f43f5e;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://datasociety.net/" target="_blank" rel="noopener noreferrer">Data &amp; Society</a></h3>
+                            <span class="cat-tag cat-justice">Algorithmic Justice</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> danah boyd, Sareeta Amrute, Janet Haven</div>
+                        <p class="org-desc">An independent non-profit research institute studying the social, cultural, and political impacts of data-centric and automated technologies, platform labor, algorithmic governance, and synthetic media ecosystems.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Empirical field studies on workplace algorithmic surveillance, disinformation vectors, and automated welfare distribution.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#DataStudies</span>
+                            <span class="tag-pill">#LaborSurveillance</span>
+                            <span class="tag-pill">#SociotechnicalSystems</span>
+                        </div>
+                        <a href="https://datasociety.net/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 2. Center for Humane Technology -->
+                <div class="org-card" data-category="humane" style="--card-accent: #a855f7;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.humanetech.com/" target="_blank" rel="noopener noreferrer">Center for Humane Technology</a></h3>
+                            <span class="cat-tag cat-humane">Attention &amp; Society</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Tristan Harris, Aza Raskin, Randima Fernando</div>
+                        <p class="org-desc">Catalyzes the transition from extractive business models to humane technology. Dedicated to unmasking the "race to the bottom of the brainstem," cognitive security vulnerabilities, and generative epistemic degradation of democratic institutions.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> <em>The Social Dilemma</em> documentary, <em>Your Undivided Attention</em> podcast, and course curriculum on Foundations of Humane Technology.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#AttentionEconomy</span>
+                            <span class="tag-pill">#PersuasiveTech</span>
+                            <span class="tag-pill">#EpistemicHealth</span>
+                        </div>
+                        <a href="https://www.humanetech.com/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 3. Algorithmic Justice League -->
+                <div class="org-card" data-category="justice" style="--card-accent: #f43f5e;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.ajl.org/" target="_blank" rel="noopener noreferrer">Algorithmic Justice League (AJL)</a></h3>
+                            <span class="cat-tag cat-justice">Algorithmic Justice</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Joy Buolamwini (Founder)</div>
+                        <p class="org-desc">An organization that combines art, research, and advocacy to illuminate the social implications and harms of artificial intelligence, with foundational work exposing gender and racial bias in biometric computer vision.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The landmark <em>Gender Shades</em> audit proving commercial facial recognition error rates on darker-skinned females exceeded 34% vs 0.8% on light males.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#FacialRecognition</span>
+                            <span class="tag-pill">#CodedBias</span>
+                            <span class="tag-pill">#BiometricAuditing</span>
+                        </div>
+                        <a href="https://www.ajl.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 4. Distributed AI Research Institute (DAIR) -->
+                <div class="org-card" data-category="justice" style="--card-accent: #f43f5e;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.dair-institute.org/" target="_blank" rel="noopener noreferrer">Distributed AI Research Institute (DAIR)</a></h3>
+                            <span class="cat-tag cat-justice">Algorithmic Justice</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Timnit Gebru, Milagros Miceli</div>
+                        <p class="org-desc">An independent, community-rooted research space free from Big Tech corporate influence. Prioritizes the lived experiences of communities harmed by AI systems, documenting data worker exploitation in the Global South and resisting colonial computing hegemonies.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Fieldwork auditing sub-minimum-wage data annotators in Kenya and Latin America, and critiques of planetary-scale foundational model compute.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#DecolonialAI</span>
+                            <span class="tag-pill">#DataWorkers</span>
+                            <span class="tag-pill">#IndependentResearch</span>
+                        </div>
+                        <a href="https://www.dair-institute.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 5. AI Now Institute -->
+                <div class="org-card" data-category="labor" style="--card-accent: #f59e0b;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://ainowinstitute.org/" target="_blank" rel="noopener noreferrer">AI Now Institute</a></h3>
+                            <span class="cat-tag cat-labor">Platform &amp; Monopoly</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Amba Kak, Sarah Myers West (Co-founded by Meredith Whittaker &amp; Kate Crawford)</div>
+                        <p class="org-desc">Analyzes the concentrated power of the tech industry, illuminating how Big Tech's ownership of full-stack AI infrastructure (chips, cloud compute, data pipelines) restricts democratic sovereignty, market competition, and labor autonomy.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Annual landscape reports examining Big Tech cloud oligopolies, generative AI supply chain dependencies, and antitrust enforcement frameworks.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#Antitrust</span>
+                            <span class="tag-pill">#CloudMonopoly</span>
+                            <span class="tag-pill">#ComputePolitics</span>
+                        </div>
+                        <a href="https://ainowinstitute.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 6. Electronic Frontier Foundation (EFF) -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.eff.org/" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation (EFF)</a></h3>
+                            <span class="cat-tag cat-rights">Civil Liberties</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Cindy Cohn, Cory Doctorow, Matthew Guariglia</div>
+                        <p class="org-desc">The premier non-profit civil liberties organization defending user rights in the digital world. Combines impact litigation, technical code auditing, and public policy activism to combat mass surveillance, automated policing, and warrantless tracking.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The <em>Atlas of Surveillance</em> database tracking police deployment of Flock ALPRs, facial recognition, drones, and acoustic gunshot detectors across US cities.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#SurveillanceWatch</span>
+                            <span class="tag-pill">#FlockCameras</span>
+                            <span class="tag-pill">#DigitalRights</span>
+                        </div>
+                        <a href="https://www.eff.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 7. Center for Critical Internet Inquiry (C2i2) -->
+                <div class="org-card" data-category="justice" style="--card-accent: #f43f5e;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://c2i2.ucla.edu/" target="_blank" rel="noopener noreferrer">Center for Critical Internet Inquiry (C2i2)</a></h3>
+                            <span class="cat-tag cat-justice">Algorithmic Justice</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Safiya Umoja Noble, Sarah T. Roberts</div>
+                        <p class="org-desc">A research institute at UCLA dedicated to intersectional inquiries on the nexus of algorithmic bias, race, gender, human rights, and platform labor. Investigates how search engines and recommender systems reinforce structural white supremacy and commercial censorship.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Foundational scholarship on <em>Algorithms of Oppression</em> and <em>Behind the Screen: Content Moderation in the Shadows of Social Media</em>.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#AlgorithmsOfOppression</span>
+                            <span class="tag-pill">#ContentModeration</span>
+                            <span class="tag-pill">#IntersectionalCritique</span>
+                        </div>
+                        <a href="https://c2i2.ucla.edu/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 8. AlgorithmWatch -->
+                <div class="org-card" data-category="labor" style="--card-accent: #f59e0b;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://algorithmwatch.org/en/" target="_blank" rel="noopener noreferrer">AlgorithmWatch</a></h3>
+                            <span class="cat-tag cat-labor">Platform Accountability</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Matthias Spielkamp (Berlin / Zurich)</div>
+                        <p class="org-desc">A European non-profit research and advocacy organization watching automated decision-making (ADM) systems. Scrutinizes public administration algorithms used for social benefits, algorithmic credit scoring, workplace monitoring, and judicial risk assessment.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The <em>Automating Society</em> report series mapping hundreds of algorithmic public administration systems across European nation-states.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#PublicSectorAI</span>
+                            <span class="tag-pill">#AutomatedWelfare</span>
+                            <span class="tag-pill">#EuropeanPolicy</span>
+                        </div>
+                        <a href="https://algorithmwatch.org/en/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 9. Foxglove -->
+                <div class="org-card" data-category="labor" style="--card-accent: #f59e0b;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.foxglove.org.uk/" target="_blank" rel="noopener noreferrer">Foxglove Legal</a></h3>
+                            <span class="cat-tag cat-labor">Labor &amp; Litigation</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Cori Crider, Martha Dark (London, UK)</div>
+                        <p class="org-desc">A non-profit legal collective that takes tech giants and state agencies to court to defend technology workers, challenge discriminatory visa algorithms, and protect the public from unaccountable automated discretion.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Landmark lawsuit on behalf of Kenyan content moderators against Meta/Sama exposing PTSD and union-busting, and striking down the UK Home Office's secret visa algorithm.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#TechLabor</span>
+                            <span class="tag-pill">#ContentModerators</span>
+                            <span class="tag-pill">#StrategicLitigation</span>
+                        </div>
+                        <a href="https://www.foxglove.org.uk/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 10. The Fairwork Project -->
+                <div class="org-card" data-category="labor" style="--card-accent: #f59e0b;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://fairwork.org.uk/" target="_blank" rel="noopener noreferrer">The Fairwork Project</a></h3>
+                            <span class="cat-tag cat-labor">Platform Labor</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Mark Graham (Oxford Internet Institute)</div>
+                        <p class="org-desc">Action research evaluating and ranking gig economy and AI training platforms against five principles of fair work: Fair Pay, Fair Conditions, Fair Contracts, Fair Management, and Fair Representation across 30+ countries.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Annual global league tables scoring microtask platforms (Remotasks, Appen, Amazon MTurk) and food delivery apps on labor transparency.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#GigEconomy</span>
+                            <span class="tag-pill">#GhostWork</span>
+                            <span class="tag-pill">#LaborStandards</span>
+                        </div>
+                        <a href="https://fairwork.org.uk/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 11. Center for Democracy & Technology (CDT) -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://cdt.org/" target="_blank" rel="noopener noreferrer">Center for Democracy &amp; Technology</a></h3>
+                            <span class="cat-tag cat-rights">Civil Liberties</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Alexandra Reeve Givens, Natasha Duarte</div>
+                        <p class="org-desc">A champion for civil liberties and human rights in the digital age. Specializes in policy interventions regarding discriminatory automated hiring software, education technology surveillance, and disability discrimination in algorithm-driven benefit eligibility.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Policy audits demonstrating how video interview AI systems and automated resume scrapers screen out disabled and neurodivergent job applicants.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#HiringAlgorithms</span>
+                            <span class="tag-pill">#DisabilityRights</span>
+                            <span class="tag-pill">#CivilRightsAuditing</span>
+                        </div>
+                        <a href="https://cdt.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 12. Electronic Privacy Information Center (EPIC) -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://epic.org/" target="_blank" rel="noopener noreferrer">Electronic Privacy Information Center (EPIC)</a></h3>
+                            <span class="cat-tag cat-rights">Civil Liberties</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Alan Butler, Jeramie Scott</div>
+                        <p class="org-desc">Public interest research center in Washington, D.C. focused on protecting privacy, freedom of expression, and democratic values. A pioneer in utilizing FOIA requests and FTC complaints to force algorithmic transparency in government and commercial decision models.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> FTC enforcement petitions against generative AI companies and legal challenges against the Department of Homeland Security's automated risk scoring.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#FOIA</span>
+                            <span class="tag-pill">#ConsumerProtection</span>
+                            <span class="tag-pill">#GovernmentAI</span>
+                        </div>
+                        <a href="https://epic.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 13. Ada Lovelace Institute -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.adalovelaceinstitute.org/" target="_blank" rel="noopener noreferrer">Ada Lovelace Institute</a></h3>
+                            <span class="cat-tag cat-rights">Policy &amp; Public Good</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Carly Kind, Octavia Reeve (UK / EU)</div>
+                        <p class="org-desc">An independent research institute with a mission to ensure that data and AI work for people and society. Pioneered frameworks for algorithmic impact assessments (AIIAs), regulatory stress-testing, and participatory citizen juries on facial recognition.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Comprehensive policy frameworks for the EU AI Act enforcement, healthcare data governance, and public deliberation on foundation model monopolies.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#AIIA</span>
+                            <span class="tag-pill">#PublicDeliberation</span>
+                            <span class="tag-pill">#EUAIAct</span>
+                        </div>
+                        <a href="https://www.adalovelaceinstitute.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 14. Mozilla Foundation (Trustworthy AI) -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://foundation.mozilla.org/" target="_blank" rel="noopener noreferrer">Mozilla Foundation (Trustworthy AI)</a></h3>
+                            <span class="cat-tag cat-rights">Public Interest Tech</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Mark Surman, Brandi Geurkink</div>
+                        <p class="org-desc">Non-profit building a movement for open-source, human-centered AI. Conducts crowdsourced audits of YouTube and TikTok algorithmic recommendation engines and funds open-source fellows creating ethical, transparent models.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The <em>YouTube Regrets</em> crowdsourced investigation revealing that over 70% of user-reported toxic content was recommended by YouTube’s own algorithm.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#RecommenderAudits</span>
+                            <span class="tag-pill">#OpenSourceAI</span>
+                            <span class="tag-pill">#CrowdsourcedAudits</span>
+                        </div>
+                        <a href="https://foundation.mozilla.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 15. Center on Privacy & Technology at Georgetown Law -->
+                <div class="org-card" data-category="justice" style="--card-accent: #f43f5e;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.law.georgetown.edu/privacy-technology-center/" target="_blank" rel="noopener noreferrer">Center on Privacy &amp; Technology at Georgetown Law</a></h3>
+                            <span class="cat-tag cat-justice">Surveillance &amp; Law</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Laura Moy, Alvaro Bedoya, Emily Tucker</div>
+                        <p class="org-desc">A think tank focused on the privacy and surveillance of vulnerable and historically marginalized communities. Produces groundbreaking empirical reports on police facial recognition, digital border enforcement, and municipal surveillance.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> <em>The Perpetual Line-Up</em> report revealing that 1 in 2 American adults are in a police facial recognition database with zero legislative authorization.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#PerpetualLineup</span>
+                            <span class="tag-pill">#PoliceSurveillance</span>
+                            <span class="tag-pill">#LegalAuditing</span>
+                        </div>
+                        <a href="https://www.law.georgetown.edu/privacy-technology-center/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 16. Center for AI Safety (CAIS) -->
+                <div class="org-card" data-category="humane" style="--card-accent: #a855f7;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.safe.ai/" target="_blank" rel="noopener noreferrer">Center for AI Safety (CAIS)</a></h3>
+                            <span class="cat-tag cat-humane">Systemic Risk</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Dan Hendrycks (Director)</div>
+                        <p class="org-desc">Non-profit research organization dedicated to reducing societal-scale risks from artificial intelligence through empirical safety research, red-teaming foundation models, and public policy alignment.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Authored the landmark <em>Statement on AI Risk</em> signed by hundreds of AI scientists, benchmarking catastrophic risks, autonomous cyberweapons, and deceptive alignment.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#CatastrophicRisk</span>
+                            <span class="tag-pill">#Alignment</span>
+                            <span class="tag-pill">#SafetyBenchmarking</span>
+                        </div>
+                        <a href="https://www.safe.ai/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 17. Berkman Klein Center for Internet & Society -->
+                <div class="org-card" data-category="academic" style="--card-accent: #10b981;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://cyber.harvard.edu/" target="_blank" rel="noopener noreferrer">Berkman Klein Center</a></h3>
+                            <span class="cat-tag cat-academic">Academic Hub</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Jonathan Zittrain, Yochai Benkler (Harvard University)</div>
+                        <p class="org-desc">Pioneering university research center exploring the cyberspace frontier. Brings together legal scholars, sociologists, technologists, and ethicists to examine the public interest governance of AI, digital commons, and intellectual property.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The <em>Ethics and Governance of AI</em> initiative analyzing automated decision systems in criminal justice, content governance, and digital health.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#DigitalCommons</span>
+                            <span class="tag-pill">#LegalTheory</span>
+                            <span class="tag-pill">#PlatformGovernance</span>
+                        </div>
+                        <a href="https://cyber.harvard.edu/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 18. Stanford CRFM & HAI -->
+                <div class="org-card" data-category="academic" style="--card-accent: #10b981;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://crfm.stanford.edu/" target="_blank" rel="noopener noreferrer">Stanford CRFM &amp; HAI</a></h3>
+                            <span class="cat-tag cat-academic">Academic Hub</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Percy Liang, Fei-Fei Li (Stanford University)</div>
+                        <p class="org-desc">Stanford's Center for Research on Foundation Models (CRFM) and Institute for Human-Centered Artificial Intelligence (HAI) advance fundamental research, model auditing, and policy frameworks for generative AI models.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The <em>Foundation Model Transparency Index</em> (FMTI) auditing major commercial frontier models across 100 transparency and data lineage dimensions.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#FoundationModels</span>
+                            <span class="tag-pill">#TransparencyIndex</span>
+                            <span class="tag-pill">#HumanCenteredAI</span>
+                        </div>
+                        <a href="https://crfm.stanford.edu/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 19. Oxford Internet Institute (OII) -->
+                <div class="org-card" data-category="academic" style="--card-accent: #10b981;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.oii.ox.ac.uk/" target="_blank" rel="noopener noreferrer">Oxford Internet Institute</a></h3>
+                            <span class="cat-tag cat-academic">Academic Hub</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Luciano Floridi, Sandra Wachter, Brent Mittelstadt</div>
+                        <p class="org-desc">A major multidisciplinary department at the University of Oxford studying the societal impacts of data science, AI ethics, counterfactual explanations, and the human rights implications of algorithmic categorization.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Seminal scholarship on the "Right to Explanation" under GDPR, counterfactual fairness auditing, and ethical guidelines for automated decision-making.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#RightToExplanation</span>
+                            <span class="tag-pill">#GDPR</span>
+                            <span class="tag-pill">#Counterfactuals</span>
+                        </div>
+                        <a href="https://www.oii.ox.ac.uk/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 20. Princeton CITP -->
+                <div class="org-card" data-category="academic" style="--card-accent: #10b981;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://citp.princeton.edu/" target="_blank" rel="noopener noreferrer">Center for Information Technology Policy (CITP)</a></h3>
+                            <span class="cat-tag cat-academic">Academic Hub</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Arvind Narayanan, Ed Felten (Princeton University)</div>
+                        <p class="org-desc">An interdisciplinary center between computer science and public affairs at Princeton. Famous for technical takedowns of AI snake oil, commercial algorithmic predictive failures, and dark patterns in user interfaces.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> <em>AI Snake Oil</em> scholarship distinguishing between valid machine learning domains (perception) versus pseudoscientific social prediction (predicting life outcomes).
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#AISnakeOil</span>
+                            <span class="tag-pill">#PredictionFallacies</span>
+                            <span class="tag-pill">#TechPolicy</span>
+                        </div>
+                        <a href="https://citp.princeton.edu/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 21. Knight First Amendment Institute -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://knightcolumbia.org/" target="_blank" rel="noopener noreferrer">Knight First Amendment Institute</a></h3>
+                            <span class="cat-tag cat-rights">Free Speech &amp; Law</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Jameel Jaffer (Columbia University)</div>
+                        <p class="org-desc">Defends the freedoms of speech and the press in the digital age through strategic litigation, research, and public education. Actively sues to protect independent academic scraping of social media algorithms from corporate censorship.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Landmark legal cases defending independent algorithmic auditing, researcher safe harbors, and public officials' digital speech duties.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#FirstAmendment</span>
+                            <span class="tag-pill">#ResearcherAccess</span>
+                            <span class="tag-pill">#ScrapingRights</span>
+                        </div>
+                        <a href="https://knightcolumbia.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 22. Integrity Institute -->
+                <div class="org-card" data-category="humane" style="--card-accent: #a855f7;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://integrityinstitute.org/" target="_blank" rel="noopener noreferrer">Integrity Institute</a></h3>
+                            <span class="cat-tag cat-humane">Platform Integrity</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Jeff Allen, Sahar Massachi (Ex-Facebook/Twitter Integrity Workers)</div>
+                        <p class="org-desc">A think tank founded and run by former tech-company integrity and trust-and-safety professionals. Analyzes how engagement algorithms and feed architectures amplify virality over societal well-being, providing actionable design alternatives.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Practical platform design playbooks on virality friction, algorithmic amplification metrics, and democratic content governance.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#TrustAndSafety</span>
+                            <span class="tag-pill">#ViralityFriction</span>
+                            <span class="tag-pill">#ProductIntegrity</span>
+                        </div>
+                        <a href="https://integrityinstitute.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 23. Fight for the Future -->
+                <div class="org-card" data-category="rights" style="--card-accent: #38bdf8;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://www.fightforthefuture.org/" target="_blank" rel="noopener noreferrer">Fight for the Future</a></h3>
+                            <span class="cat-tag cat-rights">Grassroots Campaign</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Evan Greer, Lia Holland</div>
+                        <p class="org-desc">A grassroots digital rights organizing collective that harnesses mass mobilization campaigns against corporate facial recognition, student exam spyware, and invasive biometric surveillance in live music venues and stadiums.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> The <em>Ban Facial Recognition</em> campaign and <em>Scorecard on Surveillance in Higher Education</em>.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#BanFacialRecognition</span>
+                            <span class="tag-pill">#ExamSpyware</span>
+                            <span class="tag-pill">#DigitalActivism</span>
+                        </div>
+                        <a href="https://www.fightforthefuture.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 24. Future of Privacy Forum (FPF) -->
+                <div class="org-card" data-category="humane" style="--card-accent: #a855f7;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://fpf.org/" target="_blank" rel="noopener noreferrer">Future of Privacy Forum (FPF)</a></h3>
+                            <span class="cat-tag cat-humane">Privacy Guardrails</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Jules Polonetsky, John Verdi</div>
+                        <p class="org-desc">A global non-profit organization that brings together industry, academics, civil society, and government to develop privacy protections, ethical algorithms, and compliance guardrails for emerging technologies.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Best practices on privacy-preserving machine learning, biometric privacy frameworks, and youth data protection policies.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#PrivacyByDesign</span>
+                            <span class="tag-pill">#DataProtection</span>
+                            <span class="tag-pill">#YouthPrivacy</span>
+                        </div>
+                        <a href="https://fpf.org/" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 25. Information Society Project (ISP) at Yale Law -->
+                <div class="org-card" data-category="academic" style="--card-accent: #10b981;">
+                    <div>
+                        <div class="org-header">
+                            <h3 class="org-title"><a href="https://law.yale.edu/isp" target="_blank" rel="noopener noreferrer">Information Society Project (Yale Law)</a></h3>
+                            <span class="cat-tag cat-academic">Academic Hub</span>
+                        </div>
+                        <div class="key-figures">👤 <strong>Key Figures:</strong> Jack M. Balkin (Yale Law School)</div>
+                        <p class="org-desc">An intellectual center at Yale Law School addressing the legal, ethical, and democratic implications of digital technology, the First Amendment, artificial intelligence, and platform governance.</p>
+                        <div class="org-highlight">
+                            <strong>Signature Research:</strong> Originator of the legal concept of tech platforms as <em>Information Fiduciaries</em> and legal frameworks for algorithmic transparency.
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tag-list">
+                            <span class="tag-pill">#InformationFiduciaries</span>
+                            <span class="tag-pill">#LegalTheory</span>
+                            <span class="tag-pill">#DemocraticCommons</span>
+                        </div>
+                        <a href="https://law.yale.edu/isp" target="_blank" rel="noopener noreferrer" class="visit-link">Visit Official Site &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="empty-state" id="emptyState">
+                <h3>No organizations matched your search query.</h3>
+                <p>Try clearing your keyword or selecting a different thematic category filter.</p>
+            </div>
+
+            <!-- Pedagogical Modules for Students -->
+            <section class="pedagogy-section">
+                <h2>🎓 Pedagogical Integration &amp; Course Research Frameworks</h2>
+                <p style="color: #cbd5e1; font-size: 0.98rem; line-height: 1.6;">
+                    Students in <strong>Technology and Politics</strong>, <strong>Social Media and Politics</strong>, and the <strong>Civic AI Working Group</strong> can use this directory as an analytical springboard for empirical research papers, legislative policy briefs, and computational audits.
+                </p>
+
+                <div class="pedagogy-grid">
+                    <div class="pedagogy-card">
+                        <h3>1. The Algorithmic Bias Audit</h3>
+                        <p>Contrast the computational benchmarking methodology of the <strong>Algorithmic Justice League (AJL)</strong> with the sociological, intersectional framework of <strong>C2i2 (Safiya Noble)</strong>. How do technical error rate fixes differ from structural critiques of data capitalism?</p>
+                    </div>
+
+                    <div class="pedagogy-card">
+                        <h3>2. The Labor &amp; Material Supply Chain</h3>
+                        <p>Analyze how the <strong>AI Now Institute</strong> and <strong>The Fairwork Project</strong> re-center the invisible human workers (data annotators, content moderators) and planetary resources (water, energy) behind abstract foundation models.</p>
+                    </div>
+
+                    <div class="pedagogy-card">
+                        <h3>3. Surveillance &amp; Civil Liberties</h3>
+                        <p>Examine the <strong>EFF Atlas of Surveillance</strong> and <strong>Georgetown Law Privacy Center</strong> reports on automated license plate readers (Flock cameras) and facial recognition to formulate a municipal accountability ordinance for local city councils.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved. &bull; <a href="teaching.html" style="color: var(--ethics-cyan); text-decoration: underline;">Return to Teaching Overview</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.org-card');
+            const emptyState = document.getElementById('emptyState');
+            const totalCount = document.getElementById('totalCount');
+
+            let currentCategory = 'all';
+
+            function filterCards() {
+                const query = searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const text = card.textContent.toLowerCase();
+
+                    const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+                    const matchesSearch = (!query || text.includes(query));
+
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (totalCount) {
+                    totalCount.textContent = visibleCount;
+                }
+
+                if (visibleCount === 0) {
+                    emptyState.style.display = 'block';
+                } else {
+                    emptyState.style.display = 'none';
+                }
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.getAttribute('data-category');
+                    filterCards();
+                });
+            });
+
+            searchInput.addEventListener('input', filterCards);
+        });
+    </script>
+</body>
+
+</html>
