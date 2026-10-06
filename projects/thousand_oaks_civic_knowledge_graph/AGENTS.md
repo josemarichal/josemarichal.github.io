@@ -29,6 +29,8 @@ An automated civic intelligence pipeline and interactive knowledge graph trackin
 | 2026-10-03 | **Deployed Fullscreen Interactive Graph on GitHub Pages** | Added full-screen cytoscape canvas, auto-fit controls, searchable topic dossiers, and timestamped video deep links at `thousand_oaks_civic_graph.html`. |
 | 2026-10-05 | **Synthesized Agenda Action Summaries in Municipal Briefings** | Enhanced both the Briefings view and Graph Node Inspector with in-depth summaries, formal outcomes (e.g. Ordinance 1750-NS 5-0 vote, Amgen Specific Plan Oct 13 hearing, Hillcrest Homes DDA, COSCA Native Plant Palooza), policy category pills, and deep timestamp links. |
 | 2026-10-05 | **Universal Paragraph Summaries Across All Graph Nodes** | Enriched every node in the knowledge graph (all 45 topics, elected officials, planning commissioners, COSCA trustees, organizations, and meeting sessions) with dedicated substantive paragraph summaries displayed in the inspector drawer upon opening. |
+| 2026-10-06 | **Hillcrest Homes DDA Policy Analysis** | Synthesized legal and municipal brief for the Hillcrest Homes Disposition & Development Agreement (DDA), detailing its link to Ordinance 1750-NS fee waivers, Planning Commission approval, and Oct 13 City Council hearing. |
+| 2026-10-06 | **Analysis of 5 Pressing Housing Policy Issues** | Profiled the top 5 affordable housing challenges confronting City Council: PSH continuum bottleneck, Ordinance 1750-NS fee waivers, corridor infill DDAs vs neighborhood buffers, state ADU preemption vs affordability, and mobile home preservation. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 
