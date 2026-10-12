@@ -16,7 +16,10 @@ Critical discourse and policy analysis of grassroots civic resistance against hy
 - **Card Image:** `images/data_center_resistance.jpg`
 - **Core File:** `projects.html`
 - **Core File:** `data_center_moratoriums.csv`
-- **Core File:** `images/data_center_resistance.jpg`
+- **Related App:** `conference_paper_explorer.html` (Conference Paper Explorer & Field Interview Hub)
+- **Knowledge Graph:** `conference_knowledge_graph.html` (4S 2026 Technopower Knowledge Graph & Top 10 Technology Hubs)
+- **Graph Dataset:** `conference_knowledge_graph_data.js`
+- **Card Image:** `images/data_center_resistance.jpg`
 
 ---
 
@@ -25,6 +28,8 @@ Critical discourse and policy analysis of grassroots civic resistance against hy
 | :--- | :--- | :--- |
 | 2026-10-04 | **Linked Environmental & Grid Datasets** | Connected project to `data_center_moratoriums.csv` tracking local municipal moratoriums and utility disputes across the US. |
 | 2026-10-04 | **Discursive Analysis Framing** | Focusing on local rhetoric around water consumption, grid reliability, and tax abatements vs. tech industry modernization narratives. |
+| 2026-10-12 | **Integrated 4S 2026 Conference Papers & Interview Kits** | Connected Panel 286 papers (Livio on multispecies assemblages, Khalatbari on thermolabour, Sørensen on university data centres, Mirrlees & Szeman on Green AI) into `conference_paper_explorer.html` with field expert interview protocols. |
+| 2026-10-12 | **Macro-Topology Knowledge Graph Built** | Created `conference_knowledge_graph.html` mapping 646 conference panels with vis-network, highlighting Hyperscale Data Centers & Cloud as the #2 largest technology node (58 papers), connecting directly to energy transition and digital sovereignty. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

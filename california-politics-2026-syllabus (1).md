@@ -260,6 +260,7 @@ COURSE SCHEDULE
 **Mon, Oct. 12**
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-7/)*
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSJ44-dLM2kBqq2UqSG7IQztFmN5QvagFHJPSr5ncvbYJGWjk1rEZy2qFIFb9fizrgdr-E7U-2VUcOO/pub?start=false&loop=false&delayms=3000)
 * **Case Study:** Economy & Labor
 * ***Discussion Prompt:** What specific legislative and institutional mechanisms explain why California public agencies struggle to deliver affordable housing projects on time and on budget?*
 

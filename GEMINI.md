@@ -1,5 +1,5 @@
 # Antigravity Workspace Memory & Project Directory Index
-## Civic AI Working Group (Jose Marichal)
+## Technology and Society Working Group (Jose Marichal)
 
 > **Universal Agent Rule**: When the user asks about, works on, or makes decisions regarding any project listed below, the agent must automatically read and update that project's dedicated `AGENTS.md` file located in `projects/<project_slug>/`.
 
