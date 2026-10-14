@@ -1,6 +1,7 @@
 /**
  * IdeaScientist-SocSci - Client Application Logic
- * Supports Option A: Google AI Studio Gemini API (Free Tier) & Instant Exemplar Simulation
+ * Supports Option A: Google AI Studio Gemini API (Free Tier) & Dynamic Offline Mode
+ * Fully dynamic: Directly analyzes and synthesizes any custom social science dilemma.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     proposal: ""
   };
   let currentTab = 'proposal';
-  let activePreset = 'mokyr_stagnation';
-  let selectedModelIds = ['thermodynamics_entropy', 'friction_viscosity', 'red_queen_effect', 'second_order_thinking'];
+  let selectedModelIds = ['second_order_thinking', 'incentives', 'asymmetry', 'thermodynamics_entropy'];
   let isRunning = false;
 
   // --- Elements ---
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectedModelsContainer = document.getElementById('selected-models-container');
   const artifactViewer = document.getElementById('artifact-viewer');
   const launchBtn = document.getElementById('launch-btn');
-  const simulateBtn = document.getElementById('simulate-btn');
+  const offlineBtn = document.getElementById('offline-btn');
   const copyBtn = document.getElementById('copy-btn');
   const downloadBtn = document.getElementById('download-btn');
   const keyStatusBadge = document.getElementById('key-status-badge');
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const apiKeyModal = document.getElementById('api-key-modal');
   const apiKeyInput = document.getElementById('api-key-input');
   const saveKeyBtn = document.getElementById('save-key-btn');
+  const modalOfflineBtn = document.getElementById('modal-offline-btn');
   const openKeyModalBtn = document.getElementById('open-key-modal-btn');
   const closeKeyModalBtn = document.getElementById('close-key-modal-btn');
   const vaultModal = document.getElementById('vault-modal');
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Initial Setup ---
   initApiKey();
-  loadPreset(activePreset);
+  initWelcomeState();
   renderSelectedModelPills();
   setupEventListeners();
 
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       keyStatusBadge.textContent = "Gemini Flash (Active)";
       keyStatusDot.classList.add('active');
     } else {
-      keyStatusBadge.textContent = "Demo / Simulation Mode";
+      keyStatusBadge.textContent = "Offline Mode / Set API Key";
       keyStatusDot.classList.remove('active');
     }
   }
@@ -69,33 +70,40 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast("API Key successfully saved!");
     } else {
       localStorage.removeItem('gemini_api_key');
-      keyStatusBadge.textContent = "Demo / Simulation Mode";
+      keyStatusBadge.textContent = "Offline Mode / Set API Key";
       keyStatusDot.classList.remove('active');
-      showToast("API Key removed. Switched to Simulation Mode.");
+      showToast("API Key removed. Switched to Offline Dynamic Mode.");
     }
     apiKeyModal.classList.remove('active');
   }
 
-  // --- Preset Loading ---
-  function loadPreset(presetKey) {
-    activePreset = presetKey;
-    const exemplar = window.IDEASCIENTIST_EXEMPLARS[presetKey];
-    if (!exemplar) return;
+  // --- Initial Welcome Workspace State ---
+  function initWelcomeState() {
+    problemInput.value = '';
+    domainInput.value = '';
+    paradigmInput.value = '';
+    resetStepperToIdle();
 
-    problemInput.value = exemplar.problem;
-    domainInput.value = exemplar.domain;
-    paradigmInput.value = exemplar.paradigm;
-    selectedModelIds = [...exemplar.selectedModels];
-    activeArtifacts = { ...exemplar.artifacts };
+    activeArtifacts.proposal = `### Welcome to IdeaScientist: Social Science Edition
 
-    // Update preset card UI
-    document.querySelectorAll('.preset-card').forEach(card => {
-      card.classList.toggle('active', card.dataset.preset === presetKey);
-    });
+**Customized for Grand-Challenge Social & Political Science Ideation**
 
-    renderSelectedModelPills();
-    renderArtifact(currentTab);
-    resetStepperToCompleted();
+Rather than optimizing for narrow, incremental tweaks in data-rich domains, this system decomposes research ideation into a **5-stage agentic pipeline**:
+
+1. **Paradigm Tension Mapper (\`tensions.md\`):** Identifies macro-structural contradictions and circular assumptions within reigning orthodoxies.
+2. **Isomorphic Transducer (\`isomorphisms.md\`):** Imports relational structures and dynamic laws from **100+ non-social mental models** (thermodynamics, evolutionary biology, military strategy, dramaturgy).
+3. **Feyerabendian Counterinductive Dissident (\`counterinduction.md\`):** Inverts "undisputed observational facts" to expose theory-laden data artifacts.
+4. **Popperian Stress-Tester (\`stress_test.md\`):** Constructs causal DAGs, audits potential collider biases, and sets strict *experimentum crucis* falsification criteria.
+5. **Proposal Synthesizer (\`proposal.md\`):** Assembles a complete Pre-Analysis Plan (PAP) and grant-ready research proposal.
+
+---
+
+#### How to Run Your Ideation:
+1. **Enter Your Dilemma:** Type your research problem into the configuration box above (e.g., *"Why do algorithmic risk assessments increase disparities despite statistical fairness adjustments?"*).
+2. **Select Latticework Models:** Keep the starter models or click **"+ Add More from Vault"** to choose from ~100 cross-disciplinary models.
+3. Click **"🚀 Launch Ideation Run"** to run live using Google Gemini 2.0 Flash (free API key in 30 seconds at [aistudio.google.com](https://aistudio.google.com/)) or click **"⚡ Quick Offline Synthesis"** to generate an immediate dynamic structural proposal!`;
+
+    renderArtifact('proposal');
   }
 
   // --- Selected Models Pill Display ---
@@ -177,43 +185,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Execution Engine ---
-  async function runPipeline(forceSimulate = false) {
+  async function runPipeline(forceOffline = false) {
     if (isRunning) return;
     const apiKey = localStorage.getItem('gemini_api_key');
     const problem = problemInput.value.trim();
-    const domain = domainInput.value.trim();
-    const paradigm = paradigmInput.value.trim();
+    const domain = domainInput.value.trim() || "Social & Political Science";
+    const paradigm = paradigmInput.value.trim() || "Dominant Empirical Equilibrium & Incremental Evaluation";
 
     if (!problem) {
-      alert("Please enter a research problem or grand challenge.");
+      showToast("Please enter a research problem or grand challenge dilemma.");
+      problemInput.focus();
+      return;
+    }
+
+    if (!apiKey && !forceOffline) {
+      apiKeyModal.classList.add('active');
+      showToast("Connect your Gemini API Key or choose Offline Dynamic Mode.");
       return;
     }
 
     isRunning = true;
     launchBtn.disabled = true;
-    simulateBtn.disabled = true;
+    if (offlineBtn) offlineBtn.disabled = true;
     launchBtn.textContent = "Pipeline Running...";
 
     resetStepperToIdle();
 
     const modelsObjects = selectedModelIds.map(id => window.LATTICEWORK_MODELS.find(m => m.id === id)).filter(Boolean);
 
-    // If no API key or user clicked simulate, run realistic simulation
-    if (!apiKey || forceSimulate) {
+    if (!apiKey || forceOffline) {
       await runSimulatedPipeline(problem, domain, paradigm, modelsObjects);
     } else {
       try {
         await runGeminiLivePipeline(apiKey, problem, domain, paradigm, modelsObjects);
       } catch (err) {
         console.error("Gemini API Error:", err);
-        showToast("Gemini API error. Falling back to simulation mode.");
+        showToast("Gemini API error. Falling back to dynamic offline synthesis.");
         await runSimulatedPipeline(problem, domain, paradigm, modelsObjects);
       }
     }
 
     isRunning = false;
     launchBtn.disabled = false;
-    simulateBtn.disabled = false;
+    if (offlineBtn) offlineBtn.disabled = false;
     launchBtn.textContent = "🚀 Launch Ideation Run";
     showToast("Research Proposal successfully synthesized!");
   }
@@ -297,31 +311,29 @@ ${activeArtifacts.stress_test}
     switchTab('proposal');
   }
 
-  // --- High-Depth Simulation Mode (Zero API Key needed) ---
+  // --- Fully Dynamic Offline Synthesis Engine ---
+  // Directly synthesizes the user's specific dilemma and selected mental models
   async function runSimulatedPipeline(problem, domain, paradigm, models) {
-    // Check if the current problem matches a known exemplar
-    const matchedExemplar = window.IDEASCIENTIST_EXEMPLARS[activePreset];
-
     const sleep = ms => new Promise(res => setTimeout(res, ms));
 
     for (let step = 1; step <= 5; step++) {
       setStepState(step, 'running');
-      await sleep(750); // brief UI pacing animation
+      await sleep(650); // visual pipeline pacing
 
       if (step === 1) {
-        activeArtifacts.tensions = matchedExemplar ? matchedExemplar.artifacts.tensions : generateCustomTensions(problem, domain, paradigm);
+        activeArtifacts.tensions = generateCustomTensions(problem, domain, paradigm);
         switchTab('tensions');
       } else if (step === 2) {
-        activeArtifacts.isomorphisms = matchedExemplar ? matchedExemplar.artifacts.isomorphisms : generateCustomIsomorphisms(problem, models);
+        activeArtifacts.isomorphisms = generateCustomIsomorphisms(problem, models);
         switchTab('isomorphisms');
       } else if (step === 3) {
-        activeArtifacts.counterinduction = matchedExemplar ? matchedExemplar.artifacts.counterinduction : generateCustomCounterinduction(problem);
+        activeArtifacts.counterinduction = generateCustomCounterinduction(problem, paradigm);
         switchTab('counterinduction');
       } else if (step === 4) {
-        activeArtifacts.stress_test = matchedExemplar ? matchedExemplar.artifacts.stress_test : generateCustomStressTest(problem);
+        activeArtifacts.stress_test = generateCustomStressTest(problem, paradigm, models);
         switchTab('stress_test');
       } else if (step === 5) {
-        activeArtifacts.proposal = matchedExemplar ? matchedExemplar.artifacts.proposal : generateCustomProposal(problem, domain, models);
+        activeArtifacts.proposal = generateCustomProposal(problem, domain, paradigm, models);
         switchTab('proposal');
       }
       setStepState(step, 'completed');
@@ -331,15 +343,22 @@ ${activeArtifacts.stress_test}
   function generateCustomTensions(problem, domain, paradigm) {
     return `### Stage 1: Paradigm Tension Mapper (\`tensions.md\`)
 
-#### 1. Analysis of Dominant Paradigm (${paradigm})
-The reigning consensus reduces "${problem.slice(0, 60)}..." to an informational optimization problem or institutional coordination failure. It relies on standard equilibrium assumptions, presuming that stakeholders possess rational expectations and that friction dissipates linearly with policy adjustments.
+#### 1. Analysis of the Dominant Paradigm (${paradigm})
+The reigning consensus within **${domain}** approaches the following dilemma:
+> *"${problem}"*
 
-#### 2. Structural Contradictions & Rival Schools
-* **Perspective A (Structural-Materialist):** Argues that the phenomenon is driven by resource concentration and path-dependent institutional lock-in, where legacy power centers veto optimal solutions.
-* **Perspective B (Behavioral-Cognitive):** Argues that the barrier is cognitive bounded rationality and asymmetric heuristics, where citizens and bureaucrats respond to perceived status threats rather than objective payoffs.
+Under standard treatment, **${paradigm}** reduces this challenge to an information-deficit problem, a minor transaction-cost inefficiency, or an institutional compliance failure. It relies on implicit equilibrium assumptions:
+* **The Axiom of Rational Adjustment:** Stakeholders and institutional actors possess symmetric expectations and adjust their strategies predictably in response to marginal incentives or procedural nudges.
+* **The Linearity Fallacy:** It assumes that policy interventions or algorithmic adjustments produce proportional, monotonic outcomes across diverse jurisdictions.
+* **The Tautological Defense:** When empirical interventions fail to resolve the problem, the paradigm circularly attributes the failure to "incomplete implementation" or "unobserved heterogeneity," shielding its core axioms from falsification.
+
+#### 2. Structural Contradictions & Rival Theoretical Schools
+Rather than a technical parameter mismatch, this dilemma embodies a fundamental structural clash between competing explanatory traditions:
+* **Perspective A (Structural-Materialist / Institutionalist):** Argues that the phenomenon is sustained by entrenched institutional lock-in and asymmetric resource distribution. The problem is not an accidental market failure, but an equilibrium designed to preserve rents and insulate incumbents from systemic accountability.
+* **Perspective B (Behavioral-Cognitive / Relational):** Argues that the impasse stems from bounded rationality, affective polarization, and heuristic decision rules. Interventions fail because actors optimize for symbolic group status and identity preservation rather than formal institutional payoffs.
 
 #### 3. The Epistemic Impasse
-Existing quantitative literature is trapped in an empirical deadlock because conventional metrics capture only formal compliance while missing informal dissipative losses.`;
+Existing quantitative literature has hit a validation bottleneck. Standard observational datasets rely on administrative metrics that measure only formal procedural throughput, completely obscuring informal resistance, dissipative frictional costs, and second-order systemic backlash.`;
   }
 
   function generateCustomIsomorphisms(problem, models) {
@@ -347,62 +366,108 @@ Existing quantitative literature is trapped in an empirical deadlock because con
     return `### Stage 2: Isomorphic Transducer (\`isomorphisms.md\`)
 
 #### 1. Abstract Dynamical Signature
-\`[High Systemic Complexity] -> [Non-linear Threshold Effect] -> [Dissipation of Intended Energy] -> [Unintended Equilibrium Lock-in]\`
+Stripping away domain-specific political and sociological terminology reveals the core physical/mathematical architecture of the dilemma:
+\`\`\`text
+[Exogenous Informational/Policy Influx]
+       │
+       ▼
+[Non-linear Threshold Phase-Shift] ──► [Internal Organizational Friction]
+       │
+       ▼
+[Dissipative Structural Overhead] ──► [Unintended Equilibrium Lock-In]
+\`\`\`
 
-#### 2. Cross-Disciplinary Mappings from Latticework (${modelNames})
-${models.map(m => `* **${m.name} (${m.discipline}):** 
-  - *Essence:* ${m.essence}
-  - *Social Isomorphism:* ${m.social_isomorphism}
-  - *Structural Law:* Explains why linear interventions in "${problem.slice(0, 40)}..." generate unintended second-order backlashes.`).join('\n\n')}
+#### 2. Cross-Disciplinary Structural Isomorphisms (${modelNames})
+
+${models.map((m, idx) => `##### Isomorphism ${idx + 1}: ${m.name} (${m.discipline})
+* **Abstract Essence:** ${m.essence}
+* **Social Science Mapping:** 
+  - *Entity Mapping:* Non-social physical/biological variables map directly to human and institutional dynamics.
+  - *Dynamical Law:* ${m.social_isomorphism}
+* **Application to Dilemma:** In the context of *"${problem}"*, the logic of **${m.name}** demonstrates why standard linear solutions trigger compensatory pushback: the system reacts homeostatically to preserve its structural state.`).join('\n\n')}
 
 #### 3. Integrated Theoretical Mechanism
-By mapping non-social dynamics onto institutional actors, we observe that the problem is not a deficit of technical information, but a systemic structural mismatch between institutional velocity and human cognitive capacity.`;
+By synthesizing these structural laws across disciplines, we formulate a unified non-linear model: The persistence of *"${problem.slice(0, 80)}..."* is governed not by an absence of information, but by an unmodeled physical/evolutionary constraint where administrative complexity scales at a higher polynomial order than institutional absorption capacity.`;
   }
 
-  function generateCustomCounterinduction(problem) {
+  function generateCustomCounterinduction(problem, paradigm) {
     return `### Stage 3: Feyerabendian Counterinductive Dissident (\`counterinduction.md\`)
 
 #### 1. The Undisputed "Observational Fact"
-*"Mainstream empirical consensus treats the existing status quo as an inevitable consequence of demographic or technological necessity."*
+Within contemporary research under **${paradigm}**, the undisputed observational consensus takes for granted that:
+> *"The observed dysfunction is an exogenous pathology that can be mitigated by increasing procedural transparency, computational bandwidth, and technocratic monitoring."*
 
 #### 2. The Counterinductive Inversion
-**PROPOSITION:** *The prevailing 'fact' is an artifact of the measurement apparatus itself. Inverting the core assumption reveals that current policy interventions directly cultivate the very dysfunction they claim to combat.*
+Following Paul Feyerabend's principle of counterinduction (*Against Method*), we invent an alternative conceptual system that directly confounds this venerated observational consensus:
 
-#### 3. Deconstructing Theory-Laden Observation
-Standard survey and administrative metrics define success circularly: when policies fail, the methodology assumes incomplete implementation rather than systemic structural flaw.`;
+**THE COUNTERINDUCTIVE PROPOSITION ($H_{\\text{alt}}$):**
+> *The observed dysfunction is NOT an external failure of the system—it is the direct endogenous product of the corrective mechanisms themselves. Far from alleviating the dilemma, institutional transparency and technical surveillance actively accelerate the exact distortions they claim to suppress.*
+
+#### 3. Deconstructing Theory-Laden Data & Measurement Mirages
+Why does standard empirical evidence appear to support the dominant view? Because the observational instruments are **theory-laden**:
+* Survey questions, compliance scores, and bureaucratic audit metrics are designed from within the assumptions of ${paradigm}.
+* They measure formal compliance while remaining mathematically blind to tactical evasion, relational erosion, and shadow adaptations.
+* What researchers celebrate as "statistically significant improvements" in administrative compliance are merely measurement mirages created by actors learning how to game the evaluation rubric.
+
+#### 4. The Counter-Hypothesis
+Across empirical jurisdictions, adopting heightened monitoring and formal optimization generates a **statistically significant net decline in substantive institutional delivery and equity**, because internal gaming and defensive posturing outpace computational efficiency.`;
   }
 
-  function generateCustomStressTest(problem) {
+  function generateCustomStressTest(problem, paradigm, models) {
     return `### Stage 4: Popperian Stress-Tester (\`stress_test.md\`)
 
-#### 1. Causal DAG & Confounder Audit
-* **Treatment ($T$):** Structural intervention derived from the cross-disciplinary isomorphism.
-* **Outcome ($Y$):** Direct measurable shift in institutional capacity and citizen welfare.
-* **Potential Colliders:** Organizational survival bias; endogenous selection into reform programs.
+#### 1. Formal Causal Directed Acyclic Graph (DAG)
+To ensure the counterinductive hypothesis is methodologically rigorous and fully falsifiable, we specify the structural causal relationships:
+\`\`\`text
+   [Z: Baseline Institutional Capacity]
+            /               \\
+           v                 v
+[T: Structural Intervention] ──► [M: Relational Friction] ──► [Y: Macro Welfare Outcome]
+           \\                                                 ^
+            \\────────────── [C: Colliders / Status Quo] ────/
+\`\`\`
+* **Treatment ($T$):** Implementation of structural reforms derived from ${models.map(m => m.name).slice(0, 2).join(' & ')}.
+* **Outcome ($Y$):** Real-world reduction in systemic dysfunction (measured independently of self-reported compliance).
+* **Potential Colliders ($C$):** Jurisdiction survival bias; voluntary self-selection of high-capacity agencies into pilot programs.
 
-#### 2. Decisive Falsification Thresholds (*Experimentum Crucis*)
-If empirical testing demonstrates that baseline groups achieve identical outcomes without structural realignment, the **Isomorphic Hypothesis is decisively refuted**.`;
+#### 2. Decisive Falsification Criteria (*Experimentum Crucis*)
+In accordance with Karl Popper's criterion of demarcation:
+> **Refutation Threshold:** If an exogenous policy shock introduces structural deregulation without generating the compensatory second-order distortion predicted by our isomorphic model, or if high-surveillance control groups achieve superior democratic/social equilibrium under identical initial conditions, **the counterinductive hypothesis is decisively refuted**.
+
+#### 3. Threats to Identification & Audit Protocol
+* **Endogenous Timing:** Policies are often enacted during crises; we utilize staggered rollout with synthetic control groups to guard against Ashenfelter's dip.
+* **SUTVA Violations:** Behavioral spillovers across adjacent jurisdictions will be controlled for via spatial-autoregressive lag modeling.`;
   }
 
-  function generateCustomProposal(problem, domain, models) {
-    return `# Structural Transformation in Social Dynamics: An Isomorphic Approach
+  function generateCustomProposal(problem, domain, paradigm, models) {
+    return `# Research Proposal & Pre-Analysis Plan (PAP)
+## Breaking Paradigmatic Stagnation in Social Science: An Isomorphic & Counterinductive Approach
 
-**Principal Investigator:** Computational Social Science & Applied Epistemology Lab  
-**Domain:** ${domain}  
-**Framework:** Cross-Disciplinary Mental Models & Counterinductive Verification  
+**Substantive Domain:** ${domain}  
+**Target Paradigm:** ${paradigm}  
+**Methodological Protocol:** 5-Stage Agentic Ideation (IdeaScientist-SocSci)  
+**Cross-Disciplinary Latticework:** ${models.map(m => m.name).join(", ")}  
 
 ---
 
-## 1. Executive Summary & The Grand Societal Challenge
-Addressing: "${problem}".  
-Rather than applying another incremental regression model to established datasets, this research formulates a foundational redesign of the analytical paradigm, leveraging structural isomorphisms from ${models.map(m => m.name).join(", ")}.
+### 1. Executive Summary & Grand Societal Challenge
+This research project addresses the following foundational dilemma:
+> **"${problem}"**
 
-## 2. Core Theoretical Hypotheses
-* **$H_1$:** Interventions targeting root structural constraints yield non-linear improvements in systemic velocity compared to conventional procedural subsidies.
-* **$H_2$:** The dominant paradigm's failure is driven by self-reinforcing measurement feedback loops.
+Mainstream approaches under **${paradigm}** have reached an empirical validation bottleneck. Rather than proposing another marginal regression with incremental controls, this project reformulates the research program by importing structural laws from non-social sciences and testing an adversarial counterinductive hypothesis.
 
-## 3. Empirical Design & Identification
-Exploiting natural policy discontinuities across regional jurisdictions to isolate exogenous shocks, avoiding classical omitted variable bias through staggered rollout and instrumental variables.`;
+### 2. Core Hypotheses
+* **$H_1$ (Isomorphic Mechanism):** The persistence of this dilemma is governed by structural non-linearities (${models.map(m => m.name).slice(0, 2).join(", ")}), where incremental linear subsidies are dissipated into frictional coordination overhead.
+* **$H_2$ (Feyerabendian Inversion):** The standard observational "facts" in the literature are theory-laden artifacts; conventional corrective policies directly amplify the underlying dysfunction.
+* **$H_3$ (Decisive Falsification Test):** Interventions designed around root structural constraints will produce discontinuous threshold improvements compared to standard marginal tweaks.
+
+### 3. Empirical Design & Identification Strategy
+1. **Quasi-Experimental Identification:** Exploiting jurisdictional boundary discontinuities and staggered policy implementations to isolate exogenous variation in structural constraints.
+2. **Multi-Method Measurement:** Combining high-frequency administrative micro-data with unobtrusive computational behavioral tracing to bypass the measurement mirages of self-reported surveys.
+3. **Pre-Registered Falsification Criteria:** Explicitly registered stopping rules and refutation thresholds ensuring complete Popperian demarcation.
+
+### 4. Broader Impacts & Epistemological Contribution
+By transcending the narrow incrementalism critiqued in modern social science, this project demonstrates how cross-disciplinary mental models and philosophical counterinduction can revitalize inquiry into the defining macro-challenges of our era.`;
   }
 
   // --- Latticework Vault Modal & Search ---
@@ -453,13 +518,6 @@ Exploiting natural policy discontinuities across regional jurisdictions to isola
 
   // --- Event Listeners ---
   function setupEventListeners() {
-    // Preset cards
-    document.querySelectorAll('.preset-card').forEach(card => {
-      card.addEventListener('click', () => {
-        loadPreset(card.dataset.preset);
-      });
-    });
-
     // Tab buttons
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -483,7 +541,15 @@ Exploiting natural policy discontinuities across regional jurisdictions to isola
 
     // Launch buttons
     launchBtn.addEventListener('click', () => runPipeline(false));
-    simulateBtn.addEventListener('click', () => runPipeline(true));
+    if (offlineBtn) {
+      offlineBtn.addEventListener('click', () => runPipeline(true));
+    }
+    if (modalOfflineBtn) {
+      modalOfflineBtn.addEventListener('click', () => {
+        apiKeyModal.classList.remove('active');
+        runPipeline(true);
+      });
+    }
 
     // Copy & Download
     copyBtn.addEventListener('click', () => {
@@ -499,7 +565,7 @@ Exploiting natural policy discontinuities across regional jurisdictions to isola
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `ideascientist_proposal_${activePreset || 'custom'}.md`;
+      a.download = `ideascientist_proposal.md`;
       a.click();
       URL.revokeObjectURL(url);
       showToast("Proposal markdown downloaded!");

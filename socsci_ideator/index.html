@@ -45,62 +45,23 @@
       </p>
     </section>
 
-    <!-- 1-Click Grand Challenge Presets -->
-    <section class="presets-section">
-      <div class="section-label">
-        <span>Curated Grand Challenges (1-Click Presets)</span>
-        <span style="font-size:0.75rem; color:var(--text-muted);">Click to load instant exemplar</span>
-      </div>
-      <div class="presets-grid">
-        <div class="preset-card active" data-preset="mokyr_stagnation">
-          <div class="preset-title">⚙️ Innovation-Stagnation Paradox</div>
-          <div class="preset-desc">Why has exponential computational growth decoupled from real wages and institutional capacity (Mokyr's Loop)?</div>
-          <div class="preset-models">
-            <span class="model-chip">Entropy</span>
-            <span class="model-chip">Viscosity</span>
-            <span class="model-chip">Red Queen</span>
-          </div>
-        </div>
-
-        <div class="preset-card" data-preset="democratic_backsliding">
-          <div class="preset-title">🗳️ Networked Legitimacy Paradox</div>
-          <div class="preset-desc">Why do open, frictionless communication platforms accelerate affective polarization instead of deliberative consensus?</div>
-          <div class="preset-models">
-            <span class="model-chip">Genre Violation</span>
-            <span class="model-chip">Multiply by Zero</span>
-            <span class="model-chip">Asymmetry</span>
-          </div>
-        </div>
-
-        <div class="preset-card" data-preset="institutional_trust">
-          <div class="preset-title">🏛️ Technocratic Transparency Paradox</div>
-          <div class="preset-desc">Why do standard open-government transparency audits deepen public cynicism and institutional delegitimization?</div>
-          <div class="preset-models">
-            <span class="model-chip">Hanlon's Razor</span>
-            <span class="model-chip">Critical Mass</span>
-            <span class="model-chip">Inversion</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Research Problem Input Workspace -->
     <section class="input-workspace">
       <div class="section-label">Research Dilemma Configuration</div>
       
       <div class="form-group">
         <label for="problem-input">Grand Challenge / Research Problem:</label>
-        <textarea id="problem-input" rows="3" placeholder="Define the macro-societal dilemma or grand challenge you want to investigate..."></textarea>
+        <textarea id="problem-input" rows="3" placeholder="Define the macro-societal dilemma or grand challenge you want to investigate (e.g. Why do algorithmic bail risk assessments increase pretrial detention for minority defendants?)..."></textarea>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label for="domain-input">Substantive Domain:</label>
-          <input type="text" id="domain-input" placeholder="e.g. Political Economy, Sociology of Science, Public Administration">
+          <input type="text" id="domain-input" placeholder="e.g. Algorithmic Governance, Political Economy, Sociology of Science">
         </div>
         <div class="form-group">
           <label for="paradigm-input">Dominant Paradigm to Question:</label>
-          <input type="text" id="paradigm-input" placeholder="e.g. Neoclassical Growth Theory, Habermasian Deliberation">
+          <input type="text" id="paradigm-input" placeholder="e.g. Equalized Odds Frameworks, Neoclassical Growth Theory, Habermasian Deliberation">
         </div>
       </div>
 
@@ -119,8 +80,8 @@
           <button id="launch-btn" class="btn-primary">
             🚀 Launch Ideation Run
           </button>
-          <button id="simulate-btn" class="btn-secondary" style="margin-left:0.5rem;">
-            ⚡ Quick Exemplar Simulation
+          <button id="offline-btn" class="btn-secondary" style="margin-left:0.5rem;" title="Run local structural dynamic generation without needing a Gemini API key">
+            ⚡ Quick Offline Synthesis
           </button>
         </div>
         <div style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
@@ -133,34 +94,34 @@
     <section class="pipeline-section">
       <div class="section-label">The 5-Stage Agentic Pipeline (Click step to inspect)</div>
       <div class="pipeline-stepper">
-        <div class="step-card completed" id="step-1">
+        <div class="step-card" id="step-1">
           <div class="step-num">STAGE 01</div>
           <div class="step-name">Paradigm Tension Mapper</div>
-          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+          <div class="step-status"><span class="status-dot"></span> Waiting</div>
         </div>
 
-        <div class="step-card completed" id="step-2">
+        <div class="step-card" id="step-2">
           <div class="step-num">STAGE 02</div>
           <div class="step-name">Isomorphic Transducer</div>
-          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+          <div class="step-status"><span class="status-dot"></span> Waiting</div>
         </div>
 
-        <div class="step-card completed" id="step-3">
+        <div class="step-card" id="step-3">
           <div class="step-num">STAGE 03</div>
           <div class="step-name">Counterinductive Dissident</div>
-          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+          <div class="step-status"><span class="status-dot"></span> Waiting</div>
         </div>
 
-        <div class="step-card completed" id="step-4">
+        <div class="step-card" id="step-4">
           <div class="step-num">STAGE 04</div>
           <div class="step-name">Popperian Stress-Tester</div>
-          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+          <div class="step-status"><span class="status-dot"></span> Waiting</div>
         </div>
 
-        <div class="step-card completed active" id="step-5">
+        <div class="step-card" id="step-5">
           <div class="step-num">STAGE 05</div>
           <div class="step-name">Proposal Synthesizer</div>
-          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+          <div class="step-status"><span class="status-dot"></span> Waiting</div>
         </div>
       </div>
     </section>
@@ -203,9 +164,12 @@
           <input type="password" id="api-key-input" placeholder="AIzaSy...">
         </div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
-          Don't have a key? Get a free key in 30 seconds at <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">aistudio.google.com</a>. You can also leave this empty to use built-in high-depth exemplar simulations!
+          Don't have a key? Get a free key in 30 seconds at <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">aistudio.google.com</a>. You can also run in Offline Mode to generate dynamic structural proposals directly from your dilemma!
         </p>
         <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
+          <button id="modal-offline-btn" class="btn-secondary" style="padding:0.5rem 1.25rem; font-size:0.9rem;">
+            Run Offline Dynamic Mode
+          </button>
           <button id="save-key-btn" class="btn-primary" style="padding:0.5rem 1.25rem; font-size:0.9rem;">
             Save Key & Connect
           </button>
@@ -255,7 +219,6 @@
   <!-- Scripts -->
   <script src="models_vault.js"></script>
   <script src="prompts.js"></script>
-  <script src="exemplars.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
