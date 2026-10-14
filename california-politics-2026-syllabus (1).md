@@ -267,6 +267,7 @@ COURSE SCHEDULE
 **Wed, Oct. 14**
 * **Required:**
   * **Assigned Reading:** **Stone**, Chapter 8 ("Causes").
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSnKMyrm_xz-qzwSlbakPhy2ItTKUrSL1KBV5JFn2P8NY9kx5i_UIQjCsJGcdPdfp0eS7EdZ4hqU4o4/pub?start=false&loop=false&delayms=3000)
 * **Case Study:** Health & Safety Net
 * ***Discussion Prompt:** How do competing political narratives attribute the 'causes' of homelessness to either individual moral failure or systemic housing shortages, and how does this affect policy solutions?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section.
