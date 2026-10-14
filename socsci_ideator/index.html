@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IdeaScientist: Social Science Edition | Jose Marichal</title>
+  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2224%22>🏛️</text></svg>">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-group">
+        <a href="../index.html" class="brand-title">IdeaScientist <span>SocSci</span></a>
+        <span class="badge-tag">Option A · Free Tier Ready</span>
+      </div>
+      <div class="header-actions">
+        <button id="open-vault-modal-btn" class="btn-pill">
+          📚 Mental Models Vault
+        </button>
+        <button id="open-key-modal-btn" class="btn-pill">
+          <span class="status-dot" id="key-status-dot"></span>
+          <span id="key-status-badge">Demo / Simulation</span>
+        </button>
+        <a href="../ai_tools.html" class="btn-pill">← Back to AI Tools</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-badges">
+        <span class="badge-tag">Joel Mokyr Knowledge Loop</span>
+        <span class="badge-tag">Feyerabendian Counterinduction</span>
+        <span class="badge-tag">100+ Latticework Models</span>
+        <span class="badge-tag">Popperian DAG Refutation</span>
+        <span class="badge-tag">Google Gemini 2.0 Flash</span>
+      </div>
+      <h1>Grand-Challenge Social Science Ideator</h1>
+      <p class="hero-subtitle">
+        Customized from <em>IdeaScientist</em> (Liu et al., 2026). Rather than optimizing for narrow, incremental tweaks in data-rich domains, this system tackles <strong>foundational grand challenges</strong> by cross-pollinating social dilemmas with <strong>100+ structural mental models</strong> from physics, biology, and military strategy, subjected to <strong>Feyerabendian counterinduction</strong> and <strong>adversarial causal stress-testing</strong>.
+      </p>
+    </section>
+
+    <!-- 1-Click Grand Challenge Presets -->
+    <section class="presets-section">
+      <div class="section-label">
+        <span>Curated Grand Challenges (1-Click Presets)</span>
+        <span style="font-size:0.75rem; color:var(--text-muted);">Click to load instant exemplar</span>
+      </div>
+      <div class="presets-grid">
+        <div class="preset-card active" data-preset="mokyr_stagnation">
+          <div class="preset-title">⚙️ Innovation-Stagnation Paradox</div>
+          <div class="preset-desc">Why has exponential computational growth decoupled from real wages and institutional capacity (Mokyr's Loop)?</div>
+          <div class="preset-models">
+            <span class="model-chip">Entropy</span>
+            <span class="model-chip">Viscosity</span>
+            <span class="model-chip">Red Queen</span>
+          </div>
+        </div>
+
+        <div class="preset-card" data-preset="democratic_backsliding">
+          <div class="preset-title">🗳️ Networked Legitimacy Paradox</div>
+          <div class="preset-desc">Why do open, frictionless communication platforms accelerate affective polarization instead of deliberative consensus?</div>
+          <div class="preset-models">
+            <span class="model-chip">Genre Violation</span>
+            <span class="model-chip">Multiply by Zero</span>
+            <span class="model-chip">Asymmetry</span>
+          </div>
+        </div>
+
+        <div class="preset-card" data-preset="institutional_trust">
+          <div class="preset-title">🏛️ Technocratic Transparency Paradox</div>
+          <div class="preset-desc">Why do standard open-government transparency audits deepen public cynicism and institutional delegitimization?</div>
+          <div class="preset-models">
+            <span class="model-chip">Hanlon's Razor</span>
+            <span class="model-chip">Critical Mass</span>
+            <span class="model-chip">Inversion</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Problem Input Workspace -->
+    <section class="input-workspace">
+      <div class="section-label">Research Dilemma Configuration</div>
+      
+      <div class="form-group">
+        <label for="problem-input">Grand Challenge / Research Problem:</label>
+        <textarea id="problem-input" rows="3" placeholder="Define the macro-societal dilemma or grand challenge you want to investigate..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="domain-input">Substantive Domain:</label>
+          <input type="text" id="domain-input" placeholder="e.g. Political Economy, Sociology of Science, Public Administration">
+        </div>
+        <div class="form-group">
+          <label for="paradigm-input">Dominant Paradigm to Question:</label>
+          <input type="text" id="paradigm-input" placeholder="e.g. Neoclassical Growth Theory, Habermasian Deliberation">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Active Latticework Mental Models:</span>
+          <a href="#" id="browse-vault-link" style="font-size:0.75rem;" onclick="document.getElementById('open-vault-modal-btn').click(); return false;">+ Add More from Vault</a>
+        </label>
+        <div id="selected-models-container" class="preset-models" style="min-height:36px; padding:0.4rem; background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <div class="launcher-actions">
+        <div>
+          <button id="launch-btn" class="btn-primary">
+            🚀 Launch Ideation Run
+          </button>
+          <button id="simulate-btn" class="btn-secondary" style="margin-left:0.5rem;">
+            ⚡ Quick Exemplar Simulation
+          </button>
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
+          Option A: Runs on Google AI Studio Free Tier ($0.00)
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Pipeline Stepper Visualizer -->
+    <section class="pipeline-section">
+      <div class="section-label">The 5-Stage Agentic Pipeline (Click step to inspect)</div>
+      <div class="pipeline-stepper">
+        <div class="step-card completed" id="step-1">
+          <div class="step-num">STAGE 01</div>
+          <div class="step-name">Paradigm Tension Mapper</div>
+          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+        </div>
+
+        <div class="step-card completed" id="step-2">
+          <div class="step-num">STAGE 02</div>
+          <div class="step-name">Isomorphic Transducer</div>
+          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+        </div>
+
+        <div class="step-card completed" id="step-3">
+          <div class="step-num">STAGE 03</div>
+          <div class="step-name">Counterinductive Dissident</div>
+          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+        </div>
+
+        <div class="step-card completed" id="step-4">
+          <div class="step-num">STAGE 04</div>
+          <div class="step-name">Popperian Stress-Tester</div>
+          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+        </div>
+
+        <div class="step-card completed active" id="step-5">
+          <div class="step-num">STAGE 05</div>
+          <div class="step-name">Proposal Synthesizer</div>
+          <div class="step-status"><span class="status-dot active"></span> Complete</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artifact Inspection Workspace -->
+    <section class="artifact-workspace">
+      <div class="workspace-header">
+        <div class="artifact-tabs">
+          <button class="tab-btn" data-tab="tensions">1. tensions.md</button>
+          <button class="tab-btn" data-tab="isomorphisms">2. isomorphisms.md</button>
+          <button class="tab-btn" data-tab="counterinduction">3. counterinduction.md</button>
+          <button class="tab-btn" data-tab="stress_test">4. stress_test.md</button>
+          <button class="tab-btn active" data-tab="proposal">5. proposal.md (Full PAP)</button>
+        </div>
+        <div class="workspace-actions">
+          <button id="copy-btn" class="action-btn">📋 Copy Artifact</button>
+          <button id="download-btn" class="action-btn">⬇️ Download (.md)</button>
+        </div>
+      </div>
+      
+      <div id="artifact-viewer" class="artifact-content">
+        <!-- Rendered markdown injected via app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Google AI Studio API Key Modal -->
+  <div id="api-key-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width:540px;">
+      <div class="modal-header">
+        <h3>Google Gemini API Configuration</h3>
+        <button id="close-key-modal-btn" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.9rem; margin-bottom:1rem;">
+          This application connects directly to <strong>Google AI Studio's Free Tier</strong> (Option A) to run <code>gemini-2.0-flash</code>. Your API key is stored strictly inside your browser's local storage and is never sent to any third-party server.
+        </p>
+        <div class="form-group">
+          <label for="api-key-input">Gemini API Key (Google AI Studio):</label>
+          <input type="password" id="api-key-input" placeholder="AIzaSy...">
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          Don't have a key? Get a free key in 30 seconds at <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">aistudio.google.com</a>. You can also leave this empty to use built-in high-depth exemplar simulations!
+        </p>
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
+          <button id="save-key-btn" class="btn-primary" style="padding:0.5rem 1.25rem; font-size:0.9rem;">
+            Save Key & Connect
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latticework Mental Models Vault Modal -->
+  <div id="vault-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Exogenous Latticework Vault</h3>
+          <span style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
+            ~100 Cross-Disciplinary Mental Models & Social Science Isomorphisms
+          </span>
+        </div>
+        <button id="close-vault-modal-btn" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="vault-search-input" class="search-input" placeholder="Search mental models (e.g. entropy, red queen, genre, inertia)...">
+        
+        <div class="category-filter-pills">
+          <span class="cat-pill active" data-cat="All">All</span>
+          <span class="cat-pill" data-cat="General Thinking">General Thinking</span>
+          <span class="cat-pill" data-cat="Physics & Chemistry">Physics & Chemistry</span>
+          <span class="cat-pill" data-cat="Biology & Evolution">Biology & Evolution</span>
+          <span class="cat-pill" data-cat="Systems Thinking">Systems Thinking</span>
+          <span class="cat-pill" data-cat="Mathematics">Mathematics</span>
+          <span class="cat-pill" data-cat="Economics">Economics</span>
+          <span class="cat-pill" data-cat="Art & Narrative">Art & Narrative</span>
+          <span class="cat-pill" data-cat="Military & Strategy">Military & Strategy</span>
+          <span class="cat-pill" data-cat="Human Nature & Judgment">Human Nature</span>
+        </div>
+
+        <div id="vault-models-list" class="models-list">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notice" class="toast-notice">Notice</div>
+
+  <!-- Scripts -->
+  <script src="models_vault.js"></script>
+  <script src="prompts.js"></script>
+  <script src="exemplars.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
