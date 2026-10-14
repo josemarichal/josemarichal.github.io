@@ -75,17 +75,46 @@
         </div>
       </div>
 
+      <!-- Direct API Key Configuration Strip -->
+      <div class="api-config-strip" style="background:rgba(19, 29, 49, 0.75); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:1rem; margin-top:1.25rem; margin-bottom:1.25rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
+          <div style="font-size:0.85rem; font-weight:600; color:var(--text-heading); display:flex; align-items:center; gap:0.5rem;">
+            <span>⚡ AI Engine: Google Gemini 2.0 Flash (Free Tier)</span>
+            <span class="status-dot" id="inline-key-status-dot"></span>
+          </div>
+          <div style="font-size:0.8rem; font-family:var(--font-mono);">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:var(--accent-color); text-decoration:underline;">
+              Get Free Key from Google AI Studio ↗
+            </a>
+          </div>
+        </div>
+        
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
+          <div style="flex:1; min-width:260px;">
+            <input type="password" id="inline-api-key" placeholder="Paste your Gemini API key (AIzaSy...) here to run live reasoning..." style="width:100%; padding:0.6rem 0.85rem; background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-sm); color:var(--text-heading); font-family:var(--font-mono); font-size:0.85rem;">
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button id="save-inline-key-btn" class="btn-pill" style="padding:0.6rem 1.1rem; font-size:0.8rem; background:var(--accent-color); color:#0b1120; font-weight:600; border:none; cursor:pointer;">
+              Save Key
+            </button>
+            <button id="clear-inline-key-btn" class="btn-pill" style="padding:0.6rem 0.9rem; font-size:0.8rem; display:none; background:transparent; border:1px solid var(--border-color); color:var(--text-muted); cursor:pointer;">
+              Clear Key
+            </button>
+          </div>
+        </div>
+        <div id="inline-key-status-text" style="font-size:0.78rem; margin-top:0.45rem; color:var(--text-muted); font-family:var(--font-mono);">
+          Keys are stored strictly in your browser local storage and communicated directly with Google AI Studio.
+        </div>
+      </div>
+
       <div class="launcher-actions">
         <div>
-          <button id="launch-btn" class="btn-primary">
-            🚀 Launch Ideation Run
-          </button>
-          <button id="offline-btn" class="btn-secondary" style="margin-left:0.5rem;" title="Run local structural dynamic generation without needing a Gemini API key">
-            ⚡ Quick Offline Synthesis
+          <button id="launch-btn" class="btn-primary" style="padding:0.75rem 2.2rem; font-size:1rem;">
+            🚀 Launch 5-Stage Ideation Run
           </button>
         </div>
         <div style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
-          Option A: Runs on Google AI Studio Free Tier ($0.00)
+          Executes the 5-stage agent pipeline live via Gemini 2.0 Flash
         </div>
       </div>
     </section>
@@ -164,12 +193,9 @@
           <input type="password" id="api-key-input" placeholder="AIzaSy...">
         </div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
-          Don't have a key? Get a free key in 30 seconds at <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">aistudio.google.com</a>. You can also run in Offline Mode to generate dynamic structural proposals directly from your dilemma!
+          Don't have a key? Get a free key in 30 seconds at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:var(--accent-color); text-decoration:underline;">aistudio.google.com/app/apikey</a>. Free tier allows ~15 requests per minute with zero cloud billing required.
         </p>
         <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
-          <button id="modal-offline-btn" class="btn-secondary" style="padding:0.5rem 1.25rem; font-size:0.9rem;">
-            Run Offline Dynamic Mode
-          </button>
           <button id="save-key-btn" class="btn-primary" style="padding:0.5rem 1.25rem; font-size:0.9rem;">
             Save Key & Connect
           </button>

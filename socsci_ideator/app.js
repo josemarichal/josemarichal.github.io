@@ -24,15 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectedModelsContainer = document.getElementById('selected-models-container');
   const artifactViewer = document.getElementById('artifact-viewer');
   const launchBtn = document.getElementById('launch-btn');
-  const offlineBtn = document.getElementById('offline-btn');
   const copyBtn = document.getElementById('copy-btn');
   const downloadBtn = document.getElementById('download-btn');
   const keyStatusBadge = document.getElementById('key-status-badge');
   const keyStatusDot = document.getElementById('key-status-dot');
+  const inlineApiKey = document.getElementById('inline-api-key');
+  const saveInlineKeyBtn = document.getElementById('save-inline-key-btn');
+  const clearInlineKeyBtn = document.getElementById('clear-inline-key-btn');
+  const inlineKeyStatusDot = document.getElementById('inline-key-status-dot');
+  const inlineKeyStatusText = document.getElementById('inline-key-status-text');
   const apiKeyModal = document.getElementById('api-key-modal');
   const apiKeyInput = document.getElementById('api-key-input');
   const saveKeyBtn = document.getElementById('save-key-btn');
-  const modalOfflineBtn = document.getElementById('modal-offline-btn');
   const openKeyModalBtn = document.getElementById('open-key-modal-btn');
   const closeKeyModalBtn = document.getElementById('close-key-modal-btn');
   const vaultModal = document.getElementById('vault-modal');
@@ -52,29 +55,42 @@ document.addEventListener('DOMContentLoaded', () => {
   function initApiKey() {
     const savedKey = localStorage.getItem('gemini_api_key');
     if (savedKey) {
-      apiKeyInput.value = savedKey;
-      keyStatusBadge.textContent = "Gemini Flash (Active)";
-      keyStatusDot.classList.add('active');
+      if (apiKeyInput) apiKeyInput.value = savedKey;
+      if (inlineApiKey) inlineApiKey.value = savedKey;
+      if (keyStatusBadge) keyStatusBadge.textContent = "Gemini Flash (Connected)";
+      if (keyStatusDot) keyStatusDot.classList.add('active');
+      if (inlineKeyStatusDot) inlineKeyStatusDot.classList.add('active');
+      if (inlineKeyStatusText) {
+        inlineKeyStatusText.textContent = "✓ Key saved. Google Gemini 2.0 Flash is connected and ready to run.";
+        inlineKeyStatusText.style.color = "var(--accent-color)";
+      }
+      if (clearInlineKeyBtn) clearInlineKeyBtn.style.display = "inline-block";
     } else {
-      keyStatusBadge.textContent = "Offline Mode / Set API Key";
-      keyStatusDot.classList.remove('active');
+      if (apiKeyInput) apiKeyInput.value = '';
+      if (inlineApiKey) inlineApiKey.value = '';
+      if (keyStatusBadge) keyStatusBadge.textContent = "Set API Key";
+      if (keyStatusDot) keyStatusDot.classList.remove('active');
+      if (inlineKeyStatusDot) inlineKeyStatusDot.classList.remove('active');
+      if (inlineKeyStatusText) {
+        inlineKeyStatusText.textContent = "Paste a free Gemini API key to run live multi-stage reasoning (takes 30 seconds at aistudio.google.com).";
+        inlineKeyStatusText.style.color = "var(--text-muted)";
+      }
+      if (clearInlineKeyBtn) clearInlineKeyBtn.style.display = "none";
     }
   }
 
-  function saveApiKey() {
-    const key = apiKeyInput.value.trim();
-    if (key) {
-      localStorage.setItem('gemini_api_key', key);
-      keyStatusBadge.textContent = "Gemini Flash (Active)";
-      keyStatusDot.classList.add('active');
-      showToast("API Key successfully saved!");
+  function setApiKey(key) {
+    const cleanKey = key.trim();
+    if (cleanKey) {
+      localStorage.setItem('gemini_api_key', cleanKey);
+      initApiKey();
+      showToast("Gemini API Key successfully saved!");
     } else {
       localStorage.removeItem('gemini_api_key');
-      keyStatusBadge.textContent = "Offline Mode / Set API Key";
-      keyStatusDot.classList.remove('active');
-      showToast("API Key removed. Switched to Offline Dynamic Mode.");
+      initApiKey();
+      showToast("API Key cleared.");
     }
-    apiKeyModal.classList.remove('active');
+    if (apiKeyModal) apiKeyModal.classList.remove('active');
   }
 
   // --- Initial Welcome Workspace State ---
@@ -88,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 **Customized for Grand-Challenge Social & Political Science Ideation**
 
-Rather than optimizing for narrow, incremental tweaks in data-rich domains, this system decomposes research ideation into a **5-stage agentic pipeline**:
+Rather than optimizing for narrow, incremental tweaks in data-rich domains, this system decomposes research ideation into a **5-stage agentic pipeline** powered live by **Google Gemini 2.0 Flash**:
 
 1. **Paradigm Tension Mapper (\`tensions.md\`):** Identifies macro-structural contradictions and circular assumptions within reigning orthodoxies.
 2. **Isomorphic Transducer (\`isomorphisms.md\`):** Imports relational structures and dynamic laws from **100+ non-social mental models** (thermodynamics, evolutionary biology, military strategy, dramaturgy).
@@ -98,10 +114,11 @@ Rather than optimizing for narrow, incremental tweaks in data-rich domains, this
 
 ---
 
-#### How to Run Your Ideation:
-1. **Enter Your Dilemma:** Type your research problem into the configuration box above (e.g., *"Why do algorithmic risk assessments increase disparities despite statistical fairness adjustments?"*).
-2. **Select Latticework Models:** Keep the starter models or click **"+ Add More from Vault"** to choose from ~100 cross-disciplinary models.
-3. Click **"🚀 Launch Ideation Run"** to run live using Google Gemini 2.0 Flash (free API key in 30 seconds at [aistudio.google.com](https://aistudio.google.com/)) or click **"⚡ Quick Offline Synthesis"** to generate an immediate dynamic structural proposal!`;
+#### Quick Setup:
+1. **API Key:** Paste your free Gemini API key from [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) in the configuration box above.
+2. **Configure Your Dilemma:** Enter your research question, substantive domain, and the paradigm you wish to challenge.
+3. **Select Latticework Models:** Keep the starter models or click **"+ Add More from Vault"** to choose relevant cross-disciplinary mental models.
+4. **Click "🚀 Launch 5-Stage Ideation Run"** to watch each stage synthesize live!`;
 
     renderArtifact('proposal');
   }
@@ -185,9 +202,16 @@ Rather than optimizing for narrow, incremental tweaks in data-rich domains, this
   }
 
   // --- Execution Engine ---
-  async function runPipeline(forceOffline = false) {
+  async function runPipeline() {
     if (isRunning) return;
-    const apiKey = localStorage.getItem('gemini_api_key');
+
+    let keyToUse = localStorage.getItem('gemini_api_key');
+    if (!keyToUse && inlineApiKey?.value?.trim()) {
+      keyToUse = inlineApiKey.value.trim();
+      localStorage.setItem('gemini_api_key', keyToUse);
+      initApiKey();
+    }
+
     const problem = problemInput.value.trim();
     const domain = domainInput.value.trim() || "Social & Political Science";
     const paradigm = paradigmInput.value.trim() || "Dominant Empirical Equilibrium & Incremental Evaluation";
@@ -198,43 +222,59 @@ Rather than optimizing for narrow, incremental tweaks in data-rich domains, this
       return;
     }
 
-    if (!apiKey && !forceOffline) {
-      apiKeyModal.classList.add('active');
-      showToast("Connect your Gemini API Key or choose Offline Dynamic Mode.");
+    if (!keyToUse) {
+      showToast("Please paste your free Google Gemini API key to launch live ideation.");
+      if (inlineApiKey) {
+        inlineApiKey.focus();
+        inlineApiKey.style.border = '2px solid var(--accent-red)';
+        setTimeout(() => {
+          inlineApiKey.style.border = '1px solid var(--border-color)';
+        }, 3500);
+      }
       return;
     }
 
     isRunning = true;
     launchBtn.disabled = true;
-    if (offlineBtn) offlineBtn.disabled = true;
-    launchBtn.textContent = "Pipeline Running...";
+    launchBtn.textContent = "Pipeline Running (Gemini 2.0 Flash)...";
 
     resetStepperToIdle();
 
     const modelsObjects = selectedModelIds.map(id => window.LATTICEWORK_MODELS.find(m => m.id === id)).filter(Boolean);
 
-    if (!apiKey || forceOffline) {
-      await runSimulatedPipeline(problem, domain, paradigm, modelsObjects);
-    } else {
-      try {
-        await runGeminiLivePipeline(apiKey, problem, domain, paradigm, modelsObjects);
-      } catch (err) {
-        console.error("Gemini API Error:", err);
-        showToast("Gemini API error. Falling back to dynamic offline synthesis.");
-        await runSimulatedPipeline(problem, domain, paradigm, modelsObjects);
-      }
+    try {
+      await runGeminiLivePipeline(keyToUse, problem, domain, paradigm, modelsObjects);
+      showToast("5-Stage Research Proposal successfully synthesized!");
+    } catch (err) {
+      console.error("Gemini API Error:", err);
+      resetStepperToIdle();
+      artifactViewer.innerHTML = `
+        <div style="background:rgba(239, 68, 68, 0.08); border:1px solid rgba(239, 68, 68, 0.4); border-radius:var(--radius-sm); padding:1.5rem; margin:1rem 0;">
+          <h3 style="color:#ef4444; margin-bottom:0.75rem;">⚠️ Live Model Generation Failed</h3>
+          <p style="color:var(--text-heading); margin-bottom:0.75rem;"><strong>Error Message:</strong> ${err.message}</p>
+          <div style="font-size:0.9rem; color:var(--text-main); margin-bottom:1rem; line-height:1.6;">
+            <strong>Troubleshooting:</strong>
+            <ul style="margin-left:1.5rem; margin-top:0.4rem;">
+              <li><strong>Check Key Validity:</strong> Ensure your API key is correctly copied from <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--accent-color); text-decoration:underline;">Google AI Studio</a>.</li>
+              <li><strong>Free Tier Quota:</strong> Google AI Studio provides 15 Requests Per Minute (RPM) free. If you made rapid requests, wait 60 seconds and retry.</li>
+              <li><strong>Ad-Blockers / Firewalls:</strong> Ensure your browser or network is not blocking calls to <code>generativelanguage.googleapis.com</code>.</li>
+            </ul>
+          </div>
+          <button id="retry-launch-btn" class="btn-primary" style="margin-top:0.5rem; padding:0.5rem 1.25rem;">↻ Retry Launch</button>
+        </div>
+      `;
+      document.getElementById('retry-launch-btn')?.addEventListener('click', () => runPipeline());
+      showToast("Generation error: " + err.message);
     }
 
     isRunning = false;
     launchBtn.disabled = false;
-    if (offlineBtn) offlineBtn.disabled = false;
-    launchBtn.textContent = "🚀 Launch Ideation Run";
-    showToast("Research Proposal successfully synthesized!");
+    launchBtn.textContent = "🚀 Launch 5-Stage Ideation Run";
   }
 
   // --- Live Gemini API Execution (Option A) ---
   async function callGemini(apiKey, promptText) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey.trim()}`;
     const payload = {
       contents: [{
         parts: [{ text: promptText }]
@@ -253,11 +293,20 @@ Rather than optimizing for narrow, incremental tweaks in data-rich domains, this
     });
 
     if (!response.ok) {
-      const errData = await response.json();
-      throw new Error(errData.error?.message || "Gemini API request failed");
+      let msg = `HTTP ${response.status} ${response.statusText}`;
+      try {
+        const errData = await response.json();
+        if (errData.error?.message) {
+          msg = errData.error.message;
+        }
+      } catch (e) {}
+      throw new Error(msg);
     }
 
     const data = await response.json();
+    if (!data.candidates || !data.candidates[0]?.content?.parts?.[0]?.text) {
+      throw new Error("Gemini returned an empty response or the response was filtered.");
+    }
     return data.candidates[0].content.parts[0].text;
   }
 
@@ -309,165 +358,6 @@ ${activeArtifacts.stress_test}
     activeArtifacts.proposal = await callGemini(apiKey, p5);
     setStepState(5, 'completed');
     switchTab('proposal');
-  }
-
-  // --- Fully Dynamic Offline Synthesis Engine ---
-  // Directly synthesizes the user's specific dilemma and selected mental models
-  async function runSimulatedPipeline(problem, domain, paradigm, models) {
-    const sleep = ms => new Promise(res => setTimeout(res, ms));
-
-    for (let step = 1; step <= 5; step++) {
-      setStepState(step, 'running');
-      await sleep(650); // visual pipeline pacing
-
-      if (step === 1) {
-        activeArtifacts.tensions = generateCustomTensions(problem, domain, paradigm);
-        switchTab('tensions');
-      } else if (step === 2) {
-        activeArtifacts.isomorphisms = generateCustomIsomorphisms(problem, models);
-        switchTab('isomorphisms');
-      } else if (step === 3) {
-        activeArtifacts.counterinduction = generateCustomCounterinduction(problem, paradigm);
-        switchTab('counterinduction');
-      } else if (step === 4) {
-        activeArtifacts.stress_test = generateCustomStressTest(problem, paradigm, models);
-        switchTab('stress_test');
-      } else if (step === 5) {
-        activeArtifacts.proposal = generateCustomProposal(problem, domain, paradigm, models);
-        switchTab('proposal');
-      }
-      setStepState(step, 'completed');
-    }
-  }
-
-  function generateCustomTensions(problem, domain, paradigm) {
-    return `### Stage 1: Paradigm Tension Mapper (\`tensions.md\`)
-
-#### 1. Analysis of the Dominant Paradigm (${paradigm})
-The reigning consensus within **${domain}** approaches the following dilemma:
-> *"${problem}"*
-
-Under standard treatment, **${paradigm}** reduces this challenge to an information-deficit problem, a minor transaction-cost inefficiency, or an institutional compliance failure. It relies on implicit equilibrium assumptions:
-* **The Axiom of Rational Adjustment:** Stakeholders and institutional actors possess symmetric expectations and adjust their strategies predictably in response to marginal incentives or procedural nudges.
-* **The Linearity Fallacy:** It assumes that policy interventions or algorithmic adjustments produce proportional, monotonic outcomes across diverse jurisdictions.
-* **The Tautological Defense:** When empirical interventions fail to resolve the problem, the paradigm circularly attributes the failure to "incomplete implementation" or "unobserved heterogeneity," shielding its core axioms from falsification.
-
-#### 2. Structural Contradictions & Rival Theoretical Schools
-Rather than a technical parameter mismatch, this dilemma embodies a fundamental structural clash between competing explanatory traditions:
-* **Perspective A (Structural-Materialist / Institutionalist):** Argues that the phenomenon is sustained by entrenched institutional lock-in and asymmetric resource distribution. The problem is not an accidental market failure, but an equilibrium designed to preserve rents and insulate incumbents from systemic accountability.
-* **Perspective B (Behavioral-Cognitive / Relational):** Argues that the impasse stems from bounded rationality, affective polarization, and heuristic decision rules. Interventions fail because actors optimize for symbolic group status and identity preservation rather than formal institutional payoffs.
-
-#### 3. The Epistemic Impasse
-Existing quantitative literature has hit a validation bottleneck. Standard observational datasets rely on administrative metrics that measure only formal procedural throughput, completely obscuring informal resistance, dissipative frictional costs, and second-order systemic backlash.`;
-  }
-
-  function generateCustomIsomorphisms(problem, models) {
-    const modelNames = models.map(m => m.name).join(", ");
-    return `### Stage 2: Isomorphic Transducer (\`isomorphisms.md\`)
-
-#### 1. Abstract Dynamical Signature
-Stripping away domain-specific political and sociological terminology reveals the core physical/mathematical architecture of the dilemma:
-\`\`\`text
-[Exogenous Informational/Policy Influx]
-       │
-       ▼
-[Non-linear Threshold Phase-Shift] ──► [Internal Organizational Friction]
-       │
-       ▼
-[Dissipative Structural Overhead] ──► [Unintended Equilibrium Lock-In]
-\`\`\`
-
-#### 2. Cross-Disciplinary Structural Isomorphisms (${modelNames})
-
-${models.map((m, idx) => `##### Isomorphism ${idx + 1}: ${m.name} (${m.discipline})
-* **Abstract Essence:** ${m.essence}
-* **Social Science Mapping:** 
-  - *Entity Mapping:* Non-social physical/biological variables map directly to human and institutional dynamics.
-  - *Dynamical Law:* ${m.social_isomorphism}
-* **Application to Dilemma:** In the context of *"${problem}"*, the logic of **${m.name}** demonstrates why standard linear solutions trigger compensatory pushback: the system reacts homeostatically to preserve its structural state.`).join('\n\n')}
-
-#### 3. Integrated Theoretical Mechanism
-By synthesizing these structural laws across disciplines, we formulate a unified non-linear model: The persistence of *"${problem.slice(0, 80)}..."* is governed not by an absence of information, but by an unmodeled physical/evolutionary constraint where administrative complexity scales at a higher polynomial order than institutional absorption capacity.`;
-  }
-
-  function generateCustomCounterinduction(problem, paradigm) {
-    return `### Stage 3: Feyerabendian Counterinductive Dissident (\`counterinduction.md\`)
-
-#### 1. The Undisputed "Observational Fact"
-Within contemporary research under **${paradigm}**, the undisputed observational consensus takes for granted that:
-> *"The observed dysfunction is an exogenous pathology that can be mitigated by increasing procedural transparency, computational bandwidth, and technocratic monitoring."*
-
-#### 2. The Counterinductive Inversion
-Following Paul Feyerabend's principle of counterinduction (*Against Method*), we invent an alternative conceptual system that directly confounds this venerated observational consensus:
-
-**THE COUNTERINDUCTIVE PROPOSITION ($H_{\\text{alt}}$):**
-> *The observed dysfunction is NOT an external failure of the system—it is the direct endogenous product of the corrective mechanisms themselves. Far from alleviating the dilemma, institutional transparency and technical surveillance actively accelerate the exact distortions they claim to suppress.*
-
-#### 3. Deconstructing Theory-Laden Data & Measurement Mirages
-Why does standard empirical evidence appear to support the dominant view? Because the observational instruments are **theory-laden**:
-* Survey questions, compliance scores, and bureaucratic audit metrics are designed from within the assumptions of ${paradigm}.
-* They measure formal compliance while remaining mathematically blind to tactical evasion, relational erosion, and shadow adaptations.
-* What researchers celebrate as "statistically significant improvements" in administrative compliance are merely measurement mirages created by actors learning how to game the evaluation rubric.
-
-#### 4. The Counter-Hypothesis
-Across empirical jurisdictions, adopting heightened monitoring and formal optimization generates a **statistically significant net decline in substantive institutional delivery and equity**, because internal gaming and defensive posturing outpace computational efficiency.`;
-  }
-
-  function generateCustomStressTest(problem, paradigm, models) {
-    return `### Stage 4: Popperian Stress-Tester (\`stress_test.md\`)
-
-#### 1. Formal Causal Directed Acyclic Graph (DAG)
-To ensure the counterinductive hypothesis is methodologically rigorous and fully falsifiable, we specify the structural causal relationships:
-\`\`\`text
-   [Z: Baseline Institutional Capacity]
-            /               \\
-           v                 v
-[T: Structural Intervention] ──► [M: Relational Friction] ──► [Y: Macro Welfare Outcome]
-           \\                                                 ^
-            \\────────────── [C: Colliders / Status Quo] ────/
-\`\`\`
-* **Treatment ($T$):** Implementation of structural reforms derived from ${models.map(m => m.name).slice(0, 2).join(' & ')}.
-* **Outcome ($Y$):** Real-world reduction in systemic dysfunction (measured independently of self-reported compliance).
-* **Potential Colliders ($C$):** Jurisdiction survival bias; voluntary self-selection of high-capacity agencies into pilot programs.
-
-#### 2. Decisive Falsification Criteria (*Experimentum Crucis*)
-In accordance with Karl Popper's criterion of demarcation:
-> **Refutation Threshold:** If an exogenous policy shock introduces structural deregulation without generating the compensatory second-order distortion predicted by our isomorphic model, or if high-surveillance control groups achieve superior democratic/social equilibrium under identical initial conditions, **the counterinductive hypothesis is decisively refuted**.
-
-#### 3. Threats to Identification & Audit Protocol
-* **Endogenous Timing:** Policies are often enacted during crises; we utilize staggered rollout with synthetic control groups to guard against Ashenfelter's dip.
-* **SUTVA Violations:** Behavioral spillovers across adjacent jurisdictions will be controlled for via spatial-autoregressive lag modeling.`;
-  }
-
-  function generateCustomProposal(problem, domain, paradigm, models) {
-    return `# Research Proposal & Pre-Analysis Plan (PAP)
-## Breaking Paradigmatic Stagnation in Social Science: An Isomorphic & Counterinductive Approach
-
-**Substantive Domain:** ${domain}  
-**Target Paradigm:** ${paradigm}  
-**Methodological Protocol:** 5-Stage Agentic Ideation (IdeaScientist-SocSci)  
-**Cross-Disciplinary Latticework:** ${models.map(m => m.name).join(", ")}  
-
----
-
-### 1. Executive Summary & Grand Societal Challenge
-This research project addresses the following foundational dilemma:
-> **"${problem}"**
-
-Mainstream approaches under **${paradigm}** have reached an empirical validation bottleneck. Rather than proposing another marginal regression with incremental controls, this project reformulates the research program by importing structural laws from non-social sciences and testing an adversarial counterinductive hypothesis.
-
-### 2. Core Hypotheses
-* **$H_1$ (Isomorphic Mechanism):** The persistence of this dilemma is governed by structural non-linearities (${models.map(m => m.name).slice(0, 2).join(", ")}), where incremental linear subsidies are dissipated into frictional coordination overhead.
-* **$H_2$ (Feyerabendian Inversion):** The standard observational "facts" in the literature are theory-laden artifacts; conventional corrective policies directly amplify the underlying dysfunction.
-* **$H_3$ (Decisive Falsification Test):** Interventions designed around root structural constraints will produce discontinuous threshold improvements compared to standard marginal tweaks.
-
-### 3. Empirical Design & Identification Strategy
-1. **Quasi-Experimental Identification:** Exploiting jurisdictional boundary discontinuities and staggered policy implementations to isolate exogenous variation in structural constraints.
-2. **Multi-Method Measurement:** Combining high-frequency administrative micro-data with unobtrusive computational behavioral tracing to bypass the measurement mirages of self-reported surveys.
-3. **Pre-Registered Falsification Criteria:** Explicitly registered stopping rules and refutation thresholds ensuring complete Popperian demarcation.
-
-### 4. Broader Impacts & Epistemological Contribution
-By transcending the narrow incrementalism critiqued in modern social science, this project demonstrates how cross-disciplinary mental models and philosophical counterinduction can revitalize inquiry into the defining macro-challenges of our era.`;
   }
 
   // --- Latticework Vault Modal & Search ---
@@ -539,17 +429,18 @@ By transcending the narrow incrementalism critiqued in modern social science, th
       });
     });
 
-    // Launch buttons
-    launchBtn.addEventListener('click', () => runPipeline(false));
-    if (offlineBtn) {
-      offlineBtn.addEventListener('click', () => runPipeline(true));
-    }
-    if (modalOfflineBtn) {
-      modalOfflineBtn.addEventListener('click', () => {
-        apiKeyModal.classList.remove('active');
-        runPipeline(true);
-      });
-    }
+    // Launch button
+    launchBtn.addEventListener('click', runPipeline);
+
+    // Inline Key actions
+    saveInlineKeyBtn?.addEventListener('click', () => setApiKey(inlineApiKey.value));
+    clearInlineKeyBtn?.addEventListener('click', () => setApiKey(''));
+    inlineApiKey?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        setApiKey(inlineApiKey.value);
+      }
+    });
 
     // Copy & Download
     copyBtn.addEventListener('click', () => {
@@ -572,9 +463,9 @@ By transcending the narrow incrementalism critiqued in modern social science, th
     });
 
     // API Key Modal
-    openKeyModalBtn.addEventListener('click', () => apiKeyModal.classList.add('active'));
-    closeKeyModalBtn.addEventListener('click', () => apiKeyModal.classList.remove('active'));
-    saveKeyBtn.addEventListener('click', saveApiKey);
+    openKeyModalBtn?.addEventListener('click', () => apiKeyModal.classList.add('active'));
+    closeKeyModalBtn?.addEventListener('click', () => apiKeyModal.classList.remove('active'));
+    saveKeyBtn?.addEventListener('click', () => setApiKey(apiKeyInput.value));
 
     // Vault Modal
     openVaultModalBtn.addEventListener('click', () => {
