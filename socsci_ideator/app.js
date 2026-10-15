@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearInlineKeyBtn = document.getElementById('clear-inline-key-btn');
   const inlineKeyStatusDot = document.getElementById('inline-key-status-dot');
   const inlineKeyStatusText = document.getElementById('inline-key-status-text');
+  const geminiModelSelect = document.getElementById('gemini-model-select');
   const apiKeyModal = document.getElementById('api-key-modal');
   const apiKeyInput = document.getElementById('api-key-input');
   const saveKeyBtn = document.getElementById('save-key-btn');
@@ -272,42 +273,81 @@ Rather than optimizing for narrow, incremental tweaks in data-rich domains, this
     launchBtn.textContent = "🚀 Launch 5-Stage Ideation Run";
   }
 
-  // --- Live Gemini API Execution (Option A) ---
+  // --- Live Gemini API Execution with Auto-Fallback ---
   async function callGemini(apiKey, promptText) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey.trim()}`;
-    const payload = {
-      contents: [{
-        parts: [{ text: promptText }]
-      }],
-      generationConfig: {
-        temperature: 0.7,
-        topP: 0.95,
-        maxOutputTokens: 4096
-      }
-    };
+    const selectedModel = geminiModelSelect ? geminiModelSelect.value : 'gemini-1.5-flash';
+    // Fallback list to guarantee execution even if one model is retired or at capacity
+    const candidateModels = [selectedModel, 'gemini-1.5-flash', 'gemini-2.5-flash', 'gemini-1.5-pro'];
+    const modelsToTry = [...new Set(candidateModels)];
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    let lastError = null;
 
-    if (!response.ok) {
-      let msg = `HTTP ${response.status} ${response.statusText}`;
+    for (const model of modelsToTry) {
       try {
-        const errData = await response.json();
-        if (errData.error?.message) {
-          msg = errData.error.message;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey.trim()}`;
+        const payload = {
+          contents: [{
+            parts: [{ text: promptText }]
+          }],
+          generationConfig: {
+            temperature: 0.7,
+            topP: 0.95,
+            maxOutputTokens: 4096
+          }
+        };
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          let errBody = "";
+          try {
+            const errData = await response.json();
+            errBody = errData.error?.message || "";
+          } catch (e) {}
+
+          const isUnavailable = response.status === 404 || 
+            errBody.toLowerCase().includes('not found') || 
+            errBody.toLowerCase().includes('no longer available') ||
+            errBody.toLowerCase().includes('is not supported');
+
+          if (isUnavailable) {
+            console.warn(`Model ${model} unavailable (${errBody}), trying fallback...`);
+            lastError = new Error(errBody || `Model ${model} is not available`);
+            continue; // try next candidate model
+          }
+
+          throw new Error(errBody || `HTTP ${response.status} ${response.statusText}`);
         }
-      } catch (e) {}
-      throw new Error(msg);
+
+        const data = await response.json();
+        if (!data.candidates || !data.candidates[0]?.content?.parts?.[0]?.text) {
+          throw new Error("Gemini returned an empty response or the response was filtered.");
+        }
+
+        // If a fallback model worked, sync the dropdown
+        if (geminiModelSelect && geminiModelSelect.value !== model) {
+          geminiModelSelect.value = model;
+        }
+
+        return data.candidates[0].content.parts[0].text;
+      } catch (err) {
+        const isUnavailable = err.message.toLowerCase().includes('not found') || 
+          err.message.toLowerCase().includes('no longer available') ||
+          err.message.toLowerCase().includes('is not supported');
+
+        if (isUnavailable) {
+          lastError = err;
+          continue;
+        }
+        throw err;
+      }
     }
 
-    const data = await response.json();
-    if (!data.candidates || !data.candidates[0]?.content?.parts?.[0]?.text) {
-      throw new Error("Gemini returned an empty response or the response was filtered.");
-    }
-    return data.candidates[0].content.parts[0].text;
+    throw lastError || new Error("All candidate Gemini models failed. Please verify your API key.");
   }
 
   async function runGeminiLivePipeline(apiKey, problem, domain, paradigm, models) {

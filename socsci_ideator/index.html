@@ -79,7 +79,7 @@
       <div class="api-config-strip" style="background:rgba(19, 29, 49, 0.75); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:1rem; margin-top:1.25rem; margin-bottom:1.25rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.5rem;">
           <div style="font-size:0.85rem; font-weight:600; color:var(--text-heading); display:flex; align-items:center; gap:0.5rem;">
-            <span>⚡ AI Engine: Google Gemini 2.0 Flash (Free Tier)</span>
+            <span>⚡ AI Engine: Google Gemini</span>
             <span class="status-dot" id="inline-key-status-dot"></span>
           </div>
           <div style="font-size:0.8rem; font-family:var(--font-mono);">
@@ -90,8 +90,15 @@
         </div>
         
         <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
-          <div style="flex:1; min-width:260px;">
+          <div style="flex:1; min-width:240px;">
             <input type="password" id="inline-api-key" placeholder="Paste your Gemini API key (AIzaSy...) here to run live reasoning..." style="width:100%; padding:0.6rem 0.85rem; background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-sm); color:var(--text-heading); font-family:var(--font-mono); font-size:0.85rem;">
+          </div>
+          <div>
+            <select id="gemini-model-select" style="padding:0.6rem 0.8rem; background:var(--bg-color); border:1px solid var(--border-color); border-radius:var(--radius-sm); color:var(--text-heading); font-family:var(--font-mono); font-size:0.82rem; cursor:pointer;">
+              <option value="gemini-2.5-flash">gemini-2.5-flash (Fast & Latest)</option>
+              <option value="gemini-1.5-flash" selected>gemini-1.5-flash (Stable)</option>
+              <option value="gemini-1.5-pro">gemini-1.5-pro (Deep Reasoning)</option>
+            </select>
           </div>
           <div style="display:flex; gap:0.5rem;">
             <button id="save-inline-key-btn" class="btn-pill" style="padding:0.6rem 1.1rem; font-size:0.8rem; background:var(--accent-color); color:#0b1120; font-weight:600; border:none; cursor:pointer;">
@@ -103,7 +110,7 @@
           </div>
         </div>
         <div id="inline-key-status-text" style="font-size:0.78rem; margin-top:0.45rem; color:var(--text-muted); font-family:var(--font-mono);">
-          Keys are stored strictly in your browser local storage and communicated directly with Google AI Studio.
+          Keys are stored strictly in your browser local storage. Auto-fallbacks between supported Gemini models.
         </div>
       </div>
 
@@ -114,7 +121,7 @@
           </button>
         </div>
         <div style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">
-          Executes the 5-stage agent pipeline live via Gemini 2.0 Flash
+          Executes the 5-stage agent pipeline live via Google Gemini
         </div>
       </div>
     </section>
