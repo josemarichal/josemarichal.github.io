@@ -24,6 +24,8 @@ Theorizing the transformation of digital capitalism into cloud-based technofeuda
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
 | 2026-10-04 | **Theoretical Scope Defined** | Synthesizing Saura García's datafeudalism, Coeckelbergh's technofascism critiques, and Varoufakis's cloud capital theory to evaluate civic digital sovereignty. |
+| 2026-10-15 | **Case Study: Cloud Rent & Enshittification** | Analyzed Doctorow's empirical breakdown of Amazon and Expedia's cloud rent mechanisms (51-60% merchant fee take-rates, $80B+ pay-to-play search auctions, and MFN price-parity rules that export platform rents to direct/offline transactions). |
+| 2026-10-15 | **State Anti-Cloud Rent Policy Landscape** | Mapped state legislative and judicial counter-offensives against platform rentierism: CA COMPETE Act (AB 1776 single-firm monopolization) & Bonta MFN lawsuit; NY 21st Century Antitrust Act (Abuse of Dominance); DC & WA price-parity enforcement; and 22-state coalition challenges to manipulated ad-auction pricing. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

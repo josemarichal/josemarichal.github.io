@@ -27,6 +27,7 @@
 | **Unaccountable AI** | [`projects/unaccountable_ai/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/unaccountable_ai/AGENTS.md) | `In Development` | Active |
 | **Techno-Pessimism** | [`projects/techno_pessimism/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/techno_pessimism/AGENTS.md) | `In Development` | Active |
 | **Pluralist AI** | [`projects/pluralist_ai/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/pluralist_ai/AGENTS.md) | `In Development` | Active |
+| **Civic AI** | [`projects/civic_ai/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/civic_ai/AGENTS.md) | `projects.html` | Active |
 
 ---
 
