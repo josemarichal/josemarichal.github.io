@@ -122,20 +122,15 @@ COURSE SCHEDULE
   * **Assigned Reading:** [The road to housing in California runs through the federal government (CalMatters)](https://calmatters.org/housing/2026/07/road-housing-california-federal/)
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vTC2LAnblq_uSUmE33RVbSqoBwlaydFgRZ7sDRaqw67WfdvcsooRr-63IEo4PkWFqlntTiVSVO36-te/pub?start=false&loop=false&delayms=3000)
 
-* **Case Study:** Housing & Homelessness
-
 **Wed, Sep. 2**
 * **Required:**
   * **Assigned Reading:** **Stone**, Chapter 3 ("Efficiency")
   * **Assigned Reading:** *[OSU OER, Chapter 1 ("Introduction and Themes")](https://open.oregonstate.education/statelocal/chapter/chapter-1/)*.
 
-* **Case Study:** Housing & Homelessness
-
 **Fri, Sep. 4**
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 2 ("Federalism")](https://open.oregonstate.education/statelocal/chapter/chapter-2/)* & *[Chapter 6 ("State Constitutions")](https://open.oregonstate.education/statelocal/chapter/chapter-6/)*.
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/1cF4ey7LNfdM289BAeOEuKBtEU9IYwaKSxdnlK6uyuvs/edit?slide=id.g3fb251d7d21_0_19#slide=id.g3fb251d7d21_0_19)
-* **Case Study:** Housing & Homelessness
 * ***Discussion Prompt:** How does federalism constrain California's ability to solve its affordable housing crisis locally, and how does the Polis conceptualize 'equity' in housing access compared to the Market?*
 
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section (Submit one proposed question for the Oct 6 City Council Housing Forum).
@@ -148,8 +143,6 @@ COURSE SCHEDULE
 **Wed, Sep. 9**
 * **Required:**
   * **Assigned Reading:** **OSU OER**, Chapter 6 (cont.); PPIC, "California’s Initiative Process: Then and Now."
-
-* **Case Study:** Housing & Homelessness
 
 **Fri, Sep. 11**
 * **Required:**
@@ -261,30 +254,27 @@ COURSE SCHEDULE
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 7 ("Legislatures")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-7/)*
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSJ44-dLM2kBqq2UqSG7IQztFmN5QvagFHJPSr5ncvbYJGWjk1rEZy2qFIFb9fizrgdr-E7U-2VUcOO/pub?start=false&loop=false&delayms=3000)
-* **Case Study:** Economy & Labor
 * ***Discussion Prompt:** What specific legislative and institutional mechanisms explain why California public agencies struggle to deliver affordable housing projects on time and on budget?*
 
 **Wed, Oct. 14**
 * **Required:**
   * **Assigned Reading:** **Stone**, Chapter 8 ("Causes").
   * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSnKMyrm_xz-qzwSlbakPhy2ItTKUrSL1KBV5JFn2P8NY9kx5i_UIQjCsJGcdPdfp0eS7EdZ4hqU4o4/pub?start=false&loop=false&delayms=3000)
-* **Case Study:** Health & Safety Net
 * ***Discussion Prompt:** How do competing political narratives attribute the 'causes' of homelessness to either individual moral failure or systemic housing shortages, and how does this affect policy solutions?*
 * 📌 **In-Class:** Complete weekly Policy Advocacy Workbook section.
 
 **Fri, Oct. 16**
 * **Required:**
   * **Assigned Reading:** **Stone**, Chapter 15 ("Powers").
-* **Case Study:** Housing & Homelessness
+  * Review: [Discussion Slides](https://docs.google.com/presentation/d/e/2PACX-1vSYU2v3l73PM68vUb4PavFtwkZGjLpdO1bzweCa0mGBoOOXkTfySgvDYY9tyi-i6pv_yWFcuUYJFWYA/pub?start=false&loop=false&delayms=3000)
+
 
 ---
 
 ### **Week 9: Budgeting and Decisions**
 
 **Mon, Oct. 19**
-* **Required:**
-  * **Assigned Reading:** *[OSU OER, Chapter 11 ("Budgeting and Sustainability")](https://open.oregonstate.education/stateandlocalgovernment3e/chapter/chapter-11/)*; Legislative Analyst’s Office (LAO), *[California’s Tax System: A Primer](https://lao.ca.gov/reports/2021/4416/tax-system-primer-041521.pdf)*.
-* **Case Study:** Housing & Homelessness
+* *No assigned reading.*
 
 **Wed, Oct. 21**
 * **Required:**
@@ -301,7 +291,6 @@ COURSE SCHEDULE
 
 **Mon, Oct. 26**
 * **Required:**
-* **Case Study:** Environment
   * **Stone**, Chapter 5 ("Liberty").
 * ***Discussion Prompt:** In the Polis, how do we navigate the conflict between protecting existing neighborhood character and the urgent need to build high-density affordable housing?*
 
@@ -312,8 +301,6 @@ COURSE SCHEDULE
 
 **Fri, Oct. 30**
 * **Required:**
-* **Case Study:** Environment
-* **Case Study:** Environment
 * ***Discussion Prompt:** Which interest groups wield the most power in local housing disputes, and how do they overcome the collective action problem compared to unhoused or prospective residents?*
 
 ### **Week 11: Liberty, Surveillance, and Rights**
@@ -327,7 +314,6 @@ COURSE SCHEDULE
 
 **Fri, Nov. 6**
 * **Required:**
-* **Case Study:** Economy & Labor
 * ***Discussion Prompt:** What specific legislative and institutional mechanisms explain why California public agencies struggle to deliver affordable housing projects on time and on budget?*
 
 ### **Week 12: Infrastructure, Inequality, and Decision-Making**
@@ -338,11 +324,9 @@ COURSE SCHEDULE
 
 **Wed, Nov. 11**
 * **Required:**
-* **Case Study:** Economy & Labor
 
 **Fri, Nov. 13**
 * **Required:**
-* **Case Study:** Economy & Labor
   * **Stone**, Chapter 10 ("Decisions & Persuasion").
 * ***Discussion Prompt:** How do political symbols associated with 'Silicon Valley tech wealth' versus 'unhoused encampments' shape the legislative debate over housing inequality?*
 
@@ -351,11 +335,9 @@ COURSE SCHEDULE
 **Mon, Nov. 16**
 * **Required:**
   * **Assigned Reading:** *[OSU OER, Chapter 12 ("Entitlements")](https://open.oregonstate.education/statelocal/chapter/chapter-12/)*
-* **Case Study:** Health & Safety Net
 
 **Wed, Nov. 18**
 * **Required:**
-* **Case Study:** Education
 
 **Fri, Nov. 20**
 * **Required:**
@@ -386,7 +368,6 @@ COURSE SCHEDULE
 
 **Wed, Dec. 2**
 * **Required:**
-* **Case Study:** Housing & Homelessness
 
 **Fri, Dec. 4**
 * **Required:**
