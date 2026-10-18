@@ -24,6 +24,7 @@ Investigating and prototyping Civic Digital Twins and participatory civic AI fra
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
 | 2026-10-15 | **Project Established: Civic AI (Digital Twinning)** | Initialized project to theorize and prototype participatory civic digital twins, community data commons, and democratic urban simulations. |
+| 2026-10-18 | **T&S Working Group Navigation Unification** | Removed redundant `about.html`, renamed the navigation tab to "T&S Working Group" across all 62 pages, and updated page titles. |
 | 2026-10-18 | **Idea to Civic App Pipeline Showcase Card** | Added dedicated project card on `projects.html` for the 4-phase civic app mentorship pipeline (linking to `pail_mentorship_framework.html`), streamlining intro text. |
 | 2026-10-15 | **Civic Digital Twinning Research Synthesis** | Benchmarked global experiments in participatory urban digital twins: Bologna's *Gemello Digitale Civico* (climate neutrality & neighborhood labs), Barcelona's *vCity* + Decidim (Superblocks & sovereignty), Helsinki 3D+ (Kalasatama co-design), Gothenburg's *MinStad*, Dublin Smart Docklands, and Boston's "Right to the Digital Twin City." |
 
