@@ -4,31 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Marichal - Professor of Political Science | California Lutheran University</title>
-    <link rel="stylesheet" href="style.css?v=8">
-    
+    <title>José Marichal — Professor of Political Science | California Lutheran University</title>
+    <meta name="description" content="Official website of Dr. José Marichal, Professor of Political Science at California Lutheran University. Author of 'You Must Become an Algorithmic Problem' and forthcoming 'Machine Liberalism'.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 
-<body>
+<body class="home-page">
+    <!-- Subpage Header (Hidden on home page, active on subpages) -->
     <header>
         <div class="container">
             <div class="logo">
-                <!-- Logo now links back to this index page -->
-                <a href="index.html">José <span>Marichal</span></a>
+                <a href="index.html">José Marichal<span class="lime-dot-sm" aria-hidden="true"></span></a>
             </div>
-            <nav>
+            <nav aria-label="Primary Navigation">
                 <ul>
-                    <li><a href="cv.html">CV</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="about.html">Tech &amp; Society</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="about.html">Tech & Society</a></li>
                     <li><a href="books.html">Books</a></li>
-                    <li><a href="media.html">Media</a></li>
-                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="ai_tools.html">AI Tools</a></li>
                     <li><a href="mental_models.html">Mental Models</a></li>
-                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Talks</a></li>
+                    <li><a href="cv.html">CV</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,95 +38,292 @@
 
     <main>
         <div class="container">
-            <section id="bio" class="algorithmic-hero">
-                <div class="bio-image">
-                    <div class="image-wrapper">
-                        <img src="images/profile_sharpened.png" alt="José Marichal - Profile Picture">
-                    </div>
-                    <div class="bio-social-links">
-                        <a href="https://bsky.app/profile/josemarichal.bsky.social" target="_blank" rel="noopener noreferrer" class="social-badge bsky" title="Bluesky">
-                            <svg viewBox="0 0 568 501" width="15" height="15" fill="currentColor"><path d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.25 122.392-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-66.452 192.673-185.702 70.281-63.111-64.76-33.889-129.52 80.986-149.07-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"/></svg>
-                            <span>Bluesky</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/jose-marichal-713b302" target="_blank" rel="noopener noreferrer" class="social-badge linkedin" title="LinkedIn">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://x.com/profmarichal" target="_blank" rel="noopener noreferrer" class="social-badge x-twitter" title="X (Twitter)">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                            <span>X</span>
-                        </a>
+            <!-- =================================================================
+                 HERO SECTION (Warsaw New Theater Editorial Brutalist Composition)
+                 ================================================================= -->
+            <section class="brutalist-hero" id="hero">
+                <!-- Left Column: Top Navigation List + Bottom Giant Monolith Title -->
+                <div class="hero-left-pane">
+                    <nav class="brutalist-nav-index" aria-label="Quick Directory">
+                        <div class="nav-index-label">// DIRECTORY</div>
+                        <ul class="nav-index-list">
+                            <li><a href="about.html"><span class="idx">01</span> Technology &amp; Society Working Group</a></li>
+                            <li><a href="projects.html"><span class="idx">02</span> Projects &amp; Prototypes</a></li>
+                            <li><a href="books.html"><span class="idx">03</span> Books &amp; Monographs</a></li>
+                            <li><a href="teaching.html"><span class="idx">04</span> Teaching &amp; Syllabi</a></li>
+                            <li><a href="ai_tools.html"><span class="idx">05</span> AI Tools &amp; Ideator</a></li>
+                            <li><a href="mental_models.html"><span class="idx">06</span> Mental Models Studio</a></li>
+                            <li><a href="blog.html"><span class="idx">07</span> Machine Liberalism Blog</a></li>
+                            <li><a href="media.html"><span class="idx">08</span> Media &amp; Commentary</a></li>
+                            <li><a href="invited_talks.html"><span class="idx">09</span> Invited Talks</a></li>
+                            <li><a href="cv.html"><span class="idx">10</span> Curriculum Vitae</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="hero-monolith">
+                        <h1 class="monolith-name">
+                            José<br>Marichal<span class="lime-dot" aria-hidden="true"></span>
+                        </h1>
+                        <p class="monolith-subtitle">
+                            Professor of Political Science <span class="sep">&bull;</span> California Lutheran University
+                        </p>
                     </div>
                 </div>
-                <div class="bio-text">
-                    <h1>José Marichal</h1>
-                    <h2 class="sub-heading">Professor of Political Science <br> California Lutheran University</h2>
-                    
-                    <div class="research-statement">
+
+                <!-- Right Column: Top Narrative Paragraph + Bottom B&W Photo -->
+                <div class="hero-right-pane">
+                    <div class="hero-editorial-lead">
                         <p>
-                            <em>"I specialize in studying the role that algorithms and AI play in restructuring social and political institutions. My work explores the unwritten social contract we have with the computational systems that shape our reality."</em>
+                            Investigating how algorithms and computational infrastructure restructure democracy, social contracts, and political power. Author of <strong>"You Must Become an Algorithmic Problem"</strong> (Bristol University Press, 2025) and forthcoming <strong>"Machine Liberalism"</strong> (Intellect / Univ. of Chicago Press, 2027).
                         </p>
                     </div>
-                    
-                    <div class="bio-details">
-                        <p>
-                            Author of <strong>"You Must Become an Algorithmic Problem"</strong> (Bristol University Press, 2025). 
-                            My next project, <strong>"Machine Liberalism"</strong>, looks at how algorithms and AI are changing our expectations of liberal democracy (forthcoming 2027 Intellect Books/University of Chicago Press).
-                        </p>
-                        <ul class="schematic-links">
-                            <li><a href="projects.html">Projects &amp; Prototypes <span class="arrow">&rarr;</span></a></li>
-                            <li><a href="mental_models.html">Mental Model Problem Solver <span class="arrow">&rarr;</span></a></li>
-                            <li><a href="blog.html">Machine Liberalism Blog <span class="arrow">&rarr;</span></a></li>
-                            <li><a href="about.html">Technology and Society Working Group <span class="arrow">&rarr;</span></a></li>
-                            <li><a href="teaching.html">Teaching Activities <span class="arrow">&rarr;</span></a></li>
-                            <li><a href="un_sustainable_development_goals.html">UN SDG Dashboard <span class="arrow">&rarr;</span></a></li>
-                            <li><a href="cv.html">Curriculum Vitae <span class="arrow">&rarr;</span></a></li>
-                        </ul>
+
+                    <div class="hero-portrait-frame">
+                        <div class="portrait-meta-tag">
+                            <span class="lime-tag-dot" aria-hidden="true"></span>
+                            <span>CALIFORNIA LUTHERAN UNIVERSITY // 34.2257° N, 118.8781° W</span>
+                        </div>
+                        <div class="portrait-img-box">
+                            <img src="images/profile_sharpened.png" alt="José Marichal - Professor of Political Science" class="portrait-img">
+                            <span class="photo-accent-dot" aria-hidden="true"></span>
+                        </div>
+                        <div class="portrait-social-strip">
+                            <a href="https://bsky.app/profile/josemarichal.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky &nearr;</a>
+                            <a href="https://www.linkedin.com/in/jose-marichal-713b302" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
+                            <a href="https://x.com/profmarichal" target="_blank" rel="noopener noreferrer">X &nearr;</a>
+                            <a href="mailto:marichal@callutheran.edu">Email &nearr;</a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="research-trajectory">
-                <h3>Research Trajectory & Themes</h3>
-                <div class="timeline">
-                    <div class="timeline-node">
-                        <span class="node-date">2027</span>
-                        <div class="node-content">
-                            <h4>Machine Liberalism</h4>
-                            <p>Intellect Books / University of Chicago Press. Exploring AI's impact on expectations of liberal democracy.</p>
+            <!-- =================================================================
+                 SECTION 01: MONOGRAPHS & BOOKS
+                 ================================================================= -->
+            <section class="brutalist-section" id="books">
+                <div class="section-rule-header">
+                    <span class="section-tag">// 01 &bull; SELECTED MONOGRAPHS &amp; BOOKS</span>
+                    <a href="books.html" class="section-action-link">View Full Bibliography &rarr;</a>
+                </div>
+
+                <div class="brutalist-books-grid">
+                    <!-- Book 1 -->
+                    <article class="brutalist-book-card">
+                        <div>
+                            <div class="book-year-badge">2027 &bull; FORTHCOMING</div>
+                            <h2 class="book-title">Machine Liberalism</h2>
+                            <p class="book-subtitle">Algorithmic Power and Democratic Expectations</p>
+                            <p class="book-press">Intellect Books / University of Chicago Press</p>
+                            <p class="book-summary">
+                                Investigating how pervasive AI systems, predictive analytics, and platform monopolies are fundamentally redefining liberal democratic expectations of citizenship, the state, and procedural justice.
+                            </p>
                         </div>
+                        <a href="blog.html" class="brutalist-btn">Read Project Dispatches &rarr;</a>
+                    </article>
+
+                    <!-- Book 2 -->
+                    <article class="brutalist-book-card featured-lime">
+                        <div>
+                            <div class="book-year-badge">2025 &bull; MONOGRAPH</div>
+                            <h2 class="book-title">You Must Become an Algorithmic Problem</h2>
+                            <p class="book-subtitle">The Social Contract of Computational Systems</p>
+                            <p class="book-press">Bristol University Press</p>
+                            <p class="book-summary">
+                                Interrogating the implicit covenants citizens make with algorithmic systems. Explores how optimization logic suppresses human contingency, and argues for civic agency through intentional friction.
+                            </p>
+                        </div>
+                        <a href="books.html" class="brutalist-btn">Book Details &amp; Pre-order &rarr;</a>
+                    </article>
+
+                    <!-- Book 3 -->
+                    <article class="brutalist-book-card">
+                        <div>
+                            <div class="book-year-badge">2012 &bull; MONOGRAPH</div>
+                            <h2 class="book-title">Facebook Democracy</h2>
+                            <p class="book-subtitle">The Architecture of Disclosure and the Threat to Public Life</p>
+                            <p class="book-press">Routledge (Politics and Technology Series)</p>
+                            <p class="book-summary">
+                                A seminal critique examining how Web 2.0 social architectures privatize public discourse, encourage performative consensus, and enclose democratic deliberation in algorithmic filter channels.
+                            </p>
+                        </div>
+                        <a href="books.html" class="brutalist-btn">Monograph Archive &rarr;</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 SECTION 02: TECHNOLOGY & SOCIETY WORKING GROUP
+                 ================================================================= -->
+            <section class="brutalist-section" id="working-group">
+                <div class="section-rule-header">
+                    <span class="section-tag">// 02 &bull; TECHNOLOGY &amp; SOCIETY WORKING GROUP</span>
+                    <a href="projects.html" class="section-action-link">View All Lab Projects &rarr;</a>
+                </div>
+
+                <div class="working-group-intro">
+                    <p>
+                        An interdisciplinary research laboratory at California Lutheran University investigating the structural costs of artificial intelligence while engineering living civic intelligence pipelines. Fellows use agentic coding and critical STS frameworks to evaluate algorithmic systems in the wild.
+                    </p>
+                </div>
+
+                <div class="brutalist-project-list">
+                    <!-- Project 1 -->
+                    <div class="project-row">
+                        <span class="row-num">01</span>
+                        <div class="row-main">
+                            <span class="row-domain">AUTOMATED POLICING &bull; CIVIL LIBERTIES</span>
+                            <h3>Flock Cameras in Low-Income Communities</h3>
+                            <p>Spatial auditing of automated license plate reader (ALPR) camera networks across Southern California, analyzing how private surveillance grids generate automated suspicion in marginalized communities.</p>
+                        </div>
+                        <a href="projects.html" class="row-link">Case Dossier &rarr;</a>
                     </div>
-                    <div class="timeline-node">
-                        <span class="node-date">2025</span>
-                        <div class="node-content">
-                            <h4>You Must Become an Algorithmic Problem</h4>
-                            <p>Bristol University Press. The social contract of algorithms.</p>
+
+                    <!-- Project 2 -->
+                    <div class="project-row">
+                        <span class="row-num">02</span>
+                        <div class="row-main">
+                            <span class="row-domain">POLITICAL ECOLOGY &bull; ENERGY &amp; WATER</span>
+                            <h3>Rhetoric of Data Center Resistance</h3>
+                            <p>Analyzing grassroots civic resistance against hyperscale computing facilities, documenting municipal moratoriums, water scarcity impacts, and California's landmark 2026 data center regulatory reforms.</p>
                         </div>
+                        <a href="projects.html" class="row-link">Case Dossier &rarr;</a>
                     </div>
-                    <div class="timeline-node">
-                        <span class="node-date">ONGOING</span>
-                        <div class="node-content">
-                            <h4>Machine Learning & Civic Life</h4>
-                            <p>Developing interactive dashboards and AI coding experiments for civic pedagogy.</p>
+
+                    <!-- Project 3 -->
+                    <div class="project-row">
+                        <span class="row-num">03</span>
+                        <div class="row-main">
+                            <span class="row-domain">DEMOCRATIC COMMONS &bull; CIVIC DIGITAL TWINS</span>
+                            <h3>Civic Digital Twinning &amp; Public AI</h3>
+                            <p>Examining participatory virtual city replicas (Bologna, Barcelona, Helsinki) that combine qualitative citizen lived experience with spatial data to co-design climate resilience and transit equity.</p>
                         </div>
+                        <a href="projects.html" class="row-link">Case Dossier &rarr;</a>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-row">
+                        <span class="row-num">04</span>
+                        <div class="row-main">
+                            <span class="row-domain">PLATFORM CAPITALISM &bull; ANTITRUST</span>
+                            <h3>Cloud Rent &amp; Platform Monopolies</h3>
+                            <p>Deconstructing 51–60% merchant fee take-rates, pay-to-play search placement tolls, and state-level antitrust counter-offensives (including California's COMPETE Act and multi-state litigation).</p>
+                        </div>
+                        <a href="projects.html" class="row-link">Case Dossier &rarr;</a>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-row">
+                        <span class="row-num">05</span>
+                        <div class="row-main">
+                            <span class="row-domain">LOCAL DEMOCRACY &bull; CIVIC INTELLIGENCE</span>
+                            <h3>Thousand Oaks Civic Knowledge Graph</h3>
+                            <p>Converting City Council transcripts, voting records, and general plan amendments into an interactive, citizen-navigable knowledge graph for local democratic accountability.</p>
+                        </div>
+                        <a href="thousand_oaks_civic_graph.html" class="row-link">Launch Graph &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 SECTION 03: PEDAGOGY, AI TOOLS & CIVIC APPS
+                 ================================================================= -->
+            <section class="brutalist-section" id="tools">
+                <div class="section-rule-header">
+                    <span class="section-tag">// 03 &bull; PEDAGOGY, AI TOOLS &amp; CIVIC EXPERIMENTS</span>
+                    <a href="ai_tools.html" class="section-action-link">Explore All Tools &rarr;</a>
+                </div>
+
+                <div class="brutalist-tools-grid">
+                    <a href="socsci_ideator/index.html" class="brutalist-tool-tile">
+                        <div class="tool-tile-top">
+                            <span class="tool-num">TOOL 01</span>
+                            <span class="tool-badge">GEMINI 2.0 FLASH</span>
+                        </div>
+                        <h4>IdeaScientist - SocSci Ideator</h4>
+                        <p>Dynamic platform applying 20 multidisciplinary social science models (Polis, Rhizome, Assemblage) to resolve wicked research dilemmas in real time.</p>
+                        <span class="tile-arrow">&rarr;</span>
+                    </a>
+
+                    <a href="mental_models.html" class="brutalist-tool-tile">
+                        <div class="tool-tile-top">
+                            <span class="tool-num">TOOL 02</span>
+                            <span class="tool-badge">DECISION LOGIC</span>
+                        </div>
+                        <h4>Mental Model Problem Solver</h4>
+                        <p>Curated diagnostic vault offering prompts and structured frameworks to help researchers unpack systemic policy traps and cognitive biases.</p>
+                        <span class="tile-arrow">&rarr;</span>
+                    </a>
+
+                    <a href="syllabus_california_politics.html" class="brutalist-tool-tile">
+                        <div class="tool-tile-top">
+                            <span class="tool-num">COURSE 01</span>
+                            <span class="tool-badge">SYLLABUS &bull; 2026</span>
+                        </div>
+                        <h4>California Politics &amp; Policy</h4>
+                        <p>Living course syllabus examining California's housing deficit, CEQA vetocracy, direct democracy initiatives, and the Abundance Agenda.</p>
+                        <span class="tile-arrow">&rarr;</span>
+                    </a>
+
+                    <a href="un_sustainable_development_goals.html" class="brutalist-tool-tile">
+                        <div class="tool-tile-top">
+                            <span class="tool-num">TOOL 03</span>
+                            <span class="tool-badge">GLOBAL POLICY</span>
+                        </div>
+                        <h4>UN SDG Dashboard</h4>
+                        <p>Interactive exploratory dashboard evaluating progress toward the United Nations Sustainable Development Goals and climate thresholds.</p>
+                        <span class="tile-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 SECTION 04: ACADEMIC APPOINTMENTS & CV STRIP
+                 ================================================================= -->
+            <section class="brutalist-section" id="academic-cv">
+                <div class="section-rule-header">
+                    <span class="section-tag">// 04 &bull; ACADEMIC APPOINTMENTS &amp; DOSSIER</span>
+                    <a href="cv.html" class="section-action-link">Full Curriculum Vitae &rarr;</a>
+                </div>
+
+                <div class="brutalist-cv-strip">
+                    <div class="cv-col">
+                        <h5>CURRENT APPOINTMENT</h5>
+                        <p class="cv-lead">Professor of Political Science</p>
+                        <p class="cv-sub">California Lutheran University (2004–Present)</p>
+                        <p class="cv-detail">Chair, Department of Political Science &bull; Convener, Technology and Society Working Group &bull; Thousand Oaks, California.</p>
+                    </div>
+                    <div class="cv-col">
+                        <h5>EDUCATION</h5>
+                        <p class="cv-lead">Ph.D. in Political Science</p>
+                        <p class="cv-sub">University of California, Santa Barbara (2003)</p>
+                        <p class="cv-detail">B.A. in Political Science, University of California, Los Angeles (1995).</p>
+                    </div>
+                    <div class="cv-col">
+                        <h5>CORE EXPERTISE</h5>
+                        <p class="cv-lead">Critical STS &bull; Algorithmic Governance</p>
+                        <p class="cv-sub">Platform Capitalism &bull; California Politics</p>
+                        <p class="cv-detail">Regular consultant on municipal participatory governance, digital surveillance oversight, and state technology legislation.</p>
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
+    <!-- =================================================================
+         BRUTALIST ARCHITECTURAL FOOTER
+         ================================================================= -->
     <footer>
         <div class="container footer-content">
-            <p>© 2026 José Marichal. All rights reserved.</p>
+            <p>LOCATION: 34.2257° N, 118.8781° W // CALIFORNIA LUTHERAN UNIVERSITY // © 2026 JOSÉ MARICHAL // ALL RIGHTS RESERVED</p>
             <div class="footer-social-links">
                 <a href="https://bsky.app/profile/josemarichal.bsky.social" target="_blank" rel="noopener noreferrer" title="Bluesky" aria-label="Bluesky">
-                    <svg viewBox="0 0 568 501" width="17" height="17" fill="currentColor"><path d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.25 122.392-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-66.452 192.673-185.702 70.281-63.111-64.76-33.889-129.52 80.986-149.07-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"/></svg>
+                    <svg viewBox="0 0 568 501" width="16" height="16" fill="currentColor"><path d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.25 122.392-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-66.452 192.673-185.702 70.281-63.111-64.76-33.889-129.52 80.986-149.07-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"/></svg>
                 </a>
                 <a href="https://www.linkedin.com/in/jose-marichal-713b302" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>
                 </a>
                 <a href="https://x.com/profmarichal" target="_blank" rel="noopener noreferrer" title="X (Twitter)" aria-label="X (Twitter)">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
             </div>
         </div>
