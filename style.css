@@ -84,11 +84,11 @@ body.home-page {
 /* --- Typography --- */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-heading);
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: var(--spacing-sm);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
 }
 
 h1 {
@@ -368,9 +368,9 @@ header nav ul li a.active {
 .monolith-name {
     font-family: var(--font-display);
     font-size: clamp(3.2rem, 5.8vw, 6.2rem);
-    font-weight: 900;
+    font-weight: 800;
     line-height: 0.94;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.025em;
     color: var(--text-heading);
     margin: 0 0 1rem 0;
     text-transform: none;
