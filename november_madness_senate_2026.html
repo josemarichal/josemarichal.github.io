@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>November Madness: 2026 U.S. Senate Election Pool</title>
+    <style>
+        @page {
+            size: letter portrait;
+            margin: 0.35in 0.4in;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 8.5pt;
+            line-height: 1.25;
+        }
+
+        .page {
+            page-break-after: always;
+            height: 10.2in;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Header */
+        .sheet-header {
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .title-block h1 {
+            font-size: 18pt;
+            font-weight: 900;
+            margin: 0 0 2px 0;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: #0f172a;
+        }
+
+        .title-block .subtitle {
+            font-size: 8pt;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .player-info-card {
+            border: 1.5px solid #0f172a;
+            border-radius: 4px;
+            padding: 4px 10px;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap: 12px;
+            background: #f8fafc;
+            font-size: 8pt;
+        }
+
+        .player-field {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .player-field label {
+            font-weight: 700;
+            color: #334155;
+            text-transform: uppercase;
+            font-size: 7pt;
+        }
+
+        .player-line {
+            display: inline-block;
+            border-bottom: 1px solid #64748b;
+            min-width: 80px;
+            height: 14px;
+        }
+
+        /* Section Banners */
+        .section-banner {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 3px 8px;
+            font-weight: 800;
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-banner.secondary {
+            background: #334155;
+        }
+
+        .section-banner .tagline {
+            font-size: 7pt;
+            font-weight: 500;
+            opacity: 0.85;
+            letter-spacing: 0.02em;
+        }
+
+        /* Grid */
+        .races-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10px;
+            row-gap: 3.5px;
+            flex-grow: 1;
+        }
+
+        /* Race Card */
+        .race-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .race-card.battleground {
+            border-left: 3.5px solid #d97706;
+            background: #fffbeb;
+        }
+
+        .race-card.lean {
+            border-left: 3.5px solid #2563eb;
+            background: #eff6ff;
+        }
+
+        .race-card.gop-lean {
+            border-left: 3.5px solid #dc2626;
+            background: #fef2f2;
+        }
+
+        .race-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            min-width: 140px;
+        }
+
+        .state-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .state-code {
+            font-weight: 900;
+            font-size: 9.5pt;
+            color: #0f172a;
+        }
+
+        .state-name {
+            font-weight: 700;
+            font-size: 8.5pt;
+            color: #1e293b;
+        }
+
+        .badge {
+            font-size: 6pt;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .badge-tossup {
+            background: #d97706;
+            color: #ffffff;
+        }
+
+        .badge-lean-d {
+            background: #1d4ed8;
+            color: #ffffff;
+        }
+
+        .badge-lean-r {
+            background: #b91c1c;
+            color: #ffffff;
+        }
+
+        .badge-special {
+            background: #7c3aed;
+            color: #ffffff;
+        }
+
+        .incumbent-line {
+            font-size: 7pt;
+            color: #64748b;
+        }
+
+        .incumbent-party {
+            font-weight: 700;
+        }
+        .party-d { color: #1d4ed8; }
+        .party-r { color: #b91c1c; }
+        .party-i { color: #059669; }
+
+        /* Prediction Controls */
+        .prediction-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pick-options {
+            display: flex;
+            gap: 4px;
+        }
+
+        .pick-label {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-weight: 700;
+            font-size: 7.5pt;
+            padding: 2px 5px;
+            border: 1px solid #94a3b8;
+            border-radius: 3px;
+            background: #ffffff;
+        }
+
+        .pick-label.d-pick { border-color: #93c5fd; color: #1d4ed8; }
+        .pick-label.r-pick { border-color: #fca5a5; color: #b91c1c; }
+        .pick-label.i-pick { border-color: #cbd5e1; color: #475569; }
+
+        .checkbox-square {
+            width: 10px;
+            height: 10px;
+            border: 1.5px solid currentColor;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        /* Result Verification Columns */
+        .result-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-left: 1px dashed #cbd5e1;
+            padding-left: 6px;
+        }
+
+        .actual-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .actual-title {
+            font-size: 5.5pt;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #64748b;
+        }
+
+        .actual-line {
+            width: 20px;
+            height: 13px;
+            border-bottom: 1px solid #475569;
+            text-align: center;
+            font-size: 7.5pt;
+            font-weight: 800;
+        }
+
+        .correct-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-check {
+            width: 12px;
+            height: 12px;
+            border: 1.5px solid #0f172a;
+            border-radius: 2px;
+            background: #ffffff;
+        }
+
+        /* Summary / Scorecard on Page 2 */
+        .bottom-scorecard {
+            border: 2px solid #0f172a;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 6px;
+            background: #f8fafc;
+            display: grid;
+            grid-template-columns: 1.3fr 1.2fr 1fr;
+            gap: 12px;
+        }
+
+        .score-block h3 {
+            margin: 0 0 4px 0;
+            font-size: 8pt;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #0f172a;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 2px;
+        }
+
+        .majority-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 7.5pt;
+        }
+
+        .majority-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tiebreaker-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 7.5pt;
+        }
+
+        .tiebreaker-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .final-tally-box {
+            background: #ffffff;
+            border: 1.5px solid #0f172a;
+            border-radius: 4px;
+            padding: 4px 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .tally-number {
+            font-size: 16pt;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1;
+            margin: 2px 0;
+        }
+
+        .footer-note {
+            display: flex;
+            justify-content: space-between;
+            font-size: 6.5pt;
+            color: #64748b;
+            margin-top: 4px;
+            padding-top: 2px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PAGE 1: MARQUEE & KEY BATTLEGROUNDS ==================== -->
+    <div class="page">
+        <div>
+            <!-- Header -->
+            <div class="sheet-header">
+                <div class="title-block">
+                    <h1>November Madness '26</h1>
+                    <div class="subtitle">Official U.S. Senate Election Prediction Pool &bull; Class II &amp; Specials &bull; 35 Seats to 51</div>
+                </div>
+                <div class="player-info-card">
+                    <div class="player-field">
+                        <label>Player:</label>
+                        <span class="player-line" style="min-width: 95px;"></span>
+                    </div>
+                    <div class="player-field">
+                        <label>Date:</label>
+                        <span class="player-line" style="min-width: 55px;"></span>
+                    </div>
+                    <div class="player-field">
+                        <label>Tiebreaker (Seats):</label>
+                        <span class="player-line" style="min-width: 50px;"></span>
+                    </div>
+                    <div class="player-field">
+                        <label>Score:</label>
+                        <span style="font-weight: 800; font-size: 9pt; min-width: 45px; text-align: right;">____ / 35</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions Strip -->
+            <div style="background: #e2e8f0; border-radius: 3px; padding: 3px 8px; font-size: 7pt; color: #334155; margin-bottom: 6px; display: flex; justify-content: space-between;">
+                <span><strong>HOW TO PLAY:</strong> Check your predicted winning party for each Senate race. On Election Night, enter the actual winner &amp; check (+1 pt).</span>
+                <span><strong>Scoring:</strong> 1 Pt per Correct Call &bull; Tiebreaker: Total Senate Balance</span>
+            </div>
+
+            <!-- Section 1 Banner: Top Battlegrounds -->
+            <div class="section-banner">
+                <span>Part 1: The Marquee Battlegrounds &amp; Flip Opportunities</span>
+                <span class="tagline">Decisive Toss-Up &amp; High-Volatility Senate Contests</span>
+            </div>
+
+            <!-- Grid 1: 18 Races (Battlegrounds & Highly Contested) -->
+            <div class="races-grid">
+
+                <!-- 1. GA -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">GA</span>
+                            <span class="state-name">Georgia</span>
+                            <span class="badge badge-tossup">Toss-Up</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jon Ossoff (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. NC -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">NC</span>
+                            <span class="state-name">North Carolina</span>
+                            <span class="badge badge-tossup">Toss-Up</span>
+                        </div>
+                        <span class="incumbent-line">Open Seat (Tillis Ret.) &bull; <strong class="party-r">GOP Held</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. MI -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">MI</span>
+                            <span class="state-name">Michigan</span>
+                            <span class="badge badge-tossup">Toss-Up</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Gary Peters (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. ME -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">ME</span>
+                            <span class="state-name">Maine</span>
+                            <span class="badge badge-tossup">Toss-Up</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Susan Collins (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                            <span class="pick-label i-pick"><span class="checkbox-square"></span> IND</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. OH (Special) -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">OH</span>
+                            <span class="state-name">Ohio</span>
+                            <span class="badge badge-special">Special</span>
+                            <span class="badge badge-tossup">Toss-Up</span>
+                        </div>
+                        <span class="incumbent-line">Special (Vance Vacancy) &bull; <strong class="party-r">GOP Held</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. NH -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">NH</span>
+                            <span class="state-name">New Hampshire</span>
+                            <span class="badge badge-lean-d">Lean D</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jeanne Shaheen (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. TX -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">TX</span>
+                            <span class="state-name">Texas</span>
+                            <span class="badge badge-lean-r">Lean R</span>
+                        </div>
+                        <span class="incumbent-line">Open Seat (Cornyn Primary) &bull; <strong class="party-r">GOP Held</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. AK -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">AK</span>
+                            <span class="state-name">Alaska</span>
+                            <span class="badge badge-lean-r">RCV / Lean R</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Dan Sullivan (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                            <span class="pick-label i-pick"><span class="checkbox-square"></span> IND</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. IA -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">IA</span>
+                            <span class="state-name">Iowa</span>
+                            <span class="badge badge-lean-r">Lean R</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Joni Ernst (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. FL (Special) -->
+                <div class="race-card battleground">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">FL</span>
+                            <span class="state-name">Florida</span>
+                            <span class="badge badge-special">Special</span>
+                            <span class="badge badge-lean-r">Lean R</span>
+                        </div>
+                        <span class="incumbent-line">Special (Rubio Vacancy) &bull; <strong class="party-r">GOP Held</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. MN -->
+                <div class="race-card lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">MN</span>
+                            <span class="state-name">Minnesota</span>
+                            <span class="badge badge-lean-d">Likely D</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Tina Smith (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. KS -->
+                <div class="race-card gop-lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">KS</span>
+                            <span class="state-name">Kansas</span>
+                            <span class="badge badge-lean-r">Likely R</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Roger Marshall (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. CO -->
+                <div class="race-card lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">CO</span>
+                            <span class="state-name">Colorado</span>
+                            <span class="badge badge-lean-d">Likely D</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">John Hickenlooper (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14. VA -->
+                <div class="race-card lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">VA</span>
+                            <span class="state-name">Virginia</span>
+                            <span class="badge badge-lean-d">Likely D</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Mark Warner (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15. NE (Class 2) -->
+                <div class="race-card gop-lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">NE</span>
+                            <span class="state-name">Nebraska</span>
+                            <span class="badge badge-lean-r">Likely R</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Pete Ricketts (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                            <span class="pick-label i-pick"><span class="checkbox-square"></span> IND</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16. NM -->
+                <div class="race-card lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">NM</span>
+                            <span class="state-name">New Mexico</span>
+                            <span class="badge badge-lean-d">Likely D</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Ben Ray Luján (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17. NJ -->
+                <div class="race-card lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">NJ</span>
+                            <span class="state-name">New Jersey</span>
+                            <span class="badge badge-lean-d">Likely D</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Cory Booker (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18. MT -->
+                <div class="race-card gop-lean">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">MT</span>
+                            <span class="state-name">Montana</span>
+                            <span class="badge badge-lean-r">Likely R</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Steve Daines (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>November Madness 2026 &bull; Page 1 of 2 (Races 1–18)</span>
+            <span>Turn page over for Races 19–35 &bull; Chamber Control &bull; Official Scorecard</span>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2: MAP COMPLETION & SCORECARD ==================== -->
+    <div class="page">
+        <div>
+            <!-- Header Mini -->
+            <div class="sheet-header" style="margin-bottom: 6px;">
+                <div class="title-block">
+                    <h1 style="font-size: 15pt;">November Madness '26 &bull; Part 2</h1>
+                    <div class="subtitle">Complete the Map &bull; Total Your Accuracy Score</div>
+                </div>
+                <div style="font-size: 8pt; font-weight: 700; color: #475569;">
+                    Target for Majority: <strong>51 Seats</strong>
+                </div>
+            </div>
+
+            <!-- Section 2 Banner: Full Field Contests -->
+            <div class="section-banner secondary">
+                <span>Part 2: Full Map Contests (Races 19–35)</span>
+                <span class="tagline">Incumbent Solid Defenses &amp; Open Statewide Primaries</span>
+            </div>
+
+            <!-- Grid 2: 17 Races (Races 19 to 35) -->
+            <div class="races-grid">
+
+                <!-- 19. AL -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">AL</span>
+                            <span class="state-name">Alabama</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Tommy Tuberville (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 20. AR -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">AR</span>
+                            <span class="state-name">Arkansas</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Tom Cotton (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 21. DE -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">DE</span>
+                            <span class="state-name">Delaware</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Chris Coons (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 22. ID -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">ID</span>
+                            <span class="state-name">Idaho</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Jim Risch (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 23. IL -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">IL</span>
+                            <span class="state-name">Illinois</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Dick Durbin (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 24. KY -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">KY</span>
+                            <span class="state-name">Kentucky</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Mitch McConnell (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 25. LA -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">LA</span>
+                            <span class="state-name">Louisiana</span>
+                        </div>
+                        <span class="incumbent-line">Open / Jungle Primary &bull; <strong class="party-r">GOP Held</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 26. MA -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">MA</span>
+                            <span class="state-name">Massachusetts</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Ed Markey (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 27. MS -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">MS</span>
+                            <span class="state-name">Mississippi</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Cindy Hyde-Smith (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 28. OK -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">OK</span>
+                            <span class="state-name">Oklahoma</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Markwayne Mullin (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 29. OR -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">OR</span>
+                            <span class="state-name">Oregon</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jeff Merkley (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 30. RI -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">RI</span>
+                            <span class="state-name">Rhode Island</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jack Reed (D)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 31. SC -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">SC</span>
+                            <span class="state-name">South Carolina</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Lindsey Graham (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 32. SD -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">SD</span>
+                            <span class="state-name">South Dakota</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Mike Rounds (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 33. TN -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">TN</span>
+                            <span class="state-name">Tennessee</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Bill Hagerty (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 34. WV -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">WV</span>
+                            <span class="state-name">West Virginia</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Shelley Moore Capito (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 35. WY -->
+                <div class="race-card">
+                    <div class="race-meta">
+                        <div class="state-row">
+                            <span class="state-code">WY</span>
+                            <span class="state-name">Wyoming</span>
+                        </div>
+                        <span class="incumbent-line">Incumbent: <strong class="party-r">Cynthia Lummis (R)</strong></span>
+                    </div>
+                    <div class="prediction-box">
+                        <div class="pick-options">
+                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
+                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
+                        </div>
+                        <div class="result-group">
+                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
+                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Scorecard, Tiebreakers & Majority Call -->
+            <div class="bottom-scorecard">
+                <!-- Column 1: Predicted Majority -->
+                <div class="score-block">
+                    <h3>1. Predicted Senate Majority</h3>
+                    <div class="majority-options">
+                        <label class="majority-item">
+                            <span class="checkbox-square" style="width: 12px; height: 12px;"></span>
+                            <strong>Republican Majority</strong> (51+ Seats)
+                        </label>
+                        <label class="majority-item">
+                            <span class="checkbox-square" style="width: 12px; height: 12px;"></span>
+                            <strong>Democratic Majority</strong> (51+ Seats or 50 + VP)
+                        </label>
+                        <label class="majority-item">
+                            <span class="checkbox-square" style="width: 12px; height: 12px;"></span>
+                            <strong>50&ndash;50 Tie</strong>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Column 2: Tiebreaker Prediction -->
+                <div class="score-block">
+                    <h3>2. Tiebreaker: Exact Seat Total</h3>
+                    <div class="tiebreaker-grid">
+                        <div class="tiebreaker-row">
+                            <label style="font-weight: 700; width: 85px;">GOP Total:</label>
+                            <span style="display: inline-block; border-bottom: 1.5px solid #0f172a; width: 45px; text-align: center; font-weight: 800;"></span>
+                            <span style="color: #64748b; font-size: 7pt;">/ 100</span>
+                        </div>
+                        <div class="tiebreaker-row">
+                            <label style="font-weight: 700; width: 85px;">Dem/Ind Total:</label>
+                            <span style="display: inline-block; border-bottom: 1.5px solid #0f172a; width: 45px; text-align: center; font-weight: 800;"></span>
+                            <span style="color: #64748b; font-size: 7pt;">/ 100</span>
+                        </div>
+                        <div style="font-size: 6.5pt; color: #64748b; margin-top: 2px;">Closest total seats without going over wins pool tiebreaker.</div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Final Score & Accuracy -->
+                <div class="final-tally-box">
+                    <div style="font-size: 7pt; font-weight: 800; text-transform: uppercase; color: #475569;">Total Races Correct</div>
+                    <div class="tally-number">____ / 35</div>
+                    <div style="font-size: 7pt; font-weight: 700; color: #0284c7;">Accuracy: ______%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <span>November Madness 2026 &bull; Page 2 of 2 (Races 19–35 &amp; Final Scorecard)</span>
+            <span>Technology &amp; Society Working Group &bull; Dr. Jose Marichal &bull; Printable Sheet</span>
+        </div>
+    </div>
+
+</body>
+</html>
