@@ -1,0 +1,3570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology & Policy Paper Explorer: Field Expert Interview Hub | Jose Marichal</title>
+    <meta name="description" content="Interactive conference paper navigator and student research assignment platform exploring technology politics, global governance, and California policy through 45-minute field expert interviews.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-surface: #0f172a;
+            --bg-surface-elevated: #162238;
+            --bg-card: rgba(22, 34, 56, 0.75);
+            --bg-card-hover: rgba(30, 46, 74, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --border-accent: rgba(56, 189, 248, 0.35);
+            
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.25);
+            --primary-light: #34d399;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.22);
+            --gold: #f59e0b;
+            --gold-glow: rgba(245, 158, 11, 0.25);
+            --purple: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.2);
+            --rose: #f43f5e;
+            
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-subtle: #64748b;
+            
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-card: 0 12px 36px -10px rgba(0, 0, 0, 0.6);
+            --shadow-glow: 0 0 30px rgba(16, 185, 129, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.09) 0%, transparent 45%),
+                radial-gradient(circle at 85% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 50% 85%, rgba(168, 85, 247, 0.07) 0%, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation Bar */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 13, 22, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.85rem 1.5rem;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .nav-brand-logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: #041017;
+            font-size: 1.1rem;
+            box-shadow: 0 0 16px var(--primary-glow);
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-brand-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.12);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Header */
+        .hero {
+            padding: 2.75rem 0 1.75rem;
+        }
+
+        .hero-badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .chip-conference {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .chip-course {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--primary-light);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .chip-interview {
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--gold);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.8vw, 2.85rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            margin-bottom: 0.85rem;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 960px;
+            margin-bottom: 1.75rem;
+            line-height: 1.65;
+        }
+
+        /* Top Action / Mode Tabs */
+        .mode-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .mode-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .mode-tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mode-tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mode-tab-btn.active {
+            color: #041017;
+            background: var(--primary);
+            box-shadow: 0 0 16px var(--primary-glow);
+            font-weight: 700;
+        }
+
+        .mode-tab-btn.btn-intake {
+            border: 1px dashed var(--accent);
+            color: var(--accent);
+        }
+
+        .mode-tab-btn.btn-intake:hover {
+            background: rgba(56, 189, 248, 0.15);
+            color: #ffffff;
+        }
+
+        .mode-tab-btn.btn-intake.active {
+            background: var(--accent);
+            color: #041017;
+            border-style: solid;
+        }
+
+        .mode-quick-tools {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .saved-counter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .saved-counter-badge:hover {
+            background: rgba(245, 158, 11, 0.25);
+        }
+
+        /* Filter & Search Bar */
+        .controls-panel {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .controls-top-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .search-box-wrapper {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 1rem 0.65rem 2.6rem;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-subtle);
+            pointer-events: none;
+        }
+
+        .track-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-chip-btn {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .filter-chip-btn:hover {
+            color: var(--text-main);
+            border-color: var(--border-strong);
+        }
+
+        .filter-chip-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .filter-chip-btn.active.track-global {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .filter-chip-btn.active.track-ca {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .thematic-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            align-items: center;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .thematic-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-subtle);
+            margin-right: 0.25rem;
+            font-weight: 600;
+        }
+
+        .theme-pill-btn {
+            background: transparent;
+            border: 1px dashed var(--border-subtle);
+            color: var(--text-subtle);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .theme-pill-btn:hover {
+            color: var(--text-muted);
+            border-color: var(--border-strong);
+        }
+
+        .theme-pill-btn.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            border-style: solid;
+            border-color: var(--border-strong);
+        }
+
+        /* ==============================================================
+           VIEW 1: CARD PRESENTATION DECK (The Primary Single-Paper Mode)
+           ============================================================== */
+        .presentation-deck-view {
+            display: block;
+        }
+
+        .deck-navigation-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 0.85rem 1.25rem;
+        }
+
+        .deck-nav-btn {
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            border: 1px solid var(--border-strong);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .deck-nav-btn:hover:not(:disabled) {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .deck-nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .deck-counter-block {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .paper-counter-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .paper-counter-text strong {
+            color: var(--accent);
+            font-size: 1.05rem;
+        }
+
+        .quick-jump-select {
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 0.4rem 0.75rem;
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+            outline: none;
+            max-width: 320px;
+            cursor: pointer;
+        }
+
+        .quick-jump-select option {
+            background: var(--bg-surface);
+            color: var(--text-main);
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 9999px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        /* The Main Paper Card */
+        .paper-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            margin-bottom: 2rem;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .paper-card-top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.85rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-panel {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.65rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .badge-track {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .badge-track.track-global {
+            background: rgba(168, 85, 247, 0.18);
+            color: #d8b4fe;
+            border: 1px solid rgba(168, 85, 247, 0.35);
+        }
+
+        .badge-track.track-california {
+            background: rgba(16, 185, 129, 0.18);
+            color: #6ee7b7;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        .badge-track.track-cross {
+            background: rgba(56, 189, 248, 0.18);
+            color: #7dd3fc;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+
+        .card-actions-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-action-icon {
+            background: var(--bg-surface-elevated);
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 0.45rem 0.85rem;
+            font-size: 0.8rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-action-icon:hover {
+            color: var(--text-main);
+            border-color: var(--border-strong);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-select-topic {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(16, 185, 129, 0.2));
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.5);
+            font-weight: 600;
+        }
+
+        .btn-select-topic:hover {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(16, 185, 129, 0.3));
+            color: #ffffff;
+            box-shadow: 0 0 16px var(--gold-glow);
+        }
+
+        .btn-select-topic.selected {
+            background: var(--gold);
+            color: #041017;
+            font-weight: 700;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        /* Title & Authors */
+        .paper-main-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .paper-authors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .author-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 0.35rem 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .author-tag strong {
+            color: var(--text-main);
+        }
+
+        /* Inner Card Tabs (Question, Toolkit, Interview Kit) */
+        .card-inner-tabs-nav {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+        }
+
+        .card-tab-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .card-tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Callout Blocks */
+        .core-question-callout {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08));
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .callout-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .core-question-text {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #ffffff;
+        }
+
+        .section-block {
+            margin-bottom: 1.75rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-heading-icon {
+            color: var(--primary);
+        }
+
+        .student-hook-box {
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px dashed rgba(245, 158, 11, 0.35);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #fef3c7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hook-tag {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.35rem;
+        }
+
+        /* Two Column Politics Grid */
+        .politics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .politics-card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .politics-card.global {
+            border-top: 3px solid var(--purple);
+        }
+
+        .politics-card.california {
+            border-top: 3px solid var(--primary);
+        }
+
+        .politics-card-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .politics-card.global .politics-card-title {
+            color: #d8b4fe;
+        }
+
+        .politics-card.california .politics-card-title {
+            color: #6ee7b7;
+        }
+
+        .politics-card-body {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* Concept Badges with Tooltips */
+        .concepts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-item {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0.85rem 1.1rem;
+        }
+
+        .concept-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .concept-definition {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Readings & Policies Lists */
+        .styled-resource-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .styled-resource-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+        }
+
+        .resource-bullet {
+            color: var(--primary);
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        /* Academic Search Queries Box */
+        .search-queries-block {
+            background: rgba(8, 12, 20, 0.85);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-queries-title {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.75rem;
+        }
+
+        .query-chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .query-chip {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .query-chip:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Field Expert Interview Kit */
+        .interview-kit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+
+        @media (max-width: 860px) {
+            .interview-kit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .kit-box {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .kit-box-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .kit-box-title span {
+            color: var(--gold);
+        }
+
+        .kit-pills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .kit-role-pill {
+            background: rgba(245, 158, 11, 0.12);
+            color: #fde68a;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            font-size: 0.8rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .kit-org-pill {
+            background: rgba(56, 189, 248, 0.1);
+            color: #bae6fd;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            font-size: 0.8rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: var(--radius-sm);
+        }
+
+        /* 5-Phase Interview Protocol */
+        .protocol-steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .protocol-step-card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--gold);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+        }
+
+        .protocol-step-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .protocol-step-question {
+            font-size: 0.92rem;
+            color: var(--text-main);
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* Outreach Email Pitch */
+        .email-template-box {
+            background: #060911;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .email-header-meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-subtle);
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 1rem;
+        }
+
+        .email-header-meta strong {
+            color: var(--accent);
+        }
+
+        .email-content-pre {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .btn-copy-email {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bg-surface-elevated);
+            color: var(--accent);
+            border: 1px solid var(--border-accent);
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-copy-email:hover {
+            background: var(--accent);
+            color: #041017;
+        }
+
+        /* Bottom Deck Navigation */
+        .deck-bottom-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+        }
+
+        /* ==============================================================
+           VIEW 2: BROWSE ALL GRID VIEW
+           ============================================================== */
+        .grid-directory-view {
+            display: none;
+        }
+
+        .papers-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid-paper-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .grid-paper-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .grid-paper-card.is-selected-project {
+            border-color: var(--gold);
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .grid-card-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .grid-card-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+        }
+
+        .grid-card-authors {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .grid-card-snippet {
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .grid-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ==============================================================
+           VIEW 3: ASSIGNMENT GUIDE & RUBRIC
+           ============================================================== */
+        .assignment-guide-view {
+            display: none;
+        }
+
+        .assignment-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            padding: 3rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .assignment-title-block {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .assignment-title-block h2 {
+            font-family: var(--font-display);
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .assignment-title-block .subtitle {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .assignment-phase-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .phase-card {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            position: relative;
+        }
+
+        .phase-number-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--primary);
+            color: #041017;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+        }
+
+        .phase-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .phase-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .phase-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .phase-checklist li {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .phase-checklist li span.check-icon {
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* Rubric Table */
+        .rubric-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 2.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+        }
+
+        table.rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            background: var(--bg-surface-elevated);
+        }
+
+        table.rubric-table th, table.rubric-table td {
+            padding: 1rem 1.15rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        table.rubric-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        table.rubric-table td strong {
+            color: var(--accent);
+        }
+
+        /* ==============================================================
+           VIEW 4: MY PROJECT WORKSPACE
+           ============================================================== */
+        .my-workspace-view {
+            display: none;
+        }
+
+        .workspace-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .workspace-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 0.95rem;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* ==============================================================
+           VIEW 5: PAPER INTAKE & GENERATOR STUDIO
+           ============================================================== */
+        .intake-studio-view {
+            display: none;
+        }
+
+        .intake-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .intake-studio-tabs-nav {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .intake-tab-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intake-tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .intake-tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .intake-pane {
+            display: none;
+        }
+
+        .intake-pane.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        .provider-selector-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .provider-pill-btn {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 0.55rem 1.15rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .provider-pill-btn:hover {
+            color: var(--text-main);
+            border-color: var(--border-strong);
+        }
+
+        .provider-pill-btn.active {
+            background: rgba(16, 185, 129, 0.18);
+            color: var(--primary-light);
+            border-color: var(--primary);
+            box-shadow: 0 0 16px var(--primary-glow);
+            font-weight: 700;
+        }
+
+        .provider-pill-btn.active.prov-gemini {
+            background: rgba(56, 189, 248, 0.18);
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .provider-pill-btn.active.prov-lmstudio {
+            background: rgba(168, 85, 247, 0.18);
+            color: var(--purple);
+            border-color: var(--purple);
+            box-shadow: 0 0 16px var(--purple-glow);
+        }
+
+        .provider-config-box {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.15rem 1.35rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .provider-cors-alert {
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.28);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: #fde68a;
+            margin-top: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .api-key-banner {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .api-key-field {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .log-output-box {
+            background: #060911;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            min-height: 80px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-top: 1rem;
+        }
+
+        /* Toast notifications */
+        .toast-notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--bg-surface-elevated);
+            color: var(--text-main);
+            border: 1px solid var(--primary);
+            padding: 0.85rem 1.35rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 0.6rem;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-subtle);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Print formatting */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .site-nav, .hero, .mode-bar, .controls-panel, .deck-navigation-bar, .deck-bottom-bar, footer, .btn-action-icon {
+                display: none !important;
+            }
+            .paper-card, .assignment-container, .workspace-card {
+                background: white !important;
+                color: black !important;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+            }
+            .paper-main-title {
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Site Navigation -->
+    <header class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-logo">JM</div>
+                <div class="nav-brand-text">Jose <span>Marichal</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="teaching.html" class="active">Teaching</a></li>
+                <li><a href="projects.html">T&amp;S Working Group</a></li>
+<li><a href="global_politics_podcast_assignment.html">Global Podcast</a></li>
+                <li><a href="california_politics_podcast_assignment.html">CA Podcast</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge-row">
+                <span class="chip chip-conference">Technology &amp; Governance Research Explorer</span>
+                <span class="chip chip-course">Global Politics &amp; California Policy</span>
+                <span class="chip chip-interview">45-Minute Field Expert Interview Project</span>
+            </div>
+            <h1>Technology &amp; Policy Paper Explorer</h1>
+            <p class="lead">
+                Step through conference research papers exploring technology, power, and society. Investigate core theoretical puzzles, connect them to global governance or California state politics, and build out your <strong>45-minute field expert interview assignment</strong> with curated questions and outreach templates.
+            </p>
+        </section>
+
+        <!-- Main Mode Tabs -->
+        <div class="mode-bar">
+            <div class="mode-tabs">
+                <button class="mode-tab-btn active" id="tabBtnDeck" onclick="switchMainView('deck')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                    Paper-by-Paper Deck
+                </button>
+                <button class="mode-tab-btn" id="tabBtnGrid" onclick="switchMainView('grid')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    Browse All Papers (<span id="totalPapersHeaderBadge">28</span>)
+                </button>
+                <button class="mode-tab-btn" id="tabBtnAssignment" onclick="switchMainView('assignment')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Assignment Guide &amp; Rubric
+                </button>
+                <button class="mode-tab-btn" id="tabBtnWorkspace" onclick="switchMainView('workspace')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    My Project Workspace
+                </button>
+                <button class="mode-tab-btn btn-intake" id="tabBtnIntake" onclick="switchMainView('intake')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Add &amp; Generate Papers
+                </button>
+                <a href="conference_knowledge_graph.html" class="mode-tab-btn" style="text-decoration: none; border: 1px solid rgba(56, 189, 248, 0.4); color: var(--accent);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Knowledge Graph ↗
+                </a>
+            </div>
+            <div class="mode-quick-tools">
+                <div class="saved-counter-badge" id="savedTopicIndicator" onclick="switchMainView('workspace')">
+                    ★ Chosen: <span id="chosenTopicName">Cashew Nutshell Lipids...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls: Search & Track Filters -->
+        <div class="controls-panel" id="mainControlsPanel">
+            <div class="controls-top-row">
+                <div class="search-box-wrapper">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="paperSearchInput" class="search-input" placeholder="Search papers by keyword, author, concept, legislation (e.g. 'SB 1047', 'Ring', 'Lithium', 'Vaccine')..." oninput="handleSearchInput()">
+                </div>
+                <div class="track-filters">
+                    <button class="filter-chip-btn active" id="filterAll" onclick="setTrackFilter('all')">All Tracks (<span id="filterAllCount">28</span>)</button>
+                    <button class="filter-chip-btn track-global" id="filterGlobal" onclick="setTrackFilter('Global Politics')">🌐 Global Politics</button>
+                    <button class="filter-chip-btn track-ca" id="filterCalifornia" onclick="setTrackFilter('California & State Politics')">🏛️ California &amp; State</button>
+                </div>
+            </div>
+            <div class="thematic-chips">
+                <span class="thematic-label">Themes:</span>
+                <button class="theme-pill-btn active" onclick="setThemeFilter('all')">All Themes</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('biopharma')">💊 Biopharma Sovereignty</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('infrastructure')">⚡ AI &amp; Cloud Energy</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('labor')">👥 AI Ghost Work &amp; Labor</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('healthai')">🩺 Healthcare AI &amp; Care</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('affective')">🤖 Companion AI &amp; Intimacy</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('proptech')">🏠 Proptech &amp; Ring Surveillance</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('governance')">📜 AI Governance &amp; Speech-Acts</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('minerals')">⛏️ Critical Minerals &amp; Green Transition</button>
+                <button class="theme-pill-btn" onclick="setThemeFilter('forensics')">⚖️ Forensic Psychiatry</button>
+            </div>
+        </div>
+
+        <!-- ==============================================================
+             VIEW 1: CARD PRESENTATION DECK (The Primary Single-Paper Mode)
+             ============================================================== -->
+        <section id="deckView" class="presentation-deck-view">
+            <!-- Top Deck Navigator -->
+            <div class="deck-navigation-bar">
+                <button class="deck-nav-btn" id="prevBtnTop" onclick="navigatePaper(-1)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    Previous Paper
+                </button>
+                
+                <div class="deck-counter-block">
+                    <span class="paper-counter-text">Paper <strong id="currentPaperIdxText">1</strong> of <span id="totalFilteredText">28</span></span>
+                    <select id="quickJumpDropdown" class="quick-jump-select" onchange="jumpToPaperFromDropdown(this.value)">
+                        <!-- Populated via JS -->
+                    </select>
+                </div>
+
+                <button class="deck-nav-btn" id="nextBtnTop" onclick="navigatePaper(1)">
+                    Next Paper
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-track">
+                <div class="progress-fill" id="deckProgressBar"></div>
+            </div>
+
+            <!-- The Paper Card -->
+            <div class="paper-card" id="paperCardContainer">
+                <div class="paper-card-top-bar">
+                    <div class="card-meta-badges">
+                        <span class="badge-panel" id="cardPanelMeta">Panel 285 • Mezzanine Oxford</span>
+                        <span class="badge-track" id="cardTrackBadge">Global Politics</span>
+                        <span class="badge-panel" id="cardThemeBadge">Theme: Biopharma</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <button class="btn-action-icon btn-select-topic" id="btnSelectTopic" onclick="toggleSelectCurrentPaper()">
+                            ★ Select for My Project
+                        </button>
+                        <button class="btn-action-icon" onclick="copyCurrentPaperEmail()">
+                            📋 Copy Email Pitch
+                        </button>
+                        <button class="btn-action-icon" onclick="window.print()">
+                            🖨️ Print Dossier
+                        </button>
+                    </div>
+                </div>
+
+                <h2 class="paper-main-title" id="cardTitle">Paper Title Goes Here</h2>
+                
+                <div class="paper-authors-list" id="cardAuthors">
+                    <!-- Authors populated dynamically -->
+                </div>
+
+                <!-- Sub-Tabs inside the Card -->
+                <div class="card-inner-tabs-nav">
+                    <button class="card-tab-btn active" id="subTabBtnPuzzle" onclick="switchCardSubTab('puzzle')">
+                        🧩 1. The Core Puzzle &amp; Politics
+                    </button>
+                    <button class="card-tab-btn" id="subTabBtnResources" onclick="switchCardSubTab('resources')">
+                        📚 2. Theories, Readings &amp; Cases
+                    </button>
+                    <button class="card-tab-btn" id="subTabBtnInterview" onclick="switchCardSubTab('interview')">
+                        🎙️ 3. Field Expert Interview Kit (45 Min)
+                    </button>
+                </div>
+
+                <!-- Sub-Tab 1: The Core Puzzle & Politics -->
+                <div class="tab-pane active" id="subPanePuzzle">
+                    <div class="core-question-callout">
+                        <div class="callout-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            The Theoretical Question &amp; Core Puzzle
+                        </div>
+                        <div class="core-question-text" id="cardCoreQuestion">
+                            Core question content...
+                        </div>
+                    </div>
+
+                    <div class="student-hook-box">
+                        <div class="hook-tag">💡 In Plain English for Politics Students:</div>
+                        <div id="cardStudentHook">Engaging hook explanation...</div>
+                    </div>
+
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <span class="section-heading-icon">⚖️</span> Sociotechnical Conflict &amp; Critique
+                        </div>
+                        <p id="cardConflict" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;"></p>
+                    </div>
+
+                    <div class="politics-grid">
+                        <div class="politics-card global">
+                            <div class="politics-card-title">
+                                🌐 Global Politics Dimension
+                            </div>
+                            <div class="politics-card-body" id="cardGlobalRelevance">
+                                Global governance, treaty disputes, and transnational supply chain implications...
+                            </div>
+                        </div>
+                        <div class="politics-card california">
+                            <div class="politics-card-title">
+                                🏛️ California &amp; State Politics Bridge
+                            </div>
+                            <div class="politics-card-body" id="cardCaliforniaRelevance">
+                                California state legislation, regulatory commissions, and local community impacts...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-Tab 2: Theories, Readings & Cases -->
+                <div class="tab-pane" id="subPaneResources">
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <span class="section-heading-icon">🧠</span> Core Theoretical Concepts &amp; Toolkits
+                        </div>
+                        <div class="concepts-container" id="cardConceptsContainer">
+                            <!-- Concepts rendered dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <span class="section-heading-icon">📖</span> Key Foundational Readings &amp; Literature
+                        </div>
+                        <ul class="styled-resource-list" id="cardReadingsList">
+                            <!-- Readings rendered dynamically -->
+                        </ul>
+                    </div>
+
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <span class="section-heading-icon">🏛️</span> Real-World Policy Anchors &amp; Controversies
+                        </div>
+                        <ul class="styled-resource-list" id="cardPoliciesList">
+                            <!-- Policies rendered dynamically -->
+                        </ul>
+                    </div>
+
+                    <div class="search-queries-block">
+                        <div class="search-queries-title">🔍 Quick-Launch Academic Search Queries (Click to Copy):</div>
+                        <div class="query-chip-list" id="cardQueriesList">
+                            <!-- Queries rendered dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-Tab 3: Field Expert Interview Kit -->
+                <div class="tab-pane" id="subPaneInterview">
+                    <div class="interview-kit-grid">
+                        <div class="kit-box">
+                            <div class="kit-box-title">
+                                <span>🎯</span> Ideal Field Expert Profiles to Target:
+                            </div>
+                            <div class="kit-pills-list" id="cardExpertRoles">
+                                <!-- Expert roles -->
+                            </div>
+                        </div>
+                        <div class="kit-box">
+                            <div class="kit-box-title">
+                                <span>🏢</span> Suggested Target Organizations:
+                            </div>
+                            <div class="kit-pills-list" id="cardExpertOrgs">
+                                <!-- Organizations -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <span class="section-heading-icon">🎙️</span> 5-Phase 45-Minute Interview Protocol:
+                        </div>
+                        <div class="protocol-steps-list" id="cardProtocolSteps">
+                            <!-- 5 Questions -->
+                        </div>
+                    </div>
+
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <span class="section-heading-icon">✉️</span> Pre-Formatted Outreach Email Pitch:
+                        </div>
+                        <div class="email-template-box">
+                            <button class="btn-copy-email" onclick="copyCurrentPaperEmail()">Copy Email Draft</button>
+                            <div class="email-header-meta">
+                                <strong>Subject:</strong> <span id="cardEmailSubject">Subject</span>
+                            </div>
+                            <pre class="email-content-pre" id="cardEmailBody">Email body...</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Deck Navigator inside Card -->
+                <div class="deck-bottom-bar">
+                    <button class="deck-nav-btn" onclick="navigatePaper(-1)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                        Previous Paper
+                    </button>
+                    <div style="font-size: 0.85rem; color: var(--text-subtle); font-family: var(--font-mono);">
+                        Tip: Use Left/Right Arrow keys or [J] / [K] to navigate
+                    </div>
+                    <button class="deck-nav-btn" onclick="navigatePaper(1)">
+                        Next Paper
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             VIEW 2: BROWSE ALL GRID VIEW
+             ============================================================== -->
+        <section id="gridView" class="grid-directory-view">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <p style="color: var(--text-muted); font-size: 0.95rem;">
+                    Showing <strong id="gridCountText" style="color: var(--accent);">28</strong> papers matching your filter. Click any card to launch into the full interactive dossier.
+                </p>
+            </div>
+            <div class="papers-cards-grid" id="papersGridContainer">
+                <!-- Grid Cards populated dynamically -->
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             VIEW 3: ASSIGNMENT GUIDE & RUBRIC
+             ============================================================== -->
+        <section id="assignmentView" class="assignment-guide-view">
+            <div class="assignment-container">
+                <div class="assignment-title-block">
+                    <h2>Technology Issue Field Expert Interview Project</h2>
+                    <div class="subtitle">Global Politics &amp; California Policy • 45-Minute Recorded Interview &amp; Policy Synthesis</div>
+                </div>
+
+                <div class="assignment-phase-timeline">
+                    <!-- Phase 1 -->
+                    <div class="phase-card">
+                        <span class="phase-number-badge">PHASE 1</span>
+                        <h3>Conference Paper &amp; Topic Selection</h3>
+                        <p>
+                            Review the curated conference papers in this explorer. Choose one paper whose theoretical puzzle speaks directly to an ongoing political or policy dilemma in either <strong>Global Politics</strong> (e.g., vaccine sovereignty, international digital colonialism, global minerals trade) or <strong>California State Politics</strong> (e.g., AI compute grid demands, SB 1047, Amazon Ring police surveillance, Lithium Valley, CARE Courts).
+                        </p>
+                        <ul class="phase-checklist">
+                            <li><span class="check-icon">✓</span> Use the "Select for My Project" button to bookmark your topic into your Project Workspace.</li>
+                            <li><span class="check-icon">✓</span> Identify the core tension between corporate technology claims and democratic/public interests.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-card">
+                        <span class="phase-number-badge">PHASE 2</span>
+                        <h3>Technology Issue Deep-Dive &amp; Literature Dossier</h3>
+                        <p>
+                            Before contacting any practitioner, you must develop rigorous baseline expertise on the issue. Experts will immediately recognize—and deeply respect—students who have done their homework.
+                        </p>
+                        <ul class="phase-checklist">
+                            <li><span class="check-icon">✓</span> Read at least <strong>two foundational academic sources</strong> (from the recommended readings list or scholar search queries).</li>
+                            <li><span class="check-icon">✓</span> Read at least <strong>one recent government policy report, legislative bill text, or white paper</strong> published within the last 24 months.</li>
+                            <li><span class="check-icon">✓</span> Draft a 1-page Background Dossier summarizing the technology's architecture, key financial interests, and governance loopholes.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="phase-card">
+                        <span class="phase-number-badge">PHASE 3</span>
+                        <h3>Expert Identification &amp; Professional Cold Outreach</h3>
+                        <p>
+                            Identify a field expert working on the frontlines of your chosen technology issue. This can be a policy director at an advocacy organization, an investigative journalist, a regulatory agency staffer (e.g., CPPA, CPUC, CARB), a labor organizer, a public defender, or an academic researcher.
+                        </p>
+                        <ul class="phase-checklist">
+                            <li><span class="check-icon">✓</span> Use the customized <strong>Outreach Email Template</strong> provided in the paper's interview kit.</li>
+                            <li><span class="check-icon">✓</span> Request a 45-minute recorded Zoom session on a Friday or mutually agreeable time window.</li>
+                            <li><span class="check-icon">✓</span> Send outreach to 2–3 suitable candidates early to account for response times. Always maintain polite, professional follow-up etiquette.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="phase-card">
+                        <span class="phase-number-badge">PHASE 4</span>
+                        <h3>Conducting &amp; Recording the 45-Minute Interview</h3>
+                        <p>
+                            Conduct the interview via Zoom or Riverside.fm with high-fidelity audio recording enabled. Guide the conversation through the 5-phase protocol provided in the app:
+                        </p>
+                        <ul class="phase-checklist">
+                            <li><span class="check-icon">✓</span> <strong>Recording &amp; Informed Consent (0–2 min):</strong> State clearly on recording that the interview is conducted for academic research in political science at California Lutheran University and obtain verbal consent.</li>
+                            <li><span class="check-icon">✓</span> <strong>Phase 1: Empirical Grounding (5–8 min):</strong> Clarify the expert's role and the current state of technology implementation.</li>
+                            <li><span class="check-icon">✓</span> <strong>Phase 2: The Core Conflict (10–12 min):</strong> Probe the theoretical tension highlighted by the conference paper.</li>
+                            <li><span class="check-icon">✓</span> <strong>Phase 3: Power &amp; Inequality (10–12 min):</strong> Investigate who profits, who bears externalized harms, and what labor/materials are hidden.</li>
+                            <li><span class="check-icon">✓</span> <strong>Phase 4: Global vs California Bridge (8–10 min):</strong> Explicitly ask the expert to bridge local California realities to global structures (or vice versa).</li>
+                            <li><span class="check-icon">✓</span> <strong>Phase 5: Democratic Solutions (5–8 min):</strong> Conclude by discussing viable statutory reforms, civil society resistance, or regulatory redesigns.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 5 -->
+                    <div class="phase-card">
+                        <span class="phase-number-badge">PHASE 5</span>
+                        <h3>Submission Deliverables</h3>
+                        <p>
+                            Upload your finished project package to Canvas:
+                        </p>
+                        <ul class="phase-checklist">
+                            <li><span class="check-icon">✓</span> <strong>Audio / Podcast File (MP3/WAV/Link):</strong> Cleanly recorded 40–45 minute audio file featuring an intro (student framing the topic for classmates) and outro.</li>
+                            <li><span class="check-icon">✓</span> <strong>Policy Synthesis Brief (3–4 pages):</strong> A formal policy memo connecting the expert's testimony to the conference paper's thesis and recommending concrete regulatory action in California or global governance.</li>
+                            <li><span class="check-icon">✓</span> <strong>Timestamped Index &amp; Quotation Sheet:</strong> Key takeaways with exact audio timestamps.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Grading Rubric -->
+                <div class="section-heading" style="font-size: 1.4rem; margin-bottom: 1.25rem;">
+                    <span class="section-heading-icon">📊</span> Project Grading Rubric (100 Points Total)
+                </div>
+
+                <div class="rubric-table-wrapper">
+                    <table class="rubric-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 22%;">Evaluation Criterion</th>
+                                <th style="width: 20%;">Excellent (A: 90–100%)</th>
+                                <th style="width: 20%;">Proficient (B: 80–89%)</th>
+                                <th style="width: 20%;">Developing (C: 70–79%)</th>
+                                <th style="width: 18%;">Needs Work (D/F)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Research &amp; Theoretical Preparation (25%)</strong></td>
+                                <td>Deep mastery of the conference paper's core puzzle, related legislation, and literature. Questions demonstrate sharp insight into the expert's specific publications or advocacy.</td>
+                                <td>Clear familiarity with the issue and organization. Questions reference recent policy developments but may rely partly on generalized talking points.</td>
+                                <td>Basic surface-level understanding. Questions are somewhat generic or disconnected from the specific conference paper's theoretical problem.</td>
+                                <td>Superficial or improvised questions with no evidence of prior policy research or theoretical grounding.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interview Execution &amp; Question Depth (25%)</strong></td>
+                                <td>Outstanding conversational pacing, active listening, and incisive follow-up questions. Adheres closely to the 45-minute protocol while naturally probing technical nuances.</td>
+                                <td>Smooth flow covering all required protocol stages. Good questions asked with occasional missed opportunities for organic follow-ups.</td>
+                                <td>Strictly reads off pre-written script with rigid transitions. Stilted pacing or ends significantly under/over the 45-minute mark.</td>
+                                <td>Unprepared, disorganized, unprofessional, or severely rushed execution. Fails to cover core conflict areas.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Global vs. California Policy Bridge (30%)</strong></td>
+                                <td>Masterfully synthesizes the expert's testimony with broader structural governance. Seamlessly bridges global supply chains/treaties with California state legislation (e.g. SB 1047, CalRx, CEQA, CPRA).</td>
+                                <td>Effectively connects the expert's domain to either global or California politics, with a solid though less integrated comparative bridge.</td>
+                                <td>Touches upon California or global policy only briefly at the end without analytical integration into the rest of the discussion.</td>
+                                <td>Fails to establish any connection between the technology issue and California governance or international political economy.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Production Quality, Ethics &amp; Synthesis Memo (20%)</strong></td>
+                                <td>Crystal-clear audio with recorded intro/outro context. Verbal informed consent properly captured. Accompanying policy synthesis memo is rigorously argued and cited.</td>
+                                <td>Audible, clean audio with minor background hum. Solid policy memo connecting quotes to policy recommendations.</td>
+                                <td>Poor audio quality or missing intro framing. Policy synthesis memo is superficial or lacks specific citations.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="deck-nav-btn" onclick="switchMainView('deck')">
+                        🚀 Launch Paper Explorer &amp; Pick Your Topic
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             VIEW 4: MY PROJECT WORKSPACE
+             ============================================================== -->
+        <section id="workspaceView" class="my-workspace-view">
+            <div class="workspace-card">
+                <div class="workspace-header">
+                    <div>
+                        <h2 style="font-family: var(--font-display); font-size: 1.85rem; color: #ffffff; margin-bottom: 0.35rem;">
+                            My Project Workspace &amp; Interview Dossier
+                        </h2>
+                        <p style="color: var(--text-muted); font-size: 0.92rem;">
+                            Customize your research plan, draft your interview questions, and generate an exportable PDF/printable project brief.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 0.6rem;">
+                        <button class="btn-action-icon" onclick="exportProjectBrief()">
+                            📥 Export Project Brief (Print/PDF)
+                        </button>
+                        <button class="btn-action-icon" onclick="copyWorkspaceEmail()">
+                            📋 Copy Customized Pitch
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-block" style="background: var(--bg-surface-elevated); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--gold); font-weight: 700;">
+                            ★ Currently Selected Conference Paper:
+                        </span>
+                        <button class="btn-action-icon" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="switchMainView('deck')">
+                            Change Paper in Deck ↗
+                        </button>
+                    </div>
+                    <h3 id="wsPaperTitle" style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; margin-bottom: 0.4rem;">
+                        Cashew Nutshell Liquid Lipids...
+                    </h3>
+                    <div id="wsPaperMeta" style="font-size: 0.85rem; color: var(--text-muted);">
+                        Panel 285 • Global Politics • Theme: Pharmaceutical Sovereignty
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Student Name</label>
+                        <input type="text" id="wsStudentName" class="form-control" placeholder="e.g. Alex Morgan" oninput="saveWorkspaceData()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Course Title</label>
+                        <input type="text" id="wsCourseName" class="form-control" value="Global Politics / Technology Politics (POLS 300)" oninput="saveWorkspaceData()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Target Field Expert Name &amp; Title</label>
+                        <input type="text" id="wsExpertName" class="form-control" placeholder="e.g. Dr. Jane Doe, Senior Policy Counsel" oninput="saveWorkspaceData()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Target Organization</label>
+                        <input type="text" id="wsOrgName" class="form-control" placeholder="e.g. Electronic Frontier Foundation / Doctors Without Borders" oninput="saveWorkspaceData()">
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <div class="section-heading">
+                        <span class="section-heading-icon">📝</span> Tailored 45-Minute Interview Questions (Draft &amp; Refine)
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Question 1: Empirical Grounding (The Baseline Reality)</label>
+                            <textarea id="wsQ1" class="form-control" oninput="saveWorkspaceData()"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Question 2: The Core Sociotechnical Conflict (The Paper Puzzle)</label>
+                            <textarea id="wsQ2" class="form-control" oninput="saveWorkspaceData()"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Question 3: Power, Labor &amp; Externalized Costs (Who Bears the Harm?)</label>
+                            <textarea id="wsQ3" class="form-control" oninput="saveWorkspaceData()"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Question 4: The California vs Global Governance Bridge</label>
+                            <textarea id="wsQ4" class="form-control" oninput="saveWorkspaceData()"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Question 5: Democratic Solutions &amp; Regulatory Redesign</label>
+                            <textarea id="wsQ5" class="form-control" oninput="saveWorkspaceData()"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <div class="section-heading">
+                        <span class="section-heading-icon">✉️</span> Auto-Generated Outreach Pitch (Personalized for Your Expert):
+                    </div>
+                    <div class="email-template-box">
+                        <pre class="email-content-pre" id="wsPersonalizedEmail">Loading draft...</pre>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 0.85rem; margin-top: 2rem;">
+                    <button class="deck-nav-btn" onclick="exportProjectBrief()">
+                        🖨️ Print / Download Complete Project Brief
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             VIEW 5: PAPER INTAKE & GENERATOR STUDIO
+             ============================================================== -->
+        <section id="intakeView" class="intake-studio-view">
+            <div class="intake-container">
+                <div style="margin-bottom: 2rem;">
+                    <h2 style="font-family: var(--font-display); font-size: 2rem; color: #ffffff; margin-bottom: 0.5rem;">
+                        Paper Intake &amp; AI Dossier Generator
+                    </h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 900px;">
+                        Paste raw conference programs, panels, or paper abstracts from any academic conference. Automatically synthesize the core theoretical puzzle, link it to Global and California politics, and generate a 45-minute field expert interview kit.
+                    </p>
+                </div>
+
+                <!-- Sub-tabs within Intake Studio -->
+                <div class="intake-studio-tabs-nav">
+                    <button class="intake-tab-btn active" id="inTabBtnAi" onclick="switchIntakeSubTab('ai')">
+                        🤖 1. Local LLM &amp; AI Generator
+                    </button>
+                    <button class="intake-tab-btn" id="inTabBtnPrompt" onclick="switchIntakeSubTab('prompt')">
+                        📋 2. AI Prompt Copier (Free Web Chat)
+                    </button>
+                    <button class="intake-tab-btn" id="inTabBtnJson" onclick="switchIntakeSubTab('json')">
+                        📥 3. Paste / Import JSON
+                    </button>
+                    <button class="intake-tab-btn" id="inTabBtnDataset" onclick="switchIntakeSubTab('dataset')">
+                        💾 4. Export &amp; Dataset Management
+                    </button>
+                </div>
+
+                <!-- Pane 1: Direct AI Generator -->
+                <div class="intake-pane active" id="inPaneAi">
+                    <!-- LLM Provider Selector -->
+                    <div style="margin-bottom: 0.6rem;">
+                        <span class="thematic-label" style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">CHOOSE AI ENGINE:</span>
+                    </div>
+                    <div class="provider-selector-row">
+                        <button type="button" class="provider-pill-btn active" id="provBtnOllama" onclick="selectAiProvider('ollama')">
+                            🦙 Local Ollama (Offline &amp; Free)
+                        </button>
+                        <button type="button" class="provider-pill-btn prov-lmstudio" id="provBtnLmStudio" onclick="selectAiProvider('lmstudio')">
+                            ⚡ Local LM Studio
+                        </button>
+                        <button type="button" class="provider-pill-btn prov-gemini" id="provBtnGemini" onclick="selectAiProvider('gemini')">
+                            ✨ Google Gemini API (Cloud)
+                        </button>
+                    </div>
+
+                    <!-- Config Box: Ollama -->
+                    <div class="provider-config-box" id="ollamaConfigBlock">
+                        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 0.6rem;">
+                                <span style="font-size: 1.1rem;">🦙</span>
+                                <div>
+                                    <strong style="color: var(--primary-light); font-size: 0.95rem;">Local Ollama Engine</strong>
+                                    <div style="font-size: 0.78rem; color: var(--text-muted);">Runs privately on your GPU/CPU with zero API keys or cloud tokens.</div>
+                                </div>
+                            </div>
+                            <button class="btn-action-icon" type="button" style="font-size: 0.8rem;" onclick="fetchOllamaModels()">
+                                🔄 Detect / Refresh Installed Models
+                            </button>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                            <div class="form-group" style="flex: 1; min-width: 240px;">
+                                <label class="form-label" style="font-size: 0.8rem;">Ollama Host URL</label>
+                                <input type="text" id="ollamaEndpointInput" class="form-control" value="http://localhost:11434" style="font-family: var(--font-mono); font-size: 0.85rem;">
+                            </div>
+                        </div>
+                        <div class="provider-cors-alert">
+                            💡 <strong>Browser Tip:</strong> If your browser blocks calls to <code>http://localhost:11434</code> (CORS policy on local files), allow origins in PowerShell:
+                            <code style="display: block; margin: 0.35rem 0; padding: 0.3rem 0.5rem; background: rgba(0,0,0,0.4); border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; color: #a7f3d0; user-select: all;">[System.Environment]::SetEnvironmentVariable('OLLAMA_ORIGINS', '*', 'User')</code>
+                            and restart Ollama. Or simply run offline via companion CLI: <code>python generate_paper_dossiers.py</code>
+                        </div>
+                    </div>
+
+                    <!-- Config Box: LM Studio -->
+                    <div class="provider-config-box" id="lmStudioConfigBlock" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;">
+                            <span style="font-size: 1.1rem;">⚡</span>
+                            <div>
+                                <strong style="color: var(--purple); font-size: 0.95rem;">Local LM Studio / OpenAI-Compatible Server</strong>
+                                <div style="font-size: 0.78rem; color: var(--text-muted);">Connects to local models served on your machine via LM Studio or LocalAI.</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                            <div class="form-group" style="flex: 1; min-width: 240px;">
+                                <label class="form-label" style="font-size: 0.8rem;">Local Server Endpoint</label>
+                                <input type="text" id="lmStudioEndpointInput" class="form-control" value="http://localhost:1234/v1" style="font-family: var(--font-mono); font-size: 0.85rem;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Config Box: Gemini -->
+                    <div class="provider-config-box" id="geminiConfigBlock" style="display: none;">
+                        <div class="api-key-banner" style="margin-bottom: 0;">
+                            <div class="api-key-field">
+                                <label class="form-label" style="color: var(--text-main); margin: 0; white-space: nowrap;">Gemini API Key:</label>
+                                <input type="password" id="geminiApiKeyInput" class="form-control" placeholder="AIzaSy... (saved locally in your browser)" oninput="saveGeminiApiKey()" style="flex: 1;">
+                                <button class="btn-action-icon" type="button" onclick="toggleApiKeyVisibility()">👁️</button>
+                            </div>
+                            <div style="font-size: 0.78rem; color: var(--text-subtle);">
+                                🔑 Stored locally in browser `localStorage`. Never leaves your computer.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.25rem;">
+                        <label class="form-label">Paste Raw Conference Program / Paper Text:</label>
+                        <textarea id="rawAiInput" class="form-control" style="min-height: 180px; font-family: var(--font-mono); font-size: 0.85rem;" placeholder="Paste raw conference snippet here... e.g.:
+
+Panel 12: Digital Sovereignty in the Age of Platforms
+Participants:
+- Algorithmic Enclosures: How Cloud Infrastructure Shapes State Autonomy (Elena Rostova, Oxford)
+- The Sovereign Datacenter: Energy Geopolitics in Northern Europe (Markus Lind, Oslo)"></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="min-width: 200px;">
+                            <label class="form-label">Primary Policy Track</label>
+                            <select id="genTrackSelect" class="form-control">
+                                <option value="Both">Both Global &amp; California Politics</option>
+                                <option value="Global Politics">Global Politics</option>
+                                <option value="California & State Politics">California &amp; State Politics</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="min-width: 220px;">
+                            <label class="form-label" id="modelSelectLabel">Target Model</label>
+                            <select id="genModelSelect" class="form-control">
+                                <option value="llama3:latest">llama3:latest (Local 8B - Recommended)</option>
+                                <option value="qwen2.5:7b">qwen2.5:7b (Local 7.6B)</option>
+                                <option value="mistral:latest">mistral:latest (Local 7.2B)</option>
+                                <option value="DeepSeek-R1:7b">DeepSeek-R1:7b (Local 7.6B Reasoning)</option>
+                                <option value="gemma3:4b">gemma3:4b (Local 4.3B Fast)</option>
+                                <option value="glm4:9b">glm4:9b (Local 9.4B)</option>
+                            </select>
+                        </div>
+                        <div style="margin-top: 1.4rem;">
+                            <button class="deck-nav-btn" style="background: var(--primary); color: #041017; font-weight: 700;" id="btnRunAiGenerate" onclick="runDirectAiGeneration()">
+                                <span id="genBtnSpinner" style="display: none;">⏳ </span>
+                                🚀 Analyze &amp; Generate Paper Dossiers
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="log-output-box" id="aiGenStatusLog">
+Ready. Select your local or cloud LLM, paste conference text above, and click "Analyze & Generate Paper Dossiers".
+                    </div>
+                </div>
+
+                <!-- Pane 2: Free AI Prompt Copier -->
+                <div class="intake-pane" id="inPanePrompt">
+                    <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.25rem;">
+                        Don't have a Gemini API key? No problem! Paste your conference text below, click <strong>"Copy Optimized AI Prompt"</strong>, and paste it into <a href="https://gemini.google.com" target="_blank" style="color: var(--accent);">Gemini</a>, <a href="https://claude.ai" target="_blank" style="color: var(--accent);">Claude</a>, or <a href="https://chatgpt.com" target="_blank" style="color: var(--accent);">ChatGPT</a>. Then paste the JSON response into Tab 3 ("Paste / Import JSON").
+                    </p>
+
+                    <div class="form-group" style="margin-bottom: 1.25rem;">
+                        <label class="form-label">Paste Conference Text to Package:</label>
+                        <textarea id="promptRawText" class="form-control" style="min-height: 140px; font-family: var(--font-mono); font-size: 0.85rem;" placeholder="Paste paper title(s), authors, abstracts, or panel text here..."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <button class="deck-nav-btn" onclick="copyMasterAiPrompt()">
+                            📋 Copy Optimized AI Prompt to Clipboard
+                        </button>
+                    </div>
+
+                    <div class="section-block">
+                        <label class="form-label">Preview of Prompt Sent to AI:</label>
+                        <pre class="email-content-pre" id="masterPromptPreview" style="max-height: 250px; overflow-y: auto;">Click 'Copy Optimized AI Prompt' to generate prompt preview.</pre>
+                    </div>
+                </div>
+
+                <!-- Pane 3: Paste / Import JSON -->
+                <div class="intake-pane" id="inPaneJson">
+                    <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.25rem;">
+                        Paste the valid JSON array generated by your AI model or Python script below. The app will validate and immediately load the new papers into your active deck.
+                    </p>
+                    <div class="form-group" style="margin-bottom: 1.25rem;">
+                        <label class="form-label">JSON Data (Array of Papers):</label>
+                        <textarea id="jsonImportInput" class="form-control" style="min-height: 220px; font-family: var(--font-mono); font-size: 0.82rem;" placeholder="[
+  {
+    &quot;title&quot;: &quot;Example Paper Title&quot;,
+    &quot;authors&quot;: [{ &quot;name&quot;: &quot;Author Name&quot;, &quot;affiliation&quot;: &quot;University&quot; }],
+    ...
+  }
+]"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="deck-nav-btn" style="background: var(--accent); color: #041017; font-weight: 700;" onclick="importJsonPapers()">
+                            📥 Validate &amp; Add Papers to Explorer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pane 4: Export & Dataset Management -->
+                <div class="intake-pane" id="inPaneDataset">
+                    <div class="section-block" style="background: var(--bg-surface-elevated); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 2rem;">
+                        <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ffffff; margin-bottom: 0.5rem;">
+                            Library Status
+                        </h3>
+                        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem;">
+                            • Default Base Papers: <strong style="color: var(--text-main);" id="libDefaultCount">28</strong><br>
+                            • Custom Added Papers: <strong style="color: var(--accent);" id="libCustomCount">0</strong><br>
+                            • Total Active Library: <strong style="color: var(--primary-light);" id="libTotalCount">28</strong>
+                        </p>
+                        <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
+                            <button class="deck-nav-btn" onclick="downloadConsolidatedJsFile()">
+                                📥 Download Updated `conference_papers_data.js`
+                            </button>
+                            <button class="btn-action-icon" onclick="copyFullJsCode()">
+                                📋 Copy Full JS Code
+                            </button>
+                            <button class="btn-action-icon" style="border-color: var(--rose); color: var(--rose);" onclick="clearCustomPapers()">
+                                🗑️ Clear Custom Added Papers
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toast Notification -->
+        <div id="toastNotification" class="toast-notification">
+            <span id="toastIcon">✓</span>
+            <span id="toastMessage">Topic saved to workspace!</span>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                <strong>Technology &amp; Policy Paper Explorer</strong> • Designed for Political Science &amp; Public Policy Courses by <a href="index.html">Jose Marichal</a>
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-subtle);">
+                Technology and Society Working Group • California Lutheran University • Technology, Society &amp; Governance Research Hub
+            </p>
+        </div>
+    </footer>
+
+    <!-- Load the Base Conference Papers Dataset -->
+    <script src="conference_papers_data.js"></script>
+
+    <script>
+        // Global State variables
+        let allPapersList = [];
+        let currentFilteredPapers = [];
+        let currentIndex = 0;
+        let activeTrackFilter = 'all';
+        let activeThemeFilter = 'all';
+        let searchQuery = '';
+        let chosenPaperId = 1;
+
+        // Initialize application on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLibraryPapers();
+
+            // Load saved chosen paper from localStorage
+            const savedId = localStorage.getItem('pols_chosen_paper_id');
+            if (savedId) {
+                chosenPaperId = parseInt(savedId, 10);
+            }
+
+            // Load saved Gemini API Key if present
+            const savedApiKey = localStorage.getItem('gemini_api_key') || '';
+            const keyInput = document.getElementById('geminiApiKeyInput');
+            if (keyInput) keyInput.value = savedApiKey;
+
+            // Populate all papers
+            filterPapers();
+            
+            // Set initial paper
+            const targetIdx = currentFilteredPapers.findIndex(p => p.id === chosenPaperId);
+            currentIndex = targetIdx !== -1 ? targetIdx : 0;
+            
+            renderCurrentPaper();
+            renderGridDirectory();
+            populateWorkspace();
+            updateChosenTopicIndicator();
+            updateLibraryStats();
+
+            // Keyboard navigation listener
+            document.addEventListener('keydown', handleKeyNavigation);
+        });
+
+        // Load default papers + custom added papers from localStorage
+        function loadLibraryPapers() {
+            const defaultPapers = window.CONFERENCE_PAPERS || [];
+            let customPapers = [];
+            try {
+                customPapers = JSON.parse(localStorage.getItem('custom_conference_papers') || '[]');
+            } catch (e) {
+                console.error("Failed to parse custom papers from localStorage", e);
+            }
+            allPapersList = [...defaultPapers, ...customPapers];
+        }
+
+        // Filter papers based on search, track, and theme
+        function filterPapers() {
+            currentFilteredPapers = allPapersList.filter(paper => {
+                // Track Filter
+                const matchesTrack = (activeTrackFilter === 'all') || 
+                    (paper.track === activeTrackFilter) || 
+                    (paper.secondaryTrack === activeTrackFilter);
+
+                // Theme Filter
+                const matchesTheme = (activeThemeFilter === 'all') || 
+                    (paper.themeSlug === activeThemeFilter);
+
+                // Search Query Filter
+                let matchesSearch = true;
+                if (searchQuery.trim() !== '') {
+                    const q = searchQuery.toLowerCase();
+                    const authorsStr = (paper.authors || []).map(a => a.name + " " + (a.affiliation || "")).join(" ").toLowerCase();
+                    const conceptsStr = (paper.theoreticalConcepts || []).map(c => c.term + " " + c.definition).join(" ").toLowerCase();
+                    const policiesStr = (paper.policyCases || []).join(" ").toLowerCase();
+                    const fullText = (paper.title + " " + (paper.coreQuestion || '') + " " + (paper.studentHook || '') + " " + authorsStr + " " + conceptsStr + " " + policiesStr).toLowerCase();
+                    matchesSearch = fullText.includes(q);
+                }
+
+                return matchesTrack && matchesTheme && matchesSearch;
+            });
+
+            // Adjust index if out of bounds
+            if (currentIndex >= currentFilteredPapers.length) {
+                currentIndex = Math.max(0, currentFilteredPapers.length - 1);
+            }
+
+            populateQuickJumpDropdown();
+            updateHeaderBadges();
+        }
+
+        function updateHeaderBadges() {
+            const totalBadge = document.getElementById('totalPapersHeaderBadge');
+            const allCountBadge = document.getElementById('filterAllCount');
+            if (totalBadge) totalBadge.textContent = allPapersList.length;
+            if (allCountBadge) allCountBadge.textContent = allPapersList.length;
+        }
+
+        function updateLibraryStats() {
+            const defCount = (window.CONFERENCE_PAPERS || []).length;
+            const customCount = allPapersList.length - defCount;
+            const elDef = document.getElementById('libDefaultCount');
+            const elCust = document.getElementById('libCustomCount');
+            const elTot = document.getElementById('libTotalCount');
+            if (elDef) elDef.textContent = defCount;
+            if (elCust) elCust.textContent = customCount;
+            if (elTot) elTot.textContent = allPapersList.length;
+        }
+
+        // Render currently selected single paper card
+        function renderCurrentPaper() {
+            const total = currentFilteredPapers.length;
+            const currentPaperIdxText = document.getElementById('currentPaperIdxText');
+            const totalFilteredText = document.getElementById('totalFilteredText');
+            const deckProgressBar = document.getElementById('deckProgressBar');
+            const prevBtns = [document.getElementById('prevBtnTop')];
+            const nextBtns = [document.getElementById('nextBtnTop')];
+
+            if (total === 0) {
+                document.getElementById('cardTitle').textContent = "No matching conference papers found.";
+                document.getElementById('cardCoreQuestion').textContent = "Try clearing your search query or selecting 'All Tracks'.";
+                document.getElementById('cardAuthors').innerHTML = '';
+                currentPaperIdxText.textContent = "0";
+                totalFilteredText.textContent = "0";
+                deckProgressBar.style.width = "0%";
+                return;
+            }
+
+            const paper = currentFilteredPapers[currentIndex];
+
+            // Update Header & Counters
+            currentPaperIdxText.textContent = (currentIndex + 1);
+            totalFilteredText.textContent = total;
+            const progressPct = ((currentIndex + 1) / total) * 100;
+            deckProgressBar.style.width = `${progressPct}%`;
+
+            // Enable / Disable Prev/Next Buttons
+            prevBtns.forEach(b => b ? b.disabled = (currentIndex === 0) : null);
+            nextBtns.forEach(b => b ? b.disabled = (currentIndex === total - 1) : null);
+
+            // Update Dropdown Selection
+            const dropdown = document.getElementById('quickJumpDropdown');
+            if (dropdown) dropdown.value = paper.id;
+
+            // Update Metadata Badges
+            const panelLabel = paper.panelNumber ? `Panel ${paper.panelNumber}${paper.panelTitle ? ': ' + paper.panelTitle : ''}` : (paper.panelTitle || 'Research Dossier');
+            document.getElementById('cardPanelMeta').textContent = panelLabel;
+            
+            const trackBadge = document.getElementById('cardTrackBadge');
+            trackBadge.textContent = paper.track || 'Tech & Politics';
+            trackBadge.className = 'badge-track ' + ((paper.track || '').includes('Global') ? 'track-global' : ((paper.track || '').includes('California') ? 'track-california' : 'track-cross'));
+
+            document.getElementById('cardThemeBadge').textContent = `Theme: ${paper.theme || 'Governance'}`;
+
+            // Update Title & Authors
+            document.getElementById('cardTitle').textContent = paper.title;
+            const authorsContainer = document.getElementById('cardAuthors');
+            authorsContainer.innerHTML = (paper.authors || []).map(a => `
+                <div class="author-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <strong>${escapeHtml(a.name)}</strong> • <span>${escapeHtml(a.affiliation || '')}</span>
+                </div>
+            `).join('');
+
+            // Select Topic Button State
+            const selectBtn = document.getElementById('btnSelectTopic');
+            if (paper.id === chosenPaperId) {
+                selectBtn.classList.add('selected');
+                selectBtn.innerHTML = `★ Selected for My Project`;
+            } else {
+                selectBtn.classList.remove('selected');
+                selectBtn.innerHTML = `★ Select for My Project`;
+            }
+
+            // Tab 1: Puzzle & Politics
+            document.getElementById('cardCoreQuestion').textContent = `"${paper.coreQuestion || ''}"`;
+            document.getElementById('cardStudentHook').textContent = paper.studentHook || '';
+            document.getElementById('cardConflict').textContent = paper.sociotechnicalConflict || '';
+            document.getElementById('cardGlobalRelevance').textContent = paper.globalPoliticsRelevance || 'Examines international technological governance and global political economy.';
+            document.getElementById('cardCaliforniaRelevance').textContent = paper.californiaStateRelevance || 'Connects to California state legislative frameworks and subnational regulatory oversight.';
+
+            // Tab 2: Toolkit & Resources
+            const conceptsContainer = document.getElementById('cardConceptsContainer');
+            conceptsContainer.innerHTML = (paper.theoreticalConcepts || []).map(c => `
+                <div class="concept-item">
+                    <div class="concept-title">${escapeHtml(c.term)}</div>
+                    <div class="concept-definition">${escapeHtml(c.definition)}</div>
+                </div>
+            `).join('');
+
+            const readingsList = document.getElementById('cardReadingsList');
+            readingsList.innerHTML = (paper.recommendedReadings || []).map(r => `
+                <li class="styled-resource-item">
+                    <span class="resource-bullet">▪</span>
+                    <div>${escapeHtml(r.citation || r)}</div>
+                </li>
+            `).join('');
+
+            const policiesList = document.getElementById('cardPoliciesList');
+            policiesList.innerHTML = (paper.policyCases || []).map(p => `
+                <li class="styled-resource-item">
+                    <span class="resource-bullet">▪</span>
+                    <div><strong>${escapeHtml(p)}</strong></div>
+                </li>
+            `).join('');
+
+            const queriesList = document.getElementById('cardQueriesList');
+            queriesList.innerHTML = (paper.searchQueries || []).map(q => `
+                <button class="query-chip" onclick="copySearchQuery('${escapeAttr(q)}')">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    ${escapeHtml(q)}
+                </button>
+            `).join('');
+
+            // Tab 3: Interview Kit
+            const expProfile = paper.expertProfile || {};
+            const rolesContainer = document.getElementById('cardExpertRoles');
+            rolesContainer.innerHTML = (expProfile.idealRoles || ['Policy Analyst', 'Investigative Journalist']).map(r => `
+                <span class="kit-role-pill">${escapeHtml(r)}</span>
+            `).join('');
+
+            const orgsContainer = document.getElementById('cardExpertOrgs');
+            orgsContainer.innerHTML = (expProfile.suggestedOrganizations || ['Public Interest Technology Groups']).map(o => `
+                <span class="kit-org-pill">${escapeHtml(o)}</span>
+            `).join('');
+
+            const stepsContainer = document.getElementById('cardProtocolSteps');
+            stepsContainer.innerHTML = (expProfile.interviewProtocol || []).map((s, idx) => `
+                <div class="protocol-step-card">
+                    <div class="protocol-step-meta">
+                        <span>${escapeHtml(s.step || `Phase ${idx+1}`)}</span>
+                        <span>Stage ${idx + 1}/5</span>
+                    </div>
+                    <div class="protocol-step-question">"${escapeHtml(s.question)}"</div>
+                </div>
+            `).join('');
+
+            document.getElementById('cardEmailSubject').textContent = expProfile.emailSubject || `Research Interview: ${paper.title.substring(0, 45)}...`;
+            
+            const studentName = localStorage.getItem('pols_ws_student_name') || '[Your Name]';
+            const firstAuthor = (paper.authors && paper.authors[0]) ? paper.authors[0].name : 'the researchers';
+            const emailBody = `Subject: ${expProfile.emailSubject || 'Interview Request: Technology Politics Research Project'}
+
+Dear [Expert's Name],
+
+My name is ${studentName} and I am an undergraduate student studying Political Science and Technology Politics at California Lutheran University.
+
+Our class is conducting research on critical technology governance and policy dilemmas presented at recent academic policy and governance conferences. Specifically, I am focusing on the research problem raised by ${firstAuthor}'s work: "${paper.title}".
+
+${expProfile.emailPitch || 'I would love to interview you regarding your frontline policy and regulatory experience on this issue.'}
+
+Would you be open to a 45-minute recorded Zoom interview with me on a Friday in the coming weeks? The recording will be shared exclusively with our undergraduate seminar for academic analysis.
+
+Thank you so much for your frontline work and time.
+
+Warm regards,
+
+${studentName}
+Undergraduate Politics & Policy Researcher
+California Lutheran University
+Ventura County, California`;
+
+            document.getElementById('cardEmailBody').textContent = emailBody;
+        }
+
+        // Navigate forward or backward in deck
+        function navigatePaper(direction) {
+            const newIndex = currentIndex + direction;
+            if (newIndex >= 0 && newIndex < currentFilteredPapers.length) {
+                currentIndex = newIndex;
+                renderCurrentPaper();
+                window.scrollTo({ top: 380, behavior: 'smooth' });
+            }
+        }
+
+        // Keyboard navigation
+        function handleKeyNavigation(e) {
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+
+            if (e.key === 'ArrowRight' || e.key === 'k' || e.key === 'K') {
+                navigatePaper(1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'j' || e.key === 'J') {
+                navigatePaper(-1);
+            } else if (e.key === 's' || e.key === 'S') {
+                toggleSelectCurrentPaper();
+            }
+        }
+
+        // Populate quick jump select dropdown
+        function populateQuickJumpDropdown() {
+            const dropdown = document.getElementById('quickJumpDropdown');
+            if (!dropdown) return;
+
+            dropdown.innerHTML = currentFilteredPapers.map((p, idx) => {
+                const authorLastName = (p.authors && p.authors[0]) ? p.authors[0].name.split(' ').pop() : 'Scholar';
+                return `
+                    <option value="${p.id}">
+                        #${p.id}. ${escapeHtml(p.title.substring(0, 48))}... (${authorLastName})
+                    </option>
+                `;
+            }).join('');
+
+            if (currentFilteredPapers[currentIndex]) {
+                dropdown.value = currentFilteredPapers[currentIndex].id;
+            }
+        }
+
+        function jumpToPaperFromDropdown(paperId) {
+            const targetId = parseInt(paperId, 10);
+            const idx = currentFilteredPapers.findIndex(p => p.id === targetId);
+            if (idx !== -1) {
+                currentIndex = idx;
+                renderCurrentPaper();
+            }
+        }
+
+        // Switch main views (Deck, Grid, Assignment, Workspace, Intake)
+        function switchMainView(viewId) {
+            const views = {
+                'deck': document.getElementById('deckView'),
+                'grid': document.getElementById('gridView'),
+                'assignment': document.getElementById('assignmentView'),
+                'workspace': document.getElementById('workspaceView'),
+                'intake': document.getElementById('intakeView')
+            };
+
+            const buttons = {
+                'deck': document.getElementById('tabBtnDeck'),
+                'grid': document.getElementById('tabBtnGrid'),
+                'assignment': document.getElementById('tabBtnAssignment'),
+                'workspace': document.getElementById('tabBtnWorkspace'),
+                'intake': document.getElementById('tabBtnIntake')
+            };
+
+            const controlsPanel = document.getElementById('mainControlsPanel');
+            if (controlsPanel) {
+                controlsPanel.style.display = (viewId === 'deck' || viewId === 'grid') ? 'flex' : 'none';
+            }
+
+            Object.keys(views).forEach(k => {
+                if (views[k]) views[k].style.display = (k === viewId) ? 'block' : 'none';
+                if (buttons[k]) {
+                    if (k === viewId) buttons[k].classList.add('active');
+                    else buttons[k].classList.remove('active');
+                }
+            });
+
+            if (viewId === 'workspace') {
+                populateWorkspace();
+            } else if (viewId === 'grid') {
+                renderGridDirectory();
+            } else if (viewId === 'intake') {
+                updateLibraryStats();
+            }
+
+            window.scrollTo({ top: 320, behavior: 'smooth' });
+        }
+
+        // Switch sub-tabs inside paper card
+        function switchCardSubTab(subTabId) {
+            const panes = {
+                'puzzle': document.getElementById('subPanePuzzle'),
+                'resources': document.getElementById('subPaneResources'),
+                'interview': document.getElementById('subPaneInterview')
+            };
+
+            const buttons = {
+                'puzzle': document.getElementById('subTabBtnPuzzle'),
+                'resources': document.getElementById('subTabBtnResources'),
+                'interview': document.getElementById('subTabBtnInterview')
+            };
+
+            Object.keys(panes).forEach(k => {
+                if (panes[k]) {
+                    if (k === subTabId) panes[k].classList.add('active');
+                    else panes[k].classList.remove('active');
+                }
+                if (buttons[k]) {
+                    if (k === subTabId) buttons[k].classList.add('active');
+                    else buttons[k].classList.remove('active');
+                }
+            });
+        }
+
+        // Switch sub-tabs in intake studio
+        function switchIntakeSubTab(subTabId) {
+            const panes = {
+                'ai': document.getElementById('inPaneAi'),
+                'prompt': document.getElementById('inPanePrompt'),
+                'json': document.getElementById('inPaneJson'),
+                'dataset': document.getElementById('inPaneDataset')
+            };
+
+            const buttons = {
+                'ai': document.getElementById('inTabBtnAi'),
+                'prompt': document.getElementById('inTabBtnPrompt'),
+                'json': document.getElementById('inTabBtnJson'),
+                'dataset': document.getElementById('inTabBtnDataset')
+            };
+
+            Object.keys(panes).forEach(k => {
+                if (panes[k]) {
+                    if (k === subTabId) panes[k].classList.add('active');
+                    else panes[k].classList.remove('active');
+                }
+                if (buttons[k]) {
+                    if (k === subTabId) buttons[k].classList.add('active');
+                    else buttons[k].classList.remove('active');
+                }
+            });
+        }
+
+        // Track filter buttons
+        function setTrackFilter(track) {
+            activeTrackFilter = track;
+            ['filterAll', 'filterGlobal', 'filterCalifornia'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.classList.remove('active');
+            });
+
+            if (track === 'all') document.getElementById('filterAll').classList.add('active');
+            else if (track === 'Global Politics') document.getElementById('filterGlobal').classList.add('active');
+            else if (track === 'California & State Politics') document.getElementById('filterCalifornia').classList.add('active');
+
+            filterPapers();
+            renderCurrentPaper();
+            renderGridDirectory();
+        }
+
+        // Theme filter pills
+        function setThemeFilter(themeSlug) {
+            activeThemeFilter = themeSlug;
+            document.querySelectorAll('.theme-pill-btn').forEach(btn => {
+                if (btn.getAttribute('onclick').includes(`'${themeSlug}'`)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            filterPapers();
+            renderCurrentPaper();
+            renderGridDirectory();
+        }
+
+        // Search input handler
+        function handleSearchInput() {
+            searchQuery = document.getElementById('paperSearchInput').value;
+            filterPapers();
+            renderCurrentPaper();
+            renderGridDirectory();
+        }
+
+        // Toggle select current paper for workspace
+        function toggleSelectCurrentPaper() {
+            if (!currentFilteredPapers[currentIndex]) return;
+            const paper = currentFilteredPapers[currentIndex];
+
+            chosenPaperId = paper.id;
+            localStorage.setItem('pols_chosen_paper_id', chosenPaperId);
+            
+            renderCurrentPaper();
+            updateChosenTopicIndicator();
+            populateWorkspace();
+
+            showToast(`Paper #${paper.id} selected as your project topic!`);
+        }
+
+        function updateChosenTopicIndicator() {
+            const chosen = allPapersList.find(p => p.id === chosenPaperId);
+            const indicator = document.getElementById('chosenTopicName');
+            if (chosen && indicator) {
+                indicator.textContent = chosen.title.length > 30 ? chosen.title.substring(0, 30) + '...' : chosen.title;
+            }
+        }
+
+        // Render all papers in Grid View
+        function renderGridDirectory() {
+            const gridContainer = document.getElementById('papersGridContainer');
+            const countText = document.getElementById('gridCountText');
+            if (!gridContainer) return;
+
+            countText.textContent = currentFilteredPapers.length;
+
+            gridContainer.innerHTML = currentFilteredPapers.map(paper => {
+                const isSelected = (paper.id === chosenPaperId);
+                const trackClass = (paper.track || '').includes('Global') ? 'track-global' : 'track-california';
+                const authorsNames = (paper.authors || []).map(a => a.name).join(', ');
+
+                return `
+                    <div class="grid-paper-card ${isSelected ? 'is-selected-project' : ''}" onclick="openPaperFromGrid(${paper.id})">
+                        <div>
+                            <div class="grid-card-badges">
+                                <span class="badge-panel">#${paper.id} • Panel ${paper.panelNumber || 'General'}</span>
+                                <span class="badge-track ${trackClass}">${escapeHtml(paper.track || 'Politics')}</span>
+                                ${isSelected ? '<span class="badge-panel" style="background: rgba(245,158,11,0.2); color: var(--gold); border-color: var(--gold);">★ My Topic</span>' : ''}
+                            </div>
+                            <h3 class="grid-card-title">${escapeHtml(paper.title)}</h3>
+                            <div class="grid-card-authors">${escapeHtml(authorsNames)}</div>
+                            <div class="grid-card-snippet">"${escapeHtml(paper.coreQuestion || '')}"</div>
+                        </div>
+                        <div class="grid-card-footer">
+                            <span>${escapeHtml(paper.theme || 'Tech Policy')}</span>
+                            <span>Open Dossier →</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openPaperFromGrid(paperId) {
+            const idx = currentFilteredPapers.findIndex(p => p.id === paperId);
+            if (idx !== -1) {
+                currentIndex = idx;
+                renderCurrentPaper();
+                switchMainView('deck');
+            }
+        }
+
+        // Workspace population and local storage persistence
+        function populateWorkspace() {
+            const chosen = allPapersList.find(p => p.id === chosenPaperId) || allPapersList[0];
+            if (!chosen) return;
+
+            document.getElementById('wsPaperTitle').textContent = `#${chosen.id}. ${chosen.title}`;
+            document.getElementById('wsPaperMeta').textContent = `Panel ${chosen.panelNumber || 'General'} • ${chosen.track} • Theme: ${chosen.theme}`;
+
+            // Load saved fields
+            const savedStudent = localStorage.getItem('pols_ws_student_name') || '';
+            const savedCourse = localStorage.getItem('pols_ws_course_name') || 'Global Politics / Technology Politics (POLS 300)';
+            const savedExpert = localStorage.getItem('pols_ws_expert_name') || '';
+            const savedOrg = localStorage.getItem('pols_ws_org_name') || '';
+
+            document.getElementById('wsStudentName').value = savedStudent;
+            document.getElementById('wsCourseName').value = savedCourse;
+            document.getElementById('wsExpertName').value = savedExpert;
+            document.getElementById('wsOrgName').value = savedOrg;
+
+            // Load protocol questions
+            const defaultQ = (chosen.expertProfile && chosen.expertProfile.interviewProtocol) ? chosen.expertProfile.interviewProtocol : [
+                { question: "What is the day-to-day regulatory reality of this issue?" },
+                { question: "What core structural conflict exists between commercial goals and public policy?" },
+                { question: "Who bears the externalized costs and labor?" },
+                { question: "How does California or global governance address this tension?" },
+                { question: "What democratic reforms or policy interventions are most urgently needed?" }
+            ];
+
+            document.getElementById('wsQ1').value = localStorage.getItem(`pols_ws_q1_${chosen.id}`) || (defaultQ[0] ? defaultQ[0].question : '');
+            document.getElementById('wsQ2').value = localStorage.getItem(`pols_ws_q2_${chosen.id}`) || (defaultQ[1] ? defaultQ[1].question : '');
+            document.getElementById('wsQ3').value = localStorage.getItem(`pols_ws_q3_${chosen.id}`) || (defaultQ[2] ? defaultQ[2].question : '');
+            document.getElementById('wsQ4').value = localStorage.getItem(`pols_ws_q4_${chosen.id}`) || (defaultQ[3] ? defaultQ[3].question : '');
+            document.getElementById('wsQ5').value = localStorage.getItem(`pols_ws_q5_${chosen.id}`) || (defaultQ[4] ? defaultQ[4].question : '');
+
+            updateWorkspaceEmail();
+        }
+
+        function saveWorkspaceData() {
+            const chosen = allPapersList.find(p => p.id === chosenPaperId) || allPapersList[0];
+            if (!chosen) return;
+
+            localStorage.setItem('pols_ws_student_name', document.getElementById('wsStudentName').value);
+            localStorage.setItem('pols_ws_course_name', document.getElementById('wsCourseName').value);
+            localStorage.setItem('pols_ws_expert_name', document.getElementById('wsExpertName').value);
+            localStorage.setItem('pols_ws_org_name', document.getElementById('wsOrgName').value);
+
+            localStorage.setItem(`pols_ws_q1_${chosen.id}`, document.getElementById('wsQ1').value);
+            localStorage.setItem(`pols_ws_q2_${chosen.id}`, document.getElementById('wsQ2').value);
+            localStorage.setItem(`pols_ws_q3_${chosen.id}`, document.getElementById('wsQ3').value);
+            localStorage.setItem(`pols_ws_q4_${chosen.id}`, document.getElementById('wsQ4').value);
+            localStorage.setItem(`pols_ws_q5_${chosen.id}`, document.getElementById('wsQ5').value);
+
+            updateWorkspaceEmail();
+        }
+
+        function updateWorkspaceEmail() {
+            const chosen = allPapersList.find(p => p.id === chosenPaperId) || allPapersList[0];
+            if (!chosen) return;
+
+            const student = document.getElementById('wsStudentName').value || '[Your Name]';
+            const expert = document.getElementById('wsExpertName').value || '[Expert\'s Name]';
+            const course = document.getElementById('wsCourseName').value || 'Political Science';
+            const org = document.getElementById('wsOrgName').value || '[Organization Name]';
+            const expProfile = chosen.expertProfile || {};
+            const firstAuthor = (chosen.authors && chosen.authors[0]) ? chosen.authors[0].name : 'the researchers';
+
+            const email = `Subject: ${expProfile.emailSubject || `Research Inquiry: ${chosen.title.substring(0, 45)}...`}
+
+Dear ${expert},
+
+My name is ${student} and I am an undergraduate student in ${course} at California Lutheran University.
+
+For my midterm research project, I am investigating how ${firstAuthor}'s recent conference research—"${chosen.title}"—informs practical policy battles on the ground at organizations like ${org}.
+
+${expProfile.emailPitch || 'I would love to interview you for 45 minutes regarding your frontline experience on this critical technological governance issue.'}
+
+Would you be open to a 45-minute recorded Zoom interview on a Friday of your choosing in the coming weeks? The interview will be recorded as an academic research episode and shared with our undergraduate seminar.
+
+Thank you so much for your time and public-interest work.
+
+Sincerely,
+
+${student}
+Political Science Department
+California Lutheran University`;
+
+            document.getElementById('wsPersonalizedEmail').textContent = email;
+        }
+
+        function copyCurrentPaperEmail() {
+            const body = document.getElementById('cardEmailBody').textContent;
+            navigator.clipboard.writeText(body).then(() => {
+                showToast("Outreach email copied to clipboard!");
+            });
+        }
+
+        function copyWorkspaceEmail() {
+            const body = document.getElementById('wsPersonalizedEmail').textContent;
+            navigator.clipboard.writeText(body).then(() => {
+                showToast("Personalized outreach email copied to clipboard!");
+            });
+        }
+
+        function copySearchQuery(query) {
+            navigator.clipboard.writeText(query).then(() => {
+                showToast(`Copied search query: "${query}"`);
+            });
+        }
+
+        function exportProjectBrief() {
+            window.print();
+        }
+
+        // ==============================================================
+        // INTAKE & GENERATOR STUDIO LOGIC (Local LLMs & Cloud)
+        // ==============================================================
+
+        let currentAiProvider = 'ollama'; // Default to local Ollama
+
+        function selectAiProvider(prov) {
+            currentAiProvider = prov;
+            
+            // Toggle active pill button styles
+            const btnOllama = document.getElementById('provBtnOllama');
+            const btnLm = document.getElementById('provBtnLmStudio');
+            const btnGem = document.getElementById('provBtnGemini');
+            if (btnOllama) btnOllama.classList.toggle('active', prov === 'ollama');
+            if (btnLm) btnLm.classList.toggle('active', prov === 'lmstudio');
+            if (btnGem) btnGem.classList.toggle('active', prov === 'gemini');
+
+            // Toggle config blocks
+            const blockOllama = document.getElementById('ollamaConfigBlock');
+            const blockLm = document.getElementById('lmStudioConfigBlock');
+            const blockGem = document.getElementById('geminiConfigBlock');
+            if (blockOllama) blockOllama.style.display = prov === 'ollama' ? 'block' : 'none';
+            if (blockLm) blockLm.style.display = prov === 'lmstudio' ? 'block' : 'none';
+            if (blockGem) blockGem.style.display = prov === 'gemini' ? 'block' : 'none';
+
+            // Update model dropdown options
+            const modelSelect = document.getElementById('genModelSelect');
+            if (!modelSelect) return;
+
+            modelSelect.innerHTML = '';
+            if (prov === 'ollama') {
+                const ollamaDefaults = [
+                    { val: 'llama3:latest', label: 'llama3:latest (Local 8B - Recommended)' },
+                    { val: 'qwen2.5:7b', label: 'qwen2.5:7b (Local 7.6B)' },
+                    { val: 'mistral:latest', label: 'mistral:latest (Local 7.2B)' },
+                    { val: 'DeepSeek-R1:7b', label: 'DeepSeek-R1:7b (Local 7.6B Reasoning)' },
+                    { val: 'gemma3:4b', label: 'gemma3:4b (Local 4.3B Fast)' },
+                    { val: 'glm4:9b', label: 'glm4:9b (Local 9.4B)' }
+                ];
+                ollamaDefaults.forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m.val;
+                    opt.textContent = m.label;
+                    modelSelect.appendChild(opt);
+                });
+            } else if (prov === 'lmstudio') {
+                const opt = document.createElement('option');
+                opt.value = 'local-model';
+                opt.textContent = 'local-model (Currently Loaded in LM Studio)';
+                modelSelect.appendChild(opt);
+            } else if (prov === 'gemini') {
+                const geminiModels = [
+                    { val: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (Fast, Recommended)' },
+                    { val: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
+                    { val: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro (Deep Reasoning)' }
+                ];
+                geminiModels.forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m.val;
+                    opt.textContent = m.label;
+                    modelSelect.appendChild(opt);
+                });
+            }
+        }
+
+        // Fetch installed models directly from local Ollama
+        async function fetchOllamaModels() {
+            const endpointInput = document.getElementById('ollamaEndpointInput');
+            const endpoint = (endpointInput ? endpointInput.value.trim() : 'http://localhost:11434').replace(/\/+$/, '');
+            const logBox = document.getElementById('aiGenStatusLog');
+
+            logBox.textContent = `Pinging local Ollama at ${endpoint}/api/tags...`;
+
+            try {
+                const resp = await fetch(`${endpoint}/api/tags`);
+                if (!resp.ok) throw new Error(`Ollama returned status ${resp.status}`);
+                const data = await resp.json();
+                const models = (data.models || []).map(m => m.name);
+
+                if (!models || models.length === 0) {
+                    logBox.textContent = `Connected to Ollama, but no models found. Run 'ollama pull llama3' or 'ollama pull qwen2.5'.`;
+                    return;
+                }
+
+                const modelSelect = document.getElementById('genModelSelect');
+                modelSelect.innerHTML = '';
+                models.forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m;
+                    opt.textContent = `${m} (Installed Locally)`;
+                    modelSelect.appendChild(opt);
+                });
+
+                logBox.textContent = `✓ Successfully detected ${models.length} installed local model(s):\n${models.map(m => '  • ' + m).join('\n')}\nReady to generate paper dossiers!`;
+                showToast(`Detected ${models.length} local Ollama models!`);
+            } catch (err) {
+                console.error("Ollama connection error:", err);
+                logBox.textContent = `Could not connect to Ollama at ${endpoint}.\nDetails: ${err.message}\n\nTroubleshooting:\n1. Verify Ollama is running.\n2. If browser blocks local fetch (CORS on file:/// pages), run in PowerShell:\n   [System.Environment]::SetEnvironmentVariable('OLLAMA_ORIGINS', '*', 'User')\n   and restart Ollama.\n3. Alternatively, run the offline CLI script:\n   python generate_paper_dossiers.py --provider ollama`;
+            }
+        }
+
+        function saveGeminiApiKey() {
+            const key = document.getElementById('geminiApiKeyInput').value.trim();
+            localStorage.setItem('gemini_api_key', key);
+        }
+
+        function toggleApiKeyVisibility() {
+            const input = document.getElementById('geminiApiKeyInput');
+            if (input.type === 'password') input.type = 'text';
+            else input.type = 'password';
+        }
+
+        // The Master Prompt Generator for AI Models
+        function buildPromptTemplate(rawText, trackFocus) {
+            return `You are a distinguished Professor of Political Science, Technology Governance, and Public Policy.
+Your task is to analyze the following raw conference program snippet or paper descriptions and transform each paper into our rich pedagogical schema.
+
+PRIMARY TRACK FOCUS: ${trackFocus}
+
+For each paper, output a JSON array of objects adhering to this EXACT schema:
+[
+  {
+    "panelNumber": 100, // integer or null (optional)
+    "panelTitle": "Panel title or thematic session name (optional)",
+    "panelOrganizers": ["Organizer Name (Institution)"], // optional array
+    "title": "Exact Full Paper Title",
+    "authors": [
+      { "name": "Author Full Name", "affiliation": "Institution / University" }
+    ],
+    "track": "Global Politics", // Choose "Global Politics" OR "California & State Politics"
+    "secondaryTrack": "California & State Politics", // The other track for comparative bridging
+    "theme": "Theme Name (e.g. AI Infrastructure, Energy & Climate Ruin / Housing & Proptech / Healthcare AI)",
+    "themeSlug": "infrastructure", // one of: "biopharma", "infrastructure", "labor", "healthai", "affective", "proptech", "governance", "minerals", "forensics", "general"
+    
+    // Theoretical core
+    "coreQuestion": "The fundamental research question and underlying theoretical puzzle being investigated.",
+    "sociotechnicalConflict": "The real-world conflict or conventional corporate/state myth this paper challenges.",
+    "studentHook": "A plain-language, provocative 2-3 sentence hook explaining why this matters to politics undergraduates.",
+    
+    // Comparative Politics Dimensions
+    "globalPoliticsRelevance": "How this connects to international treaties, transnational supply chains, multilateral governance, or Global South sovereignty.",
+    "californiaStateRelevance": "How this directly bridges to California state legislation (e.g. SB 1047, AB 2273, CEQA, CPRA, CalRx, CARE Courts), state regulatory agencies (CPUC, CPPA, CEC, CARB), or California cities/regions.",
+    
+    // Learning toolkit
+    "theoreticalConcepts": [
+      { "term": "Concept Name", "definition": "Clear 1-sentence definition of the theoretical term." }
+    ],
+    "recommendedReadings": [
+      { "citation": "Author, Year. Title. Publisher/Journal." }
+    ],
+    "policyCases": [
+      "Specific real-world legislation, agency order, or public controversy"
+    ],
+    "searchQueries": [
+      "\"exact search query\" for Google Scholar or JSTOR"
+    ],
+    
+    // 45-Minute Field Expert Interview Kit
+    "expertProfile": {
+      "idealRoles": ["Specific Practitioner Job Title (e.g., Legislative Counsel, Investigative Journalist, Policy Director, Union Organizer)"],
+      "suggestedOrganizations": ["Real Organizations/NGOs/Agencies (California and Global)"],
+      "interviewProtocol": [
+        { "step": "Phase 1: Empirical Grounding (5-8 min)", "question": "Question exploring baseline day-to-day reality." },
+        { "step": "Phase 2: The Core Conflict (10-12 min)", "question": "Question probing the theoretical tension in the paper." },
+        { "step": "Phase 3: Power & Inequality (10-12 min)", "question": "Question exploring who profits vs who bears externalized harms." },
+        { "step": "Phase 4: California vs Global Bridge (8-10 min)", "question": "Question bridging the local/state reality to global governance." },
+        { "step": "Phase 5: Democratic Solutions (5-8 min)", "question": "Question asking about viable regulatory reforms or grassroots alternatives." }
+      ],
+      "emailSubject": "Interview Request: Research on [Topic] and Policy Governance",
+      "emailPitch": "Compelling 2-sentence explanation of why the student wants to interview this expert about the paper's core tension."
+    }
+  }
+]
+
+CRITICAL RULES:
+1. Return ONLY the valid JSON array. Do NOT wrap in markdown backticks or commentary.
+2. Ensure every paper has BOTH a global politics dimension AND a concrete California state politics connection.
+3. Keep the tone rigorous, engaging, and directly applicable for undergraduate students.
+
+RAW CONFERENCE PROGRAM TEXT TO ANALYZE:
+${rawText}`;
+        }
+
+        // Safe JSON parser that strips markdown code blocks or pulls outer array
+        function parseJsonSafely(rawStr) {
+            let clean = rawStr.trim();
+            if (clean.startsWith('```')) {
+                clean = clean.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+            }
+            try {
+                const parsed = JSON.parse(clean);
+                return Array.isArray(parsed) ? parsed : [parsed];
+            } catch (e) {
+                // Fallback: search for outermost array [ ... ]
+                const match = clean.match(/(\[[\s\S]*\])/);
+                if (match) {
+                    const parsed = JSON.parse(match[1]);
+                    return Array.isArray(parsed) ? parsed : [parsed];
+                }
+                throw e;
+            }
+        }
+
+        // Direct AI Generation with Local Ollama, LM Studio, or Gemini
+        async function runDirectAiGeneration() {
+            const rawText = document.getElementById('rawAiInput').value.trim();
+            const trackFocus = document.getElementById('genTrackSelect').value;
+            const modelName = document.getElementById('genModelSelect').value;
+            const logBox = document.getElementById('aiGenStatusLog');
+            const spinner = document.getElementById('genBtnSpinner');
+            const btn = document.getElementById('btnRunAiGenerate');
+
+            if (!rawText) {
+                alert("Please paste some conference text or paper titles/abstracts into the box.");
+                document.getElementById('rawAiInput').focus();
+                return;
+            }
+
+            try {
+                spinner.style.display = 'inline-block';
+                btn.disabled = true;
+
+                let newPapers = [];
+
+                if (currentAiProvider === 'ollama') {
+                    const endpointInput = document.getElementById('ollamaEndpointInput');
+                    const endpoint = (endpointInput ? endpointInput.value.trim() : 'http://localhost:11434').replace(/\/+$/, '');
+                    logBox.textContent = `🦙 Calling local Ollama (${modelName}) at ${endpoint}...\nAnalyzing conference text and building political science dossiers... (Running privately on local hardware)`;
+
+                    const prompt = buildPromptTemplate(rawText, trackFocus);
+                    const payload = {
+                        model: modelName,
+                        messages: [
+                            { role: "system", content: "You are a distinguished Professor of Political Science and Technology Governance. Return ONLY a valid JSON array adhering strictly to the required schema." },
+                            { role: "user", content: prompt }
+                        ],
+                        format: "json",
+                        stream: false,
+                        options: { temperature: 0.2 }
+                    };
+
+                    const response = await fetch(`${endpoint}/api/chat`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Ollama request failed with HTTP ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    const rawContent = data.message ? data.message.content : '';
+                    logBox.textContent += `\nResponse received from local Ollama! Parsing schema...`;
+                    newPapers = parseJsonSafely(rawContent);
+
+                } else if (currentAiProvider === 'lmstudio') {
+                    const endpointInput = document.getElementById('lmStudioEndpointInput');
+                    const endpoint = (endpointInput ? endpointInput.value.trim() : 'http://localhost:1234/v1').replace(/\/+$/, '');
+                    logBox.textContent = `⚡ Calling local LM Studio at ${endpoint}...\nAnalyzing conference text...`;
+
+                    const prompt = buildPromptTemplate(rawText, trackFocus);
+                    const payload = {
+                        model: modelName || "local-model",
+                        messages: [
+                            { role: "system", content: "You are a distinguished Professor of Political Science and Technology Governance. Return ONLY a valid JSON array adhering strictly to the required schema." },
+                            { role: "user", content: prompt }
+                        ],
+                        temperature: 0.2
+                    };
+
+                    const response = await fetch(`${endpoint}/chat/completions`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`LM Studio request failed with HTTP ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    const rawContent = data.choices[0].message.content;
+                    logBox.textContent += `\nResponse received from LM Studio! Parsing schema...`;
+                    newPapers = parseJsonSafely(rawContent);
+
+                } else if (currentAiProvider === 'gemini') {
+                    const apiKey = document.getElementById('geminiApiKeyInput').value.trim();
+                    if (!apiKey) {
+                        alert("Please enter a valid Gemini API Key first. Or select 'Local Ollama' to generate 100% offline with zero keys!");
+                        document.getElementById('geminiApiKeyInput').focus();
+                        return;
+                    }
+
+                    logBox.textContent = `✨ Connecting to Google Gemini (${modelName})...\nAnalyzing conference text...`;
+                    const prompt = buildPromptTemplate(rawText, trackFocus);
+                    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+                    const requestBody = {
+                        contents: [
+                            { parts: [{ text: prompt }] }
+                        ],
+                        generationConfig: {
+                            response_mime_type: "application/json",
+                            temperature: 0.2
+                        }
+                    };
+
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(requestBody)
+                    });
+
+                    if (!response.ok) {
+                        const errJson = await response.json();
+                        throw new Error(errJson.error ? errJson.error.message : `Gemini API request failed with status ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    const rawContent = data.candidates[0].content.parts[0].text;
+                    logBox.textContent += `\nResponse received from Gemini! Parsing schema...`;
+                    newPapers = parseJsonSafely(rawContent);
+                }
+
+                if (!Array.isArray(newPapers) || newPapers.length === 0) {
+                    throw new Error("No valid paper objects were returned by the model.");
+                }
+
+                integrateNewPapers(newPapers);
+
+                logBox.textContent += `\n🎉 Success! Added ${newPapers.length} new paper dossier(s) to your active library.\nRedirecting to Deck view...`;
+                showToast(`Added ${newPapers.length} new paper(s) to Explorer!`);
+
+                setTimeout(() => {
+                    switchMainView('deck');
+                }, 1500);
+
+            } catch (err) {
+                console.error("AI Generation Error:", err);
+                logBox.textContent += `\n\n❌ ERROR: ${err.message}\n\nTips:\n• If using Ollama and the browser blocked the request due to CORS, run in PowerShell:\n  [System.Environment]::SetEnvironmentVariable('OLLAMA_ORIGINS', '*', 'User')\n  and restart Ollama.\n• Or use the companion CLI script: python generate_paper_dossiers.py --provider ollama\n• Or copy the prompt in Tab 2 and paste the output into Tab 3!`;
+                alert(`Error generating papers: ${err.message}`);
+            } finally {
+                spinner.style.display = 'none';
+                btn.disabled = false;
+            }
+        }
+
+        // Copy Master AI Prompt (Free mode)
+        function copyMasterAiPrompt() {
+            const rawText = document.getElementById('promptRawText').value.trim() || 
+                "Panel 300: Autonomous Systems and State Power\nParticipants:\n- Autonomous Drones and Municipal Surveillance (Jane Doe, Berkeley)\n- Algorithmic Water Rights in the American West (John Smith, Stanford)";
+            
+            const prompt = buildPromptTemplate(rawText, "Both Global & California Politics");
+            document.getElementById('masterPromptPreview').textContent = prompt;
+
+            navigator.clipboard.writeText(prompt).then(() => {
+                showToast("Optimized AI prompt copied to clipboard! Paste into Gemini, Claude, or ChatGPT.");
+            });
+        }
+
+        // Import JSON into Library
+        function importJsonPapers() {
+            const rawJson = document.getElementById('jsonImportInput').value.trim();
+            if (!rawJson) {
+                alert("Please paste valid JSON text into the box.");
+                return;
+            }
+
+            try {
+                let parsed = JSON.parse(rawJson);
+                if (!Array.isArray(parsed)) {
+                    if (typeof parsed === 'object') parsed = [parsed];
+                    else throw new Error("Parsed content is not an array of papers.");
+                }
+
+                integrateNewPapers(parsed);
+                showToast(`Successfully imported ${parsed.length} paper(s)!`);
+                document.getElementById('jsonImportInput').value = '';
+                switchMainView('deck');
+            } catch (err) {
+                alert(`Invalid JSON format: ${err.message}`);
+            }
+        }
+
+        // Integrate new papers, assign IDs, persist in localStorage
+        function integrateNewPapers(newPapers) {
+            let customPapers = [];
+            try {
+                customPapers = JSON.parse(localStorage.getItem('custom_conference_papers') || '[]');
+            } catch (e) {
+                customPapers = [];
+            }
+
+            // Find max ID currently
+            let maxId = 0;
+            allPapersList.forEach(p => {
+                if (p.id && p.id > maxId) maxId = p.id;
+            });
+
+            newPapers.forEach(p => {
+                maxId++;
+                p.id = maxId;
+                if (!p.themeSlug) p.themeSlug = 'general';
+                customPapers.push(p);
+            });
+
+            localStorage.setItem('custom_conference_papers', JSON.stringify(customPapers));
+            loadLibraryPapers();
+
+            // Set current index to the newly added paper
+            const newTargetIdx = allPapersList.findIndex(p => p.id === newPapers[0].id);
+            if (newTargetIdx !== -1) {
+                currentIndex = newTargetIdx;
+            }
+
+            filterPapers();
+            renderCurrentPaper();
+            renderGridDirectory();
+            updateLibraryStats();
+        }
+
+        // Clear custom papers and revert to defaults
+        function clearCustomPapers() {
+            if (confirm("Are you sure you want to clear all custom-added papers and revert to the default 28 papers?")) {
+                localStorage.removeItem('custom_conference_papers');
+                loadLibraryPapers();
+                currentIndex = 0;
+                filterPapers();
+                renderCurrentPaper();
+                renderGridDirectory();
+                updateLibraryStats();
+                showToast("Library reverted to default 28 papers.");
+            }
+        }
+
+        // Download consolidated conference_papers_data.js
+        function downloadConsolidatedJsFile() {
+            const jsContent = `/**
+ * Technology & Policy Research Papers Database
+ * Consolidated Library (${allPapersList.length} Papers)
+ * Curated for Political Science, Global Politics, and California / State Politics
+ * Technology Issue Research & 45-Minute Field Expert Interview Assignment
+ */
+
+window.CONFERENCE_PAPERS = ${JSON.stringify(allPapersList, null, 2)};
+`;
+
+            const blob = new Blob([jsContent], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'conference_papers_data.js';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast("Downloaded updated conference_papers_data.js!");
+        }
+
+        function copyFullJsCode() {
+            const jsContent = `window.CONFERENCE_PAPERS = ${JSON.stringify(allPapersList, null, 2)};`;
+            navigator.clipboard.writeText(jsContent).then(() => {
+                showToast("Full JavaScript dataset copied to clipboard!");
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMessage');
+            if (toast && msgEl) {
+                msgEl.textContent = message;
+                toast.style.display = 'flex';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3500);
+            }
+        }
+
+        // Sanitization helper functions
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function escapeAttr(str) {
+            if (!str) return '';
+            return String(str).replace(/"/g, '&quot;').replace(/'/g, "\\'");
+        }
+    </script>
+</body>
+</html>

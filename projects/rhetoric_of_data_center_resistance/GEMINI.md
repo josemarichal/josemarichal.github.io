@@ -23,6 +23,7 @@ Critical discourse and policy analysis of grassroots civic resistance against hy
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-10-19 | **Deborah Stone Causal Stories Framework Integration** | Reframed project showcase card as "Rhetoric of Data Centers and Causal Stories", applying Deborah Stone's policy paradox taxonomy to classify city council transcripts on data center resistance into the four causal story narratives (inadvertent, accidental, mechanical, intentional). |
 | 2026-10-04 | **Linked Environmental & Grid Datasets** | Connected project to `data_center_moratoriums.csv` tracking local municipal moratoriums and utility disputes across the US. |
 | 2026-10-04 | **Discursive Analysis Framing** | Focusing on local rhetoric around water consumption, grid reliability, and tax abatements vs. tech industry modernization narratives. |
 

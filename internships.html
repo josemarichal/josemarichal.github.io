@@ -263,6 +263,63 @@
             margin-bottom: 1.25rem;
         }
 
+        .card-body p {
+            margin-bottom: 0.75rem;
+        }
+
+        .card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-body ul {
+            margin: 0.4rem 0 0.85rem 1.2rem;
+            padding: 0;
+        }
+
+        .card-body li {
+            margin-bottom: 0.3rem;
+            color: var(--text-main);
+        }
+
+        .card-body a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .card-body a:hover {
+            color: #fff;
+        }
+
+        .program-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.6rem 0 0.85rem;
+        }
+
+        .program-pill {
+            background: rgba(255, 112, 67, 0.1);
+            border: 1px solid rgba(255, 112, 67, 0.25);
+            color: var(--accent-color) !important;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.76rem;
+            text-decoration: none !important;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: all var(--transition-fast);
+        }
+
+        .program-pill:hover {
+            background: var(--accent-color);
+            color: #fff !important;
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
         .contact-box {
             background: rgba(255, 255, 255, 0.025);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -760,6 +817,163 @@
                 note: "Countywide civil service internship program across 26 agencies."
             },
             {
+                id: "vc-public-service-intern",
+                title: "Public Service Intern Program with the County of Ventura",
+                subtitle: "County Executive Office – Undergraduate & Graduate Placements",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Government Center & Countywide Agencies)",
+                description: "<p>College Juniors, Seniors, or Graduate Students have the opportunity to work practical and meaningful work/project assignments with various Departments/Agencies throughout the County of Ventura.</p><p>Interns gain direct civil service experience in county budgeting, public administration, intergovernmental relations, and municipal program evaluation.</p>",
+                contactName: "County Executive Office / Human Resources",
+                contactPhone: "(805) 654-5129",
+                contactEmail: "interns@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Administration, Ventura, CA 93009",
+                portalUrl: "https://hr.ventura.org",
+                note: "For college juniors, seniors, and graduate students. Positions available across 26 county departments."
+            },
+            {
+                id: "vc-public-defender",
+                title: "Ventura County Public Defender’s Office",
+                subtitle: "Investigative Internships for Undergraduate Students & Legal Tracks",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                secondaryPathway: "prelaw",
+                secondaryPathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Hall of Justice)",
+                description: "<p><strong>Join Our Mission:</strong> Make a Difference as an Intern with the Ventura County Public Defender's Office.</p><p>The Ventura County Public Defender’s Office is looking for driven students who are committed to advocating for the most vulnerable among us. Our internship program offers an invaluable opportunity for both law and college students to gain hands-on experience in the field of criminal defense. As an intern, you’ll work closely with skilled attorneys and investigators, gaining a unique, insider’s perspective on the criminal justice system and criminal defense litigation.</p><div class=\"program-pills\"><a href=\"https://publicdefender.venturacounty.gov/intern-program/\" target=\"_blank\" class=\"program-pill\">Student Internship Program ↗</a><a href=\"https://publicdefender.venturacounty.gov/intern-program/investigative-internships-for-undergraduate-students/\" target=\"_blank\" class=\"program-pill\">Investigative Internships (Undergraduate) ↗</a><a href=\"https://publicdefender.venturacounty.gov/intern-program/law-student-interns/\" target=\"_blank\" class=\"program-pill\">Law Student Interns ↗</a><a href=\"https://publicdefender.venturacounty.gov/intern-program/master-of-social-work-internship-program/\" target=\"_blank\" class=\"program-pill\">Master of Social Work (MSW) ↗</a></div><p><strong>Undergraduate Investigative Track:</strong><br>Our Investigations Unit offers an exciting opportunity for college and university students to serve as investigative interns. As an intern, you will:</p><ul><li>Shadow investigators in their daily duties</li><li>Assist with witness interviews</li><li>Review evidence</li><li>Observe meetings between clients and attorneys</li><li>Attend court proceedings when appropriate</li></ul><p>The goal is to give you an in-depth understanding of how our investigators work to protect our clients’ constitutional rights. You may also be tasked with: gathering records, obtaining releases of information, watching body camera footage, reviewing police reports, and providing any other necessary support to ensure exceptional service to our clients.</p>",
+                contactName: "Aron Miller (Supervising Investigator) & Erika Villa (Senior Investigator)",
+                contactPhone: "(805) 654-2201",
+                contactEmail: "Aron.Miller@ventura.org, Erika.Villa@ventura.org",
+                address: "Hall of Justice, Room 207, 800 S. Victoria Ave, Ventura, CA 93009",
+                portalUrl: "https://publicdefender.venturacounty.gov/intern-program/investigative-internships-for-undergraduate-students/",
+                note: "How to Apply: Send cover letter & resume to Aron.Miller@ventura.org & Erika.Villa@ventura.org. Suggested application times: Spring (Nov of preceding year), Summer (Feb of same year), Fall (July of same year)."
+            },
+            {
+                id: "vc-district-attorney",
+                title: "County of Ventura District Attorney’s Office",
+                subtitle: "Prosecutorial Litigation, Bureau of Investigation & Crime Victims",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                secondaryPathway: "prelaw",
+                secondaryPathwayLabel: "Pre-Law & Legal",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Hall of Justice)",
+                description: "<p>Law students and undergraduate students can learn about the criminal justice system first-hand. Interns work closely with all levels of staff, including deputy district attorneys, investigators, and support staff.</p><p>Students working in one of our special litigation units or Bureau of Investigation assist with legal research, courtroom exhibit indexing, case preparation, witness coordination, and educational duties. The Crime Victims' Assistance Unit also provides court accompaniment and restitution assistance during criminal proceedings.</p>",
+                contactName: "Chief Asst DA Lisa Lyytikainen / Vianey Valdez",
+                contactPhone: "(805) 654-2500",
+                contactEmail: "da@venturacounty.gov, Vianey.Valdez@venturacounty.gov",
+                address: "Hall of Justice, Room 311, 800 S. Victoria Ave, Ventura, CA 93009",
+                portalUrl: "https://da.venturacounty.gov/employment-opportunities/volunteer-opportunities/",
+                note: "Bureau of Investigation LiveScan takes 6-8 weeks; apply 2-3 months early. Volunteers are barred from defense work."
+            },
+            {
+                id: "vc-rma-planning",
+                title: "Planning Division Internships – Resource Management Agency",
+                subtitle: "County of Ventura Land Use, CEQA & Environmental Planning",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Government Center)",
+                description: "<p>Gain practical planning experience while being exposed to the various functions of a large planning department and learning about the interconnectedness between various government bodies.</p><p>Interns work with senior planners on development applications, zoning reviews, California Environmental Quality Act (CEQA) documentation, regional SOAR (Save Open-space and Agricultural Resources) policies, and board hearings.</p>",
+                contactName: "RMA Planning Division",
+                contactPhone: "(805) 654-2488",
+                contactEmail: "plan.counter@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Administration 3rd Floor, Ventura, CA 93009",
+                portalUrl: "https://rma.venturacounty.gov/divisions/planning/planning-internship-opportunities/",
+                note: "Hands-on planning and zoning experience. Open to undergraduates and graduate students."
+            },
+            {
+                id: "vc-rma-environmental-health",
+                title: "Environmental Health Internship – Resource Management Agency",
+                subtitle: "County of Ventura Environmental Health (EH) Division",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Government Center)",
+                description: "<p>Gain an overview of all the Environmental Health (EH) programs and hands-on field work with the guidance of a Registered Environmental Health Specialist (REHS).</p><p>The training will enable students to identify which programs they are interested in which may help them decide which career path to take, covering food safety protection, hazardous materials oversight, drinking water quality, ocean water monitoring, and vector control.</p>",
+                contactName: "Environmental Health Division",
+                contactPhone: "(805) 654-2813",
+                contactEmail: "envhealth@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Administration, Ventura, CA 93009",
+                portalUrl: "https://rma.venturacounty.gov/ventura-county-environmental-health-division-internships/",
+                note: "Mentorship and field inspection experience alongside Registered Environmental Health Specialists."
+            },
+            {
+                id: "vc-hca-behavioral-health",
+                title: "Behavioral Health Student Practice Experiences",
+                subtitle: "Ventura County Health Care Agency (HCA) – Behavioral Health",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura & Regional Clinics",
+                description: "<p>Interns will receive a wide range of exposure to clinical experiences in assessment, intervention, and case management.</p><p>Students will work within an integrated, multi-disciplinary, community-based behavioral health system serving justice-involved individuals, outpatient wellness clinics, youth crisis stabilization centers, and mobile emergency teams.</p>",
+                contactName: "Behavioral Health Student Coordinator",
+                contactPhone: "(805) 981-6830",
+                contactEmail: "vcbh.internships@ventura.org",
+                address: "1911 Williams Dr, Suite 200, Oxnard, CA 93036",
+                portalUrl: "https://hca.venturacounty.gov/behavioral-health/student-practice-experiences/",
+                note: "Placements for undergraduate and graduate health policy, social work, psychology, and public health students."
+            },
+            {
+                id: "vc-sheriff-internships",
+                title: "Sheriff’s Internship and Student Opportunities",
+                subtitle: "Ventura County Sheriff’s Office – Career Development",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura, Thousand Oaks & Camarillo",
+                description: "<p>The Ventura County Sheriff’s Office offers many career development opportunities through the high school Explorers program, Student Worker paid, part-time employment opportunities, college and high school internships through local colleges/universities and the Ventura County Innovates program.</p><p>Depending on the student’s interest and school of attendance, there are a range of possible opportunities available within the Ventura County Sheriff’s Office, including patrol operations, forensic science laboratory, dispatch communications, and criminal justice administration.</p>",
+                contactName: "Sheriff Recruiting / Student Programs",
+                contactPhone: "(805) 654-2375",
+                contactEmail: "sheriff.recruiting@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Justice, Ventura, CA 93009",
+                portalUrl: "https://sheriff.venturacounty.gov/",
+                note: "A background investigation is required to work/intern at the Sheriff’s Office; apply 3 months in advance (or the semester prior)."
+            },
+            {
+                id: "vc-gsa-fleet-services",
+                title: "Fleet Services Student Worker – General Services Agency (GSA)",
+                subtitle: "Ventura County GSA Fleet Operations & Oxnard College Partnership",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Saticoy / Ventura",
+                description: "<p>Ventura County GSA Fleet Operations & Oxnard College (School to Work Program) has been partnering since 2015 to allow students to obtain hands-on experience in the automotive shops, including body shop, install shop, and heavy equipment.</p><p>A recent student worker stated: <em>“Learning in a hands-on work environment has increased my knowledge.”</em> Covers sustainable fleet infrastructure, zero-emission municipal vehicles, and public logistics.</p>",
+                contactName: "GSA Fleet Operations Coordinator",
+                contactPhone: "(805) 672-2060",
+                contactEmail: "gsa.fleetservices@ventura.org",
+                address: "11201-A1 Riverpark Dr, Saticoy, CA 93004",
+                portalUrl: "https://bit.ly/40gvc3u",
+                note: "Paid student worker program combining technical college curriculum with public municipal fleet management."
+            },
+            {
+                id: "vc-summer-high-school",
+                title: "Summer at the County High School Internship",
+                subtitle: "County of Ventura – County Executive Office & Human Resources",
+                pathway: "law-gov",
+                pathwayLabel: "Law & Government",
+                county: "ventura",
+                countyLabel: "Ventura County",
+                city: "Ventura (Government Center & Countywide Sites)",
+                description: "<p>This 6-week PAID summer internship allows students from all Ventura County high schools to learn about various careers in public service by gaining real world work experience and also taking field trips to visit and learn about the services various county agencies provide.</p>",
+                contactName: "CEO / Human Resources Youth Coordinator",
+                contactPhone: "(805) 654-5129",
+                contactEmail: "interns@ventura.org",
+                address: "800 S. Victoria Ave, Hall of Administration, Ventura, CA 93009",
+                portalUrl: "http://vcportal.venturacounty.gov/CEO/HR/docs/internships/Summer_at_the_County_Flyer.pdf",
+                note: "6-week paid summer internship. Applications open each spring for enrolled Ventura County high school students."
+            },
+            {
                 id: "city-thousand-oaks",
                 title: "City of Thousand Oaks – City Manager's Office & HR",
                 subtitle: "Municipal Administration, Housing & Sustainability",
@@ -1227,23 +1441,6 @@
 
             // ==================== PATHWAY 5: PRE-LAW & LEGAL PROFESSIONS ====================
             {
-                id: "vc-public-defender",
-                title: "Ventura County Public Defender’s Office",
-                subtitle: "Undergraduate Investigative Internships & Case Preparation",
-                pathway: "prelaw",
-                pathwayLabel: "Pre-Law & Legal",
-                county: "ventura",
-                countyLabel: "Ventura County",
-                city: "Ventura (Hall of Justice)",
-                description: "One of the most competitive pre-law internships in California. Shadow Senior Investigators, review police body-worn camera footage, assist in subpoena service and witness interviews, locate defense evidence, and observe felony/misdemeanor court proceedings.",
-                contactName: "Aron Miller & Erika Villa, Senior Investigators",
-                contactPhone: "(805) 654-2201",
-                contactEmail: "Aron.Miller@ventura.org",
-                address: "Hall of Justice, Room 207, 800 S. Victoria Ave, Ventura, CA 93009",
-                portalUrl: "https://pubdef.ventura.org",
-                note: "Email resume and cover letter to both Aron.Miller@ventura.org and Erika.Villa@ventura.org. Deadlines: Nov (Spring), Feb (Summer), July (Fall)."
-            },
-            {
                 id: "sb-public-defender",
                 title: "Santa Barbara County Public Defender’s Office",
                 subtitle: "Undergraduate Criminal Defense & Courtroom Discovery",
@@ -1276,23 +1473,6 @@
                 address: "210 W. Temple St, 19th Floor, Los Angeles, CA 90012 (and Valley branches)",
                 portalUrl: "https://pubdef.lacounty.gov/",
                 note: "Requires 16 hours/week commitment. Rolling applications accepted year-round."
-            },
-            {
-                id: "vc-district-attorney",
-                title: "Ventura County District Attorney’s Office",
-                subtitle: "Prosecutorial Litigation, Crime Victims & Investigation",
-                pathway: "prelaw",
-                pathwayLabel: "Pre-Law & Legal",
-                county: "ventura",
-                countyLabel: "Ventura County",
-                city: "Ventura (Hall of Justice)",
-                description: "Assist Deputy DAs with trial binder preparation, case digest research, evidence indexing, and courtroom motions. Crime Victims' Assistance Unit provides court accompaniment and restitution assistance during violent crime cases.",
-                contactName: "Chief Asst DA Lisa Lyytikainen / Vianey Valdez",
-                contactPhone: "(805) 654-3622",
-                contactEmail: "Vianey.Valdez@venturacounty.gov",
-                address: "Hall of Justice, Room 311, 800 S. Victoria Ave, Ventura, CA 93009",
-                portalUrl: "https://da.venturacounty.gov/",
-                note: "Bureau of Investigation LiveScan takes 6-8 weeks; apply 2 months early. Volunteers barred from defense work."
             },
             {
                 id: "ca-court-appeal-div6",
@@ -1676,7 +1856,9 @@
                         contactHtml += `<div class="contact-item"><strong>Phone:</strong> <a href="tel:${item.contactPhone.replace(/[^0-9+]/g, '')}">${item.contactPhone}</a></div>`;
                     }
                     if (item.contactEmail) {
-                        contactHtml += `<div class="contact-item"><strong>Email:</strong> <a href="mailto:${item.contactEmail}">${item.contactEmail}</a></div>`;
+                        const emails = item.contactEmail.split(/[,;]/).map(e => e.trim()).filter(Boolean);
+                        const emailLinks = emails.map(e => `<a href="mailto:${e}">${e}</a>`).join(", ");
+                        contactHtml += `<div class="contact-item"><strong>Email:</strong> <span>${emailLinks}</span></div>`;
                     }
                     if (item.address) {
                         contactHtml += `<div class="contact-item"><strong>Address:</strong> <span>${item.address}</span></div>`;
@@ -1691,16 +1873,19 @@
 
                 let noteHtml = item.note ? `<span class="app-note">${item.note}</span>` : "";
 
+                const secondaryBadgeHtml = item.secondaryPathwayLabel ? `<span class="badge badge-pathway">${item.secondaryPathwayLabel}</span>` : "";
+
                 card.innerHTML = `
                     <div>
                         <div class="card-badges">
                             <span class="badge badge-pathway">${item.pathwayLabel}</span>
+                            ${secondaryBadgeHtml}
                             <span class="badge badge-county">${item.countyLabel}</span>
                             <span class="badge badge-city">${item.city}</span>
                         </div>
                         <h3 class="card-title">${item.title}</h3>
                         <div class="card-subtitle">${item.subtitle}</div>
-                        <p class="card-body">${item.description}</p>
+                        <div class="card-body">${item.description}</div>
                         ${contactHtml}
                     </div>
                     <div class="card-footer">
@@ -1716,7 +1901,10 @@
             const query = document.getElementById("searchInput").value.toLowerCase().trim();
 
             const filtered = directoryData.filter(item => {
-                const matchesPathway = (activePathway === "all") || (item.pathway === activePathway);
+                const matchesPathway = (activePathway === "all") || 
+                    (item.pathway === activePathway) || 
+                    (item.secondaryPathway === activePathway) ||
+                    (Array.isArray(item.pathway) && item.pathway.includes(activePathway));
                 const matchesCounty = (activeCounty === "all") || (item.county === activeCounty) || (item.county === "all");
 
                 const textToSearch = `${item.title} ${item.subtitle} ${item.description} ${item.city} ${item.contactName} ${item.contactEmail} ${item.address} ${item.pathwayLabel} ${item.countyLabel}`.toLowerCase();

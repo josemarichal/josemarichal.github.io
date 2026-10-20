@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>4S 2026 Proceedings: Technopower Knowledge Graph | Top 10 Technology Hubs</title>
+  <meta name="description" content="Interactive Knowledge Graph mapping the 4S 2026 Toronto conference proceedings, highlighting the 10 largest technology nodes across 646 panels.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Vis.js Network -->
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #070a13;
+      --bg-surface: #0f172a;
+      --bg-surface-elevated: #162238;
+      --bg-card: rgba(19, 27, 46, 0.92);
+      --bg-card-hover: #1e2c4a;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --border-accent: rgba(56, 189, 248, 0.35);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.25);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --amber: #f59e0b;
+      --amber-glow: rgba(245, 158, 11, 0.25);
+      --purple: #a855f7;
+      --purple-glow: rgba(168, 85, 247, 0.25);
+      --pink: #ec4899;
+      --pink-glow: rgba(236, 72, 153, 0.25);
+      --red: #ef4444;
+      --lime: #84cc16;
+      --indigo: #6366f1;
+      --teal: #06b6d4;
+      --gold: #eab308;
+
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+      --shadow-card: 0 12px 36px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body);
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(168, 85, 247, 0.07) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Top Navigation Header */
+    header.site-header {
+      height: 68px;
+      flex-shrink: 0;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #041017;
+      box-shadow: 0 0 16px var(--cyan-glow);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-text .subtitle {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .badge-proceedings {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .header-quick-stats {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .stat-pill strong {
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .header-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-nav-link {
+      background: var(--bg-surface-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-nav-link:hover {
+      color: var(--text-main);
+      border-color: var(--border-strong);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Top Horizontal Top 10 Technology Nodes Spotlight Bar */
+    .spotlight-bar {
+      background: rgba(11, 17, 32, 0.96);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      z-index: 90;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-strong) transparent;
+    }
+
+    .spotlight-bar::-webkit-scrollbar {
+      height: 4px;
+    }
+    .spotlight-bar::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 4px;
+    }
+
+    .spotlight-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .tech-pill-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.8rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .tech-pill-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .tech-pill-btn.active {
+      background: rgba(56, 189, 248, 0.18);
+      color: #ffffff;
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .tech-pill-btn .pill-rank {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.15);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .tech-pill-btn .pill-count {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+    }
+
+    /* Main Workspace Layout */
+    .workspace-body {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left Control Sidebar */
+    .control-sidebar {
+      width: 340px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 50;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-section {
+      padding: 1.15rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #090d16;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.6rem 0.85rem 0.6rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .search-icon-svg {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+
+    /* Filter Chips */
+    .filter-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .filter-chip {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-chip:hover {
+      color: var(--text-main);
+      border-color: var(--border-strong);
+    }
+
+    .filter-chip.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    /* Top 10 Leaderboard in Sidebar */
+    .leaderboard-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .leaderboard-item {
+      background: rgba(22, 34, 56, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .leaderboard-item:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-strong);
+      transform: translateX(2px);
+    }
+
+    .leaderboard-item.active {
+      border-color: var(--cyan);
+      background: rgba(56, 189, 248, 0.12);
+      box-shadow: 0 0 14px var(--cyan-glow);
+    }
+
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      overflow: hidden;
+    }
+
+    .item-rank {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      width: 22px;
+      text-align: center;
+    }
+
+    .item-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    /* Central Graph Area */
+    .graph-stage {
+      flex: 1;
+      position: relative;
+      background: #060911;
+      overflow: hidden;
+    }
+
+    #network-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Floating View Controls (Bottom-Left) */
+    .floating-controls {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 40;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .action-btn {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-strong);
+      color: var(--text-main);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .action-btn:hover {
+      background: var(--cyan);
+      color: #041017;
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    /* Right Slide-out Details Inspector Drawer */
+    .inspector-drawer {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      width: 520px;
+      max-width: 92vw;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .drawer-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .drawer-meta-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .drawer-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .drawer-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .drawer-close-btn:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .drawer-content {
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .drawer-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .drawer-block-title {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .drawer-callout-text {
+      background: rgba(56, 189, 248, 0.07);
+      border-left: 3px solid var(--cyan);
+      padding: 0.85rem 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bullet-list li {
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .bullet-list li::before {
+      content: '▹';
+      color: var(--cyan);
+      font-weight: bold;
+    }
+
+    .bullet-list li strong {
+      color: var(--text-main);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .connected-neighbors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .neighbor-pill {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .neighbor-pill:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    /* Navigation Action Button */
+    .btn-nav-action {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
+      color: #ffffff;
+      border: 1px solid var(--border-accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .btn-nav-action:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(168, 85, 247, 0.35));
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+    }
+
+    /* Papers Accordion in Inspector Drawer */
+    .drawer-papers-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .drawer-papers-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .drawer-papers-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .mini-action-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.28rem 0.6rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .mini-action-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-strong);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-action-btn.accent {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: var(--cyan);
+    }
+
+    .mini-action-btn.accent:hover {
+      background: var(--cyan);
+      color: #041017;
+      border-color: var(--cyan);
+    }
+
+    .drawer-search-box {
+      position: relative;
+      margin-top: 0.35rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .drawer-paper-input {
+      width: 100%;
+      background: #080c16;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.5rem 0.75rem 0.5rem 2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .drawer-paper-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    .drawer-search-icon {
+      position: absolute;
+      left: 0.65rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      pointer-events: none;
+      font-size: 0.75rem;
+    }
+
+    /* Panel Accordion in Drawer */
+    .drawer-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .panel-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      width: 100%;
+    }
+
+    .panel-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .panel-card.open {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .panel-card-head {
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(22, 34, 56, 0.5);
+      transition: background 0.15s ease;
+    }
+
+    .panel-card-head:hover {
+      background: rgba(30, 46, 74, 0.75);
+    }
+
+    .panel-card-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .panel-number-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .panel-name-text {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.4;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .panel-card-aside {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .panel-count-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .panel-chevron {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    .panel-card.open .panel-chevron {
+      transform: rotate(180deg);
+      color: var(--cyan);
+    }
+
+    .panel-card-papers {
+      display: none;
+      padding: 0.85rem 1rem;
+      background: rgba(9, 13, 24, 0.85);
+      border-top: 1px solid var(--border-subtle);
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .panel-card.open .panel-card-papers {
+      display: flex;
+    }
+
+    .paper-item {
+      background: rgba(22, 34, 56, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid var(--cyan);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .paper-item:hover {
+      background: rgba(30, 46, 74, 0.9);
+      border-color: rgba(56, 189, 248, 0.35);
+      border-left-color: #38bdf8;
+      transform: translateX(2px);
+    }
+
+    .paper-item-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    .paper-item-authors {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      line-height: 1.45;
+    }
+
+    .paper-item-authors svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--cyan);
+    }
+
+    /* Fullscreen High-Density Paper Deck Modal */
+    .deck-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 8, 16, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.25rem;
+    }
+
+    .deck-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .deck-modal {
+      width: 100%;
+      max-width: 1360px;
+      height: 92vh;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalScaleIn {
+      from { transform: scale(0.96); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .deck-modal-nav {
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .deck-node-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .deck-nav-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+
+    .deck-nav-btn:hover:not(:disabled) {
+      background: var(--cyan);
+      color: #041017;
+      border-color: var(--cyan);
+    }
+
+    .deck-nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .deck-node-select {
+      background: #090e1a;
+      border: 1px solid var(--border-strong);
+      color: #ffffff;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .deck-node-select:focus {
+      border-color: var(--cyan);
+    }
+
+    .deck-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .deck-modal-banner {
+      background: linear-gradient(180deg, rgba(22, 34, 56, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .deck-banner-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .deck-node-title-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .deck-banner-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .deck-banner-search-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .deck-search-input-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .deck-search-input {
+      width: 100%;
+      background: #080c16;
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      padding: 0.55rem 0.85rem 0.55rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .deck-search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .deck-panel-pills-scroll {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      overflow-x: auto;
+      max-width: 600px;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+    }
+
+    .deck-panel-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .deck-panel-pill:hover {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .deck-content-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+      gap: 1.5rem;
+      align-content: start;
+    }
+
+    .deck-panel-card {
+      background: rgba(20, 30, 52, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .deck-panel-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .deck-panel-header {
+      background: rgba(13, 20, 38, 0.95);
+      padding: 1.1rem 1.35rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .deck-panel-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+    }
+
+    .deck-panel-title-text {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    .deck-panel-body {
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      flex: 1;
+      background: rgba(8, 12, 22, 0.5);
+    }
+
+    .deck-paper-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid var(--cyan);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.15rem;
+      transition: all 0.2s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .deck-paper-card:hover {
+      background: rgba(22, 34, 56, 0.95);
+      border-color: rgba(56, 189, 248, 0.35);
+      border-left-color: #38bdf8;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .deck-paper-index {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .deck-paper-title {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    .deck-paper-authors {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      line-height: 1.45;
+    }
+
+    .deck-paper-authors svg {
+      color: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="site-header">
+    <div class="brand-group">
+      <div class="brand-icon-box">4S</div>
+      <div class="brand-text">
+        <h1>
+          Technopower Knowledge Graph
+          <span class="badge-proceedings">4S 2026 Toronto</span>
+        </h1>
+        <div class="subtitle">Macroscopic Technology Topology across 646 Conference Panels</div>
+      </div>
+    </div>
+
+    <!-- Header Stats -->
+    <div class="header-quick-stats">
+      <div class="stat-pill">
+        <span>Tech Hubs:</span>
+        <strong style="color: var(--cyan);">10</strong>
+      </div>
+      <div class="stat-pill">
+        <span>Curated Papers:</span>
+        <strong id="statPaperCount" style="color: var(--cyan);">741</strong>
+      </div>
+      <div class="stat-pill">
+        <span>Graph Nodes:</span>
+        <strong id="statNodeCount">38</strong>
+      </div>
+      <div class="stat-pill">
+        <span>Cross-Domain Edges:</span>
+        <strong id="statEdgeCount">48</strong>
+      </div>
+    </div>
+
+    <!-- Navigation links -->
+    <div class="header-nav-links">
+      <button class="btn-nav-action" onclick="openPaperDeckForCurrentNode()">
+        📚 Browse Papers by Node
+      </button>
+      <a href="conference_paper_explorer.html" class="btn-nav-link">
+        📑 Paper Dossier Deck →
+      </a>
+      <a href="thousand_oaks_civic_graph.html" class="btn-nav-link" target="_blank">
+        🏛️ Thousand Oaks Civic Graph ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Top Horizontal Top 10 Technology Nodes Spotlight Bar -->
+  <div class="spotlight-bar" id="spotlightBar">
+    <div class="spotlight-label">
+      <span>★ TOP 10 TECH HUBS:</span>
+    </div>
+    <!-- Dynamically Populated with Top 10 Buttons -->
+  </div>
+
+  <!-- Main Workspace -->
+  <div class="workspace-body">
+    <!-- Left Sidebar: Controls & Leaderboard -->
+    <aside class="control-sidebar">
+      <!-- Search Box -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">
+          <span>Search Knowledge Graph</span>
+        </div>
+        <div class="search-input-wrapper">
+          <svg class="search-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="graphSearchInput" class="search-input" placeholder="Search technology, concept, scholar..." oninput="handleGraphSearch(this.value)">
+        </div>
+      </div>
+
+      <!-- Graph View Filters -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">
+          <span>Filter View</span>
+          <button class="filter-chip" style="font-size: 0.68rem;" onclick="resetGraphFilter()">Reset</button>
+        </div>
+        <div class="filter-pills-grid">
+          <button class="filter-chip active" id="fAll" onclick="setClusterFilter('all')">All Nodes (38)</button>
+          <button class="filter-chip" id="fTop10" onclick="setClusterFilter('top10')">Top 10 Tech Hubs Only</button>
+          <button class="filter-chip" id="fSatellites" onclick="setClusterFilter('satellites')">Sub-Domains & Cases</button>
+        </div>
+      </div>
+
+      <!-- Top 10 Ranked Tech Leaderboard -->
+      <div class="sidebar-section" style="flex: 1;">
+        <div class="sidebar-title">
+          <span>Top 10 Technology Nodes</span>
+          <span style="font-size: 0.72rem; color: var(--text-subtle);">By Paper Volume</span>
+        </div>
+        <div class="leaderboard-list" id="leaderboardList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Graph Canvas -->
+    <main class="graph-stage">
+      <div id="network-container"></div>
+
+      <!-- Floating Controls on Canvas -->
+      <div class="floating-controls">
+        <button class="action-btn" onclick="fitGraphView()">
+          ⛶ Fit View
+        </button>
+        <button class="action-btn" onclick="zoomInGraph()">
+          ＋ Zoom In
+        </button>
+        <button class="action-btn" onclick="zoomOutGraph()">
+          － Zoom Out
+        </button>
+        <button class="action-btn" onclick="togglePhysicsSimulation()">
+          <span id="physicsIcon">⚡</span> Toggle Physics
+        </button>
+      </div>
+
+      <!-- Right Details Inspector Slide-Out Drawer -->
+      <div class="inspector-drawer" id="nodeDrawer" style="display: none;">
+        <div class="drawer-header">
+          <div>
+            <div class="drawer-meta-badges">
+              <span class="badge-proceedings" id="dRankBadge">Rank #1</span>
+              <span class="stat-pill" style="padding: 0.15rem 0.5rem; font-size: 0.72rem;" id="dCategoryBadge">Category</span>
+            </div>
+            <h2 class="drawer-title" id="dNodeTitle">Generative AI & LLMs</h2>
+          </div>
+          <button class="drawer-close-btn" onclick="closeInspectorDrawer()">✕</button>
+        </div>
+
+        <div class="drawer-content">
+          <!-- Core Sociotechnical Puzzle -->
+          <div class="drawer-block">
+            <div class="drawer-block-title">
+              <span>🧩 Theoretical Puzzle & Conflict</span>
+            </div>
+            <div class="drawer-callout-text" id="dCorePuzzle">
+              Loading...
+            </div>
+          </div>
+
+          <!-- Key Tensions -->
+          <div class="drawer-block">
+            <div class="drawer-block-title">
+              <span>⚖️ Structural Tensions in Proceedings</span>
+            </div>
+            <ul class="bullet-list" id="dKeyTensions"></ul>
+          </div>
+
+          <!-- Research Papers by Panel (Lists papers broken down by panel) -->
+          <div class="drawer-block" id="drawerPapersBlock">
+            <div class="drawer-papers-header">
+              <div class="drawer-block-title">
+                <span>📄 Research Papers by Panel</span>
+              </div>
+              <span class="drawer-papers-badge" id="dPapersCountBadge">0 Papers</span>
+            </div>
+            
+            <div class="drawer-papers-controls" style="margin-top: 0.35rem; margin-bottom: 0.25rem;">
+              <button class="mini-action-btn" id="btnTogglePanels" onclick="toggleAllDrawerPanels()">Expand All</button>
+              <button class="mini-action-btn accent" onclick="openPaperDeckForCurrentNode()">📖 Deck View</button>
+            </div>
+
+            <div class="drawer-search-box">
+              <span class="drawer-search-icon">🔍</span>
+              <input type="text" id="drawerPaperSearch" class="drawer-paper-input" placeholder="Filter papers or authors in this node..." oninput="handleDrawerPaperFilter(this.value)">
+            </div>
+
+            <div class="drawer-accordion" id="drawerPanelsAccordion">
+              <!-- Dynamically populated with panels & research papers -->
+            </div>
+          </div>
+
+          <!-- Prominent Scholars -->
+          <div class="drawer-block">
+            <div class="drawer-block-title">
+              <span>👥 Prominent Scholars in Proceedings</span>
+            </div>
+            <div class="tag-cloud" id="dScholars"></div>
+          </div>
+
+          <!-- Real-world Policy Battles -->
+          <div class="drawer-block">
+            <div class="drawer-block-title">
+              <span>🏛️ Real-World Governance & Resistance Cases</span>
+            </div>
+            <ul class="bullet-list" id="dGovernanceCases"></ul>
+          </div>
+
+          <!-- Connected Neighbors -->
+          <div class="drawer-block">
+            <div class="drawer-block-title">
+              <span>🔗 Connected Knowledge Neighbors</span>
+            </div>
+            <div class="connected-neighbors-list" id="dNeighborsList"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Fullscreen / Interactive Paper Deck Modal -->
+  <div class="deck-modal-backdrop" id="paperDeckModal" onclick="handleDeckBackdropClick(event)">
+    <div class="deck-modal" onclick="event.stopPropagation()">
+      <!-- Top Navigation & Node Switcher -->
+      <div class="deck-modal-nav">
+        <div class="deck-node-switcher">
+          <button class="deck-nav-btn" id="btnDeckPrev" onclick="navigateDeckNode(-1)" title="Previous Tech Node (Left Arrow)">
+            ← Prev Hub
+          </button>
+          <select class="deck-node-select" id="deckNodeSelect" onchange="switchDeckNode(this.value)">
+            <!-- Populated dynamically with all 10 technology hubs -->
+          </select>
+          <button class="deck-nav-btn" id="btnDeckNext" onclick="navigateDeckNode(1)" title="Next Tech Node (Right Arrow)">
+            Next Hub →
+          </button>
+        </div>
+
+        <div class="deck-modal-actions">
+          <button class="mini-action-btn accent" onclick="focusDeckNodeInGraph()">
+            🎯 Focus Node in Graph
+          </button>
+          <button class="drawer-close-btn" onclick="closePaperDeckModal()" title="Close (Esc)">✕</button>
+        </div>
+      </div>
+
+      <!-- Current Node Banner & Filters -->
+      <div class="deck-modal-banner">
+        <div class="deck-banner-top">
+          <div class="deck-node-title-box">
+            <span class="badge-proceedings" id="deckRankBadge">Rank #1</span>
+            <span class="stat-pill" style="padding: 0.15rem 0.5rem; font-size: 0.72rem;" id="deckCategoryBadge">Category</span>
+            <h2 id="deckNodeTitle">Generative AI & LLMs</h2>
+          </div>
+          <div class="deck-banner-meta">
+            <span class="drawer-papers-badge" id="deckPaperCountBadge">177 Papers</span>
+            <span class="stat-pill" style="padding: 0.2rem 0.6rem; font-size: 0.72rem;" id="deckPanelCountBadge">43 Panels</span>
+          </div>
+        </div>
+
+        <div class="deck-banner-search-row">
+          <div class="deck-search-input-box">
+            <span class="drawer-search-icon">🔍</span>
+            <input type="text" id="deckPaperSearchInput" class="deck-search-input" placeholder="Search papers by title or author in this node..." oninput="handleDeckSearch(this.value)">
+          </div>
+          <div class="deck-panel-pills-scroll" id="deckPanelJumpPills">
+            <!-- Populated dynamically with quick-jump panel pills -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable Deck Grid of Panels & Papers -->
+      <div class="deck-content-scroll" id="deckContentScroll">
+        <!-- Dynamically populated with panels & paper cards -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Graph Dataset -->
+  <script src="conference_knowledge_graph_data.js?v=20261014b"></script>
+
+  <script>
+    let network = null;
+    let nodesDataSet = null;
+    let edgesDataSet = null;
+    let currentSelectedNodeId = null;
+    let currentDeckNodeId = null;
+    let physicsEnabled = true;
+    let allDrawerPanelsExpanded = false;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initKnowledgeGraph();
+      renderTop10Spotlight();
+      renderLeaderboard();
+      populateDeckNodeSelect();
+
+      // Keyboard listener for paper deck modal navigation
+      window.addEventListener('keydown', e => {
+        const modal = document.getElementById('paperDeckModal');
+        if (modal && modal.classList.contains('open')) {
+          if (e.key === 'Escape') closePaperDeckModal();
+          else if (e.key === 'ArrowLeft') navigateDeckNode(-1);
+          else if (e.key === 'ArrowRight') navigateDeckNode(1);
+        }
+      });
+
+      // Open Rank 1 (Generative AI) by default in inspector
+      selectNode("tech_ai_llm");
+    });
+
+    function initKnowledgeGraph() {
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH || { topNodes: [], graph: { nodes: [], edges: [] } };
+      
+      const rawNodes = data.graph.nodes;
+      const rawEdges = data.graph.edges;
+
+      nodesDataSet = new vis.DataSet(rawNodes);
+      edgesDataSet = new vis.DataSet(rawEdges);
+
+      const container = document.getElementById('network-container');
+
+      const options = {
+        nodes: {
+          shape: 'dot',
+          scaling: {
+            min: 14,
+            max: 42,
+            label: { min: 11, max: 18 }
+          },
+          borderWidth: 2,
+          shadow: { enabled: true, color: 'rgba(0,0,0,0.6)', size: 10, x: 0, y: 5 }
+        },
+        edges: {
+          smooth: { type: 'continuous', roundness: 0.25 },
+          arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+          font: { size: 9, color: '#94a3b8', strokeWidth: 0, align: 'middle' },
+          selectionWidth: 3
+        },
+        physics: {
+          barnesHut: {
+            gravitationalConstant: -18000,
+            centralGravity: 0.2,
+            springLength: 160,
+            springConstant: 0.04,
+            damping: 0.09,
+            avoidOverlap: 0.6
+          },
+          stabilization: {
+            iterations: 150,
+            updateInterval: 25
+          }
+        },
+        interaction: {
+          hover: true,
+          tooltipDelay: 150,
+          zoomView: true,
+          dragView: true,
+          hideEdgesOnDrag: false
+        }
+      };
+
+      network = new vis.Network(container, { nodes: nodesDataSet, edges: edgesDataSet }, options);
+
+      // Node Click Listener
+      network.on('click', params => {
+        if (params.nodes.length > 0) {
+          const nodeId = params.nodes[0];
+          selectNode(nodeId);
+        } else {
+          closeInspectorDrawer();
+        }
+      });
+    }
+
+    // Render the Horizontal Top 10 Spotlight Bar
+    function renderTop10Spotlight() {
+      const container = document.getElementById('spotlightBar');
+      const topNodes = (window.CONFERENCE_KNOWLEDGE_GRAPH && window.CONFERENCE_KNOWLEDGE_GRAPH.topNodes) || [];
+
+      topNodes.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = 'tech-pill-btn';
+        btn.id = `spotBtn_${t.id}`;
+        btn.innerHTML = `
+          <span class="pill-rank">#${t.rank}</span>
+          <span>${t.icon} ${t.shortName}</span>
+          <span class="pill-count">(${t.paperCount})</span>
+        `;
+        btn.onclick = () => selectNode(t.id);
+        container.appendChild(btn);
+      });
+    }
+
+    // Render the Left Sidebar Top 10 Leaderboard
+    function renderLeaderboard() {
+      const list = document.getElementById('leaderboardList');
+      const topNodes = (window.CONFERENCE_KNOWLEDGE_GRAPH && window.CONFERENCE_KNOWLEDGE_GRAPH.topNodes) || [];
+
+      list.innerHTML = topNodes.map(t => `
+        <div class="leaderboard-item" id="leadItem_${t.id}" onclick="selectNode('${t.id}')">
+          <div class="item-left">
+            <span class="item-rank">#${t.rank}</span>
+            <div style="font-size: 1.1rem;">${t.icon}</div>
+            <div class="item-name">${t.shortName}</div>
+          </div>
+          <span class="item-badge">${t.paperCount} papers</span>
+        </div>
+      `).join('');
+    }
+
+    // Select and Highlight a Node
+    function selectNode(nodeId) {
+      currentSelectedNodeId = nodeId;
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH;
+      if (!data) return;
+
+      // Update Spotlight & Leaderboard active states
+      document.querySelectorAll('.tech-pill-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.leaderboard-item').forEach(b => b.classList.remove('active'));
+
+      const spotBtn = document.getElementById(`spotBtn_${nodeId}`);
+      if (spotBtn) spotBtn.classList.add('active');
+
+      const leadItem = document.getElementById(`leadItem_${nodeId}`);
+      if (leadItem) leadItem.classList.add('active');
+
+      // Focus and smooth zoom in Vis.js
+      if (network) {
+        network.focus(nodeId, {
+          scale: 1.25,
+          animation: { duration: 800, easingFunction: 'easeInOutQuad' }
+        });
+        network.selectNodes([nodeId]);
+      }
+
+      // Populate Inspector Drawer
+      openInspectorDrawer(nodeId);
+    }
+
+    function openInspectorDrawer(nodeId) {
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH;
+      const topNode = data.topNodes.find(t => t.id === nodeId);
+      const drawer = document.getElementById('nodeDrawer');
+
+      // Reset drawer search field
+      const searchInput = document.getElementById('drawerPaperSearch');
+      if (searchInput) searchInput.value = '';
+
+      if (topNode) {
+        document.getElementById('dRankBadge').textContent = `Rank #${topNode.rank}`;
+        document.getElementById('dRankBadge').style.background = 'rgba(56, 189, 248, 0.15)';
+        document.getElementById('dCategoryBadge').textContent = topNode.category;
+        document.getElementById('dNodeTitle').textContent = `${topNode.icon} ${topNode.name}`;
+        document.getElementById('dCorePuzzle').textContent = topNode.corePuzzle;
+
+        // Key Tensions
+        document.getElementById('dKeyTensions').innerHTML = topNode.keyTensions.map(t => `<li>${t}</li>`).join('');
+
+        // Paper Count Badge
+        const papersBadge = document.getElementById('dPapersCountBadge');
+        if (papersBadge) {
+          papersBadge.textContent = `${topNode.paperCount} Papers • ${topNode.panelCount} Panels`;
+        }
+
+        // Render Research Papers Broken Down by Panel
+        renderDrawerPapers(topNode.panels);
+
+        // Scholars
+        document.getElementById('dScholars').innerHTML = topNode.prominentScholars.map(s => `<span class="tag-item">${s}</span>`).join('');
+
+        // Governance Cases
+        document.getElementById('dGovernanceCases').innerHTML = topNode.governanceCases.map(c => `<li>${c}</li>`).join('');
+
+        // Neighbors in graph
+        const connectedEdgeObjects = data.graph.edges.filter(e => e.from === nodeId || e.to === nodeId);
+        const neighborIds = [...new Set(connectedEdgeObjects.map(e => e.from === nodeId ? e.to : e.from))];
+        
+        document.getElementById('dNeighborsList').innerHTML = neighborIds.map(nid => {
+          const nNode = data.graph.nodes.find(n => n.id === nid);
+          const label = nNode ? nNode.label : nid;
+          return `<button class="neighbor-pill" onclick="selectNode('${nid}')">${label} →</button>`;
+        }).join('');
+
+      } else {
+        // Satellite Node view
+        const satNode = data.graph.nodes.find(n => n.id === nodeId);
+        if (!satNode) return;
+
+        // Find connected top node
+        const parentEdge = data.graph.edges.find(e => (e.from === nodeId && e.to.startsWith('tech_')) || (e.to === nodeId && e.from.startsWith('tech_')));
+        const parentTopId = parentEdge ? (parentEdge.from.startsWith('tech_') ? parentEdge.from : parentEdge.to) : null;
+        const parentTopNode = parentTopId ? data.topNodes.find(t => t.id === parentTopId) : null;
+
+        document.getElementById('dRankBadge').textContent = `Satellite`;
+        document.getElementById('dRankBadge').style.background = 'rgba(148, 163, 184, 0.2)';
+        document.getElementById('dCategoryBadge').textContent = satNode.category || 'Sub-Domain';
+        document.getElementById('dNodeTitle').textContent = satNode.label;
+        document.getElementById('dCorePuzzle').textContent = `Empirical sub-cluster and operational case connected to ${parentTopNode ? parentTopNode.name : 'macro technology pillars'} in the proceedings.`;
+        document.getElementById('dKeyTensions').innerHTML = `<li>Situated case study investigating technological tensions in this specific domain.</li>`;
+        
+        const papersBadge = document.getElementById('dPapersCountBadge');
+        if (papersBadge) {
+          papersBadge.textContent = parentTopNode ? `Sub-Domain of Hub #${parentTopNode.rank}` : `Sub-Domain`;
+        }
+
+        if (parentTopNode) {
+          renderDrawerPapers(parentTopNode.panels);
+        } else {
+          document.getElementById('drawerPanelsAccordion').innerHTML = `<div style="padding: 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.8rem;">Explore connected macro hubs to view full panels and papers.</div>`;
+        }
+
+        document.getElementById('dScholars').innerHTML = `<span class="tag-item">Conference Participants</span>`;
+        document.getElementById('dGovernanceCases').innerHTML = `<li>Regulatory and civic engagement controversies discussed in related panels.</li>`;
+
+        const connectedEdgeObjects = data.graph.edges.filter(e => e.from === nodeId || e.to === nodeId);
+        const neighborIds = [...new Set(connectedEdgeObjects.map(e => e.from === nodeId ? e.to : e.from))];
+        document.getElementById('dNeighborsList').innerHTML = neighborIds.map(nid => {
+          const nNode = data.graph.nodes.find(n => n.id === nid);
+          const label = nNode ? nNode.label : nid;
+          return `<button class="neighbor-pill" onclick="selectNode('${nid}')">${label} →</button>`;
+        }).join('');
+      }
+
+      drawer.style.display = 'flex';
+    }
+
+    function closeInspectorDrawer() {
+      document.getElementById('nodeDrawer').style.display = 'none';
+      if (network) network.unselectAll();
+      document.querySelectorAll('.tech-pill-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.leaderboard-item').forEach(b => b.classList.remove('active'));
+    }
+
+    // Render Research Papers Broken Down by Panels in Inspector Drawer
+    function renderDrawerPapers(panels, query = '') {
+      const container = document.getElementById('drawerPanelsAccordion');
+      if (!container || !panels) return;
+
+      const q = (query || '').trim().toLowerCase();
+      let matchedPanels = [];
+
+      panels.forEach(panel => {
+        if (!panel.papers || panel.papers.length === 0) return;
+
+        if (!q) {
+          matchedPanels.push({ panel, papers: panel.papers });
+        } else {
+          const panelMatch = (panel.panelTitle || '').toLowerCase().includes(q) || String(panel.panelNumber).includes(q);
+          const matchingPapers = panel.papers.filter(p => 
+            (p.title || '').toLowerCase().includes(q) || (p.authors || '').toLowerCase().includes(q)
+          );
+
+          if (panelMatch) {
+            matchedPanels.push({ panel, papers: panel.papers });
+          } else if (matchingPapers.length > 0) {
+            matchedPanels.push({ panel, papers: matchingPapers });
+          }
+        }
+      });
+
+      if (matchedPanels.length === 0) {
+        container.innerHTML = `
+          <div style="padding: 1.25rem 0.5rem; text-align: center; color: var(--text-subtle); font-size: 0.8rem;">
+            No papers or panels found matching "${escapeHtml(q)}".
+          </div>
+        `;
+        return;
+      }
+
+      const totalMatchedPapers = matchedPanels.reduce((acc, m) => acc + m.papers.length, 0);
+      const papersBadge = document.getElementById('dPapersCountBadge');
+      if (papersBadge && q) {
+        papersBadge.textContent = `${totalMatchedPapers} Matches • ${matchedPanels.length} Panels`;
+      }
+
+      // If searching, auto-expand all matched panels. If not searching, expand the first panel by default.
+      container.innerHTML = matchedPanels.map((item, idx) => {
+        const p = item.panel;
+        const papers = item.papers;
+        const isOpen = q ? true : (idx === 0);
+
+        return `
+          <div class="panel-card ${isOpen ? 'open' : ''}" id="drawer_panel_${p.panelNumber}">
+            <div class="panel-card-head" onclick="togglePanelAccordion(this)">
+              <div class="panel-card-meta">
+                <span class="panel-number-pill">Panel ${p.panelNumber}</span>
+                <span class="panel-name-text" title="${escapeHtml(p.panelTitle)}">${escapeHtml(p.panelTitle)}</span>
+              </div>
+              <div class="panel-card-aside">
+                <span class="panel-count-tag">${papers.length} paper${papers.length === 1 ? '' : 's'}</span>
+                <span class="panel-chevron">▾</span>
+              </div>
+            </div>
+            <div class="panel-card-papers">
+              ${papers.map((paper, papIdx) => `
+                <div class="paper-item">
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+                    <span class="panel-count-tag" style="font-weight: 700; color: var(--cyan);">Paper #${papIdx + 1}</span>
+                    <button class="mini-action-btn" style="font-size: 0.65rem; padding: 0.15rem 0.45rem;" onclick="copyCitation('${currentSelectedNodeId || ''}', ${p.panelNumber}, ${papIdx}, this)" title="Copy Citation">
+                      📋 Copy
+                    </button>
+                  </div>
+                  <div class="paper-item-title">${escapeHtml(paper.title)}</div>
+                  <div class="paper-item-authors">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span>${escapeHtml(paper.authors)}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Toggle single panel accordion item
+    function togglePanelAccordion(headElem) {
+      const card = headElem.closest('.panel-card');
+      if (card) card.classList.toggle('open');
+    }
+
+    // Toggle expand/collapse all panels in drawer
+    function toggleAllDrawerPanels() {
+      allDrawerPanelsExpanded = !allDrawerPanelsExpanded;
+      document.querySelectorAll('#drawerPanelsAccordion .panel-card').forEach(card => {
+        card.classList.toggle('open', allDrawerPanelsExpanded);
+      });
+      const btn = document.getElementById('btnTogglePanels');
+      if (btn) btn.textContent = allDrawerPanelsExpanded ? 'Collapse All' : 'Expand All';
+    }
+
+    // Drawer live paper search filter
+    function handleDrawerPaperFilter(val) {
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH;
+      if (!data || !currentSelectedNodeId) return;
+
+      let topNode = data.topNodes.find(t => t.id === currentSelectedNodeId);
+      if (!topNode) {
+        const parentEdge = data.graph.edges.find(e => (e.from === currentSelectedNodeId && e.to.startsWith('tech_')) || (e.to === currentSelectedNodeId && e.from.startsWith('tech_')));
+        const parentTopId = parentEdge ? (parentEdge.from.startsWith('tech_') ? parentEdge.from : parentEdge.to) : null;
+        topNode = parentTopId ? data.topNodes.find(t => t.id === parentTopId) : null;
+      }
+
+      if (topNode) {
+        renderDrawerPapers(topNode.panels, val);
+      }
+    }
+
+    // Populate the dropdown in the Paper Deck Modal
+    function populateDeckNodeSelect() {
+      const sel = document.getElementById('deckNodeSelect');
+      if (!sel) return;
+      const topNodes = (window.CONFERENCE_KNOWLEDGE_GRAPH && window.CONFERENCE_KNOWLEDGE_GRAPH.topNodes) || [];
+
+      sel.innerHTML = topNodes.map(t => `
+        <option value="${t.id}">#${t.rank} ${t.shortName} (${t.paperCount} papers)</option>
+      `).join('');
+    }
+
+    function openPaperDeckForCurrentNode() {
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH;
+      let targetId = currentSelectedNodeId || 'tech_ai_llm';
+      const isTopNode = data.topNodes.some(t => t.id === targetId);
+
+      if (!isTopNode) {
+        const parentEdge = data.graph.edges.find(e => (e.from === targetId && e.to.startsWith('tech_')) || (e.to === targetId && e.from.startsWith('tech_')));
+        if (parentEdge) {
+          targetId = parentEdge.from.startsWith('tech_') ? parentEdge.from : parentEdge.to;
+        } else {
+          targetId = 'tech_ai_llm';
+        }
+      }
+
+      openPaperDeckModal(targetId);
+    }
+
+    function openPaperDeckModal(nodeId) {
+      currentDeckNodeId = nodeId || 'tech_ai_llm';
+      const modal = document.getElementById('paperDeckModal');
+      if (!modal) return;
+
+      const searchInput = document.getElementById('deckPaperSearchInput');
+      if (searchInput) searchInput.value = '';
+
+      renderDeckModalContent(currentDeckNodeId);
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePaperDeckModal() {
+      const modal = document.getElementById('paperDeckModal');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleDeckBackdropClick(e) {
+      if (e.target.id === 'paperDeckModal') closePaperDeckModal();
+    }
+
+    function switchDeckNode(nodeId) {
+      currentDeckNodeId = nodeId;
+      const searchInput = document.getElementById('deckPaperSearchInput');
+      if (searchInput) searchInput.value = '';
+      renderDeckModalContent(nodeId);
+    }
+
+    function navigateDeckNode(delta) {
+      const topNodes = (window.CONFERENCE_KNOWLEDGE_GRAPH && window.CONFERENCE_KNOWLEDGE_GRAPH.topNodes) || [];
+      const currentIndex = topNodes.findIndex(t => t.id === currentDeckNodeId);
+      if (currentIndex === -1) return;
+
+      let nextIndex = currentIndex + delta;
+      if (nextIndex < 0) nextIndex = topNodes.length - 1;
+      if (nextIndex >= topNodes.length) nextIndex = 0;
+
+      switchDeckNode(topNodes[nextIndex].id);
+    }
+
+    function focusDeckNodeInGraph() {
+      const targetId = currentDeckNodeId;
+      closePaperDeckModal();
+      if (targetId) {
+        selectNode(targetId);
+      }
+    }
+
+    function handleDeckSearch(val) {
+      renderDeckModalContent(currentDeckNodeId, val);
+    }
+
+    function jumpToDeckPanel(panelNum) {
+      const elem = document.getElementById(`deck_panel_${panelNum}`);
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        elem.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.6)';
+        setTimeout(() => {
+          elem.style.boxShadow = '';
+        }, 1500);
+      }
+    }
+
+    function copyCitation(nodeId, panelNumber, paperIdx, btn) {
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH;
+      if (!data) return;
+      const topNode = data.topNodes.find(t => t.id === nodeId);
+      if (!topNode) return;
+      const panel = topNode.panels.find(p => p.panelNumber === panelNumber);
+      if (!panel || !panel.papers || !panel.papers[paperIdx]) return;
+      const paper = panel.papers[paperIdx];
+      const text = `"${paper.title}" by ${paper.authors} (4S 2026 Toronto, Panel ${panelNumber})`;
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Copied';
+        btn.style.borderColor = 'var(--emerald)';
+        btn.style.color = 'var(--emerald)';
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 1200);
+      }).catch(() => {
+        // Fallback prompt if clipboard fails
+        prompt('Copy paper citation:', text);
+      });
+    }
+
+    function renderDeckModalContent(nodeId, query = '') {
+      const data = window.CONFERENCE_KNOWLEDGE_GRAPH;
+      if (!data) return;
+      const topNode = data.topNodes.find(t => t.id === nodeId);
+      if (!topNode) return;
+
+      // Update dropdown selection
+      const sel = document.getElementById('deckNodeSelect');
+      if (sel) sel.value = nodeId;
+
+      // Update banner elements
+      document.getElementById('deckRankBadge').textContent = `Rank #${topNode.rank}`;
+      document.getElementById('deckCategoryBadge').textContent = topNode.category;
+      document.getElementById('deckNodeTitle').textContent = `${topNode.icon} ${topNode.name}`;
+      document.getElementById('deckPaperCountBadge').textContent = `${topNode.paperCount} Papers`;
+      document.getElementById('deckPanelCountBadge').textContent = `${topNode.panelCount} Panels`;
+
+      const q = (query || '').trim().toLowerCase();
+      let matchedPanels = [];
+
+      (topNode.panels || []).forEach(panel => {
+        if (!panel.papers || panel.papers.length === 0) return;
+
+        if (!q) {
+          matchedPanels.push({ panel, papers: panel.papers });
+        } else {
+          const panelMatch = (panel.panelTitle || '').toLowerCase().includes(q) || String(panel.panelNumber).includes(q);
+          const matchingPapers = panel.papers.filter(p => 
+            (p.title || '').toLowerCase().includes(q) || (p.authors || '').toLowerCase().includes(q)
+          );
+
+          if (panelMatch) {
+            matchedPanels.push({ panel, papers: panel.papers });
+          } else if (matchingPapers.length > 0) {
+            matchedPanels.push({ panel, papers: matchingPapers });
+          }
+        }
+      });
+
+      // Render Jump Pills
+      const jumpContainer = document.getElementById('deckPanelJumpPills');
+      if (jumpContainer) {
+        jumpContainer.innerHTML = matchedPanels.map(m => `
+          <button class="deck-panel-pill" onclick="jumpToDeckPanel(${m.panel.panelNumber})">
+            P#${m.panel.panelNumber} (${m.papers.length})
+          </button>
+        `).join('');
+      }
+
+      // Render Panel Cards & Papers
+      const contentContainer = document.getElementById('deckContentScroll');
+      if (!contentContainer) return;
+
+      if (matchedPanels.length === 0) {
+        contentContainer.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 3rem; text-align: center; color: var(--text-muted); font-size: 0.95rem;">
+            No papers or panels found matching "${escapeHtml(q)}" in this technology hub.
+          </div>
+        `;
+        return;
+      }
+
+      contentContainer.innerHTML = matchedPanels.map(m => {
+        const p = m.panel;
+        const papers = m.papers;
+
+        return `
+          <div class="deck-panel-card" id="deck_panel_${p.panelNumber}">
+            <div class="deck-panel-header">
+              <div class="deck-panel-title-group">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+                  <span class="panel-number-pill">Panel ${p.panelNumber}</span>
+                  <span class="panel-count-tag" style="font-weight: 700; color: var(--cyan);">${papers.length} paper${papers.length === 1 ? '' : 's'}</span>
+                </div>
+                <div class="deck-panel-title-text">${escapeHtml(p.panelTitle)}</div>
+              </div>
+            </div>
+            <div class="deck-panel-body">
+              ${papers.map((paper, pIdx) => `
+                <div class="deck-paper-card">
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+                    <span class="deck-paper-index">Paper #${pIdx + 1}</span>
+                    <button class="mini-action-btn" style="font-size: 0.68rem; padding: 0.2rem 0.55rem;" onclick="copyCitation('${topNode.id}', ${p.panelNumber}, ${pIdx}, this)" title="Copy Citation">
+                      📋 Copy Citation
+                    </button>
+                  </div>
+                  <div class="deck-paper-title">${escapeHtml(paper.title)}</div>
+                  <div class="deck-paper-authors">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span>${escapeHtml(paper.authors)}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Helper: Escape HTML string
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Graph Filters
+    function setClusterFilter(filterType) {
+      document.getElementById('fAll').classList.toggle('active', filterType === 'all');
+      document.getElementById('fTop10').classList.toggle('active', filterType === 'top10');
+      document.getElementById('fSatellites').classList.toggle('active', filterType === 'satellites');
+
+      const allNodes = window.CONFERENCE_KNOWLEDGE_GRAPH.graph.nodes;
+      if (filterType === 'all') {
+        nodesDataSet.clear();
+        nodesDataSet.add(allNodes);
+      } else if (filterType === 'top10') {
+        const filtered = allNodes.filter(n => n.group === 'top_tech_node');
+        nodesDataSet.clear();
+        nodesDataSet.add(filtered);
+      } else if (filterType === 'satellites') {
+        const filtered = allNodes.filter(n => n.group === 'satellite_node');
+        nodesDataSet.clear();
+        nodesDataSet.add(filtered);
+      }
+      fitGraphView();
+    }
+
+    function resetGraphFilter() {
+      setClusterFilter('all');
+      document.getElementById('graphSearchInput').value = '';
+    }
+
+    // Live Graph Search
+    function handleGraphSearch(term) {
+      const q = term.trim().toLowerCase();
+      if (!q) {
+        fitGraphView();
+        return;
+      }
+      const match = window.CONFERENCE_KNOWLEDGE_GRAPH.graph.nodes.find(n => 
+        n.label.toLowerCase().includes(q) || (n.title && n.title.toLowerCase().includes(q))
+      );
+      if (match) {
+        selectNode(match.id);
+      }
+    }
+
+    // Canvas View Controls
+    function fitGraphView() {
+      if (network) network.fit({ animation: { duration: 600, easingFunction: 'easeInOutQuad' } });
+    }
+
+    function zoomInGraph() {
+      if (network) {
+        const scale = network.getScale();
+        network.moveTo({ scale: scale * 1.35, animation: { duration: 300 } });
+      }
+    }
+
+    function zoomOutGraph() {
+      if (network) {
+        const scale = network.getScale();
+        network.moveTo({ scale: scale * 0.75, animation: { duration: 300 } });
+      }
+    }
+
+    function togglePhysicsSimulation() {
+      physicsEnabled = !physicsEnabled;
+      if (network) {
+        network.setOptions({ physics: { enabled: physicsEnabled } });
+        document.getElementById('physicsIcon').textContent = physicsEnabled ? '⚡' : '⏸️';
+      }
+    }
+  </script>
+</body>
+</html>

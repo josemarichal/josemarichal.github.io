@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Multiplier Calculator (0.78 × / 1.38 ×)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0d11;
+            --surface-color: #131720;
+            --card-bg: #181d28;
+            --card-border: #283142;
+            --border-highlight: #3b475d;
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #8492a6;
+            --accent-lime: #c6f602;
+            --accent-lime-dim: rgba(198, 246, 2, 0.12);
+            --accent-cyan: #22d3ee;
+            --accent-cyan-dim: rgba(34, 211, 238, 0.12);
+            --accent-orange: #fb923c;
+            --shadow-hard: 5px 5px 0px #000000;
+            --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(198, 246, 2, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(34, 211, 238, 0.04) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        /* Top Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 1.25rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-badge {
+            background-color: var(--accent-lime);
+            color: #0b0d11;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.05em;
+        }
+
+        .brand-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn-link {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            transition: all 0.15s ease;
+            background: var(--surface-color);
+        }
+
+        .btn-link:hover {
+            color: var(--accent-lime);
+            border-color: var(--accent-lime);
+        }
+
+        /* Subtitle Banner */
+        .info-strip {
+            background-color: var(--surface-color);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-lime);
+            padding: 0.85rem 1.25rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .formula-tag {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .formula-tag span.term1 {
+            color: var(--accent-lime);
+        }
+
+        .formula-tag span.term2 {
+            color: var(--accent-cyan);
+        }
+
+        .precision-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .precision-select {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-heading);
+            font-family: var(--font-mono);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+
+        /* Main Dual Input Grid */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Channel Card */
+        .calc-channel {
+            background-color: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+            transition: border-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .calc-channel.channel-1 {
+            border-top: 4px solid var(--accent-lime);
+        }
+
+        .calc-channel.channel-2 {
+            border-top: 4px solid var(--accent-cyan);
+        }
+
+        .calc-channel:focus-within {
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-hard);
+        }
+
+        .channel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .channel-tag {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .channel-1 .channel-tag {
+            color: var(--accent-lime);
+        }
+
+        .channel-2 .channel-tag {
+            color: var(--accent-cyan);
+        }
+
+        .factor-pill {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .channel-1 .factor-pill {
+            background: var(--accent-lime-dim);
+            color: var(--accent-lime);
+            border: 1px solid rgba(198, 246, 2, 0.25);
+        }
+
+        .channel-2 .factor-pill {
+            background: var(--accent-cyan-dim);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+        }
+
+        /* Input Controls */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .number-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .number-input {
+            width: 100%;
+            background-color: var(--surface-color);
+            border: 2px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-heading);
+            font-family: var(--font-mono);
+            font-size: 1.65rem;
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            outline: none;
+            transition: all 0.15s ease;
+        }
+
+        .number-input:focus {
+            border-color: var(--text-heading);
+            background-color: #161b26;
+        }
+
+        .channel-1 .number-input:focus {
+            border-color: var(--accent-lime);
+        }
+
+        .channel-2 .number-input:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        /* Quick adjust chips */
+        .chip-strip {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .chip-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+        }
+
+        .chip-btn:hover {
+            color: var(--text-heading);
+            border-color: var(--border-highlight);
+            background: #1a202c;
+        }
+
+        /* Result Presentation */
+        .result-box {
+            background-color: #0e1117;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-top: 1.25rem;
+            position: relative;
+        }
+
+        .result-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-value {
+            font-family: var(--font-mono);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-heading);
+            word-break: break-all;
+            margin: 0.25rem 0 0.5rem 0;
+        }
+
+        .channel-1 .result-value {
+            color: var(--accent-lime);
+        }
+
+        .channel-2 .result-value {
+            color: var(--accent-cyan);
+        }
+
+        .result-equation {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .copy-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--card-border);
+            color: var(--text-body);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--card-border);
+            color: var(--text-heading);
+        }
+
+        .copy-btn.copied {
+            background: var(--accent-lime);
+            color: #0b0d11;
+            border-color: var(--accent-lime);
+        }
+
+        /* Summary / Analytics Bar */
+        .analytics-card {
+            background-color: var(--surface-color);
+            border: 2px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 820px) {
+            .analytics-card {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .analytics-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .metric-cell {
+            border-right: 1px solid var(--card-border);
+            padding-right: 1rem;
+        }
+
+        .metric-cell:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .metric-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.35rem;
+        }
+
+        .metric-val {
+            font-family: var(--font-mono);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .metric-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+            font-family: var(--font-mono);
+        }
+
+        /* Action Controls */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .action-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background-color: var(--surface-color);
+            color: var(--text-heading);
+            border: 1.5px solid var(--card-border);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.65rem 1.15rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn:hover {
+            border-color: var(--accent-lime);
+            color: var(--accent-lime);
+            transform: translateY(-1px);
+        }
+
+        .action-btn.btn-primary {
+            background-color: var(--accent-lime);
+            color: #0b0d11;
+            border-color: var(--accent-lime);
+        }
+
+        .action-btn.btn-primary:hover {
+            background-color: #b3de02;
+            color: #0b0d11;
+        }
+
+        /* History Table */
+        .history-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .history-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: 0.05em;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .history-table th {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            background: #0f1218;
+            color: var(--text-muted);
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .history-table td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid rgba(40, 49, 66, 0.4);
+            color: var(--text-body);
+        }
+
+        .history-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .history-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 3rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--text-body);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Top Navigation / Brand Header -->
+        <header>
+            <div class="brand">
+                <span class="brand-badge">CALC</span>
+                <h1 class="brand-title">Dual Multiplier Calculator</h1>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html" class="btn-link">&larr; Back to Portfolio</a>
+            </nav>
+        </header>
+
+        <!-- Dynamic Info Bar -->
+        <div class="info-strip">
+            <div class="formula-tag">
+                Rule: [Output 1 = <span class="term1">Input 1 &times; 0.78</span>] &bull; [Output 2 = <span class="term2">Input 2 &times; 1.38</span>]
+            </div>
+            <div class="precision-control">
+                <label for="precisionSelect">Decimals:</label>
+                <select id="precisionSelect" class="precision-select" onchange="recalculate()">
+                    <option value="2">2 decimals (Standard)</option>
+                    <option value="4" selected>4 decimals</option>
+                    <option value="6">6 decimals</option>
+                    <option value="raw">Raw / Exact</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Main Two-Number Calculation Grid -->
+        <main class="calc-grid">
+            <!-- Channel 1: Multiplier 0.78 -->
+            <section class="calc-channel channel-1" aria-labelledby="labelChannel1">
+                <div class="channel-header">
+                    <span class="channel-tag" id="labelChannel1">Channel 01 &bull; Discount / Factor</span>
+                    <span class="factor-pill">&times; 0.78</span>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="num1">Input First Number (N&#8321;)</label>
+                    <div class="number-input-wrapper">
+                        <input 
+                            type="number" 
+                            id="num1" 
+                            class="number-input" 
+                            placeholder="Enter number..." 
+                            value="100" 
+                            step="any" 
+                            autocomplete="off" 
+                            autofocus
+                        >
+                    </div>
+                    <div class="chip-strip">
+                        <button class="chip-btn" onclick="setNum(1, 10)">10</button>
+                        <button class="chip-btn" onclick="setNum(1, 50)">50</button>
+                        <button class="chip-btn" onclick="setNum(1, 100)">100</button>
+                        <button class="chip-btn" onclick="setNum(1, 250)">250</button>
+                        <button class="chip-btn" onclick="setNum(1, 1000)">1,000</button>
+                        <button class="chip-btn" onclick="adjustNum(1, 1)">+1</button>
+                        <button class="chip-btn" onclick="adjustNum(1, -1)">&minus;1</button>
+                    </div>
+                </div>
+
+                <div class="result-box">
+                    <div class="result-label">
+                        <span>Calculated Output (N&#8321; &times; 0.78)</span>
+                        <button class="copy-btn" id="copyBtn1" onclick="copyValue('val1', 'copyBtn1')" title="Copy result">Copy</button>
+                    </div>
+                    <div class="result-value" id="res1">78.0000</div>
+                    <div class="result-equation" id="eq1">100 &times; 0.78 = 78</div>
+                </div>
+            </section>
+
+            <!-- Channel 2: Multiplier 1.28 -->
+            <section class="calc-channel channel-2" aria-labelledby="labelChannel2">
+                <div class="channel-header">
+                    <span class="channel-tag" id="labelChannel2">Channel 02 &bull; Markup / Factor</span>
+                    <span class="factor-pill">&times; 1.38</span>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="num2">Input Second Number (N&#8322;)</label>
+                    <div class="number-input-wrapper">
+                        <input 
+                            type="number" 
+                            id="num2" 
+                            class="number-input" 
+                            placeholder="Enter number..." 
+                            value="100" 
+                            step="any" 
+                            autocomplete="off"
+                        >
+                    </div>
+                    <div class="chip-strip">
+                        <button class="chip-btn" onclick="setNum(2, 10)">10</button>
+                        <button class="chip-btn" onclick="setNum(2, 50)">50</button>
+                        <button class="chip-btn" onclick="setNum(2, 100)">100</button>
+                        <button class="chip-btn" onclick="setNum(2, 250)">250</button>
+                        <button class="chip-btn" onclick="setNum(2, 1000)">1,000</button>
+                        <button class="chip-btn" onclick="adjustNum(2, 1)">+1</button>
+                        <button class="chip-btn" onclick="adjustNum(2, -1)">&minus;1</button>
+                    </div>
+                </div>
+
+                <div class="result-box">
+                    <div class="result-label">
+                        <span>Calculated Output (N&#8322; &times; 1.38)</span>
+                        <button class="copy-btn" id="copyBtn2" onclick="copyValue('val2', 'copyBtn2')" title="Copy result">Copy</button>
+                    </div>
+                    <div class="result-value" id="res2">138.0000</div>
+                    <div class="result-equation" id="eq2">100 &times; 1.38 = 138</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Comparative Metrics Bar -->
+        <section class="analytics-card" aria-label="Comparative Metrics">
+            <div class="metric-cell">
+                <div class="metric-title">Combined Sum</div>
+                <div class="metric-val" id="metricSum">216.0000</div>
+                <div class="metric-sub">Output 1 + Output 2</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-title">Delta (Out 2 &minus; Out 1)</div>
+                <div class="metric-val" id="metricDelta">+60.0000</div>
+                <div class="metric-sub">Net difference</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-title">Output Ratio</div>
+                <div class="metric-val" id="metricRatio">1.7692 &times;</div>
+                <div class="metric-sub">Output 2 &divide; Output 1</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-title">Input Ratio</div>
+                <div class="metric-val" id="metricInputRatio">1.0000</div>
+                <div class="metric-sub">Input 2 &divide; Input 1</div>
+            </div>
+        </section>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <div class="action-group">
+                <button class="action-btn btn-primary" onclick="copyBothSummary()">
+                    <span>📋</span> Copy Full Summary
+                </button>
+                <button class="action-btn" onclick="saveToHistory()">
+                    <span>💾</span> Log to Table
+                </button>
+            </div>
+            <div class="action-group">
+                <button class="action-btn" onclick="swapNumbers()" title="Swap inputs">
+                    <span>⇄</span> Swap Inputs
+                </button>
+                <button class="action-btn" onclick="resetDefaults()" title="Reset to 100 / 100">
+                    <span>↺</span> Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- Calculation History -->
+        <section class="history-section">
+            <div class="history-header">
+                <div class="history-title">Recent Calculations Log</div>
+                <button class="copy-btn" onclick="clearHistory()">Clear Log</button>
+            </div>
+            <table class="history-table" id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Input 1</th>
+                        <th>Output (0.78 &times;)</th>
+                        <th>Input 2</th>
+                        <th>Output (1.38 &times;)</th>
+                        <th>Sum</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+            <div class="history-empty" id="emptyNotice">No saved calculations yet. Click "Log to Table" or type numbers to record entries.</div>
+        </section>
+
+        <footer>
+            <p>Dual Multiplier Utility &bull; <a href="index.html">Jose Marichal</a> &bull; Fast, local client-side computation</p>
+        </footer>
+    </div>
+
+    <script>
+        // State
+        const F1 = 0.78;
+        const F2 = 1.38;
+        let lastVal1 = 78;
+        let lastVal2 = 138;
+        let history = [];
+
+        // DOM elements
+        const input1 = document.getElementById('num1');
+        const input2 = document.getElementById('num2');
+        const res1 = document.getElementById('res1');
+        const res2 = document.getElementById('res2');
+        const eq1 = document.getElementById('eq1');
+        const eq2 = document.getElementById('eq2');
+        const precisionSelect = document.getElementById('precisionSelect');
+
+        const metricSum = document.getElementById('metricSum');
+        const metricDelta = document.getElementById('metricDelta');
+        const metricRatio = document.getElementById('metricRatio');
+        const metricInputRatio = document.getElementById('metricInputRatio');
+
+        const historyBody = document.getElementById('historyBody');
+        const emptyNotice = document.getElementById('emptyNotice');
+
+        // Number Formatter
+        function formatVal(val) {
+            if (isNaN(val)) return '—';
+            const precision = precisionSelect.value;
+            if (precision === 'raw') {
+                return val.toString();
+            }
+            const p = parseInt(precision, 10);
+            return Number(val).toLocaleString(undefined, {
+                minimumFractionDigits: p,
+                maximumFractionDigits: p
+            });
+        }
+
+        // Live calculation routine
+        function recalculate() {
+            const raw1 = parseFloat(input1.value);
+            const raw2 = parseFloat(input2.value);
+
+            const n1 = isNaN(raw1) ? 0 : raw1;
+            const n2 = isNaN(raw2) ? 0 : raw2;
+
+            const out1 = n1 * F1;
+            const out2 = n2 * F2;
+
+            lastVal1 = out1;
+            lastVal2 = out2;
+
+            res1.textContent = formatVal(out1);
+            res2.textContent = formatVal(out2);
+
+            eq1.textContent = `${n1} × 0.78 = ${formatVal(out1)}`;
+            eq2.textContent = `${n2} × 1.38 = ${formatVal(out2)}`;
+
+            // Analytics
+            const sum = out1 + out2;
+            const delta = out2 - out1;
+            const ratio = out1 !== 0 ? (out2 / out1) : 0;
+            const inRatio = n1 !== 0 ? (n2 / n1) : 0;
+
+            metricSum.textContent = formatVal(sum);
+            metricDelta.textContent = (delta >= 0 ? '+' : '') + formatVal(delta);
+            metricRatio.textContent = (out1 !== 0 ? formatVal(ratio) + ' ×' : 'N/A');
+            metricInputRatio.textContent = (n1 !== 0 ? formatVal(inRatio) : 'N/A');
+
+            // Save state to localStorage
+            try {
+                localStorage.setItem('dual_calc_num1', input1.value);
+                localStorage.setItem('dual_calc_num2', input2.value);
+            } catch (e) {}
+        }
+
+        // Chip helpers
+        function setNum(channel, val) {
+            if (channel === 1) {
+                input1.value = val;
+                input1.focus();
+            } else {
+                input2.value = val;
+                input2.focus();
+            }
+            recalculate();
+        }
+
+        function adjustNum(channel, delta) {
+            const el = channel === 1 ? input1 : input2;
+            const current = parseFloat(el.value) || 0;
+            el.value = current + delta;
+            el.focus();
+            recalculate();
+        }
+
+        function swapNumbers() {
+            const temp = input1.value;
+            input1.value = input2.value;
+            input2.value = temp;
+            recalculate();
+        }
+
+        function resetDefaults() {
+            input1.value = 100;
+            input2.value = 100;
+            recalculate();
+        }
+
+        // Copy functions
+        function copyValue(which, btnId) {
+            const text = which === 'val1' ? lastVal1.toString() : lastVal2.toString();
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById(btnId);
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 1400);
+            });
+        }
+
+        function copyBothSummary() {
+            const n1 = parseFloat(input1.value) || 0;
+            const n2 = parseFloat(input2.value) || 0;
+            const summary = 
+`Dual Multiplier Summary:
+-------------------------
+Input 1: ${n1}
+Output 1 (× 0.78): ${formatVal(lastVal1)}
+
+Input 2: ${n2}
+Output 2 (× 1.38): ${formatVal(lastVal2)}
+
+Combined Sum: ${formatVal(lastVal1 + lastVal2)}
+Difference (Out 2 - Out 1): ${formatVal(lastVal2 - lastVal1)}
+Ratio (Out 2 / Out 1): ${lastVal1 !== 0 ? (lastVal2 / lastVal1).toFixed(4) : 'N/A'}`;
+
+            navigator.clipboard.writeText(summary).then(() => {
+                const btn = document.querySelector('.action-btn.btn-primary');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<span>✓</span> Copied to Clipboard!';
+                setTimeout(() => {
+                    btn.innerHTML = orig;
+                }, 1500);
+            });
+        }
+
+        // History Logging
+        function saveToHistory() {
+            const n1 = parseFloat(input1.value) || 0;
+            const n2 = parseFloat(input2.value) || 0;
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            const entry = {
+                time: timeStr,
+                n1: n1,
+                out1: lastVal1,
+                n2: n2,
+                out2: lastVal2,
+                sum: lastVal1 + lastVal2
+            };
+
+            history.unshift(entry);
+            if (history.length > 20) history.pop();
+            renderHistory();
+        }
+
+        function renderHistory() {
+            historyBody.innerHTML = '';
+            if (history.length === 0) {
+                emptyNotice.style.display = 'block';
+                return;
+            }
+            emptyNotice.style.display = 'none';
+
+            history.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.time}</td>
+                    <td><strong>${item.n1}</strong></td>
+                    <td style="color: var(--accent-lime);">${formatVal(item.out1)}</td>
+                    <td><strong>${item.n2}</strong></td>
+                    <td style="color: var(--accent-cyan);">${formatVal(item.out2)}</td>
+                    <td>${formatVal(item.sum)}</td>
+                `;
+                historyBody.appendChild(tr);
+            });
+        }
+
+        function clearHistory() {
+            history = [];
+            renderHistory();
+        }
+
+        // Attach listeners
+        input1.addEventListener('input', recalculate);
+        input2.addEventListener('input', recalculate);
+
+        // Load saved state or default
+        try {
+            const s1 = localStorage.getItem('dual_calc_num1');
+            const s2 = localStorage.getItem('dual_calc_num2');
+            if (s1 !== null) input1.value = s1;
+            if (s2 !== null) input2.value = s2;
+        } catch (e) {}
+
+        recalculate();
+    </script>
+</body>
+</html>
