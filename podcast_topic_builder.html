@@ -664,19 +664,34 @@
                         </select>
                     </div>
 
-                    <!-- Policy Domain Quick Tags -->
+                    <!-- Policy Domain Quick Tags (Aligned with California Policy Dashboard) -->
                     <div class="form-group">
-                        <label class="form-label">Policy Domain</label>
-                        <div class="tag-grid" id="policy-tags">
-                            <button type="button" class="tag-btn selected" onclick="selectTag(this, 'Housing & Land Use')">🏠 Housing &amp; Land Use</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Water & Agriculture')">💧 Water &amp; Agriculture</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Environmental Justice')">🌱 Environmental Justice</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Labor & Worker Rights')">👷 Labor &amp; Wages</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Criminal Legal Reform')">⚖️ Criminal Legal Reform</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Tech & Algorithmic Policy')">💻 Tech &amp; Surveillance</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Immigration & Borders')">🛂 Immigration &amp; Borders</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Public Health')">🏥 Public Health Equity</button>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+                            <label class="form-label" style="margin-bottom: 0;">Policy Domain (from California Policy Dashboard)</label>
+                            <a href="california_policy_dashboard.html" target="_blank" style="font-size: 0.78rem; color: #ff7043; text-decoration: underline; font-weight: 600;">Open Full Policy Dashboard ↗</a>
                         </div>
+                        <div class="tag-grid" id="policy-tags">
+                            <button type="button" class="tag-btn selected" onclick="selectTag(this, 'Housing & Homelessness')">🏠 Housing &amp; Homelessness</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Environment & Water')">💧🌱 Environment &amp; Water</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Criminal Justice')">⚖️ Criminal Justice</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Economy & Labor')">👷 Economy &amp; Labor</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Health & Safety Net')">🏥 Health &amp; Safety Net</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Education (K-12 & Higher Ed)')">🎓 Education</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'State Budget & Fiscal Policy')">🏛️ State Budget</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Politics & Elections')">🗳️ Politics &amp; Elections</button>
+                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Tech & Surveillance')">💻 Tech &amp; Surveillance</button>
+                        </div>
+                    </div>
+
+                    <!-- Direct California Policy Dashboard Connector Card -->
+                    <div id="dashboard-bridge-banner" style="background: rgba(255, 112, 67, 0.08); border: 1px solid rgba(255, 112, 67, 0.35); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                        <div style="font-size: 0.84rem; color: #f1f5f9;">
+                            <strong style="color: #ff7043;">📊 California Policy Dashboard Link:</strong>
+                            <span id="dashboard-link-desc">Browse leading reports on Housing &amp; Homelessness from PPIC, California Policy Lab, and CalMatters.</span>
+                        </div>
+                        <a id="dashboard-action-btn" href="california_housing_affordability.html" target="_blank" style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ff7043; color: #fff; padding: 0.4rem 0.85rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.78rem; white-space: nowrap;">
+                            Explore Dashboard Reports ↗
+                        </a>
                     </div>
 
                     <!-- Raw Student Idea Input -->
@@ -739,8 +754,11 @@
 
                     <!-- Required Policy Report Citation -->
                     <div class="form-group" style="margin-top: 1.5rem;">
-                        <label class="form-label">Specific Policy Report / White Paper (Last 2–3 Years)<span class="req">*</span></label>
-                        <div class="form-hint">You must cite a tangible publication in your outreach pitch (Assignment Rubric: 25% Research &amp; Preparation).</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
+                            <label class="form-label" style="margin-bottom: 0;">Specific Policy Report / White Paper (Last 2–3 Years)<span class="req">*</span></label>
+                            <a id="dashboard-report-shortcut" href="california_housing_affordability.html" target="_blank" style="font-size: 0.78rem; color: #ff7043; text-decoration: underline; font-weight: 700;">🔎 Search Policy Dashboard for Reports ↗</a>
+                        </div>
+                        <div class="form-hint">You must cite a tangible publication in your outreach pitch (Assignment Rubric: 25% Research &amp; Preparation). Tap the link above to view verified reports on Dr. Marichal's Policy Dashboard.</div>
                         <input type="text" class="form-control" id="report-title" placeholder="e.g. 'Dry Wells and Broken Promises: Drinking Water Equity in the San Joaquin Valley (2024)'" oninput="autoUpdateStatus()" style="margin-bottom: 0.65rem;">
                         <textarea class="form-control" id="report-finding" placeholder="Key finding / hook from the report (1-2 sentences you will quote in your email to prove you read it)..." oninput="autoUpdateStatus()"></textarea>
                     </div>
@@ -905,9 +923,67 @@
         // State
         let currentCourse = 'california'; // 'california' or 'global'
         let currentStep = 1;
-        let selectedDomain = 'Housing & Land Use';
+        let selectedDomain = 'Housing & Homelessness';
         let selectedAngle = null;
         let selectedLocalBridge = null;
+
+        // CALIFORNIA POLICY DASHBOARD INTEGRATION MAPPING
+        const DASHBOARD_LINKS = {
+            'Housing & Homelessness': {
+                url: 'california_housing_affordability.html',
+                label: 'Housing & Homelessness Dashboard',
+                desc: 'Browse leading reports from PPIC, California Policy Lab, CalMatters, and the California Housing Partnership.',
+                shortcutText: '🔎 Search Dashboard for Housing & Homelessness Reports ↗'
+            },
+            'Environment & Water': {
+                url: 'california_policy_dashboard.html#environment',
+                label: 'Environment & Water Dashboard',
+                desc: 'Explore PPIC Water Policy Center, UCLA Luskin, and CEJA studies on groundwater (SGMA), Delta conveyance, and clean air.',
+                shortcutText: '🔎 Search Dashboard for Environment & Water Reports ↗'
+            },
+            'Criminal Justice': {
+                url: 'california_policy_dashboard.html#justice',
+                label: 'Criminal Justice Dashboard',
+                desc: 'Examine data from Vera Institute, PPIC, and CJCJ on Proposition 36/47, youth justice realignment (SB 823), and retail theft.',
+                shortcutText: '🔎 Search Dashboard for Criminal Justice Reports ↗'
+            },
+            'Economy & Labor': {
+                url: 'california_policy_dashboard.html#economy',
+                label: 'Economy & Labor Dashboard',
+                desc: 'Read findings from UC Berkeley Labor Center, PPIC, and CA Budget Center on wage inequality, sector councils (AB 1228), and logistics workers.',
+                shortcutText: '🔎 Search Dashboard for Economy & Labor Reports ↗'
+            },
+            'Health & Safety Net': {
+                url: 'california_policy_dashboard.html#health',
+                label: 'Health & Safety Net Dashboard',
+                desc: 'Review research from California Health Care Foundation (CHCF), UCLA Center for Health Policy Research, and PPIC on Medi-Cal and CARE Court.',
+                shortcutText: '🔎 Search Dashboard for Health & Safety Net Reports ↗'
+            },
+            'Education (K-12 & Higher Ed)': {
+                url: 'california_policy_dashboard.html#education',
+                label: 'Education Dashboard',
+                desc: 'Investigate analyses from EdSource, Policy Analysis for California Education (PACE), and PPIC on school funding and college access.',
+                shortcutText: '🔎 Search Dashboard for Education Reports ↗'
+            },
+            'State Budget & Fiscal Policy': {
+                url: 'california_policy_dashboard.html#budget',
+                label: 'State Budget Dashboard',
+                desc: 'Consult nonpartisan fiscal reports from the Legislative Analyst\'s Office (LAO) and California Budget & Policy Center on state revenue and deficit solutions.',
+                shortcutText: '🔎 Search Dashboard for State Budget & Fiscal Reports ↗'
+            },
+            'Politics & Elections': {
+                url: 'california_policy_dashboard.html#politics',
+                label: 'Politics & Elections Dashboard',
+                desc: 'Review state polling and electoral research from PPIC Statewide Survey, Berkeley IGS Poll, and CalMatters on the 2026 Gubernatorial race and ballot measures.',
+                shortcutText: '🔎 Search Dashboard for Politics & Polling Reports ↗'
+            },
+            'Tech & Surveillance': {
+                url: 'ai_ethics_organizations.html',
+                label: 'Tech & Surveillance Index',
+                desc: 'Explore policy briefs from EFF, ACLU Tech & Liberty, and Dr. Marichal\'s Technology & Society Working Group on Flock ALPR cameras and automated decision systems.',
+                shortcutText: '🔎 Search Working Group for Tech & Surveillance Reports ↗'
+            }
+        };
 
         // DATASETS
         const CA_POLICY_AREAS = [
@@ -930,48 +1006,57 @@
 
         const CURATED_ORGS = {
             california: [
-                // Housing & Land Use
-                { name: "Western Center on Law and Poverty", domain: "Housing & Land Use", focus: "Statewide legislative advocacy on tenant rights, anti-eviction protections, and affordable housing finance." },
-                { name: "SPUR (Bay Area Planning & Urban Research)", domain: "Housing & Land Use", focus: "Urban housing density, regional transportation infrastructure, and housing development incentives." },
-                { name: "California YIMBY", domain: "Housing & Land Use", focus: "State legislation ending exclusionary single-family zoning, Builder's Remedy, and CEQA streamlining." },
-                { name: "Housing California", domain: "Housing & Land Use", focus: "Coalition building for permanent supportive housing, homeless services, and affordable housing bonds." },
+                // Housing & Homelessness
+                { name: "Public Policy Institute of California (PPIC)", domain: "Housing & Homelessness", focus: "[Dashboard Featured] Nonpartisan research on housing supply, affordability, homelessness counts, and CEQA streamlining." },
+                { name: "California Policy Lab (UC Berkeley & UCLA)", domain: "Housing & Homelessness", focus: "[Dashboard Featured] Empirical evaluation of homelessness prevention programs, interim housing, and predictive vulnerability models." },
+                { name: "California Housing Partnership", domain: "Housing & Homelessness", focus: "[Dashboard Featured] Annual county-by-county affordable housing shortfall data, tax credits, and renter burden." },
+                { name: "Western Center on Law and Poverty", domain: "Housing & Homelessness", focus: "Statewide legislative advocacy on tenant rights, anti-eviction protections, and affordable housing finance." },
+                { name: "California YIMBY", domain: "Housing & Homelessness", focus: "State legislation ending exclusionary single-family zoning, Builder's Remedy, and housing density." },
+                { name: "Housing California", domain: "Housing & Homelessness", focus: "Coalition building for permanent supportive housing, homeless services, and affordable housing bonds." },
 
-                // Water & Agriculture
-                { name: "Community Water Center (CWC)", domain: "Water & Agriculture", focus: "Safe, clean, and affordable drinking water access in San Joaquin and Salinas Valley farm communities." },
-                { name: "Public Policy Institute of California (PPIC) Water Policy Center", domain: "Water & Agriculture", focus: "Groundwater management (SGMA), agricultural drought adaptation, and Delta conveyance research." },
-                { name: "Clean Water Action California", domain: "Water & Agriculture", focus: "Toxics reduction, groundwater recharge protection, and agricultural runoff regulations." },
-                { name: "California Rural Legal Assistance (CRLA)", domain: "Water & Agriculture", focus: "Legal aid for farmworkers challenging agricultural pesticide drift and substandard irrigation." },
+                // Environment & Water
+                { name: "PPIC Water Policy Center", domain: "Environment & Water", focus: "[Dashboard Featured] Groundwater management (SGMA), agricultural drought adaptation, and Sacramento-San Joaquin Delta conveyance." },
+                { name: "UCLA Luskin Center for Innovation", domain: "Environment & Water", focus: "[Dashboard Featured] Environmental justice research on urban heat islands, drinking water affordability, and clean vehicle rebates." },
+                { name: "California Environmental Justice Alliance (CEJA)", domain: "Environment & Water", focus: "[Dashboard Featured] Statewide alliance organizing frontline communities against industrial toxic polluters and fossil fuel drilling." },
+                { name: "Community Water Center (CWC)", domain: "Environment & Water", focus: "Safe, clean, and affordable drinking water access in San Joaquin and Salinas Valley agricultural communities." },
+                { name: "Central Coast Alliance United for a Sustainable Economy (CAUSE)", domain: "Environment & Water", focus: "Grassroots organizing for immigrant and farmworker communities across Ventura and Santa Barbara counties." },
 
-                // Environmental Justice & Climate
-                { name: "California Environmental Justice Alliance (CEJA)", domain: "Environmental Justice", focus: "Statewide alliance organizing frontline communities against industrial toxic polluters and fossil fuels." },
-                { name: "Central Coast Alliance United for a Sustainable Economy (CAUSE)", domain: "Environmental Justice", focus: "Grassroots organizing for immigrant and farmworker communities in Ventura and Santa Barbara counties." },
-                { name: "Leadership Counsel for Justice and Accountability", domain: "Environmental Justice", focus: "Land use justice, drinking water, and wastewater infrastructure in unincorporated San Joaquin Valley colonias." },
-                { name: "Inland Empire United", domain: "Environmental Justice", focus: "Frezone fights, diesel particulate emissions from mega-warehouses, and clean freight corridors." },
+                // Criminal Justice
+                { name: "Vera Institute of Justice (California Office)", domain: "Criminal Justice", focus: "[Dashboard Featured] Research on ending mass incarceration, racial arrest disparities, bail reform, and jail population reduction." },
+                { name: "Center on Juvenile and Criminal Justice (CJCJ)", domain: "Criminal Justice", focus: "[Dashboard Featured] Nonpartisan research monitoring youth justice realignment (SB 823) and county juvenile probation facilities." },
+                { name: "Ella Baker Center for Human Rights", domain: "Criminal Justice", focus: "Shifting resources away from prisons into community investment, youth opportunities, and restorative justice." },
+                { name: "ACLU of Southern California (Criminal Justice Program)", domain: "Criminal Justice", focus: "County jail conditions, police accountability, bail reform, and defending Proposition 47 reforms against Prop 36 rollbacks." },
 
-                // Labor & Worker Rights
-                { name: "California Labor Federation (AFL-CIO)", domain: "Labor & Worker Rights", focus: "Statewide legislative lobbying for 2 million union members, wage standards, and workplace safety." },
-                { name: "Warehouse Worker Resource Center (WWRC)", domain: "Labor & Worker Rights", focus: "Advocacy for Southern California supply chain and logistics warehouse workers facing extreme production quotas." },
-                { name: "United Farm Workers Foundation (UFWF)", domain: "Labor & Worker Rights", focus: "Legislative and grassroots advocacy for agricultural worker heat standards, wage enforcement, and union elections." },
+                // Economy & Labor
+                { name: "UC Berkeley Labor Center", domain: "Economy & Labor", focus: "[Dashboard Featured] In-depth analysis of low-wage worker health, gig economy labor dynamics, and sectoral wage councils (AB 1228)." },
+                { name: "California Budget & Policy Center", domain: "Economy & Labor", focus: "[Dashboard Featured] California Poverty Measure, income inequality, paid family leave, and safety net investments." },
+                { name: "Warehouse Worker Resource Center (WWRC)", domain: "Economy & Labor", focus: "Advocacy for Southern California supply chain and logistics warehouse workers facing algorithmic quota pressure." },
+                { name: "United Farm Workers Foundation (UFWF)", domain: "Economy & Labor", focus: "Legislative and grassroots advocacy for agricultural worker heat standards, wage enforcement, and union elections." },
 
-                // Criminal Legal Reform
-                { name: "Ella Baker Center for Human Rights", domain: "Criminal Legal Reform", focus: "Shifting resources away from prisons into community investment, youth opportunities, and restorative justice." },
-                { name: "ACLU of Southern California (Criminal Justice Program)", domain: "Criminal Legal Reform", focus: "County jail conditions, police accountability, bail reform, and defending Proposition 47 reforms." },
-                { name: "Vera Institute of Justice (California Office)", domain: "Criminal Legal Reform", focus: "Research on ending mass incarceration, reducing racial disparities in arrests, and juvenile diversion programs." },
+                // Health & Safety Net
+                { name: "California Health Care Foundation (CHCF)", domain: "Health & Safety Net", focus: "[Dashboard Featured] Independent research on Medi-Cal coverage, behavioral health workforce shortages, and rural health equity." },
+                { name: "UCLA Center for Health Policy Research", domain: "Health & Safety Net", focus: "[Dashboard Featured] California Health Interview Survey (CHIS), food insecurity, and unhoused healthcare access." },
+                { name: "California Pan-Ethnic Health Network (CPEHN)", domain: "Health & Safety Net", focus: "Championing health equity across communities of color, addressing racial maternal mortality, and language access." },
+                { name: "Health Access California", domain: "Health & Safety Net", focus: "Statewide consumer advocacy coalition fighting for universal healthcare, prescription drug cost caps, and Medi-Cal expansion." },
+
+                // Education (K-12 & Higher Ed)
+                { name: "EdSource", domain: "Education (K-12 & Higher Ed)", focus: "[Dashboard Featured] Premier nonpartisan journalism and investigative reporting on K-12 achievement gaps, chronic absenteeism, and early education." },
+                { name: "Policy Analysis for California Education (PACE - Stanford/UC/USC)", domain: "Education (K-12 & Higher Ed)", focus: "[Dashboard Featured] Evidence-based research on Local Control Funding Formula (LCFF), community colleges, and teacher shortages." },
+                { name: "The Institute for College Access & Success (TICAS - Oakland)", domain: "Education (K-12 & Higher Ed)", focus: "State financial aid reform, Cal Grant modernization, and student debt reduction for California college students." },
+
+                // State Budget & Fiscal Policy
+                { name: "Legislative Analyst's Office (LAO)", domain: "State Budget & Fiscal Policy", focus: "[Dashboard Featured] The California Legislature's nonpartisan fiscal and policy advisor, producing California's Fiscal Outlook." },
+                { name: "California Budget & Policy Center (Fiscal Team)", domain: "State Budget & Fiscal Policy", focus: "[Dashboard Featured] Independent analysis of the Governor's May Revision, tax expenditure reform, and rainy day reserve fund rules." },
+
+                // Politics & Elections
+                { name: "CalMatters (Capitol & Politics Desk)", domain: "Politics & Elections", focus: "[Dashboard Featured] Investigative nonpartisan newsroom tracking campaign finance, legislative lobbying, and ballot initiatives." },
+                { name: "PPIC Statewide Survey", domain: "Politics & Elections", focus: "[Dashboard Featured] Rigorous nonpartisan public opinion polling on California voters, candidate preferences, and statewide ballot propositions." },
+                { name: "UC Berkeley Institute of Governmental Studies (IGS Poll)", domain: "Politics & Elections", focus: "[Dashboard Featured] Nonpartisan statewide polling on voter demographic shifts, presidential/gubernatorial approval, and voter reform." },
 
                 // Tech & Surveillance Policy
-                { name: "Electronic Frontier Foundation (EFF)", domain: "Tech & Algorithmic Policy", focus: "Digital civil liberties, government surveillance transparency, automated license plate readers, and algorithmic accountability." },
-                { name: "ACLU of Northern California (Technology & Civil Liberties)", domain: "Tech & Algorithmic Policy", focus: "Facial recognition bans, predictive policing limits, and private vendor municipal surveillance contracts." },
-                { name: "TechEquity Collaborative", domain: "Tech & Algorithmic Policy", focus: "Examining algorithmic housing discrimination, contract worker equity in tech campuses, and AI labor impacts." },
-
-                // Immigration & Borders
-                { name: "California Immigrant Policy Center (CIPC)", domain: "Immigration & Borders", focus: "Statewide policies expanding health coverage, economic rights, and due process for all California immigrants." },
-                { name: "Coalition for Humane Immigrant Rights (CHIRLA)", domain: "Immigration & Borders", focus: "Organizing and legal defense defending sanctuary state protections (SB 54) and driver licenses for undocumented residents." },
-                { name: "Mixteco/Indígena Community Organizing Project (MICOP)", domain: "Immigration & Borders", focus: "Ventura County-based advocacy for indigenous Mexican migrant farmworkers, language justice, and disaster relief." },
-
-                // Public Health Equity
-                { name: "California Pan-Ethnic Health Network (CPEHN)", domain: "Public Health", focus: "Championing health equity across communities of color, addressing racial maternal mortality, and language access." },
-                { name: "Health Access California", domain: "Public Health", focus: "Statewide consumer advocacy coalition fighting for universal healthcare, prescription drug cost caps, and Medi-Cal expansion." },
-                { name: "National Health Law Program (NHeLP - Los Angeles)", domain: "Public Health", focus: "Protecting legal health rights of low-income Californians, reproductive justice, and disability benefits." }
+                { name: "Electronic Frontier Foundation (EFF - San Francisco)", domain: "Tech & Surveillance", focus: "[Dashboard Featured] Digital civil liberties, automated license plate readers (Flock ALPR), and government surveillance transparency." },
+                { name: "ACLU of Northern California (Technology & Civil Liberties)", domain: "Tech & Surveillance", focus: "Facial recognition bans, predictive policing limits, and municipal surveillance oversight ordinances." },
+                { name: "TechEquity Collaborative", domain: "Tech & Surveillance", focus: "Algorithmic housing screening, tech campus subcontracted labor equity, and AI workforce displacement." }
             ],
             global: [
                 { name: "Amnesty International (Global Secretariat)", domain: "Human Rights", focus: "International human rights investigations and global treaty compliance." },
@@ -987,44 +1072,49 @@
         const LOCAL_BRIDGES = {
             california: [
                 {
-                    domain: "Water & Agriculture",
+                    domain: "Housing & Homelessness",
+                    agency: "Thousand Oaks City Council (General Plan Housing Element & Many Mansions)",
+                    question: "Your research focuses on regional housing production battles and state density mandates. Thousand Oaks recently overhauled its General Plan to permit thousands of housing units along Thousand Oaks Boulevard after decades of slow-growth ordinances (Measure E). From your perspective, how can suburban cities balance local open-space preservation with state affordable housing mandates and supportive housing partnerships like Many Mansions?"
+                },
+                {
+                    domain: "Environment & Water",
                     agency: "Fox Canyon Groundwater Management Agency & Calleguas MWD",
                     question: "In your report you detail how California irrigation districts and communities are navigating SGMA groundwater allocations. Here in Ventura County, the Fox Canyon Groundwater Agency is wrestling with similar agricultural allocations and pumping surcharges on the Oxnard Plain. How does local water pricing in your focus area compare to the challenges faced by coastal agricultural basins?"
                 },
                 {
-                    domain: "Housing & Land Use",
-                    agency: "Thousand Oaks City Council (General Plan & Downtown Core Housing)",
-                    question: "Your research focuses on regional housing element pushback and state density bonuses. Thousand Oaks recently overhauled its General Plan to permit thousands of housing units along Thousand Oaks Boulevard after decades of slow-growth ordinances (Measure E). From your perspective, how can suburban cities balance local open-space preservation with state affordable housing mandates?"
-                },
-                {
-                    domain: "Environmental Justice",
-                    agency: "Ventura County Air Pollution Control District & Port of Hueneme Freight Corridor",
-                    question: "Your findings highlight diesel particulate pollution from freight and logistics corridors. In Ventura County, residents in South Oxnard living adjacent to the Port of Hueneme and surrounding agricultural chemical zones face cumulative environmental health burdens. What policy tools did your organization recommend that our local county supervisors should adopt?"
-                },
-                {
-                    domain: "Labor & Worker Rights",
-                    agency: "Ventura County Agricultural Commissioner & Local Worker Coalitions",
-                    question: "Given your analysis of Cal/OSHA extreme heat and wildfire smoke protections for outdoor workers, how do local enforcement practices in your focus area compare to what we see with strawberry and citrus workers across Ventura County?"
-                },
-                {
-                    domain: "Criminal Legal Reform",
-                    agency: "Ventura County Public Defender, District Attorney & Sheriff (Prop 36/47 Debate)",
+                    domain: "Criminal Justice",
+                    agency: "Ventura County Public Defender, District Attorney & Sheriff (Prop 36 vs 47 Debate)",
                     question: "Your research evaluates the state debate over criminal penalties, retail theft, and substance abuse diversion. Ventura County law enforcement has taken a very prominent stance on Proposition 36 and retail theft enforcement. Based on your report's data, how do increased criminal penalties compare with county-level collaborative courts and addiction treatment funding?"
                 },
                 {
-                    domain: "Tech & Algorithmic Policy",
-                    agency: "Ventura County Sheriff's Dept & Thousand Oaks City Council (Flock ALPR Surveillance)",
-                    question: "You analyzed municipal procurement of automated surveillance technologies. Several cities in Ventura County (including Thousand Oaks and Simi Valley) have installed Flock Automated License Plate Readers. What transparency guardrails and data-sharing limits do you urge local city councils to adopt when contracting with private surveillance vendors?"
+                    domain: "Economy & Labor",
+                    agency: "Ventura County Agricultural Commissioner, Central Coast Labor Council & Port Logistics",
+                    question: "Given your analysis of sector wage councils, Cal/OSHA extreme heat standards, and warehouse production quotas, how do enforcement practices in your focus area compare to what we see with strawberry and citrus workers and Port of Hueneme supply chain laborers across Ventura County?"
                 },
                 {
-                    domain: "Immigration & Borders",
-                    agency: "Ventura County Farmworker Resource Program & County SB 54 Values Act Compliance",
-                    question: "Your findings address due process protections and access to social safety net services for California immigrant families. Ventura County created a dedicated Farmworker Resource Program to support indigenous and undocumented laborers. How can local county programs best align with the statewide policy reforms your organization is championing?"
-                },
-                {
-                    domain: "Public Health",
+                    domain: "Health & Safety Net",
                     agency: "Ventura County Health Care Agency, Gold Coast Health Plan & Conejo Valley CARE Court",
                     question: "Your publication assesses state behavioral health initiatives and community-level Medi-Cal managed care. Ventura County was among the early implementation cohorts for California's CARE Court system. From your research, what structural investments are most critical to prevent civil commitment courts from failing vulnerable residents?"
+                },
+                {
+                    domain: "Education (K-12 & Higher Ed)",
+                    agency: "Conejo Valley Unified School District (CVUSD Board) & Ventura County Community College District",
+                    question: "Your research analyzes the Local Control Funding Formula (LCFF), chronic absenteeism, and dual enrollment pathways. In suburban districts like Conejo Valley Unified (CVUSD) and local colleges like Moorpark College, how do changing demographic enrollments impact state per-pupil funding allocations compared to urban districts?"
+                },
+                {
+                    domain: "State Budget & Fiscal Policy",
+                    agency: "City of Thousand Oaks Finance Dept & Thousand Oaks City Council (Measure P Sales Tax)",
+                    question: "Your fiscal analysis examines California's volatile revenue swings, high reliance on capital gains, and state deficit adjustments. When Sacramento trims local program subsidies, suburban municipalities like Thousand Oaks increasingly turn to local ballot measures (like Thousand Oaks' Measure P sales tax) to preserve municipal reserves. How should local cities prepare for state budget turbulence?"
+                },
+                {
+                    domain: "Politics & Elections",
+                    agency: "Ventura County Elections Division & Ventura County Board of Supervisors (CA-26)",
+                    question: "Your polling and electoral research explores California voter participation patterns, polarization, and independent voters. Ventura County is a key bellwether region with competitive swing congressional contests (CA-26) and officially nonpartisan city council seats. How do your statewide findings on voter turnout and reform reflect the dynamics of suburban swing districts?"
+                },
+                {
+                    domain: "Tech & Surveillance",
+                    agency: "Ventura County Sheriff's Dept & Thousand Oaks City Council (Flock ALPR Surveillance)",
+                    question: "You analyzed municipal procurement of automated surveillance technologies. Several cities in Ventura County (including Thousand Oaks and Simi Valley) have installed Flock Automated License Plate Readers. What transparency guardrails and data-sharing limits do you urge local city councils to adopt when contracting with private surveillance vendors?"
                 }
             ],
             global: [
@@ -1050,6 +1140,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             populateRegions();
             populateOrgs();
+            updateDashboardBridge(selectedDomain);
             updateTopicSuggestions();
             updateLocalBridges();
             autoUpdateStatus();
@@ -1064,13 +1155,16 @@
             if (course === 'california') {
                 document.getElementById('stage1-heading').textContent = "Select California Policy Focus & Brainstorm Topic";
                 document.getElementById('region-label').innerHTML = 'Select California Geographic Scope / Policy Arena<span class="req">*</span>';
+                document.getElementById('dashboard-bridge-banner').style.display = 'flex';
             } else {
                 document.getElementById('stage1-heading').textContent = "Select Global Governance Domain & Brainstorm Topic";
                 document.getElementById('region-label').innerHTML = 'Select International System Domain<span class="req">*</span>';
+                document.getElementById('dashboard-bridge-banner').style.display = 'none';
             }
 
             populateRegions();
             populateOrgs();
+            updateDashboardBridge(selectedDomain);
             updateTopicSuggestions();
             updateLocalBridges();
             autoUpdateStatus();
@@ -1109,7 +1203,7 @@
                 const isMatch = filterDomain && org.domain && org.domain.toLowerCase().includes(filterDomain.toLowerCase().split(' ')[0]);
                 const opt = document.createElement('option');
                 opt.value = org.name;
-                const matchPrefix = isMatch ? "★ [Recommended for " + filterDomain.split(' ')[0] + "] " : "";
+                const matchPrefix = isMatch ? "★ [Recommended] " : "";
                 opt.textContent = `${matchPrefix}${org.name} — ${org.focus.substring(0, 65)}...`;
                 if (isMatch) opt.style.fontWeight = "bold";
                 select.appendChild(opt);
@@ -1133,11 +1227,45 @@
             autoUpdateStatus();
         }
 
+        // Synchronize with California Policy Dashboard
+        function updateDashboardBridge(domain) {
+            if (currentCourse !== 'california') return;
+            const bridge = DASHBOARD_LINKS[domain];
+            const descEl = document.getElementById('dashboard-link-desc');
+            const actionBtn = document.getElementById('dashboard-action-btn');
+            const shortcutBtn = document.getElementById('dashboard-report-shortcut');
+
+            if (bridge) {
+                if (descEl) descEl.innerHTML = `<strong style="color: #ff7043;">${bridge.label}:</strong> ${bridge.desc}`;
+                if (actionBtn) {
+                    actionBtn.href = bridge.url;
+                    actionBtn.innerHTML = `Explore ${bridge.label} ↗`;
+                }
+                if (shortcutBtn) {
+                    shortcutBtn.href = bridge.url;
+                    shortcutBtn.textContent = bridge.shortcutText;
+                }
+            } else {
+                if (descEl) descEl.textContent = "Browse leading reports from PPIC, California Policy Lab, LAO, and CalMatters on Dr. Marichal's Policy Dashboard.";
+                if (actionBtn) {
+                    actionBtn.href = "california_policy_dashboard.html";
+                    actionBtn.textContent = "Explore Dashboard Reports ↗";
+                }
+                if (shortcutBtn) {
+                    shortcutBtn.href = "california_policy_dashboard.html";
+                    shortcutBtn.textContent = "🔎 Search Policy Dashboard for Reports ↗";
+                }
+            }
+        }
+
         // When a student clicks a policy domain button
         function selectTag(btn, domain) {
             document.querySelectorAll('#policy-tags .tag-btn').forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
             selectedDomain = domain;
+
+            // 0. Update Dashboard Bridge Card & Step 2 Shortcut URL
+            updateDashboardBridge(domain);
 
             // 1. Update domain-specific prompt example in textarea
             updateInterestPlaceholder(domain);
@@ -1157,14 +1285,15 @@
         function updateInterestPlaceholder(domain) {
             const textarea = document.getElementById('raw-interest');
             const placeholders = {
-                'Housing & Land Use': "e.g. How are suburban city councils responding to state Builder's Remedy filings and affordable housing mandates?",
-                'Water & Agriculture': "e.g. How are small farmers and disadvantaged unincorporated communities navigating SGMA groundwater pumping allocations?",
-                'Environmental Justice': "e.g. What policy tools are community coalitions using to fight diesel particulate emissions from massive warehouse logistics centers?",
-                'Labor & Worker Rights': "e.g. Why are Cal/OSHA extreme heat and wildfire smoke protections facing enforcement gaps in peak summer harvest months?",
-                'Criminal Legal Reform': "e.g. How does the debate over Proposition 36 and retail theft penalties impact county-level addiction and mental health diversion courts?",
-                'Tech & Algorithmic Policy': "e.g. What public transparency standards exist when local police departments contract with private Flock ALPR surveillance cameras?",
-                'Immigration & Borders': "e.g. How are county agencies navigating California Values Act (SB 54) compliance when cooperating with immigrant community resource centers?",
-                'Public Health': "e.g. How is the rollout of CARE Court mental health diversion affecting unhoused residents and community clinic caseloads?"
+                'Housing & Homelessness': "e.g. How are suburban city councils responding to state Builder's Remedy filings and affordable housing mandates?",
+                'Environment & Water': "e.g. How are small farmers and disadvantaged unincorporated communities navigating SGMA groundwater pumping allocations?",
+                'Criminal Justice': "e.g. How does the debate over Proposition 36 and retail theft penalties impact county-level addiction and mental health diversion courts?",
+                'Economy & Labor': "e.g. Why are Cal/OSHA extreme heat protections facing enforcement gaps for agricultural workers during peak harvest months?",
+                'Health & Safety Net': "e.g. How is the rollout of CARE Court mental health diversion affecting unhoused residents and community clinic caseloads?",
+                'Education (K-12 & Higher Ed)': "e.g. How are suburban school districts navigating chronic absenteeism and LCFF funding drops amidst declining student enrollment?",
+                'State Budget & Fiscal Policy': "e.g. How does California's volatile capital gains tax revenue structure affect multi-year state budget deficits and local city funding?",
+                'Politics & Elections': "e.g. How do California's top-two open primary system and independent redistricting commission influence political polarization in swing districts?",
+                'Tech & Surveillance': "e.g. What public transparency standards exist when local police departments contract with private Flock ALPR automated surveillance cameras?"
             };
             if (placeholders[domain]) {
                 textarea.placeholder = placeholders[domain];
@@ -1183,23 +1312,11 @@
                         { title: "Permanent Supportive Housing in High-Cost Communities", desc: "The fight to fund and site permanent supportive housing against local CEQA appeals and neighborhood pushback.", meta: "Policy Conflict: Funding & Siting Battles" },
                         { title: "Tenant Protections & Rent Cap Loopholes", desc: "Evaluating how corporate landlords navigate the California Tenant Protection Act (AB 1482) and substantial remodel evictions.", meta: "Policy Conflict: Tenant Stability vs. Property Rights" }
                     ];
-                } else if (selectedDomain.includes('Water')) {
+                } else if (selectedDomain.includes('Environment') || selectedDomain.includes('Water')) {
                     angles = [
                         { title: "Groundwater Adjudication & Small Farm Survival", desc: "How SGMA pumping allocations, groundwater markets, and meter fees are accelerating small farm retirements.", meta: "Policy Conflict: SGMA Groundwater Pricing" },
                         { title: "The Delta Conveyance Tunnel Controversy", desc: "The multi-billion dollar tunnel proposal pitting Sacramento-San Joaquin Delta ecology against Southern California water imports.", meta: "Policy Conflict: North vs. South Water Conveyance" },
-                        { title: "Drinking Water Equity in Agricultural Colonias", desc: "Evaluating the implementation of California's Safe and Affordable Drinking Water Fund in communities with contaminated wells.", meta: "Policy Conflict: Human Right to Water vs. Rural Inaction" }
-                    ];
-                } else if (selectedDomain.includes('Environmental')) {
-                    angles = [
-                        { title: "Warehouse Freight Booms & Clean Air Moratoriums", desc: "Community coalitions pushing for local moratoriums on massive e-commerce logistics centers and diesel freight corridors.", meta: "Policy Conflict: Inland Logistics vs. Cumulative Public Health" },
-                        { title: "Oil & Gas Setbacks (SB 1137) & Frontline Neighborhoods", desc: "The battle over 3,200-foot health buffer zones between petroleum extraction wells and homes, schools, and hospitals.", meta: "Policy Conflict: Energy Extraction vs. Neighborhood Setbacks" },
                         { title: "California Wildfire Insurance Desertification", desc: "Private insurers dropping hundreds of thousands of homeowner policies, pushing families onto the solvency-threatened FAIR Plan.", meta: "Policy Conflict: Climate Catastrophe vs. Insurance Solvency" }
-                    ];
-                } else if (selectedDomain.includes('Labor')) {
-                    angles = [
-                        { title: "Cal/OSHA Outdoor Heat Standards & Agricultural Enforcement", desc: "The gap between statewide worker protection standards on paper and on-the-ground inspection capacity in peak harvest seasons.", meta: "Policy Conflict: Regulatory Mandates vs. Field Enforcement" },
-                        { title: "Sector Council Bargaining & Fast Food Wage Councils", desc: "Evaluating California's AB 1228 sectoral bargaining experiment and corporate pushback through automation and scheduling cuts.", meta: "Policy Conflict: Sectoral Standards vs. Franchise Models" },
-                        { title: "Gig Worker Classification & The Legacy of Prop 22", desc: "App-based platform worker organizing, wage guarantees, and the legal battles over state worker status.", meta: "Policy Conflict: Platform Capitalism vs. Collective Bargaining" }
                     ];
                 } else if (selectedDomain.includes('Criminal')) {
                     angles = [
@@ -1207,23 +1324,41 @@
                         { title: "Youth Justice Realignment (SB 823) in County Hands", desc: "The shutdown of state youth prisons (DJJ) and whether county probation departments have the rehabilitative capacity to care for youth.", meta: "Policy Conflict: Decarceration vs. County Probation Capacity" },
                         { title: "Police Decertification (SB 2) & Civilian Accountability", desc: "The state commission revoking peace officer badges for serious misconduct and the union challenges to transparency.", meta: "Policy Conflict: Officer Accountability vs. Police Union Resistance" }
                     ];
-                } else if (selectedDomain.includes('Tech')) {
+                } else if (selectedDomain.includes('Economy') || selectedDomain.includes('Labor')) {
+                    angles = [
+                        { title: "Cal/OSHA Outdoor Heat Standards & Agricultural Enforcement", desc: "The gap between statewide worker protection standards on paper and on-the-ground inspection capacity in peak harvest seasons.", meta: "Policy Conflict: Regulatory Mandates vs. Field Enforcement" },
+                        { title: "Sector Council Bargaining & Fast Food Wage Councils", desc: "Evaluating California's AB 1228 sectoral bargaining experiment and corporate pushback through automation and scheduling cuts.", meta: "Policy Conflict: Sectoral Standards vs. Franchise Models" },
+                        { title: "Warehouse Freight Booms & Clean Air Corridors", desc: "Community coalitions pushing for local limits on massive e-commerce logistics centers and diesel freight corridors in the Inland Empire and Port hubs.", meta: "Policy Conflict: Inland Logistics vs. Cumulative Public Health" }
+                    ];
+                } else if (selectedDomain.includes('Health')) {
+                    angles = [
+                        { title: "CARE Court Rollout & Involuntary Mental Health Mandates", desc: "Civil liberties advocates challenging court-ordered treatment plans for unhoused individuals diagnosed with schizophrenia.", meta: "Policy Conflict: Civil Liberties vs. Municipal Coercive Care" },
+                        { title: "Medi-Cal Expansion for Undocumented Adults", desc: "How California became the first state to offer comprehensive healthcare coverage to all low-income residents regardless of status, amidst state budget constraints.", meta: "Policy Conflict: Universal Healthcare vs. Fiscal Deficits" },
+                        { title: "Rural Community Clinic Insolvency & Provider Networks", desc: "How low Medi-Cal reimbursement rates threaten safety-net community clinics serving agricultural and low-income families.", meta: "Policy Conflict: Coverage Expansion vs. Provider Capacity" }
+                    ];
+                } else if (selectedDomain.includes('Education')) {
+                    angles = [
+                        { title: "Declining Enrollment & The Local Control Funding Formula (LCFF)", desc: "How declining birth rates and suburban out-migration trigger school closure controversies and state per-pupil funding cuts.", meta: "Policy Conflict: Per-Pupil Funding vs. School Board Closures" },
+                        { title: "Post-Pandemic Chronic Absenteeism Interventions", desc: "Evaluating county-level and district strategies to reconnect disengaged K-12 students and reduce persistent achievement gaps.", meta: "Policy Conflict: Truancy Enforcement vs. Family Support Services" },
+                        { title: "Dual Enrollment & College Transfer Pathways", desc: "The state push to expand high school dual enrollment with community colleges (AB 1705) and ensure direct transfer into UC/CSU campuses.", meta: "Policy Conflict: Remedial Reform vs. Community College Completion" }
+                    ];
+                } else if (selectedDomain.includes('Budget')) {
+                    angles = [
+                        { title: "Boom-and-Bust Tax Volatility & Capital Gains Reliance", desc: "Why California swings between record multi-billion surpluses and severe deficits, and how the state's top 1% tax burden drives volatility.", meta: "Policy Conflict: Progressive Taxation vs. Fiscal Predictability" },
+                        { title: "Prop 98 School Guarantee vs. Safety Net Programs", desc: "The legislative battle over constitutionally protected K-14 education funding when overall state general fund revenues plunge.", meta: "Policy Conflict: Formula Entitlements vs. Discretionary Programs" },
+                        { title: "Local Government Reliance on Ballot Sales Taxes", desc: "How suburban cities facing state funding pullbacks turn to local sales tax measures (like Measure P) to maintain police and infrastructure reserves.", meta: "Policy Conflict: Municipal Autonomy vs. Regressive Local Taxes" }
+                    ];
+                } else if (selectedDomain.includes('Politics')) {
+                    angles = [
+                        { title: "California's Top-Two Primary & Ideological Moderation", desc: "Has the nonpartisan blanket primary achieved its promised goal of electing moderate legislators in competitive swing districts?", meta: "Policy Conflict: Electoral Reform vs. Polarized Partisanship" },
+                        { title: "The High Price of Ballot Initiatives & Direct Democracy", desc: "How corporate and labor interests spend hundreds of millions to bypass the Legislature through qualified ballot propositions.", meta: "Policy Conflict: Citizen Democracy vs. Billion-Dollar Campaign Spending" },
+                        { title: "Voter Turnout Inequalities in Midterm & Local Elections", desc: "The persistent age, racial, and homeownership disparities in California voter turnout and reforms like universal mail-in ballots.", meta: "Policy Conflict: Universal Access vs. Civic Participation Gaps" }
+                    ];
+                } else { // Tech & Surveillance
                     angles = [
                         { title: "Flock Automated License Plate Readers & Municipal Surveillance", desc: "How suburban cities rapidly adopted private AI vehicle-tracking cameras without public debate or strict privacy limits.", meta: "Policy Conflict: Public Safety vs. Mass Civil Liberties" },
                         { title: "Automated Decision Systems in County Social Services", desc: "Algorithmic risk assessments in child welfare screening and automated benefit denials across California counties.", meta: "Policy Conflict: Algorithmic Efficiency vs. Due Process" },
-                        { title: "California AI Safety Legislation & Tech Lobbying", desc: "The legislative battle over SB 1047 and state regulation of frontier foundation models based in Silicon Valley.", meta: "Policy Conflict: Frontier AI Safety vs. California Tech Innovation" }
-                    ];
-                } else if (selectedDomain.includes('Immigration')) {
-                    angles = [
-                        { title: "The California Values Act (SB 54) & Local Compliance", desc: "Evaluating how local sheriff departments and city police navigate state sanctuary limits when communicating with federal authorities.", meta: "Policy Conflict: Sanctuary Federalism vs. Local Law Enforcement" },
-                        { title: "Medi-Cal Expansion for Undocumented Adults", desc: "How California became the first state to offer comprehensive healthcare coverage to all low-income residents regardless of status.", meta: "Policy Conflict: Universal Care vs. State Budget Shortfalls" },
-                        { title: "Indigenous Farmworker Language Justice & Disaster Relief", desc: "Why traditional Spanish-language public services fail indigenous Mixteco and Triqui farmworkers during atmospheric river floods and fires.", meta: "Policy Conflict: Language Access vs. Emergency Response" }
-                    ];
-                } else { // Public Health
-                    angles = [
-                        { title: "CARE Court Rollout & Involuntary Mental Health Mandates", desc: "Civil liberties advocates challenging court-ordered treatment plans for unhoused individuals diagnosed with schizophrenia.", meta: "Policy Conflict: Civil Liberties vs. Municipal Coercive Care" },
-                        { title: "Harm Reduction & Overdose Prevention vs. Criminalization", desc: "Local city bans on syringe service programs and the fight to fund widespread naloxone and overdose education.", meta: "Policy Conflict: Public Health Harm Reduction vs. Community NIMBYism" },
-                        { title: "Rural Community Clinic Insolvency & Medi-Cal Rates", desc: "How low Medi-Cal reimbursement rates threaten safety-net community clinics serving working-class families.", meta: "Policy Conflict: Medi-Cal Coverage vs. Provider Network Capacity" }
+                        { title: "California AI Safety Legislation (SB 1047 Legacy)", desc: "The legislative battle over state regulation of frontier foundation models based in Silicon Valley and tech industry lobbying.", meta: "Policy Conflict: Frontier AI Safety vs. California Tech Innovation" }
                     ];
                 }
             } else {

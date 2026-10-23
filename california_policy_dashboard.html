@@ -244,6 +244,11 @@
             <div class="dashboard-header">
                 <h1>California Policy Dashboard</h1>
                 <p>Explore the leading resources, data, and reporting for California's most critical policy issues.</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="podcast_topic_builder.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(56, 189, 248, 0.12); border: 1px solid #38bdf8; color: #38bdf8; padding: 0.6rem 1.25rem; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 0.92rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.2s;">
+                        <span>🎙️</span> Podcast Assignment Topic &amp; Pitch Builder Studio <span>→</span>
+                    </a>
+                </div>
             </div>
 
             <!-- Tabs -->
@@ -852,6 +857,15 @@
                 const targetEl = document.getElementById(targetId);
                 if (targetEl) targetEl.classList.add('active');
             });
+        });
+
+        // Activate tab from URL hash if present on load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const hashId = window.location.hash.substring(1).toLowerCase();
+                const hashTab = document.querySelector(`.tab-btn[data-target="${hashId}"]`);
+                if (hashTab) hashTab.click();
+            }
         });
     </script>
 </body>
