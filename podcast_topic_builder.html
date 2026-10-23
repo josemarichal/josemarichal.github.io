@@ -809,16 +809,17 @@
                             <span id="char-counter" style="font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono);">0 characters</span>
                         </div>
                         <div class="form-hint">Write 1-2 sentences in plain English (e.g. "I want to explore why farmworkers in the Central Valley face pesticide exposure even with state safety rules" or "How ADU laws are actually changing suburban zoning").</div>
-                        <textarea class="form-control" id="raw-interest" rows="3" placeholder="Type your initial idea or question here..." oninput="handleQuestionInput()"></textarea>
+                        <textarea class="form-control" id="raw-interest" rows="3" placeholder="Type your initial idea or question here..." oninput="handleQuestionInput()" onkeydown="if((event.metaKey || event.ctrlKey) && event.key === 'Enter'){ submitAndAnalyzeQuestion(); }"></textarea>
 
-                        <!-- Action helper buttons -->
-                        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap;">
-                            <button type="button" class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.78rem;" onclick="handleQuestionInput(true)">
-                                ✨ Analyze &amp; Refine Question
+                        <!-- Primary Submit & Analyze Action Buttons -->
+                        <div style="display: flex; gap: 0.75rem; margin-top: 0.65rem; flex-wrap: wrap; align-items: center;">
+                            <button type="button" class="btn btn-primary" id="btn-submit-question" style="padding: 0.7rem 1.4rem; font-size: 0.9rem; font-weight: 700; background: linear-gradient(135deg, #38bdf8, #0284c7); color: #0f172a; border: 1px solid #7dd3fc; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;" onclick="submitAndAnalyzeQuestion()">
+                                ⚡ Submit Question &amp; Generate Custom Angles
                             </button>
-                            <button type="button" class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.78rem;" onclick="insertSampleQuestion()">
-                                💡 Insert Sample Question for this Domain
+                            <button type="button" class="btn btn-secondary" style="padding: 0.7rem 1rem; font-size: 0.84rem;" onclick="insertSampleQuestion()">
+                                💡 Insert Sample Question
                             </button>
+                            <span id="submit-hint-text" style="font-size: 0.78rem; color: #94a3b8;">(Click to analyze scope &amp; create episode angle, or press Ctrl+Enter)</span>
                         </div>
 
                         <!-- Real-Time Scoping & Title Generator Diagnostic Card -->
@@ -1503,12 +1504,92 @@
             }
         };
 
+        function submitAndAnalyzeQuestion() {
+            const rawEl = document.getElementById('raw-interest');
+            const val = rawEl ? rawEl.value.trim() : '';
+
+            if (!val) {
+                if (rawEl) {
+                    rawEl.style.borderColor = "#f59e0b";
+                    rawEl.focus();
+                }
+                const diagBox = document.getElementById('topic-diagnostic-card');
+                if (diagBox) {
+                    diagBox.className = "topic-diagnostic-card warning-state";
+                    diagBox.innerHTML = `
+                        <div class="diag-header">
+                            <span class="diag-badge warning">⚠️ Input Required</span>
+                        </div>
+                        <div class="diag-body">
+                            Please type your question or puzzle above before clicking Submit, or click <strong>'💡 Insert Sample Question'</strong> to load a verified example.
+                        </div>
+                    `;
+                }
+                return;
+            }
+
+            // Run analysis
+            handleQuestionInput(true);
+
+            // If valid, create and select a tailored Custom Angle card in the curated list
+            if (val.length >= 15) {
+                const cleanSubject = val.replace(/^(how|why|what|can|does|is|are)\s+(is|are|do|does|can)?/i, '').replace(/\?$/, '').trim();
+                const capSubject = cleanSubject.charAt(0).toUpperCase() + cleanSubject.slice(1);
+                const customTitle = `Behind the Policy: ${capSubject.substring(0, 52)}`;
+
+                const titleInput = document.getElementById('custom-episode-title');
+                if (titleInput) {
+                    titleInput.value = customTitle;
+                    titleInput.style.borderColor = "var(--primary)";
+                }
+
+                const customAng = {
+                    title: customTitle,
+                    desc: `Direct inquiry into: "${val}"`,
+                    meta: `Custom Inquired Topic • ${selectedDomain}`
+                };
+
+                const container = document.getElementById('angle-container');
+                if (container) {
+                    const existingCustom = container.querySelector('.angle-card.custom-student-card');
+                    if (existingCustom) existingCustom.remove();
+
+                    const card = document.createElement('div');
+                    card.className = 'angle-card custom-student-card selected';
+                    card.style.borderColor = 'var(--primary)';
+                    card.style.background = 'rgba(56, 189, 248, 0.12)';
+                    card.style.boxShadow = '0 0 14px rgba(56, 189, 248, 0.25)';
+                    card.onclick = () => selectAngle(card, customAng);
+                    card.innerHTML = `
+                        <div class="angle-title">
+                            <span>★ [Your Custom Angle] ${customAng.title}</span>
+                            <span style="font-size: 0.85rem;">🎙️</span>
+                        </div>
+                        <div class="angle-desc" style="color: #f1f5f9;">${customAng.desc}</div>
+                        <div class="angle-meta" style="color: var(--accent-gold); font-weight: 700;">${customAng.meta} (Active Selection ✓)</div>
+                    `;
+
+                    container.querySelectorAll('.angle-card').forEach(c => c.classList.remove('selected'));
+                    container.prepend(card);
+                    selectedAngle = customAng;
+                }
+
+                // Smooth scroll to angle container so student sees immediate result
+                const containerEl = document.getElementById('angle-container');
+                if (containerEl) {
+                    containerEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+
+            autoUpdateStatus();
+        }
+
         function insertSampleQuestion() {
             const data = POLICY_DOMAIN_DATA[selectedDomain] || POLICY_DOMAIN_DATA['Housing & Homelessness'];
             if (data && data.sample) {
                 const textarea = document.getElementById('raw-interest');
                 textarea.value = data.sample;
-                handleQuestionInput(true);
+                submitAndAnalyzeQuestion();
             }
         }
 
@@ -1872,6 +1953,14 @@
         }
 
         function goToStep(step) {
+            // If advancing past Step 1 with a question typed, ensure it gets submitted & scoped
+            if (currentStep === 1 && step > 1) {
+                const rawEl = document.getElementById('raw-interest');
+                if (rawEl && rawEl.value.trim().length >= 10 && (!selectedAngle || selectedAngle.title.includes('Custom Topic'))) {
+                    submitAndAnalyzeQuestion();
+                }
+            }
+
             currentStep = step;
             for (let i = 1; i <= 4; i++) {
                 const pane = document.getElementById(`stage-${i}`);
