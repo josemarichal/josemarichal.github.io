@@ -367,6 +367,114 @@
             color: #34d399;
         }
 
+        /* Real-Time Topic Scoping Diagnostic Card */
+        .topic-diagnostic-card {
+            margin-top: 0.85rem;
+            border-radius: 10px;
+            padding: 1.15rem;
+            background: var(--app-card);
+            border: 1px solid var(--app-border);
+            transition: all 0.25s ease;
+        }
+        .topic-diagnostic-card.prompt-state {
+            border-color: rgba(56, 189, 248, 0.25);
+            background: rgba(56, 189, 248, 0.04);
+        }
+        .topic-diagnostic-card.warning-state {
+            border-color: rgba(245, 158, 11, 0.4);
+            background: rgba(245, 158, 11, 0.07);
+        }
+        .topic-diagnostic-card.success-state {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.07);
+        }
+        .diag-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.65rem;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .diag-badge {
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .diag-badge.prompt {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+        .diag-badge.warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+        .diag-badge.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+        .diag-body {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            line-height: 1.55;
+        }
+        .diag-suggestions {
+            margin-top: 0.85rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .diag-title-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.6rem 0.85rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            font-size: 0.84rem;
+            color: #f1f5f9;
+        }
+        .diag-apply-btn {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.3rem 0.65rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .diag-apply-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+        .statute-pill {
+            display: inline-block;
+            background: rgba(255, 112, 67, 0.15);
+            border: 1px solid rgba(255, 112, 67, 0.35);
+            color: #ffab91;
+            padding: 0.25rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            margin: 0.25rem 0.35rem 0.25rem 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .statute-pill:hover {
+            background: rgba(255, 112, 67, 0.35);
+            color: #ffffff;
+            border-color: #ff7043;
+        }
+
         /* Local Bridge Cards */
         .bridge-card {
             background: var(--app-card);
@@ -696,9 +804,36 @@
 
                     <!-- Raw Student Idea Input -->
                     <div class="form-group">
-                        <label class="form-label">What specific question or problem puzzles you?<span class="req">*</span></label>
+                        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem;">
+                            <label class="form-label" style="margin-bottom: 0;">What specific question or problem puzzles you?<span class="req">*</span></label>
+                            <span id="char-counter" style="font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono);">0 characters</span>
+                        </div>
                         <div class="form-hint">Write 1-2 sentences in plain English (e.g. "I want to explore why farmworkers in the Central Valley face pesticide exposure even with state safety rules" or "How ADU laws are actually changing suburban zoning").</div>
-                        <textarea class="form-control" id="raw-interest" placeholder="Type your initial idea or question here..." oninput="autoUpdateStatus()"></textarea>
+                        <textarea class="form-control" id="raw-interest" rows="3" placeholder="Type your initial idea or question here..." oninput="handleQuestionInput()"></textarea>
+
+                        <!-- Action helper buttons -->
+                        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                            <button type="button" class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.78rem;" onclick="handleQuestionInput(true)">
+                                ✨ Analyze &amp; Refine Question
+                            </button>
+                            <button type="button" class="btn btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.78rem;" onclick="insertSampleQuestion()">
+                                💡 Insert Sample Question for this Domain
+                            </button>
+                        </div>
+
+                        <!-- Real-Time Scoping & Title Generator Diagnostic Card -->
+                        <div id="topic-diagnostic-card" class="topic-diagnostic-card prompt-state">
+                            <!-- Populated dynamically via handleQuestionInput() -->
+                        </div>
+
+                        <!-- Active Episode Working Title Field -->
+                        <div style="margin-top: 1rem; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 0.85rem 1rem;">
+                            <div style="font-size: 0.78rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.3rem; display: flex; align-items: center; justify-content: space-between;">
+                                <span>🎙️ Active Episode Working Title (Canvas Deliverable):</span>
+                                <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">Auto-updated or editable</span>
+                            </div>
+                            <input type="text" class="form-control" id="custom-episode-title" placeholder="Select an angle below or generate a title from your question..." oninput="syncCustomTitle(this.value)" style="font-weight: 600; color: #ffffff;">
+                        </div>
                     </div>
 
                     <!-- Scaffolded Episode Angles -->
@@ -1142,6 +1277,7 @@
             populateOrgs();
             updateDashboardBridge(selectedDomain);
             updateTopicSuggestions();
+            handleQuestionInput();
             updateLocalBridges();
             autoUpdateStatus();
         });
@@ -1278,6 +1414,281 @@
 
             // 4. Automatically match the Ventura County / Thousand Oaks Local Bridge in Step 3
             updateLocalBridges(domain);
+
+            handleQuestionInput();
+            autoUpdateStatus();
+        }
+
+        const POLICY_DOMAIN_DATA = {
+            'Housing & Homelessness': {
+                sample: "How are suburban city councils using CEQA and local design review to push back against state Builder's Remedy housing proposals?",
+                narrowing: [
+                    "How does the Builder's Remedy (HAA) challenge suburban single-family zoning in high-cost cities?",
+                    "How is the rollout of CARE Court affecting civil liberties and housing placement for unhoused Californians?"
+                ],
+                statutes: ["Builder's Remedy (HAA)", "SB 9 (Duplexes/Lot Splits)", "AB 1482 (Tenant Protection Act)", "CARE Court", "CEQA Exemption"],
+                orgs: "PPIC, California Policy Lab, or Western Center on Law and Poverty"
+            },
+            'Environment & Water': {
+                sample: "How are small family farmers navigating SGMA groundwater pumping allocations and metering fees in disadvantaged agricultural basins?",
+                narrowing: [
+                    "How are agricultural water markets and SGMA pumping limits accelerating small farm fallowing?",
+                    "What policy tools are frontline environmental justice groups using to fight diesel truck corridor pollution?"
+                ],
+                statutes: ["SGMA (Groundwater Act)", "SB 1137 (3,200ft Oil Buffer)", "Delta Conveyance", "FAIR Plan (Wildfire Insurance)"],
+                orgs: "PPIC Water Policy Center, UCLA Luskin, or CEJA"
+            },
+            'Criminal Justice': {
+                sample: "How will the passage of Proposition 36 retail theft penalties impact county-level drug courts and diversion funding?",
+                narrowing: [
+                    "How does Proposition 36 reclassify drug possession and retail theft compared to Prop 47?",
+                    "How is county probation handling the closure of state youth prisons under SB 823 realignment?"
+                ],
+                statutes: ["Proposition 36 (2024)", "Proposition 47", "SB 823 (Youth Realignment)", "SB 2 (Police Decertification)"],
+                orgs: "Vera Institute of Justice, CJCJ, or ACLU of Southern California"
+            },
+            'Economy & Labor': {
+                sample: "Why are Cal/OSHA extreme outdoor heat safety standards facing inspection and enforcement gaps during peak agricultural harvests?",
+                narrowing: [
+                    "How is the Fast Food Council (AB 1228) sectoral bargaining model impacting franchise wages and automation?",
+                    "How are logistics warehouse workers in the Inland Empire organizing against automated speed quotas (AB 701)?"
+                ],
+                statutes: ["AB 1228 (Fast Food Wage Council)", "AB 701 (Warehouse Quotas)", "Cal/OSHA Outdoor Heat Standards", "Prop 22"],
+                orgs: "UC Berkeley Labor Center, California Budget & Policy Center, or WWRC"
+            },
+            'Health & Safety Net': {
+                sample: "How are county health agencies balancing civil liberties concerns with involuntary treatment mandates under California's new CARE Court system?",
+                narrowing: [
+                    "How is California's full Medi-Cal expansion for undocumented adults being implemented amidst state budget deficits?",
+                    "Why are community health clinics in rural and agricultural regions facing financial insolvency under current reimbursement rates?"
+                ],
+                statutes: ["CARE Court (SB 1338)", "Medi-Cal Full Expansion", "CalAIM Whole-Person Care", "AB 2200 (CalCare)"],
+                orgs: "California Health Care Foundation (CHCF), UCLA Center for Health Policy Research, or Health Access"
+            },
+            'Education (K-12 & Higher Ed)': {
+                sample: "How are declining student enrollments and chronic absenteeism affecting per-pupil funding allocations under California's Local Control Funding Formula?",
+                narrowing: [
+                    "How are suburban school boards managing school closure controversies triggered by declining K-12 birth rates?",
+                    "How does AB 1705 remedial course reform affect community college transfer rates to UC and CSU campuses?"
+                ],
+                statutes: ["LCFF (Local Control Funding Formula)", "AB 1705 (Remedial Placement)", "Prop 98 School Guarantee", "Cal Grant Modernization"],
+                orgs: "EdSource, Policy Analysis for California Education (PACE), or PPIC"
+            },
+            'State Budget & Fiscal Policy': {
+                sample: "Why does California's heavy reliance on top-bracket capital gains taxes cause drastic multi-year budget swings between surpluses and deficits?",
+                narrowing: [
+                    "How does state revenue volatility affect local city funding and suburban reliance on local sales taxes like Measure P?",
+                    "How does the Governor's May Revision reconcile constitutional Proposition 98 school guarantees with general fund deficits?"
+                ],
+                statutes: ["Proposition 2 (Rainy Day Reserve)", "Proposition 98 Guarantee", "State Gann Limit", "Measure P (TO Sales Tax)"],
+                orgs: "Legislative Analyst's Office (LAO) or California Budget & Policy Center"
+            },
+            'Politics & Elections': {
+                sample: "Has California's top-two open primary system actually reduced partisan polarization in competitive swing legislative districts?",
+                narrowing: [
+                    "How do corporate and union campaign spending on statewide ballot propositions bypass legislative negotiation?",
+                    "Why do youth and renter voter turnout rates lag in California despite universal mail-in ballots?"
+                ],
+                statutes: ["Top-Two Open Primary (Prop 14)", "California Voters FIRST Act (Redistricting)", "Voter's Choice Act (Mail Ballots)"],
+                orgs: "CalMatters, PPIC Statewide Survey, or UC Berkeley IGS Poll"
+            },
+            'Tech & Surveillance': {
+                sample: "What public transparency and data-retention limits should local city councils demand when contracting with private Flock ALPR surveillance cameras?",
+                narrowing: [
+                    "How are automated decision-making algorithms being used in county social services and child welfare screening?",
+                    "What did the legislative fight over SB 1047 reveal about tech industry lobbying against state AI safety regulation?"
+                ],
+                statutes: ["SB 1047 (Frontier AI Safety)", "Flock ALPR Data Sharing Limits", "CPRA (CA Consumer Privacy Act)", "CIPA Wiretap Law"],
+                orgs: "Electronic Frontier Foundation (EFF) or ACLU Technology & Civil Liberties"
+            }
+        };
+
+        function insertSampleQuestion() {
+            const data = POLICY_DOMAIN_DATA[selectedDomain] || POLICY_DOMAIN_DATA['Housing & Homelessness'];
+            if (data && data.sample) {
+                const textarea = document.getElementById('raw-interest');
+                textarea.value = data.sample;
+                handleQuestionInput(true);
+            }
+        }
+
+        function appendStatute(statute) {
+            const textarea = document.getElementById('raw-interest');
+            if (!textarea.value.includes(statute)) {
+                textarea.value = textarea.value.trim() 
+                    ? `${textarea.value.trim()} (specifically analyzing ${statute})` 
+                    : `How is ${statute} impacting policy implementation in California?`;
+                handleQuestionInput(true);
+            }
+        }
+
+        function applyCustomTitle(title) {
+            const input = document.getElementById('custom-episode-title');
+            if (input) {
+                input.value = title;
+                input.style.borderColor = "var(--primary)";
+                input.style.boxShadow = "0 0 12px rgba(56, 189, 248, 0.4)";
+                setTimeout(() => {
+                    input.style.boxShadow = "none";
+                }, 1500);
+            }
+            selectedAngle = {
+                title: title,
+                desc: "Custom topic scaffolded from student inquiry",
+                meta: `Student Inquired: ${selectedDomain}`
+            };
+            autoUpdateStatus();
+        }
+
+        function syncCustomTitle(val) {
+            if (val.trim()) {
+                selectedAngle = {
+                    title: val.trim(),
+                    desc: "Custom topic entered by student",
+                    meta: selectedDomain
+                };
+            }
+            autoUpdateStatus();
+        }
+
+        function handleQuestionInput(forceExplicit) {
+            const rawEl = document.getElementById('raw-interest');
+            if (!rawEl) return;
+            const val = rawEl.value.trim();
+            const charCounter = document.getElementById('char-counter');
+            const diagBox = document.getElementById('topic-diagnostic-card');
+
+            if (charCounter) {
+                charCounter.textContent = `${val.length} character${val.length === 1 ? '' : 's'}`;
+            }
+
+            if (!diagBox) return;
+
+            const domainInfo = POLICY_DOMAIN_DATA[selectedDomain] || POLICY_DOMAIN_DATA['Housing & Homelessness'];
+
+            if (val.length === 0) {
+                diagBox.className = "topic-diagnostic-card prompt-state";
+                diagBox.innerHTML = `
+                    <div class="diag-header">
+                        <span class="diag-badge prompt">💡 Real-Time Policy Scoping Assistant</span>
+                        <span style="font-size: 0.74rem; color: var(--text-muted);">Step 1 Interactive Feedback</span>
+                    </div>
+                    <div class="diag-body">
+                        Type your question or curiosity above. This assistant evaluates your topic scope, detects relevant California statutes, and generates ready-to-pitch episode titles in real time.
+                        <div style="margin-top: 0.65rem; font-size: 0.82rem; color: var(--primary);">
+                            Or click to load a sample question for <strong>${selectedDomain}</strong>:
+                            <div style="margin-top: 0.35rem;">
+                                <button type="button" class="btn btn-secondary" style="padding: 0.3rem 0.7rem; font-size: 0.78rem;" onclick="insertSampleQuestion()">
+                                    Load Sample: "${domainInfo.sample.substring(0, 65)}..."
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                autoUpdateStatus();
+                return;
+            }
+
+            if (val.length < 15) {
+                diagBox.className = "topic-diagnostic-card warning-state";
+                diagBox.innerHTML = `
+                    <div class="diag-header">
+                        <span class="diag-badge warning">⏳ Keep Writing... (${val.length}/15 chars)</span>
+                        <span style="font-size: 0.74rem; color: #fbbf24;">Incomplete Inquiry</span>
+                    </div>
+                    <div class="diag-body">
+                        State your inquiry as a complete sentence or question with a specific tension (e.g., <em>"Why does [law/agency] struggle to solve [specific problem]?"</em>).
+                    </div>
+                `;
+                autoUpdateStatus();
+                return;
+            }
+
+            // Check if broad umbrella term
+            const broadWords = ["housing", "homelessness", "water", "climate", "environment", "crime", "justice", "police", "education", "schools", "budget", "poverty", "healthcare", "immigration", "jobs", "labor", "ai", "tech"];
+            const questionMarkers = ["why", "how", "what", "does", "can", "bill", "law", "sb", "ab", "prop", "ban", "county", "mandate", "conflict", "reform", "quota", "impact", "treatment", "dispute", "versus", "vs", "remedy", "ordinance", "local", "pushback", "zoning", "ceqa", "sgma"];
+            
+            const lower = val.toLowerCase();
+            const hasMarker = questionMarkers.some(m => lower.includes(m));
+            const isSingleBroadWord = broadWords.some(w => lower.replace(/[^a-z]/g, '') === w || (lower.split(/\s+/).length <= 3 && lower.includes(w) && !hasMarker));
+
+            if (isSingleBroadWord || (val.length < 28 && !hasMarker)) {
+                diagBox.className = "topic-diagnostic-card warning-state";
+                diagBox.innerHTML = `
+                    <div class="diag-header">
+                        <span class="diag-badge warning">⚠️ Scope Alert: Too Broad for a 45-Minute Podcast</span>
+                        <span style="font-size: 0.74rem; color: #fbbf24;">Needs a Specific Conflict</span>
+                    </div>
+                    <div class="diag-body">
+                        You entered <strong>"${val}"</strong>. This is an entire policy domain rather than an episode topic. Dr. Marichal's rubric requires a specific tension, recent law, or local conflict.
+                        <div class="diag-suggestions">
+                            <strong style="color: #ffffff; font-size: 0.8rem;">💡 Recommended Ways to Narrow This Topic:</strong>
+                            ${domainInfo.narrowing.map(q => `
+                                <div class="diag-title-item">
+                                    <span>"${q}"</span>
+                                    <button type="button" class="diag-apply-btn" onclick="document.getElementById('raw-interest').value = '${q.replace(/'/g, "\\'")}'; handleQuestionInput(true);">Use This Question</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                autoUpdateStatus();
+                return;
+            }
+
+            // Good / Bounded
+            // Generate 2 custom titles
+            const cleanSubject = val.replace(/^(how|why|what|can|does|is|are)\s+(is|are|do|does|can)?/i, '').replace(/\?$/, '').trim();
+            const capSubject = cleanSubject.charAt(0).toUpperCase() + cleanSubject.slice(1);
+            const genTitle1 = `Behind the Policy: ${capSubject.substring(0, 48)}`;
+            const genTitle2 = `${selectedDomain.split(' ')[0]}: Ground Realities & State Mandates in California`;
+
+            diagBox.className = "topic-diagnostic-card success-state";
+            diagBox.innerHTML = `
+                <div class="diag-header">
+                    <span class="diag-badge success">✅ Scope Diagnostic: Bounded &amp; Feasible Topic!</span>
+                    <span style="font-size: 0.74rem; color: #34d399;">Ready for Outreach Pitch</span>
+                </div>
+                <div class="diag-body">
+                    <strong>Strong inquiry!</strong> You are investigating a tangible mechanism and policy tension.
+                    
+                    <div class="diag-suggestions">
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #ffffff; margin-bottom: 0.35rem;">
+                            🎯 Generated Episode Working Titles (Click to Apply to Your Pitch):
+                        </div>
+                        <div class="diag-title-item">
+                            <span><strong>1.</strong> "${genTitle1}"</span>
+                            <button type="button" class="diag-apply-btn" onclick="applyCustomTitle('${genTitle1.replace(/'/g, "\\'")}')">Apply Title</button>
+                        </div>
+                        <div class="diag-title-item">
+                            <span><strong>2.</strong> "${genTitle2}"</span>
+                            <button type="button" class="diag-apply-btn" onclick="applyCustomTitle('${genTitle2.replace(/'/g, "\\'")}')">Apply Title</button>
+                        </div>
+
+                        <div style="margin-top: 0.75rem;">
+                            <div style="font-size: 0.78rem; font-weight: 700; color: #ffab91; margin-bottom: 0.25rem;">
+                                🏛️ Relevant California Statutes / Frameworks (Click to insert):
+                            </div>
+                            <div>
+                                ${domainInfo.statutes.map(s => `
+                                    <span class="statute-pill" onclick="appendStatute('${s}')">+ ${s}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 0.75rem; font-size: 0.78rem; color: #94a3b8; background: rgba(0,0,0,0.25); padding: 0.5rem 0.75rem; border-radius: 6px;">
+                            🔎 <strong>Recommended for Step 2:</strong> Look up practitioners and recent white papers from <strong>${domainInfo.orgs}</strong>.
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Also auto-update custom title input if empty
+            const customTitleInput = document.getElementById('custom-episode-title');
+            if (customTitleInput && !customTitleInput.value.trim()) {
+                customTitleInput.value = genTitle1;
+                if (selectedAngle) selectedAngle.title = genTitle1;
+            }
 
             autoUpdateStatus();
         }
@@ -1545,7 +1956,9 @@
             const rTitle = document.getElementById('report-title').value.trim() || "[Report / White Paper Title]";
             const rFinding = document.getElementById('report-finding').value.trim() || "[Insert 1-2 sentence finding from report]";
             const bridgeQ = document.getElementById('final-bridge-question').value.trim() || "[Your local bridge question connecting to Ventura County/Thousand Oaks]";
-            const angleTitle = selectedAngle ? selectedAngle.title : "Regional Policy Dynamics & Local Implications";
+            const rawInterest = document.getElementById('raw-interest').value.trim();
+            const customTitle = document.getElementById('custom-episode-title') ? document.getElementById('custom-episode-title').value.trim() : '';
+            const angleTitle = customTitle || (selectedAngle ? selectedAngle.title : "California Policy Dynamics & Ground Realities");
             const courseTitle = currentCourse === 'california' ? "California Politics and Public Policy" : "Global Politics and Public Policy";
 
             // 1. Canvas Proposal
@@ -1559,28 +1972,31 @@ MAJOR / YEAR: ${studentMajor}
 DATE SUBMITTED: ${new Date().toLocaleDateString()}
 
 1. PROPOSED EPISODE WORKING TITLE:
-"${angleTitle}: California Policy Dynamics & Local Impacts"
+"${angleTitle}"
 
-2. POLICY FRAMEWORK & DOMAIN:
+2. STUDENT'S GUIDING QUESTION & INQUIRY:
+"${rawInterest ? rawInterest : '[No specific question entered yet]'}"
+
+3. POLICY FRAMEWORK & DOMAIN:
 * Geographic / Arena Focus: ${region}
 * Policy Domain: ${selectedDomain}
 
-3. TARGET PRACTITIONER & ORGANIZATION:
+4. TARGET PRACTITIONER & ORGANIZATION:
 * Organization: ${org}
 * Target Practitioner: ${pName}
 * Practitioner Title: ${pTitle}
 * Feasibility Justification: Practitioner is a working analyst/program specialist with direct research oversight rather than an uncontactable high-level executive.
 
-4. REQUIRED RECENT POLICY REPORT (2022-2026):
+5. REQUIRED RECENT POLICY REPORT (2022-2026):
 * Report Title: ${rTitle}
 * Key Finding / Hook to Discuss:
 "${rFinding}"
 
-5. MANDATORY VENTURA COUNTY / THOUSAND OAKS LOCAL BRIDGE (Rubric: 30%):
+6. MANDATORY VENTURA COUNTY / THOUSAND OAKS LOCAL BRIDGE (Rubric: 30%):
 * Hyper-Local Bridge Question:
 "${bridgeQ}"
 
-6. INTERVIEW LOGISTICS & FEASIBILITY:
+7. INTERVIEW LOGISTICS & FEASIBILITY:
 * Proposed Format: 45-minute recorded Zoom session on a Friday.
 * Outreach Status: Ready to send initial interview request using verified syllabus template.
 `;
@@ -1598,7 +2014,10 @@ As part of our coursework, we are studying ${currentCourse === 'california' ? 'h
 I was particularly struck by your finding that:
 "${rFinding}"
 
-For my midterm project, I am recording a 45-minute podcast-style interview with a policy practitioner to help my classmates and me understand how policy actually moves on the ground in California. We are also exploring how statewide and regional policy intersects with local governance here in Ventura County / Southern California.
+Specifically, my episode explores:
+"${rawInterest ? rawInterest : 'how statewide and regional policy mandates intersect with ground-level implementation challenges'}."
+
+For my midterm project, I am recording a 45-minute podcast-style interview with a policy practitioner to help my classmates and me understand how policy actually moves on the ground in California. We are also exploring how statewide policy connects to local governance here in Ventura County / Southern California.
 
 Would you be open to doing a 45-minute Zoom interview with me on a Friday of your choosing in the coming weeks? The stakes are low, and the audience will be a highly engaged class of undergraduates eager to learn from your localized expertise.
 
@@ -1618,8 +2037,8 @@ Thousand Oaks, CA`;
 Guest: ${pName} (${pTitle}, ${org})
 Episode Angle: ${angleTitle}
 
-1. THE REPORT HOOK (Rubric: Research & Prep):
-   "In your recent report '${rTitle}', you highlighted that ${rFinding.substring(0, 90)}... What surprised you most in that data, and what has been the community or legislative reaction since publication?"
+1. THE REPORT HOOK & GUIDING INQUIRY (Rubric: Research & Prep):
+   "In your recent report '${rTitle}', you highlighted that ${rFinding.substring(0, 90)}... Our project specifically asks: '${rawInterest ? rawInterest : 'How does this mandate play out on the ground?'}'. What surprised you most in that data, and what has been the community or legislative reaction since publication?"
 
 2. THE REGIONAL LANDSCAPE:
    "Our class is examining how policy doesn't happen in a vacuum—it is shaped by geography and regional political economy. How does working on ${selectedDomain} in ${region.split(' ')[0]} differ from other parts of the state or country?"
