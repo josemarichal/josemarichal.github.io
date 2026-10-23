@@ -611,7 +611,7 @@
             <!-- Course Switcher -->
             <div class="course-tabs">
                 <button class="course-tab-btn active" id="tab-california" onclick="switchCourse('california')">
-                    <span>🌴</span> California Politics &amp; Public Policy (Six Californias)
+                    <span>🌴</span> California Politics &amp; Public Policy
                 </button>
                 <button class="course-tab-btn" id="tab-global" onclick="switchCourse('global')">
                     <span>🌐</span> Global Politics &amp; Public Policy (International System)
@@ -650,15 +650,15 @@
                 <div class="stage-card">
                     <div class="stage-header">
                         <span class="stage-tag">Step 1 of 4 • Diagnostic</span>
-                        <h2 class="stage-title" id="stage1-heading">Select Region &amp; Brainstorm Your Policy Topic</h2>
+                        <h2 class="stage-title" id="stage1-heading">Select California Policy Focus &amp; Brainstorm Your Topic</h2>
                         <p class="stage-desc">
                             Don't start with a broad topic like "housing" or "climate". A great 45-minute podcast requires a specific tension, controversy, or recently passed reform.
                         </p>
                     </div>
 
-                    <!-- Region Selector -->
+                    <!-- Region / Arena Selector -->
                     <div class="form-group">
-                        <label class="form-label" id="region-label">Select Regional Frame<span class="req">*</span></label>
+                        <label class="form-label" id="region-label">Select California Geographic Scope / Policy Arena<span class="req">*</span></label>
                         <select class="form-control" id="region-select" onchange="updateTopicSuggestions()">
                             <!-- Populated dynamically via JS -->
                         </select>
@@ -910,13 +910,14 @@
         let selectedLocalBridge = null;
 
         // DATASETS
-        const CA_REGIONS = [
-            { id: "central", name: "Central California (San Joaquin Valley)", desc: "Groundwater (SGMA), agricultural labor, pesticide safety, high-speed rail, air quality." },
-            { id: "silicon", name: "Silicon Valley (Bay Area)", desc: "Tech governance, AI regulation, housing affordability, transit funding, tenant displacement." },
-            { id: "west", name: "West California (LA & Coastal Counties)", desc: "Coastal preservation, port emissions, port labor, tenant rights, homelessness response." },
-            { id: "south", name: "South California (Inland Empire, Orange Co, San Diego)", desc: "Warehouse logistics boom, border cross-border policies, regional housing strain." },
-            { id: "north", name: "North California (Sacramento Valley & Wine Country)", desc: "State Capitol lobbying, delta water conveyance, wildfire insurance, rural health." },
-            { id: "jefferson", name: "Jefferson (Far Northern Rural Counties)", desc: "Federal forestry management, tribal water rights, rural broadband, regional autonomy." }
+        const CA_POLICY_AREAS = [
+            { id: "statewide", name: "Statewide Policy & Capitol Legislation", desc: "Sacramento legislative advocacy, state budget allocations, state regulatory agencies, and ballot initiatives." },
+            { id: "central_valley", name: "Central Valley & Agricultural Communities", desc: "Groundwater sustainability (SGMA), agricultural labor rights, rural drinking water, pesticide oversight, and air quality." },
+            { id: "socal_la", name: "Greater Los Angeles & Southern California", desc: "Housing affordability, tenant protections, urban homelessness, transit expansion, and port logistics/freight emissions." },
+            { id: "bay_area", name: "Bay Area & Silicon Valley", desc: "Tech policy & AI governance, regional housing density, transit funding, and suburban zoning resistance." },
+            { id: "central_coast", name: "Central Coast & Coastal California", desc: "Coastal Commission preservation, farmworker housing, coastal water resilience, and local environmental protections." },
+            { id: "inland_empire", name: "Inland Empire & Warehouse Corridors", desc: "E-commerce logistics expansion, diesel truck emissions, environmental justice, and local community health." },
+            { id: "rural_north", name: "Rural Northern California & Forestry", desc: "Wildfire prevention, homeowner insurance cancellations, rural healthcare access, and public land management." }
         ];
 
         const GLOBAL_DOMAINS = [
@@ -1012,8 +1013,8 @@
             
             // Adjust headings
             if (course === 'california') {
-                document.getElementById('stage1-heading').textContent = "Select California Region & Brainstorm Policy Topic";
-                document.getElementById('region-label').innerHTML = 'Select One of the "Six Californias"<span class="req">*</span>';
+                document.getElementById('stage1-heading').textContent = "Select California Policy Focus & Brainstorm Topic";
+                document.getElementById('region-label').innerHTML = 'Select California Geographic Scope / Policy Arena<span class="req">*</span>';
             } else {
                 document.getElementById('stage1-heading').textContent = "Select Global Governance Domain & Brainstorm Topic";
                 document.getElementById('region-label').innerHTML = 'Select International System Domain<span class="req">*</span>';
@@ -1029,7 +1030,7 @@
         function populateRegions() {
             const select = document.getElementById('region-select');
             select.innerHTML = '';
-            const items = currentCourse === 'california' ? CA_REGIONS : GLOBAL_DOMAINS;
+            const items = currentCourse === 'california' ? CA_POLICY_AREAS : GLOBAL_DOMAINS;
             items.forEach(item => {
                 const opt = document.createElement('option');
                 opt.value = item.name;
@@ -1291,10 +1292,10 @@ MAJOR / YEAR: ${studentMajor}
 DATE SUBMITTED: ${new Date().toLocaleDateString()}
 
 1. PROPOSED EPISODE WORKING TITLE:
-"${angleTitle}: Regional Dynamics & Local Implications"
+"${angleTitle}: California Policy Dynamics & Local Impacts"
 
-2. REGIONAL FRAMEWORK & POLICY DOMAIN:
-* Regional Focus: ${region}
+2. POLICY FRAMEWORK & DOMAIN:
+* Geographic / Arena Focus: ${region}
 * Policy Domain: ${selectedDomain}
 
 3. TARGET PRACTITIONER & ORGANIZATION:
@@ -1325,12 +1326,12 @@ Dear ${pName},
 
 My name is ${studentName} and I am an undergraduate student studying ${studentMajor} at California Lutheran University in Thousand Oaks, taking a course with Dr. Jose Marichal on ${courseTitle}.
 
-As part of our coursework, we are studying ${currentCourse === 'california' ? 'the regional political economies of the "Six Californias"' : 'global governance and policy implementation on the ground'}. I have been closely following the work of ${org}, and I recently read your publication, "${rTitle}."
+As part of our coursework, we are studying ${currentCourse === 'california' ? 'how California public policy is crafted, advocated for, and implemented on the ground' : 'global governance and policy implementation on the ground'}. I have been closely following the work of ${org}, and I recently read your publication, "${rTitle}."
 
 I was particularly struck by your finding that:
 "${rFinding}"
 
-For my midterm project, I am recording a 45-minute podcast-style interview with a policy practitioner to help my classmates and me understand how policy actually moves on the ground. We are also exploring how regional work intersects with local governance in Southern California / Ventura County.
+For my midterm project, I am recording a 45-minute podcast-style interview with a policy practitioner to help my classmates and me understand how policy actually moves on the ground in California. We are also exploring how statewide and regional policy intersects with local governance here in Ventura County / Southern California.
 
 Would you be open to doing a 45-minute Zoom interview with me on a Friday of your choosing in the coming weeks? The stakes are low, and the audience will be a highly engaged class of undergraduates eager to learn from your localized expertise.
 
