@@ -1,0 +1,90 @@
+{
+  "Educated Progressive Conservationist": {
+    "cluster_id": 0,
+    "name": "Educated Progressive Conservationist",
+    "count": 937,
+    "proportion": 0.248,
+    "description": "High education and income; high trust in science; strongly pro-environmental protection; analyzes data centers through climate grid decarbonization, corporate accountability, and environmental justice.",
+    "mean_age": 47.9,
+    "mean_polviews": 2.96,
+    "mean_partyid": 1.53,
+    "median_income": 75960.0,
+    "mean_degree": 3.31,
+    "mean_environment_spending": 1.03,
+    "mean_trust_science": 1.51,
+    "mean_trust_business": 2.0,
+    "mean_trust_fed_gov": 1.97,
+    "pct_rural_suburban": 17.1,
+    "top_regions": [
+      "East North Central (OH/IL/MI/IN/WI)",
+      "West North Central",
+      "Middle Atlantic"
+    ]
+  },
+  "Traditional Pro-Growth Property Conservative": {
+    "cluster_id": 1,
+    "name": "Traditional Pro-Growth Property Conservative",
+    "count": 458,
+    "proportion": 0.121,
+    "description": "Conservative and pro-market; skeptical of environmental over-regulation; open to data center infrastructure for local commercial tax revenues and job growth, provided private property rights are respected.",
+    "mean_age": 53.4,
+    "mean_polviews": 5.04,
+    "mean_partyid": 4.46,
+    "median_income": 42728.0,
+    "mean_degree": 1.68,
+    "mean_environment_spending": 2.42,
+    "mean_trust_science": 1.97,
+    "mean_trust_business": 2.0,
+    "mean_trust_fed_gov": 2.45,
+    "pct_rural_suburban": 35.8,
+    "top_regions": [
+      "East North Central (OH/IL/MI/IN/WI)",
+      "Middle Atlantic",
+      "West North Central"
+    ]
+  },
+  "Vulnerable Working-Class Community Defender": {
+    "cluster_id": 2,
+    "name": "Vulnerable Working-Class Community Defender",
+    "count": 1331,
+    "proportion": 0.352,
+    "description": "Lower-income and working-class; highly vulnerable to electricity rate increases and water resource competition; prioritizes immediate household economic protection and local community health.",
+    "mean_age": 46.3,
+    "mean_polviews": 3.4,
+    "mean_partyid": 1.8,
+    "median_income": 23738.0,
+    "mean_degree": 1.04,
+    "mean_environment_spending": 1.05,
+    "mean_trust_science": 1.81,
+    "mean_trust_business": 2.04,
+    "mean_trust_fed_gov": 2.09,
+    "pct_rural_suburban": 15.2,
+    "top_regions": [
+      "East North Central (OH/IL/MI/IN/WI)",
+      "West North Central",
+      "Middle Atlantic"
+    ]
+  },
+  "Conservative Conservationist & Ratepayer Skeptic": {
+    "cluster_id": 3,
+    "name": "Conservative Conservationist & Ratepayer Skeptic",
+    "count": 1058,
+    "proportion": 0.28,
+    "description": "Right-leaning partisan who paradoxically demands strong environmental protection for local water tables, farmland, and rural quiet; fierce opponent of utility monopolies externalizing grid costs onto residential taxpayers.",
+    "mean_age": 49.0,
+    "mean_polviews": 5.05,
+    "mean_partyid": 4.55,
+    "median_income": 42728.0,
+    "mean_degree": 1.61,
+    "mean_environment_spending": 1.0,
+    "mean_trust_science": 2.01,
+    "mean_trust_business": 2.14,
+    "mean_trust_fed_gov": 2.54,
+    "pct_rural_suburban": 41.6,
+    "top_regions": [
+      "East North Central (OH/IL/MI/IN/WI)",
+      "Middle Atlantic",
+      "West North Central"
+    ]
+  }
+}

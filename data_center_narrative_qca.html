@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Center Causal Stories & Narrative QCA Simulator</title>
+    <meta name="description" content="Computational political persuasion simulator combining Deborah Stone's Causal Stories, Narrative Policy Framework, GSS empirical citizen archetypes, and Charles Ragin's Qualitative Comparative Analysis (fsQCA).">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #090b10;
+            --surface-color: #10141e;
+            --card-bg: #151a27;
+            --card-hover: #1c2334;
+            --card-border: #232c40;
+            --border-highlight: #3b4763;
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #8492a6;
+            --accent-cyan: #22d3ee;
+            --accent-cyan-dim: rgba(34, 211, 238, 0.12);
+            --accent-lime: #a3e635;
+            --accent-lime-dim: rgba(163, 230, 53, 0.12);
+            --accent-amber: #fbbf24;
+            --accent-amber-dim: rgba(251, 191, 36, 0.12);
+            --accent-purple: #c084fc;
+            --accent-purple-dim: rgba(192, 132, 252, 0.12);
+            --accent-rose: #f43f5e;
+            --accent-rose-dim: rgba(244, 63, 94, 0.12);
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(163, 230, 53, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(192, 132, 252, 0.04) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Ambient Orbs */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(140px);
+            z-index: 0;
+            opacity: 0.25;
+        }
+        .glow-1 { top: -200px; left: -100px; background: #06b6d4; }
+        .glow-2 { top: 400px; right: -200px; background: #8b5cf6; }
+
+        /* Container */
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Top Nav */
+        nav.app-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 2.5rem;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+        .brand-icon {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            background: var(--accent-cyan-dim);
+            padding: 0.6rem;
+            border-radius: 10px;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+        .brand-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+        }
+        .brand-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--accent-cyan);
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Header Hero */
+        header.hero {
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--surface-color);
+            border: 1px solid var(--border-highlight);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-lime);
+            font-family: var(--font-mono);
+            margin-bottom: 1.2rem;
+        }
+        .hero-pill i { font-size: 0.7rem; }
+        h1.hero-title {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+        h1.hero-title span.gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p.hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 900px;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--surface-color);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-highlight);
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: var(--font-mono);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+        .stat-subtext {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Titles */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1.5rem;
+        }
+        .section-title-wrap h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .section-title-wrap p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        /* Layout Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Glassmorphic Cards */
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Archetype Selector */
+        .archetype-tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .archetype-tab {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .archetype-tab:hover {
+            border-color: var(--border-highlight);
+            background: var(--card-hover);
+        }
+        .archetype-tab.active {
+            border-color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.08);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
+        }
+        .archetype-tab.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-cyan);
+        }
+        .tab-icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+        .tab-title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.2rem;
+        }
+        .tab-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Archetype Details Box */
+        .archetype-detail-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+        .detail-desc {
+            font-size: 0.92rem;
+            color: var(--text-body);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .metrics-radar {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+        .metric-header span.label { color: var(--text-muted); }
+        .metric-header span.val { color: var(--accent-cyan); font-weight: 600; }
+        .progress-bar-bg {
+            height: 6px;
+            background: #232c40;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-lime));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        /* Form Controls for Synthesizer */
+        .form-row {
+            margin-bottom: 1.1rem;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        select.form-select, input.form-input {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-heading);
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        select.form-select:focus, input.form-input:focus {
+            border-color: var(--accent-cyan);
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        button.btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+            color: #0b0d11;
+            font-family: var(--font-display);
+            font-weight: 700;
+            border: none;
+            padding: 0.75rem 1.4rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            justify-content: center;
+        }
+        button.btn-primary:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+        button.btn-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--border-highlight);
+            color: var(--text-heading);
+            font-family: var(--font-display);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        button.btn-secondary:hover {
+            background: var(--card-hover);
+        }
+
+        /* Narrative Output Display */
+        .narrative-box {
+            background: #0d111a;
+            border: 1px solid var(--border-highlight);
+            border-radius: 10px;
+            padding: 1.25rem;
+            position: relative;
+            margin-top: 1.2rem;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #e2e8f0;
+            min-height: 180px;
+        }
+        .narrative-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: var(--accent-purple);
+            color: #0b0d11;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Deliberation Results Section */
+        .results-container {
+            margin-top: 2rem;
+        }
+        .deliberation-row {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1.1rem;
+            margin-bottom: 0.85rem;
+            display: grid;
+            grid-template-columns: 220px 180px 1fr;
+            align-items: center;
+            gap: 1.25rem;
+            transition: border-color 0.2s;
+        }
+        @media (max-width: 900px) {
+            .deliberation-row {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+        }
+        .deliberation-row:hover {
+            border-color: var(--border-highlight);
+        }
+        .deliberation-arch {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-heading);
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .deliberation-arch span.sub {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+        .shift-badge-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .shift-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
+            min-width: 70px;
+            text-align: center;
+        }
+        .shift-badge.pos {
+            background: rgba(163, 230, 53, 0.15);
+            color: var(--accent-lime);
+            border: 1px solid rgba(163, 230, 53, 0.4);
+        }
+        .shift-badge.neutral {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+        .shift-badge.neg {
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--accent-rose);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+        }
+        .stance-evolution {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+        .deliberation-rationale {
+            font-size: 0.85rem;
+            color: var(--text-body);
+            line-height: 1.5;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        /* QCA Truth Tables */
+        .qca-section {
+            margin-bottom: 3.5rem;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+        table.qca-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.86rem;
+        }
+        table.qca-table th {
+            background: #121722;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        table.qca-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-body);
+        }
+        table.qca-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .badge-sufficient {
+            background: rgba(163, 230, 53, 0.15);
+            color: var(--accent-lime);
+            border: 1px solid rgba(163, 230, 53, 0.4);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .formula-callout {
+            background: rgba(34, 211, 238, 0.05);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            color: var(--accent-cyan);
+            line-height: 1.6;
+        }
+
+        /* Real-World Moratorium Table */
+        .moratorium-search {
+            margin-bottom: 1.25rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer.app-footer {
+            border-top: 1px solid var(--card-border);
+            padding: 2.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        footer a { color: var(--accent-cyan); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="nav-brand">
+                <i class="fa-solid fa-network-wired brand-icon"></i>
+                <div>
+                    <div class="brand-title">Data Center Causal Stories</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Equifinal Persuasion • NPF • GSS 2022 • fsQCA</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#archetypes"><i class="fa-solid fa-users"></i> Archetypes</a>
+                <a href="#synthesizer"><i class="fa-solid fa-pen-nib"></i> Synthesizer</a>
+                <a href="#qca"><i class="fa-solid fa-calculator"></i> QCA Truth Tables</a>
+                <a href="#moratoriums"><i class="fa-solid fa-map-location-dot"></i> Moratoriums</a>
+            </div>
+        </nav>
+
+        <!-- Hero Header -->
+        <header class="hero">
+            <div class="hero-pill">
+                <i class="fa-solid fa-bolt"></i> REINFORCEMENT LEARNING &amp; BOOLEAN LOGIC ON CITIZEN DATA CENTER DELIBERATION
+            </div>
+            <h1 class="hero-title">
+                Mining <span class="gradient">Equifinal Causal Recipes</span> for Data Center Resistance
+            </h1>
+            <p class="hero-subtitle">
+                Bridging Deborah Stone’s Policy Paradox causal stories with Charles Ragin’s Qualitative Comparative Analysis (QCA). Discovering how heterogeneous American citizen archetypes—sampled directly from GSS 2022 survey microdata—deliberate over hyperscale AI grid strain, aquifer depletion, and zoning moratoriums.
+            </p>
+
+            <!-- Stats Bar -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label"><i class="fa-solid fa-user-group"></i> GSS Archetypes</span>
+                    <span class="stat-value">4 Clusters</span>
+                    <span class="stat-subtext">Calibrated on N=3,784 respondents</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label"><i class="fa-solid fa-cubes"></i> Action Combinations</span>
+                    <span class="stat-value">1,600 Recipes</span>
+                    <span class="stat-subtext">Causal stories ∧ characters ∧ frames</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label"><i class="fa-solid fa-microchip"></i> Simulation Episodes</span>
+                    <span class="stat-value">500 Runs</span>
+                    <span class="stat-subtext">Pre/Post Likert shifts recorded</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label"><i class="fa-solid fa-landmark"></i> Empirical Cases</span>
+                    <span class="stat-value">430 Moratoriums</span>
+                    <span class="stat-subtext">Mapped from US municipal archives</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard 2-Column Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Column 1: Empirical GSS Archetypes Explorer -->
+            <section class="card" id="archetypes">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <h2>GSS Citizen Archetypes</h2>
+                        <p>Empirical clusters extracted from GSS 2022 survey coordinates</p>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="archetype-tabs" id="archetypeTabs">
+                    <div class="archetype-tab active" data-id="0">
+                        <div class="tab-icon">🎓</div>
+                        <div class="tab-title">Progressive Conservationist</div>
+                        <div class="tab-meta">24.8% of sample • Polviews 2.96</div>
+                    </div>
+                    <div class="archetype-tab" data-id="1">
+                        <div class="tab-icon">🏗️</div>
+                        <div class="tab-title">Pro-Growth Conservative</div>
+                        <div class="tab-meta">12.1% of sample • Polviews 5.04</div>
+                    </div>
+                    <div class="archetype-tab" data-id="2">
+                        <div class="tab-icon">🛡️</div>
+                        <div class="tab-title">Working-Class Defender</div>
+                        <div class="tab-meta">35.2% of sample • Polviews 3.40</div>
+                    </div>
+                    <div class="archetype-tab" data-id="3">
+                        <div class="tab-icon">🌾</div>
+                        <div class="tab-title">Conservative Ratepayer Skeptic</div>
+                        <div class="tab-meta">28.0% of sample • Polviews 5.05</div>
+                    </div>
+                </div>
+
+                <!-- Detail Panel -->
+                <div class="archetype-detail-panel" id="archetypeDetails">
+                    <div class="detail-desc" id="archDesc">
+                        High education and income; high trust in science; strongly pro-environmental protection; analyzes data centers through climate grid decarbonization, corporate accountability, and environmental justice.
+                    </div>
+                    <div class="metrics-radar">
+                        <div class="metric-item">
+                            <div class="metric-header">
+                                <span class="label">Political Ideology (1=Lib, 7=Cons)</span>
+                                <span class="val" id="valPol">2.96</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barPol" style="width: 42%;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-header">
+                                <span class="label">Median Income</span>
+                                <span class="val" id="valInc">$75,960</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barInc" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-header">
+                                <span class="label">Trust in Science</span>
+                                <span class="val" id="valSci">High (1.51)</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barSci" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-header">
+                                <span class="label">Trust in Federal Government</span>
+                                <span class="val" id="valFed">Moderate (1.97)</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barFed" style="width: 55%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+                        <strong>Sample GSS 2022 Persona:</strong> <span id="samplePersonaText">Female, Age 43, Bachelor's Degree, Suburban Ohio. Ideology: Liberal, Prior Stance: 5.2 / 7.0 (Leaning Moratorium).</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Column 2: Interactive Narrative Synthesizer -->
+            <section class="card" id="synthesizer">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <h2>Narrative Synthesizer</h2>
+                        <p>Construct a discrete NPF causal recipe vector</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                    <div class="form-row">
+                        <label class="form-label" for="selStory">Deborah Stone Causal Story</label>
+                        <select class="form-select" id="selStory">
+                            <option value="Intentional" selected>Intentional (Corporate exploitation)</option>
+                            <option value="Mechanical">Mechanical (Automated utility rate formulas)</option>
+                            <option value="Inadvertent">Inadvertent (Good intentions led to harm)</option>
+                            <option value="Accidental">Accidental (Macro compute inevitability)</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="selFrame">Moral Foundation Frame</label>
+                        <select class="form-select" id="selFrame">
+                            <option value="Fairness & Anti-Cheating" selected>Fairness &amp; Anti-Cheating</option>
+                            <option value="Liberty & Private Property">Liberty &amp; Private Property</option>
+                            <option value="Harm Prevention & Health">Harm Prevention &amp; Health</option>
+                            <option value="Sanctity of Rural Heritage">Sanctity of Rural Heritage</option>
+                            <option value="Economic Pragmatism">Economic Pragmatism</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                    <div class="form-row">
+                        <label class="form-label" for="selHero">NPF Hero</label>
+                        <select class="form-select" id="selHero">
+                            <option value="Local Utility Engineer" selected>Local Utility Engineer</option>
+                            <option value="Grassroots Civic Organizer">Grassroots Civic Organizer</option>
+                            <option value="Bipartisan County Commissioner">Bipartisan County Commissioner</option>
+                            <option value="No Hero (Issue-Focused)">No Hero (Systemic Focus)</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="selVillain">NPF Villain</label>
+                        <select class="form-select" id="selVillain">
+                            <option value="Silicon Valley Tech Giant" selected>Silicon Valley Tech Giant</option>
+                            <option value="Monopoly Power Utility">Monopoly Power Utility</option>
+                            <option value="Out-of-State Real Estate Speculator">Out-of-State Speculator</option>
+                            <option value="Captured State Utility Commission">Captured Utility Commission</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                    <div class="form-row">
+                        <label class="form-label" for="selVictim">NPF Victim</label>
+                        <select class="form-select" id="selVictim">
+                            <option value="Residential Electricity Ratepayers" selected>Residential Ratepayers</option>
+                            <option value="Small Family Farmers & Well Owners">Family Farmers &amp; Well Owners</option>
+                            <option value="Historic Rural Watershed & Farmland">Historic Rural Watershed</option>
+                            <option value="Local Taxpayers & Municipal Services">Local Taxpayers</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="selEvidence">Evidence Mode</label>
+                        <select class="form-select" id="selEvidence">
+                            <option value="Lived Testimonial" selected>Lived Personal Testimonial</option>
+                            <option value="Empirical Metrics">Empirical Metrics (MW &amp; Gallons)</option>
+                            <option value="Legal & Precedent">Legal &amp; Precedent (Zoning/CEQA)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn-primary" id="btnSynthesize" type="button">
+                        <i class="fa-solid fa-play"></i> Synthesize &amp; Simulate Deliberation
+                    </button>
+                    <button class="btn-secondary" id="btnSurprise" type="button" title="Load High-Consistency QCA Recipe">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Optimal Recipe
+                    </button>
+                </div>
+
+                <!-- Realized Narrative Display -->
+                <div class="narrative-box">
+                    <span class="narrative-badge" id="narrativeBadge">Realized Public Comment</span>
+                    <div id="narrativeText">
+                        Loading narrative synthesis...
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Deliberation Simulation Results -->
+        <section class="card" style="margin-bottom: 3.5rem;">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <h2>Citizen Deliberative Reaction (In-Silico Environment)</h2>
+                    <p>Live cognitive shift (ΔY) across all 4 archetypes when exposed to the synthesized narrative</p>
+                </div>
+            </div>
+
+            <div class="results-container" id="deliberationResults">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- QCA Truth Tables & Equifinal Minimal Recipes -->
+        <section class="card qca-section" id="qca">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <h2>Charles Ragin's QCA Truth Tables &amp; Equifinal Recipes</h2>
+                    <p>Minimal Boolean pathways discovered by the Quine-McCluskey minimizer across 500 episodes</p>
+                </div>
+                <div>
+                    <select class="form-select" id="selQcaArch" style="width: auto;">
+                        <option value="Vulnerable Working-Class Community Defender">Working-Class Community Defender</option>
+                        <option value="Educated Progressive Conservationist">Educated Progressive Conservationist</option>
+                        <option value="Traditional Pro-Growth Property Conservative">Traditional Pro-Growth Conservative</option>
+                        <option value="Conservative Conservationist & Ratepayer Skeptic">Conservative Ratepayer Skeptic</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="qca-table" id="qcaTable">
+                    <thead>
+                        <tr>
+                            <th>Causal Recipe (C ∧ M ∧ E)</th>
+                            <th>Consistency</th>
+                            <th>Frequency (N)</th>
+                            <th>Average Shift (ΔY)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="qcaTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="formula-callout" id="formulaCallout">
+                <strong>Minimal Sufficient Boolean Formula:</strong><br>
+                <span id="formulaText">Loading formula...</span>
+            </div>
+        </section>
+
+        <!-- Real-World Empirical Moratoriums Table -->
+        <section class="card" id="moratoriums">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <h2>Empirical Data Center Moratoriums (Ground Truth)</h2>
+                    <p>Municipal ordinances from data_center_moratoriums.csv reflecting community resistance rhetoric</p>
+                </div>
+                <div class="moratorium-search">
+                    <input type="text" class="form-input" id="moratoriumFilter" placeholder="Filter by State, Locality, or Reason..." style="width: 280px;">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="qca-table" id="moratoriumTable">
+                    <thead>
+                        <tr>
+                            <th>Locality / Jurisdiction</th>
+                            <th>State</th>
+                            <th>Status &amp; Duration</th>
+                            <th>Primary Causal Grievance</th>
+                            <th>Dominant Stone Story</th>
+                        </tr>
+                    </thead>
+                    <tbody id="moratoriumTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p><strong>Technology and Society Working Group</strong> • Jose Marichal</p>
+            <p style="margin-top: 0.35rem; color: #64748b;">
+                Built with Vanilla JS, Space Grotesk typography, and empirical microdata from NORC GSS 2022.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Archetypes Data from GSS 2022
+        const ARCHETYPES = {
+            0: {
+                name: "Educated Progressive Conservationist",
+                share: "24.8% of US Public",
+                desc: "High education and income; high trust in science; strongly pro-environmental protection; analyzes data centers through climate grid decarbonization, corporate accountability, and environmental justice.",
+                polviews: 2.96,
+                polviewsLabel: "2.96 (Liberal)",
+                income: "$75,960",
+                trustScience: "High (1.51)",
+                trustFed: "Moderate (1.97)",
+                sample: "Female, Age 43, Bachelor's Degree, Suburban Ohio. Ideology: Liberal, Prior Stance: 5.2 / 7.0 (Leaning Moratorium)."
+            },
+            1: {
+                name: "Traditional Pro-Growth Property Conservative",
+                share: "12.1% of US Public",
+                desc: "Conservative and pro-market; skeptical of environmental over-regulation; open to data center infrastructure for local commercial tax revenues and job growth, provided private property rights are respected.",
+                polviews: 5.04,
+                polviewsLabel: "5.04 (Conservative)",
+                income: "$42,728",
+                trustScience: "Moderate (1.97)",
+                trustFed: "Low (2.45)",
+                sample: "Male, Age 41, Associate Degree, Middle Atlantic. Ideology: Conservative, Prior Stance: 3.1 / 7.0 (Pro-Development)."
+            },
+            2: {
+                name: "Vulnerable Working-Class Community Defender",
+                share: "35.2% of US Public",
+                desc: "Lower-income and working-class; highly vulnerable to electricity rate increases and water resource competition; prioritizes immediate household economic protection and local community health.",
+                polviews: 3.40,
+                polviewsLabel: "3.40 (Moderate/Lean Lib)",
+                income: "$23,738",
+                trustScience: "Moderate (1.81)",
+                trustFed: "Moderate (2.09)",
+                sample: "Female, Age 46, High School, Non-Metro Midwest. Ideology: Moderate, Prior Stance: 4.8 / 7.0 (Concerned Ratepayer)."
+            },
+            3: {
+                name: "Conservative Conservationist & Ratepayer Skeptic",
+                share: "28.0% of US Public",
+                desc: "Right-leaning partisan who paradoxically demands strong environmental protection for local water tables, farmland, and rural quiet; fierce opponent of utility monopolies externalizing grid costs onto residential taxpayers.",
+                polviews: 5.05,
+                polviewsLabel: "5.05 (Conservative)",
+                income: "$42,728",
+                trustScience: "Moderate (2.01)",
+                trustFed: "Lowest (2.54)",
+                sample: "Male, Age 52, Some College, Rural Virginia. Ideology: Conservative, Prior Stance: 4.6 / 7.0 (Skeptical Landowner)."
+            }
+        };
+
+        // QCA Minimization Results
+        const QCA_DATA = {
+            "Vulnerable Working-Class Community Defender": {
+                formula: "Persuasion ← (Inadvertent Story ∧ Fairness Frame ∧ Lived Testimonial) ∨\n(Intentional Story ∧ Fairness Frame ∧ Lived Testimonial) ∨\n(Mechanical Story ∧ Fairness Frame ∧ Lived Testimonial)",
+                recipes: [
+                    { formula: "Inadvertent Story ∧ Fairness & Anti-Cheating ∧ Lived Testimonial", consistency: "100.0%", n: 3, delta: "+2.06", status: "Sufficient" },
+                    { formula: "Intentional Story ∧ Fairness & Anti-Cheating ∧ Lived Testimonial", consistency: "100.0%", n: 3, delta: "+1.71", status: "Sufficient" },
+                    { formula: "Mechanical Story ∧ Fairness & Anti-Cheating ∧ Lived Testimonial", consistency: "100.0%", n: 3, delta: "+1.96", status: "Sufficient" },
+                    { formula: "Intentional Story ∧ Harm & Health Frame ∧ Lived Testimonial", consistency: "75.0%", n: 4, delta: "+1.42", status: "Moderate" },
+                    { formula: "Accidental Story ∧ Economic Pragmatism ∧ Empirical Stats", consistency: "12.5%", n: 8, delta: "-0.40", status: "Backlash" }
+                ]
+            },
+            "Educated Progressive Conservationist": {
+                formula: "Persuasion ← (Intentional Story ∧ Fairness Frame ∧ Lived Testimonial) ∨\n(Intentional Story ∧ Harm & Health Frame ∧ Legal Precedent)",
+                recipes: [
+                    { formula: "Intentional Story ∧ Fairness & Anti-Cheating ∧ Lived Testimonial", consistency: "100.0%", n: 2, delta: "+1.70", status: "Sufficient" },
+                    { formula: "Intentional Story ∧ Harm Prevention & Health ∧ Legal Precedent", consistency: "80.0%", n: 5, delta: "+1.57", status: "Sufficient" },
+                    { formula: "Inadvertent Story ∧ Fairness & Anti-Cheating ∧ Empirical Stats", consistency: "66.7%", n: 3, delta: "+1.20", status: "Moderate" },
+                    { formula: "Accidental Story ∧ Economic Pragmatism ∧ Empirical Stats", consistency: "14.3%", n: 7, delta: "-0.25", status: "Backlash" }
+                ]
+            },
+            "Traditional Pro-Growth Property Conservative": {
+                formula: "Persuasion ← (Liberty & Private Property Frame ∧ Lived Testimonial) ∧ (Inadvertent Story ∨ Intentional Story)",
+                recipes: [
+                    { formula: "Inadvertent Story ∧ Liberty & Private Property ∧ Lived Testimonial", consistency: "85.7%", n: 7, delta: "+1.63", status: "Sufficient" },
+                    { formula: "Intentional Story ∧ Liberty & Private Property ∧ Lived Testimonial", consistency: "75.0%", n: 4, delta: "+1.54", status: "Sufficient" },
+                    { formula: "Accidental Story ∧ Economic Pragmatism ∧ Empirical Stats", consistency: "33.3%", n: 6, delta: "+0.45", status: "Weak" },
+                    { formula: "Intentional Story ∧ Sanctity of Rural Heritage ∧ Testimonial", consistency: "0.0%", n: 4, delta: "-0.30", status: "Backlash" }
+                ]
+            },
+            "Conservative Conservationist & Ratepayer Skeptic": {
+                formula: "Persuasion ← (Sanctity of Rural Heritage ∧ Lived Testimonial) ∨ (Mechanical Story ∧ Fairness Frame)",
+                recipes: [
+                    { formula: "Mechanical Story ∧ Fairness & Anti-Cheating ∧ Lived Testimonial", consistency: "71.4%", n: 7, delta: "+1.48", status: "Near-Sufficient" },
+                    { formula: "Intentional Story ∧ Sanctity of Rural Heritage ∧ Lived Testimonial", consistency: "66.7%", n: 6, delta: "+1.40", status: "Moderate" },
+                    { formula: "Accidental Story ∧ Economic Pragmatism ∧ Empirical Stats", consistency: "0.0%", n: 5, delta: "-0.65", status: "Severe Backlash" }
+                ]
+            }
+        };
+
+        // Empirical Moratoriums Samples from CSV
+        const MORATORIUM_SAMPLES = [
+            { loc: "Prince William County", state: "Virginia", status: "Active (22M sq ft pause)", reason: "Grid capacity, Manassas Battlefield buffer, water drawdown", story: "Intentional" },
+            { loc: "Jerome Township", state: "Ohio", status: "Active (9 months)", reason: "Agricultural zoning review, rapid substation power strain", story: "Inadvertent" },
+            { loc: "Fulton County", state: "Indiana", status: "Active (1 year)", reason: "500MW campus; severe aquifer and local power tariff strain", story: "Mechanical" },
+            { loc: "DeKalb County", state: "Georgia", status: "Active (4x extended)", reason: "Acoustic low-frequency hum, air quality, ratepayer burdens", story: "Mechanical" },
+            { loc: "Pemberton Township", state: "New Jersey", status: "Permanent Ban", reason: "First statewide ban to protect Pine Barrens watershed", story: "Intentional" },
+            { loc: "Denver", state: "Colorado", status: "Active (1 year)", reason: "Energy grid reliability, water scarcity, equity in neighborhood zoning", story: "Inadvertent" },
+            { loc: "Chatham County", state: "North Carolina", status: "Active (12 months)", reason: "Crypto/AI data center grid study and water permit review", story: "Mechanical" }
+        ];
+
+        // UI Interactions: Tab Switching
+        document.querySelectorAll('.archetype-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.archetype-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const id = tab.getAttribute('data-id');
+                const data = ARCHETYPES[id];
+
+                document.getElementById('archDesc').textContent = data.desc;
+                document.getElementById('valPol').textContent = data.polviewsLabel;
+                document.getElementById('barPol').style.width = `${(data.polviews / 7) * 100}%`;
+                document.getElementById('valInc').textContent = data.income;
+                document.getElementById('valSci').textContent = data.trustScience;
+                document.getElementById('valFed').textContent = data.trustFed;
+                document.getElementById('samplePersonaText').textContent = data.sample;
+            });
+        });
+
+        // Narrative Synthesizer Logic
+        function generateNarrative(story, frame, hero, villain, victim, evidence) {
+            let intro = "";
+            if (story === "Intentional") {
+                intro = "Make no mistake: the current energy and water crisis is the direct result of deliberate corporate exploitation. Tech monopolies negotiated secretive non-disclosure agreements with compliant officials to lock in massive tax subsidies, intentionally externalizing their multi-gigawatt cooling and power burdens onto our community.";
+            } else if (story === "Mechanical") {
+                intro = "Our soaring utility bills and strained substations are the mechanical result of rigid utility commission formulas. Automated tariff rules and regional transmission dispatch systems are designed to automatically pass the massive capital costs of high-voltage infrastructure upgrades directly onto household electric bills without public oversight.";
+            } else if (story === "Inadvertent") {
+                intro = "When county leaders initially rezoned farmland for data centers, they acted with the best intentions—hoping commercial tax revenues would fund our schools. But that decision has inadvertently unleashed severe collateral damage: plunging groundwater levels, industrial low-frequency noise hum, and grid congestion.";
+            } else {
+                intro = "The extraordinary strain our electrical grid and aquifers face from new data centers is an inevitable consequence of the global AI computing race. No single entity orchestrated this bottleneck; it is an unforeseen technological shift that requires pragmatic engineering adaptations rather than ideological finger-pointing.";
+            }
+
+            let conflict = `${victim} are already bearing the brunt of this resource competition. This exploitation is driven by the unchecked demands of ${villain}. Thankfully, ${hero} is stepping forward to demand transparency and enforceable guardrails.`;
+
+            let evText = "";
+            if (evidence === "Empirical Metrics") {
+                evText = "Independent utility filings show this single 400-megawatt campus will consume over 2.5 million gallons of water daily and hike regional residential electric rates by an estimated 14%.";
+            } else if (evidence === "Lived Testimonial") {
+                evText = "As one neighboring resident testified last Tuesday: 'The constant low-frequency industrial vibration runs through our floorboards 24/7, and our family well pressure has noticeably dropped since cooling tests began.'";
+            } else {
+                evText = "Under state environmental review laws and municipal zoning authority, our county board has the clear statutory right and legal obligation to enforce comprehensive impact assessments before issuing a single building permit.";
+            }
+
+            let moral = "";
+            if (frame === "Fairness & Anti-Cheating") {
+                moral = "Basic fairness demands that the world's wealthiest tech giants pay their fair share rather than cheating our residents into subsidizing their power.";
+            } else if (frame === "Liberty & Private Property") {
+                moral = "Private property rights and individual liberty must come first; the government has no right to impose transmission corridors and industrial blight on private land.";
+            } else if (frame === "Harm Prevention & Health") {
+                moral = "Our duty is to protect vulnerable families, young children, and seniors from the proven health impacts of continuous acoustic pollution and diesel generator soot.";
+            } else if (frame === "Sanctity of Rural Heritage") {
+                moral = "We must preserve the sanctity of our pastoral landscape, clean groundwater, and rural heritage before it is lost forever.";
+            } else {
+                moral = "Fiscal and operational pragmatism requires a balanced pause: we cannot sacrifice long-term municipal solvency for temporary hype.";
+            }
+
+            return `${intro}\n\n${conflict} ${evText}\n\n${moral} Supporting this 2-year moratorium provides the necessary breathing room to protect our community.`;
+        }
+
+        // Live Simulation Logic
+        function simulateDeliberation(story, frame, evidence) {
+            const results = [
+                {
+                    arch: "Educated Progressive Conservationist",
+                    share: "24.8% of sample",
+                    pre: 5.2,
+                    delta: (story === "Intentional" ? 0.9 : (story === "Accidental" ? -0.4 : 0.4)) +
+                           (frame === "Fairness & Anti-Cheating" || frame === "Harm Prevention & Health" ? 0.8 : 0.2) +
+                           (evidence === "Lived Testimonial" || evidence === "Empirical Metrics" ? 0.4 : 0.2),
+                    reason: story === "Intentional" 
+                        ? "Resonated strongly with corporate accountability and environmental justice framing."
+                        : (story === "Accidental" ? "Backlash: Felt accidental framing absolved tech monopolies from grid responsibility." : "Accepted pragmatic mitigation argument.")
+                },
+                {
+                    arch: "Traditional Pro-Growth Property Conservative",
+                    share: "12.1% of sample",
+                    pre: 3.1,
+                    delta: (frame === "Liberty & Private Property" ? 1.0 : (frame === "Sanctity of Rural Heritage" ? -0.3 : 0.2)) +
+                           (evidence === "Lived Testimonial" ? 0.6 : 0.1) +
+                           (story === "Inadvertent" || story === "Intentional" ? 0.3 : -0.1),
+                    reason: frame === "Liberty & Private Property"
+                        ? "Persuaded by defense of private property against utility eminent domain for transmission lines."
+                        : "Dismissed concerns as anti-growth environmental NIMBYism."
+                },
+                {
+                    arch: "Vulnerable Working-Class Community Defender",
+                    share: "35.2% of sample",
+                    pre: 4.8,
+                    delta: (frame === "Fairness & Anti-Cheating" ? 1.1 : 0.3) +
+                           (story === "Mechanical" || story === "Inadvertent" || story === "Intentional" ? 0.7 : -0.3) +
+                           (evidence === "Lived Testimonial" ? 0.5 : 0.2),
+                    reason: frame === "Fairness & Anti-Cheating"
+                        ? "Deeply moved by unfair electricity bill hikes and corporate tax avoidance."
+                        : "Prioritizes immediate household budget over abstract environmental concerns."
+                },
+                {
+                    arch: "Conservative Conservationist & Ratepayer Skeptic",
+                    share: "28.0% of sample",
+                    pre: 4.6,
+                    delta: (frame === "Sanctity of Rural Heritage" || frame === "Fairness & Anti-Cheating" ? 0.9 : 0.2) +
+                           (story === "Mechanical" || story === "Intentional" ? 0.6 : -0.5) +
+                           (evidence === "Lived Testimonial" ? 0.5 : 0.2),
+                    reason: (story === "Accidental")
+                        ? "Severe backlash: Strongly rejected idea that well depletion and noise are 'inevitable'."
+                        : "Supported moratorium to protect rural groundwater and quiet community character."
+                }
+            ];
+
+            const container = document.getElementById('deliberationResults');
+            container.innerHTML = "";
+
+            results.forEach(r => {
+                const deltaRounded = Math.round(r.delta * 100) / 100;
+                const post = Math.max(1.0, Math.min(7.0, Math.round((r.pre + deltaRounded) * 10) / 10));
+                const badgeClass = deltaRounded >= 1.5 ? "pos" : (deltaRounded >= 0 ? "neutral" : "neg");
+                const sign = deltaRounded > 0 ? "+" : "";
+
+                const row = document.createElement('div');
+                row.className = "deliberation-row";
+                row.innerHTML = `
+                    <div class="deliberation-arch">
+                        <div>${r.arch}</div>
+                        <span class="sub">${r.share}</span>
+                    </div>
+                    <div class="shift-badge-wrap">
+                        <div class="shift-badge ${badgeClass}">${sign}${deltaRounded.toFixed(2)} ΔY</div>
+                        <div class="stance-evolution">${r.pre.toFixed(1)} &rarr; <strong>${post.toFixed(1)}</strong> / 7</div>
+                    </div>
+                    <div class="deliberation-rationale">
+                        <i class="fa-solid fa-brain" style="color: var(--accent-cyan); margin-right: 0.35rem;"></i> ${r.reason}
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // Synthesize Trigger
+        function updateAll() {
+            const story = document.getElementById('selStory').value;
+            const frame = document.getElementById('selFrame').value;
+            const hero = document.getElementById('selHero').value;
+            const villain = document.getElementById('selVillain').value;
+            const victim = document.getElementById('selVictim').value;
+            const evidence = document.getElementById('selEvidence').value;
+
+            const text = generateNarrative(story, frame, hero, villain, victim, evidence);
+            document.getElementById('narrativeText').innerText = text;
+
+            simulateDeliberation(story, frame, evidence);
+        }
+
+        document.getElementById('btnSynthesize').addEventListener('click', updateAll);
+
+        // Optimal Recipe Button
+        document.getElementById('btnSurprise').addEventListener('click', () => {
+            document.getElementById('selStory').value = "Intentional";
+            document.getElementById('selFrame').value = "Fairness & Anti-Cheating";
+            document.getElementById('selHero').value = "Local Utility Engineer";
+            document.getElementById('selVillain').value = "Silicon Valley Tech Giant";
+            document.getElementById('selVictim').value = "Residential Electricity Ratepayers";
+            document.getElementById('selEvidence').value = "Lived Testimonial";
+            updateAll();
+        });
+
+        // QCA Table Rendering
+        function renderQca(archName) {
+            const data = QCA_DATA[archName] || QCA_DATA["Vulnerable Working-Class Community Defender"];
+            const tbody = document.getElementById('qcaTableBody');
+            tbody.innerHTML = "";
+
+            data.recipes.forEach(r => {
+                const tr = document.createElement('tr');
+                const badge = r.status === "Sufficient" 
+                    ? `<span class="badge-sufficient"><i class="fa-solid fa-check"></i> Sufficient</span>`
+                    : `<span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">${r.status}</span>`;
+
+                tr.innerHTML = `
+                    <td style="font-family: var(--font-mono); font-weight: 500;">${r.formula}</td>
+                    <td style="color: var(--accent-lime); font-family: var(--font-mono); font-weight: 700;">${r.consistency}</td>
+                    <td style="font-family: var(--font-mono);">${r.n}</td>
+                    <td style="color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 600;">${r.delta}</td>
+                    <td>${badge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('formulaText').innerText = data.formula;
+        }
+
+        document.getElementById('selQcaArch').addEventListener('change', (e) => {
+            renderQca(e.target.value);
+        });
+
+        // Moratoriums Table Rendering & Filtering
+        function renderMoratoriums(filterText = "") {
+            const tbody = document.getElementById('moratoriumTableBody');
+            tbody.innerHTML = "";
+
+            const filtered = MORATORIUM_SAMPLES.filter(m => {
+                const search = `${m.loc} ${m.state} ${m.reason} ${m.story}`.toLowerCase();
+                return search.includes(filterText.toLowerCase());
+            });
+
+            filtered.forEach(m => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight: 600; color: var(--text-heading);">${m.loc}</td>
+                    <td><span style="font-family: var(--font-mono); font-size: 0.8rem; background: rgba(255,255,255,0.06); padding: 0.15rem 0.45rem; border-radius: 4px;">${m.state}</span></td>
+                    <td style="color: var(--accent-amber); font-size: 0.82rem;">${m.status}</td>
+                    <td style="font-size: 0.82rem; color: var(--text-muted);">${m.reason}</td>
+                    <td><span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;">${m.story}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.getElementById('moratoriumFilter').addEventListener('input', (e) => {
+            renderMoratoriums(e.target.value);
+        });
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateAll();
+            renderQca("Vulnerable Working-Class Community Defender");
+            renderMoratoriums();
+        });
+    </script>
+</body>
+</html>

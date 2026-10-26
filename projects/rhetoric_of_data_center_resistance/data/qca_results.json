@@ -1,0 +1,114 @@
+{
+  "Conservative Conservationist & Ratepayer Skeptic": {
+    "total_tested": 125,
+    "overall_persuasion_rate": 0.128,
+    "sufficient_recipes_count": 0,
+    "minimal_solution_formula": "No combination achieved the consistency threshold (High cognitive resistance).",
+    "top_recipes": []
+  },
+  "Educated Progressive Conservationist": {
+    "total_tested": 125,
+    "overall_persuasion_rate": 0.144,
+    "sufficient_recipes_count": 2,
+    "minimal_solution_formula": "Persuasion <-- (Intentional Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial) OR\n     (Intentional Story AND Harm Prevention & Health Frame AND Legal & Precedent)",
+    "top_recipes": [
+      {
+        "formula": "(Intentional Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial)",
+        "causal_story": "Intentional",
+        "moral_frame": "Fairness & Anti-Cheating",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 1.0,
+        "frequency": 2,
+        "avg_delta": 1.7
+      },
+      {
+        "formula": "(Intentional Story AND Harm Prevention & Health Frame AND Legal & Precedent)",
+        "causal_story": "Intentional",
+        "moral_frame": "Harm Prevention & Health",
+        "evidence_mode": "Legal & Precedent",
+        "consistency": 0.8,
+        "frequency": 5,
+        "avg_delta": 1.57
+      }
+    ]
+  },
+  "Traditional Pro-Growth Property Conservative": {
+    "total_tested": 125,
+    "overall_persuasion_rate": 0.104,
+    "sufficient_recipes_count": 2,
+    "minimal_solution_formula": "Persuasion <-- (Inadvertent Story AND Liberty & Private Property Frame AND Lived Testimonial) OR\n     (Intentional Story AND Liberty & Private Property Frame AND Lived Testimonial)",
+    "top_recipes": [
+      {
+        "formula": "(Inadvertent Story AND Liberty & Private Property Frame AND Lived Testimonial)",
+        "causal_story": "Inadvertent",
+        "moral_frame": "Liberty & Private Property",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 0.857,
+        "frequency": 7,
+        "avg_delta": 1.63
+      },
+      {
+        "formula": "(Intentional Story AND Liberty & Private Property Frame AND Lived Testimonial)",
+        "causal_story": "Intentional",
+        "moral_frame": "Liberty & Private Property",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 0.75,
+        "frequency": 4,
+        "avg_delta": 1.54
+      }
+    ]
+  },
+  "Vulnerable Working-Class Community Defender": {
+    "total_tested": 125,
+    "overall_persuasion_rate": 0.256,
+    "sufficient_recipes_count": 6,
+    "minimal_solution_formula": "Persuasion <-- (Inadvertent Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial) OR\n     (Intentional Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial) OR\n     (Mechanical Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial)",
+    "top_recipes": [
+      {
+        "formula": "(Inadvertent Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial)",
+        "causal_story": "Inadvertent",
+        "moral_frame": "Fairness & Anti-Cheating",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 1.0,
+        "frequency": 3,
+        "avg_delta": 2.06
+      },
+      {
+        "formula": "(Intentional Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial)",
+        "causal_story": "Intentional",
+        "moral_frame": "Fairness & Anti-Cheating",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 1.0,
+        "frequency": 3,
+        "avg_delta": 1.71
+      },
+      {
+        "formula": "(Mechanical Story AND Fairness & Anti-Cheating Frame AND Lived Testimonial)",
+        "causal_story": "Mechanical",
+        "moral_frame": "Fairness & Anti-Cheating",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 1.0,
+        "frequency": 3,
+        "avg_delta": 1.96
+      },
+      {
+        "formula": "(Mechanical Story AND Fairness & Anti-Cheating Frame AND Empirical Metrics)",
+        "causal_story": "Mechanical",
+        "moral_frame": "Fairness & Anti-Cheating",
+        "evidence_mode": "Empirical Metrics",
+        "consistency": 1.0,
+        "frequency": 2,
+        "avg_delta": 2.05
+      },
+      {
+        "formula": "(Mechanical Story AND Harm Prevention & Health Frame AND Lived Testimonial)",
+        "causal_story": "Mechanical",
+        "moral_frame": "Harm Prevention & Health",
+        "evidence_mode": "Lived Testimonial",
+        "consistency": 1.0,
+        "frequency": 2,
+        "avg_delta": 1.92
+      }
+    ]
+  }
+}

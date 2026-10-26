@@ -765,7 +765,7 @@
             <h1 class="app-title">Podcast Topic &amp; Pitch Builder</h1>
             <p class="app-subtitle">
                 Scaffold a doable, research-backed podcast topic in 4 guided steps. 
-                Screen your target practitioner, generate your mandatory <strong>Ventura County / Thousand Oaks local bridge</strong>, and output a Canvas-ready proposal and outreach email.
+                Screen your target practitioner, develop your core policy inquiry and interview questions, and output a Canvas-ready proposal and outreach email.
             </p>
 
             <!-- Course Switcher -->
@@ -797,7 +797,7 @@
                 </div>
                 <div class="step-pill" id="step-btn-3" onclick="goToStep(3)">
                     <span class="step-number">3</span>
-                    <span>The Local Bridge</span>
+                    <span>Policy Tension</span>
                 </div>
                 <div class="step-pill" id="step-btn-4" onclick="goToStep(4)">
                     <span class="step-number">4</span>
@@ -824,22 +824,14 @@
                         </select>
                     </div>
 
-                    <!-- Policy Domain Quick Tags (Aligned with California Policy Dashboard) -->
+                    <!-- Policy Domain Quick Tags -->
                     <div class="form-group">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem;">
-                            <label class="form-label" style="margin-bottom: 0;">Policy Domain (from California Policy Dashboard)</label>
-                            <a href="california_policy_dashboard.html" target="_blank" style="font-size: 0.78rem; color: #ff7043; text-decoration: underline; font-weight: 600;">Open Full Policy Dashboard ↗</a>
+                            <label class="form-label" id="policy-domain-label" style="margin-bottom: 0;">Policy Domain (from California Policy Dashboard)</label>
+                            <a id="dashboard-link-nav" href="california_policy_dashboard.html" target="_blank" style="font-size: 0.78rem; color: #ff7043; text-decoration: underline; font-weight: 600;">Open Full Policy Dashboard ↗</a>
                         </div>
                         <div class="tag-grid" id="policy-tags">
-                            <button type="button" class="tag-btn selected" onclick="selectTag(this, 'Housing & Homelessness')">🏠 Housing &amp; Homelessness</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Environment & Water')">💧🌱 Environment &amp; Water</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Criminal Justice')">⚖️ Criminal Justice</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Economy & Labor')">👷 Economy &amp; Labor</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Health & Safety Net')">🏥 Health &amp; Safety Net</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Education (K-12 & Higher Ed)')">🎓 Education</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'State Budget & Fiscal Policy')">🏛️ State Budget</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Politics & Elections')">🗳️ Politics &amp; Elections</button>
-                            <button type="button" class="tag-btn" onclick="selectTag(this, 'Tech & Surveillance')">💻 Tech &amp; Surveillance</button>
+                            <!-- Populated dynamically via JS renderPolicyTags() -->
                         </div>
                     </div>
 
@@ -890,7 +882,7 @@
                                 Edit the search terms below to refine the results. <strong>📌 Save</strong> sources to add them to your proposal; <strong>⭐ Use as My Report</strong> fills in the required report in Step 2.
                             </p>
                             <div class="lit-controls">
-                                <input type="text" class="form-control" id="lit-query" placeholder="Search terms (e.g. builder's remedy housing California)" onkeydown="if(event.key==='Enter'){ runLiteratureSearch(null, true); }">
+                                <input type="text" class="form-control" id="lit-query" placeholder="Search terms (e.g. housing supply or climate finance)" onkeydown="if(event.key==='Enter'){ runLiteratureSearch(null, true); }">
                                 <button type="button" class="btn btn-secondary" id="btn-lit-search" style="padding: 0.55rem 0.95rem; font-size: 0.82rem;" onclick="runLiteratureSearch(null, true)">🔎 Search Again</button>
                                 <label class="lit-toggle"><input type="checkbox" id="lit-recent" checked onchange="runLiteratureSearch(null, true)"> Last 5 years only</label>
                                 <label class="lit-toggle"><input type="checkbox" id="lit-oa" onchange="runLiteratureSearch(null, true)"> Free full text only</label>
@@ -899,7 +891,7 @@
                             <div id="lit-results" class="lit-results"></div>
 
                             <div class="lit-launchpad">
-                                <div class="lit-launchpad-title">🏛️ Search California Policy Reports &amp; News for the Same Terms</div>
+                                <div class="lit-launchpad-title" id="lit-launchpad-heading">🏛️ Search California Policy Reports &amp; News for the Same Terms</div>
                                 <div id="lit-launch-grid" class="lit-launch-grid"></div>
                             </div>
 
@@ -976,45 +968,45 @@
                             <label class="form-label" style="margin-bottom: 0;">Specific Policy Report / White Paper (Last 2–3 Years)<span class="req">*</span></label>
                             <a id="dashboard-report-shortcut" href="california_housing_affordability.html" target="_blank" style="font-size: 0.78rem; color: #ff7043; text-decoration: underline; font-weight: 700;">🔎 Search Policy Dashboard for Reports ↗</a>
                         </div>
-                        <div class="form-hint">You must cite a tangible publication in your outreach pitch (Assignment Rubric: 25% Research &amp; Preparation). Tap the link above to view verified reports on Dr. Marichal's Policy Dashboard.</div>
+                        <div class="form-hint" id="report-form-hint">You must cite a tangible publication in your outreach pitch (Assignment Rubric: 25% Research &amp; Preparation). Tap the link above to view verified reports on Dr. Marichal's Policy Dashboard.</div>
                         <input type="text" class="form-control" id="report-title" placeholder="e.g. 'Dry Wells and Broken Promises: Drinking Water Equity in the San Joaquin Valley (2024)'" oninput="autoUpdateStatus()" style="margin-bottom: 0.65rem;">
                         <textarea class="form-control" id="report-finding" placeholder="Key finding / hook from the report (1-2 sentences you will quote in your email to prove you read it)..." oninput="autoUpdateStatus()"></textarea>
                     </div>
 
                     <div class="nav-actions">
                         <button class="btn btn-secondary" onclick="goToStep(1)">← Back to Scope</button>
-                        <button class="btn btn-primary" onclick="goToStep(3)">Next: The Local Bridge →</button>
+                        <button class="btn btn-primary" onclick="goToStep(3)">Next: Policy Tension →</button>
                     </div>
                 </div>
             </div>
 
-            <!-- STAGE 3: The Thousand Oaks / Ventura County Local Bridge -->
+            <!-- STAGE 3: Core Policy Inquiry & Implementation Tension -->
             <div class="stage-pane" id="stage-3" style="display: none;">
                 <div class="stage-card">
                     <div class="stage-header">
                         <span class="stage-tag">Step 3 of 4 • Rubric Critical (30%)</span>
-                        <h2 class="stage-title">The Thousand Oaks &amp; Ventura County Bridge</h2>
-                        <p class="stage-desc">
-                            Dr. Marichal's rubric assigns <strong>30% of your grade</strong> to connecting regional or global policy to our hyper-local context in Ventura County / Thousand Oaks.
+                        <h2 class="stage-title" id="stage3-heading">Core Policy Inquiry &amp; Implementation Tension</h2>
+                        <p class="stage-desc" id="stage3-desc">
+                            Dr. Marichal's rubric assigns <strong>30% of your grade</strong> to analyzing institutional conflicts, ground-level policy implementation, and real-world tensions in your guest's focus area.
                         </p>
                     </div>
 
-                    <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.25rem;">
-                        How does your guest's work compare to local governance here in Ventura County? Select a curated local agency match below, or write your own custom bridge question.
+                    <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.25rem;" id="stage3-subdesc">
+                        What is the central operational, institutional, or political tension in your guest's work? Select a curated policy inquiry question below, or draft your own custom interview question.
                     </p>
 
-                    <!-- Curated Local Agency Bridges -->
+                    <!-- Curated Policy Inquiry Questions -->
                     <div class="form-group">
-                        <label class="form-label">Curated Local Governance Connections:</label>
+                        <label class="form-label" id="curated-tension-label">Curated Policy Inquiry Questions:</label>
                         <div id="local-bridge-container">
                             <!-- Populated dynamically based on domain and course -->
                         </div>
                     </div>
 
-                    <!-- Custom Local Bridge Question -->
+                    <!-- Custom Policy Tension Question -->
                     <div class="form-group" style="margin-top: 1.25rem;">
-                        <label class="form-label">Your Polished Local Bridge Question (for the interview):<span class="req">*</span></label>
-                        <textarea class="form-control" id="final-bridge-question" placeholder="Draft your interview question asking how their regional/global findings apply to Thousand Oaks or Ventura County..." oninput="autoUpdateStatus()"></textarea>
+                        <label class="form-label" id="final-tension-label">Your Polished Policy Inquiry &amp; Implementation Question (for the interview):<span class="req">*</span></label>
+                        <textarea class="form-control" id="final-bridge-question" placeholder="Draft your interview question asking how their policy recommendations confront real-world institutional resistance or implementation hurdles..." oninput="autoUpdateStatus()"></textarea>
                     </div>
 
                     <div class="nav-actions">
@@ -1072,7 +1064,7 @@
                     </div>
 
                     <div class="nav-actions">
-                        <button class="btn btn-secondary" onclick="goToStep(3)">← Back to Local Bridge</button>
+                        <button class="btn btn-secondary" onclick="goToStep(3)">← Back to Policy Tension</button>
                         <button class="btn btn-gold" onclick="window.print()">🖨️ Print / Save PDF</button>
                     </div>
                 </div>
@@ -1119,8 +1111,8 @@
                     <li class="check-item pending" id="chk-bridge">
                         <span class="check-icon">○</span>
                         <div>
-                            <strong>Ventura / TO Local Bridge</strong>
-                            <div style="font-size: 0.74rem;">Direct local agency connection</div>
+                            <strong>Policy Tension / Inquiry</strong>
+                            <div style="font-size: 0.74rem;">Implementation tension &amp; friction</div>
                         </div>
                         <span class="rubric-pill">30%</span>
                     </li>
@@ -1219,8 +1211,47 @@
             { id: "human_rights", name: "Global Human Rights & Refugee Governance", desc: "Cross-border asylum rights, statelessness, global supply chain labor enforcement." },
             { id: "trade", name: "International Trade & Economic Justice", desc: "WTO reform, pharmaceutical TRIPS waivers, agricultural subsidies, debt restructuring." },
             { id: "tech_gov", name: "Global Technology & Digital Sovereignty", desc: "EU AI Act global compliance, undersea cable security, cross-border privacy, cyber warfare." },
-            { id: "health", name: "Global Health & Pandemic Preparedness", desc: "Vaccine equity treaties, WHO pandemic treaty negotiations, neglected tropical diseases." }
+            { id: "health", name: "Global Health & Pandemic Preparedness", desc: "Vaccine equity treaties, WHO pandemic treaty negotiations, neglected tropical diseases." },
+            { id: "security", name: "International Security & Conflict Resolution", desc: "UN peacekeeping mandates, arms trade treaties, sanctions regimes, autonomous weapons." },
+            { id: "food", name: "Global Food Security & Agriculture", desc: "Agricultural export controls, commodity price volatility, smallholder climate resilience, FAO guidelines." }
         ];
+
+        const CA_POLICY_TAGS = [
+            { name: "Housing & Homelessness", icon: "🏠" },
+            { name: "Environment & Water", icon: "💧🌱" },
+            { name: "Criminal Justice", icon: "⚖️" },
+            { name: "Economy & Labor", icon: "👷" },
+            { name: "Health & Safety Net", icon: "🏥" },
+            { name: "Education (K-12 & Higher Ed)", icon: "🎓" },
+            { name: "State Budget & Fiscal Policy", icon: "🏛️" },
+            { name: "Politics & Elections", icon: "🗳️" },
+            { name: "Tech & Surveillance", icon: "💻" }
+        ];
+
+        const GLOBAL_POLICY_TAGS = [
+            { name: "International Climate & Energy Transition", icon: "🌍" },
+            { name: "Global Human Rights & Refugee Governance", icon: "🕊️" },
+            { name: "International Trade & Economic Justice", icon: "⚖️" },
+            { name: "Global Technology & Digital Sovereignty", icon: "💻" },
+            { name: "Global Health & Pandemic Preparedness", icon: "🩺" },
+            { name: "International Security & Conflict Resolution", icon: "🛡️" },
+            { name: "Global Food Security & Agriculture", icon: "🌾" }
+        ];
+
+        function renderPolicyTags() {
+            const container = document.getElementById('policy-tags');
+            if (!container) return;
+            container.innerHTML = '';
+            const tags = currentCourse === 'california' ? CA_POLICY_TAGS : GLOBAL_POLICY_TAGS;
+            tags.forEach((tag, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'tag-btn' + (tag.name === selectedDomain ? ' selected' : '');
+                btn.textContent = `${tag.icon} ${tag.name}`;
+                btn.onclick = () => selectTag(btn, tag.name);
+                container.appendChild(btn);
+            });
+        }
 
         const CURATED_ORGS = {
             california: [
@@ -1237,7 +1268,7 @@
                 { name: "UCLA Luskin Center for Innovation", domain: "Environment & Water", focus: "[Dashboard Featured] Environmental justice research on urban heat islands, drinking water affordability, and clean vehicle rebates." },
                 { name: "California Environmental Justice Alliance (CEJA)", domain: "Environment & Water", focus: "[Dashboard Featured] Statewide alliance organizing frontline communities against industrial toxic polluters and fossil fuel drilling." },
                 { name: "Community Water Center (CWC)", domain: "Environment & Water", focus: "Safe, clean, and affordable drinking water access in San Joaquin and Salinas Valley agricultural communities." },
-                { name: "Central Coast Alliance United for a Sustainable Economy (CAUSE)", domain: "Environment & Water", focus: "Grassroots organizing for immigrant and farmworker communities across Ventura and Santa Barbara counties." },
+                { name: "Central Coast Alliance United for a Sustainable Economy (CAUSE)", domain: "Environment & Water", focus: "Grassroots organizing for immigrant and farmworker communities across coastal agricultural valleys." },
 
                 // Criminal Justice
                 { name: "Vera Institute of Justice (California Office)", domain: "Criminal Justice", focus: "[Dashboard Featured] Research on ending mass incarceration, racial arrest disparities, bail reform, and jail population reduction." },
@@ -1277,91 +1308,119 @@
                 { name: "TechEquity Collaborative", domain: "Tech & Surveillance", focus: "Algorithmic housing screening, tech campus subcontracted labor equity, and AI workforce displacement." }
             ],
             global: [
-                { name: "Amnesty International (Global Secretariat)", domain: "Human Rights", focus: "International human rights investigations and global treaty compliance." },
-                { name: "Human Rights Watch", domain: "Human Rights", focus: "Independent fact-finding on human rights violations and global advocacy." },
-                { name: "Center for Global Development (CGD)", domain: "Trade & Economics", focus: "Evidence-based economic research on poverty, global health, and climate aid." },
-                { name: "World Resources Institute (WRI)", domain: "Climate", focus: "Global research on sustainable cities, forest monitoring, and climate agreements." },
-                { name: "Oxfam International", domain: "Economic Justice", focus: "Global inequality, economic justice, and international disaster relief." },
-                { name: "Chatham House (Royal Institute of International Affairs)", domain: "Geopolitics", focus: "Independent international policy analysis on geopolitics and resource governance." },
-                { name: "Doctors Without Borders (MSF Access Campaign)", domain: "Global Health", focus: "Global intellectual property rules and equitable access to medicines." }
+                { name: "Amnesty International (Global Secretariat)", domain: "Global Human Rights & Refugee Governance", focus: "International human rights investigations, asylum rights, and global treaty compliance." },
+                { name: "Human Rights Watch", domain: "Global Human Rights & Refugee Governance", focus: "Independent fact-finding on international law violations and global refugee protection." },
+                { name: "Center for Global Development (CGD)", domain: "International Trade & Economic Justice", focus: "Evidence-based research on sovereign debt restructuring, foreign aid, and global trade equity." },
+                { name: "Oxfam International", domain: "International Trade & Economic Justice", focus: "Global economic inequality, unfair trade rules, and international disaster relief." },
+                { name: "World Resources Institute (WRI)", domain: "International Climate & Energy Transition", focus: "Global research on COP climate negotiations, forest monitoring, and clean energy transitions." },
+                { name: "International Institute for Sustainable Development (IISD)", domain: "International Climate & Energy Transition", focus: "Global policy research on fossil fuel subsidy reform, carbon pricing, and loss-and-damage funds." },
+                { name: "Chatham House (Royal Institute of International Affairs)", domain: "International Security & Conflict Resolution", focus: "Independent international policy analysis on geopolitics, multilateral treaties, and diplomacy." },
+                { name: "International Crisis Group (ICG)", domain: "International Security & Conflict Resolution", focus: "Field-based research and high-level advocacy to prevent and resolve deadly armed conflicts." },
+                { name: "Doctors Without Borders (MSF Access Campaign)", domain: "Global Health & Pandemic Preparedness", focus: "Global intellectual property rules, TRIPS waivers, and equitable access to medicines." },
+                { name: "Global Health Council", domain: "Global Health & Pandemic Preparedness", focus: "Advocacy for global health equity, WHO pandemic agreements, and infectious disease response." },
+                { name: "Carnegie Endowment for International Peace", domain: "Global Technology & Digital Sovereignty", focus: "Global tech governance, artificial intelligence geopolitics, and cyber conflict norms." },
+                { name: "Access Now", domain: "Global Technology & Digital Sovereignty", focus: "Defending and extending the digital civil rights of users at risk around the world." },
+                { name: "International Food Policy Research Institute (IFPRI)", domain: "Global Food Security & Agriculture", focus: "Research-based policy solutions to sustainably reduce poverty and end hunger in the developing world." }
             ]
         };
 
-        const LOCAL_BRIDGES = {
+        const POLICY_TENSIONS = {
             california: [
                 {
                     domain: "Housing & Homelessness",
-                    agency: "Thousand Oaks City Council (General Plan Housing Element & Many Mansions)",
-                    question: "Your research focuses on regional housing production battles and state density mandates. Thousand Oaks recently overhauled its General Plan to permit thousands of housing units along Thousand Oaks Boulevard after decades of slow-growth ordinances (Measure E). From your perspective, how can suburban cities balance local open-space preservation with state affordable housing mandates and supportive housing partnerships like Many Mansions?"
+                    focus: "State Density Mandates vs. Municipal Zoning Discretion",
+                    question: "Your research focuses on regional housing production battles and state density mandates. As state agencies enforce housing elements and Builder's Remedy provisions, what are the most significant legal and political friction points that emerge between state oversight and municipal discretion?"
                 },
                 {
                     domain: "Environment & Water",
-                    agency: "Fox Canyon Groundwater Management Agency & Calleguas MWD",
-                    question: "In your report you detail how California irrigation districts and communities are navigating SGMA groundwater allocations. Here in Ventura County, the Fox Canyon Groundwater Agency is wrestling with similar agricultural allocations and pumping surcharges on the Oxnard Plain. How does local water pricing in your focus area compare to the challenges faced by coastal agricultural basins?"
+                    focus: "Groundwater Extraction vs. Agricultural Resilience",
+                    question: "In your report you detail how irrigation districts and rural communities are navigating SGMA groundwater allocations. When water quotas and pumping surcharges are imposed, how do resource agencies navigate the economic tension between agricultural preservation and aquifer sustainability?"
                 },
                 {
                     domain: "Criminal Justice",
-                    agency: "Ventura County Public Defender, District Attorney & Sheriff (Prop 36 vs 47 Debate)",
-                    question: "Your research evaluates the state debate over criminal penalties, retail theft, and substance abuse diversion. Ventura County law enforcement has taken a very prominent stance on Proposition 36 and retail theft enforcement. Based on your report's data, how do increased criminal penalties compare with county-level collaborative courts and addiction treatment funding?"
+                    focus: "Statutory Penalties vs. Community-Based Diversion",
+                    question: "Your research evaluates the statewide debate over criminal penalties, retail theft, and substance abuse diversion. How do policy advocates address the institutional tension between calls for harsher statutory penalties and the need for sustained funding in community-based diversion courts?"
                 },
                 {
                     domain: "Economy & Labor",
-                    agency: "Ventura County Agricultural Commissioner, Central Coast Labor Council & Port Logistics",
-                    question: "Given your analysis of sector wage councils, Cal/OSHA extreme heat standards, and warehouse production quotas, how do enforcement practices in your focus area compare to what we see with strawberry and citrus workers and Port of Hueneme supply chain laborers across Ventura County?"
+                    focus: "Regulatory Protections vs. Field Inspection Gaps",
+                    question: "Given your analysis of workplace protections, minimum wage standards, and production quotas, what institutional impediments most frequently prevent state labor enforcement agencies from translating statutory worker protections into reality on the ground?"
                 },
                 {
                     domain: "Health & Safety Net",
-                    agency: "Ventura County Health Care Agency, Gold Coast Health Plan & Conejo Valley CARE Court",
-                    question: "Your publication assesses state behavioral health initiatives and community-level Medi-Cal managed care. Ventura County was among the early implementation cohorts for California's CARE Court system. From your research, what structural investments are most critical to prevent civil commitment courts from failing vulnerable residents?"
+                    focus: "Mandated Intervention vs. Voluntary Community Support",
+                    question: "Your publication assesses behavioral health initiatives and managed care expansion. What are the key structural tensions between mandated intervention models (like CARE Court) and community-driven voluntary treatment frameworks when serving vulnerable populations?"
                 },
                 {
                     domain: "Education (K-12 & Higher Ed)",
-                    agency: "Conejo Valley Unified School District (CVUSD Board) & Ventura County Community College District",
-                    question: "Your research analyzes the Local Control Funding Formula (LCFF), chronic absenteeism, and dual enrollment pathways. In suburban districts like Conejo Valley Unified (CVUSD) and local colleges like Moorpark College, how do changing demographic enrollments impact state per-pupil funding allocations compared to urban districts?"
+                    focus: "Formula Entitlements vs. Demographic Contraction",
+                    question: "Your research analyzes the Local Control Funding Formula (LCFF), chronic absenteeism, and college readiness. How can school districts and higher education institutions manage declining student enrollments without sacrificing targeted resources for historically underserved student populations?"
                 },
                 {
                     domain: "State Budget & Fiscal Policy",
-                    agency: "City of Thousand Oaks Finance Dept & Thousand Oaks City Council (Measure P Sales Tax)",
-                    question: "Your fiscal analysis examines California's volatile revenue swings, high reliance on capital gains, and state deficit adjustments. When Sacramento trims local program subsidies, suburban municipalities like Thousand Oaks increasingly turn to local ballot measures (like Thousand Oaks' Measure P sales tax) to preserve municipal reserves. How should local cities prepare for state budget turbulence?"
+                    focus: "Tax Volatility vs. Ongoing Program Commitments",
+                    question: "Your fiscal analysis examines California's volatile revenue swings, high reliance on capital gains, and state deficit adjustments. When economic contractions reduce general fund revenues, what strategies can policymakers use to protect essential public programs without recurring to blunt austerity?"
                 },
                 {
                     domain: "Politics & Elections",
-                    agency: "Ventura County Elections Division & Ventura County Board of Supervisors (CA-26)",
-                    question: "Your polling and electoral research explores California voter participation patterns, polarization, and independent voters. Ventura County is a key bellwether region with competitive swing congressional contests (CA-26) and officially nonpartisan city council seats. How do your statewide findings on voter turnout and reform reflect the dynamics of suburban swing districts?"
+                    focus: "Structural Reform vs. Polarized Partisan Dynamics",
+                    question: "Your research explores voter participation patterns, reform mechanisms, and civic engagement. How effective have structural electoral reforms been at countering polarization and elevating the political voice of historically underrepresented communities?"
                 },
                 {
                     domain: "Tech & Surveillance",
-                    agency: "Ventura County Sheriff's Dept & Thousand Oaks City Council (Flock ALPR Surveillance)",
-                    question: "You analyzed municipal procurement of automated surveillance technologies. Several cities in Ventura County (including Thousand Oaks and Simi Valley) have installed Flock Automated License Plate Readers. What transparency guardrails and data-sharing limits do you urge local city councils to adopt when contracting with private surveillance vendors?"
+                    focus: "Algorithmic Efficiency vs. Civil Liberties Guardrails",
+                    question: "Your research analyzes government procurement of automated technologies and surveillance tools. What enforceable oversight guardrails and public transparency mechanisms are essential to prevent technological systems from infringing upon civil liberties and due process?"
                 }
             ],
             global: [
                 {
-                    domain: "Global Climate",
-                    agency: "Santa Monica Mountains National Recreation Area & VC Climate Action",
-                    question: "Your report analyzes international loss-and-damage climate financing. In Ventura County, our communities have suffered catastrophic wildfires (Woolsey, Thomas) followed by private homeowners insurance cancellations. How does the international framework for climate risk reflect the localized insurance crises facing suburban and rural American communities?"
+                    domain: "International Climate & Energy Transition",
+                    focus: "Historical Emissions Liability vs. Developmental Sovereignty",
+                    question: "Your research explores multilateral climate frameworks and transition financing. How do international negotiators navigate the deep structural tensions between Global North historical emissions liability (such as loss-and-damage funds) and Global South developmental energy sovereignty?"
                 },
                 {
-                    domain: "Global Health / Pharma",
-                    agency: "101 Biotech Corridor (Amgen / Thousand Oaks)",
-                    question: "Your paper evaluates TRIPS flexibilities and global generic drug manufacturing. Thousand Oaks is home to Amgen and a major biotech innovation corridor. How do you respond to pharmaceutical industry arguments that patent waivers harm the research investments made by corporate clusters like the one in our community?"
+                    domain: "Global Human Rights & Refugee Governance",
+                    focus: "International Asylum Treaties vs. National Border Externalization",
+                    question: "Your publication evaluates international asylum obligations and cross-border human rights standards. As nation-states increasingly outsource border enforcement to third countries, how can civil society hold governments accountable to 1951 Refugee Convention commitments?"
                 },
                 {
-                    domain: "Migration & Labor",
-                    agency: "Ventura County Farmworker Resource Program",
-                    question: "Your findings focus on cross-border supply chains and the vulnerability of migrant workers. Ventura County depends heavily on undocumented and H-2A farm labor. How can local county-level resource centers coordinate with the international human rights standards your organization advocates for?"
+                    domain: "International Trade & Economic Justice",
+                    focus: "Multilateral Trade Rules vs. Domestic Industrial Self-Determination",
+                    question: "Your analysis examines global economic governance, debt burdens, and trade agreements. When international financial institutions impose fiscal consolidation or patent protections, what policy alternatives exist to safeguard domestic health, labor, and industrial sovereignty?"
+                },
+                {
+                    domain: "Global Technology & Digital Sovereignty",
+                    focus: "Extraterritorial Regulation vs. Digital Self-Determination",
+                    question: "Your research focuses on cross-border data flows, AI regulation, and technological infrastructure. How do competing regulatory regimes (such as the EU AI Act versus US and Chinese frameworks) shape the ability of developing nations to exercise digital self-determination?"
+                },
+                {
+                    domain: "Global Health & Pandemic Preparedness",
+                    focus: "Intellectual Property Monopolies vs. Universal Medicine Access",
+                    question: "Your work evaluates global health equity, pathogen benefit-sharing, and pandemic treaty negotiations. How can the international community overcome intellectual property barriers to ensure equitable regional manufacturing of vaccines and essential medicines during global emergencies?"
+                },
+                {
+                    domain: "International Security & Conflict Resolution",
+                    focus: "UN Charter Collective Security vs. Great Power Veto Gridlock",
+                    question: "Your analysis investigates international peacekeeping, sanctions regimes, and conflict mediation. In an era of heightened geopolitical division, how can multilateral organizations maintain effective peacekeeping and humanitarian access when UN Security Council consensus breaks down?"
+                },
+                {
+                    domain: "Global Food Security & Agriculture",
+                    focus: "Global Commodity Markets vs. National Food Sovereignty",
+                    question: "Your research examines global grain supply chains, agricultural export controls, and import dependency. When international food prices experience geopolitical or climate shocks, what institutional mechanisms can prevent catastrophic localized hunger in import-reliant nations?"
                 }
             ]
         };
 
         // Initialize
         window.addEventListener('DOMContentLoaded', () => {
+            renderPolicyTags();
             populateRegions();
             populateOrgs();
             updateDashboardBridge(selectedDomain);
+            updateInterestPlaceholder(selectedDomain);
             updateTopicSuggestions();
             handleQuestionInput();
-            updateLocalBridges();
+            updatePolicyTensions();
             autoUpdateStatus();
         });
 
@@ -1370,22 +1429,55 @@
             document.getElementById('tab-california').classList.toggle('active', course === 'california');
             document.getElementById('tab-global').classList.toggle('active', course === 'global');
             
-            // Adjust headings
+            // Adjust headings & labels
             if (course === 'california') {
                 document.getElementById('stage1-heading').textContent = "Select California Policy Focus & Brainstorm Topic";
                 document.getElementById('region-label').innerHTML = 'Select California Geographic Scope / Policy Arena<span class="req">*</span>';
+                document.getElementById('policy-domain-label').textContent = 'Policy Domain (from California Policy Dashboard)';
+                document.getElementById('dashboard-link-nav').style.display = 'inline';
                 document.getElementById('dashboard-bridge-banner').style.display = 'flex';
+                const shortcut = document.getElementById('dashboard-report-shortcut');
+                if (shortcut) shortcut.style.display = 'inline';
+                document.getElementById('report-form-hint').textContent = "You must cite a tangible publication in your outreach pitch (Assignment Rubric: 25% Research & Preparation). Tap the link above to view verified reports on Dr. Marichal's Policy Dashboard.";
+                document.getElementById('report-title').placeholder = "e.g. 'Dry Wells and Broken Promises: Drinking Water Equity in the San Joaquin Valley (2024)'";
+                document.getElementById('lit-query').placeholder = "Search terms (e.g. housing supply or climate policy)";
+                document.getElementById('lit-launchpad-heading').textContent = "🏛️ Search California Policy Reports & News for the Same Terms";
+                document.getElementById('stage3-heading').textContent = "Core Policy Inquiry & Implementation Tension";
+                document.getElementById('stage3-desc').innerHTML = "Dr. Marichal's rubric assigns <strong>30% of your grade</strong> to analyzing institutional conflicts, ground-level policy implementation, and real-world tensions in your guest's focus area.";
+                document.getElementById('stage3-subdesc').textContent = "What is the central operational, institutional, or political tension in your guest's work? Select a curated policy inquiry question below, or draft your own custom interview question.";
+                document.getElementById('curated-tension-label').textContent = "Curated Policy Inquiry Questions:";
+                document.getElementById('final-tension-label').innerHTML = 'Your Polished Policy Inquiry &amp; Implementation Question (for the interview):<span class="req">*</span>';
+                document.getElementById('final-bridge-question').placeholder = "Draft your interview question asking how their policy recommendations confront real-world institutional resistance or implementation hurdles...";
+                selectedDomain = 'Housing & Homelessness';
             } else {
                 document.getElementById('stage1-heading').textContent = "Select Global Governance Domain & Brainstorm Topic";
-                document.getElementById('region-label').innerHTML = 'Select International System Domain<span class="req">*</span>';
+                document.getElementById('region-label').innerHTML = 'Select International System Arena<span class="req">*</span>';
+                document.getElementById('policy-domain-label').textContent = 'Global Governance Domain';
+                document.getElementById('dashboard-link-nav').style.display = 'none';
                 document.getElementById('dashboard-bridge-banner').style.display = 'none';
+                const shortcut = document.getElementById('dashboard-report-shortcut');
+                if (shortcut) shortcut.style.display = 'none';
+                document.getElementById('report-form-hint').textContent = "You must cite a tangible publication in your outreach pitch (Assignment Rubric: 25% Research & Preparation). Use the Step 1 literature search or verified international reports.";
+                document.getElementById('report-title').placeholder = "e.g. 'Financing the Loss and Damage Fund: Principles for Climate Justice (2024)'";
+                document.getElementById('lit-query').placeholder = "Search terms (e.g. loss and damage climate finance)";
+                document.getElementById('lit-launchpad-heading').textContent = "🌐 Search International Policy Reports & Think Tanks for the Same Terms";
+                document.getElementById('stage3-heading').textContent = "Global Governance & Implementation Tension";
+                document.getElementById('stage3-desc').innerHTML = "Dr. Marichal's rubric assigns <strong>30% of your grade</strong> to examining how international treaties, global norms, or advocacy goals confront real-world national sovereignty, institutional resistance, and implementation challenges.";
+                document.getElementById('stage3-subdesc').textContent = "What is the central multilateral, sovereignty, or institutional tension in your guest's work? Select a curated policy inquiry question below, or draft your own custom interview question.";
+                document.getElementById('curated-tension-label').textContent = "Curated Global Policy Inquiry Questions:";
+                document.getElementById('final-tension-label').innerHTML = 'Your Polished Global Implementation Question (for the interview):<span class="req">*</span>';
+                document.getElementById('final-bridge-question').placeholder = "Draft your interview question asking how international mandates or treaty frameworks confront real-world national resistance and implementation hurdles...";
+                selectedDomain = 'International Climate & Energy Transition';
             }
 
+            renderPolicyTags();
             populateRegions();
             populateOrgs();
             updateDashboardBridge(selectedDomain);
+            updateInterestPlaceholder(selectedDomain);
             updateTopicSuggestions();
-            updateLocalBridges();
+            updatePolicyTensions();
+            handleQuestionInput();
             autoUpdateStatus();
         }
 
@@ -1495,8 +1587,8 @@
             // 3. Filter organizations in Step 2 so matching organizations are starred at the top
             populateOrgs(domain);
 
-            // 4. Automatically match the Ventura County / Thousand Oaks Local Bridge in Step 3
-            updateLocalBridges(domain);
+            // 4. Automatically match the Policy Tension in Step 3
+            updatePolicyTensions(domain);
 
             handleQuestionInput();
             autoUpdateStatus();
@@ -1583,6 +1675,72 @@
                 ],
                 statutes: ["SB 1047 (Frontier AI Safety)", "Flock ALPR Data Sharing Limits", "CPRA (CA Consumer Privacy Act)", "CIPA Wiretap Law"],
                 orgs: "Electronic Frontier Foundation (EFF) or ACLU Technology & Civil Liberties"
+            }
+        };
+
+        const GLOBAL_DOMAIN_DATA = {
+            'International Climate & Energy Transition': {
+                sample: "How are developing nations utilizing the COP Loss and Damage Fund to finance climate adaptation amidst sovereign debt constraints?",
+                narrowing: [
+                    "How do EU Carbon Border Adjustment Mechanisms (CBAM) impact exports from developing nations?",
+                    "How is the transition to renewable energy driving geopolitical competition over critical minerals in the Global South?"
+                ],
+                statutes: ["Paris Agreement Article 6", "COP Loss & Damage Fund", "EU CBAM Regulation", "UNFCCC Global Stocktake", "Just Energy Transition Partnerships (JETP)"],
+                orgs: "World Resources Institute (WRI), IISD, or Chatham House"
+            },
+            'Global Human Rights & Refugee Governance': {
+                sample: "How are international refugee protection frameworks adapting to climate-induced cross-border displacement?",
+                narrowing: [
+                    "How do bilateral migration deterrence deals between wealthy nations and third countries impact Geneva Convention obligations?",
+                    "What legal mechanisms exist under the UN Guiding Principles to hold transnational corporations accountable for supply chain labor abuse?"
+                ],
+                statutes: ["1951 Refugee Convention", "UN Global Compact on Migration", "UN Guiding Principles on Business & Human Rights", "Rome Statute (ICC)", "ILO Convention 190"],
+                orgs: "Amnesty International, Human Rights Watch, or International Rescue Committee (IRC)"
+            },
+            'International Trade & Economic Justice': {
+                sample: "Why has the World Trade Organization Dispute Settlement Body remained paralyzed, and how does this affect developing economies?",
+                narrowing: [
+                    "How do IMF sovereign debt restructuring frameworks balance austerity conditions against climate and social spending?",
+                    "What are the implications of the WTO TRIPS waiver debates for global pharmaceutical production in the Global South?"
+                ],
+                statutes: ["WTO TRIPS Agreement", "IMF Special Drawing Rights (SDR)", "OECD Global Minimum Tax", "African Continental Free Trade Area (AfCFTA)", "UNCTAD Debt Principles"],
+                orgs: "Center for Global Development (CGD), Oxfam International, or Third World Network"
+            },
+            'Global Technology & Digital Sovereignty': {
+                sample: "How is the European Union's AI Act creating a 'Brussels Effect' that shapes digital regulations worldwide?",
+                narrowing: [
+                    "How do submarine fiber-optic cables and cloud infrastructure intersect with national security and geopolitical rivalry?",
+                    "What international governance models exist to prevent cyber warfare against civilian critical infrastructure?"
+                ],
+                statutes: ["EU Artificial Intelligence Act", "Budapest Convention on Cybercrime", "UN OEWG on Cybersecurity", "Global Digital Compact", "ITU Radio Regulations"],
+                orgs: "Carnegie Endowment for International Peace, Access Now, or Oxford Internet Institute"
+            },
+            'Global Health & Pandemic Preparedness': {
+                sample: "What are the key stumbling blocks in the WHO Pandemic Agreement negotiations regarding pathogen access and benefit-sharing (PABS)?",
+                narrowing: [
+                    "How do intellectual property monopolies impede technology transfer for mRNA vaccines to regional manufacturing hubs in Africa?",
+                    "Why do neglected tropical diseases receive disproportionately low R&D investment from multilateral health financing?"
+                ],
+                statutes: ["WHO Pandemic Agreement", "International Health Regulations (IHR Amendments)", "TRIPS Article 31bis Compulsory Licensing", "CEPI 100-Day Mission"],
+                orgs: "Doctors Without Borders (MSF Access Campaign), Global Health Council, or Chatham House"
+            },
+            'International Security & Conflict Resolution': {
+                sample: "How are modern peace enforcement missions constrained by UN Security Council veto power in protracted civil conflicts?",
+                narrowing: [
+                    "What legal frameworks govern the proliferation and accountability of autonomous weapons systems (LAWS)?",
+                    "How do international sanctions regimes balance targeted deterrence against unintended civilian humanitarian burdens?"
+                ],
+                statutes: ["UN Charter Chapter VII", "Geneva Conventions Additional Protocols", "Arms Trade Treaty (ATT)", "Treaty on the Prohibition of Nuclear Weapons (TPNW)"],
+                orgs: "International Crisis Group (ICG), SIPRI, or Chatham House"
+            },
+            'Global Food Security & Agriculture': {
+                sample: "How do export bans and currency devaluations exacerbate food import dependency in sub-Saharan Africa during global supply shocks?",
+                narrowing: [
+                    "How are multilateral development banks financing climate-resilient agriculture without increasing debt burdens?",
+                    "What role do global grain commodity trading cartels play in price volatility during geopolitical crises?"
+                ],
+                statutes: ["UN FAO Voluntary Guidelines on Food Security", "WTO Agreement on Agriculture", "G20 Agricultural Market Information System (AMIS)", "CGIAR Research Framework"],
+                orgs: "International Food Policy Research Institute (IFPRI), FAO, or Action Against Hunger"
             }
         };
 
@@ -1706,9 +1864,22 @@
             'people residents community communities public suburban suburb suburbs ventura thousand oaks oxnard california californians new rules rule program programs ' +
             'resist resisting resistance block blocking blocked struggle struggling problem problems issue issues approach').split(' '));
         const LIT_DOMAIN_ANCHOR = {
-            'Housing & Homelessness': 'housing', 'Environment & Water': 'environmental policy', 'Criminal Justice': 'criminal justice',
-            'Economy & Labor': 'labor', 'Health & Safety Net': 'health policy', 'Education (K-12 & Higher Ed)': 'education policy',
-            'State Budget & Fiscal Policy': 'state budget', 'Politics & Elections': 'elections', 'Tech & Surveillance': 'technology policy'
+            'Housing & Homelessness': 'housing',
+            'Environment & Water': 'environmental policy',
+            'Criminal Justice': 'criminal justice',
+            'Economy & Labor': 'labor',
+            'Health & Safety Net': 'health policy',
+            'Education (K-12 & Higher Ed)': 'education policy',
+            'State Budget & Fiscal Policy': 'state budget',
+            'Politics & Elections': 'elections',
+            'Tech & Surveillance': 'technology policy',
+            'International Climate & Energy Transition': 'climate energy transition',
+            'Global Human Rights & Refugee Governance': 'human rights refugee asylum',
+            'International Trade & Economic Justice': 'trade debt economic justice',
+            'Global Technology & Digital Sovereignty': 'digital sovereignty artificial intelligence',
+            'Global Health & Pandemic Preparedness': 'global health pandemic',
+            'International Security & Conflict Resolution': 'international security peace conflict',
+            'Global Food Security & Agriculture': 'food security agriculture'
         };
 
         function litExtractKeywords(question) {
@@ -1896,21 +2067,34 @@
             if (!grid) return;
             const q = encodeURIComponent(query);
             const site = (domain) => `https://www.google.com/search?q=${encodeURIComponent('site:' + domain + ' ' + query)}`;
-            const links = [
-                ['🎓 Google Scholar (since ' + (new Date().getFullYear() - 3) + ')', `https://scholar.google.com/scholar?q=${q}&as_ylo=${new Date().getFullYear() - 3}`],
-                ['📊 PPIC', site('ppic.org')],
-                ['🏛️ Legislative Analyst (LAO)', site('lao.ca.gov')],
-                ['📰 CalMatters', site('calmatters.org')],
-                ['💵 CA Budget & Policy Center', site('calbudgetcenter.org')],
-                ['🏘️ UC Berkeley Terner Center', site('ternercenter.berkeley.edu')],
-                ['📜 CA Legislature (bills)', site('leginfo.legislature.ca.gov')],
-                ['🗞️ Ventura County Star', site('vcstar.com')]
-            ];
+            let links = [];
+            if (currentCourse === 'california') {
+                links = [
+                    ['🎓 Google Scholar (since ' + (new Date().getFullYear() - 3) + ')', `https://scholar.google.com/scholar?q=${q}&as_ylo=${new Date().getFullYear() - 3}`],
+                    ['📊 PPIC', site('ppic.org')],
+                    ['🏛️ Legislative Analyst (LAO)', site('lao.ca.gov')],
+                    ['📰 CalMatters', site('calmatters.org')],
+                    ['💵 CA Budget & Policy Center', site('calbudgetcenter.org')],
+                    ['🏘️ UC Berkeley Terner Center', site('ternercenter.berkeley.edu')],
+                    ['📜 CA Legislature (bills)', site('leginfo.legislature.ca.gov')]
+                ];
+            } else {
+                links = [
+                    ['🎓 Google Scholar (since ' + (new Date().getFullYear() - 3) + ')', `https://scholar.google.com/scholar?q=${q}&as_ylo=${new Date().getFullYear() - 3}`],
+                    ['🌐 ReliefWeb', site('reliefweb.int')],
+                    ['🏛️ Chatham House', site('chathamhouse.org')],
+                    ['🌍 Foreign Affairs', site('foreignaffairs.com')],
+                    ['📈 Center for Global Development', site('cgdev.org')],
+                    ['🕊️ Carnegie Endowment', site('carnegieendowment.org')],
+                    ['📚 World Bank Open Knowledge', site('openknowledge.worldbank.org')],
+                    ['🚨 International Crisis Group', site('crisisgroup.org')]
+                ];
+            }
             grid.innerHTML = links.map(([label, href]) => `<a class="lit-launch" href="${href}" target="_blank" rel="noopener">${litEsc(label)} ↗</a>`).join('');
         }
 
         function insertSampleQuestion() {
-            const data = POLICY_DOMAIN_DATA[selectedDomain] || POLICY_DOMAIN_DATA['Housing & Homelessness'];
+            const data = (currentCourse === 'california' ? POLICY_DOMAIN_DATA[selectedDomain] : GLOBAL_DOMAIN_DATA[selectedDomain]) || (currentCourse === 'california' ? POLICY_DOMAIN_DATA['Housing & Homelessness'] : GLOBAL_DOMAIN_DATA['International Climate & Energy Transition']);
             if (data && data.sample) {
                 const textarea = document.getElementById('raw-interest');
                 textarea.value = data.sample;
@@ -1923,7 +2107,7 @@
             if (!textarea.value.includes(statute)) {
                 textarea.value = textarea.value.trim() 
                     ? `${textarea.value.trim()} (specifically analyzing ${statute})` 
-                    : `How is ${statute} impacting policy implementation in California?`;
+                    : (currentCourse === 'california' ? `How is ${statute} impacting policy implementation in California?` : `How is ${statute} impacting international governance and implementation?`);
                 handleQuestionInput(true);
             }
         }
@@ -1970,17 +2154,20 @@
 
             if (!diagBox) return;
 
-            const domainInfo = POLICY_DOMAIN_DATA[selectedDomain] || POLICY_DOMAIN_DATA['Housing & Homelessness'];
+            const domainInfo = (currentCourse === 'california' ? POLICY_DOMAIN_DATA[selectedDomain] : GLOBAL_DOMAIN_DATA[selectedDomain]) || (currentCourse === 'california' ? POLICY_DOMAIN_DATA['Housing & Homelessness'] : GLOBAL_DOMAIN_DATA['International Climate & Energy Transition']);
 
             if (val.length === 0) {
                 diagBox.className = "topic-diagnostic-card prompt-state";
+                const helperDesc = currentCourse === 'california'
+                    ? "Type your question or curiosity above. This assistant evaluates your topic scope, detects relevant California statutes, and generates ready-to-pitch episode titles in real time."
+                    : "Type your question or curiosity above. This assistant evaluates your topic scope, detects relevant international treaties & frameworks, and generates ready-to-pitch episode titles in real time.";
                 diagBox.innerHTML = `
                     <div class="diag-header">
                         <span class="diag-badge prompt">💡 Real-Time Policy Scoping Assistant</span>
                         <span style="font-size: 0.74rem; color: var(--text-muted);">Step 1 Interactive Feedback</span>
                     </div>
                     <div class="diag-body">
-                        Type your question or curiosity above. This assistant evaluates your topic scope, detects relevant California statutes, and generates ready-to-pitch episode titles in real time.
+                        ${helperDesc}
                         <div style="margin-top: 0.65rem; font-size: 0.82rem; color: var(--primary);">
                             Or click to load a sample question for <strong>${selectedDomain}</strong>:
                             <div style="margin-top: 0.35rem;">
@@ -2003,7 +2190,7 @@
                         <span style="font-size: 0.74rem; color: #fbbf24;">Incomplete Inquiry</span>
                     </div>
                     <div class="diag-body">
-                        State your inquiry as a complete sentence or question with a specific tension (e.g., <em>"Why does [law/agency] struggle to solve [specific problem]?"</em>).
+                        State your inquiry as a complete sentence or question with a specific tension (e.g., <em>"Why does [treaty/agency/law] struggle to solve [specific problem]?"</em>).
                     </div>
                 `;
                 autoUpdateStatus();
@@ -2011,8 +2198,8 @@
             }
 
             // Check if broad umbrella term
-            const broadWords = ["housing", "homelessness", "water", "climate", "environment", "crime", "justice", "police", "education", "schools", "budget", "poverty", "healthcare", "immigration", "jobs", "labor", "ai", "tech"];
-            const questionMarkers = ["why", "how", "what", "does", "can", "bill", "law", "sb", "ab", "prop", "ban", "county", "mandate", "conflict", "reform", "quota", "impact", "treatment", "dispute", "versus", "vs", "remedy", "ordinance", "local", "pushback", "zoning", "ceqa", "sgma"];
+            const broadWords = ["housing", "homelessness", "water", "climate", "environment", "crime", "justice", "police", "education", "schools", "budget", "poverty", "healthcare", "immigration", "jobs", "labor", "ai", "tech", "security", "trade", "refugees", "sanctions", "food"];
+            const questionMarkers = ["why", "how", "what", "does", "can", "bill", "law", "sb", "ab", "prop", "ban", "county", "mandate", "conflict", "reform", "quota", "impact", "treatment", "dispute", "versus", "vs", "remedy", "ordinance", "local", "pushback", "zoning", "ceqa", "sgma", "treaty", "convention", "protocol", "un", "who", "wto", "eu", "nato", "sanction", "sovereignty"];
             
             const lower = val.toLowerCase();
             const hasMarker = questionMarkers.some(m => lower.includes(m));
@@ -2020,13 +2207,16 @@
 
             if (isSingleBroadWord || (val.length < 28 && !hasMarker)) {
                 diagBox.className = "topic-diagnostic-card warning-state";
+                const rubricHint = currentCourse === 'california'
+                    ? "Dr. Marichal's rubric requires a specific tension, recent law, or implementation conflict."
+                    : "Dr. Marichal's rubric requires a specific multilateral treaty, institutional tension, or governance conflict.";
                 diagBox.innerHTML = `
                     <div class="diag-header">
                         <span class="diag-badge warning">⚠️ Scope Alert: Too Broad for a 45-Minute Podcast</span>
                         <span style="font-size: 0.74rem; color: #fbbf24;">Needs a Specific Conflict</span>
                     </div>
                     <div class="diag-body">
-                        You entered <strong>"${val}"</strong>. This is an entire policy domain rather than an episode topic. Dr. Marichal's rubric requires a specific tension, recent law, or local conflict.
+                        You entered <strong>"${val}"</strong>. This is an entire policy domain rather than an episode topic. ${rubricHint}
                         <div class="diag-suggestions">
                             <strong style="color: #ffffff; font-size: 0.8rem;">💡 Recommended Ways to Narrow This Topic:</strong>
                             ${domainInfo.narrowing.map(q => `
@@ -2047,7 +2237,13 @@
             const cleanSubject = val.replace(/^(how|why|what|can|does|is|are)\s+(is|are|do|does|can)?/i, '').replace(/\?$/, '').trim();
             const capSubject = cleanSubject.charAt(0).toUpperCase() + cleanSubject.slice(1);
             const genTitle1 = `Behind the Policy: ${capSubject.substring(0, 48)}`;
-            const genTitle2 = `${selectedDomain.split(' ')[0]}: Ground Realities & State Mandates in California`;
+            const genTitle2 = currentCourse === 'california'
+                ? `${selectedDomain.split(' ')[0]}: Ground Realities & State Mandates in California`
+                : `${selectedDomain.split(' ')[0]}: Global Governance & Implementation Tensions`;
+
+            const statuteHeading = currentCourse === 'california'
+                ? '🏛️ Relevant California Statutes / Frameworks (Click to insert):'
+                : '🌐 Relevant International Treaties / Frameworks (Click to insert):';
 
             diagBox.className = "topic-diagnostic-card success-state";
             diagBox.innerHTML = `
@@ -2073,7 +2269,7 @@
 
                         <div style="margin-top: 0.75rem;">
                             <div style="font-size: 0.78rem; font-weight: 700; color: #ffab91; margin-bottom: 0.25rem;">
-                                🏛️ Relevant California Statutes / Frameworks (Click to insert):
+                                ${statuteHeading}
                             </div>
                             <div>
                                 ${domainInfo.statutes.map(s => `
@@ -2101,6 +2297,7 @@
 
         function updateInterestPlaceholder(domain) {
             const textarea = document.getElementById('raw-interest');
+            if (!textarea) return;
             const placeholders = {
                 'Housing & Homelessness': "e.g. How are suburban city councils responding to state Builder's Remedy filings and affordable housing mandates?",
                 'Environment & Water': "e.g. How are small farmers and disadvantaged unincorporated communities navigating SGMA groundwater pumping allocations?",
@@ -2110,7 +2307,14 @@
                 'Education (K-12 & Higher Ed)': "e.g. How are suburban school districts navigating chronic absenteeism and LCFF funding drops amidst declining student enrollment?",
                 'State Budget & Fiscal Policy': "e.g. How does California's volatile capital gains tax revenue structure affect multi-year state budget deficits and local city funding?",
                 'Politics & Elections': "e.g. How do California's top-two open primary system and independent redistricting commission influence political polarization in swing districts?",
-                'Tech & Surveillance': "e.g. What public transparency standards exist when local police departments contract with private Flock ALPR automated surveillance cameras?"
+                'Tech & Surveillance': "e.g. What public transparency standards exist when local police departments contract with private Flock ALPR automated surveillance cameras?",
+                'International Climate & Energy Transition': "e.g. How does the loss and damage finance facility agreed at COP28 navigate resistance from historical high-emitting states?",
+                'Global Human Rights & Refugee Governance': "e.g. How do bilateral border externalization deals between wealthy states and transit nations challenge 1951 Refugee Convention protections?",
+                'International Trade & Economic Justice': "e.g. How do WTO intellectual property enforcement rules limit developing nations' ability to manufacture generic pharmaceuticals?",
+                'Global Technology & Digital Sovereignty': "e.g. How does the extraterritorial enforcement of the EU AI Act impact open-source AI developers across the Global South?",
+                'Global Health & Pandemic Preparedness': "e.g. Why did negotiations for the WHO Pandemic Agreement stall over pathogen genetic access and benefit-sharing mechanisms?",
+                'International Security & Conflict Resolution': "e.g. How does the UN Security Council permanent-five veto restrict multilateral humanitarian peacekeeping corridors?",
+                'Global Food Security & Agriculture': "e.g. How do unilateral agricultural export bans and fertilizer import dependencies impact food security in sub-Saharan Africa?"
             };
             if (placeholders[domain]) {
                 textarea.placeholder = placeholders[domain];
@@ -2179,11 +2383,49 @@
                     ];
                 }
             } else {
-                angles = [
-                    { title: "Loss and Damage Finance at the UN Climate Summit", desc: "How frontline developing nations are demanding direct compensation mechanisms from wealthy historical emitters.", meta: "International Climate Treaty Focus" },
-                    { title: "TRIPS Waivers & Global Health Equity", desc: "Intellectual property monopolies on lifesaving medicines vs. global generic manufacturing rights.", meta: "Global Public Health / Trade Focus" },
-                    { title: "Cross-Border Algorithmic Governance & Sovereignty", desc: "The extraterritorial reach of the EU AI Act and its impact on emerging economy tech startups.", meta: "Global Tech Policy Focus" }
-                ];
+                if (selectedDomain.includes('Climate')) {
+                    angles = [
+                        { title: "Loss and Damage Finance at the UN Climate Summit", desc: "How frontline developing nations are demanding direct compensation mechanisms from wealthy historical emitters.", meta: "International Climate Treaty Focus" },
+                        { title: "Critical Mineral Extraction vs. Indigenous Land Rights", desc: "How the global rush for lithium and cobalt to power clean energy transitions reproduces colonial resource extraction.", meta: "Multilateral Resource Governance" },
+                        { title: "Carbon Border Adjustments & Trade Tensions", desc: "Evaluating how the EU Carbon Border Adjustment Mechanism (CBAM) penalizes developing country exports without climate finance.", meta: "Climate & Trade Policy Conflict" }
+                    ];
+                } else if (selectedDomain.includes('Refugee') || selectedDomain.includes('Human Rights')) {
+                    angles = [
+                        { title: "Border Externalization & The 1951 Refugee Convention", desc: "How bilateral interception agreements outsource asylum processing to third countries with poor human rights records.", meta: "International Asylum Law" },
+                        { title: "Transnational Surveillance of Political Dissidents", desc: "Export of commercial spyware (like Pegasus) across borders to track diaspora activists and journalists.", meta: "Extraterritorial Human Rights" },
+                        { title: "Climate Displacement & Gaps in International Refugee Law", desc: "Why people displaced by sea level rise and desertification lack legal status under current international conventions.", meta: "Emerging International Protection" }
+                    ];
+                } else if (selectedDomain.includes('Trade') || selectedDomain.includes('Economic Justice')) {
+                    angles = [
+                        { title: "Sovereign Debt Crises & IMF Fiscal Consolidation", desc: "How predatory sovereign debt servicing forces developing nations to slash domestic healthcare and education budgets.", meta: "Multilateral Debt Restructuring" },
+                        { title: "TRIPS Waivers & Global Pharmaceutical Access", desc: "Intellectual property monopolies on lifesaving medicines vs. global generic manufacturing rights in the Global South.", meta: "WTO Intellectual Property Tensions" },
+                        { title: "Investor-State Dispute Settlement (ISDS) & Climate Policy", desc: "Multinational fossil fuel corporations suing sovereign governments in private arbitration over environmental regulations.", meta: "Bilateral Investment Treaties" }
+                    ];
+                } else if (selectedDomain.includes('Technology') || selectedDomain.includes('Digital')) {
+                    angles = [
+                        { title: "Extraterritorial Reach of the EU AI Act", desc: "How Brussels regulatory standards dictate compliance requirements for technology startups in Asia, Africa, and Latin America.", meta: "Global Tech Governance & Sovereignty" },
+                        { title: "Cross-Border Data Sovereignty & Cloud Localization", desc: "Developing nations demanding local data storage to prevent technological dependence on US and Chinese tech giants.", meta: "Digital Sovereignty Conflicts" },
+                        { title: "Subsea Internet Cables & Geopolitical Chokepoints", desc: "The strategic struggle between great powers over physical telecommunication infrastructure and espionage risks.", meta: "Global Critical Infrastructure" }
+                    ];
+                } else if (selectedDomain.includes('Health')) {
+                    angles = [
+                        { title: "The WHO Pandemic Agreement & Pathogen Benefit-Sharing", desc: "Why high-income pharmaceutical hubs refused mandatory technology transfer in exchange for viral genetic data.", meta: "Global Health Treaty Negotiations" },
+                        { title: "Regional Vaccine Manufacturing Independence", desc: "African Union and PAHO initiatives to build domestic mRNA and vaccine manufacturing capacity to end import dependence.", meta: "Health Sovereignty & Equity" },
+                        { title: "Global Health Brain Drain & Healthcare Workforce Exodus", desc: "Wealthy nations aggressively recruiting nurses and doctors from sub-Saharan Africa, devastating local health systems.", meta: "Global Health Workforce Equity" }
+                    ];
+                } else if (selectedDomain.includes('Security')) {
+                    angles = [
+                        { title: "UN Security Council Veto Gridlock & Reform Movements", desc: "How the permanent five veto paralyzes international peacekeeping during severe humanitarian crises.", meta: "UN Charter & Security Reform" },
+                        { title: "Autonomous Weapons Systems & International Humanitarian Law", desc: "The regulatory vacuum surrounding AI-targeted lethal drones and accountability under the Geneva Conventions.", meta: "Arms Control & Emerging Tech" },
+                        { title: "Economic Sanctions & Unintended Humanitarian Costs", desc: "Evaluating how unilateral sanctions regimes restrict medicine, humanitarian aid, and food access for civilian populations.", meta: "Sanctions Regimes & Civilian Harm" }
+                    ];
+                } else { // Food Security & Agriculture
+                    angles = [
+                        { title: "Agricultural Export Bans & Global Food Price Shocks", desc: "How domestic export quotas enacted during geopolitical crises trigger acute shortages in import-dependent nations.", meta: "Global Food Supply Chain Tensions" },
+                        { title: "Grain Monopoly Cartels & Speculative Trading", desc: "How the ABCD global agricultural trading corporations capture windfall profits during food supply disruptions.", meta: "Food Sovereignty & Commodity Markets" },
+                        { title: "Climate Resilience vs. Fertilizer Debt Traps", desc: "How chemical fertilizer import reliance burdens smallholder farmers in developing nations amidst volatile currency swings.", meta: "Sustainable Agriculture & Debt" }
+                    ];
+                }
             }
 
             angles.forEach((ang, idx) => {
@@ -2243,10 +2485,11 @@
             autoUpdateStatus();
         }
 
-        function updateLocalBridges(domainFilter) {
+        function updatePolicyTensions(domainFilter) {
             const container = document.getElementById('local-bridge-container');
+            if (!container) return;
             container.innerHTML = '';
-            const list = LOCAL_BRIDGES[currentCourse];
+            const list = POLICY_TENSIONS[currentCourse] || [];
 
             // Reorder list to put domain match first if provided
             let sortedList = [...list];
@@ -2266,15 +2509,29 @@
                 card.className = `bridge-card ${idx === 0 ? 'selected' : ''}`;
                 card.onclick = () => selectBridge(card, br);
                 card.innerHTML = `
-                    <div class="bridge-agency">${isMatch ? '★ [Matched to ' + br.domain + '] ' : ''}${br.agency}</div>
+                    <div class="bridge-agency">${isMatch ? '★ [Matched to ' + br.domain + '] ' : ''}${br.focus || br.domain}</div>
                     <div class="bridge-question">"${br.question}"</div>
                 `;
                 container.appendChild(card);
                 if (idx === 0) {
                     selectedLocalBridge = br;
-                    document.getElementById('final-bridge-question').value = br.question;
+                    const qEl = document.getElementById('final-bridge-question');
+                    if (qEl) qEl.value = br.question;
                 }
             });
+        }
+
+        function selectBridge(card, br) {
+            document.querySelectorAll('.bridge-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedLocalBridge = br;
+            const qEl = document.getElementById('final-bridge-question');
+            if (qEl) qEl.value = br.question;
+            autoUpdateStatus();
+        }
+
+        function updateLocalBridges(domainFilter) {
+            updatePolicyTensions(domainFilter);
         }
 
         function goToStep(step) {
@@ -2346,7 +2603,7 @@
                 chkReport.querySelector('.check-icon').textContent = '○';
             }
 
-            // Bridge Check
+            // Bridge / Policy Tension Check
             const chkBridge = document.getElementById('chk-bridge');
             if (bridgeQ.length > 20) {
                 chkBridge.className = 'check-item done';
@@ -2369,13 +2626,17 @@
             const pTitle = document.getElementById('practitioner-title').value.trim() || "[Practitioner Title]";
             const rTitle = document.getElementById('report-title').value.trim() || "[Report / White Paper Title]";
             const rFinding = document.getElementById('report-finding').value.trim() || "[Insert 1-2 sentence finding from report]";
-            const bridgeQ = document.getElementById('final-bridge-question').value.trim() || "[Your local bridge question connecting to Ventura County/Thousand Oaks]";
+            const bridgeQ = document.getElementById('final-bridge-question').value.trim() || "[Your policy inquiry question addressing institutional resistance or implementation hurdles]";
             const rawInterest = document.getElementById('raw-interest').value.trim();
             const customTitle = document.getElementById('custom-episode-title') ? document.getElementById('custom-episode-title').value.trim() : '';
-            const angleTitle = customTitle || (selectedAngle ? selectedAngle.title : "California Policy Dynamics & Ground Realities");
+            const angleTitle = customTitle || (selectedAngle ? selectedAngle.title : (currentCourse === 'california' ? "California Policy Dynamics & Ground Realities" : "Global Governance & Implementation Realities"));
             const courseTitle = currentCourse === 'california' ? "California Politics and Public Policy" : "Global Politics and Public Policy";
 
             // 1. Canvas Proposal
+            const section6Header = currentCourse === 'california'
+                ? '6. CORE POLICY TENSION & IMPLEMENTATION INQUIRY (Rubric: 30%):'
+                : '6. GLOBAL GOVERNANCE & IMPLEMENTATION TENSION (Rubric: 30%):';
+
             const proposalText = `=====================================================
 PODCAST TOPIC PROPOSAL: ${courseTitle.toUpperCase()}
 Dr. Jose Marichal | California Lutheran University
@@ -2406,8 +2667,8 @@ DATE SUBMITTED: ${new Date().toLocaleDateString()}
 * Key Finding / Hook to Discuss:
 "${rFinding}"
 
-6. MANDATORY VENTURA COUNTY / THOUSAND OAKS LOCAL BRIDGE (Rubric: 30%):
-* Hyper-Local Bridge Question:
+${section6Header}
+* Central Implementation Question:
 "${bridgeQ}"
 
 7. INTERVIEW LOGISTICS & FEASIBILITY:
@@ -2420,21 +2681,33 @@ ${litSaved.length ? litSaved.map((s, n) => `  ${n + 1}. ${s.authors} (${s.year})
             document.getElementById('proposal-output').textContent = proposalText;
 
             // 2. Outreach Email
+            const emailFocus = currentCourse === 'california'
+                ? 'how California public policy is crafted, advocated for, and implemented on the ground'
+                : 'global governance, international treaties, and real-world policy implementation';
+
+            const emailGroundTension = currentCourse === 'california'
+                ? 'how statewide policy mandates intersect with ground-level implementation challenges and institutional resistance'
+                : 'how international agreements confront national sovereignty and ground-level implementation challenges';
+
+            const emailProjectContext = currentCourse === 'california'
+                ? 'For my midterm project, I am recording a 45-minute podcast-style interview with a policy practitioner to help my classmates and me understand how policy actually moves on the ground in California.'
+                : 'For my midterm project, I am recording a 45-minute podcast-style interview with an international policy practitioner to help my classmates and me understand how global policy frameworks operate on the ground.';
+
             const emailText = `Subject: Interview Request: Cal Lutheran Politics Class / ${rTitle.substring(0, 45)}...
 
 Dear ${pName},
 
 My name is ${studentName} and I am an undergraduate student studying ${studentMajor} at California Lutheran University in Thousand Oaks, taking a course with Dr. Jose Marichal on ${courseTitle}.
 
-As part of our coursework, we are studying ${currentCourse === 'california' ? 'how California public policy is crafted, advocated for, and implemented on the ground' : 'global governance and policy implementation on the ground'}. I have been closely following the work of ${org}, and I recently read your publication, "${rTitle}."
+As part of our coursework, we are studying ${emailFocus}. I have been closely following the work of ${org}, and I recently read your publication, "${rTitle}."
 
 I was particularly struck by your finding that:
 "${rFinding}"
 
 Specifically, my episode explores:
-"${rawInterest ? rawInterest : 'how statewide and regional policy mandates intersect with ground-level implementation challenges'}."
+"${rawInterest ? rawInterest : emailGroundTension}."
 
-For my midterm project, I am recording a 45-minute podcast-style interview with a policy practitioner to help my classmates and me understand how policy actually moves on the ground in California. We are also exploring how statewide policy connects to local governance here in Ventura County / Southern California.
+${emailProjectContext}
 
 Would you be open to doing a 45-minute Zoom interview with me on a Friday of your choosing in the coming weeks? The stakes are low, and the audience will be a highly engaged class of undergraduates eager to learn from your localized expertise.
 
@@ -2450,6 +2723,10 @@ Thousand Oaks, CA`;
             document.getElementById('email-output').textContent = emailText;
 
             // 3. Recommended 5-Question Interview Rundown
+            const q4Header = currentCourse === 'california'
+                ? '4. POLICY IMPLEMENTATION & INSTITUTIONAL CONFLICT (Rubric: 30%):'
+                : '4. MULTILATERAL IMPLEMENTATION & GOVERNANCE TENSIONS (Rubric: 30%):';
+
             const questionsText = `RECOMMENDED 5-QUESTION PODCAST INTERVIEW RUNDOWN
 Guest: ${pName} (${pTitle}, ${org})
 Episode Angle: ${angleTitle}
@@ -2458,12 +2735,12 @@ Episode Angle: ${angleTitle}
    "In your recent report '${rTitle}', you highlighted that ${rFinding.substring(0, 90)}... Our project specifically asks: '${rawInterest ? rawInterest : 'How does this mandate play out on the ground?'}'. What surprised you most in that data, and what has been the community or legislative reaction since publication?"
 
 2. THE REGIONAL LANDSCAPE:
-   "Our class is examining how policy doesn't happen in a vacuum—it is shaped by geography and regional political economy. How does working on ${selectedDomain} in ${region.split(' ')[0]} differ from other parts of the state or country?"
+   "Our class is examining how policy doesn't happen in a vacuum—it is shaped by geography and institutional political economy. How does working on ${selectedDomain} in ${region.split(' ')[0]} differ from other regions or jurisdictions?"
 
 3. COALITION BUILDING & IMPEDIMENTS:
    "Who are your primary allies and who presents the greatest institutional resistance when you try to turn these recommendations into actual policy on the ground?"
 
-4. THE LOCAL BRIDGE TO VENTURA COUNTY / THOUSAND OAKS (Rubric: 30%):
+${q4Header}
    "${bridgeQ}"
 
 5. CAREER PATH & FUTURE TRAJECTORY:

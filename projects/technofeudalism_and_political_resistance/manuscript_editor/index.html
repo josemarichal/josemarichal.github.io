@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Liberalism • Manuscript Editor & Cutting Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0c0f17;
+      --bg-card: rgba(23, 29, 44, 0.75);
+      --bg-card-hover: rgba(30, 38, 58, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent-cut: #f43f5e;
+      --accent-cut-hover: #e11d48;
+      --accent-keep: #10b981;
+      --accent-keep-hover: #059669;
+      --accent-skip: #64748b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(244, 63, 94, 0.08) 0px, transparent 50%);
+    }
+
+    /* Top Progress Header */
+    header {
+      background: rgba(12, 15, 23, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 32px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--primary), var(--accent-cut));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .stats-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-val {
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-main);
+    }
+
+    .stat-val.target { color: #38bdf8; }
+    .stat-val.remaining { color: var(--accent-cut); }
+    .stat-val.scrapbook { color: #a855f7; }
+
+    /* Progress bar */
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, var(--primary), var(--accent-cut));
+      width: 0%;
+      transition: width 0.4s ease;
+      border-radius: 10px;
+    }
+
+    /* Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      padding: 12px 32px 0;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(12, 15, 23, 0.4);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 10px 18px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover { color: var(--text-main); }
+    .tab-btn.active {
+      color: #38bdf8;
+      border-bottom-color: #38bdf8;
+      font-weight: 600;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      padding: 28px 32px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Candidate Deck */
+    .deck-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .candidate-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .card-header {
+      padding: 18px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-section {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-words {
+      background: rgba(244, 63, 94, 0.12);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    .candidate-title {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 16px 24px 8px;
+    }
+
+    .candidate-rationale {
+      margin: 0 24px 16px;
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.5;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 12px 16px;
+      border-left: 3px solid var(--primary);
+      border-radius: 4px;
+    }
+
+    .candidate-text-box {
+      margin: 0 24px 20px;
+      padding: 20px 24px;
+      background: rgba(10, 13, 20, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #e2e8f0;
+      max-height: 380px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    .candidate-text-box::-webkit-scrollbar {
+      width: 6px;
+    }
+    .candidate-text-box::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+
+    /* Deck Controls / Action Buttons */
+    .deck-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-cut {
+      background: linear-gradient(135deg, var(--accent-cut), #be123c);
+      color: white;
+      box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
+    }
+    .btn-cut:hover {
+      background: linear-gradient(135deg, var(--accent-cut-hover), #9f1239);
+      transform: translateY(-1px);
+    }
+
+    .btn-keep {
+      background: linear-gradient(135deg, var(--accent-keep), #047857);
+      color: white;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+    .btn-keep:hover {
+      background: linear-gradient(135deg, var(--accent-keep-hover), #065f46);
+      transform: translateY(-1px);
+    }
+
+    .keyboard-hint {
+      font-size: 11px;
+      opacity: 0.6;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* List Tab & Viewers */
+    .view-pane {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      pointer-events: none;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state h3 {
+      font-size: 20px;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-icon">✂</div>
+        <div>
+          <div class="brand-title">Brand Liberalism • Manuscript Editor</div>
+          <div class="brand-subtitle">One-by-one editorial review towards 15,000 words</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-pill">
+          <span>Current Draft:</span>
+          <span class="stat-val" id="stat-current">--</span>
+          <span style="opacity: 0.4;">words</span>
+        </div>
+        <div class="stat-pill">
+          <span>Target Goal:</span>
+          <span class="stat-val target">15,000</span>
+        </div>
+        <div class="stat-pill">
+          <span>Remaining to Cut:</span>
+          <span class="stat-val remaining" id="stat-remaining">--</span>
+        </div>
+        <div class="stat-pill">
+          <span>In Scrapbook:</span>
+          <span class="stat-val scrapbook" id="stat-scrapbook">--</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-bar"></div>
+    </div>
+  </header>
+
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('deck')">Review Deck (Candidates)</button>
+    <button class="tab-btn" onclick="switchTab('draft')">Current Chapter Draft</button>
+    <button class="tab-btn" onclick="switchTab('scrapbook')">Excavations Scrapbook</button>
+  </div>
+
+  <main>
+    <!-- Deck View -->
+    <div id="tab-deck" class="deck-container">
+      <div id="card-wrapper">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Draft View -->
+    <div id="tab-draft" style="display: none;">
+      <div class="view-pane" id="draft-content">Loading draft...</div>
+    </div>
+
+    <!-- Scrapbook View -->
+    <div id="tab-scrapbook" style="display: none;">
+      <div class="view-pane" id="scrapbook-content">Loading scrapbook...</div>
+    </div>
+  </main>
+
+  <div id="toast">Notification</div>
+
+  <script>
+    let state = {
+      candidates: [],
+      currentIndex: 0,
+      currentWords: 0,
+      targetWords: 15000,
+      removalsWords: 0
+    };
+
+    async function fetchState() {
+      try {
+        const res = await fetch('/api/state');
+        const data = await res.json();
+        state.candidates = data.candidates.filter(c => c.status === 'pending');
+        state.allCandidates = data.candidates;
+        state.currentWords = data.current_words;
+        state.targetWords = data.target_words;
+        state.removalsWords = data.removals_words;
+        state.draft = data.draft;
+        state.removals = data.removals;
+
+        updateStats();
+        renderCard();
+        renderDraftView();
+        renderScrapbookView();
+      } catch (err) {
+        showToast('Error connecting to backend server', true);
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('stat-current').textContent = state.currentWords.toLocaleString();
+      const remaining = Math.max(0, state.currentWords - state.targetWords);
+      document.getElementById('stat-remaining').textContent = remaining.toLocaleString();
+      document.getElementById('stat-scrapbook').textContent = state.removalsWords.toLocaleString();
+
+      // Progress bar percentage (from ~41k base down to 15k)
+      const totalToCutTotal = 41178 - 15000;
+      const alreadyCut = 41178 - state.currentWords;
+      const pct = Math.min(100, Math.max(0, (alreadyCut / totalToCutTotal) * 100));
+      document.getElementById('progress-bar').style.width = pct + '%';
+    }
+
+    function renderCard() {
+      const wrapper = document.getElementById('card-wrapper');
+      if (!state.candidates || state.candidates.length === 0) {
+        wrapper.innerHTML = `
+          <div class="candidate-card empty-state">
+            <h3>🎉 All Candidate Passages Reviewed!</h3>
+            <p>You have reviewed all pending candidates in this queue. Current draft is at ${state.currentWords.toLocaleString()} words.</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (state.currentIndex >= state.candidates.length) {
+        state.currentIndex = 0;
+      }
+      if (state.currentIndex < 0) {
+        state.currentIndex = state.candidates.length - 1;
+      }
+
+      const cand = state.candidates[state.currentIndex];
+
+      wrapper.innerHTML = `
+        <div class="candidate-card">
+          <div class="card-header">
+            <div class="card-meta">
+              <span class="badge-section">${cand.section}</span>
+              <span class="badge-words">${cand.words} words</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+              Candidate ${state.currentIndex + 1} of ${state.candidates.length}
+            </div>
+          </div>
+
+          <div class="candidate-title">${cand.title}</div>
+          <div class="candidate-rationale">${cand.rationale}</div>
+
+          <div class="candidate-text-box">${escapeHtml(cand.text)}</div>
+
+          <div class="deck-actions">
+            <div class="nav-buttons">
+              <button class="btn btn-secondary" onclick="prevCard()">
+                ← Prev <span class="keyboard-hint">←</span>
+              </button>
+              <button class="btn btn-secondary" onclick="nextCard()">
+                Next → <span class="keyboard-hint">→</span>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+              <button class="btn btn-secondary" onclick="keepCandidate()">
+                🛡️ Keep in Chapter <span class="keyboard-hint">K</span>
+              </button>
+              <button class="btn btn-cut" onclick="cutCandidate()">
+                ✂️ Cut & Move to Scrapbook <span class="keyboard-hint">C / Enter</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDraftView() {
+      document.getElementById('draft-content').textContent = state.draft || '';
+    }
+
+    function renderScrapbookView() {
+      document.getElementById('scrapbook-content').textContent = state.removals || '';
+    }
+
+    async function cutCandidate() {
+      if (!state.candidates || state.candidates.length === 0) return;
+      const cand = state.candidates[state.currentIndex];
+      try {
+        const res = await fetch('/api/cut', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: cand.id,
+            text: cand.text,
+            title: cand.title,
+            rationale: cand.rationale
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`✂️ Cut ${data.words_cut} words to Scrapbook!`);
+          await fetchState();
+        } else {
+          showToast(data.error || 'Failed to cut', true);
+        }
+      } catch (err) {
+        showToast('Error sending cut command', true);
+      }
+    }
+
+    async function keepCandidate() {
+      if (!state.candidates || state.candidates.length === 0) return;
+      const cand = state.candidates[state.currentIndex];
+      try {
+        const res = await fetch('/api/keep', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: cand.id })
+        });
+        showToast('🛡️ Kept in Chapter');
+        await fetchState();
+      } catch (err) {
+        showToast('Error marking kept', true);
+      }
+    }
+
+    function nextCard() {
+      if (state.candidates.length > 0) {
+        state.currentIndex = (state.currentIndex + 1) % state.candidates.length;
+        renderCard();
+      }
+    }
+
+    function prevCard() {
+      if (state.candidates.length > 0) {
+        state.currentIndex = (state.currentIndex - 1 + state.candidates.length) % state.candidates.length;
+        renderCard();
+      }
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-deck').style.display = 'none';
+      document.getElementById('tab-draft').style.display = 'none';
+      document.getElementById('tab-scrapbook').style.display = 'none';
+
+      if (tab === 'deck') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('tab-deck').style.display = 'flex';
+      } else if (tab === 'draft') {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('tab-draft').style.display = 'block';
+      } else if (tab === 'scrapbook') {
+        document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        document.getElementById('tab-scrapbook').style.display = 'block';
+      }
+    }
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.borderColor = isError ? 'var(--accent-cut)' : 'var(--accent-keep)';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+    }
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'c' || e.key === 'C' || e.key === 'Enter') {
+        cutCandidate();
+      } else if (e.key === 'k' || e.key === 'K') {
+        keepCandidate();
+      } else if (e.key === 'ArrowRight' || e.key === 's' || e.key === 'S') {
+        nextCard();
+      } else if (e.key === 'ArrowLeft') {
+        prevCard();
+      }
+    });
+
+    fetchState();
+  </script>
+</body>
+</html>
