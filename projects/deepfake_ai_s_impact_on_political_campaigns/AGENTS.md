@@ -23,6 +23,7 @@ Tracking and evaluating the weaponization of generative synthetic audio clones, 
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-10-27 | **Curricular & Expert Interview Protocol Design** | Formulated research question refinements, 3-question podcast protocol with sub-probes, and multi-tier background research library (Brookings, Stanford, Carnegie, MIT Tech Review) linking generative synthetic political media to IR theories (Cognitive Warfare, Epistemic Degradation, Liar's Dividend). |
 | 2026-10-04 | **Integration with Empirical Literature** | Incorporated findings from Lin et al. (Nature 2025) on conversational AI persuasion and Coeckelbergh (2024/2025) on epistemic degradation. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
