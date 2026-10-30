@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Up Opportunities for Friday Workbooks | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=5">
+    <style>
+        .makeup-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .makeup-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .makeup-header p {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .course-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .course-tag {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .policy-overview-box {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
+            box-shadow: var(--shadow-ambient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-overview-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), #3b82f6);
+        }
+
+        .policy-overview-box h2 {
+            font-size: 1.6rem;
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .policy-overview-box p {
+            color: var(--text-main);
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            opacity: 0.85;
+            margin: 0;
+        }
+
+        .opportunity-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-ambient);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+
+        .opportunity-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .opportunity-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .opportunity-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.25rem 0 1.5rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .meta-entry {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .meta-entry strong {
+            color: var(--accent-color);
+        }
+
+        .opportunity-card h2 {
+            font-size: 1.85rem;
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .speaker-subtitle {
+            font-size: 1.15rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .opportunity-desc {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .reflection-prompts {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+        }
+
+        .reflection-prompts h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: var(--text-heading);
+            font-size: 1.05rem;
+        }
+
+        .reflection-prompts ul {
+            margin: 0;
+            padding-left: 1.25rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .reflection-prompts li {
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-return-nav {
+            margin-top: 4rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .syllabus-return-nav a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .syllabus-return-nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">José <span>Marichal</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a class="active" href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">T&amp;S Working Group</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="makeup-header">
+                <h1>Make Up Opportunities for Friday Workbooks</h1>
+                <p>If you missed an in-class Friday Workbook session, you can make up credit by attending an approved public lecture, scholarly book talk, or civic symposium and submitting a short reflective memo.</p>
+                <div class="course-tags">
+                    <span class="course-tag">POLS 200: Global Politics</span>
+                    <span class="course-tag">POLS 307: California Politics &amp; Public Policy</span>
+                </div>
+            </div>
+
+            <!-- Guidelines & Policy Overview -->
+            <div class="policy-overview-box">
+                <h2>Workbook Make-Up Protocol</h2>
+                <p>Friday workbooks are designed to build hands-on skills in policy analysis, advocacy, and collaborative discourse. When an unavoidable absence occurs, students may earn equivalent pass/fail credit (1 point per workbook) by engaging with active research scholars and community practitioners outside of class hours.</p>
+                
+                <div class="policy-steps">
+                    <div class="step-card">
+                        <span class="step-number">1</span>
+                        <h3>Attend the Event</h3>
+                        <p>Attend the full designated event in person. Take notes on the speaker's main thesis, evidence, and audience Q&amp;A.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">2</span>
+                        <h3>Write Your Reflection</h3>
+                        <p>Write a 1–2 page (350–500 word) reflection connecting the speaker's arguments to core concepts from class.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">3</span>
+                        <h3>Submit on Canvas</h3>
+                        <p>Submit your reflection to the designated "Friday Workbook Make-Up" portal on Canvas within one week of the event.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 1: Dr. Chandra Russo Book Talk -->
+            <div class="opportunity-card" id="option-1-chandra-russo">
+                <span class="opportunity-badge">Option 1 • Approved Talk</span>
+                <h2>Book Talk: <em>White Flank: Organizing White People for Racial Justice</em></h2>
+                <div class="speaker-subtitle">Guest Speaker: <strong>Dr. Chandra Russo</strong> (Associate Professor of Sociology, Colgate University)</div>
+                
+                <div class="opportunity-meta">
+                    <div class="meta-entry">
+                        <span>📅 <strong>Date:</strong> Tuesday, November 11, 2026</span>
+                    </div>
+                    <div class="meta-entry">
+                        <span>⏰ <strong>Time:</strong> 4:00 PM – 6:00 PM</span>
+                    </div>
+                    <div class="meta-entry">
+                        <span>📍 <strong>Location:</strong> Richter Hall / Ahmanson 100</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-desc">
+                    <p>Dr. Chandra Russo will speak on her latest book, <em>White Flank: Organizing White People for Racial Justice</em> (University of Minnesota Press). Dr. Russo’s research investigates how white activists navigate multiracial coalitions, the sociopolitical dynamics of accountability, and the tensions between internal movement organizing and broader institutional power.</p>
+                    <p>This talk is especially relevant for students in both <strong>California Politics</strong> (examining coalitional advocacy, grassroots social movements, and racial equity policy) and <strong>Global Politics</strong> (analyzing solidarity networks, identity politics, and social movement resistance across democratic societies).</p>
+                </div>
+
+                <div class="reflection-prompts">
+                    <h4>Reflection Guidelines (Choose 2–3 questions to answer in your memo):</h4>
+                    <ul>
+                        <li><strong>Theoretical Connection:</strong> How does Dr. Russo's concept of a "white flank" relate to Deborah Stone’s model of the <em>Polis</em> (coalitions, collective loyalty, and shared meaning) versus individualistic market politics?</li>
+                        <li><strong>Movement Dynamics:</strong> What strategic obstacles do organizers face when building multiracial coalitions, and how can activists balance internal education with external legislative or community advocacy?</li>
+                        <li><strong>Policy &amp; Power:</strong> How does grassroots organizing influence formal policy agendas, and where do social movements face friction when confronting entrenched institutional power?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Option 2: HIV/AIDS Public Health Symposium, Community Fair & Vigil -->
+            <div class="opportunity-card" id="option-2-hivaids-symposium">
+                <span class="opportunity-badge" style="background: #e11d48;">Option 2 • Public Health &amp; Community Forum</span>
+                <h2>HIV/AIDS Public Health Symposium, Community Quilting Bee &amp; Vigil</h2>
+                <div class="speaker-subtitle">Organized by <strong>Dr. Adina Nack</strong> featuring <strong>Dr. Uldine Castel, MD</strong> (Ventura County Public Health Officer) &amp; <strong>Dr. Peter Carlson</strong></div>
+                
+                <div class="opportunity-meta">
+                    <div class="meta-entry">
+                        <span>📅 <strong>Date:</strong> November 2026 (RSVP for Dinner by 11/10/26)</span>
+                    </div>
+                    <div class="meta-entry">
+                        <span>⏰ <strong>Time:</strong> 4:05 PM – 7:30 PM (Three-Part Program)</span>
+                    </div>
+                    <div class="meta-entry">
+                        <span>📍 <strong>Location:</strong> California Lutheran University Campus</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-desc">
+                    <p>This multi-part community health symposium brings together public health officials, community-based advocacy organizations, healthcare providers, and impacted residents to explore the history, ongoing challenges, and human realities of the HIV/AIDS epidemic. Students may attend any or all segments to fulfill their workbook make-up requirement.</p>
+                </div>
+
+                <!-- Event Schedule Blocks -->
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid #e11d48; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;">
+                        <div style="font-weight: 700; color: var(--text-heading); font-size: 1.05rem; margin-bottom: 0.25rem;">
+                            1. Quilting Bee &amp; Community Resource Fair <span style="font-size: 0.85rem; font-weight: normal; color: var(--accent-color); margin-left: 0.5rem;">4:05 – 5:15 p.m.</span>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--text-main);">
+                            Visit tables hosted by local organizations focused on HIV/AIDS, collect stickers on your "passport" to win a spin at the prize wheel, and enjoy a light dinner while you learn. <em>(RSVP required for dinner by 11/10/26)</em>
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--accent-color); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;">
+                        <div style="font-weight: 700; color: var(--text-heading); font-size: 1.05rem; margin-bottom: 0.25rem;">
+                            2. Public Health Reception &amp; County Leadership Q&amp;A <span style="font-size: 0.85rem; font-weight: normal; color: var(--accent-color); margin-left: 0.5rem;">5:45 – 6:20 p.m.</span>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--text-main);">
+                            Dr. Adina Nack will host local experts, including <strong>Ventura County’s Public Health Officer, Dr. Uldine Castel, MD</strong>, who will share their experiences navigating the U.S. epidemic, followed by audience Q&amp;A. <em>(No RSVP required)</em>
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid #8b5cf6; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;">
+                        <div style="font-weight: 700; color: var(--text-heading); font-size: 1.05rem; margin-bottom: 0.25rem;">
+                            3. Keynote Panel &amp; Memorial Vigil <span style="font-size: 0.85rem; font-weight: normal; color: var(--accent-color); margin-left: 0.5rem;">6:30 – 7:30 p.m.</span>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--text-main);">
+                            Hear firsthand testimony from a resident living with HIV/AIDS, followed by a nondenominational vigil led by <strong>Dr. Peter Carlson</strong> to honor those living with HIV/AIDS and commemorate those who have passed. <em>(No RSVP required)</em>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reflection-prompts">
+                    <h4>Reflection Guidelines (Choose 2–3 questions to answer in your memo):</h4>
+                    <ul>
+                        <li><strong>Public Health Governance:</strong> What challenges do county-level health officers (like Dr. Castel) face in coordinating health resources, overcoming political stigma, and reaching vulnerable or historically marginalized populations?</li>
+                        <li><strong>Community Advocacy &amp; Nonprofits:</strong> How do local grassroots organizations and mutual aid tables fill the gaps in formal government healthcare systems?</li>
+                        <li><strong>Storytelling &amp; the Polis:</strong> How does hearing directly from a resident living with HIV/AIDS challenge abstract policy debates and illustrate Deborah Stone’s concept of the <em>Polis</em> (community-centered policy and collective solidarity)?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Future Opportunities / Proposal Note -->
+            <div class="policy-overview-box" style="margin-top: 2rem;">
+                <h2>Proposing Alternative Make-Up Events</h2>
+                <p>Have an upcoming campus lecture, town hall, or civic forum you would like to attend for workbook credit? You may propose alternative events to Dr. Marichal via email (<a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a>) at least 48 hours prior to the event for advance approval.</p>
+            </div>
+
+            <div class="syllabus-return-nav">
+                <a href="syllabus.html">← Return to Global Politics (POLS 200) Syllabus</a>
+                <a href="syllabus_california_politics.html">← Return to California Politics (POLS 307) Syllabus</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
