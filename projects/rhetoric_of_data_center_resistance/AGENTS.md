@@ -1,7 +1,7 @@
 # Project: Rhetoric of Data Center Resistance
 **Category / Focus:** Environmental Justice • AI Infrastructure  
 **Workspace Location:** `projects/rhetoric_of_data_center_resistance/`  
-**Live Interface / URL:** [`data_center_narrative_qca.html`](file:///c:/Users/jfmar/josemarichal/github.io/data_center_narrative_qca.html)
+**Live Interface / URL:** [`data_center_resistance_dashboard.html`](file:///c:/Users/jfmar/josemarichal/github.io/data_center_resistance_dashboard.html) & [`data_center_narrative_qca.html`](file:///c:/Users/jfmar/josemarichal/github.io/data_center_narrative_qca.html)
 
 > **Antigravity Context Rule**: This file is the primary memory and decision log for this project. Whenever the user modifies, reviews, or makes architectural decisions regarding this project, the agent must update this document.
 
@@ -28,6 +28,7 @@ Critical discourse and policy analysis of grassroots civic resistance against hy
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-11-03 | **Published Dataset, Methodology & Files Portal (`data_center_resistance_dashboard.html`) & Linked from `projects.html`** | Created `data_center_resistance_dashboard.html` presenting the 4 equifinal QCA findings, 4-stage GSS-to-QCA computational architecture, direct download cards for `data_center_moratoriums.csv`, `simulation_episodes.jsonl`, `qca_results.json`, `archetypes_summary.json`, `research_summary.md`, and all 6 Python scripts, plus a 3-tab interactive explorer across all 428 municipal moratoriums, 500 deliberation episodes, and K=4 GSS archetypes. |
 | 2026-10-04 | **Linked Environmental & Grid Datasets** | Connected project to `data_center_moratoriums.csv` tracking local municipal moratoriums and utility disputes across the US. |
 | 2026-10-04 | **Discursive Analysis Framing** | Focusing on local rhetoric around water consumption, grid reliability, and tax abatements vs. tech industry modernization narratives. |
 | 2026-10-12 | **Integrated 4S 2026 Conference Papers & Interview Kits** | Connected Panel 286 papers (Livio on multispecies assemblages, Khalatbari on thermolabour, Sørensen on university data centres, Mirrlees & Szeman on Green AI) into `conference_paper_explorer.html` with field expert interview protocols. |
