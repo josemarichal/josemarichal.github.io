@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where STS, AI, and Technology-and-Society Scholars Publish | T&amp;S Working Group</title>
+    <link rel="stylesheet" href="style.css?v=6">
+    <style>
+        .venue-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin: 1.75rem 0 2.25rem;
+            padding: 1.25rem;
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+        }
+        .venue-search {
+            flex: 1;
+            min-width: 260px;
+            padding: 0.65rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            border: 1.5px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-heading);
+        }
+        .venue-search:focus {
+            outline: none;
+            background: #fff;
+        }
+        .filter-pill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+        .filter-pill {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.5rem 0.85rem;
+            border: 1.5px solid var(--border-color);
+            background: var(--surface-color);
+            color: var(--text-heading);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: var(--text-heading);
+            color: var(--accent-lime);
+        }
+        .venue-section {
+            margin-bottom: 3.5rem;
+        }
+        .venue-section-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.65rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .venue-section-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--text-heading);
+        }
+        .venue-section-sub {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .subcat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+        }
+        .subcat-card {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 1.5rem;
+        }
+        .subcat-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            border-bottom: 1.5px solid var(--border-light);
+            padding-bottom: 0.55rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .subcat-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            background: var(--surface-subtle);
+            border: 1px solid var(--border-color);
+            padding: 2px 7px;
+            color: var(--text-heading);
+        }
+        .venue-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .venue-item {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            padding-bottom: 0.65rem;
+            border-bottom: 1px dashed var(--border-light);
+        }
+        .venue-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .venue-name {
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+        .new-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--accent-lime);
+            color: #0a0a0a;
+            border: 1px solid #0a0a0a;
+            padding: 1px 6px;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+        .back-link {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">T&amp;S Working Group</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="mental_models.html">Mental Models</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="projects.html" class="back-link">&larr; Back to Technology &amp; Society Working Group</a>
+            <h1 class="page-title">Where STS, AI, and Technology-and-Society Scholars Publish</h1>
+            <p style="max-width: 860px; font-size: 1.05rem; margin-bottom: 1rem;">
+                A curated field guide for students, collaborators, and researchers in the <strong>Technology and Society Working Group</strong> mapping the core peer-reviewed journals, public-facing crossover magazines, international conferences, and research institutes across Science &amp; Technology Studies (STS), critical AI studies, algorithmic accountability, and digital governance.
+            </p>
+
+            <!-- Search & Category Filter -->
+            <div class="venue-controls">
+                <input type="text" id="venueSearch" class="venue-search" placeholder="Filter venues by name, discipline, open-access status, or topic (e.g., surveillance, law, 4S, open access)..." oninput="filterVenues()">
+                <div class="filter-pill-group">
+                    <button class="filter-pill active" onclick="setSectionFilter('ALL', this)">All Sections</button>
+                    <button class="filter-pill" onclick="setSectionFilter('sec-journals', this)">1. Academic Journals</button>
+                    <button class="filter-pill" onclick="setSectionFilter('sec-public', this)">2. Public-Facing Outlets</button>
+                    <button class="filter-pill" onclick="setSectionFilter('sec-conferences', this)">3. Conference Circuit</button>
+                    <button class="filter-pill" onclick="setSectionFilter('sec-institutes', this)">4. Think Tanks &amp; Centers</button>
+                    <button class="filter-pill" onclick="setSectionFilter('sec-trends', this)">5. Status &amp; Trends</button>
+                </div>
+            </div>
+
+            <!-- 1. ACADEMIC JOURNALS -->
+            <section class="venue-section" id="sec-journals">
+                <div class="venue-section-header">
+                    <h2>1. Academic Journals</h2>
+                    <span class="venue-section-sub">Peer-Reviewed Outlets Across 10 Interdisciplinary Subfields</span>
+                </div>
+
+                <div class="subcat-grid">
+                    <!-- Core STS -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Core STS</span>
+                            <span class="subcat-tag">What STS Scholars Read &amp; Publish In</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Science, Technology, &amp; Human Values (ST&amp;HV):</span> The official journal of 4S and the gold standard for STS.</li>
+                            <li class="venue-item"><span class="venue-name">Social Studies of Science (SSS):</span> The other "heavyweight" STS journal, focused on the sociology of how scientific knowledge is produced.</li>
+                            <li class="venue-item"><span class="venue-name">Engaging Science, Technology, and Society (ESTS):</span> 4S's open-access journal, more experimental and good for newer work.</li>
+                            <li class="venue-item"><span class="venue-name">Science as Culture:</span> Critical, theory-forward, and strong on the politics of technoscience.</li>
+                            <li class="venue-item"><span class="venue-name">Science, Technology &amp; Society:</span> Strong on Global South perspectives.</li>
+                            <li class="venue-item"><span class="venue-name">East Asian STS (EASTS), Tapuya (Latin America), Science &amp; Technology Studies (Nordic):</span> Regional journals that signal a non-Western-centric framing.</li>
+                            <li class="venue-item"><span class="venue-name">Public Understanding of Science:</span> Science communication and expertise.</li>
+                            <li class="venue-item"><span class="venue-name">Technology and Culture:</span> The history-of-technology flagship (SHOT).</li>
+                            <li class="venue-item"><span class="venue-name">Minerva and Science and Public Policy:</span> Science policy and governance.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Responsible Innovation:</span> Governance of emerging tech.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Feminist and critical-theory STS -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Feminist &amp; Critical-Theory STS</span>
+                            <span class="subcat-tag">Gender, Technoscience &amp; Theory</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Catalyst: Feminism, Theory, Technoscience:</span> Open-access feminist STS journal, firmly in the 4S orbit.</li>
+                            <li class="venue-item"><span class="venue-name">Ada: A Journal of Gender, New Media &amp; Technology:</span> Open access, directly on gender and digital media.</li>
+                            <li class="venue-item"><span class="venue-name">Signs: Journal of Women in Culture and Society:</span> Publishes feminist technoscience theory.</li>
+                            <li class="venue-item"><span class="venue-name">Feminist Media Studies</span> <span class="new-badge">New Addition</span>: A major, high-impact venue for research on gender, digital media, platform labor, and algorithmic bias.</li>
+                            <li class="venue-item"><span class="venue-name">BioSocieties:</span> Where the bioscience, genomics, and medicine side of STS publishes.</li>
+                            <li class="venue-item"><span class="venue-name">Public Culture:</span> Transnational, theory-heavy work touching technology and modernity.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Critical data, AI, and surveillance -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Critical Data, AI &amp; Surveillance</span>
+                            <span class="subcat-tag">Algorithms, Ethics &amp; Platform Governance</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Big Data &amp; Society:</span> The sweet spot for critical data studies, sociology, and algorithms; every STS scholar working on AI publishes here.</li>
+                            <li class="venue-item"><span class="venue-name">Surveillance &amp; Society:</span> Open access and a core venue for surveillance studies.</li>
+                            <li class="venue-item"><span class="venue-name">The Information Society:</span> Long-running and policy-oriented.</li>
+                            <li class="venue-item"><span class="venue-name">AI &amp; Society, Philosophy &amp; Technology, Ethics and Information Technology:</span> The philosophy and ethics side of AI.</li>
+                            <li class="venue-item"><span class="venue-name">AI and Ethics</span> <span class="new-badge">New Addition</span>: Distinct from <em>AI &amp; Society</em>, this Springer journal has grown rapidly and focuses heavily on normative, applied, and interdisciplinary AI ethics.</li>
+                            <li class="venue-item"><span class="venue-name">Critical AI (Duke):</span> Newer and humanities-heavy.</li>
+                            <li class="venue-item"><span class="venue-name">Data &amp; Policy:</span> Cambridge, open access, bridges academia and practitioners.</li>
+                            <li class="venue-item"><span class="venue-name">Social Science Computer Review</span> <span class="new-badge">New Addition</span>: An essential, long-running venue for computational social science, algorithmic auditing, and the intersection of quantitative methods with societal critique.</li>
+                            <li class="venue-item"><span class="venue-name">Harvard Data Science Review</span> <span class="new-badge">New Addition</span>: Features a dedicated, highly prestigious "Societal and Ethical Dimensions" section that actively bridges data science, STS, and policy.</li>
+                            <li class="venue-item"><span class="venue-name">Patterns (Cell Press)</span> <span class="new-badge">New Addition</span>: Originally a data science journal, it now regularly publishes high-impact work on the societal, ethical, and policy implications of AI and large-scale data.</li>
+                            <li class="venue-item"><span class="venue-name">Internet Policy Review, Policy &amp; Internet:</span> Platform regulation and governance.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Digital Social Research:</span> AoIR's open-access journal.</li>
+                            <li class="venue-item"><span class="venue-name">Digital Society (Springer):</span> Newer, sociological.</li>
+                            <li class="venue-item"><span class="venue-name">First Monday:</span> Long-running open-access internet-research journal; low barrier and fast turnaround.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Communication and media studies -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Communication &amp; Media Studies</span>
+                            <span class="subcat-tag">Platform Power &amp; Digital Publics</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">New Media &amp; Society:</span> More communication-focused, and the primary venue for empirical work on platform power and algorithmic governance.</li>
+                            <li class="venue-item"><span class="venue-name">Information, Communication &amp; Society:</span> Highly relevant for political theorists looking at digital media impacts.</li>
+                            <li class="venue-item"><span class="venue-name">Social Media + Society:</span> Open access with fast turnaround.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Computer-Mediated Communication, Journal of Communication:</span> Higher-prestige and more quantitative.</li>
+                            <li class="venue-item"><span class="venue-name">Media, Culture &amp; Society, Television &amp; New Media, Convergence:</span> More theoretical.</li>
+                            <li class="venue-item"><span class="venue-name">Digital Journalism, Political Communication:</span> Closest to political-science concerns.</li>
+                            <li class="venue-item"><span class="venue-name">International Journal of Communication:</span> Open access (USC); publishes tech policy and governance work.</li>
+                            <li class="venue-item"><span class="venue-name">Computational Communication Research</span> <span class="new-badge">New Addition</span>: A diamond open-access journal gaining rapid traction for empirical, critical work on algorithms, bots, and digital society.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Political science -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Political Science</span>
+                            <span class="subcat-tag">Institutions, Governance &amp; Geopolitics</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Perspectives on Politics:</span> APSA's journal and the most receptive of the top political-science venues to interpretive and theoretical work.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Information Technology &amp; Politics:</span> Directly on target.</li>
+                            <li class="venue-item"><span class="venue-name">Politics &amp; Society, Governance, Regulation &amp; Governance:</span> Regulatory and institutional angles on technology.</li>
+                            <li class="venue-item"><span class="venue-name">Review of International Political Economy, International Organization:</span> For work on tech geopolitics, standards, and platform sovereignty.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Law and technology -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Law &amp; Technology</span>
+                            <span class="subcat-tag">Regulation, Privacy &amp; Socio-Legal Studies</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Law &amp; Society Review, Berkeley Technology Law Journal, Harvard Journal of Law &amp; Technology, Yale Journal of Law &amp; Technology, Stanford Technology Law Review:</span> The core tech-law school journals.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Cybersecurity (OUP), Computer Law &amp; Security Review:</span> Tech law and security governance.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Information Policy (Penn State):</span> Open access, directly on target.</li>
+                            <li class="venue-item"><span class="venue-name">Telecommunications Policy:</span> Older but active for platform and infrastructure policy.</li>
+                            <li class="venue-item"><span class="venue-name">Jurimetrics:</span> Quantitative and legal studies of AI and regulation.</li>
+                            <li class="venue-item"><span class="venue-name">Law, Innovation and Technology</span> <span class="new-badge">New Addition</span>: Strong on socio-legal perspectives, regulatory theory, and the co-production of law and emerging tech.</li>
+                            <li class="venue-item"><span class="venue-name">International Review of Law, Computers &amp; Technology</span> <span class="new-badge">New Addition</span>: A well-established venue for critical legal studies of digital tech, particularly strong on EU/UK regulatory frameworks.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Data Protection &amp; Privacy</span> <span class="new-badge">New Addition</span>: Highly respected among privacy scholars and practitioners, especially for GDPR and global data governance work.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Infrastructure, environment, and energy -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Infrastructure, Environment &amp; Energy</span>
+                            <span class="subcat-tag">Extraction, Grids &amp; Climate Tech</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Energy Research &amp; Social Science:</span> The go-to venue for social science of energy transitions and infrastructure &mdash; huge and fast-growing.</li>
+                            <li class="venue-item"><span class="venue-name">Environmental Humanities:</span> Extraction, climate tech, and the more-than-human.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Philosophy and history of science/technology -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Philosophy &amp; History of Science/Tech</span>
+                            <span class="subcat-tag">Epistemology &amp; Humanities</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Social Epistemology, Science in Context:</span> For more philosophical and historical pieces.</li>
+                            <li class="venue-item"><span class="venue-name">Techn&eacute;: Research in Philosophy of Technology:</span> Directly on target for philosophy of technology.</li>
+                            <li class="venue-item"><span class="venue-name">Configurations</span> <span class="new-badge">New Addition</span>: An excellent, sometimes overlooked venue for work at the intersection of literature, science, and technology (the humanities wing of STS).</li>
+                            <li class="venue-item"><span class="venue-name">Engineering Studies:</span> The journal of engineering-studies scholars adjacent to STS.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Sociology and anthropology -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Sociology &amp; Anthropology</span>
+                            <span class="subcat-tag">Ethnography, Markets &amp; Culture</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Socius (ASA's open-access journal), Sociological Theory:</span> Good fits for conceptual work on algorithms.</li>
+                            <li class="venue-item"><span class="venue-name">Cultural Anthropology, American Ethnologist, Theory, Culture &amp; Society:</span> Where anthropologists and cultural theorists of technology publish.</li>
+                            <li class="venue-item"><span class="venue-name">Journal of Cultural Economy:</span> Markets, finance, and calculation.</li>
+                        </ul>
+                    </div>
+
+                    <!-- HCI and computer science venues -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>HCI &amp; Computer Science Venues</span>
+                            <span class="subcat-tag">CS Venues Welcoming Social Science</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">CSCW (journal and conference), CHI, Proceedings of the ACM on HCI:</span> Qualitative and interpretive work is common here.</li>
+                            <li class="venue-item"><span class="venue-name">AIES (AAAI/ACM Conference on AI, Ethics, and Society):</span> A cross-disciplinary AI-ethics venue.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. PUBLIC-FACING VENUES -->
+            <section class="venue-section" id="sec-public">
+                <div class="venue-section-header">
+                    <h2>2. Public-Facing Venues (Crossover Magazines and Outlets)</h2>
+                    <span class="venue-section-sub">Where STS Scholars Pitch 1,500-Word Public Essays</span>
+                </div>
+
+                <div class="subcat-grid">
+                    <!-- Critical Tech & Political Economy -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Critical Tech &amp; Political Economy</span>
+                            <span class="subcat-tag">Essays on Techno-Capitalism</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Logic(s) Magazine:</span> Run out of Columbia's INCITE. The premier critical tech magazine, very left-leaning and deeply critical of techno-capitalism.</li>
+                            <li class="venue-item"><span class="venue-name">Phenomenal World:</span> Relaunched as a print magazine (Issue 1, "American Power," June 2026). Publishes political-economy-of-technology essays by academics.</li>
+                            <li class="venue-item"><span class="venue-name">The New Inquiry:</span> Active; where the younger, highly theoretical STS crowd publishes essays on digital culture.</li>
+                            <li class="venue-item"><span class="venue-name">The Baffler, n+1, Dissent, Jacobin:</span> Left-of-center outlets that regularly publish critical tech essays.</li>
+                            <li class="venue-item"><span class="venue-name">The Drift, Lux Magazine:</span> Newer left-of-center outlets publishing critical tech essays.</li>
+                            <li class="venue-item"><span class="venue-name">The Nation:</span> Regularly runs long critical tech pieces by academics.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Accountability & Investigative Journalism -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Tech Accountability &amp; Investigative Journalism</span>
+                            <span class="subcat-tag">Algorithmic Audits &amp; Public Impact</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">The Markup</span> <span class="new-badge">New Addition</span>: An investigative outlet that explicitly partners with academics to conduct algorithmic audits and publish data-driven tech accountability pieces.</li>
+                            <li class="venue-item"><span class="venue-name">ProPublica</span> <span class="new-badge">New Addition</span>: While a newsroom, its foundational investigations (e.g., "Machine Bias") are required reading in STS. Scholars increasingly partner with ProPublica reporters to translate critical algorithm studies into public impact.</li>
+                            <li class="venue-item"><span class="venue-name">The Lever</span> <span class="new-badge">New Addition</span>: A newer, independent outlet focused on tech accountability, antitrust, and labor. Highly receptive to scholarly perspectives on platform power.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Policy, Philosophy, and General Public -->
+                    <div class="subcat-card" style="grid-column: 1 / -1;">
+                        <div class="subcat-title">
+                            <span>Policy, Philosophy &amp; General Public</span>
+                            <span class="subcat-tag">Broad-Reach Intellectual &amp; Policy Commentary</span>
+                        </div>
+                        <ul class="venue-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.85rem 1.5rem;">
+                            <li class="venue-item"><span class="venue-name">Public Books:</span> Founded by academics to bring scholarly perspective to public debates.</li>
+                            <li class="venue-item"><span class="venue-name">The New Atlantis:</span> A journal of technology and society. Leans more traditional/conservative in its philosophy (critiques of transhumanism).</li>
+                            <li class="venue-item"><span class="venue-name">Issues in Science and Technology:</span> Published by the National Academies and ASU. Probably the best single crossover venue for science and technology policy.</li>
+                            <li class="venue-item"><span class="venue-name">Tech Policy Press:</span> Heavily read by policy staff and journalists, and fast to publish.</li>
+                            <li class="venue-item"><span class="venue-name">Noema:</span> Berggruen's magazine, with long-form philosophical and political essays on technology.</li>
+                            <li class="venue-item"><span class="venue-name">Boston Review:</span> Forums and essays with a political-theory bent, often engaging technology and democracy.</li>
+                            <li class="venue-item"><span class="venue-name">Aeon:</span> Long-form essays written by academics.</li>
+                            <li class="venue-item"><span class="venue-name">The Conversation:</span> Academics write directly for it with editorial help; pieces are widely republished.</li>
+                            <li class="venue-item"><span class="venue-name">MIT Technology Review:</span> Accepts outside opinion pieces.</li>
+                            <li class="venue-item"><span class="venue-name">Slate's Future Tense (New America/ASU):</span> Tech and policy commentary.</li>
+                            <li class="venue-item"><span class="venue-name">Los Angeles Review of Books, The Hedgehog Review:</span> Review-essay venues with a humanistic bent.</li>
+                            <li class="venue-item"><span class="venue-name">Wired (Ideas essays):</span> The highest-reach outlet that actually runs STS-informed essays.</li>
+                            <li class="venue-item"><span class="venue-name">Rest of World:</span> Global South tech reporting and essays; good for non-US-centric framings.</li>
+                            <li class="venue-item"><span class="venue-name">Lawfare, Just Security:</span> Reaches security, legal, and policy audiences on tech governance.</li>
+                            <li class="venue-item"><span class="venue-name">Eurozine:</span> The European crossover venue for tech and politics essays.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. THE CONFERENCE CIRCUIT -->
+            <section class="venue-section" id="sec-conferences">
+                <div class="venue-section-header">
+                    <h2>3. The Conference Circuit</h2>
+                    <span class="venue-section-sub">Where Scholars Physically Gather to Network &amp; Present</span>
+                </div>
+
+                <div class="subcat-grid">
+                    <!-- Core STS & Humanities -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Core STS &amp; Humanities</span>
+                            <span class="subcat-tag">Flagship STS Meetings</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">4S (Society for Social Studies of Science):</span> The main STS conference.</li>
+                            <li class="venue-item"><span class="venue-name">EASST:</span> The European STS counterpart to 4S.</li>
+                            <li class="venue-item"><span class="venue-name">SHOT (Society for the History of Technology).</span></li>
+                            <li class="venue-item"><span class="venue-name">SLSA (Society for Literature, Science, and the Arts):</span> The humanities wing of STS.</li>
+                            <li class="venue-item"><span class="venue-name">History of Science Society annual meeting:</span> Companion to SHOT for the history side.</li>
+                            <li class="venue-item"><span class="venue-name">Society for the Query (INC, Amsterdam)</span> <span class="new-badge">New Addition</span>: A niche but highly influential workshop/conference series for scholars focusing specifically on search engines, algorithms, and information retrieval.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Algorithms, AI, and Internet Research -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Algorithms, AI &amp; Internet Research</span>
+                            <span class="subcat-tag">Interdisciplinary Computing &amp; Society</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">ACM FAccT (Fairness, Accountability, and Transparency):</span> The major CS conference that actively courts STS scholars.</li>
+                            <li class="venue-item"><span class="venue-name">AoIR (Association of Internet Researchers):</span> Very interdisciplinary, bridging STS, communications, and digital sociology.</li>
+                            <li class="venue-item"><span class="venue-name">We Robot:</span> The premier conference on robotics, AI, and the law.</li>
+                            <li class="venue-item"><span class="venue-name">ACM CSCW and AIES:</span> Companions to FAccT in the CS-adjacent space.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Political Science, Sociology, and Communication -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Political Science, Sociology &amp; Comm</span>
+                            <span class="subcat-tag">Disciplinary Sections &amp; Tracks</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">APSA's Science, Technology, and Politics section:</span> The natural home within political science.</li>
+                            <li class="venue-item"><span class="venue-name">ICA and ISA:</span> The major communication and international-relations conferences, each with technology tracks.</li>
+                            <li class="venue-item"><span class="venue-name">ASA sections:</span> Science, Knowledge, and Technology, and Communication, Information Technologies, and Media Sociology.</li>
+                            <li class="venue-item"><span class="venue-name">IC2S2 (International Conference on Computational Social Science):</span> If your work touches computational methods.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Law, Policy, and Governance -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Law, Policy &amp; Governance</span>
+                            <span class="subcat-tag">Regulatory &amp; Civil Society Convenings</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Symposium on Computer Science and Law (CSLaw)</span> <span class="new-badge">New Addition</span>: A newer, rapidly growing venue that explicitly bridges computer science, legal scholarship, and social science critiques of technology.</li>
+                            <li class="venue-item"><span class="venue-name">Internet, Politics, and Policy (IPP) Conference</span> <span class="new-badge">New Addition</span>: Hosted by the Oxford Internet Institute. A premier, highly interdisciplinary, and intimate conference specifically for tech policy, governance, and STS scholars.</li>
+                            <li class="venue-item"><span class="venue-name">Privacy Law Scholars Conference (PLSC):</span> Workshop-style, with an intense law, policy, and social science mix.</li>
+                            <li class="venue-item"><span class="venue-name">CPDP (Computers, Privacy and Data Protection):</span> Brussels-based; the European privacy-law/policy gathering with a strong STS presence.</li>
+                            <li class="venue-item"><span class="venue-name">TPRC (Telecommunications Policy Research Conference):</span> The policy-economics venue for platform and telecom governance.</li>
+                            <li class="venue-item"><span class="venue-name">RightsCon and the Internet Governance Forum:</span> Where governance-adjacent scholars and civil society overlap.</li>
+                            <li class="venue-item"><span class="venue-name">Law and Society Association annual meeting.</span></li>
+                            <li class="venue-item"><span class="venue-name">Platform Governance Research Network (PGRN):</span> Smaller but focused.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. INSTITUTIONAL AND THINK-TANK VENUES -->
+            <section class="venue-section" id="sec-institutes">
+                <div class="venue-section-header">
+                    <h2>4. Institutional and Think-Tank Venues</h2>
+                    <span class="venue-section-sub">Bridging Academic Scholarship, Policy Reports &amp; Public Engagement</span>
+                </div>
+
+                <div class="subcat-grid">
+                    <!-- Established Hubs -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Established Hubs</span>
+                            <span class="subcat-tag">Fellowships, Working Papers &amp; Symposia</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Data &amp; Society:</span> Reports, workshops, and fellowships.</li>
+                            <li class="venue-item"><span class="venue-name">AI Now Institute.</span></li>
+                            <li class="venue-item"><span class="venue-name">Knight First Amendment Institute at Columbia:</span> Runs essay series by academics.</li>
+                            <li class="venue-item"><span class="venue-name">Berkman Klein Center, Stanford Cyber Policy Center and HAI, Brookings TechStream:</span> (Note: the Stanford Internet Observatory was dismantled in early 2025 after political pressure and litigation, though the Cyber Policy Center continues.)</li>
+                            <li class="venue-item"><span class="venue-name">Oxford Internet Institute:</span> Reports, working papers, and policy briefings.</li>
+                            <li class="venue-item"><span class="venue-name">Princeton CITP (Center for Information Technology Policy):</span> Runs essay series and practitioner workshops.</li>
+                            <li class="venue-item"><span class="venue-name">UC Berkeley CLTC (Center for Long-Term Cybersecurity):</span> Security futures and policy grants/reports.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Advocacy, Justice, and Newer Centers -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Advocacy, Justice &amp; Newer Centers</span>
+                            <span class="subcat-tag">Data Justice &amp; Scholar-Activist Networks</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Brennan Center for Justice:</span> Tech-and-democracy work read by policymakers.</li>
+                            <li class="venue-item"><span class="venue-name">Electronic Frontier Foundation:</span> Its Deeplinks blog is where legal-STS arguments reach advocates.</li>
+                            <li class="venue-item"><span class="venue-name">SSRC's Just Tech program:</span> Funds and publishes social science on technology and justice.</li>
+                            <li class="venue-item"><span class="venue-name">Center for Democracy &amp; Technology, Mozilla Foundation.</span></li>
+                            <li class="venue-item"><span class="venue-name">CMU's Block Center for Technology and Society</span> <span class="new-badge">New Addition</span>: A major hub for interdisciplinary tech-and-society research, offering fellowships and workshops that actively court STS perspectives.</li>
+                            <li class="venue-item"><span class="venue-name">MIT Institute for Data, Systems, and Society (IDSS)</span> <span class="new-badge">New Addition</span>: Produces influential working papers, hosts key workshops, and funds research on the societal dimensions of data and AI.</li>
+                            <li class="venue-item"><span class="venue-name">Data Justice Lab (Cardiff University)</span> <span class="new-badge">New Addition</span>: A leading global network that produces foundational frameworks, toolkits, and reports on data justice.</li>
+                            <li class="venue-item"><span class="venue-name">Algorithmic Justice League (AJL)</span> <span class="new-badge">New Addition</span>: While advocacy-oriented, the AJL produces influential reports and provides a vital platform for scholar-activist work, particularly around facial recognition and bias.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. STATUS NOTES & EMERGING TRENDS -->
+            <section class="venue-section" id="sec-trends">
+                <div class="venue-section-header">
+                    <h2>5. Status Notes &amp; Emerging Trends</h2>
+                    <span class="venue-section-sub">Editorial Updates, Defunct Outlets &amp; Structural Shifts</span>
+                </div>
+
+                <div class="subcat-grid">
+                    <!-- Venue Statuses -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Venue Statuses</span>
+                            <span class="subcat-tag">Verification &amp; Pitching Notes</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Real Life:</span> Confirmed defunct &mdash; ceased publication indefinitely in August 2022.</li>
+                            <li class="venue-item"><span class="venue-name">Logic(s):</span> Irregular publication rhythm. Active under Columbia's INCITE, with a growing editorial staff and fellowships.</li>
+                            <li class="venue-item"><span class="venue-name">Critical AI and Data &amp; Policy:</span> Newer journals &mdash; still worth checking current scope and review turnaround.</li>
+                            <li class="venue-item"><span class="venue-name">Data &amp; Society's Points on Medium:</span> Activity has varied &mdash; still worth confirming before pitching.</li>
+                            <li class="venue-item"><span class="venue-name">Stanford Internet Observatory:</span> Dismantled; don't rely on it as a venue.</li>
+                            <li class="venue-item"><span class="venue-name">Correction Note:</span> "American Ethnographer" corrected to its official title, <em>American Ethnologist</em>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Emerging Trends in the Field -->
+                    <div class="subcat-card">
+                        <div class="subcat-title">
+                            <span>Emerging Trends in the Field</span>
+                            <span class="subcat-tag">2025&ndash;2026 Field Trajectory</span>
+                        </div>
+                        <ul class="venue-list">
+                            <li class="venue-item"><span class="venue-name">Institutionalization of "AI and Society":</span> There is a growing trend of universities formalizing this intersection. Recent multi-campus initiatives (such as the SUNY system's $5M investment to create dedicated "Departments/Centers of AI and Society") signal that this is becoming a distinct, funded academic unit, leading to new dedicated journal special issues and conferences.</li>
+                            <li class="venue-item"><span class="venue-name">Journal Distinction:</span> Ensure scholars distinguish between <em>AI &amp; Society</em> (Springer, broader STS/sociological focus) and <em>AI and Ethics</em> (Springer, more focused on normative/applied ethics), as both are now top-tier venues serving distinct sub-communities.</li>
+                            <li class="venue-item"><span class="venue-name">Open Access Momentum:</span> Venues like <em>Computational Communication Research</em> and <em>Socius</em> are increasingly preferred by younger scholars due to diamond/gold open-access models and faster turnaround times compared to traditional legacy journals.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let activeSection = 'ALL';
+
+        function setSectionFilter(secId, btn) {
+            activeSection = secId;
+            document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterVenues();
+        }
+
+        function filterVenues() {
+            const q = document.getElementById('venueSearch').value.toLowerCase().trim();
+            document.querySelectorAll('.venue-section').forEach(sec => {
+                if (activeSection !== 'ALL' && sec.id !== activeSection) {
+                    sec.style.display = 'none';
+                    return;
+                }
+                let sectionHasMatch = false;
+                sec.querySelectorAll('.subcat-card').forEach(card => {
+                    let cardHasMatch = false;
+                    const cardTitle = card.querySelector('.subcat-title').innerText.toLowerCase();
+                    card.querySelectorAll('.venue-item').forEach(item => {
+                        const text = item.innerText.toLowerCase();
+                        if (!q || text.includes(q) || cardTitle.includes(q)) {
+                            item.style.display = '';
+                            cardHasMatch = true;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    card.style.display = cardHasMatch ? '' : 'none';
+                    if (cardHasMatch) sectionHasMatch = true;
+                });
+                sec.style.display = sectionHasMatch ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+
+</html>
