@@ -1,7 +1,7 @@
 # Project: Civic AI
 **Category / Focus:** Participatory Governance • Community Data Commons  
 **Workspace Location:** `projects/civic_ai/`  
-**Live Interface / URL:** In development
+**Live Interface / URL:** [`civic_digital_twinning_dashboard.html`](file:///c:/Users/jfmar/josemarichal/github.io/civic_digital_twinning_dashboard.html)
 
 > **Antigravity Context Rule**: This file is the primary memory and decision log for this project. Whenever the user modifies, reviews, or makes architectural decisions regarding this project, the agent must update this document.
 
@@ -13,6 +13,10 @@ Investigating and prototyping Civic Digital Twins, municipal AI governance frame
 ---
 
 ## 2. Key Files & Resources
+- **Live Dashboard & Explorer:** [`civic_digital_twinning_dashboard.html`](file:///c:/Users/jfmar/josemarichal/github.io/civic_digital_twinning_dashboard.html)
+- **Civic Digital Twinning Research Dossier:** [`projects/civic_ai/civic_digital_twinning_research.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/civic_ai/civic_digital_twinning_research.md)
+- **Municipal AI Governance Literature Review:** [`projects/civic_ai/municipal_ai_governance_literature.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/civic_ai/municipal_ai_governance_literature.md)
+- **Global Civic Digital Twins Dataset (`n=10`):** [`projects/civic_ai/civic_digital_twins_global_cases.csv`](file:///c:/Users/jfmar/josemarichal/github.io/projects/civic_ai/civic_digital_twins_global_cases.csv)
 - **Core File:** `projects.html`
 - **Related App:** `conference_knowledge_graph.html`
 - **Related App:** `thousand_oaks_civic_graph.html`
@@ -23,6 +27,7 @@ Investigating and prototyping Civic Digital Twins, municipal AI governance frame
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-11-03 | **Published Civic Digital Twinning & Municipal AI Dashboard (`civic_digital_twinning_dashboard.html`) & Linked from `projects.html`** | Created `civic_digital_twinning_dashboard.html`, `civic_digital_twins_global_cases.csv` (`n=10`), `civic_digital_twinning_research.md`, and `municipal_ai_governance_literature.md`, wiring the portal directly to the "Civic Digital Twinning" card on `projects.html`. |
 | 2026-11-03 | **Municipal AI Implementation Literature Synthesis (6 Core Sub-Areas)** | Synthesized public administration scholarship (Desouza, Mergel, Janssen, Meijer, Zuiderwijk, Brauneis & Goodman, Green) and municipal practitioner frameworks (GovAI Coalition, NIST AI RMF, Johns Hopkins GovEx, Bloomberg City AI Connect, NLC) across 6 operational pillars: (1) Strategic Alignment with City Vision, (2) Use-Case Intake & Prioritization Matrices, (3) Tool Evaluation & Procurement Gatekeeping, (4) Workforce Training & Literacy Guidelines, (5) Public-Value & Performance Measurement, and (6) Data Governance Integration. |
 | 2026-10-15 | **Project Established: Civic AI (Digital Twinning)** | Initialized project to theorize and prototype participatory civic digital twins, community data commons, and democratic urban simulations. |
 | 2026-10-18 | **Idea to Civic App Pipeline Reordered** | Moved the "Idea to Civic App Pipeline" card to the end of the "Proposed or Ongoing Projects" section on `projects.html` to prioritize thematic research tracks first. |

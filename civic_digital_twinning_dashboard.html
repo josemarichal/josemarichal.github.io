@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Digital Twinning &amp; Municipal AI Governance | Dataset &amp; Methodology Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #161f33;
+            --bg-elevated: #1e293b;
+            --border-subtle: rgba(255, 255, 255, 0.09);
+            --border-focus: rgba(14, 165, 233, 0.55);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-sky: #0ea5e9;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-purple: #a855f7;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: #38bdf8; text-decoration: none; transition: color 0.15s ease; }
+        a:hover { color: #7dd3fc; text-decoration: underline; }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.85rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .topbar-brand {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .topbar-pill {
+            background: rgba(14, 165, 233, 0.2);
+            color: #7dd3fc;
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            padding: 2px 8px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .topbar-nav { display: flex; gap: 1.25rem; font-size: 0.85rem; align-items: center; }
+        .topbar-nav a { color: var(--text-secondary); font-weight: 500; }
+        .topbar-nav a:hover { color: #fff; text-decoration: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .hero {
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.2), transparent 55%),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.12), transparent 50%),
+                        var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7dd3fc;
+            background: rgba(14, 165, 233, 0.16);
+            border: 1px solid rgba(14, 165, 233, 0.35);
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.9rem, 3.3vw, 2.75rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        .hero-lead {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 940px;
+            margin-bottom: 1.5rem;
+        }
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .stat-card {
+            background: rgba(22, 31, 51, 0.85);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.15rem 1.25rem;
+        }
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 0.35rem;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .section-header {
+            margin: 3rem 0 1.25rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            color: #fff;
+        }
+        .section-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .method-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.4rem;
+        }
+        .method-step {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #7dd3fc;
+            margin-bottom: 0.45rem;
+            display: block;
+        }
+        .method-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+            color: #fff;
+        }
+        .method-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.65rem;
+        }
+        .method-code {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-subtle);
+            padding: 0.5rem 0.65rem;
+            border-radius: 6px;
+            color: #bae6fd;
+            overflow-x: auto;
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .file-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.15s ease, transform 0.15s ease;
+        }
+        .file-card:hover {
+            border-color: var(--border-focus);
+            transform: translateY(-2px);
+        }
+        .file-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.65rem;
+        }
+        .file-type {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .type-csv { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.35); }
+        .type-md { background: rgba(14, 165, 233, 0.18); color: #7dd3fc; border: 1px solid rgba(14, 165, 233, 0.35); }
+        .type-app { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.35); }
+        .file-rows {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--text-muted);
+        }
+        .file-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.45rem;
+            word-break: break-all;
+        }
+        .file-desc {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .file-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none !important;
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: var(--accent-sky);
+            color: #082f49;
+            font-weight: 700;
+        }
+        .btn-primary:hover { background: #38bdf8; color: #082f49; }
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-secondary);
+            border-color: var(--border-subtle);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .tabs-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            background: var(--bg-secondary);
+            padding: 0.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+        }
+        .tab-btn {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            padding: 0.6rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.83rem;
+            font-weight: 600;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .tab-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+        .tab-btn.active {
+            background: var(--accent-sky);
+            color: #082f49;
+            font-weight: 700;
+        }
+
+        .explorer-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-input {
+            flex: 1;
+            min-width: 260px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            font-family: var(--font-sans);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-sky);
+        }
+        .filter-select {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.84rem;
+        }
+        .count-pill {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .table-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .table-scroll {
+            max-height: 650px;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        thead th {
+            position: sticky;
+            top: 0;
+            background: #0f172a;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.8rem 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 10;
+        }
+        tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.12s ease;
+        }
+        tbody tr:hover {
+            background: rgba(14, 165, 233, 0.07);
+        }
+        td {
+            padding: 0.75rem 0.9rem;
+            vertical-align: top;
+            color: var(--text-secondary);
+        }
+        .badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .badge-sky { background: rgba(14, 165, 233, 0.18); color: #7dd3fc; border: 1px solid rgba(14, 165, 233, 0.4); }
+        .badge-emerald { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .badge-amber { background: rgba(245, 158, 11, 0.18); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .snippet-box {
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            max-width: 440px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.45rem 0.65rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            line-height: 1.45;
+        }
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="topbar">
+        <div class="topbar-brand">
+            <span>Technology &amp; Society Working Group</span>
+            <span class="topbar-pill">Democratic Innovation &bull; Civic Digital Twins</span>
+        </div>
+        <div class="topbar-nav">
+            <a href="projects.html">&larr; Back to Working Group Projects</a>
+            <a href="#paradigm">Civic Twin Paradigm</a>
+            <a href="#governance">6-Pillar Municipal AI</a>
+            <a href="#downloads">Dossiers &amp; CSV</a>
+            <a href="#explorer">Interactive Explorer</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <span class="hero-eyebrow">Participatory Urban Modeling &bull; Democratic Data Commons &bull; Municipal AI Governance</span>
+            <h1>Civic Digital Twinning &amp; Participatory Municipal AI</h1>
+            <p class="hero-lead">
+                How can virtual city replicas serve as <strong>democratic digital commons</strong> rather than top-down technocratic dashboards? This project benchmarks <strong>10 pioneering global and U.S. experiments in Civic Digital Twinning</strong> (led by Bologna's <em>Gemello Digitale Civico</em>, Barcelona's <em>vCity + Decidim</em>, Helsinki <em>3D+ Kalasatama</em>, Gothenburg's <em>MinStad</em>, and Boston's <em>"Right to the Digital Twin City"</em>) alongside a <strong>6-Pillar Municipal AI Governance Framework</strong> for local governments.
+            </p>
+            <div class="hero-cta-row">
+                <a class="btn btn-primary" href="#explorer">Explore 10 Global Civic Twin Cases &rarr;</a>
+                <a class="btn btn-outline" href="#downloads">Download Research Dossiers &amp; CSV</a>
+                <a class="btn btn-outline" href="thousand_oaks_civic_graph.html">Launch Thousand Oaks Civic Knowledge Graph &rarr;</a>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">10</div>
+                    <div class="stat-label">Global &amp; U.S. Civic Digital Twin Experiments Benchmarked (Europe, Asia-Pacific, North America)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Operational Pillars of Municipal AI Strategy (Vision, Intake, Procurement, Training, Metrics, Data)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Diagnostic Dimensions Distinguishing Technocratic Smart Cities from Civic Digital Commons</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18+</div>
+                    <div class="stat-label">Public Administration, STS &amp; Legal Scholars Synthesized (Moore, Meijer, Desouza, Brauneis, Green)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: THE CIVIC DIGITAL TWIN PARADIGM -->
+        <div class="section-header" id="paradigm">
+            <div>
+                <h2>1. From Technocratic Dashboards to Democratic Digital Commons</h2>
+                <div class="section-subtitle">Fusing hard physical telemetry with qualitative citizen lived experience to co-design climate resilience and spatial equity</div>
+            </div>
+        </div>
+
+        <div class="method-grid">
+            <div class="method-card">
+                <span class="method-step">Dimension 01 &bull; Multimodal Fusion</span>
+                <h3>Hard Sensors + Soft Lived Experience</h3>
+                <p>
+                    Classical urban digital twins map pipes, traffic lights, and building footprints. <strong>Civic Digital Twins (CDTs)</strong> fuse satellite thermal data, air quality, and BIM models with neighborhood vulnerability surveys, participatory mapping, and resident lived experience.
+                </p>
+                <div class="method-code">Bologna Gemello Digitale Civico + FBK</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Dimension 02 &bull; Bidirectional Co-Design</span>
+                <h3>"What-If" Community Sandboxes</h3>
+                <p>
+                    Rather than displaying finished architectural renders after decisions are locked in, CDTs equip neighborhood assemblies with browser, VR, and street-level AR sandboxes to test how green cooling cells, Superblocks, or zoning changes impact their block.
+                </p>
+                <div class="method-code">Helsinki 3D+ Kalasatama &amp; Dublin Docklands</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Dimension 03 &bull; Technological Sovereignty</span>
+                <h3>Open-Source Commons vs. Cloud Rent</h3>
+                <p>
+                    To prevent proprietary vendor lock-in and black-box optimization, municipal pioneers link urban simulation engines directly to open-source participatory democracy platforms governed as public digital infrastructure.
+                </p>
+                <div class="method-code">Barcelona BSC vCity + Decidim</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Dimension 04 &bull; Critical Safeguards</span>
+                <h3>Resisting "Simulation-Washing"</h3>
+                <p>
+                    Audits three structural failure modes: (1) <em>Performative participation</em> ("simulation-washing"), (2) the <em>"Invisible Population" trap</em> (omitting digitally unconnected residents), and (3) <em>surveillance creep</em> into law enforcement.
+                </p>
+                <div class="method-code">Boston "Right to the Digital Twin City"</div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: 6-PILLAR MUNICIPAL AI GOVERNANCE -->
+        <div class="section-header" id="governance">
+            <div>
+                <h2>2. Six-Pillar Municipal AI Governance &amp; Implementation Architecture</h2>
+                <div class="section-subtitle">Synthesizing Public Administration scholarship and GovAI Coalition / NIST / GovEx municipal frameworks</div>
+            </div>
+        </div>
+
+        <div class="method-grid">
+            <div class="method-card">
+                <span class="method-step">Pillar 01 &amp; Pillar 02</span>
+                <h3>Public-Value Alignment &amp; Risk Triage</h3>
+                <p>
+                    Anchors AI in Mark Moore's <em>Public Value Management</em> rather than vendor hype, routing departmental proposals through a centralized <strong>Risk Tiering Gate</strong> (prohibiting biometric dragnets) and a <strong>Feasibility &times; Equity Matrix</strong>.
+                </p>
+                <div class="method-code">Moore (1995) &bull; Meijer (2021) &bull; Desouza (2020)</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Pillar 03 &amp; Pillar 04</span>
+                <h3>Procurement as Policy &amp; Anti-Rubber-Stamping</h3>
+                <p>
+                    Enforces RFP clauses waiving trade-secret shields for bias audits (Brauneis &amp; Goodman) and replaces tokenistic "human-in-the-loop" rubber-stamping (Ben Green) with role-tiered workforce training and union co-design.
+                </p>
+                <div class="method-code">Brauneis &amp; Goodman (2018) &bull; Green (2022)</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Pillar 05 &amp; Pillar 06</span>
+                <h3>4D Scorecards &amp; Data Sovereignty</h3>
+                <p>
+                    Evaluates deployed tools across <strong>Efficiency, Drift, Equity, and Trust</strong> with 12-month sunset clauses, backed by <em>Datasheets for Datasets</em> (Gebru et al.) and strict departmental privacy firewalls.
+                </p>
+                <div class="method-code">Zuiderwijk (2021) &bull; Janssen (2020) &bull; Gebru (2021)</div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: FILES & DOWNLOADS -->
+        <div class="section-header" id="downloads">
+            <div>
+                <h2>3. Research Dossiers, Structured Case CSV &amp; Related Civic Apps</h2>
+                <div class="section-subtitle">Direct downloads from <code>projects/civic_ai/</code></div>
+            </div>
+        </div>
+
+        <div class="files-grid">
+            <div class="file-card">
+                <div>
+                    <div class="file-badge-row">
+                        <span class="file-type type-md">Research Dossier</span>
+                        <span class="file-rows">Global Case Synthesis</span>
+                    </div>
+                    <div class="file-title">civic_digital_twinning_research.md</div>
+                    <p class="file-desc">
+                        Complete research synthesis on Civic Digital Twinning covering Bologna, Barcelona, Helsinki, Gothenburg, Dublin, Zurich, Rennes, Seoul, Boston, and Chattanooga, plus the Classical vs. Civic Twin rubric.
+                    </p>
+                </div>
+                <div class="file-actions">
+                    <a class="btn btn-primary" href="projects/civic_ai/civic_digital_twinning_research.md" download>Download Dossier (.md)</a>
+                    <button class="btn btn-outline" onclick="switchTab('cases'); document.getElementById('explorer').scrollIntoView({behavior:'smooth'});">Explore 10 Cities</button>
+                </div>
+            </div>
+
+            <div class="file-card">
+                <div>
+                    <div class="file-badge-row">
+                        <span class="file-type type-md">Literature Review</span>
+                        <span class="file-rows">6 Operational Pillars</span>
+                    </div>
+                    <div class="file-title">municipal_ai_governance_literature.md</div>
+                    <p class="file-desc">
+                        Comprehensive academic and practitioner literature review across the 6 pillars of municipal AI implementation (Vision Alignment, Use-Case Intake, Procurement, Workforce Training, Evaluation, and Data Governance).
+                    </p>
+                </div>
+                <div class="file-actions">
+                    <a class="btn btn-primary" href="projects/civic_ai/municipal_ai_governance_literature.md" download>Download Literature Review (.md)</a>
+                    <button class="btn btn-outline" onclick="switchTab('pillars'); document.getElementById('explorer').scrollIntoView({behavior:'smooth'});">Explore 6 Pillars</button>
+                </div>
+            </div>
+
+            <div class="file-card">
+                <div>
+                    <div class="file-badge-row">
+                        <span class="file-type type-csv">CSV Dataset</span>
+                        <span class="file-rows">n = 10 global benchmark cities</span>
+                    </div>
+                    <div class="file-title">civic_digital_twins_global_cases.csv</div>
+                    <p class="file-desc">
+                        Structured comparative dataset of 10 global and U.S. Civic Digital Twin initiatives detailing lead institutions, governance models, hard telemetry layers, soft civic inputs, and democratic safeguards.
+                    </p>
+                </div>
+                <div class="file-actions">
+                    <a class="btn btn-primary" href="projects/civic_ai/civic_digital_twins_global_cases.csv" download>Download CSV</a>
+                    <a class="btn btn-outline" href="thousand_oaks_civic_graph.html">Thousand Oaks Civic Graph &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: INTERACTIVE EXPLORER -->
+        <div class="section-header" id="explorer">
+            <div>
+                <h2>4. Interactive Civic Digital Twins &amp; Municipal AI Explorer</h2>
+                <div class="section-subtitle">Search and filter all 10 global Civic Digital Twin experiments, 6 Municipal AI Governance pillars, and the 8-dimension diagnostic rubric</div>
+            </div>
+        </div>
+
+        <div class="tabs-bar">
+            <button class="tab-btn active" id="tab-cases" onclick="switchTab('cases')">
+                1. Global &amp; U.S. Civic Digital Twin Cases (n = 10)
+            </button>
+            <button class="tab-btn" id="tab-pillars" onclick="switchTab('pillars')">
+                2. 6-Pillar Municipal AI Governance Matrix (n = 6)
+            </button>
+            <button class="tab-btn" id="tab-rubric" onclick="switchTab('rubric')">
+                3. Classical vs. Civic Digital Twin Rubric (n = 8)
+            </button>
+        </div>
+
+        <div class="explorer-controls">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by city, platform (e.g., Decidim, MinStad, Kalasatama), scholar, data layer, or safeguard..." oninput="renderActiveTable()">
+            <select id="filterSelect" class="filter-select" onchange="renderActiveTable()">
+                <option value="ALL">All Records</option>
+            </select>
+            <span class="count-pill" id="rowCountLabel">Showing 0 rows</span>
+        </div>
+
+        <div class="table-wrap">
+            <div class="table-scroll">
+                <table id="dataTable">
+                    <thead id="tableHead"></thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <div>
+                <strong>Jose Marichal, Ph.D.</strong> &bull; Professor of Political Science, California Lutheran University &bull; Technology &amp; Society Working Group
+            </div>
+            <div>
+                <a href="projects.html">&larr; Return to Projects Showcase</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const DATA_CASES = [{"city": "Bologna", "country": "Italy", "region": "Europe", "project_name": "Gemello Digitale Civico (Bologna Civic Digital Twin)", "lead_institutions": "Municipality of Bologna, Fondazione Innovazione Urbana (FIU), University of Bologna, Fondazione Bruno Kessler (FBK)", "governance_model": "Participatory Neighborhood Labs (Laboratori di quartiere) & Public Data Commons", "hard_data_layers": "Satellite thermal imaging, urban tree canopy GIS, mobility flows, building energy profiles", "soft_civic_layers": "Neighborhood social vulnerability surveys, citizen co-design assemblies, lived heat-stress reporting", "primary_civic_application": "Climate neutrality by 2030: simulating placement of 'green cooling cells' and pedestrian zones in working-class urban heat islands rather than commercial corridors.", "key_democratic_safeguard": "Legally frames the digital twin as a democratic commons where neighborhood assembly feedback modifies simulation weights."}, {"city": "Barcelona", "country": "Spain", "region": "Europe", "project_name": "vCity Platform + Decidim Integration", "lead_institutions": "Barcelona City Council, Barcelona Supercomputing Center (BSC), Decidim Free Software Association", "governance_model": "Technological Sovereignty & Open-Source Participatory Democracy (Decidim)", "hard_data_layers": "Multi-modal traffic telemetry, acoustic noise sensors, NO2 air quality grids, parcel land-use data", "soft_civic_layers": "Decidim citizen proposals, neighborhood demographic vulnerability, eldercare & school walkability surveys", "primary_civic_application": "Superblocks (Superilles) spillover modeling and 15-Minute City spatial equity audits for low-income neighborhoods.", "key_democratic_safeguard": "100% open-source software stack preventing Big Tech cloud lock-in and proprietary vendor enclosure."}, {"city": "Helsinki", "country": "Finland", "region": "Europe", "project_name": "Helsinki 3D+ & Smart Kalasatama Digital Twin", "lead_institutions": "City of Helsinki, Forum Virium Helsinki", "governance_model": "Open Semantic 3D Commons (CityGML + Open Mesh) & District Co-Design Sandbox", "hard_data_layers": "CityGML semantic 3D model, high-resolution photogrammetry mesh, BIM architectural permitting files, wind/solar simulations", "soft_civic_layers": "Browser-based resident 3D annotations, VR public space walkthrough feedback, local school/park usage diaries", "primary_civic_application": "Kalasatama district co-design: residents walked through proposed parks, transit stops, and building massing in VR/browser before construction.", "key_democratic_safeguard": "Open-access municipal data license allowing independent civic groups and residents to inspect BIM proposals before permits are issued."}, {"city": "Gothenburg", "country": "Sweden", "region": "Europe", "project_name": "Virtual Gothenburg & MinStad ('My City')", "lead_institutions": "City of Gothenburg, Chalmers University of Technology, EU DigiTwins4PEDs Consortium", "governance_model": "Public Dialogue Portal & Positive Energy District Co-Creation", "hard_data_layers": "400-km2 high-resolution 3D topographic twin, building retrofit energy models, solar irradiance maps", "soft_civic_layers": "Geolocated citizen pins on MinStad (perceived night-time safety, lived memories, community garden proposals)", "primary_civic_application": "Bridging qualitative neighborhood safety perceptions with multi-stakeholder urban decarbonization roadmaps.", "key_democratic_safeguard": "Direct public write-access to the spatial map layer via MinStad without requiring GIS technical expertise."}, {"city": "Dublin", "country": "Ireland", "region": "Europe", "project_name": "Smart Docklands & Dublin Community Digital Twin", "lead_institutions": "Dublin City Council, Trinity College Dublin, Connect Centre", "governance_model": "Community Counter-Modeling & Developer Accountability Testbed", "hard_data_layers": "3D building massing, shadow/daylight trajectories, wind-tunneling CFD, River Liffey coastal flood models", "soft_civic_layers": "Working-class resident workshops, AR street-level visualizations, community amenity displacement audits", "primary_civic_application": "Empowering working-class Docklands residents to evaluate shadow, wind, and displacement impacts of adjacent Big Tech campus high-rises.", "key_democratic_safeguard": "Translates complex architectural environmental impact filings into mobile AR views verifiable at the street corner."}, {"city": "Zurich", "country": "Switzerland", "region": "Europe", "project_name": "Zurich Multi-Modal Mobility & Referendum Twin", "lead_institutions": "City of Zurich Open Data, ETH Zurich (MATSim)", "governance_model": "Direct-Democracy Deliberative Simulation Support", "hard_data_layers": "Agent-based transit micro-simulations (MATSim), pedestrian zoning models, urban micro-climate layers", "soft_civic_layers": "Public consultation scenarios, municipal referendum voter information packets, commuter diaries", "primary_civic_application": "Feeding transparent 'what-if' transit and pedestrianization scenarios directly into Swiss direct-democracy public consultations.", "key_democratic_safeguard": "Open data and open-source agent-based transport code enabling independent verification prior to municipal votes."}, {"city": "Rennes", "country": "France", "region": "Europe", "project_name": "Rennes 3D Collaborative Urban Platform", "lead_institutions": "Rennes M\u00e9tropole", "governance_model": "Open-Source Metropolitan Co-Creation Platform", "hard_data_layers": "Metropolitan 3D GIS, micro-climate heat models, transit corridor construction staging", "soft_civic_layers": "Neighborhood council workshops, street-corner public space redesign feedback loops", "primary_civic_application": "Turning passive neighborhood residents into co-designers of local public plazas and micro-climate interventions.", "key_democratic_safeguard": "Built on open-source web-GIS standards governed by the metropolitan public authority."}, {"city": "Seoul", "country": "South Korea", "region": "Asia-Pacific", "project_name": "S-Map (Seoul 3D Spatial Information Platform)", "lead_institutions": "Seoul Metropolitan Government", "governance_model": "Metropolitan Open Portal + Citizen Accessibility Crowdsourcing", "hard_data_layers": "605-km2 citywide 3D twin, real-time wind corridors, solar radiation, fine-dust dispersion", "soft_civic_layers": "Crowdsourced wheelchair/elderly accessibility barriers (broken curbs, steep ramps, elevator outages)", "primary_civic_application": "Allowing citizens to test solar/shadow impacts on their own apartments and crowdsource disability mobility barriers.", "key_democratic_safeguard": "Universal browser/mobile access to high-compute environmental simulations previously restricted to developers."}, {"city": "Boston, MA", "country": "United States", "region": "North America", "project_name": "'Right to the Digital Twin City' & BPDA 3D Smart Model", "lead_institutions": "Boston Planning & Development Agency (BPDA), Boston University Civic Tech Researchers", "governance_model": "Advocacy Counter-Mapping & Environmental Justice Auditing", "hard_data_layers": "Citywide 3D zoning & shadow model, urban heat island thermal layers, parcel redevelopment pipelines", "soft_civic_layers": "Community garden shadow audits, redlining historical overlays, Roxbury/Dorchester neighborhood testimony", "primary_civic_application": "Neighborhood advocates use 3D shadow and thermal models to contest zoning variances that threaten community gardens in historically redlined neighborhoods.", "key_democratic_safeguard": "Shifts 3D modeling from a closed planning-department tool into an adversarial public-hearing accountability instrument."}, {"city": "Chattanooga, TN", "country": "United States", "region": "North America", "project_name": "EPB Public Fiber Mobility & Road-Diet Twin", "lead_institutions": "City of Chattanooga, EPB Municipal Fiber Utility, UT Chattanooga (CUIP)", "governance_model": "Public Utility Infrastructure + Community Mobility Simulation", "hard_data_layers": "Municipally owned gigabit fiber telemetry, corridor traffic sensors, pedestrian safety & crash geometry", "soft_civic_layers": "Public transit rider feedback, pedestrian safety consultations (e.g., Frazier Avenue road diet)", "primary_civic_application": "Using municipal fiber telemetry to test 'road diet' configurations, protected bike lanes, and pedestrian safety alongside residents.", "key_democratic_safeguard": "Anchored on municipally owned public broadband infrastructure (EPB) rather than privatized telecom data enclosures."}];
+        const DATA_PILLARS = [{"pillar_num": "Pillar 01", "pillar_name": "Aligning AI Initiatives with the City's Vision", "core_scholars": "Mark Moore (1995), Albert Meijer & Marcel Thaens (2021), Kevin Desouza (2020), Ines Mergel et al. (2019/2023)", "key_concepts": "Public Value Management (PVM) vs. Technocratic Optimization; 'Public Value Canvas' for Municipal AI; Mission-Oriented Problem Formulation", "pioneer_cities": "San Jose, Boston, Seattle, Amsterdam, Helsinki, Bologna", "operational_mechanism": "Requires every proposed AI tool to map explicitly to an adopted City Council strategic priority (climate resilience, housing equity, language justice, 311 accessibility) rather than vendor-driven hype.", "failure_mode": "'Pilotitis' \u2014 disconnected departmental proofs-of-concept that generate press releases but fail to advance core municipal equity goals."}, {"pillar_num": "Pillar 02", "pillar_name": "Submitting & Prioritizing Municipal AI Use Cases", "core_scholars": "H.J. Scholl, Marijn Janssen & George Kuk (2016), Virginia Eubanks (2018), Rashida Richardson (2021)", "key_concepts": "Two-Axis Feasibility \u00d7 Public Value Scoring; Risk-Tiered Algorithmic Triage (Low/Medium/High/Prohibited)", "pioneer_cities": "San Jose (GovAI Coalition AI FactSheet + AIA), NYC (Local Law 1894 ADS Inventory), Tempe, AZ", "operational_mechanism": "Centralized intake funnel combining a Risk Tiering Gate (screening out biometric dragnet or punitive welfare scoring) with a Value \u00d7 Readiness matrix Reviewed by an interdisciplinary AI Governance Committee.", "failure_mode": "Shadow AI adoption by individual departments without civil-rights review or public Algorithmic Registry disclosure."}, {"pillar_num": "Pillar 03", "pillar_name": "Determining Which AI Tools Should Be Adopted (Procurement Gatekeeping)", "core_scholars": "Robert Brauneis & Ellen P. Goodman (2018), Deirdre Mulligan & Kenneth Bamberger (2019), Cary Coglianese (2021)", "key_concepts": "'Procurement as Policy'; Trade-Secret Waiver Clauses; Build vs. Buy vs. Open-Source Civic Commons", "pioneer_cities": "Seattle, San Francisco, San Jose (GovAI Coalition Vendor FactSheet), Barcelona (Decidim/vCity)", "operational_mechanism": "Mandatory RFP riders banning vendor training on city data, requiring trade-secret waivers for independent disparity audits, mandating Model Cards/FactSheets, and ensuring zero-cost data portability.", "failure_mode": "'Algorithmic Opacity via Trade Secrecy' \u2014 signing off-the-shelf SaaS contracts that legally bar the city from auditing error rates or bias."}, {"pillar_num": "Pillar 04", "pillar_name": "Developing Municipal Workforce Training Guidelines", "core_scholars": "Michael Lipsky (1980), Bovens & Zouridis (2002), Ben Green (2022, 'The Flaws of Policies Requiring Human Oversight'), Alon Peled (2021)", "key_concepts": "From 'Street-Level' to 'System-Level' Bureaucracy; Overcoming Automation Bias & Rubber-Stamping; Role-Tiered AI Literacy", "pioneer_cities": "Boston (Interim Generative AI Guidelines), San Francisco, Austin, Bloomberg City AI Connect Cohort", "operational_mechanism": "Three-tier curriculum (All Staff: PII redaction + verification; Domain Analysts: contesting model confidence & subgroup errors; Leadership: procurement & labor co-design with municipal unions).", "failure_mode": "'Human-in-the-Loop Scapegoating' \u2014 placing untrained clerks over complex models where cognitive fatigue causes 98%+ rubber-stamping."}, {"pillar_num": "Pillar 05", "pillar_name": "Measuring the Success of Implemented AI Projects", "core_scholars": "Anneke Zuiderwijk et al. (2021),Inioluwa Deborah Raji et al. (2020), Joy Buolamwini, Cathy O'Neil", "key_concepts": "Multi-Dimensional Public Value Scorecards; Longitudinal Model Drift & Disparity Auditing; Sunset Clauses", "pioneer_cities": "New York City, Seattle, Amsterdam, Bologna", "operational_mechanism": "Evaluates AI across 4 dimensions\u2014Operational Efficiency, Accuracy/Drift, Distributional Equity across zip codes/languages, and Democratic Trust\u2014backed by 12-month mandatory sunset renewals.", "failure_mode": "'Efficiency Myopia' \u2014 celebrating faster ticket closure while ignoring rising error rates for non-English speakers or low-income neighborhoods."}, {"pillar_num": "Pillar 06", "pillar_name": "Integrating AI Strategy with Municipal Data-Governance", "core_scholars": "Janssen et al. (2020), Timnit Gebru et al. (2021, 'Datasheets for Datasets'), Beth Simone Noveck, Sheila Jasanoff", "key_concepts": "'No AI Strategy Without a Data Strategy'; Datasheets for Municipal Datasets; Purpose Limitation Firewalls; Indigenous & Community Data Sovereignty (CARE Principles)", "pioneer_cities": "Barcelona, Helsinki, Seattle, Boston, Thousand Oaks (Civic Knowledge Graph)", "operational_mechanism": "Establishes Chief Data Officer (CDO) stewardship, historical bias documentation ('Datasheets') before ingestion, strict departmental data firewalls (311/housing/utility data isolated from policing), and open machine-readable civic APIs.", "failure_mode": "'Garbage In, Gospel Out' \u2014 feeding historically biased policing or 311 complaint records into predictive models that launder past inequities as neutral math."}];
+        const DATA_RUBRIC = [{"dimension": "1. Primary Institutional Objective", "classical_twin": "Technocratic optimization, infrastructural efficiency, and municipal cost reduction.", "civic_twin": "Democratic deliberation, spatial justice, climate equity, and empowering marginalized neighborhoods.", "diagnostic_question": "Does the digital twin optimize a predetermined engineering metric, or allow residents to contest what 'success' means?"}, {"dimension": "2. Core User Base & Accessibility", "classical_twin": "City engineers, GIS specialists, traffic control rooms, and corporate real-estate developers.", "civic_twin": "Ordinary residents, neighborhood assemblies, tenants' unions, and community workshops via browser/AR.", "diagnostic_question": "Can a non-technical resident inspect a proposed zoning or transit change on their street corner without specialized software?"}, {"dimension": "3. Epistemic Data Architecture", "classical_twin": "Exclusively quantitative 'hard' telemetry: IoT sensors, SCADA, traffic cameras, LiDAR, BIM.", "civic_twin": "Multimodal fusion: hard environmental/spatial telemetry + 'soft' lived experience, surveys, and social vulnerability.", "diagnostic_question": "Are qualitative human experiences, care work, and informal neighborhood knowledge treated as first-class data layers?"}, {"dimension": "4. Software & Cloud Governance", "classical_twin": "Proprietary SaaS vendor platform with closed simulation weights and recurring license lock-in.", "civic_twin": "Open-source digital commons (e.g., Decidim, vCity, CityGML) governed by public authorities or data trusts.", "diagnostic_question": "If the vendor contract ends tomorrow, does the public retain full ownership of the model, code, and simulation weights?"}, {"dimension": "5. Direction of Public Engagement", "classical_twin": "Top-down visualization ('Show-and-Tell') after major planning decisions are already locked in.", "civic_twin": "Bidirectional co-design ('What-If' Sandboxes) where citizen proposals actively alter simulation scenarios.", "diagnostic_question": "Can neighborhood assemblies run their own counter-simulations (e.g., alternative tree canopy or road-diet layouts)?"}, {"dimension": "6. Treatment of Vulnerable Populations", "classical_twin": "Invisible if not digitally tracked by smartphones/sensors; optimizes for aggregate citywide averages.", "civic_twin": "Explicitly weights environmental justice and heat/transit vulnerability in historically redlined or low-income districts.", "diagnostic_question": "Does the twin make structurally marginalized, elderly, or unbanked residents visible without surveilling them?"}, {"dimension": "7. Privacy & Surveillance Boundaries", "classical_twin": "Granular real-time tracking often shared across municipal departments and law enforcement.", "civic_twin": "Strict purpose-limitation firewalls, aggregated neighborhood indicators, and community data sovereignty.", "diagnostic_question": "Is there an enforceable legal firewall preventing civic twin mobility/sensor data from feeding automated policing (ALPR/facial recognition)?"}, {"dimension": "8. Primary Failure Mode to Audit", "classical_twin": "Technocratic enclosure, vendor rent extraction, and algorithmic surveillance.", "civic_twin": "Performative participation ('simulation-washing') where 3D visuals manufacture consent for pre-decided policies.", "diagnostic_question": "Is there a documented institutional mechanism binding City Council votes to the outcomes of participatory twin deliberations?"}];
+
+        let currentTab = 'cases';
+
+        function esc(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function populateFilterOptions() {
+            const sel = document.getElementById('filterSelect');
+            sel.innerHTML = '<option value="ALL">All Records</option>';
+            if (currentTab === 'cases') {
+                sel.innerHTML += '<option value="Europe">Region: Europe</option>';
+                sel.innerHTML += '<option value="North America">Region: North America (U.S.)</option>';
+                sel.innerHTML += '<option value="Asia-Pacific">Region: Asia-Pacific</option>';
+            }
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('searchInput').value = '';
+            populateFilterOptions();
+            renderActiveTable();
+        }
+
+        function renderActiveTable() {
+            const q = document.getElementById('searchInput').value.toLowerCase().trim();
+            const f = document.getElementById('filterSelect').value;
+            const head = document.getElementById('tableHead');
+            const body = document.getElementById('tableBody');
+            const countLabel = document.getElementById('rowCountLabel');
+
+            if (currentTab === 'cases') {
+                head.innerHTML = `<tr>
+                    <th>City &amp; Region</th>
+                    <th>Civic Digital Twin Platform &amp; Partners</th>
+                    <th>Hard Spatial / Sensor Layers</th>
+                    <th>Soft Qualitative / Civic Layers</th>
+                    <th>Core Democratic Application &amp; Safeguard</th>
+                </tr>`;
+                const rows = DATA_CASES.filter(r => {
+                    if (f !== 'ALL' && r.region !== f) return false;
+                    if (!q) return true;
+                    return (r.city + ' ' + r.country + ' ' + r.project_name + ' ' + r.lead_institutions + ' ' + r.governance_model + ' ' + r.hard_data_layers + ' ' + r.soft_civic_layers + ' ' + r.primary_civic_application + ' ' + r.key_democratic_safeguard).toLowerCase().includes(q);
+                });
+                countLabel.textContent = `Showing ${rows.length} of ${DATA_CASES.length} benchmarked Civic Digital Twin initiatives`;
+                body.innerHTML = rows.map(r => `<tr>
+                    <td>
+                        <div style="font-weight:700; color:#fff; font-size:0.9rem;">${esc(r.city)}, ${esc(r.country)}</div>
+                        <span class="badge badge-sky" style="margin-top:4px;">${esc(r.region)}</span>
+                    </td>
+                    <td>
+                        <div style="font-weight:600; color:#7dd3fc;">${esc(r.project_name)}</div>
+                        <div style="font-size:0.75rem; color:#94a3b8; margin-top:3px;">${esc(r.lead_institutions)}</div>
+                        <div style="margin-top:4px;"><span class="badge badge-emerald">${esc(r.governance_model)}</span></div>
+                    </td>
+                    <td style="font-size:0.78rem; max-width:220px;">${esc(r.hard_data_layers)}</td>
+                    <td style="font-size:0.78rem; max-width:220px; color:#e2e8f0;">${esc(r.soft_civic_layers)}</td>
+                    <td>
+                        <div class="snippet-box" style="margin-bottom:5px;"><strong>Application:</strong> ${esc(r.primary_civic_application)}</div>
+                        <div style="font-size:0.75rem; color:#6ee7b7;"><strong>Safeguard:</strong> ${esc(r.key_democratic_safeguard)}</div>
+                    </td>
+                </tr>`).join('');
+            } else if (currentTab === 'pillars') {
+                head.innerHTML = `<tr>
+                    <th>Operational Pillar</th>
+                    <th>Foundational Scholars &amp; Literature</th>
+                    <th>Key Analytical Concepts</th>
+                    <th>Operational Mechanism &amp; Pioneer Cities</th>
+                    <th>Primary Failure Mode Avoided</th>
+                </tr>`;
+                const rows = DATA_PILLARS.filter(r => {
+                    if (!q) return true;
+                    return (r.pillar_name + ' ' + r.core_scholars + ' ' + r.key_concepts + ' ' + r.pioneer_cities + ' ' + r.operational_mechanism + ' ' + r.failure_mode).toLowerCase().includes(q);
+                });
+                countLabel.textContent = `Showing ${rows.length} of ${DATA_PILLARS.length} municipal AI implementation pillars`;
+                body.innerHTML = rows.map(r => `<tr>
+                    <td>
+                        <span class="badge badge-sky">${esc(r.pillar_num)}</span>
+                        <div style="font-weight:700; color:#fff; margin-top:4px;">${esc(r.pillar_name)}</div>
+                    </td>
+                    <td style="font-size:0.79rem; color:#e2e8f0; max-width:210px;">${esc(r.core_scholars)}</td>
+                    <td style="font-size:0.79rem; color:#7dd3fc; max-width:220px;">${esc(r.key_concepts)}</td>
+                    <td>
+                        <div class="snippet-box" style="margin-bottom:4px;">${esc(r.operational_mechanism)}</div>
+                        <div style="font-size:0.74rem; color:#94a3b8;"><strong>Pioneers:</strong> ${esc(r.pioneer_cities)}</div>
+                    </td>
+                    <td style="font-size:0.78rem; color:#fde68a; max-width:230px;">${esc(r.failure_mode)}</td>
+                </tr>`).join('');
+            } else if (currentTab === 'rubric') {
+                head.innerHTML = `<tr>
+                    <th>Evaluation Dimension</th>
+                    <th>Classical Technocratic Urban Digital Twin</th>
+                    <th>Democratic Civic Digital Twin (CDT)</th>
+                    <th>Empirical Audit / Diagnostic Question</th>
+                </tr>`;
+                const rows = DATA_RUBRIC.filter(r => {
+                    if (!q) return true;
+                    return (r.dimension + ' ' + r.classical_twin + ' ' + r.civic_twin + ' ' + r.diagnostic_question).toLowerCase().includes(q);
+                });
+                countLabel.textContent = `Showing ${rows.length} of ${DATA_RUBRIC.length} diagnostic dimensions`;
+                body.innerHTML = rows.map(r => `<tr>
+                    <td style="font-weight:700; color:#fff;">${esc(r.dimension)}</td>
+                    <td style="font-size:0.8rem; color:#94a3b8;">${esc(r.classical_twin)}</td>
+                    <td style="font-size:0.8rem; color:#6ee7b7; font-weight:500;">${esc(r.civic_twin)}</td>
+                    <td style="font-family:var(--font-mono); font-size:0.75rem; color:#bae6fd;">${esc(r.diagnostic_question)}</td>
+                </tr>`).join('');
+            }
+        }
+
+        populateFilterOptions();
+        renderActiveTable();
+    </script>
+</body>
+</html>
