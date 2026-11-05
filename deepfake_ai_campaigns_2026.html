@@ -5,260 +5,414 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 Political AI Deepfakes Dataset &amp; Methodology | Jose Marichal</title>
-    <link rel="stylesheet" href="style.css?v=6">
+        <link rel="stylesheet" href="style.css?v=6">
     <style>
-        .hero-banner {
-            background: linear-gradient(135deg, #1e1b4b 0%, #311042 55%, #4c1d95 100%);
-            color: #ffffff;
-            padding: 2.5rem 2.2rem;
-            border-radius: 12px;
-            margin-bottom: 2.2rem;
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+        /* Minimalist Research Page Overrides Consistent with style.css */
+        .back-nav {
+            margin: 2rem 0 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
-        .hero-badge {
+        .back-nav a {
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 2px;
+            font-weight: 700;
+        }
+
+        /* Hero / Research Question Block */
+        .hero, .hero-banner {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-radius: 0;
+            color: var(--text-main);
+        }
+        .eyebrow, .hero-eyebrow, .hero-badge {
             display: inline-block;
-            background: rgba(167, 139, 250, 0.25);
-            border: 1px solid rgba(196, 181, 253, 0.5);
-            color: #ede9fe;
-            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 4px 10px;
-            border-radius: 999px;
-            margin-bottom: 0.85rem;
-        }
-        .hero-banner h1 {
+            letter-spacing: 0.1em;
+            background: #0a0a0a;
             color: #ffffff;
-            font-size: 2.1rem;
-            margin: 0 0 0.75rem 0;
-            line-height: 1.2;
+            padding: 0.25rem 0.65rem;
+            margin-bottom: 1rem;
+            border-radius: 0;
         }
-        .hero-banner p {
-            color: #e2e8f0;
+        .hero h1, .hero-banner h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-heading);
+            margin-bottom: 1.25rem;
+            line-height: 1.12;
+        }
+        .rq-box {
+            background: var(--bg-color);
+            border: 1.5px solid var(--border-color);
+            border-left: 5px solid var(--border-color);
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0 1.75rem;
+            border-radius: 0;
+        }
+        .rq-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        .rq-text, .hero-lead, .hero-banner p {
             font-size: 1.02rem;
-            line-height: 1.6;
-            max-width: 880px;
-            margin: 0 0 1.25rem 0;
+            color: var(--text-main);
+            line-height: 1.65;
+            max-width: 95ch;
+            margin-bottom: 1.25rem;
         }
-        .stat-strip {
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.25rem 0;
+        }
+
+        /* Summary Metric Grids */
+        .kpi-grid, .stat-grid, .stat-strip {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 1rem;
             margin-top: 1.5rem;
         }
-        .stat-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 8px;
-            padding: 0.9rem 1.1rem;
+        .kpi-card, .stat-card, .stat-box {
+            background: var(--bg-color);
+            border: 1.5px solid var(--border-color);
+            padding: 1.15rem 1.25rem;
+            border-radius: 0;
         }
-        .stat-box .stat-num {
-            font-size: 1.65rem;
+        .kpi-val, .stat-value, .stat-num {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
             font-weight: 800;
-            color: #c4b5fd;
-            line-height: 1.1;
+            color: var(--text-heading);
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
         }
-        .stat-box .stat-label {
+        .kpi-label, .stat-label {
+            font-family: var(--font-body);
             font-size: 0.8rem;
-            color: #cbd5e1;
-            margin-top: 4px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
+        /* Section Headings */
+        section, .section-card {
+            margin-bottom: 3.5rem;
+        }
         .section-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 1.75rem 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
         }
-        .section-card h2 {
-            margin-top: 0;
-            font-size: 1.45rem;
-            color: #0f172a;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 0.6rem;
-            margin-bottom: 1.1rem;
+        .section-header, .section-card > h2 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.65rem;
+            margin: 2.5rem 0 1.5rem;
         }
-        .section-card h3 {
-            font-size: 1.12rem;
-            color: #1e293b;
-            margin-top: 1.3rem;
-            margin-bottom: 0.5rem;
+        .section-header h2, .section-card > h2 {
+            font-size: clamp(1.45rem, 2.5vw, 1.95rem);
+            margin: 0;
+            color: var(--text-heading);
+        }
+        .section-subtitle, .section-header p {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+            margin-bottom: 0;
         }
 
-        .download-grid {
+        /* Methodology & File Cards */
+        .design-grid, .method-grid, .pipeline-steps, .files-grid, .download-grid, .dl-grid, .persona-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
         }
-        .download-card {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-left: 5px solid #7c3aed;
-            border-radius: 8px;
-            padding: 1.1rem 1.25rem;
+        .stage-card, .method-card, .step-box, .file-card, .download-card, .dl-card, .persona-card {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            padding: 1.4rem;
+            border-radius: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .download-card.code-card {
-            border-left-color: #0284c7;
-        }
-        .download-card h4 {
-            margin: 0 0 0.35rem 0;
-            font-size: 1rem;
-            color: #0f172a;
-        }
-        .download-card p {
-            font-size: 0.86rem;
-            color: #475569;
-            margin: 0 0 0.9rem 0;
-            line-height: 1.45;
-        }
-        .dl-btn {
+        .stage-badge, .method-step, .step-num, .file-type, .weight-pill {
             display: inline-block;
-            background: #7c3aed;
-            color: #ffffff !important;
-            text-decoration: none !important;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
             font-weight: 700;
-            font-size: 0.82rem;
-            padding: 7px 13px;
-            border-radius: 6px;
-            align-self: flex-start;
-            transition: background 0.15s;
-        }
-        .dl-btn:hover {
-            background: #6d28d9;
-        }
-        .dl-btn.secondary {
-            background: #0284c7;
-        }
-        .dl-btn.secondary:hover {
-            background: #0369a1;
-        }
-
-        .pipeline-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1rem;
-            margin: 1.2rem 0;
-        }
-        .step-box {
-            background: #faf5ff;
-            border: 1px solid #e9d5ff;
-            border-radius: 8px;
-            padding: 1rem 1.15rem;
-        }
-        .step-box .step-num {
-            display: inline-block;
-            background: #7c3aed;
-            color: #fff;
-            font-weight: 800;
-            font-size: 0.74rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 6px;
             text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: var(--surface-subtle);
+            color: var(--text-heading);
+            border: 1px solid var(--border-color);
+            padding: 0.15rem 0.5rem;
+            margin-bottom: 0.65rem;
+            align-self: flex-start;
+            border-radius: 0;
         }
-        .step-box h4 {
-            margin: 0 0 0.4rem 0;
-            font-size: 0.96rem;
-            color: #1e1b4b;
+        .stage-card h3, .method-card h3, .step-box h4, .download-card h4, .dl-card h3, .persona-card h3, .file-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
         }
-        .step-box p {
-            margin: 0;
-            font-size: 0.84rem;
-            color: #334155;
-            line-height: 1.45;
+        .stage-card p, .method-card p, .step-box p, .download-card p, .dl-card p, .file-desc, .belief-list {
+            font-size: 0.88rem;
+            color: var(--text-main);
+            line-height: 1.55;
+            margin-bottom: 0.75rem;
+        }
+        .belief-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .belief-list strong { color: var(--text-heading); }
+        .method-code {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.45rem 0.65rem;
+            color: var(--text-heading);
+            margin-top: auto;
+            border-radius: 0;
+        }
+        .file-badge-row, .persona-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .file-rows {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .file-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
         }
 
-        /* Interactive Tabs */
+        /* Buttons */
+        .btn, .dl-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.55rem 0.95rem;
+            background: #0a0a0a;
+            color: #ffffff;
+            border: 1.5px solid #0a0a0a;
+            border-radius: 0;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.12s ease;
+        }
+        .btn:hover, .dl-btn:hover {
+            background: var(--accent-lime);
+            color: #0a0a0a;
+            border-color: #0a0a0a;
+        }
+        .btn-outline, .dl-btn.secondary {
+            background: var(--surface-color);
+            color: var(--text-heading);
+        }
+
+        /* Tabs & Explorer Controls */
         .tabs-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 0.75rem;
         }
         .tab-btn {
-            background: #f1f5f9;
-            border: 1px solid #cbd5e1;
-            color: #334155;
-            padding: 8px 15px;
-            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
             font-weight: 700;
-            font-size: 0.86rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.55rem 1rem;
+            background: var(--surface-color);
+            color: var(--text-heading);
+            border: 1.5px solid var(--border-color);
+            border-radius: 0;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.12s ease;
         }
-        .tab-btn.active {
-            background: #7c3aed;
-            border-color: #7c3aed;
-            color: #ffffff;
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--accent-lime);
+            color: #0a0a0a;
         }
-        .filter-row {
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+
+        .explorer-controls, .filter-row {
             display: flex;
-            gap: 12px;
-            margin-bottom: 1rem;
             flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
             align-items: center;
+            justify-content: space-between;
         }
-        .search-input {
-            flex: 1 1 300px;
-            padding: 8px 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 0.9rem;
+        .search-input, .filter-select {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            padding: 0.6rem 0.9rem;
+            background: var(--surface-color);
+            color: var(--text-heading);
+            border: 1.5px solid var(--border-color);
+            border-radius: 0;
         }
-        .table-wrap {
+        .search-input { flex: 1; min-width: 260px; }
+        .count-pill {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        /* Tables */
+        .table-wrap, .summary-table-wrap {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
             overflow-x: auto;
+            margin-bottom: 2rem;
+            border-radius: 0;
+        }
+        .table-scroll {
             max-height: 640px;
             overflow-y: auto;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            overflow-x: auto;
         }
-        table.data-table {
+        table, .summary-table, .data-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.84rem;
+            font-size: 0.83rem;
         }
-        table.data-table th {
+        thead th, th {
             position: sticky;
             top: 0;
-            background: #f8fafc;
-            color: #0f172a;
-            font-weight: 700;
-            text-align: left;
-            padding: 10px 12px;
-            border-bottom: 2px solid #cbd5e1;
-            z-index: 2;
-        }
-        table.data-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-            color: #1e293b;
-            line-height: 1.4;
-        }
-        table.data-table tr:hover td {
-            background: #f8fafc;
-        }
-        .pill {
-            display: inline-block;
-            padding: 2px 7px;
-            border-radius: 999px;
+            background: var(--surface-subtle);
+            color: var(--text-heading);
+            font-family: var(--font-mono);
             font-size: 0.72rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.75rem 0.85rem;
+            text-align: left;
+            border-bottom: 1.5px solid var(--border-color);
+            z-index: 5;
+        }
+        tbody tr {
+            border-bottom: 1px solid var(--border-light);
+        }
+        tbody tr:hover, tr.clickable-row:hover {
+            background: var(--bg-color);
+        }
+        tr.clickable-row { cursor: pointer; }
+        tr.clickable-row.selected {
+            background: #f2f9cc;
+        }
+        td {
+            padding: 0.75rem 0.85rem;
+            vertical-align: top;
+            color: var(--text-main);
+            line-height: 1.45;
+        }
+        .mono, code {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+        }
+
+        /* Speech Inspector (Stakeholder Simulation) */
+        .speech-inspector {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .speech-quote {
+            font-family: var(--font-body);
+            font-style: italic;
+            font-size: 0.96rem;
+            color: var(--text-heading);
+            background: var(--bg-color);
+            padding: 1rem 1.25rem;
+            border-left: 4px solid var(--border-color);
+            margin-top: 0.75rem;
+        }
+
+        /* Minimalist Badges & Pills */
+        .badge, .pill, .heat-cell {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-heading);
+            border-radius: 0;
             white-space: nowrap;
         }
-        .pill-yes { background: #dcfce7; color: #166534; }
-        .pill-no { background: #f1f5f9; color: #64748b; }
-        .pill-crowd { background: #fef3c7; color: #92400e; }
-        .pill-sub { background: #ede9fe; color: #5b21b6; }
+        .heat-strong-pos, .badge-ok, .badge-aff, .pill-yes {
+            background: var(--accent-lime);
+            color: #0a0a0a;
+        }
+        .heat-mod-pos, .badge-just, .badge-info, .badge-sky, .badge-emerald {
+            background: var(--surface-subtle);
+            color: #0a0a0a;
+        }
+        .heat-neg, .badge-low, .badge-rose {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        .snippet-box {
+            font-size: 0.78rem;
+            color: var(--text-main);
+            max-width: 480px;
+            max-height: 110px;
+            overflow-y: auto;
+            background: var(--bg-color);
+            padding: 0.5rem 0.65rem;
+            border: 1px solid var(--border-light);
+            line-height: 1.45;
+        }
     </style>
 </head>
 
@@ -287,7 +441,7 @@
 
     <main>
         <div class="container">
-            <p style="margin-bottom: 1rem;"><a href="projects.html" style="font-weight: 600; color: #475569; text-decoration: none;">&larr; Back to T&amp;S Working Group Projects</a></p>
+            <div class="back-nav"><a href="projects.html">&larr; Back to T&amp;S Working Group Projects</a></div>
 
             <div class="hero-banner">
                 <span class="hero-badge">Open Electoral Media Dataset &bull; 2026 U.S. Elections</span>
@@ -424,9 +578,9 @@
         </div>
     </main>
 
-    <footer>
+        <footer>
         <div class="container">
-            <p>&copy; 2026. Jose Marichal. Technology and Society Working Group.</p>
+            <p>&copy; 2025. Jose Marichal. All rights reserved.</p>
         </div>
     </footer>
 
@@ -488,11 +642,11 @@
                         : `<span class="pill pill-no">0% (0/${r.comments_sampled})</span>`;
                     const commentsText = r.sample_ai
                         ? `<strong>AI Callouts:</strong> ${esc(r.sample_ai)}`
-                        : (r.sample_gen ? `<span style="color:#64748b">${esc(r.sample_gen)}</span>` : `<span style="color:#94a3b8">No comments sampled</span>`);
+                        : (r.sample_gen ? `<span style="color:var(--text-muted)">${esc(r.sample_gen)}</span>` : `<span style="color:var(--text-muted)">No comments sampled</span>`);
                     html += `<tr>
                         <td style="min-width:230px">
-                            <a href="${esc(r.url)}" target="_blank" style="font-weight:700;color:#4c1d95;">${esc(r.title)}</a>
-                            <div style="font-size:0.75rem;color:#64748b;margin-top:3px;">${esc(r.duration)} &bull; ${esc(r.views)} &bull; ${esc(r.published)}</div>
+                            <a href="${esc(r.url)}" target="_blank" style="font-weight:700;color:var(--text-heading);">${esc(r.title)}</a>
+                            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">${esc(r.duration)} &bull; ${esc(r.views)} &bull; ${esc(r.published)}</div>
                         </td>
                         <td style="font-weight:600;">${esc(r.channel)}</td>
                         <td>${badgeHtml}</td>
@@ -525,13 +679,13 @@
                     html += `<tr>
                         <td style="white-space:nowrap;">
                             <span class="pill pill-sub">${esc(r.subreddit)}</span>
-                            <div style="font-size:0.75rem;color:#64748b;margin-top:4px;">${esc(r.date)}</div>
+                            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">${esc(r.date)}</div>
                         </td>
                         <td style="min-width:250px;">
-                            <a href="${esc(r.permalink)}" target="_blank" style="font-weight:700;color:#1e1b4b;">${esc(r.title)}</a>
-                            <div style="font-size:0.75rem;color:#0284c7;margin-top:3px;">Media Domain: <a href="${esc(r.media_url)}" target="_blank">${esc(r.domain || 'reddit')}</a></div>
+                            <a href="${esc(r.permalink)}" target="_blank" style="font-weight:700;color:var(--text-heading);">${esc(r.title)}</a>
+                            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">Media Domain: <a href="${esc(r.media_url)}" target="_blank">${esc(r.domain || 'reddit')}</a></div>
                         </td>
-                        <td style="white-space:nowrap;"><strong>${r.score}</strong> pts<br><span style="color:#64748b">${r.num_comments} comments</span></td>
+                        <td style="white-space:nowrap;"><strong>${r.score}</strong> pts<br><span style="color:var(--text-muted)">${r.num_comments} comments</span></td>
                         <td>${debateHtml}</td>
                         <td style="max-width:380px;font-size:0.8rem;">${esc(r.sample_debate || r.selftext || '—')}</td>
                     </tr>`;
@@ -557,13 +711,13 @@
                 rows.forEach(r => {
                     html += `<tr>
                         <td style="min-width:220px;">
-                            <a href="${esc(r.url)}" target="_blank" style="font-weight:700;color:#4c1d95;">${esc(r.title)}</a>
-                            <div style="font-size:0.75rem;color:#64748b;margin-top:3px;">${esc(r.duration)} &bull; ${esc(r.views)}</div>
+                            <a href="${esc(r.url)}" target="_blank" style="font-weight:700;color:var(--text-heading);">${esc(r.title)}</a>
+                            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">${esc(r.duration)} &bull; ${esc(r.views)}</div>
                         </td>
                         <td style="font-weight:600;">${esc(r.channel)}</td>
                         <td><strong>${r.word_count.toLocaleString()}</strong> words</td>
                         <td><span class="pill pill-crowd">${esc(r.disclaimers)}</span></td>
-                        <td style="max-width:400px;font-size:0.78rem;font-family:monospace;color:#334155;">${esc(r.transcript_preview || 'No caption track available')}</td>
+                        <td style="max-width:400px;font-size:0.78rem;font-family:monospace;color:var(--text-main);">${esc(r.transcript_preview || 'No caption track available')}</td>
                     </tr>`;
                 });
                 html += `</tbody></table>`;
@@ -588,7 +742,7 @@
                         <td style="font-weight:700;">${esc(r.state)}</td>
                         <td><code>${esc(r.statute)}</code></td>
                         <td><span class="pill pill-sub">${esc(r.mechanism)}</span></td>
-                        <td style="font-weight:600;color:#1e293b;">"${esc(r.disclaimer)}"</td>
+                        <td style="font-weight:600;color:var(--text-heading);">"${esc(r.disclaimer)}"</td>
                     </tr>`;
                 });
                 html += `</tbody></table>`;
