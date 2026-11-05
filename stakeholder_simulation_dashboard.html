@@ -353,8 +353,8 @@
         <span>Stakeholder Policy Analyst &bull; N=500 Simulation</span>
     </div>
     <div class="nav-links">
-        <a href="#methods">Methods</a>
-        <a href="#findings">Empirical Findings</a>
+        <a href="#methods">Methodology</a>
+        <a href="#findings">Findings</a>
         <a href="#data">Data &amp; Code</a>
         <a href="https://gemini.google.com/gem/1djIRtKh7-yx1C3N4nKKTll2ARakavllK?usp=sharing" target="_blank" class="gem-btn">Launch Interactive Gemini Gem &nearr;</a>
     </div>
@@ -393,33 +393,33 @@
 
 <main class="container">
 
-    <!-- SECTION 1: METHODS -->
+    <!-- SECTION 1: METHODOLOGY -->
     <section id="methods">
         <div class="section-header">
-            <h2>1. Methods &amp; Experimental Architecture</h2>
-            <p>A 4-stage double-blind simulation pipeline separating persona construction (Sabatier's Advocacy Coalition Framework) from experimental treatments (Deborah Stone's <em>Policy Paradox</em>).</p>
+            <h2>1. Methodology</h2>
+            <p>Experimental design separating stakeholder construction (Sabatier's Advocacy Coalition Framework) from experimental treatments (Deborah Stone's <em>Policy Paradox</em>).</p>
         </div>
 
         <div class="design-grid">
             <div class="stage-card">
-                <span class="stage-badge">Stage 1 &bull; The Hydrator</span>
-                <h3>Control State Initialization</h3>
-                <p>Loads a frozen municipal scenario (anonymized suburban contract-city, Pop. ~125,000, MHI &gt; $115,000; proposal to terminate a $275,000/yr ALPR contract and reallocate funds to radar speed trailers, crosswalk lighting, and evening transit) and 8 fixed stakeholders (<code>S1</code>&ndash;<code>S8</code>) defined via ACF belief tiers (Deep Core, Policy Core, Secondary Instrumental Aspect). Baseline Weighted PPI = <strong>46.26%</strong>.</p>
+                <span class="stage-badge">Step 1</span>
+                <h3>Control Baseline</h3>
+                <p>Loads a fixed municipal scenario (anonymized suburban city, Pop. ~125,000, MHI &gt; $115,000; proposal to terminate a $275,000/yr ALPR contract and reallocate funds to radar speed trailers, crosswalk lighting, and evening transit) and 8 stakeholders (<code>S1</code>&ndash;<code>S8</code>) defined via ACF belief tiers (Deep Core, Policy Core, Secondary Instrumental Aspect). Baseline Weighted PPI = <strong>46.26%</strong>.</p>
             </div>
             <div class="stage-card">
-                <span class="stage-badge">Stage 2 &bull; The Strategist</span>
-                <h3>Balanced Treatment Schedule</h3>
-                <p>Selects one of 10 narrative/causal treatments from Deborah Stone’s <em>Policy Paradox</em> across a balanced randomized schedule (50 replications per treatment = 500 runs). Emits only the unlabeled 100-word public-comment text (<code>blinded_podium_speech</code>), stripping all theoretical labels.</p>
+                <span class="stage-badge">Step 2</span>
+                <h3>Experimental Treatments</h3>
+                <p>Selects one of 10 narrative/causal treatments from Deborah Stone’s <em>Policy Paradox</em> across a balanced randomized schedule (50 replications per treatment = 500 runs). Provides only the unlabeled 100-word public-comment text, omitting theoretical labels.</p>
             </div>
             <div class="stage-card">
-                <span class="stage-badge">Stage 3 &bull; The Arena</span>
+                <span class="stage-badge">Step 3</span>
                 <h3>Double-Blind Evaluation</h3>
-                <p>Receives the 8 frozen ACF stakeholder profiles and the unlabeled podium speech text. Outputs each stakeholder’s post-treatment alignment score (<code>0&ndash;100</code>) and engaged ACF belief layer without access to the treatment ID or theoretical category.</p>
+                <p>Evaluates the 8 frozen ACF stakeholder profiles against the unlabeled public-comment text to record each stakeholder’s post-treatment alignment score (<code>0&ndash;100</code>) and engaged ACF belief layer without access to the treatment ID or theoretical category.</p>
             </div>
             <div class="stage-card">
-                <span class="stage-badge">Stage 4 &bull; The Auditor</span>
-                <h3>Deterministic Scoring &amp; SQLite Logging</h3>
-                <p>Computes exact weighted PPI in Python: <code>PPI = &Sigma;(Alignment_i &times; Weight_i) / 49</code>. Evaluates Arena Pass criteria: (1) <code>Final PPI &ge; 60.0%</code>, (2) all Weight-10 Key Veto Players (<code>S1, S2, S3, S4</code>) have <code>Alignment &ge; 40</code>, and (3) Council vote tally (<code>S1, S2, S4, S5 &ge; 50</code>) is at least <code>3&ndash;1</code>.</p>
+                <span class="stage-badge">Step 4</span>
+                <h3>Outcome Calculation</h3>
+                <p>Computes weighted PPI in Python: <code>PPI = &Sigma;(Alignment_i &times; Weight_i) / 49</code>. Evaluates passage criteria: (1) <code>Final PPI &ge; 60.0%</code>, (2) all Weight-10 stakeholders (<code>S1, S2, S3, S4</code>) have <code>Alignment &ge; 40</code>, and (3) Council vote tally (<code>S1, S2, S4, S5 &ge; 50</code>) is at least <code>3&ndash;1</code>.</p>
             </div>
         </div>
     </section>
@@ -427,7 +427,7 @@
     <!-- SECTION 2: EMPIRICAL FINDINGS -->
     <section id="findings">
         <div class="section-header">
-            <h2>2. Empirical Findings (N=500 Runs &amp; 4,000 Stakeholder Shifts)</h2>
+            <h2>2. Findings</h2>
             <p>Summary statistics by treatment strategy and mean post-treatment alignment scores across the 8 stakeholder personas. Click any row to view the exact unlabeled stimulus text.</p>
         </div>
 
@@ -488,7 +488,7 @@
                     <div>
                         <span class="stage-badge">Python Pipeline</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">simulate_500_runs.py</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">4-stage simulation script (Hydrator, Strategist, Double-Blind Arena, and Deterministic SQLite Auditor).</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">Python script executing the 500 simulation runs and logging results to SQLite.</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/simulate_500_runs.py" class="dl-btn" download>Download Python Script (.py)</a>
                 </div>
@@ -503,10 +503,10 @@
                 <div class="dl-card">
                     <div>
                         <span class="stage-badge">ACF Control Baseline</span>
-                        <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">hydrator_controls.json</h3>
+                        <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">Baseline Control Personas (.json)</h3>
                         <p style="font-size:0.84rem; color:var(--text-muted);">JSON specification of the 8 anonymized ACF stakeholder personas, weights, and initial alignments.</p>
                     </div>
-                    <a href="projects/stakeholder_policy_analyst/hydrator_controls.json" class="dl-btn" download>Download Hydrator Controls (.json)</a>
+                    <a href="projects/stakeholder_policy_analyst/hydrator_controls.json" class="dl-btn" download>Download Control Baseline (.json)</a>
                 </div>
                 <div class="dl-card">
                     <div>

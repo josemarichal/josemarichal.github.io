@@ -457,10 +457,10 @@
         </div>
         <div class="topbar-nav">
             <a href="projects.html">&larr; Back to Working Group Projects</a>
-            <a href="#findings">Equifinal Findings</a>
-            <a href="#methodology">QCA Architecture</a>
-            <a href="#downloads">Datasets &amp; Code</a>
-            <a href="#explorer">Interactive Explorer</a>
+            <a href="#findings">Findings</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#downloads">Data &amp; Code</a>
+            <a href="#explorer">Data Explorer</a>
             <a href="data_center_narrative_qca.html" class="btn btn-primary" style="padding:0.35rem 0.75rem; font-size:0.76rem;">Launch Live QCA Simulator &rarr;</a>
         </div>
     </nav>
@@ -468,7 +468,7 @@
     <main class="container">
         <section class="hero">
             <span class="hero-eyebrow">Computational Policy Narratives &bull; NORC GSS 2022 &times; Quine-McCluskey QCA</span>
-            <h1>Rhetoric of Data Center Resistance: Research Question, Methods, Data &amp; Findings</h1>
+            <h1>Rhetoric of Data Center Resistance</h1>
             <p class="hero-lead">
                 <strong>Research Question:</strong> Which combinations of Deborah Stone's causal stories (<em>Intentional, Inadvertent, Mechanical, Accidental</em>) and Narrative Policy Framework (NPF) elements (<em>Moral Frames, Evidence Modes, Character Casting</em>) are sufficient to produce positive attitude shifts (<code>&Delta;Y &ge; +1.50</code>) toward municipal data center moratoriums across distinct empirical clusters of the U.S. public?
             </p>
@@ -496,7 +496,7 @@
         <!-- SECTION 1: QCA BOOLEAN FINDINGS -->
         <div class="section-header" id="findings">
             <div>
-                <h2>1. Empirical Findings: GSS Cluster Centroids &amp; QCA Boolean Solutions</h2>
+                <h2>1. Findings</h2>
                 <div class="section-subtitle">Quine-McCluskey Boolean minimization of persuasion shifts (<code>&Delta;Y &ge; +1.50</code>, consistency threshold <code>&ge; 0.75</code>) across 500 episodes (125 per cluster)</div>
             </div>
         </div>
@@ -543,41 +543,41 @@
         <!-- SECTION 2: METHODOLOGY -->
         <div class="section-header" id="methodology">
             <div>
-                <h2>2. Four-Stage Computational Social Science Architecture</h2>
-                <div class="section-subtitle">Bridging NORC GSS microdata, Deborah Stone's Policy Paradox, constrained RL action spaces, and Charles Ragin's QCA</div>
+                <h2>2. Methodology</h2>
+                <div class="section-subtitle">Survey clustering, narrative configuration design, public hearing simulation, and Boolean minimization</div>
             </div>
         </div>
 
         <div class="method-grid">
             <div class="method-card">
-                <span class="method-step">Stage 01 &bull; GSS 2022 Clustering</span>
-                <h3>Empirical Sociodemographic Personas</h3>
+                <span class="method-step">Step 1</span>
+                <h3>Survey Clustering (NORC GSS 2022)</h3>
                 <p>
-                    Ingests NORC GSS 2022 microdata (<code>N=3,784</code> complete respondents across <code>polviews</code>, <code>partyid</code>, <code>degree</code>, <code>coninc</code>, <code>xnorcsiz</code>, <code>conbus</code>, <code>confed</code>, <code>consci</code>, <code>natenvir</code>) and extracts 4 empirical citizen archetypes via standardized K-Means clustering.
+                    Clusters <code>N=3,784</code> complete NORC GSS 2022 respondents across <code>polviews</code>, <code>partyid</code>, <code>degree</code>, <code>coninc</code>, <code>xnorcsiz</code>, <code>conbus</code>, <code>confed</code>, <code>consci</code>, and <code>natenvir</code> using standardized K-Means (<code>K=4</code>).
                 </p>
                 <div class="method-code">download_gss.py + extract_archetypes.py</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Stage 02 &bull; Discrete NPF Action Space</span>
-                <h3>1,600 Causal Story Configurations</h3>
+                <span class="method-step">Step 2</span>
+                <h3>Narrative Configuration Design</h3>
                 <p>
-                    Prevents unconstrained LLM token drift by defining a structured discrete action space combining Deborah Stone's 4 Causal Stories with NPF Heroes, Villains, Victims, Moral Frames, Evidence Modes, and Tones.
+                    Defines <code>1,600</code> discrete combinations of Deborah Stone's 4 Causal Stories and Narrative Policy Framework (NPF) elements (Heroes, Villains, Victims, Moral Frames, Evidence Modes, and Tones).
                 </p>
                 <div class="method-code">action_space.py + narrative_realizer.py</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Stage 03 &bull; In-Silico Public Hearings</span>
-                <h3>500 Calibrated Deliberation Episodes</h3>
+                <span class="method-step">Step 3</span>
+                <h3>Public Hearing Simulation</h3>
                 <p>
-                    Evaluates pre-intervention moratorium support (<code>Y_pre</code> on a 1–7 scale) and post-hearing shift (<code>&Delta;Y = Y_post - Y_pre</code>) across 500 Monte Carlo episodes (125 per archetype), flagging persuasion success at <code>&Delta;Y &ge; +1.50</code>.
+                    Evaluates pre-treatment moratorium support (<code>Y_pre</code> on a 1–7 scale) and post-treatment shift (<code>&Delta;Y = Y_post - Y_pre</code>) across 500 simulation episodes (125 per cluster), with threshold <code>&Delta;Y &ge; +1.50</code>.
                 </p>
                 <div class="method-code">persona_environment.py + simulate_episodes.py</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Stage 04 &bull; Boolean Minimization</span>
-                <h3>Quine-McCluskey Truth Tables &amp; Ground Truth</h3>
+                <span class="method-step">Step 4</span>
+                <h3>Qualitative Comparative Analysis (QCA)</h3>
                 <p>
-                    Applies Charles Ragin's QCA truth-table synthesis (consistency <code>&ge; 0.75</code>) to extract minimal sufficient Boolean formulas and cross-validates them against <code>428</code> real-world municipal moratoriums.
+                    Applies Charles Ragin's Quine-McCluskey truth-table minimization (consistency <code>&ge; 0.75</code>) to extract minimal sufficient Boolean formulas and cross-tabulates against <code>428</code> municipal moratoriums.
                 </p>
                 <div class="method-code">qca_analyzer.py + data_center_moratoriums.csv</div>
             </div>
@@ -586,7 +586,7 @@
         <!-- SECTION 3: FILES & DOWNLOADS -->
         <div class="section-header" id="downloads">
             <div>
-                <h2>3. Datasets, Research Report &amp; Python Pipeline Files</h2>
+                <h2>3. Data &amp; Code</h2>
                 <div class="section-subtitle">Direct downloads from root and <code>projects/rhetoric_of_data_center_resistance/</code></div>
             </div>
         </div>
@@ -700,7 +700,7 @@
         <!-- SECTION 4: INTERACTIVE DATASET EXPLORER -->
         <div class="section-header" id="explorer">
             <div>
-                <h2>4. Interactive Moratoriums, Deliberation Episodes &amp; QCA Explorer</h2>
+                <h2>4. Data Explorer</h2>
                 <div class="section-subtitle">Search and filter all 428 US municipal moratoriums, 500 simulated public-hearing episodes, and GSS 2022 QCA recipes</div>
             </div>
         </div>
@@ -710,7 +710,7 @@
                 1. US Municipal Data Center Moratoriums (n = 428)
             </button>
             <button class="tab-btn" id="tab-episodes" onclick="switchTab('episodes')">
-                2. In-Silico Deliberation Episodes (n = 500)
+                2. Simulated Deliberation Episodes (n = 500)
             </button>
             <button class="tab-btn" id="tab-archetypes" onclick="switchTab('archetypes')">
                 3. GSS 2022 Citizen Archetypes &amp; QCA Boolean Recipes (K = 4)
@@ -844,7 +844,7 @@
                     if (!q) return true;
                     return (r.archetype + ' ' + r.causal_story + ' ' + r.moral_frame + ' ' + r.evidence_mode + ' ' + r.narrative + ' ' + r.reasoning).toLowerCase().includes(q);
                 });
-                countLabel.textContent = `Showing ${rows.length} of ${DATA_EPISODES.length} in-silico deliberation episodes`;
+                countLabel.textContent = `Showing ${rows.length} of ${DATA_EPISODES.length} simulated deliberation episodes`;
                 body.innerHTML = rows.map(r => {
                     const badge = r.persuaded
                         ? `<span class="badge badge-ok">Persuaded (&Delta;Y = +${r.delta_y})</span>`

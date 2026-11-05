@@ -291,7 +291,7 @@
 
             <div class="hero-banner">
                 <span class="hero-badge">Open Electoral Media Dataset &bull; 2026 U.S. Elections</span>
-                <h1>Deepfake AI in Political Campaigns: Research Question, Methods, Data &amp; Findings</h1>
+                <h1>Deepfake AI in Political Campaigns</h1>
                 <p>
                     <strong>Research Question:</strong> What is the prevalence of platform-native synthetic media disclosures (YouTube's <code>Altered or synthetic content</code> metadata flag), spoken/written statutory disclaimers, and viewer comment-section AI callouts across short-form influencer political videos, campaign broadcasts, and state-level Reddit political threads during the 2026 U.S. election cycle?
                 </p>
@@ -317,7 +317,7 @@
 
             <!-- Section 1: Datasets & Code Downloads -->
             <section class="section-card">
-                <h2>1. Datasets &amp; Harvester Scripts</h2>
+                <h2>1. Data &amp; Code</h2>
                 <p>All UTF-8 CSV files and Python data-collection scripts are archived under <code>projects/deepfake_ai_s_impact_on_political_campaigns/</code>:</p>
 
                 <div class="download-grid">
@@ -377,26 +377,26 @@
 
             <!-- Section 2: Data Collection Methods & Summary Counts -->
             <section class="section-card">
-                <h2>2. Data Collection Methods &amp; Descriptive Findings</h2>
+                <h2>2. Methodology &amp; Findings</h2>
                 <div class="pipeline-steps">
                     <div class="step-box">
-                        <span class="step-num">Method 1</span>
-                        <h4>Seed &amp; Keyword Harvesting</h4>
+                        <span class="step-num">Step 1</span>
+                        <h4>Video Sampling</h4>
                         <p>Queries short-form (&le;240s) and broadcast political videos via <code>youtubei/v1/search</code> across 2026 U.S. Senate, House, and Gubernatorial race queries, excluding legacy television news channels in the short-form subset (<code>n = 99</code>).</p>
                     </div>
                     <div class="step-box">
-                        <span class="step-num">Method 2</span>
-                        <h4>Platform Provenance Metadata Extraction</h4>
+                        <span class="step-num">Step 2</span>
+                        <h4>Platform Metadata Extraction</h4>
                         <p>Parses <code>youtubei/v1/next</code> response trees for <code>howThisWasMadeSectionViewModel</code> (<code>"Altered or synthetic content"</code>). Observed in <strong>52 of 99 (52.5%)</strong> short-form videos.</p>
                     </div>
                     <div class="step-box">
-                        <span class="step-num">Method 3</span>
-                        <h4>Comment-Section Keyword Scoring</h4>
+                        <span class="step-num">Step 3</span>
+                        <h4>Comment Keyword Coding</h4>
                         <p>Extracts top viewer comments per video and computes the proportion matching synthetic-media terms (<code>AI|deepfake|slop|fake voice|CGI|Sora|ElevenLabs</code>). Observed in <strong>29 of 99 (29.3%)</strong> short-form videos.</p>
                     </div>
                     <div class="step-box">
-                        <span class="step-num">Method 4</span>
-                        <h4>Subreddit Thread &amp; Transcript Archiving</h4>
+                        <span class="step-num">Step 4</span>
+                        <h4>Subreddit &amp; Transcript Collection</h4>
                         <p>Retrieves <strong>58</strong> state/campaign Reddit threads (~1,200 comments) via Arctic Shift and extracts full English caption tracks for <strong>82 of 89 (92.1%)</strong> broadcast/campaign AI videos (<code>248,500+</code> words).</p>
                     </div>
                 </div>
@@ -404,11 +404,11 @@
 
             <!-- Section 3: Interactive Explorer -->
             <section class="section-card">
-                <h2>3. Interactive Dataset Explorer</h2>
+                <h2>3. Data Explorer</h2>
                 <p>Browse and filter all four tables directly in your browser:</p>
 
                 <div class="tabs-bar">
-                    <button class="tab-btn active" onclick="switchTab('inf')">1. Influencer &amp; Surrogate AI Videos (n=99)</button>
+                    <button class="tab-btn active" onclick="switchTab('inf')">1. Short-Form Political AI Videos (n=99)</button>
                     <button class="tab-btn" onclick="switchTab('red')">2. Reddit Battleground Threads (n=58)</button>
                     <button class="tab-btn" onclick="switchTab('tra')">3. Political AI Videos + Transcripts (n=89)</button>
                     <button class="tab-btn" onclick="switchTab('law')">4. 28-State AI Disclaimer Laws</button>

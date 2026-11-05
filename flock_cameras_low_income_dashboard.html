@@ -498,17 +498,17 @@
         </div>
         <div class="topbar-nav">
             <a href="projects.html">&larr; Back to Working Group Projects</a>
-            <a href="#findings">Empirical Findings</a>
-            <a href="#methodology">Streaming Architecture</a>
-            <a href="#downloads">Datasets &amp; Scripts</a>
-            <a href="#explorer">Interactive Explorer</a>
+            <a href="#findings">Findings</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#downloads">Data &amp; Code</a>
+            <a href="#explorer">Data Explorer</a>
         </div>
     </nav>
 
     <main class="container">
         <section class="hero">
             <span class="hero-eyebrow">Municipal Surveillance Corpus &bull; Harvard LocalView V3 &times; U.S. Census ACS</span>
-            <h1>Flock Cameras in Low-Income Communities: Research Question, Methods, Data &amp; Findings</h1>
+            <h1>Flock Cameras in Low-Income Communities</h1>
             <p class="hero-lead">
                 <strong>Research Question:</strong> How are Deborah Stone's policy metaphor categories (<em>Policy Paradox</em>, Ch. 6: Force Multiplier, Virtual Moat, Sensory Organism, Slippery Slope, Digital Dragnet, Guilt Presumption) distributed across U.S. city council deliberations on Flock Safety Automated License Plate Readers (ALPR) when stratified by U.S. Census Bureau ACS 5-Year Median Household Income (B19013) and Poverty Rate (B17001)?
             </p>
@@ -536,7 +536,7 @@
         <!-- SECTION 1: DESCRIPTIVE FINDINGS TABLE -->
         <div class="section-header" id="findings">
             <div>
-                <h2>1. Findings: Metaphor Distribution by Municipal Income Tier</h2>
+                <h2>1. Findings</h2>
                 <div class="section-subtitle">Cross-tabulation of coded deliberation snippets (N = 3,581) across U.S. Census Bureau ACS 5-Year Median Household Income brackets</div>
             </div>
         </div>
@@ -630,42 +630,42 @@
             </table>
         </div>
 
-        <!-- SECTION 2: STREAMING METHODOLOGY -->
+        <!-- SECTION 2: METHODOLOGY -->
         <div class="section-header" id="methodology">
             <div>
-                <h2>2. Zero-Bloat Streaming &amp; Coding Methodology</h2>
-                <div class="section-subtitle">Extracting national municipal deliberations from 5.1 GB of compressed Harvard Dataverse archives without local disk bloat</div>
+                <h2>2. Methodology</h2>
+                <div class="section-subtitle">Data collection, transcript extraction, metaphor coding, and U.S. Census linkage</div>
             </div>
         </div>
 
         <div class="method-grid">
             <div class="method-card">
-                <span class="method-step">Stage 01 &bull; LocalView V3 Filtering</span>
-                <h3>2025–2026 Municipal Meeting Frame</h3>
+                <span class="method-step">Step 1</span>
+                <h3>Meeting Sample Selection</h3>
                 <p>
-                    Ingests Harvard Dataverse's <code>meta_localview.parquet</code> (<code>305,024</code> total local government meetings) and isolates all <code>37,655</code> municipal council, county commission, and committee meetings occurring from January 2025 through April 2026.
+                    Filters Harvard Dataverse's <code>meta_localview.parquet</code> (<code>305,024</code> total local government meetings) to isolate <code>37,655</code> municipal council, county commission, and committee meetings occurring from January 2025 through April 2026.
                 </p>
                 <div class="method-code">meta_2025_plus.csv (n = 37,655 meetings)</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Stage 02 &bull; In-Memory Tar Streaming</span>
-                <h3>Zero-Disk-Bloat Transcript Extraction</h3>
+                <span class="method-step">Step 2</span>
+                <h3>Transcript Extraction</h3>
                 <p>
-                    Streams all 3 multi-gigabyte Harvard Dataverse transcript tar archives (<code>5.1 GB</code> raw) directly in-memory via Python's <code>tarfile.open(fileobj=..., mode="r|*")</code>, extracting <code>&plusmn;100</code>-word context windows around <code>flock</code>, <code>alpr</code>, and <code>license plate reader</code> mentions.
+                    Reads the Harvard Dataverse transcript archives (<code>5.1 GB</code>) via Python's <code>tarfile</code> module and extracts <code>&plusmn;100</code>-word context windows around <code>flock</code>, <code>alpr</code>, and <code>license plate reader</code> mentions.
                 </p>
                 <div class="method-code">stream_flock_extractor.py &rarr; 3,581 snippets</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Stage 03 &bull; Deborah Stone Coding</span>
-                <h3>Symbolic Metaphor &amp; Speaker Classification</h3>
+                <span class="method-step">Step 3</span>
+                <h3>Metaphor Classification</h3>
                 <p>
-                    Codes every deliberation snippet against Deborah Stone's 6 cognitive metaphor families (<code>FORCE_MULTIPLIER_TOOL</code>, <code>VIRTUAL_MOAT_FORTRESS</code>, <code>SENSORY_ORGANISM</code>, <code>SLIPPERY_SLOPE_WEDGE</code>, <code>DIGITAL_DRAGNET</code>, <code>GUILT_PRESUMPTION</code>) and speaker role cues.
+                    Codes each deliberation snippet against Deborah Stone's 6 metaphor categories (<code>FORCE_MULTIPLIER_TOOL</code>, <code>VIRTUAL_MOAT_FORTRESS</code>, <code>SENSORY_ORGANISM</code>, <code>SLIPPERY_SLOPE_WEDGE</code>, <code>DIGITAL_DRAGNET</code>, <code>GUILT_PRESUMPTION</code>) and speaker role cues.
                 </p>
                 <div class="method-code">classify_stone_metaphors.py &rarr; 124 metaphors</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Stage 04 &bull; Census ACS Integration</span>
-                <h3>100% FIPS-to-Census Socioeconomic Linkage</h3>
+                <span class="method-step">Step 4</span>
+                <h3>Census Socioeconomic Linkage</h3>
                 <p>
                     Links all <code>270</code> municipal <code>st_fips</code> codes to U.S. Census Bureau ACS 5-Year summary files (<code>B19013</code> Median Household Income, <code>B01003</code> Population, <code>B17001</code> Poverty Rate) with a <code>100.0%</code> match rate.
                 </p>
@@ -676,7 +676,7 @@
         <!-- SECTION 3: FILES & DOWNLOADS -->
         <div class="section-header" id="downloads">
             <div>
-                <h2>3. Datasets, Empirical Report &amp; Harvester Scripts</h2>
+                <h2>3. Data &amp; Code</h2>
                 <div class="section-subtitle">Direct downloads from <code>projects/flock_cameras_in_low_income_communities/</code></div>
             </div>
         </div>
@@ -736,11 +736,11 @@
                 <div>
                     <div class="file-badge-row">
                         <span class="file-type type-py">Python Pipeline</span>
-                        <span class="file-rows">In-Memory Tar Streamer</span>
+                        <span class="file-rows">Transcript Extractor</span>
                     </div>
                     <div class="file-title">stream_flock_extractor.py</div>
                     <p class="file-desc">
-                        Zero-disk-bloat streaming extractor that reads Harvard Dataverse LocalView V3 transcript tar archives over HTTP/stream and extracts verbatim <code>&plusmn;100</code>-word ALPR deliberation windows.
+                        Python script that reads Harvard Dataverse LocalView V3 transcript archives and extracts verbatim <code>&plusmn;100</code>-word ALPR deliberation windows.
                     </p>
                 </div>
                 <div class="file-actions">
