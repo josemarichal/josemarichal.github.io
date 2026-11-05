@@ -28,6 +28,7 @@ Critical discourse and policy analysis of grassroots civic resistance against hy
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-11-05 | **Removed Interpretive Analysis from Public Dashboard** | Per user instruction, stripped editorial/interpretive analysis sections so the dashboard presents strictly the Research Question, Methods, Data/Code Downloads, and Descriptive/Empirical Findings. |
 | 2026-11-03 | **Published Dataset, Methodology & Files Portal (`data_center_resistance_dashboard.html`) & Linked from `projects.html`** | Created `data_center_resistance_dashboard.html` presenting the 4 equifinal QCA findings, 4-stage GSS-to-QCA computational architecture, direct download cards for `data_center_moratoriums.csv`, `simulation_episodes.jsonl`, `qca_results.json`, `archetypes_summary.json`, `research_summary.md`, and all 6 Python scripts, plus a 3-tab interactive explorer across all 428 municipal moratoriums, 500 deliberation episodes, and K=4 GSS archetypes. |
 | 2026-10-04 | **Linked Environmental & Grid Datasets** | Connected project to `data_center_moratoriums.csv` tracking local municipal moratoriums and utility disputes across the US. |
 | 2026-10-04 | **Discursive Analysis Framing** | Focusing on local rhetoric around water consumption, grid reliability, and tax abatements vs. tech industry modernization narratives. |

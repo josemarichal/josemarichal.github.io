@@ -467,77 +467,76 @@
 
     <main class="container">
         <section class="hero">
-            <span class="hero-eyebrow">Computational Narrative Policy Analysis &bull; NORC GSS 2022 &times; Charles Ragin QCA</span>
-            <h1>Rhetoric of Data Center Resistance: Causal Stories, GSS Archetypes &amp; Municipal Moratoriums</h1>
+            <span class="hero-eyebrow">Computational Policy Narratives &bull; NORC GSS 2022 &times; Quine-McCluskey QCA</span>
+            <h1>Rhetoric of Data Center Resistance: Research Question, Methods, Data &amp; Findings</h1>
             <p class="hero-lead">
-                Combining <strong>Deborah Stone's Theory of Causal Stories</strong> (<em>Accidental</em>, <em>Mechanical</em>, <em>Inadvertent</em>, <em>Intentional</em>), the <strong>Narrative Policy Framework (NPF)</strong>, empirical citizen archetypes from the <strong>General Social Survey (GSS 2022, N=3,784)</strong>, and <strong>Charles Ragin's Qualitative Comparative Analysis (QCA)</strong> to discover minimal equifinal persuasion recipes across <strong>428 US municipal data center moratoriums and utility disputes</strong>.
+                <strong>Research Question:</strong> Which combinations of Deborah Stone's causal stories (<em>Intentional, Inadvertent, Mechanical, Accidental</em>) and Narrative Policy Framework (NPF) elements (<em>Moral Frames, Evidence Modes, Character Casting</em>) are sufficient to produce positive attitude shifts (<code>&Delta;Y &ge; +1.50</code>) toward municipal data center moratoriums across distinct empirical clusters of the U.S. public?
             </p>
-            <div class="hero-cta-row">
-                <a class="btn btn-primary" href="data_center_narrative_qca.html">Launch Interactive Narrative QCA Simulator &rarr;</a>
-                <a class="btn btn-outline" href="#downloads">Download Datasets &amp; Python Scripts</a>
-                <a class="btn btn-outline" href="#explorer">Browse 428 Municipal Moratoriums &amp; 500 Simulation Episodes</a>
-            </div>
 
             <div class="stat-grid">
                 <div class="stat-card">
                     <div class="stat-value">428</div>
-                    <div class="stat-label">US Municipal Data Center Moratoriums, Bans &amp; Grid Disputes (<code>data_center_moratoriums.csv</code>)</div>
+                    <div class="stat-label">Documented U.S. Municipal &amp; County Data Center Moratoriums &amp; Zoning Disputes</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">3,784</div>
-                    <div class="stat-label">NORC GSS 2022 Respondents Clustered into <code>K=4</code> Sociodemographic Citizen Archetypes</div>
+                    <div class="stat-label">NORC GSS 2022 Respondents Clustered into <code>K=4</code> Sociodemographic Archetypes</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">1,600</div>
-                    <div class="stat-label">Discrete Narrative Policy Framework &times; Deborah Stone Causal Story Action Configurations</div>
+                    <div class="stat-label">Discrete Narrative Policy Framework &times; Deborah Stone Causal Story Configurations</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">500</div>
-                    <div class="stat-label">Simulated Public Hearing Deliberation Episodes Evaluated via Quine-McCluskey Minimization</div>
+                    <div class="stat-label">Simulated Public Hearing Deliberation Episodes Evaluated via Quine-McCluskey QCA</div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 1: EQUIFINAL QCA FINDINGS -->
+        <!-- SECTION 1: QCA BOOLEAN FINDINGS -->
         <div class="section-header" id="findings">
             <div>
-                <h2>1. Core Empirical Findings: Minimal Equifinal Persuasion Recipes</h2>
-                <div class="section-subtitle">Quine-McCluskey Boolean minimization of persuasion shifts (<code>&Delta;Y &ge; +1.50</code>) across four GSS 2022 public archetypes</div>
+                <h2>1. Empirical Findings: GSS Cluster Centroids &amp; QCA Boolean Solutions</h2>
+                <div class="section-subtitle">Quine-McCluskey Boolean minimization of persuasion shifts (<code>&Delta;Y &ge; +1.50</code>, consistency threshold <code>&ge; 0.75</code>) across 500 episodes (125 per cluster)</div>
             </div>
         </div>
 
         <div class="method-grid">
             <div class="method-card">
-                <span class="method-step">Cluster 02 &bull; 35.2% of Public (n=1,331)</span>
-                <h3>Working-Class Community Defenders</h3>
+                <span class="method-step">Cluster 00 &bull; 24.8% of Sample (n=937)</span>
+                <h3>Cluster 00 Boolean Solution</h3>
                 <p>
-                    Exhibits textbook <strong>equifinality</strong> (<code>100.0%</code> consistency, avg <code>&Delta;Y = +1.91</code>). Whether the causal story is <em>Inadvertent</em>, <em>Intentional</em>, or <em>Mechanical</em>, persuasion succeeds whenever anchored by <strong>Fairness &amp; Anti-Cheating</strong> (refusing residential electric rate subsidies for Big Tech) + <strong>Lived Neighbor Testimonials</strong>.
-                </p>
-                <div class="method-code">(Fairness &and; Lived Testimonial) &and; (Inadvertent &or; Intentional &or; Mechanical)</div>
-            </div>
-            <div class="method-card">
-                <span class="method-step">Cluster 01 &bull; 12.1% of Public (n=458)</span>
-                <h3>Pro-Growth Property Conservatives</h3>
-                <p>
-                    Climate and regulatory frames trigger negative backlash (<code>&Delta;Y &lt; 0</code>). Persuasion succeeds exclusively (<code>85.7%</code> consistency, avg <code>&Delta;Y = +1.63</code>) when hyperscale transmission corridors and zoning overrides are framed through <strong>Liberty &amp; Private Property Rights</strong> + <strong>Lived Farmer Testimonials</strong>.
-                </p>
-                <div class="method-code">(Liberty &amp; Property &and; Lived Testimonial) &and; (Inadvertent &or; Intentional)</div>
-            </div>
-            <div class="method-card">
-                <span class="method-step">Cluster 00 &bull; 24.8% of Public (n=937)</span>
-                <h3>Educated Progressive Conservationists</h3>
-                <p>
-                    An <strong>Intentional Causal Story</strong> (challenging NDAs and corporate externalization) is a strict <em>necessary condition</em>. Succeeds when paired with <strong>Fairness + Lived Testimonial</strong> (<code>100%</code> consistency) or <strong>Harm Prevention + Legal Precedent (CEQA)</strong> (<code>80%</code> consistency).
+                    <strong>GSS Centroid:</strong> <code>polviews = 2.68</code>, <code>degree = 2.51</code>, <code>natenvir = 0.96</code>, <code>consci = 2.41</code>.<br>
+                    <strong>Observed Mean Shift:</strong> <code>&Delta;Y = +1.74</code> (Consistency: <code>1.00</code> / <code>0.80</code>).
                 </p>
                 <div class="method-code">Intentional &and; ((Fairness &and; Testimonial) &or; (Harm &and; Legal Precedent))</div>
             </div>
             <div class="method-card">
-                <span class="method-step">Cluster 03 &bull; 28.0% of Public (n=1,058)</span>
-                <h3>Conservative Conservationist &amp; Ratepayer Skeptic</h3>
+                <span class="method-step">Cluster 01 &bull; 12.1% of Sample (n=458)</span>
+                <h3>Cluster 01 Boolean Solution</h3>
                 <p>
-                    Right-leaning rural/exurban voters (<code>polviews = 5.05</code>) with the lowest institutional trust (<code>2.54</code>) and highest demand for local watershed protection (<code>1.00</code>). Exposure to <em>Accidental + Economic Pragmatism</em> ("inevitable AI progress") triggers severe backlash (<code>&Delta;Y = -0.65</code>).
+                    <strong>GSS Centroid:</strong> <code>polviews = 5.19</code>, <code>degree = 2.18</code>, <code>conbus = 2.14</code>, <code>natenvir = 0.00</code>.<br>
+                    <strong>Observed Mean Shift:</strong> <code>&Delta;Y = +1.63</code> (Consistency: <code>0.857</code>).
                 </p>
-                <div class="method-code">Backlash Trigger: Accidental Story &and; Economic Pragmatism (&Delta;Y = -0.65)</div>
+                <div class="method-code">(Liberty &amp; Property &and; Lived Testimonial) &and; (Inadvertent &or; Intentional)</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Cluster 02 &bull; 35.2% of Sample (n=1,331)</span>
+                <h3>Cluster 02 Boolean Solution</h3>
+                <p>
+                    <strong>GSS Centroid:</strong> <code>polviews = 3.74</code>, <code>degree = 1.02</code>, <code>coninc = $41,250</code>, <code>natenvir = 0.88</code>.<br>
+                    <strong>Observed Mean Shift:</strong> <code>&Delta;Y = +1.91</code> (Consistency: <code>1.00</code>).
+                </p>
+                <div class="method-code">(Fairness &and; Lived Testimonial) &and; (Inadvertent &or; Intentional &or; Mechanical)</div>
+            </div>
+            <div class="method-card">
+                <span class="method-step">Cluster 03 &bull; 28.0% of Sample (n=1,058)</span>
+                <h3>Cluster 03 Boolean Solution</h3>
+                <p>
+                    <strong>GSS Centroid:</strong> <code>polviews = 5.05</code>, <code>confed = 1.38</code>, <code>conbus = 1.62</code>, <code>natenvir = 1.00</code>.<br>
+                    <strong>Observed Negative Shift Config:</strong> <code>&Delta;Y = -0.65</code> under <code>Accidental &and; Economic Pragmatism</code>.
+                </p>
+                <div class="method-code">(Liberty &amp; Property &or; Fairness) &and; Lived Testimonial &and; Inadvertent</div>
             </div>
         </div>
 

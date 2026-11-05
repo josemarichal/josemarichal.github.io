@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stakeholder Policy Analyst | N=500 Double-Blind Rhetorical Simulation</title>
+    <title>Stakeholder Policy Analyst | Research Question, Methods, Data &amp; Findings</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,800;1,600&display=swap" rel="stylesheet">
@@ -31,7 +31,6 @@
         a { color: var(--accent-blue); text-decoration: none; transition: all 0.2s; }
         a:hover { opacity: 0.85; }
 
-        /* Top Navigation */
         .top-nav {
             background: rgba(9, 13, 22, 0.9);
             backdrop-filter: blur(12px);
@@ -74,11 +73,10 @@
             border: 1px solid rgba(255,255,255,0.18);
         }
 
-        /* Hero Section */
         .hero {
             max-width: 1240px;
             margin: 0 auto;
-            padding: 4rem 2rem 2.5rem;
+            padding: 3.5rem 2rem 2.25rem;
             border-bottom: 1px solid var(--border-subtle);
         }
         .eyebrow {
@@ -96,19 +94,33 @@
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.1rem, 4vw, 3.1rem);
-            line-height: 1.18;
+            font-size: clamp(2rem, 3.8vw, 2.9rem);
+            line-height: 1.2;
             margin-bottom: 1rem;
             color: #ffffff;
         }
-        .hero-sub {
-            font-size: 1.08rem;
-            color: var(--text-muted);
-            max-width: 960px;
-            margin-bottom: 2rem;
+        .rq-box {
+            background: rgba(56, 189, 248, 0.08);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.25rem 0 1.75rem;
+        }
+        .rq-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-blue);
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+        .rq-text {
+            font-size: 1.05rem;
+            color: #f1f5f9;
+            font-weight: 500;
         }
 
-        /* KPI Strip */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -123,7 +135,7 @@
         }
         .kpi-val {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.75rem;
+            font-size: 1.65rem;
             font-weight: 700;
             color: var(--accent-blue);
         }
@@ -133,39 +145,31 @@
             margin-top: 0.25rem;
         }
 
-        /* Main Container */
         .container {
             max-width: 1240px;
             margin: 0 auto;
             padding: 2.5rem 2rem;
         }
-        .section-header {
-            margin-bottom: 1.75rem;
-        }
+        .section-header { margin-bottom: 1.5rem; }
         .section-header h2 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.75rem;
+            font-size: 1.7rem;
             color: #fff;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
         }
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 0.96rem;
-        }
+        .section-header p { color: var(--text-muted); font-size: 0.94rem; }
 
-        /* Research Question & Design Cards */
         .design-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 1.25rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.75rem;
         }
         .stage-card {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
-            padding: 1.5rem;
-            position: relative;
+            padding: 1.4rem;
         }
         .stage-badge {
             font-family: 'JetBrains Mono', monospace;
@@ -179,80 +183,9 @@
             display: inline-block;
             margin-bottom: 0.65rem;
         }
-        .stage-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-        .stage-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
+        .stage-card h3 { font-size: 1.05rem; margin-bottom: 0.45rem; color: #fff; }
+        .stage-card p { font-size: 0.86rem; color: var(--text-muted); }
 
-        /* Orthogonality Callout Box */
-        .method-callout {
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(30, 41, 59, 0.85));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-left: 4px solid var(--accent-blue);
-            border-radius: 12px;
-            padding: 1.75rem;
-            margin-bottom: 3rem;
-        }
-        .method-callout h3 {
-            font-size: 1.15rem;
-            color: var(--accent-blue);
-            margin-bottom: 0.65rem;
-        }
-        .method-cols {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
-        .method-col {
-            background: rgba(9, 13, 22, 0.6);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            padding: 1rem;
-        }
-        .method-col h4 {
-            font-size: 0.92rem;
-            color: #fff;
-            margin-bottom: 0.35rem;
-        }
-        .method-col p {
-            font-size: 0.84rem;
-            color: var(--text-muted);
-        }
-
-        /* Findings Grid */
-        .findings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 3rem;
-        }
-        .finding-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-top: 3px solid var(--accent-emerald);
-            border-radius: 12px;
-            padding: 1.4rem;
-        }
-        .finding-card.warn { border-top-color: var(--accent-rose); }
-        .finding-card.info { border-top-color: var(--accent-blue); }
-        .finding-card.gold { border-top-color: var(--accent-amber); }
-        .finding-card h3 {
-            font-size: 1.02rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-        .finding-card p {
-            font-size: 0.86rem;
-            color: var(--text-muted);
-        }
-
-        /* Tabs */
         .tabs-bar {
             display: flex;
             gap: 0.5rem;
@@ -270,7 +203,6 @@
             font-weight: 600;
             cursor: pointer;
             border-radius: 8px 8px 0 0;
-            transition: all 0.2s;
         }
         .tab-btn.active {
             background: var(--bg-card);
@@ -280,7 +212,6 @@
         .tab-pane { display: none; }
         .tab-pane.active { display: block; }
 
-        /* Tables & Heatmap */
         .table-wrap {
             overflow-x: auto;
             background: var(--bg-card);
@@ -288,11 +219,7 @@
             border-radius: 12px;
             margin-bottom: 2rem;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.84rem;
-        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
         th, td {
             padding: 0.8rem 0.9rem;
             text-align: left;
@@ -302,7 +229,7 @@
             background: rgba(30, 41, 59, 0.75);
             color: #cbd5e1;
             font-weight: 600;
-            font-size: 0.77rem;
+            font-size: 0.76rem;
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }
@@ -311,7 +238,6 @@
         tr.clickable-row.selected { background: rgba(56, 189, 248, 0.15); }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Heatmap Cell Badges */
         .heat-cell {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.78rem;
@@ -326,7 +252,6 @@
         .heat-neutral { background: rgba(148, 163, 184, 0.14); color: #cbd5e1; }
         .heat-neg { background: rgba(244, 63, 94, 0.22); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.4); }
 
-        /* Speech Inspector Drawer */
         .speech-inspector {
             background: linear-gradient(135deg, #111827, #1e293b);
             border: 1px solid rgba(56, 189, 248, 0.35);
@@ -337,16 +262,15 @@
         .speech-quote {
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
-            font-size: 1.04rem;
+            font-size: 1.02rem;
             color: #f1f5f9;
             background: rgba(9, 13, 22, 0.65);
-            padding: 1.15rem 1.35rem;
+            padding: 1.1rem 1.3rem;
             border-left: 3px solid var(--accent-emerald);
             border-radius: 8px;
-            margin: 0.85rem 0;
+            margin: 0.85rem 0 0;
         }
 
-        /* Persona Cards */
         .persona-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -385,7 +309,6 @@
         }
         .belief-list strong { color: #e2e8f0; }
 
-        /* Downloads Grid */
         .dl-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -427,151 +350,103 @@
 <nav class="top-nav">
     <div class="nav-brand">
         <a href="projects.html" style="color: var(--text-muted); font-weight: 500;">&larr; Technology &amp; Society Working Group</a>
-        <span>Stakeholder Policy Analyst • N=500 Study</span>
+        <span>Stakeholder Policy Analyst &bull; N=500 Simulation</span>
     </div>
     <div class="nav-links">
-        <a href="#design">Research Design</a>
-        <a href="#findings">Key Findings</a>
-        <a href="#explorer">Interactive Heatmap &amp; Data</a>
+        <a href="#methods">Methods</a>
+        <a href="#findings">Empirical Findings</a>
+        <a href="#data">Data &amp; Code</a>
         <a href="https://gemini.google.com/gem/1djIRtKh7-yx1C3N4nKKTll2ARakavllK?usp=sharing" target="_blank" class="gem-btn">Launch Interactive Gemini Gem &nearr;</a>
     </div>
 </nav>
 
 <header class="hero">
     <div class="eyebrow">Participatory AI Lab &bull; Computational Policy Simulation</div>
-    <h1>Breaking Consent-Calendar Momentum: A Double-Blind Simulation of Narrative Framing in Municipal Surveillance Debates</h1>
-    <p class="hero-sub">
-        Using an orthogonal two-layer agent architecture, this study tests which of <strong>Deborah Stone’s 10 causal stories and symbolic devices</strong> (<em>Policy Paradox</em>) can move an affluent suburban City Council (MHI &gt; $115,000) to terminate a recurring <strong>Automated License Plate Reader (ALPR)</strong> surveillance contract without triggering a veto-player backlash.
-    </p>
+    <h1>Stakeholder Policy Analyst: N=500 Double-Blind Rhetorical Simulation</h1>
+
+    <div class="rq-box">
+        <span class="rq-label">Research Question</span>
+        <div class="rq-text">
+            How do different narrative and causal framing strategies (drawn from Deborah Stone’s <em>Policy Paradox</em> taxonomy) shift stakeholder alignment scores, Key Veto-Player neutrality (Weight 10 &ge; 40), and the weighted Political Power Index (PPI) in a simulated suburban municipal council hearing on terminating an Automated License Plate Reader (ALPR) contract?
+        </div>
+    </div>
 
     <div class="kpi-grid">
         <div class="kpi-card">
             <div class="kpi-val">500</div>
-            <div class="kpi-label">Monte Carlo Arena Simulations (50 Reps &times; 10 Stone Strategies)</div>
+            <div class="kpi-label">Total Simulation Runs (50 Replications &times; 10 Treatments)</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-val">4,000</div>
-            <div class="kpi-label">Granular Stakeholder Alignment Shift Records Logged to SQLite</div>
+            <div class="kpi-label">Stakeholder Alignment Shift Records (500 Runs &times; 8 Personas)</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-val">46.26% &rarr; 65.29%</div>
-            <div class="kpi-label">Baseline PPI ("Dead on Arrival") vs. Top Strategy Mean PPI</div>
+            <div class="kpi-val">46.26%</div>
+            <div class="kpi-label">Control Baseline Weighted PPI (&Sigma; Weight = 49)</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-val">98.0% vs. 0.0%</div>
-            <div class="kpi-label">Arena Pass Rate: Strategic Ambiguity vs. Digital Dragnet Metaphor</div>
+            <div class="kpi-val">41.77% &ndash; 65.29%</div>
+            <div class="kpi-label">Observed Mean Final PPI Range Across 10 Treatments</div>
         </div>
     </div>
 </header>
 
 <main class="container">
 
-    <!-- SECTION 1: RESEARCH QUESTION & DOUBLE-BLIND ORTHOGONAL DESIGN -->
-    <section id="design">
+    <!-- SECTION 1: METHODS -->
+    <section id="methods">
         <div class="section-header">
-            <h2>1. The Research Question &amp; Methodological Problem</h2>
-            <p>Why do public-comment campaigns against municipal surveillance contracts almost always fail in affluent suburbs—and how can we test alternative rhetorical strategies using AI agents without falling into prompt circularity?</p>
-        </div>
-
-        <div class="method-callout">
-            <h3>Solving the "Tautological Recursion" Trap in LLM Social Science</h3>
-            <p style="font-size: 0.92rem; color: #cbd5e1;">
-                In naive LLM policy simulations, researchers often construct stakeholder personas and experimental pitches using the exact same theoretical vocabulary inside a single prompt—causing the model to "grade its own homework." This study enforces <strong>strict theoretical orthogonality</strong> and <strong>double-blind agent separation</strong> across four automated pipeline stages:
-            </p>
-            <div class="method-cols">
-                <div class="method-col">
-                    <h4>1. Orthogonal Character Constructor (Sabatier’s ACF)</h4>
-                    <p>The 8 fixed municipal personas are constructed strictly via Paul Sabatier’s <strong>Advocacy Coalition Framework (ACF)</strong>—anchoring each actor in <em>Deep Core Beliefs</em> (normative, immovable), <em>Policy Core Beliefs</em>, and <em>Secondary Instrumental Aspects</em> (budgets, statutory compliance, hardware placement). <strong>Zero Deborah Stone concepts appear in the persona files.</strong></p>
-                </div>
-                <div class="method-col">
-                    <h4>2. Pure Rhetorical Treatments (Deborah Stone)</h4>
-                    <p>The 10 experimental treatments are drawn exclusively from Deborah Stone’s <em>Policy Paradox</em>: four <strong>Causal Stories</strong> (<em>Intentional, Inadvertent, Mechanical, Accidental</em>), three <strong>Narrative Arcs</strong> (<em>Decline, Stymied Progress, Helplessness &amp; Control</em>), and three <strong>Symbolic Devices</strong> (<em>Synecdoche, Metaphor, Strategic Ambiguity</em>).</p>
-                </div>
-                <div class="method-col">
-                    <h4>3. Double-Blind Arena &amp; Deterministic Auditor</h4>
-                    <p><strong>The Arena</strong> never sees the strategy name or theoretical mechanism—it receives <em>only</em> the unlabeled 100-word podium speech. Furthermore, the LLM never calculates the Political Power Index (PPI); <strong>The Auditor</strong> deterministically computes weighted PPI and Veto-Player neutrality in Python.</p>
-                </div>
-            </div>
+            <h2>1. Methods &amp; Experimental Architecture</h2>
+            <p>A 4-stage double-blind simulation pipeline separating persona construction (Sabatier's Advocacy Coalition Framework) from experimental treatments (Deborah Stone's <em>Policy Paradox</em>).</p>
         </div>
 
         <div class="design-grid">
             <div class="stage-card">
                 <span class="stage-badge">Stage 1 &bull; The Hydrator</span>
-                <h3>Frozen Suburban Control Arena</h3>
-                <p>Initializes an anonymized Southern California contract-city (Pop. ~125,000, MHI &gt; $115,000) considering whether to terminate a $275,000/yr ALPR camera lease and reallocate funds to neighborhood radar speed trailers, crosswalk lighting, and evening transit. Baseline Weighted PPI is <strong>46.26%</strong>.</p>
+                <h3>Control State Initialization</h3>
+                <p>Loads a frozen municipal scenario (anonymized suburban contract-city, Pop. ~125,000, MHI &gt; $115,000; proposal to terminate a $275,000/yr ALPR contract and reallocate funds to radar speed trailers, crosswalk lighting, and evening transit) and 8 fixed stakeholders (<code>S1</code>&ndash;<code>S8</code>) defined via ACF belief tiers (Deep Core, Policy Core, Secondary Instrumental Aspect). Baseline Weighted PPI = <strong>46.26%</strong>.</p>
             </div>
             <div class="stage-card">
                 <span class="stage-badge">Stage 2 &bull; The Strategist</span>
-                <h3>10 Blinded Podium Speeches</h3>
-                <p>Selects one of 10 Deborah Stone narrative strategies in a balanced Latin-square schedule (50 replications per strategy = 500 runs) and strips all theoretical labels, emitting only the raw public-comment testimony delivered at the council microphone.</p>
+                <h3>Balanced Treatment Schedule</h3>
+                <p>Selects one of 10 narrative/causal treatments from Deborah Stone’s <em>Policy Paradox</em> across a balanced randomized schedule (50 replications per treatment = 500 runs). Emits only the unlabeled 100-word public-comment text (<code>blinded_podium_speech</code>), stripping all theoretical labels.</p>
             </div>
             <div class="stage-card">
                 <span class="stage-badge">Stage 3 &bull; The Arena</span>
-                <h3>ACF Belief-Tier Evaluation</h3>
-                <p>Simulates how the 8 stakeholders react to the unlabeled speech. Attacks on <em>Deep Core Beliefs</em> trigger backlash among Key Veto-Players, whereas appeals that satisfy <em>Secondary Instrumental Aspects</em> unlock coalition crossovers.</p>
+                <h3>Double-Blind Evaluation</h3>
+                <p>Receives the 8 frozen ACF stakeholder profiles and the unlabeled podium speech text. Outputs each stakeholder’s post-treatment alignment score (<code>0&ndash;100</code>) and engaged ACF belief layer without access to the treatment ID or theoretical category.</p>
             </div>
             <div class="stage-card">
                 <span class="stage-badge">Stage 4 &bull; The Auditor</span>
-                <h3>Deterministic PPI &amp; Veto Check</h3>
-                <p>Computes exact weighted PPI: <code>&Sigma;(Alignment &times; Weight) / 49</code>. A run passes the Arena only if <strong>Final PPI &ge; 60%</strong>, all four Weight-10 Key Veto Players reach <strong>&ge; 40 Neutrality</strong>, and at least <strong>3 of 4 Councilmembers</strong> vote Aye (&ge; 50).</p>
+                <h3>Deterministic Scoring &amp; SQLite Logging</h3>
+                <p>Computes exact weighted PPI in Python: <code>PPI = &Sigma;(Alignment_i &times; Weight_i) / 49</code>. Evaluates Arena Pass criteria: (1) <code>Final PPI &ge; 60.0%</code>, (2) all Weight-10 Key Veto Players (<code>S1, S2, S3, S4</code>) have <code>Alignment &ge; 40</code>, and (3) Council vote tally (<code>S1, S2, S4, S5 &ge; 50</code>) is at least <code>3&ndash;1</code>.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: CORE EMPIRICAL FINDINGS -->
+    <!-- SECTION 2: EMPIRICAL FINDINGS -->
     <section id="findings">
         <div class="section-header">
-            <h2>2. Four Substantive Findings from the 500 Simulations</h2>
-            <p>Why standard activist framing fails in affluent suburbs—and which causal stories build a winning cross-coalition majority.</p>
-        </div>
-
-        <div class="findings-grid">
-            <div class="finding-card warn">
-                <h3>1. The "Digital Dragnet" Backlash (0% Pass Rate)</h3>
-                <p>In national public-comment transcripts, the <em>"Digital Dragnet / 1984 Slippery Slope"</em> metaphor and <em>Intentional Causal Blame</em> ("corporate surveillance profiteers") are the most common activist frames. In an affluent suburb, however, they trigger a <strong>Deep Core Backlash</strong> among institutionalist Councilmembers (<code>28 &rarr; 12</code>) and HOA coalitions (<code>25 &rarr; 13</code>), who view perimeter checkpoints favorably. They preach to the choir while guaranteeing council defeat.</p>
-            </div>
-            <div class="finding-card info">
-                <h3>2. Flipping the Legal Gatekeeper (+26 Shift)</h3>
-                <p>The <strong>Municipal City Attorney</strong> (<code>Weight: 10, Base: 38</code>) is completely unmoved by moral metaphors (<code>-2</code> under <em>Dragnet</em>), but shifts <strong>+26 points (<code>38 &rarr; 64</code>)</strong> under a <strong>Mechanical Causal Story</strong> highlighting a 99.8% innocent-read ratio and unverified external agency query logs under California Civil Code &sect; 1798.90.5 (SB 34), and <strong>+22 points (<code>38 &rarr; 60</code>)</strong> under <strong>Accidental Cause</strong> (third-party cloud breaches).</p>
-            </div>
-            <div class="finding-card">
-                <h3>3. Lowest Variance of Failure: Inadvertent Cause (SD = 1.76)</h3>
-                <p>Stone’s <strong>Inadvertent Causal Story</strong>—framing the $275k software lease as a well-intentioned past decision that <em>unintentionally crowded out</em> the radar speed trailers and crosswalk lighting requested by residents—saves face for senior institutionalists (<code>28 &rarr; 44</code>, Veto Neutralized) and achieves the lowest variance across all 500 runs.</p>
-            </div>
-            <div class="finding-card gold">
-                <h3>4. Strategic Ambiguity as Coalition Glue (98% Pass Rate)</h3>
-                <p>Framing contract termination as <em>"Transitioning from Expiring Cloud Rentals to 100% City-Owned Visible Neighborhood Safety"</em> achieves a <strong>65.29% Mean PPI (+19.03%)</strong> and <strong>100% Veto-Player Neutrality</strong>. Fiscal conservatives get city-owned hardware, HOAs get cul-de-sac speed trailers (<code>+26</code>), the City Attorney eliminates cloud liability (<code>+20</code>), and privacy advocates end plate logging.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: INTERACTIVE EXPLORER -->
-    <section id="explorer">
-        <div class="section-header">
-            <h2>3. Interactive Simulation Explorer (N=500 Runs &amp; 4,000 Shifts)</h2>
-            <p>Click any strategy row in the sensitivity table below to inspect the exact <strong>Blinded Podium Speech</strong> and its stakeholder-by-stakeholder persuasion profile.</p>
+            <h2>2. Empirical Findings (N=500 Runs &amp; 4,000 Stakeholder Shifts)</h2>
+            <p>Summary statistics by treatment strategy and mean post-treatment alignment scores across the 8 stakeholder personas. Click any row to view the exact unlabeled stimulus text.</p>
         </div>
 
         <div class="tabs-bar">
-            <button class="tab-btn active" onclick="switchTab('heatmap', this)">10 &times; 8 Persuasion Heatmap &amp; Speech Inspector</button>
-            <button class="tab-btn" onclick="switchTab('personas', this)">The 8 Anonymized ACF Personas (The Hydrator)</button>
-            <button class="tab-btn" onclick="switchTab('downloads', this)">Code, JSON Libraries &amp; SQLite Database</button>
+            <button class="tab-btn active" onclick="switchTab('heatmap', this)">Summary Statistics &amp; 10 &times; 8 Alignment Matrix</button>
+            <button class="tab-btn" onclick="switchTab('personas', this)">Control Baseline: 8 ACF Stakeholder Specifications</button>
+            <button class="tab-btn" id="data" onclick="switchTab('downloads', this)">Data Files, SQLite Database &amp; Code</button>
         </div>
 
-        <!-- TAB 1: HEATMAP & SPEECH INSPECTOR -->
+        <!-- TAB 1: HEATMAP & STIMULUS VIEWER -->
         <div id="tab-heatmap" class="tab-pane active">
             <div class="speech-inspector" id="speech-box">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
                     <span class="stage-badge" id="insp-cat">Symbolic Device: Polysemic Ambiguity (Ch. 7)</span>
-                    <span class="mono" style="font-size:0.82rem; color:var(--accent-emerald);" id="insp-stats">Mean PPI: 65.29% (+19.03%) &bull; Veto-Safe: 100.0% &bull; Arena Pass Rate: 98.0%</span>
+                    <span class="mono" style="font-size:0.82rem; color:var(--accent-emerald);" id="insp-stats">N = 50 &bull; Base PPI: 46.26% &bull; Mean Final PPI: 65.29% (+19.03%) &bull; SD: 2.49 &bull; Veto-Safe: 100.0% &bull; Pass Rate: 98.0%</span>
                 </div>
-                <h3 id="insp-title" style="margin-top:0.35rem; font-size:1.2rem; color:#fff;">STONE_SYMBOL_AMBIGUITY — Strategic Ambiguity ('Visible Neighborhood Safety Reinvestment')</h3>
-                <p id="insp-mech" style="font-size:0.86rem; color:var(--text-muted); margin-top:0.25rem;">Uses a unifying, polysemic symbol—'Transitioning from Cloud Rentals to Visible Neighborhood Safety'—that allows fiscal conservatives, HOAs, legal gatekeepers, and civil libertarians to each see their own core belief vindicated.</p>
+                <h3 id="insp-title" style="margin-top:0.35rem; font-size:1.15rem; color:#fff;">STONE_SYMBOL_AMBIGUITY — Strategic Ambiguity ('Visible Safety Reinvestment')</h3>
                 <div class="speech-quote" id="insp-speech">
                     "We all share the same goal: keeping our city the safest, best-governed community in the region. By transitioning our $275,000 annual expenditure away from an expiring third-party cloud lease and putting 100% of those dollars into city-owned radar speed feedback trailers, illuminated school crosswalks, and corridor patrols, fiscal conservatives get tangible city-owned assets, homeowners get immediate neighborhood traffic calming, the City Attorney eliminates third-party data liability, and residents' privacy is fully protected."
-                </div>
-                <div style="font-size:0.78rem; color:var(--text-muted);">
-                    <strong>Double-Blind Protocol Note:</strong> The Arena receives <em>only</em> the quoted statement above, with zero labels or theoretical metadata.
                 </div>
             </div>
 
@@ -579,18 +454,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Deborah Stone Strategy (Click Row)</th>
+                            <th>Treatment Strategy ID &amp; Label</th>
+                            <th>N</th>
                             <th>Mean PPI (&Delta;)</th>
-                            <th>SD</th>
-                            <th>Pass %</th>
-                            <th>S1: Mayor<br><span style="font-weight:400;font-size:0.7rem;">W:10 | Base:34</span></th>
-                            <th>S2: Senior CM<br><span style="font-weight:400;font-size:0.7rem;">W:10 | Base:28</span></th>
-                            <th>S3: City Atty<br><span style="font-weight:400;font-size:0.7rem;">W:10 | Base:38</span></th>
-                            <th>S4: Swing CM<br><span style="font-weight:400;font-size:0.7rem;">W:10 | Base:56</span></th>
-                            <th>S5: Equity CM<br><span style="font-weight:400;font-size:0.7rem;">W:5 | Base:68</span></th>
-                            <th>S6: HOA/Biz<br><span style="font-weight:400;font-size:0.7rem;">W:5 | Base:25</span></th>
-                            <th>S7: CivLib<br><span style="font-weight:400;font-size:0.7rem;">W:5 | Base:92</span></th>
-                            <th>S8: OpenSpace<br><span style="font-weight:400;font-size:0.7rem;">W:2 | Base:76</span></th>
+                            <th>SD(PPI)</th>
+                            <th>VetoSafe%<br><span style="font-weight:400;font-size:0.68rem;">Key &ge; 40</span></th>
+                            <th>Hostile%<br><span style="font-weight:400;font-size:0.68rem;">Key &le; 20</span></th>
+                            <th>Pass%</th>
+                            <th>S1: Mayor<br><span style="font-weight:400;font-size:0.68rem;">W:10 | B:34</span></th>
+                            <th>S2: Sr CM<br><span style="font-weight:400;font-size:0.68rem;">W:10 | B:28</span></th>
+                            <th>S3: Atty<br><span style="font-weight:400;font-size:0.68rem;">W:10 | B:38</span></th>
+                            <th>S4: Sw CM<br><span style="font-weight:400;font-size:0.68rem;">W:10 | B:56</span></th>
+                            <th>S5: Eq CM<br><span style="font-weight:400;font-size:0.68rem;">W:5 | B:68</span></th>
+                            <th>S6: HOA<br><span style="font-weight:400;font-size:0.68rem;">W:5 | B:25</span></th>
+                            <th>S7: CivLib<br><span style="font-weight:400;font-size:0.68rem;">W:5 | B:92</span></th>
+                            <th>S8: OpenSp<br><span style="font-weight:400;font-size:0.68rem;">W:2 | B:76</span></th>
                         </tr>
                     </thead>
                     <tbody id="heatmap-tbody"></tbody>
@@ -610,15 +488,15 @@
                     <div>
                         <span class="stage-badge">Python Pipeline</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">simulate_500_runs.py</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">Complete 4-stage simulation script (Hydrator, Strategist, Double-Blind Arena, and Deterministic SQLite Auditor). Supports Gemini, Groq/Llama-3, OpenAI, and calibrated structural MCMC.</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">4-stage simulation script (Hydrator, Strategist, Double-Blind Arena, and Deterministic SQLite Auditor).</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/simulate_500_runs.py" class="dl-btn" download>Download Python Script (.py)</a>
                 </div>
                 <div class="dl-card">
                     <div>
-                        <span class="stage-badge">Stone Treatments</span>
+                        <span class="stage-badge">Experimental Treatments</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">rhetorical_library_stone.json</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">10 pure Deborah Stone causal stories, narrative arcs, and symbolic frames with anonymized, double-blind podium speeches.</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">JSON specification of the 10 Deborah Stone treatments and unlabeled podium speech stimuli.</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/rhetorical_library_stone.json" class="dl-btn" download>Download Stone Library (.json)</a>
                 </div>
@@ -626,7 +504,7 @@
                     <div>
                         <span class="stage-badge">ACF Control Baseline</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">hydrator_controls.json</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">Frozen ACF character definitions (Deep Core, Policy Core, and Secondary Instrumental beliefs) for the 8 anonymized municipal stakeholders.</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">JSON specification of the 8 anonymized ACF stakeholder personas, weights, and initial alignments.</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/hydrator_controls.json" class="dl-btn" download>Download Hydrator Controls (.json)</a>
                 </div>
@@ -634,7 +512,7 @@
                     <div>
                         <span class="stage-badge">Run-Level Dataset (N=500)</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">simulation_runs_500.csv</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">All 500 simulation runs with initial PPI, final PPI, delta, minimum veto-player alignment, council vote tally, and pass/fail status.</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">500 simulation rows recording initial PPI, final PPI, delta, minimum key alignment, council vote tally, and pass status.</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/simulation_runs_500.csv" class="dl-btn" download>Download 500 Runs (.csv)</a>
                 </div>
@@ -642,7 +520,7 @@
                     <div>
                         <span class="stage-badge">Shift-Level Dataset (N=4,000)</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">stakeholder_shifts_4000.csv</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">All 4,000 granular stakeholder alignment shifts (500 runs &times; 8 personas) with engaged ACF belief layers and behavioral responses.</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">4,000 individual stakeholder shift rows (500 runs &times; 8 personas) with initial alignment, final alignment, delta, and stance.</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/stakeholder_shifts_4000.csv" class="dl-btn" download>Download 4,000 Shifts (.csv)</a>
                 </div>
@@ -650,7 +528,7 @@
                     <div>
                         <span class="stage-badge">Relational Database</span>
                         <h3 style="font-size:1.05rem; color:#fff; margin-bottom:0.35rem;">policy_experiment.db</h3>
-                        <p style="font-size:0.84rem; color:var(--text-muted);">Full SQLite database containing both the <code>runs</code> (N=500) and <code>stakeholder_shifts</code> (N=4,000) relational tables.</p>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">SQLite database containing the <code>runs</code> (N=500) and <code>stakeholder_shifts</code> (N=4,000) tables.</p>
                     </div>
                     <a href="projects/stakeholder_policy_analyst/policy_experiment.db" class="dl-btn" download>Download SQLite DB (.db)</a>
                 </div>
@@ -670,9 +548,8 @@ const strategiesData = [
         id: "STONE_SYMBOL_AMBIGUITY",
         name: "Strategic Ambiguity ('Visible Safety Reinvestment')",
         category: "Symbolic Device: Polysemic Ambiguity (Ch. 7)",
-        mechanism: "Uses a unifying, polysemic symbol—'Transitioning from Cloud Rentals to Visible Neighborhood Safety'—that allows fiscal conservatives, HOAs, legal gatekeepers, and civil libertarians to each see their own core belief vindicated.",
         speech: "We all share the same goal: keeping our city the safest, best-governed community in the region. By transitioning our $275,000 annual expenditure away from an expiring third-party cloud lease and putting 100% of those dollars into city-owned radar speed feedback trailers, illuminated school crosswalks, and corridor patrols, fiscal conservatives get tangible city-owned assets, homeowners get immediate neighborhood traffic calming, the City Attorney eliminates third-party data liability, and residents' privacy is fully protected.",
-        mean_ppi: 65.29, delta: "+19.03%", sd: "2.49", veto_safe: "100.0%", pass_rate: "98.0%",
+        mean_ppi: 65.29, delta: "+19.03%", sd: "2.49", veto_safe: "100.0%", hostile: "0.0%", pass_rate: "98.0%",
         shifts: [
             {align: 57, d: "+23"}, {align: 49, d: "+21"}, {align: 58, d: "+20"}, {align: 75, d: "+19"},
             {align: 84, d: "+16"}, {align: 50, d: "+26"}, {align: 96, d: "+4"}, {align: 88, d: "+12"}
@@ -680,11 +557,10 @@ const strategiesData = [
     },
     {
         id: "STONE_CAUSAL_MECHANICAL",
-        name: "Mechanical Causal Story (Technical & Statutory Defect)",
-        category: "Causal Story: Unguided Action + Programmed System Design (Ch. 9)",
-        mechanism: "Frames the issue as an engineering and legal-compliance malfunction: 99.8% innocent plate reads, unverified external query logs under Civil Code § 1798.90.5, and low case-clearance conversion.",
+        name: "Mechanical Causal Story (Technical & Statutory Pipeline)",
+        category: "Causal Story: Unguided Action + Programmed Design (Ch. 9)",
         speech: "Mayor, Councilmembers, and Madam City Attorney, if we examine the operational pipeline strictly by the numbers, the automated plate-reader system has a structural compliance and efficiency defect. Over 99.8% of captured license plate reads log law-abiding local commuters, while external multi-agency network queries create unverified audit gaps under California Civil Code Section 1798.90.5. Sunsetting this malfunctioning software contract and shifting the line item to physical radar speed trailers delivers a verifiable, zero-liability return on investment.",
-        mean_ppi: 61.63, delta: "+15.37%", sd: "2.54", veto_safe: "64.0%", pass_rate: "62.0%",
+        mean_ppi: 61.63, delta: "+15.37%", sd: "2.54", veto_safe: "64.0%", hostile: "0.0%", pass_rate: "62.0%",
         shifts: [
             {align: 54, d: "+20"}, {align: 41, d: "+13"}, {align: 64, d: "+26"}, {align: 70, d: "+14"},
             {align: 77, d: "+9"}, {align: 41, d: "+16"}, {align: 94, d: "+2"}, {align: 81, d: "+5"}
@@ -692,11 +568,10 @@ const strategiesData = [
     },
     {
         id: "STONE_NARRATIVE_STYMIE",
-        name: "Story of Stymied Progress (Vendor Lock-In Blocking Street Safety)",
+        name: "Story of Stymied Progress (Vendor Lock-In vs. Street Safety)",
         category: "Narrative Story: Stymied Progress (Ch. 7)",
-        mechanism: "Shows how the municipality's proud tradition of safe, walkable neighborhoods is being artificially blocked by a passive, after-the-fact camera lease that fails to prevent speeding or pedestrian hazards.",
         speech: "Our city has worked hard through its long-range General Plan and downtown revitalization to build walkable, family-friendly corridors, but our progress on actual street safety is being stymied by a passive camera subscription. A pole camera at a freeway exit does nothing to slow down a speeding driver in a residential cul-de-sac or light a dark crosswalk near a school. Ending this lease removes the budget bottleneck so we can deploy the real-time radar trailers and lighting our neighborhoods actually need.",
-        mean_ppi: 60.67, delta: "+14.41%", sd: "1.95", veto_safe: "100.0%", pass_rate: "54.0%",
+        mean_ppi: 60.67, delta: "+14.41%", sd: "1.95", veto_safe: "100.0%", hostile: "0.0%", pass_rate: "54.0%",
         shifts: [
             {align: 51, d: "+17"}, {align: 46, d: "+18"}, {align: 48, d: "+10"}, {align: 70, d: "+14"},
             {align: 82, d: "+14"}, {align: 49, d: "+24"}, {align: 97, d: "+5"}, {align: 87, d: "+11"}
@@ -706,9 +581,8 @@ const strategiesData = [
         id: "STONE_NARRATIVE_HELPLESSNESS_CONTROL",
         name: "Story of Helplessness & Control (Local Municipal Sovereignty)",
         category: "Narrative Story: Helplessness and Control (Ch. 7)",
-        mechanism: "Reframes what looked like an inevitable technological consent-calendar renewal into an active choice where the City Council reasserts local self-governance.",
         speech: "Too often, cities are told that automated cloud surveillance is simply the inevitable future and that local councils have no choice but to rubber-stamp the renewal on the consent calendar. But our community has never been a city that surrenders local control to outside vendors. By declining to renew this proprietary lease and investing directly in city-owned traffic-calming infrastructure and local transit, this Council keeps 100% of our budget, data, and public safety priorities under local municipal control.",
-        mean_ppi: 60.76, delta: "+14.50%", sd: "2.25", veto_safe: "86.0%", pass_rate: "52.0%",
+        mean_ppi: 60.76, delta: "+14.50%", sd: "2.25", veto_safe: "86.0%", hostile: "0.0%", pass_rate: "52.0%",
         shifts: [
             {align: 50, d: "+16"}, {align: 45, d: "+17"}, {align: 53, d: "+15"}, {align: 73, d: "+17"},
             {align: 78, d: "+10"}, {align: 39, d: "+14"}, {align: 97, d: "+5"}, {align: 85, d: "+9"}
@@ -718,9 +592,8 @@ const strategiesData = [
         id: "STONE_CAUSAL_INADVERTENT",
         name: "Inadvertent Causal Story (Unintended Consent-Calendar Drift)",
         category: "Causal Story: Guided Action + Unintended Consequences (Ch. 9)",
-        mechanism: "Blames the problem on well-intentioned past decisions whose unintended side-effects—crowding out neighborhood traffic calming and creating statutory exposure—nobody on Council foresaw.",
         speech: "Mayor and Councilmembers, when the City originally approved license plate readers, everyone acted with good intentions to support public safety. Nobody foresaw the unintended side effects: that a routine software lease would quietly grow to $275,000 a year, crowding out the radar speed feedback trailers and school crosswalk lighting our residents have pleaded for, while creating unforeseen state data-sharing liabilities. Letting this contract expire is a blameless course correction that puts those dollars back onto our neighborhood streets.",
-        mean_ppi: 60.54, delta: "+14.28%", sd: "1.76", veto_safe: "86.0%", pass_rate: "50.0%",
+        mean_ppi: 60.54, delta: "+14.28%", sd: "1.76", veto_safe: "86.0%", hostile: "0.0%", pass_rate: "50.0%",
         shifts: [
             {align: 52, d: "+18"}, {align: 44, d: "+16"}, {align: 51, d: "+13"}, {align: 71, d: "+15"},
             {align: 80, d: "+12"}, {align: 46, d: "+21"}, {align: 94, d: "+2"}, {align: 84, d: "+8"}
@@ -730,9 +603,8 @@ const strategiesData = [
         id: "STONE_NARRATIVE_DECLINE",
         name: "Story of Decline (Compounding Lease Costs vs. Street Neglect)",
         category: "Narrative Story: Decline & Crisis (Ch. 7)",
-        mechanism: "Uses fiscal and civic trend-lines to show that continuing the status quo leads to escalating vendor lock-in costs while visible neighborhood infrastructure deteriorates.",
         speech: "Councilmembers, look at the five-year fiscal trajectory: while our recurring software lease payments for pole cameras keep compounding year after year, residents have had to come to the public microphone because our residential streets still lack basic radar speed signs, school crosswalk lighting, and evening bus service after 9 PM. If we stay on this path, we will have spent over a million dollars renting cloud software we never own while our physical neighborhood safety infrastructure falls further behind.",
-        mean_ppi: 59.62, delta: "+13.36%", sd: "2.30", veto_safe: "40.0%", pass_rate: "26.0%",
+        mean_ppi: 59.62, delta: "+13.36%", sd: "2.30", veto_safe: "40.0%", hostile: "0.0%", pass_rate: "26.0%",
         shifts: [
             {align: 53, d: "+19"}, {align: 40, d: "+12"}, {align: 46, d: "+8"}, {align: 72, d: "+16"},
             {align: 83, d: "+15"}, {align: 46, d: "+21"}, {align: 97, d: "+5"}, {align: 84, d: "+8"}
@@ -742,9 +614,8 @@ const strategiesData = [
         id: "STONE_CAUSAL_ACCIDENTAL",
         name: "Accidental Causal Story (Exogenous Cloud Breach & Legal Shock)",
         category: "Causal Story: Unguided Action + Unintended Exogenous Shock (Ch. 9)",
-        mechanism: "Treats the risk as an external storm—nationwide cloud breaches and shifting interstate legal conflicts—that exposes the municipality through no fault of local leaders unless the city insulates itself.",
         speech: "Mayor and Councilmembers, across the country cities are being hit by an external wave of cloud-vendor data breaches and interstate subpoenas that no local council could have predicted five years ago. Even with our local deputies following every rule, storing millions of local vehicle movements on a centralized third-party cloud leaves our city exposed to outside legal shocks beyond our control. Concluding the contract at term expiration is the prudent way to shield our municipality before an external breach hits home.",
-        mean_ppi: 58.77, delta: "+12.51%", sd: "2.30", veto_safe: "66.0%", pass_rate: "18.0%",
+        mean_ppi: 58.77, delta: "+12.51%", sd: "2.30", veto_safe: "66.0%", hostile: "0.0%", pass_rate: "18.0%",
         shifts: [
             {align: 47, d: "+13"}, {align: 41, d: "+13"}, {align: 60, d: "+22"}, {align: 68, d: "+12"},
             {align: 75, d: "+7"}, {align: 35, d: "+10"}, {align: 96, d: "+4"}, {align: 81, d: "+5"}
@@ -754,9 +625,8 @@ const strategiesData = [
         id: "STONE_SYMBOL_SYNECDOCHE",
         name: "Synecdoche: Typical Case (OCR Misread & Wrongful Family Stop)",
         category: "Symbolic Device: Synecdoche (Part-for-Whole) (Ch. 7)",
-        mechanism: "Uses a single concrete, relatable municipal incident—a misread license plate digit triggering a high-risk stop of an innocent local family—to represent the systemic risk of the entire camera network.",
         speech: "Consider what happens when an optical algorithm misreads a single smudged letter on a license plate: an ordinary mother driving her children home along our main commercial boulevard is flagged as a felony stolen vehicle, resulting in a high-risk traffic stop and potential civil rights lawsuit against our city. One algorithmic error can shatter a family's trust and cost the municipality more in litigation than the entire contract. We should not renew a system where a single software glitch puts residents and the City at risk.",
-        mean_ppi: 58.08, delta: "+11.82%", sd: "2.42", veto_safe: "20.0%", pass_rate: "6.0%",
+        mean_ppi: 58.08, delta: "+11.82%", sd: "2.42", veto_safe: "20.0%", hostile: "0.0%", pass_rate: "6.0%",
         shifts: [
             {align: 44, d: "+10"}, {align: 36, d: "+8"}, {align: 58, d: "+20"}, {align: 70, d: "+14"},
             {align: 80, d: "+12"}, {align: 36, d: "+11"}, {align: 97, d: "+5"}, {align: 83, d: "+7"}
@@ -765,10 +635,9 @@ const strategiesData = [
     {
         id: "STONE_METAPHOR_DRAGNET",
         name: "Metaphor: The Digital Dragnet & Slippery Slope",
-        category: "Symbolic Device: Metaphor (Ch. 7 & LocalView Corpus)",
-        mechanism: "Deploys the dominant rejection metaphors from the national ALPR corpus—the 'Digital Dragnet' and 'Slippery Slope'—framing the network as an indiscriminate trawling net.",
+        category: "Symbolic Device: Metaphor (Ch. 7)",
         speech: "Automated license plate readers are not a targeted investigative tool; they cast a massive digital dragnet across every intersection, scooping up the daily routines of every innocent citizen, commuter, and night-shift worker in our city. Once we normalize a 24-hour warrantless checkpoint at every entrance to our community, we are on a slippery slope toward a permanent surveillance state that erodes the very freedom and neighborly trust that define suburban life.",
-        mean_ppi: 45.58, delta: "-0.68%", sd: "2.30", veto_safe: "0.0%", pass_rate: "0.0%",
+        mean_ppi: 45.58, delta: "-0.68%", sd: "2.30", veto_safe: "0.0%", hostile: "82.0%", pass_rate: "0.0%",
         shifts: [
             {align: 28, d: "-6"}, {align: 17, d: "-11"}, {align: 36, d: "-2"}, {align: 65, d: "+9"},
             {align: 78, d: "+10"}, {align: 17, d: "-8"}, {align: 99, d: "+7"}, {align: 82, d: "+6"}
@@ -778,9 +647,8 @@ const strategiesData = [
         id: "STONE_CAUSAL_INTENTIONAL",
         name: "Intentional Causal Story (Corporate Surveillance Profiteering)",
         category: "Causal Story: Guided Action + Intended Consequences (Ch. 9)",
-        mechanism: "Places blame on purposeful actors—venture-backed surveillance vendors and compliant officials knowingly monetizing public roadways and normalizing mass tracking.",
         speech: "Mayor and Councilmembers, let us be honest about who designed this arrangement: a private venture-backed surveillance corporation deliberately engineered a recurring subscription model to turn our city's public streets into a proprietary data mine. This was not a mistake; it is a calculated corporate strategy to lock our municipality into perpetual lease payments while tracking every resident's movements without a warrant. We demand you terminate this contract immediately and stop handing public tax dollars to private surveillance profiteers.",
-        mean_ppi: 41.77, delta: "-4.49%", sd: "1.87", veto_safe: "0.0%", pass_rate: "0.0%",
+        mean_ppi: 41.77, delta: "-4.49%", sd: "1.87", veto_safe: "0.0%", hostile: "100.0%", pass_rate: "0.0%",
         shifts: [
             {align: 23, d: "-11"}, {align: 12, d: "-16"}, {align: 33, d: "-5"}, {align: 61, d: "+5"},
             {align: 76, d: "+8"}, {align: 13, d: "-12"}, {align: 99, d: "+7"}, {align: 80, d: "+4"}
@@ -868,8 +736,11 @@ function renderHeatmap() {
                 <div style="font-weight:600; color:#fff;">${s.name}</div>
                 <div class="mono" style="font-size:0.72rem; color:var(--text-muted);">${s.id}</div>
             </td>
+            <td class="mono">50</td>
             <td class="mono"><strong>${s.mean_ppi.toFixed(2)}%</strong> <span style="color:var(--text-muted);">(${s.delta})</span></td>
             <td class="mono">${s.sd}</td>
+            <td class="mono">${s.veto_safe}</td>
+            <td class="mono">${s.hostile}</td>
             <td class="mono" style="font-weight:700; color:${parseFloat(s.pass_rate) >= 50 ? 'var(--accent-emerald)' : (parseFloat(s.pass_rate) > 0 ? 'var(--accent-amber)' : 'var(--accent-rose)')};">${s.pass_rate}</td>
         `;
         s.shifts.forEach(sh => {
@@ -885,9 +756,8 @@ function selectStrategy(idx, rowEl) {
     rowEl.classList.add("selected");
     const s = strategiesData[idx];
     document.getElementById("insp-cat").textContent = s.category;
-    document.getElementById("insp-stats").innerHTML = `Mean PPI: ${s.mean_ppi.toFixed(2)}% (${s.delta}) &bull; Veto-Safe: ${s.veto_safe} &bull; Arena Pass Rate: ${s.pass_rate}`;
+    document.getElementById("insp-stats").innerHTML = `N = 50 &bull; Base PPI: 46.26% &bull; Mean Final PPI: ${s.mean_ppi.toFixed(2)}% (${s.delta}) &bull; SD: ${s.sd} &bull; Veto-Safe: ${s.veto_safe} &bull; Pass Rate: ${s.pass_rate}`;
     document.getElementById("insp-title").textContent = `${s.id} — ${s.name}`;
-    document.getElementById("insp-mech").textContent = s.mechanism;
     document.getElementById("insp-speech").textContent = `"${s.speech}"`;
 }
 
@@ -906,9 +776,9 @@ function renderPersonas() {
                 <strong>ACF Coalition:</strong> ${p.coalition}
             </div>
             <div class="belief-list">
-                <div><strong>Deep Core Belief (Immovable):</strong> ${p.deep}</div>
+                <div><strong>Deep Core Belief:</strong> ${p.deep}</div>
                 <div><strong>Policy Core Belief:</strong> ${p.policy}</div>
-                <div><strong>Secondary Instrumental Aspect (Shiftable):</strong> ${p.secondary}</div>
+                <div><strong>Secondary Instrumental Aspect:</strong> ${p.secondary}</div>
             </div>
         </div>
     `).join("");

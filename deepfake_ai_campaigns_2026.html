@@ -290,81 +290,81 @@
             <p style="margin-bottom: 1rem;"><a href="projects.html" style="font-weight: 600; color: #475569; text-decoration: none;">&larr; Back to T&amp;S Working Group Projects</a></p>
 
             <div class="hero-banner">
-                <span class="hero-badge">Open Electoral Integrity Dataset &bull; 2026 U.S. Elections</span>
-                <h1>Deepfake AI &amp; "Surrogate AI Laundering" in Political Campaigns</h1>
+                <span class="hero-badge">Open Electoral Media Dataset &bull; 2026 U.S. Elections</span>
+                <h1>Deepfake AI in Political Campaigns: Research Question, Methods, Data &amp; Findings</h1>
                 <p>
-                    An open-access empirical dataset and multi-layered harvesting methodology tracking generative AI attack ads, voice-clone robocalls, and partisan influencer "slopaganda" in the 2026 U.S. elections—designed to capture both disclosed campaign spots and undisclosed surrogate AI videos that evade traditional paywalled ad-tracking archives.
+                    <strong>Research Question:</strong> What is the prevalence of platform-native synthetic media disclosures (YouTube's <code>Altered or synthetic content</code> metadata flag), spoken/written statutory disclaimers, and viewer comment-section AI callouts across short-form influencer political videos, campaign broadcasts, and state-level Reddit political threads during the 2026 U.S. election cycle?
                 </p>
                 <div class="stat-strip">
                     <div class="stat-box">
                         <div class="stat-num">99</div>
-                        <div class="stat-label">Influencer / Surrogate AI Videos (52 with Native Synthetic Badge)</div>
+                        <div class="stat-label">Short-Form Political AI Videos Sampled (52 with Native Synthetic Flag; 29 with Viewer AI Callouts)</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-num">58</div>
-                        <div class="stat-label">Reddit Battleground Threads &amp; ~1,200 Voter Debate Comments</div>
+                        <div class="stat-label">State &amp; Campaign Subreddit Threads (~1,200 Sampled Voter Comments)</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-num">89</div>
-                        <div class="stat-label">Broadcast / Campaign AI Videos (82 with Full Spoken Transcripts)</div>
+                        <div class="stat-label">Campaign &amp; Broadcast AI Videos (82 with Extracted Spoken Transcripts)</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-num">28 States</div>
-                        <div class="stat-label">Statutory Political AI Disclaimer Laws Mapped (2024&ndash;2026)</div>
+                        <div class="stat-label">Enacted State Political AI Disclosure &amp; Deepfake Statutes (2024&ndash;2026)</div>
                     </div>
                 </div>
             </div>
 
             <!-- Section 1: Datasets & Code Downloads -->
             <section class="section-card">
-                <h2>1. Open Datasets, Blueprints &amp; Harvester Scripts</h2>
-                <p>All datasets (UTF-8 CSV) and Python harvesting scripts are publicly archived in this repository under <code>projects/deepfake_ai_s_impact_on_political_campaigns/</code>:</p>
+                <h2>1. Datasets &amp; Harvester Scripts</h2>
+                <p>All UTF-8 CSV files and Python data-collection scripts are archived under <code>projects/deepfake_ai_s_impact_on_political_campaigns/</code>:</p>
 
                 <div class="download-grid">
                     <div class="download-card">
                         <div>
-                            <h4>Influencer &amp; Surrogate AI Videos (Crowd-Scored)</h4>
-                            <p><strong>n = 99 short-form videos.</strong> Captures partisan meme collectives (<em>Dilley Meme Team</em>, <em>Menace Studio</em>, <em>@MrReaganUSA</em>, <em>Daily Soak</em>) and PAC spots, enriched with YouTube's native <code>Altered or synthetic content</code> flag and viewer comment AI callout ratios.</p>
+                            <h4>Short-Form &amp; Influencer Political AI Videos</h4>
+                            <p><strong>n = 99 videos.</strong> Records video ID, channel, duration, view count, native <code>Altered or synthetic content</code> metadata status, sampled comment count, and viewer AI-keyword match rate.</p>
                         </div>
                         <a class="dl-btn" href="projects/deepfake_ai_s_impact_on_political_campaigns/influencer_political_ai_videos_crowd_scored.csv" download>Download CSV (n=99) &darr;</a>
                     </div>
 
                     <div class="download-card">
                         <div>
-                            <h4>Reddit Battleground Threads &amp; Voter Debates</h4>
-                            <p><strong>n = 58 threads (~1,200 comments).</strong> Harvested via the Arctic Shift API across <code>r/texas</code>, <code>r/Georgia</code>, <code>r/Maine</code>, <code>r/wisconsin</code>, <code>r/Ohio</code>, and <code>r/YAPms</code>, surfacing native <code>v.redd.it</code> deepfakes and multi-paragraph voter legal/epistemic debates.</p>
+                            <h4>Subreddit Political AI Threads &amp; Comments</h4>
+                            <p><strong>n = 58 threads (~1,200 comments).</strong> Harvested via the Arctic Shift API across state and election subreddits (<code>r/texas</code>, <code>r/Georgia</code>, <code>r/Maine</code>, <code>r/wisconsin</code>, <code>r/Ohio</code>, <code>r/YAPms</code>).</p>
                         </div>
                         <a class="dl-btn" href="projects/deepfake_ai_s_impact_on_political_campaigns/reddit_political_ai_campaign_threads.csv" download>Download CSV (n=58) &darr;</a>
                     </div>
 
                     <div class="download-card">
                         <div>
-                            <h4>Political AI Videos + Spoken Transcripts</h4>
-                            <p><strong>n = 89 videos (82 full transcripts).</strong> Political campaign AI ads and local TV investigative segments matched against state disclaimer queries, with complete spoken transcripts extracted via <code>youtube_transcript_api</code>.</p>
+                            <h4>Political AI Videos &amp; Spoken Transcripts</h4>
+                            <p><strong>n = 89 videos (82 transcripts).</strong> Campaign ads and local broadcast segments matched to state disclaimer queries, with spoken transcripts extracted via <code>youtube_transcript_api</code>.</p>
                         </div>
                         <a class="dl-btn" href="projects/deepfake_ai_s_impact_on_political_campaigns/political_ai_videos_with_transcripts.csv" download>Download CSV (n=89) &darr;</a>
                     </div>
 
                     <div class="download-card">
                         <div>
-                            <h4>28-State Statutory AI Disclaimer Laws</h4>
-                            <p><strong>n = 28 states (2024&ndash;2026).</strong> Reference table mapping each state's bill/statute citation, regulatory mechanism (mandatory disclosure vs. 30/60/90-day pre-election ban), and required verbatim disclaimer string.</p>
+                            <h4>28-State Statutory AI Disclaimer Reference</h4>
+                            <p><strong>n = 28 states (2024&ndash;2026).</strong> Lists state statute citations, regulatory mechanisms (disclosure vs. pre-election window restrictions), and statutory disclaimer text.</p>
                         </div>
                         <a class="dl-btn" href="projects/deepfake_ai_s_impact_on_political_campaigns/state_ai_disclaimer_laws_2026.csv" download>Download CSV (28 States) &darr;</a>
                     </div>
 
                     <div class="download-card code-card">
                         <div>
-                            <h4>Strategy 2 Research Design Blueprint</h4>
-                            <p>Full 4-phase methodological architecture for <strong>"Candidate Repost &amp; Amplification" Harvesting</strong>: tracking how 2026 candidates launder influencer-made synthetic videos through retweets, quote-posts, and stitches.</p>
+                            <h4>Candidate Repost Collection Protocol</h4>
+                            <p>4-stage data collection protocol specifying seed rosters, platform provenance extraction, comment sampling, and acoustic/visual classification.</p>
                         </div>
-                        <a class="dl-btn secondary" href="projects/deepfake_ai_s_impact_on_political_campaigns/strategy2_candidate_repost_data_collection_plan.md">View Markdown Blueprint &rarr;</a>
+                        <a class="dl-btn secondary" href="projects/deepfake_ai_s_impact_on_political_campaigns/strategy2_candidate_repost_data_collection_plan.md">View Protocol (.md) &rarr;</a>
                     </div>
 
                     <div class="download-card code-card">
                         <div>
-                            <h4>Python Harvester Scripts (Zero-Key Pipeline)</h4>
-                            <p>Reproducible Python scripts querying YouTube's internal <code>youtubei/v1/search</code> &amp; <code>youtubei/v1/next</code> JSON endpoints, <code>youtube_transcript_api</code>, and the Arctic Shift Reddit archive API.</p>
+                            <h4>Python Harvester Scripts</h4>
+                            <p>Scripts querying YouTube's <code>youtubei/v1/search</code> and <code>youtubei/v1/next</code> JSON endpoints, <code>youtube_transcript_api</code>, and the Arctic Shift API.</p>
                         </div>
                         <div style="display:flex; gap:6px; flex-wrap:wrap;">
                             <a class="dl-btn secondary" href="projects/deepfake_ai_s_impact_on_political_campaigns/harvest_influencer_ai_shorts_and_comments.py" download>Influencer Script</a>
@@ -375,49 +375,34 @@
                 </div>
             </section>
 
-            <!-- Section 2: Research Methodology -->
+            <!-- Section 2: Data Collection Methods & Summary Counts -->
             <section class="section-card">
-                <h2>2. Methodology: Bypassing Ad-Library Blind Spots &amp; Paywalls</h2>
-                <p>
-                    Existing commercial political ad trackers (such as the paywalled <strong>Wesleyan Media Project / Vivvix CMAG</strong> feed) suffer from a fundamental structural blind spot in 2026: they primarily capture <em>formal television and digital ad buys where an official campaign or Super PAC voluntarily checked a platform compliance box</em>.
-                </p>
-                <p>
-                    Yet our empirical audit of the 2026 cycle reveals that the most aggressive synthetic political media operates through <strong>"Surrogate AI Laundering"</strong>: partisan social media influencers, meme collectives (e.g., <em>The Dilley Meme Team</em>, <em>@MrReaganUSA</em>, <em>Daily Soak</em>), and boutique AI video studios (e.g., <em>Menace Studio</em>) produce organic generative AI attack videos, which candidates and party accounts then amplify via reposts—bypassing FEC <em>"Paid for by"</em> rules, Google/Meta Ad Libraries, and state statutory disclaimers by claiming the First Amendment <strong>satire/parody shield</strong> (<code>17 U.S.C. &sect; 107</code>).
-                </p>
-
-                <h3>Why Simple Text Searches for State Disclaimers Miss 80% of Paid &amp; Organic AI Videos</h3>
-                <ol style="line-height: 1.65; color: #334155;">
-                    <li><strong>Unlisted YouTube Ad Inventory:</strong> Over 90% of paid political pre-roll ads on YouTube are uploaded as <code>Unlisted</code> videos so they only serve to micro-targeted voters and remain invisible to public keyword searches.</li>
-                    <li><strong>Visual Chyrons vs. Spoken Text:</strong> Across the 28 states with political AI disclosure laws (see Tab 4 below), video ads are only required to display a written on-screen chyron at the bottom of the video frame—not read it aloud in the transcript or paste it into the video description.</li>
-                    <li><strong>Organic Influencer Laundering:</strong> Unpaid or dark-money-sponsored influencer posts on X, TikTok, Truth Social, and YouTube Shorts do not carry statutory campaign disclaimers at all.</li>
-                </ol>
-
-                <h3>The 4-Layer "Surrogate AI &amp; Crowd-Detection" Pipeline</h3>
+                <h2>2. Data Collection Methods &amp; Descriptive Findings</h2>
                 <div class="pipeline-steps">
                     <div class="step-box">
-                        <span class="step-num">Layer 1</span>
-                        <h4>Candidate Amplification &amp; Studio Snowballing</h4>
-                        <p>Anchors collection on a finite seed panel of 2026 U.S. Senate, House, and Gubernatorial candidates plus identified boutique AI studios (<em>Menace Studio</em>, <em>Dilley Meme Team</em>, <em>Lone Star Liberty PAC</em>), isolating short-form videos (&le;240s) and excluding legacy broadcast news networks.</p>
+                        <span class="step-num">Method 1</span>
+                        <h4>Seed &amp; Keyword Harvesting</h4>
+                        <p>Queries short-form (&le;240s) and broadcast political videos via <code>youtubei/v1/search</code> across 2026 U.S. Senate, House, and Gubernatorial race queries, excluding legacy television news channels in the short-form subset (<code>n = 99</code>).</p>
                     </div>
                     <div class="step-box">
-                        <span class="step-num">Layer 2</span>
-                        <h4>Raw JSON Platform Provenance Inspection</h4>
-                        <p>Queries YouTube's internal <code>youtubei/v1/next</code> endpoint to inspect the raw page JSON for machine-readable disclosure panels (<code>howThisWasMadeSectionViewModel</code> / <code>"Altered or synthetic content"</code>), catching <strong>52.5%</strong> of influencer AI videos automatically.</p>
+                        <span class="step-num">Method 2</span>
+                        <h4>Platform Provenance Metadata Extraction</h4>
+                        <p>Parses <code>youtubei/v1/next</code> response trees for <code>howThisWasMadeSectionViewModel</code> (<code>"Altered or synthetic content"</code>). Observed in <strong>52 of 99 (52.5%)</strong> short-form videos.</p>
                     </div>
                     <div class="step-box">
-                        <span class="step-num">Layer 3</span>
-                        <h4>Comment-Section "Crowd Detection" Score</h4>
-                        <p>Extracts top viewer comments via continuation tokens and computes the <strong>Crowd AI Flag Ratio</strong> (% of comments matching <code>AI|deepfake|slop|fake voice|CGI|Sora|ElevenLabs</code>)—exposing unlabeled campaign AI ads (such as Ken Paxton's anti-Talarico ad at <strong>25.0%</strong> crowd callout).</p>
+                        <span class="step-num">Method 3</span>
+                        <h4>Comment-Section Keyword Scoring</h4>
+                        <p>Extracts top viewer comments per video and computes the proportion matching synthetic-media terms (<code>AI|deepfake|slop|fake voice|CGI|Sora|ElevenLabs</code>). Observed in <strong>29 of 99 (29.3%)</strong> short-form videos.</p>
                     </div>
                     <div class="step-box">
-                        <span class="step-num">Layer 4</span>
-                        <h4>Reddit Battleground Cross-Indexing</h4>
-                        <p>Queries the open <strong>Arctic Shift API</strong> across state battleground subreddits (<code>r/texas</code>, <code>r/Georgia</code>, <code>r/Maine</code>, <code>r/wisconsin</code>, <code>r/Ohio</code>, <code>r/YAPms</code>) to capture native <code>v.redd.it</code> / unlisted video uploads and multi-paragraph voter debates on epistemic trust.</p>
+                        <span class="step-num">Method 4</span>
+                        <h4>Subreddit Thread &amp; Transcript Archiving</h4>
+                        <p>Retrieves <strong>58</strong> state/campaign Reddit threads (~1,200 comments) via Arctic Shift and extracts full English caption tracks for <strong>82 of 89 (92.1%)</strong> broadcast/campaign AI videos (<code>248,500+</code> words).</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 3: Interactive Live Dataset Explorer -->
+            <!-- Section 3: Interactive Explorer -->
             <section class="section-card">
                 <h2>3. Interactive Dataset Explorer</h2>
                 <p>Browse and filter all four tables directly in your browser:</p>
