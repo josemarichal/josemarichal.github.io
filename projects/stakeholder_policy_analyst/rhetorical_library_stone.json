@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "framework": "100% Pure Deborah Stone (Policy Paradox: The Art of Political Decision Making)",
+    "orthogonality_guarantee": "Contains ONLY Deborah Stone narrative, symbolic, metaphor, and causal story treatments. Zero ACF, IAD, or Growth Machine constructs appear in the treatments. The Arena receives ONLY the unlabeled 'blinded_podium_speech' text (fully anonymized).",
+    "policy_question": "Terminating a Suburban Municipality's Automated License Plate Reader (ALPR) Camera Contract"
+  },
+  "strategies": [
+    {
+      "strategy_id": "STONE_CAUSAL_INTENTIONAL",
+      "name": "Intentional Causal Story (Corporate Surveillance Enclosure)",
+      "stone_category": "Causal Story: Guided Action + Intended Consequences (Ch. 9)",
+      "theoretical_mechanism": "Places blame on purposeful actors—venture-backed surveillance vendors and compliant officials knowingly monetizing public roadways and normalizing mass tracking.",
+      "blinded_podium_speech": "Mayor and Councilmembers, let us be honest about who designed this arrangement: a private venture-backed surveillance corporation deliberately engineered a recurring subscription model to turn our city's public streets into a proprietary data mine. This was not a mistake; it is a calculated corporate strategy to lock our municipality into perpetual lease payments while tracking every resident's movements without a warrant. We demand you terminate this contract immediately and stop handing public tax dollars to private surveillance profiteers."
+    },
+    {
+      "strategy_id": "STONE_CAUSAL_INADVERTENT",
+      "name": "Inadvertent Causal Story (Unintended Consent-Calendar Drift)",
+      "stone_category": "Causal Story: Guided Action + Unintended Consequences (Ch. 9)",
+      "theoretical_mechanism": "Blames the problem on well-intentioned past decisions (routine procurement renewals) whose unintended side-effects—crowding out neighborhood traffic calming and creating statutory exposure—nobody on Council foresaw.",
+      "blinded_podium_speech": "Mayor and Councilmembers, when the City originally approved license plate readers, everyone acted with good intentions to support public safety. Nobody foresaw the unintended side effects: that a routine software lease would quietly grow to $275,000 a year, crowding out the radar speed feedback trailers and school crosswalk lighting our residents have pleaded for, while creating unforeseen state data-sharing liabilities. Letting this contract expire is a blameless course correction that puts those dollars back onto our neighborhood streets."
+    },
+    {
+      "strategy_id": "STONE_CAUSAL_MECHANICAL",
+      "name": "Mechanical Causal Story (Technical & Statutory Pipeline Defect)",
+      "stone_category": "Causal Story: Unguided Action + Programmed System Design (Ch. 9)",
+      "theoretical_mechanism": "Frames the issue as an engineering and legal-compliance malfunction: optical character misreads, unverified external query logs, and low conversion from plate pings to actual case clearances.",
+      "blinded_podium_speech": "Mayor, Councilmembers, and Madam City Attorney, if we examine the operational pipeline strictly by the numbers, the automated plate-reader system has a structural compliance and efficiency defect. Over 99.8% of captured license plate reads log law-abiding local commuters, while external multi-agency network queries create unverified audit gaps under California Civil Code Section 1798.90.5. Sunsetting this malfunctioning software contract and shifting the line item to physical radar speed trailers delivers a verifiable, zero-liability return on investment."
+    },
+    {
+      "strategy_id": "STONE_CAUSAL_ACCIDENTAL",
+      "name": "Accidental Causal Story (Exogenous Cloud Breach & Legal Shock)",
+      "stone_category": "Causal Story: Unguided Action + Unintended Exogenous Shock (Ch. 9)",
+      "theoretical_mechanism": "Treats the risk as an external storm—nationwide cloud breaches and shifting interstate legal conflicts—that exposes the municipality through no fault of local leaders unless the city insulates itself.",
+      "blinded_podium_speech": "Mayor and Councilmembers, across the country cities are being hit by an external wave of cloud-vendor data breaches and interstate subpoenas that no local council could have predicted five years ago. Even with our local deputies following every rule, storing millions of local vehicle movements on a centralized third-party cloud leaves our city exposed to outside legal shocks beyond our control. Concluding the contract at term expiration is the prudent way to shield our municipality before an external breach hits home."
+    },
+    {
+      "strategy_id": "STONE_NARRATIVE_DECLINE",
+      "name": "Story of Decline (Compounding Subscription Costs & Eroding Trust)",
+      "stone_category": "Narrative Story: Decline & Crisis (Ch. 7)",
+      "theoretical_mechanism": "Uses fiscal and civic trend-lines to show that continuing the status quo leads to escalating vendor lock-in costs while visible neighborhood infrastructure deteriorates.",
+      "blinded_podium_speech": "Councilmembers, look at the five-year fiscal trajectory: while our recurring software lease payments for pole cameras keep compounding year after year, residents have had to come to the public microphone because our residential streets still lack basic radar speed signs, school crosswalk lighting, and evening bus service after 9 PM. If we stay on this path, we will have spent over a million dollars renting cloud software we never own while our physical neighborhood safety infrastructure falls further behind."
+    },
+    {
+      "strategy_id": "STONE_NARRATIVE_STYMIE",
+      "name": "Story of Stymied Progress (Vendor Lock-In Blocking Real Corridor Safety)",
+      "stone_category": "Narrative Story: Stymied Progress (Ch. 7)",
+      "theoretical_mechanism": "Shows how the municipality's proud tradition of safe, walkable neighborhoods is being artificially blocked by a passive, after-the-fact camera lease that fails to prevent speeding or pedestrian hazards.",
+      "blinded_podium_speech": "Our city has worked hard through its long-range General Plan and downtown revitalization to build walkable, family-friendly corridors, but our progress on actual street safety is being stymied by a passive camera subscription. A pole camera at a freeway exit does nothing to slow down a speeding driver in a residential cul-de-sac or light a dark crosswalk near a school. Ending this lease removes the budget bottleneck so we can deploy the real-time radar trailers and lighting our neighborhoods actually need."
+    },
+    {
+      "strategy_id": "STONE_NARRATIVE_HELPLESSNESS_CONTROL",
+      "name": "Story of Helplessness & Control (Reclaiming Local Municipal Sovereignty)",
+      "stone_category": "Narrative Story: Helplessness and Control (Ch. 7)",
+      "theoretical_mechanism": "Reframes what looked like an inevitable technological consent-calendar renewal into an active choice where the City Council reasserts local self-governance.",
+      "blinded_podium_speech": "Too often, cities are told that automated cloud surveillance is simply the inevitable future and that local councils have no choice but to rubber-stamp the renewal on the consent calendar. But our community has never been a city that surrenders local control to outside vendors. By declining to renew this proprietary lease and investing directly in city-owned traffic-calming infrastructure and local transit, this Council keeps 100% of our budget, data, and public safety priorities under local municipal control."
+    },
+    {
+      "strategy_id": "STONE_SYMBOL_SYNECDOCHE",
+      "name": "Synecdoche: The Typical Case (Misread Plate & Innocent Family Stop)",
+      "stone_category": "Symbolic Device: Synecdoche (Part-for-Whole) (Ch. 7)",
+      "theoretical_mechanism": "Uses a single concrete, relatable municipal incident—a misread license plate digit triggering a high-risk stop of an innocent local family—to represent the systemic risk of the entire camera network.",
+      "blinded_podium_speech": "Consider what happens when an optical algorithm misreads a single smudged letter on a license plate: an ordinary mother driving her children home along our main commercial boulevard is flagged as a felony stolen vehicle, resulting in a high-risk traffic stop and potential civil rights lawsuit against our city. One algorithmic error can shatter a family's trust and cost the municipality more in litigation than the entire contract. We should not renew a system where a single software glitch puts residents and the City at risk."
+    },
+    {
+      "strategy_id": "STONE_METAPHOR_DRAGNET",
+      "name": "Metaphor: The Digital Dragnet & Slippery Slope",
+      "stone_category": "Symbolic Device: Metaphor (Ch. 7 & LocalView Corpus)",
+      "theoretical_mechanism": "Deploys the dominant rejection metaphors from the national ALPR corpus—the 'Digital Dragnet' and 'Slippery Slope'—framing the network as an indiscriminate trawling net.",
+      "blinded_podium_speech": "Automated license plate readers are not a targeted investigative tool; they cast a massive digital dragnet across every intersection, scooping up the daily routines of every innocent citizen, commuter, and night-shift worker in our city. Once we normalize a 24-hour warrantless checkpoint at every entrance to our community, we are on a slippery slope toward a permanent surveillance state that erodes the very freedom and neighborly trust that define suburban life."
+    },
+    {
+      "strategy_id": "STONE_SYMBOL_AMBIGUITY",
+      "name": "Strategic Ambiguity ('Visible Neighborhood Safety Reinvestment')",
+      "stone_category": "Symbolic Device: Polysemic Ambiguity (Ch. 7)",
+      "theoretical_mechanism": "Uses a unifying, polysemic symbol—'Transitioning from Cloud Rentals to Visible Neighborhood Safety'—that allows fiscal conservatives, HOAs, legal gatekeepers, and civil libertarians to each see their own core belief vindicated.",
+      "blinded_podium_speech": "We all share the same goal: keeping our city the safest, best-governed community in the region. By transitioning our $275,000 annual expenditure away from an expiring third-party cloud lease and putting 100% of those dollars into city-owned radar speed feedback trailers, illuminated school crosswalks, and corridor patrols, fiscal conservatives get tangible city-owned assets, homeowners get immediate neighborhood traffic calming, the City Attorney eliminates third-party data liability, and residents' privacy is fully protected."
+    }
+  ]
+}

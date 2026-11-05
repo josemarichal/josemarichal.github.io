@@ -1,0 +1,143 @@
+{
+  "metadata": {
+    "description": "Anonymized ACF-Constructed Suburban Municipal Control Environment for Terminating an Automated License Plate Reader (ALPR) Contract",
+    "character_constructor_theory": "Sabatier & Jenkins-Smith Advocacy Coalition Framework (ACF): Deep Core Beliefs, Policy Core Beliefs, and Secondary Instrumental Aspects",
+    "empirical_grounding": "Calibrated to empirical behavioral stances observed in Southern California suburban contract-city public hearings and the national LocalView ALPR deliberation corpus (anonymized; no real names or verbatim quotes).",
+    "orthogonality_rule": "Stakeholder personas are constructed strictly via ACF belief tiers and institutional rules-in-use. Zero Deborah Stone rhetorical constructs appear in character definitions.",
+    "success_criteria": {
+      "min_ppi_percent": 60.0,
+      "min_key_veto_alignment": 40
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_id": "SUBURBAN_ALPR_TERMINATION_2026",
+      "city": "Affluent Suburban Contract-City (Southern California, Pop. ~125,000, MHI >$115,000)",
+      "policy_proposal": "Terminate the municipality's contract with an Automated License Plate Reader (ALPR) camera vendor upon current term expiration, mandate deletion of stored vehicle movement logs, and reallocate the recurring $275,000 annual lease budget to city-owned neighborhood radar speed feedback trailers, school crosswalk lighting, and evening public transit.",
+      "action_arena": "Municipal City Council Regular Public Hearing",
+      "rules_in_use_bias": "Under suburban municipal procurement procedures and county sheriff contract-policing norms, multi-year law-enforcement technology renewals default to the routine Consent Calendar (98.1% procedural approval rate in affluent municipalities >$90k MHI) unless a Council majority and the City Attorney identify a compelling statutory, fiscal, or operational defect.",
+      "stakeholders": [
+        {
+          "id": "S1",
+          "name": "Fiscal-Pragmatist Mayor",
+          "category": "Government/Executive (Mayor)",
+          "power_weight": 10,
+          "tier": "Key",
+          "acf_coalition": "Suburban Order & Fiscal Pragmatism Coalition",
+          "acf_deep_core_belief": "Municipal governance should operate like a disciplined, high-trust enterprise where public investments deliver measurable return-on-investment for residents and local commercial corridors.",
+          "acf_policy_core_belief": "Supports law enforcement modernization and commercial corridor security, but evaluates every recurring vendor contract through performance metrics, capital efficiency, and civic consensus.",
+          "acf_secondary_aspect": "Open to reallocating funds if existing software leases show low marginal crime-solving utility compared to city-owned traffic-calming hardware or expose the city to unbudgeted liabilities.",
+          "initial_alignment": 34,
+          "stance": "Skeptical Opposition",
+          "mechanism_of_influence": "Mayoral Agenda-Setting, Swing Council Vote & Staff Follow-Up Directives",
+          "empirical_stance_summary": "Prioritizes balanced budgets, commercial corridor vitality, and measurable operational metrics over ideological appeals; directs staff to audit cost-per-outcome ratios when citizens raise neighborhood traffic-calming requests."
+        },
+        {
+          "id": "S2",
+          "name": "Institutionalist Senior Councilmember",
+          "category": "Government/Institutionalist (Senior Councilmember)",
+          "power_weight": 10,
+          "tier": "Key",
+          "acf_coalition": "Suburban Order & Fiscal Pragmatism Coalition",
+          "acf_deep_core_belief": "Preserving long-term suburban stability, single-family neighborhood quality of life, and the municipality's reputation as a low-crime community is the paramount duty of the Council.",
+          "acf_policy_core_belief": "Strongly reluctant to terminate active law-enforcement investigative tools protecting commercial corridors and residential neighborhoods without an equivalent public safety safeguard.",
+          "acf_secondary_aspect": "Willing to consider strict local data-retention limits, municipal asset ownership, or shifting camera budgets toward physical corridor safety improvements if institutional order is preserved.",
+          "initial_alignment": 28,
+          "stance": "Skeptical Opposition",
+          "mechanism_of_influence": "Senior Institutional Coalition Anchor & General Plan Stewardship",
+          "empirical_stance_summary": "Defends legacy municipal institutions and law enforcement partnerships; reacts negatively to anti-police or anti-business blame frames, but responds to proposals that advance long-term corridor walkability and neighborhood stability."
+        },
+        {
+          "id": "S3",
+          "name": "Municipal City Attorney",
+          "category": "Legal/Regulatory Gatekeeper (City Attorney)",
+          "power_weight": 10,
+          "tier": "Key",
+          "acf_coalition": "Suburban Order & Fiscal Pragmatism Coalition",
+          "acf_deep_core_belief": "Procedural regularity, statutory compliance, and shielding the municipal corporation from civil liability and injunctive litigation supersede political rhetoric.",
+          "acf_policy_core_belief": "Neutral on policing philosophy, but strictly enforces California Civil Code § 1798.90.5 (SB 34) ALPR audit mandates, state bans on out-of-state data sharing, and vendor indemnification rules.",
+          "acf_secondary_aspect": "Will advise Council to terminate or decline renewal if third-party cloud architecture, unverified external agency queries, or optical misread stops create unindemnified legal exposure for the City.",
+          "initial_alignment": 38,
+          "stance": "Skeptical Opposition",
+          "mechanism_of_influence": "Formal Legal Risk Opinion, Closed-Session Litigation Advice & Statutory Compliance Finding",
+          "empirical_stance_summary": "Evaluates surveillance contracts exclusively through statutory compliance, public-records auditability, and municipal tort/civil-rights liability exposure."
+        },
+        {
+          "id": "S4",
+          "name": "Conservation-Bridge Swing Councilmember",
+          "category": "Government/Conservation & Governance Bridge (Councilmember)",
+          "power_weight": 10,
+          "tier": "Key",
+          "acf_coalition": "Civic Trust, Privacy & Community Reinvestment Coalition",
+          "acf_deep_core_belief": "Democratic legitimacy requires transparent public deliberation, stewardship of the public commons, and protecting residents from unaccountable administrative sprawl.",
+          "acf_policy_core_belief": "Skeptical of routine consent-calendar renewal of privatized surveillance infrastructure; believes public safety investments should prioritize visible human-scale infrastructure and community trust.",
+          "acf_secondary_aspect": "Strongly favors redirecting automated surveillance funds toward pedestrian crosswalk safety, multi-use trail safety, and transparent municipal services.",
+          "initial_alignment": 56,
+          "stance": "Transactional Neutrality",
+          "mechanism_of_influence": "Pivotal Council Swing Vote & Intergovernmental Conservation Leadership",
+          "empirical_stance_summary": "Acts as a deliberative bridge between institutional governance and community advocates; receptive to moving items off the routine consent calendar when public testimony highlights neighborhood safety alternatives."
+        },
+        {
+          "id": "S5",
+          "name": "Community-Equity Councilmember",
+          "category": "Government/Community Services (Councilmember)",
+          "power_weight": 5,
+          "tier": "Primary",
+          "acf_coalition": "Civic Trust, Privacy & Community Reinvestment Coalition",
+          "acf_deep_core_belief": "Municipal budgets should directly uplift working families, seniors, and youth through tangible neighborhood amenities, workforce housing support, and equitable public transit.",
+          "acf_policy_core_belief": "Views expensive recurring software surveillance leases as an opportunity cost that starves direct community services while disproportionately monitoring service workers and commuters.",
+          "acf_secondary_aspect": "Supports contract termination especially when paired with reallocating the budget to late-evening municipal transit service and school-zone crosswalk lighting.",
+          "initial_alignment": 68,
+          "stance": "Passive Support",
+          "mechanism_of_influence": "Council Floor Motion & Community Coalition Mobilization",
+          "empirical_stance_summary": "Consistently prioritizes direct community infrastructure, transit accessibility for night-shift workers, and housing affordability over recurring third-party technology leases."
+        },
+        {
+          "id": "S6",
+          "name": "Suburban HOA & Corridor Merchants Coalition",
+          "category": "Neighborhood & Commercial Associations",
+          "power_weight": 5,
+          "tier": "Primary",
+          "acf_coalition": "Suburban Order & Fiscal Pragmatism Coalition",
+          "acf_deep_core_belief": "Single-family residential property values, neighborhood quietude, and safe commercial retail corridors are the foundational civic contract of the municipality.",
+          "acf_policy_core_belief": "Initially supportive of perimeter license-plate cameras to deter regional property crime, but frustrated that remote cameras do nothing to stop daily residential speeding or dark crosswalks.",
+          "acf_secondary_aspect": "Will shift support toward terminating the ALPR lease if the funds are explicitly dedicated to city-owned neighborhood radar speed feedback trailers and residential street lighting.",
+          "initial_alignment": 25,
+          "stance": "Skeptical Opposition",
+          "mechanism_of_influence": "HOA Board Letters, Chamber Endorsements & Public Hearing Turnout",
+          "empirical_stance_summary": "Supports perimeter deterrence in principle, but expresses vocal frustration at public hearings when residential streets lack visible radar speed signs, traffic calming, and pedestrian lighting."
+        },
+        {
+          "id": "S7",
+          "name": "Civil Liberties & Transit Equity Coalition",
+          "category": "Civil Liberties & Working-Class Advocates",
+          "power_weight": 5,
+          "tier": "Primary",
+          "acf_coalition": "Civic Trust, Privacy & Community Reinvestment Coalition",
+          "acf_deep_core_belief": "Warrantless mass surveillance violates constitutional privacy and treats every resident, service worker, and commuter as a suspect.",
+          "acf_policy_core_belief": "Demands immediate termination of the ALPR contract, permanent deletion of historical vehicle movement logs, and reinvestment in human community needs.",
+          "acf_secondary_aspect": "Mobilizes public speakers around the contrast between over-funded automated surveillance and under-funded late-evening transit service and senior housing protections.",
+          "initial_alignment": 92,
+          "stance": "Policy Champion",
+          "mechanism_of_influence": "Coordinated Public Comment Testimony, Public Records Audits & Civil Rights Framing",
+          "empirical_stance_summary": "Organizes citizen forum testimony opposing mass license-plate logging and advocating for evening bus service, pedestrian safety, and protections for vulnerable residents."
+        },
+        {
+          "id": "S8",
+          "name": "Open-Space & Civic Stewardship Network",
+          "category": "Environmental & Civic Non-Profit Partner",
+          "power_weight": 2,
+          "tier": "Secondary",
+          "acf_coalition": "Civic Trust, Privacy & Community Reinvestment Coalition",
+          "acf_deep_core_belief": "A healthy community relies on shared civic trust, preserved open-space vistas, and active human stewardship rather than automated technological enclosure.",
+          "acf_policy_core_belief": "Prefers community-led safety education, trail and crosswalk signage, and environmental stewardship over industrial solar-camera poles along scenic corridors.",
+          "acf_secondary_aspect": "Provides respected non-partisan civic cover for Councilmembers who vote to reallocate vendor funds to visible community safety and educational signage.",
+          "initial_alignment": 76,
+          "stance": "Passive Support",
+          "mechanism_of_influence": "Non-Partisan Civic Credibility & Volunteer Partner Network",
+          "empirical_stance_summary": "Advocates for volunteer stewardship, educational safety signage, and preserving the natural character of scenic corridors and public parks."
+        }
+      ]
+    }
+  ]
+}
