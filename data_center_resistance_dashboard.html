@@ -412,6 +412,69 @@
             border: 1px solid var(--border-light);
             line-height: 1.45;
         }
+
+        /* Study Logic Narrative & Supporting Academic Tables */
+        .narrative-card {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            border-radius: 0;
+            line-height: 1.8;
+            font-size: 1.02rem;
+            color: var(--text-main);
+        }
+        .narrative-card p {
+            margin-bottom: 1.25rem;
+        }
+        .narrative-card p:last-child {
+            margin-bottom: 0;
+        }
+        .data-table-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 1.75rem 0 0.4rem;
+        }
+        .data-table-caption {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+        .works-cited-card {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            padding: 1.75rem;
+            margin-top: 2rem;
+            border-radius: 0;
+        }
+        .works-cited-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+        .works-cited-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            font-size: 0.86rem;
+            line-height: 1.6;
+        }
+        .works-cited-list li {
+            padding-left: 2rem;
+            text-indent: -2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
     </style>
 </head>
 <body>
@@ -464,6 +527,289 @@
                     <div class="stat-value">500</div>
                     <div class="stat-label">Simulated Public Hearing Deliberation Episodes Evaluated via Quine-McCluskey QCA</div>
                 </div>
+            </div>
+        </section>
+
+        
+        <!-- SECTION: STUDY LOGIC & THEORETICAL NARRATIVE -->
+        <section class="section-card" id="study-logic" style="margin-bottom: 3.5rem;">
+            <div class="section-header">
+                <div>
+                    <h2>Study Logic &amp; Theoretical Framework</h2>
+                    <div class="section-subtitle">Computational Narrative Policy Framework, in-silico deliberation, and Boolean minimization cross-validated against 428 municipal moratoriums</div>
+                </div>
+            </div>
+
+            <div class="narrative-card">
+                <p>
+                    In public policy debates, how a speaker tells a story matters just as much as the facts on the ground (Jones &amp; McBeth, 2010; Shanahan et al., 2011). To model this systematically, we treated persuasion like a structured recipe made of interchangeable ingredients rather than free-form rhetoric. First, we used <strong>Stone’s (1989) Causal Stories</strong>, or rhetorical devices that explain who or what is to blame for a problem: an <strong>Intentional Harm</strong> (a corporation knowingly exploiting a town), an <strong>Inadvertent Consequence</strong> (well-meaning policies that caused unexpected side effects), a <strong>Mechanical Breakdown</strong> (an unguided technological system running out of human control), or an <strong>Accidental Occurrence</strong> (an unforeseeable external shock). Next, we drew rhetorical elements from the <strong>Narrative Policy Framework (NPF)</strong> (McBeth et al., 2014; Shanahan et al., 2018). These included: <strong>Moral Frames</strong> (Graham et al., 2013; Haidt, 2012) like fairness, individual liberty, property rights, or environmental protection; distinct character roles like heroes, villains, and innocent victims; and evidence modes like emotional lived testimonials from neighbors versus dry scientific data and legal precedents.
+                </p>
+                <p>
+                    Advances in <strong>Large Language Models (LLMs)</strong> allow us to create a population of simulated individuals from broad survey data (Argyle et al., 2023; Horton, 2023). We can use these profiles to test out different narrative strategies. In this brief, we used Google’s Gemini 1.5 Pro (Argon) to test different narrative framing strategies with respect to how they might influence public opposition to hyperscale data center developments. With Argon’s help, we constructed a <strong>Simulated Polity</strong> by ingesting microdata from the <strong>2022 NORC General Social Survey (GSS; N = 3,784)</strong> (Smith et al., 2022). Using <strong>K-Means Clustering</strong> across sociodemographic indicators, institutional trust, and ideological priors, we identified four distinct <strong>Citizen Archetypes</strong>: <em>Educated Progressive Conservationist</em>, <em>Traditional Pro-Growth Property Conservative</em>, <em>Working-Class Community Defender</em>, and <em>Conservative Conservationist and Ratepayer Skeptic</em>.
+                </p>
+                <p>
+                    By systematically mixing and matching one option from each category—like building a customized argument block by block—we produced an exact library of <strong>1,600 unique narrative permutations</strong>, allowing us to mathematically test which specific combinations actually persuade different types of everyday citizens. We ran 500 simulated public hearing episodes across the bounded set (a <strong>Discrete Combinatorial Action Space</strong>) of all 1,600 possible strategy combinations (pairing one of 4 causal stories, one of 5 moral frames, and one of 4 evidence types equals 1,600 distinct narrative permutations).
+                </p>
+                <p>
+                    To test which strategies would be more effective in shifting attitudes on data center construction, we employed <strong>Qualitative Comparative Analysis (QCA)</strong> (Ragin, 1987, 2008). <strong>QCA</strong> is a technique that looks for <strong>Chains of Causality</strong> rather than statistical correlation. The intuition of <strong>QCA</strong> is that there are multiple paths towards explaining an event (<strong>Equifinality</strong>). In this study, we looked at the groupings of different narrative strategies that were most likely to change the opinion of the simulated groups using <strong>Quine-McCluskey Boolean Minimization</strong> (Schneider &amp; Wagemann, 2012).
+                </p>
+                <p>
+                    In the final step, <strong>QCA-Boolean Chains</strong> were <strong>Cross-Validated</strong> against a dataset of 428 U.S. municipal and county data center moratoriums (<code>data_center_moratoriums.csv</code>). The dataset includes public hearing transcripts, local reporting, and statutory ordinance language from each jurisdiction. With the help of Gemini Argon, each case was coded into one of Deborah Stone’s four <strong>Causal Stories</strong> and <strong>Narrative Policy Framework</strong> elements. Localities were mapped to their corresponding <strong>NORC GSS Demographic Archetypes</strong> from the simulations using local Census and voting data.
+                </p>
+                <p>
+                    We found that the minimal persuasive recipes predicted in the simulation directly mirrored the rhetoric that successfully enacted real-world policy pauses: progressive jurisdictions (e.g., Prince William County, VA) mobilized around <strong>Intentional Stories</strong> challenging closed-door NDAs and zoning buffers, while conservative rural boards (e.g., Fulton County, IN and Jerome Township, OH) enacted moratoriums only when rhetoric bypassed abstract climate claims to focus on <strong>Mechanical Utility Tariff Equity</strong> and <strong>Private Property Rights</strong> threatened by transmission-line eminent domain.
+                </p>
+                <p>
+                    At present, my student team and I are in the process of validating Argon’s findings through human-coder inter-rater reliability testing against official city council and county board meeting minutes.
+                </p>
+            </div>
+
+            <!-- Supporting Data Table 1: NORC GSS 2022 Archetypes -->
+            <div class="data-table-title">Table 1: NORC General Social Survey (GSS 2022) Simulated Polity Clustering (N = 3,784)</div>
+            <div class="data-table-caption">Empirical demographic centroids derived from standardized K-Means clustering across ideology, institutional confidence, and spending priors.</div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension / Metric</th>
+                            <th>Cluster 0: Progressive Conservationist</th>
+                            <th>Cluster 1: Pro-Growth Property Conservative</th>
+                            <th>Cluster 2: Working-Class Community Defender</th>
+                            <th>Cluster 3: Conservative Conservationist / Skeptic</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sample Size (N) &amp; Public Share</strong></td>
+                            <td><span class="badge badge-info">n = 937</span> (24.8%)</td>
+                            <td><span class="badge badge-info">n = 458</span> (12.1%)</td>
+                            <td><span class="badge badge-info">n = 1,331</span> (35.2%)</td>
+                            <td><span class="badge badge-info">n = 1,058</span> (28.0%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ideology (polviews, 1–7)</strong></td>
+                            <td><code>2.96</code> (Liberal)</td>
+                            <td><code>5.04</code> (Conservative)</td>
+                            <td><code>3.40</code> (Moderate / Lean Lib)</td>
+                            <td><code>5.05</code> (Conservative)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Party ID (partyid, 0–6)</strong></td>
+                            <td><code>1.53</code> (Democrat)</td>
+                            <td><code>4.46</code> (Republican)</td>
+                            <td><code>1.80</code> (Democrat)</td>
+                            <td><code>4.55</code> (Republican)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Median Income (coninc)</strong></td>
+                            <td><strong>$75,960</strong></td>
+                            <td><strong>$42,728</strong></td>
+                            <td><strong>$23,738</strong></td>
+                            <td><strong>$42,728</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Education (degree, 0–4)</strong></td>
+                            <td><code>3.31</code> (Bachelor / Grad)</td>
+                            <td><code>1.68</code> (High School / Some Coll)</td>
+                            <td><code>1.04</code> (High School)</td>
+                            <td><code>1.61</code> (High School / Assoc)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trust in Science (consci, 1–3)</strong></td>
+                            <td><code>1.51</code> (High Confidence)</td>
+                            <td><code>1.97</code> (Moderate)</td>
+                            <td><code>1.81</code> (Moderate)</td>
+                            <td><code>2.01</code> (Moderate / Low)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trust in Fed. Gov (confed, 1–3)</strong></td>
+                            <td><code>1.97</code> (Moderate)</td>
+                            <td><code>2.45</code> (Skeptical)</td>
+                            <td><code>2.09</code> (Moderate)</td>
+                            <td><strong>2.54</strong> (Lowest Confidence)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Env. Spending (natenvir, 1–3)</strong></td>
+                            <td><strong>1.03</strong> (Strong Support)</td>
+                            <td><code>2.42</code> (Opposed / Too Much)</td>
+                            <td><strong>1.05</strong> (Strong Support)</td>
+                            <td><strong>1.00</strong> (Strongest Protection)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Baseline Moratorium Stance (Y_pre)</strong></td>
+                            <td><code>5.20</code> (High Pre-Support)</td>
+                            <td><code>3.10</code> (Pro-Development)</td>
+                            <td><code>4.80</code> (Moderate Concern)</td>
+                            <td><code>4.60</code> (Elevated Skepticism)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Supporting Data Table 2: Action Space -->
+            <div class="data-table-title">Table 2: Discrete Combinatorial Action Space (&Ascr;) Structure (1,600 Permutations)</div>
+            <div class="data-table-caption">Systematic combinatorial parameterization crossing Deborah Stone's 4 Causal Stories with Narrative Policy Framework (NPF) elements.</div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Structural Dimension</th>
+                            <th>Permutations (k)</th>
+                            <th>Parameter Space &amp; Operational Definitions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Deborah Stone (1989) Causal Story</strong></td>
+                            <td><code>4</code></td>
+                            <td><code>Intentional Harm</code>, <code>Inadvertent Consequence</code>, <code>Mechanical Breakdown</code>, <code>Accidental Occurrence</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPF Moral Foundations Frame</strong></td>
+                            <td><code>5</code></td>
+                            <td><code>Fairness &amp; Anti-Cheating</code>, <code>Liberty &amp; Private Property</code>, <code>Harm Prevention &amp; Health</code>, <code>Sanctity of Rural Heritage</code>, <code>Economic Pragmatism</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPF Evidence Mode</strong></td>
+                            <td><code>4</code></td>
+                            <td><code>Lived Testimonial</code>, <code>Scientific / Engineering Metrics (MW &amp; Gallons)</code>, <code>Legal Precedent &amp; Zoning Codes</code>, <code>Anecdotal Observation</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPF Character Casting: Hero</strong></td>
+                            <td><code>5</code></td>
+                            <td><code>Grassroots Civic Organizer</code>, <code>Bipartisan County Commissioner</code>, <code>Independent Utility Engineer</code>, <code>Family Farmer</code>, <code>None</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPF Character Casting: Villain</strong></td>
+                            <td><code>4</code></td>
+                            <td><code>Hyperscale Silicon Valley Conglomerate</code>, <code>Monopoly Power Utility</code>, <code>Out-of-State Land Speculator</code>, <code>Captured Utility Commission</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPF Character Casting: Victim</strong></td>
+                            <td><code>4</code></td>
+                            <td><code>Residential Electric Ratepayers</code>, <code>Family Well Owners &amp; Farmers</code>, <code>Historic Watershed &amp; Farmland</code>, <code>Local School District</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Supporting Data Table 3: QCA Results -->
+            <div class="data-table-title">Table 3: Qualitative Comparative Analysis (QCA) Minimal Sufficient Boolean Solutions (N = 500 Episodes)</div>
+            <div class="data-table-caption">Parsimonious Boolean formulas derived via Quine-McCluskey minimization for successful persuasion (&Delta;Y &ge; +1.50, consistency &ge; 0.75).</div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Citizen Archetype</th>
+                            <th>Minimal Parsimonious Boolean Formula</th>
+                            <th>Consistency Score</th>
+                            <th>Mean Persuasive Shift (&Delta;Y)</th>
+                            <th>Substantive Policy Finding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cluster 0: Progressive Conservationist</strong></td>
+                            <td><div class="method-code">Intentional &and; ((Fairness &and; Testimonial) &or; (Harm &and; Legal Precedent))</div></td>
+                            <td><span class="badge badge-ok">90.0% (n=7)</span></td>
+                            <td><code>+1.63</code></td>
+                            <td><strong>Causal Necessity:</strong> Intentional corporate culpability is mandatory; Accidental frames trigger greenwashing backlash.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cluster 1: Pro-Growth Property Conservative</strong></td>
+                            <td><div class="method-code">(Liberty &amp; Property &and; Lived Testimonial) &and; (Inadvertent &or; Intentional)</div></td>
+                            <td><span class="badge badge-ok">81.8% (n=11)</span></td>
+                            <td><code>+1.58</code></td>
+                            <td>Rejects environmental arguments; persuaded exclusively when high-voltage transmission lines infringe on private property rights.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cluster 2: Working-Class Community Defender</strong></td>
+                            <td><div class="method-code">(Fairness &and; Lived Testimonial) &and; (Inadvertent &or; Intentional &or; Mechanical)</div></td>
+                            <td><span class="badge badge-ok">100.0% (n=9)</span></td>
+                            <td><code>+1.91</code></td>
+                            <td><strong>Equifinality:</strong> Indifferent to the causal attribution provided utility bill fairness is voiced through relatable neighbors.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cluster 3: Conservative Conservationist / Skeptic</strong></td>
+                            <td><div class="method-code">(Liberty &amp; Property &or; Fairness) &and; Lived Testimonial &and; Inadvertent</div></td>
+                            <td><span class="badge badge-ok">77.8% (n=9)</span></td>
+                            <td><code>+1.54</code></td>
+                            <td>Deep institutional distrust; exhibits backlash (<code>&Delta;Y = -0.65</code>) against corporate "inevitable progress" claims.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Supporting Data Table 4: Ground-Truth Cross-Validation Matrix -->
+            <div class="data-table-title">Table 4: Empirical Ground-Truth Cross-Validation Matrix (N = 428 U.S. Municipal &amp; County Moratoriums)</div>
+            <div class="data-table-caption">Concordance testing comparing QCA simulated Boolean predictions against documented ordinance justifications in <code>data_center_moratoriums.csv</code>.</div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Jurisdiction &amp; State</th>
+                            <th>Enacted Policy Action</th>
+                            <th>Matched GSS Archetype</th>
+                            <th>Documented Real-World Justification (Details_and_Reason)</th>
+                            <th>Coded Causal Story &amp; NPF Frame</th>
+                            <th>Concordance with QCA Formula</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Prince William County, VA</strong></td>
+                            <td>Active Moratorium on 22M sq. ft. CPA</td>
+                            <td><strong>Cluster 0</strong> (Progressive)</td>
+                            <td>Citizen coalition contested closed-door NDAs, undisclosed subsidies, and zoning encroachments on the Manassas National Battlefield Park buffer.</td>
+                            <td><code>Intentional Harm</code> &bull; <code>Fairness &amp; Anti-Cheating</code> &bull; <code>Legal Precedent</code></td>
+                            <td><span class="badge badge-ok">Direct Match</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fulton County, IN</strong></td>
+                            <td>1-Year Moratorium on 500MW Campus</td>
+                            <td><strong>Cluster 3</strong> (Conservative Conservationist)</td>
+                            <td>County commissioners enacted moratorium citing aquifer drawdown, residential well failure risks, and utility tariffs shifting grid costs to farms.</td>
+                            <td><code>Mechanical Breakdown</code> &bull; <code>Fairness Frame</code> &bull; <code>Lived Testimonial</code></td>
+                            <td><span class="badge badge-ok">Direct Match</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jerome Township, OH</strong></td>
+                            <td>9-Month Zoning Moratorium</td>
+                            <td><strong>Cluster 1</strong> (Property Conservative)</td>
+                            <td>Local farmers and landowners organized against utility eminent domain for high-voltage transmission lines crossing family farms.</td>
+                            <td><code>Inadvertent Consequence</code> &bull; <code>Liberty &amp; Property Rights</code> &bull; <code>Testimonial</code></td>
+                            <td><span class="badge badge-ok">Direct Match</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemberton Township, NJ</strong></td>
+                            <td>Comprehensive Prohibitive Ban</td>
+                            <td><strong>Cluster 2 / Cluster 3</strong></td>
+                            <td>Bipartisan township council banned data centers to protect the Pinelands National Reserve and shield residential ratepayers from substation upgrade fees.</td>
+                            <td><code>Harm Prevention</code> &bull; <code>Fairness &amp; Anti-Cheating</code> &bull; <code>Inadvertent</code></td>
+                            <td><span class="badge badge-ok">Direct Match</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Works Cited Card -->
+            <div class="works-cited-card">
+                <h3>Works Cited</h3>
+                <ul class="works-cited-list">
+                    <li><strong>Argyle, L. P., Busby, E. C., Fulda, N., Gubler, J. R., Rytting, C., &amp; Wingate, D.</strong> (2023). Out of one, many: Using language models to simulate human samples. <em>Political Analysis</em>, 31(3), 337–351. https://doi.org/10.1017/pan.2023.2</li>
+                    <li><strong>Graham, J., Haidt, J., Koleva, S., Motyl, M., Iyer, R., Wojcik, S. P., &amp; Ditto, P. H.</strong> (2013). Moral foundations theory: The pragmatic validity of moral pluralism. <em>Advances in Experimental Social Psychology</em>, 47, 55–130. https://doi.org/10.1016/B978-0-12-407236-7.00002-4</li>
+                    <li><strong>Haidt, J.</strong> (2012). <em>The Righteous Mind: Why Good People Are Divided by Politics and Religion</em>. Pantheon Books.</li>
+                    <li><strong>Horton, J. J.</strong> (2023). Large language models as simulated economic agents: What can we learn from <em>Homo silicus</em>? <em>National Bureau of Economic Research Working Paper No. 31122</em>. https://doi.org/10.3386/w31122</li>
+                    <li><strong>Jones, M. D., &amp; McBeth, M. K.</strong> (2010). A narrative policy framework: Clear enough to be wrong? <em>Policy Studies Journal</em>, 38(2), 329–353. https://doi.org/10.1111/j.1541-0072.2010.00364.x</li>
+                    <li><strong>McBeth, M. K., Jones, M. D., &amp; Shanahan, E. A.</strong> (2014). The Narrative Policy Framework. In P. A. Sabatier &amp; C. M. Weible (Eds.), <em>Theories of the Policy Process</em> (3rd ed., pp. 225–266). Westview Press.</li>
+                    <li><strong>Ragin, C. C.</strong> (1987). <em>The Comparative Method: Moving Beyond Qualitative and Quantitative Strategies</em>. University of California Press.</li>
+                    <li><strong>Ragin, C. C.</strong> (2008). <em>Redesigning Social Inquiry: Fuzzy Sets and Beyond</em>. University of Chicago Press.</li>
+                    <li><strong>Schneider, C. Q., &amp; Wagemann, C.</strong> (2012). <em>Set-Theoretic Methods for the Social Sciences: A Guide to Qualitative Comparative Analysis</em>. Cambridge University Press. https://doi.org/10.1017/CBO9781139004244</li>
+                    <li><strong>Shanahan, E. A., Jones, M. D., &amp; McBeth, M. K.</strong> (2011). Policy narratives and policy solutions. <em>Policy Studies Journal</em>, 39(3), 535–560. https://doi.org/10.1111/j.1541-0072.2011.00420.x</li>
+                    <li><strong>Shanahan, E. A., Jones, M. D., McBeth, M. K., &amp; Radaelli, C. M.</strong> (2018). The Narrative Policy Framework. In C. M. Weible &amp; P. A. Sabatier (Eds.), <em>Theories of the Policy Process</em> (4th ed., pp. 173–213). Westview Press.</li>
+                    <li><strong>Smith, T. W., Davern, M., Freese, J., &amp; Morgan, S. L.</strong> (2022). <em>General Social Surveys, 1972-2022</em> [Machine-readable data file]. NORC at the University of Chicago.</li>
+                    <li><strong>Stone, D. A.</strong> (1989). Causal stories and the formation of policy agendas. <em>Political Science Quarterly</em>, 104(2), 281–300. https://doi.org/10.2307/2151585</li>
+                </ul>
             </div>
         </section>
 
