@@ -32,6 +32,7 @@ An automated civic intelligence pipeline and interactive knowledge graph trackin
 | 2026-10-06 | **Hillcrest Homes DDA Policy Analysis** | Synthesized legal and municipal brief for the Hillcrest Homes Disposition & Development Agreement (DDA), detailing its link to Ordinance 1750-NS fee waivers, Planning Commission approval, and Oct 13 City Council hearing. |
 | 2026-10-06 | **Analysis of 5 Pressing Housing Policy Issues** | Profiled the top 5 affordable housing challenges confronting City Council: PSH continuum bottleneck, Ordinance 1750-NS fee waivers, corridor infill DDAs vs neighborhood buffers, state ADU preemption vs affordability, and mobile home preservation. |
 | 2026-10-06 | **Showcase Realignment to AI Tools** | Realigned from the critical research cluster in `projects.html` into `ai_tools.html` under Featured Applications and Custom AI Tools & Assistants. |
+| 2026-11-06 | **POLS 4ST Thousand Oaks AI Strategy Course Flyer** | Generated updated course flyer graphic (`images/pols_4st_thousand_oaks_flyer.png`) highlighting student collaboration with the City of Thousand Oaks to build an AI strategy covering tool acquisition (ALPR/productivity), municipal use cases, tracking, employee training, evaluation, and data privacy/bias governance. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 
