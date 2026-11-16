@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodological Approaches in Technology &amp; Society Research | T&amp;S Working Group</title>
+    <meta name="description" content="A comprehensive guide to the six core methodologies deployed across leading Technology and Society journals: Algorithmic Audits, Trace Ethnography, Computational Social Science, Critical Discourse, Survey Experiments, and Speculative Design.">
+    <link rel="stylesheet" href="style.css?v=20261116">
+    <!-- Mermaid.js for architectural network diagram -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Space Mono, monospace',
+                fontSize: '12px',
+                primaryColor: '#ffffff',
+                primaryBorderColor: '#0a0a0a',
+                primaryTextColor: '#0a0a0a',
+                lineColor: '#0a0a0a',
+                secondaryColor: '#f6f6f4',
+                tertiaryColor: '#eeeeea',
+                clusterBkg: '#f6f6f4',
+                clusterBorder: '#0a0a0a'
+            }
+        });
+    </script>
+    <style>
+        .breadcrumb-strip {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 2rem 0 1.5rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .breadcrumb-strip a {
+            color: var(--text-heading);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .methods-hero {
+            background: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        .methods-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--accent-lime);
+        }
+        .methods-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.08;
+            margin-bottom: 1rem;
+        }
+        .methods-hero p.lead {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            max-width: 950px;
+        }
+
+        /* Filter & Jump Bar */
+        .methods-nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 1.25rem;
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 3rem;
+            position: sticky;
+            top: var(--header-height);
+            z-index: 100;
+        }
+        .nav-pill {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.45rem 0.75rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-heading);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        .nav-pill:hover, .nav-pill.active {
+            background: var(--text-heading);
+            color: var(--accent-lime);
+        }
+
+        /* Method Section Cards */
+        .method-block {
+            background: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .method-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .method-num {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: #0a0a0a;
+            color: var(--accent-lime);
+            padding: 0.25rem 0.65rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .method-block h2 {
+            font-size: 1.85rem;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+        }
+        .method-epistemology {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .approach-card {
+            border: 1.5px solid var(--border-color);
+            background: var(--bg-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .approach-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-heading);
+        }
+        .approach-card p {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+        .citation-box {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--text-heading);
+            padding: 0.75rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            line-height: 1.5;
+            color: var(--text-heading);
+        }
+        .citation-box strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--text-heading);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+        }
+
+        .lab-resonance-box {
+            background: #fbfbf9;
+            border: 1.5px dashed var(--border-color);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+        .lab-resonance-box strong {
+            color: var(--text-heading);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+        }
+
+        /* Network Diagram Box */
+        .diagram-container {
+            background: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        .mermaid-wrapper {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+
+        /* Journal Comparison Matrix */
+        .journal-table-wrap {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+        .journal-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            background: var(--surface-color);
+            border: 2px solid var(--border-color);
+        }
+        .journal-table th {
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-right: 1px solid #333;
+        }
+        .journal-table th:last-child {
+            border-right: none;
+        }
+        .journal-table td {
+            padding: 1.1rem 1rem;
+            border-bottom: 1.5px solid var(--border-color);
+            border-right: 1px solid var(--border-light);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+        .journal-table td:last-child {
+            border-right: none;
+        }
+        .journal-table tr:nth-child(even) td {
+            background: var(--surface-subtle);
+        }
+        .journal-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .journal-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        /* 2024+ Trends Section */
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .trend-card {
+            border: 2px solid var(--border-color);
+            background: var(--surface-color);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+        }
+        .trend-card::before {
+            content: "// FRONTIER";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: var(--accent-lime);
+            color: #0a0a0a;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 0.1rem 0.4rem;
+            border: 1px solid var(--border-color);
+        }
+        .trend-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.65rem;
+        }
+        .trend-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Primary Subpage Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">José Marichal<span class="lime-dot-sm" aria-hidden="true"></span></a>
+            </div>
+            <nav aria-label="Primary Navigation">
+                <ul>
+                    <li><a href="projects.html" class="active">T&amp;S Working Group</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="mental_models.html">Mental Models</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumb-strip">
+                <a href="index.html">Home</a> &nbsp;/&nbsp; 
+                <a href="projects.html">T&amp;S Working Group</a> &nbsp;/&nbsp; 
+                <span>Methodologies</span> &nbsp;/&nbsp; 
+                <span style="color: var(--text-heading); font-weight: 700;">Approaches in Technology &amp; Society Journals</span>
+            </div>
+
+            <!-- Hero Banner -->
+            <section class="methods-hero">
+                <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
+                    <span class="track-tag track-tag-main">RESEARCH PLAYBOOK</span>
+                    <span class="track-tag track-tag-lime">STS &bull; NMS &bull; BDS &bull; AI&amp;S</span>
+                    <span class="track-tag">METHODOLOGICAL COMPENDIUM</span>
+                </div>
+                <h1>Methodological Approaches in Technology &amp; Society Research</h1>
+                <p class="lead">
+                    How do scholars empirically capture, deconstruct, and challenge algorithmic power? This compendium outlines the six dominant methodological paradigms deployed across top peer-reviewed venues (<em>New Media &amp; Society</em>, <em>Big Data &amp; Society</em>, <em>AI &amp; Society</em>, and <em>Information, Communication &amp; Society</em>), mapping their epistemological assumptions, canonical citations, triangulation strategies, and 2024–2026 frontiers.
+                </p>
+            </section>
+
+            <!-- Sticky Quick-Navigation -->
+            <nav class="methods-nav-bar" aria-label="Section Jump Bar">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; align-self: center; margin-right: 0.5rem;">JUMP TO:</span>
+                <a href="#part1-audits" class="nav-pill">1. Algorithmic Auditing</a>
+                <a href="#part1-ethnography" class="nav-pill">2. Trace Ethnography</a>
+                <a href="#part1-computational" class="nav-pill">3. Computational Social Science</a>
+                <a href="#part1-cda" class="nav-pill">4. Critical Discourse (CDA)</a>
+                <a href="#part1-experiments" class="nav-pill">5. Survey Experiments</a>
+                <a href="#part1-speculative" class="nav-pill">6. Speculative &amp; Arts-Led</a>
+                <a href="#part2-network" class="nav-pill" style="background: var(--surface-subtle);">&bull; Network Map</a>
+                <a href="#part3-journals" class="nav-pill" style="background: var(--surface-subtle);">&bull; Journal Matrix</a>
+                <a href="#part4-trends" class="nav-pill" style="background: var(--accent-lime); color: #0a0a0a;">&bull; Current Trends</a>
+            </nav>
+
+            <!-- =================================================================
+                 PART 1: TOP METHODOLOGICAL APPROACHES
+                 ================================================================= -->
+            <section id="part1">
+                <div class="ecosystem-section-title">
+                    <h2>Part 1: Top Methodological Approaches &amp; Canonical Examples</h2>
+                    <span class="sub">// 6 CORE PARADIGMS</span>
+                </div>
+
+                <!-- 1. ALGORITHMIC AUDITING -->
+                <article class="method-block" id="part1-audits">
+                    <div class="method-block-header">
+                        <div>
+                            <span class="method-num">METHODOLOGY 01</span>
+                            <h2>Algorithmic Auditing &amp; Forensic Interface Analysis</h2>
+                            <span class="method-epistemology">EPISTEMOLOGY: Empirical Verification &bull; Reverse Engineering &bull; Critical Software Studies</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-main);">
+                        Auditing methods inspect how platforms, recommender engines, and automated decision-making (ADM) systems behave under controlled empirical conditions. Because commercial platforms conceal their algorithmic weights as trade secrets, researchers treat systems as "black boxes," systematically measuring inputs, outputs, and interface affordances to uncover discriminatory bias, radicalization dynamics, or extraction mechanics.
+                    </p>
+
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <div>
+                                <h3>The Walkthrough Method</h3>
+                                <p>
+                                    Systematically engages with an application or interface step-by-step—from entry (onboarding, permissions), to everyday use (core interface, algorithmic prompts), to suspension/exit—to unpack its embedded cultural biases, governance, and business models.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Light, B., Burgess, J., &amp; Duguay, S. (2018). "The walkthrough method: An approach to analyzing apps." <em>New Media &amp; Society</em>, 20(3), 881–900.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <div>
+                                <h3>Sock-Puppet / Audit Studies</h3>
+                                <p>
+                                    Researchers create coordinated synthetic accounts (bots/personas) with randomized or controlled attributes (e.g., gender, race, ideological leaning, browsing history) to empirically measure differential treatment, ad pricing disparities, or rabbit-hole radicalization.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Bandy, J. (2021). "Problematic Machine Behavior: A Systematic Literature Review of Algorithm Audits." <em>Big Data &amp; Society</em>, 8(1), 1–18.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-resonance-box">
+                        <strong>// Working Group Application:</strong> In our <a href="ecosystem_flock_cameras.html">Flock Camera Surveillance Ecosystem</a>, we adapt audit logic to the physical street: mapping automated license plate reader (ALPR) placement density against Census median household income tracts to audit privatized municipal surveillance.
+                    </div>
+                </article>
+
+                <!-- 2. DIGITAL & TRACE ETHNOGRAPHY -->
+                <article class="method-block" id="part1-ethnography">
+                    <div class="method-block-header">
+                        <div>
+                            <span class="method-num">METHODOLOGY 02</span>
+                            <h2>Digital, Platform, &amp; Trace Ethnography</h2>
+                            <span class="method-epistemology">EPISTEMOLOGY: Interpretive &bull; Phenomenological &bull; Situated Knowledge</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-main);">
+                        Adapts traditional sociological and anthropological participant observation to environments where human interaction is recorded, mediated, and altered by software architectures. It prioritizes the lived experience of human actors navigating, resisting, or rationalizing computational systems.
+                    </p>
+
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <div>
+                                <h3>Algorithmic &amp; Trace Ethnography</h3>
+                                <p>
+                                    Blends participant observation with digital server logs, revision histories, and computational traces to understand how communities interact with automated governance and develop "folk theories" about how opaque algorithms rank them.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical References:</strong>
+                                Bucher, T. (2017). "The algorithmic imaginary: Exploring the ordinary affects of being target of an algorithm." <em>Information, Communication &amp; Society</em>.<br><br>
+                                Geiger, R. S., &amp; Ribes, D. (2011). "Trace ethnography: Following coordination through computational and log data." <em>HICSS / applied widely in BDS &amp; NMS</em>.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <div>
+                                <h3>Virtual &amp; Immersion Ethnography</h3>
+                                <p>
+                                    Deep immersion in niche digital subcultures—such as rideshare driver subreddits, algorithmic trading Discord channels, or DAO governance forums—examining how workers build informal solidarity networks to subvert automated management.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Jarrahi, M. H., et al. (2021). "Algorithmic management in a work context." <em>Big Data &amp; Society</em>, 8(2), 1–14.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-resonance-box">
+                        <strong>// Working Group Application:</strong> In our <a href="ecosystem_deepfake_campaigns.html">Synthetic Media Ecosystem</a>, we harvest 58 battleground state subreddits to trace how actual swing-state voters debate, detect, and react to AI-generated political campaign clips.
+                    </div>
+                </article>
+
+                <!-- 3. COMPUTATIONAL SOCIAL SCIENCE -->
+                <article class="method-block" id="part1-computational">
+                    <div class="method-block-header">
+                        <div>
+                            <span class="method-num">METHODOLOGY 03</span>
+                            <h2>Computational Social Science &amp; Text-as-Data</h2>
+                            <span class="method-epistemology">EPISTEMOLOGY: Quantitative &bull; Macro-Scale Structural &bull; Network Theory</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-main);">
+                        Large-scale quantitative collection and mathematical modeling of digital trace data. It integrates natural language processing (NLP), transformer embeddings, and social network analysis (SNA) to map macro-structural communication phenomena across millions of posts, articles, or transcripts.
+                    </p>
+
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <div>
+                                <h3>Semantic &amp; Topic Modeling (NLP / LLMs)</h3>
+                                <p>
+                                    Deploys embedding spaces, Latent Dirichlet Allocation (LDA), or LLM zero-shot classification across massive corpora to capture shifts in political rhetoric, synthetic campaign propaganda, and ideological polarization over time.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Hemsley, J., et al. (2018). "Social media and political communication." <em>New Media &amp; Society</em>, 20(3), 850–870.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <div>
+                                <h3>Network Topologies &amp; Diffusion Analysis</h3>
+                                <p>
+                                    Utilizes graph theory metrics (eigenvector centrality, Louvain modularity, k-core decomposition) to model how information cascades, astroturfed disinformation campaigns, and coordinated inauthentic behavior propagate across social networks.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Starbird, K., et al. (2019). "Disinformation as Collaborative Work: Surfacing the Participatory Nature of Strategic Information Operations." <em>Proceedings of the ACM / BDS cross-citations</em>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-resonance-box">
+                        <strong>// Working Group Application:</strong> In our streaming pipeline for the Flock Camera study, we ingested Harvard LocalView’s 37,655 council meetings directly in memory, extracting and classifying 3,581 debate snippets using zero-bloat NLP parsers.
+                    </div>
+                </article>
+
+                <!-- 4. CRITICAL DISCOURSE ANALYSIS -->
+                <article class="method-block" id="part1-cda">
+                    <div class="method-block-header">
+                        <div>
+                            <span class="method-num">METHODOLOGY 04</span>
+                            <h2>Critical Discourse Analysis &amp; Sociotechnical Imaginaries</h2>
+                            <span class="method-epistemology">EPISTEMOLOGY: Critical Hermeneutic &bull; Foucault &bull; Political Economy</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-main);">
+                        Favored heavily in <em>AI &amp; Society</em> and <em>Big Data &amp; Society</em>, this paradigm interrogates how power, hegemony, and racial/class domination are baked into institutional narratives, national policy whitepapers, tech marketing rhetoric, and foundational AI ethics charters.
+                    </p>
+
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <div>
+                                <h3>Sociotechnical Imaginaries Framework</h3>
+                                <p>
+                                    Drawing on Sheila Jasanoff and Sang-Hyun Kim, this method analyzes how nation-states, venture capital firms, and engineering elites construct collectively held visions of desirable social futures enabled by technological breakthroughs.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical References:</strong>
+                                Bareis, J., &amp; Katzenbach, C. (2022). "Talking AI into being: The narratives and imaginaries of AI in European national strategies." <em>New Media &amp; Society</em>, 24(4), 855–875.<br><br>
+                                Jasanoff, S., &amp; Kim, S.-H. (2015). <em>Dreamscapes of Modernity: Sociotechnical Imaginaries and the Fabrication of Power</em>. Univ. of Chicago Press.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <div>
+                                <h3>Critical Racial &amp; Postcolonial Deconstruction</h3>
+                                <p>
+                                    Interrogates how artificial intelligence systems reproduce colonial extraction, linguistic hegemony, and racial hierarchy through datasets, marketing aesthetics, and corporate value alignment.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Cave, S., &amp; Dihal, K. (2020). "The Whiteness of AI." <em>Philosophy &amp; Technology</em> / cited frequently in <em>AI &amp; Society</em>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-resonance-box">
+                        <strong>// Working Group Application:</strong> In our <a href="ecosystem_data_center_resistance.html">Data Center Resistance Ecosystem</a>, we operationalize Deborah Stone’s policy causal stories (Accidental, Inadvertent, Mechanical, Intentional) to dissect how tech companies rebrand massive water/grid extraction as patriotic modernization.
+                    </div>
+                </article>
+
+                <!-- 5. SURVEY & EXPERIMENTAL METHODS -->
+                <article class="method-block" id="part1-experiments">
+                    <div class="method-block-header">
+                        <div>
+                            <span class="method-num">METHODOLOGY 05</span>
+                            <h2>User-Centered Experimental &amp; Survey Methods</h2>
+                            <span class="method-epistemology">EPISTEMOLOGY: Positivist &bull; Behavioral &bull; Causal Inference</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-main);">
+                        Quantitative behavioral assessments measuring how humans perceive, trust, defer to, or resist automated decisions. Frequently deployed to study algorithmic aversion, moral delegation, and attitudes toward synthetic generated media.
+                    </p>
+
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <div>
+                                <h3>Conjoint &amp; Vignette Survey Experiments</h3>
+                                <p>
+                                    Presents respondents with randomized, orthogonal variations of algorithmic attributes (e.g., human vs. AI author; automated vs. human moderation; corporate vs. public ownership) to causally isolate which variables drive user trust and compliance.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Köbis, N., et al. (2021). "The social dilemma of autonomous machines." <em>AI &amp; Society</em>, 36(4), 1147–1158.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <div>
+                                <h3>Algorithmic Fairness &amp; Folk Theory Scales</h3>
+                                <p>
+                                    Deploys psychometric and validated behavioral scales to measure how users conceptualize procedural vs. distributive justice in automated credit, parole, or hiring recommendations.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Shin, D. (2021). "The perception of algorithmic fairness: How users understand algorithms." <em>New Media &amp; Society</em>, 23(8), 2277–2301.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-resonance-box">
+                        <strong>// Working Group Application:</strong> In our <a href="stakeholder_simulation_dashboard.html">Stakeholder Policy Analyst Dashboard</a>, we run an orthogonal N=500 Monte Carlo simulation modeling how changing council framing alters city council voting coalitions under Sabatier’s Advocacy Coalition Framework.
+                    </div>
+                </article>
+
+                <!-- 6. SPECULATIVE & ARTS-LED RESEARCH -->
+                <article class="method-block" id="part1-speculative">
+                    <div class="method-block-header">
+                        <div>
+                            <span class="method-num">METHODOLOGY 06</span>
+                            <h2>Speculative, Arts-Led, &amp; Participatory Action Research</h2>
+                            <span class="method-epistemology">EPISTEMOLOGY: Posthumanist &bull; Materialist &bull; Agonistic Design</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-main);">
+                        Particularly prominent in <em>AI &amp; Society</em>, this methodology rejects computational reductionism. It deploys creative prototyping, speculative fiction, acoustic field recordings, and participatory community co-design to make the invisible material extraction and surveillance of AI systems physically tangible.
+                    </p>
+
+                    <div class="approach-grid">
+                        <div class="approach-card">
+                            <div>
+                                <h3>Speculative Design &amp; Critical Prototyping</h3>
+                                <p>
+                                    Constructs provocative, intentionally non-functional or satirical technological artifacts to expose the hidden corporate assumptions, labor exploitation, or surveillance logic embedded in normal tech products.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Frauenberger, C. (2020). "Entanglement: Designing in Posthumanist and New Materialist Conditions." <em>AI &amp; Society</em>, 35(1), 33–44.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <div>
+                                <h3>Participatory Action &amp; Community Zines</h3>
+                                <p>
+                                    Translates technical research into tactile community artifacts—such as risograph-printed zines, public comment guides, and workshops—arming residents to intervene in local planning and police oversight hearings.
+                                </p>
+                            </div>
+                            <div class="citation-box">
+                                <strong>Canonical Reference:</strong>
+                                Costanza-Chock, S. (2020). <em>Design Justice: Community-Led Practices to Build the Worlds We Need</em>. MIT Press.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lab-resonance-box">
+                        <strong>// Working Group Application:</strong> Each of our research ecosystems incorporates student-illustrated community zines and 2-minute city council testimony templates so our academic findings directly empower everyday citizens at municipal podiums.
+                    </div>
+                </article>
+            </section>
+
+            <!-- =================================================================
+                 PART 2: NETWORK MAP OF METHODOLOGICAL CLUSTERS
+                 ================================================================= -->
+            <section id="part2-network" class="diagram-container">
+                <div class="ecosystem-section-title">
+                    <h2>Part 2: Network Map of Methodological Clusters</h2>
+                    <span class="sub">// EPISTEMIC TRIANGULATION &amp; HYBRIDS</span>
+                </div>
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--text-main);">
+                    Technology and Society scholarship rarely relies on a single isolated technique. Leading papers gain empirical traction by sitting at the intersections of three foundational epistemological pillars: <strong>Computational</strong> (large trace data), <strong>Qualitative / Ethnographic</strong> (lived experience), and <strong>Critical / Hermeneutic</strong> (power and political economy).
+                </p>
+
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid">
+flowchart TD
+    %% Core Nodes
+    subgraph PILLARS ["FOUNDATIONAL EPISTEMOLOGICAL PILLARS"]
+        COMP["COMPUTATIONAL SOCIAL SCIENCE<br/>(NLP, SNA, Macro Trace Data)"]
+        QUAL["QUALITATIVE & ETHNOGRAPHIC<br/>(Participant Observation, Immersion)"]
+        CRIT["CRITICAL & HERMENEUTIC<br/>(Political Economy, CDA, STS)"]
+    end
+
+    %% Hybrid Bridges
+    COMP ---|Trace Logs + Fieldwork| HYB1["TRACE ETHNOGRAPHY<br/>(Bucher, Geiger & Ribes)"]
+    QUAL --- HYB1
+
+    COMP ---|Reverse Engineering + Critical Theory| HYB2["ALGORITHMIC AUDITING<br/>(Light, Bandy, Sandvig)"]
+    CRIT --- HYB2
+
+    QUAL ---|Speculative Design + Power Critique| HYB3["ARTS-LED & SPECULATIVE<br/>(Frauenberger, Costanza-Chock)"]
+    CRIT --- HYB3
+
+    COMP ---|Causal Modeling + Human Trust| HYB4["CONJOINT & SURVEY EXPERIMENTS<br/>(Köbis, Shin)"]
+    QUAL --- HYB4
+
+    %% Application Domains
+    subgraph DOMAINS ["PRIMARY APPLICATION DOMAINS"]
+        D1["Platform Politics & Electoral Integrity"]
+        D2["Algorithmic Governance & Labor Resistance"]
+        D3["Material Infrastructure & Ecological Strain"]
+    end
+
+    HYB1 --> D2
+    HYB2 --> D1
+    HYB2 --> D2
+    HYB3 --> D3
+    HYB4 --> D1
+
+    style COMP fill:#ffffff,stroke:#0a0a0a,stroke-width:2px;
+    style QUAL fill:#ffffff,stroke:#0a0a0a,stroke-width:2px;
+    style CRIT fill:#ffffff,stroke:#0a0a0a,stroke-width:2px;
+    style HYB1 fill:#eeeeea,stroke:#0a0a0a,stroke-width:1.5px;
+    style HYB2 fill:#bdf000,stroke:#0a0a0a,stroke-width:2px;
+    style HYB3 fill:#eeeeea,stroke:#0a0a0a,stroke-width:1.5px;
+    style HYB4 fill:#eeeeea,stroke:#0a0a0a,stroke-width:1.5px;
+                    </pre>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 PART 3: JOURNAL COMPARATIVE MATRIX
+                 ================================================================= -->
+            <section id="part3-journals" style="margin-bottom: 4rem;">
+                <div class="ecosystem-section-title">
+                    <h2>Part 3: Methodological Dynamics Across Specific Journals</h2>
+                    <span class="sub">// EDITORIAL PROFILES &amp; TRIANGULATION</span>
+                </div>
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--text-main);">
+                    Each premier technology-and-society journal has cultivated a distinct methodological culture. Successful submissions align their research design with the venue's core epistemological expectations:
+                </p>
+
+                <div class="journal-table-wrap">
+                    <table class="journal-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 22%;">Journal &amp; Impact Profile</th>
+                                <th style="width: 26%;">Dominant Methodological Profile</th>
+                                <th style="width: 26%;">Typical Methodological Triangulation</th>
+                                <th style="width: 26%;">Key Methodological Challenge Addressed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="journal-badge">New Media &amp; Society (NMS)</span>
+                                    <span class="journal-sub">SAGE &bull; IF: ~5.0 &bull; Elite Social Science</span>
+                                </td>
+                                <td>
+                                    <strong>Mixed Methods &amp; Behavioral:</strong> Platform Walkthroughs, Conjoint Survey Experiments, Computational Framing, and Quantitative Behavioral Surveys.
+                                </td>
+                                <td>
+                                    Combines large-<em>N</em> platform metric scraping with qualitative semi-structured interviews to ground behavioral claims in user experience.
+                                </td>
+                                <td>
+                                    Overcoming commercial platform API shutdowns; establishing rigorous causal links between interface design and human behavioral shifts.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="journal-badge">Big Data &amp; Society (BDS)</span>
+                                    <span class="journal-sub">SAGE &bull; Open Access &bull; Critical Data Studies</span>
+                                </td>
+                                <td>
+                                    <strong>Critical Data Studies:</strong> Algorithmic Audits, Trace Ethnography, Infrastructure Studies, and Forensic Software Dissection.
+                                </td>
+                                <td>
+                                    Integrates programmatic system audits with deep continental philosophy (e.g., Foucault, Deleuze, Zuboff, Postcolonial Theory).
+                                </td>
+                                <td>
+                                    The algorithmic "black box" dilemma; reflexivity regarding academic researchers relying on commercial cloud infrastructure.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="journal-badge">AI &amp; Society</span>
+                                    <span class="journal-sub">Springer &bull; Human-Centered / Critical Theory</span>
+                                </td>
+                                <td>
+                                    <strong>Human-Centered &amp; Speculative:</strong> Sociotechnical Imaginaries, Critical Discourse Analysis (CDA), Phenomenological Critique, and Arts-Led Prototyping.
+                                </td>
+                                <td>
+                                    Interweaves the philosophy of technology, historical genealogy, and speculative interaction design to challenge technical orthodoxy.
+                                </td>
+                                <td>
+                                    Resisting computational reductionism; vigorously defending human dignity, labor agency, and social justice against Silicon Valley determinism.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="journal-badge">Information, Communication &amp; Society (ICS)</span>
+                                    <span class="journal-sub">Routledge &bull; Political Communication</span>
+                                </td>
+                                <td>
+                                    <strong>Computational Social Science:</strong> Social Network Analysis (SNA), Political Disinformation Cascade Modeling, and Longitudinal Panel Surveys.
+                                </td>
+                                <td>
+                                    Bridges automated NLP topic topologies with longitudinal social surveys to evaluate political polarization and democratic participation.
+                                </td>
+                                <td>
+                                    Representativeness of digital trace data; accounting for platform migration biases (e.g., user exodus from X to Bluesky or TikTok).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- =================================================================
+                 PART 4: CURRENT METHODOLOGICAL TRENDS (2024-2026)
+                 ================================================================= -->
+            <section id="part4-trends" style="margin-bottom: 5rem;">
+                <div class="ecosystem-section-title">
+                    <h2>Part 4: Frontier Methodological Trends (2024–Present)</h2>
+                    <span class="sub">// HOW THE DISCIPLINE IS EVOLVING</span>
+                </div>
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--text-main);">
+                    As commercial platforms erect severe paywalls and API restrictions, the methodology of technology and society research is undergoing a structural transformation. Three emergent practices represent the state of the art:
+                </p>
+
+                <div class="trends-grid">
+                    <div class="trend-card">
+                        <h3>1. Synthetic Persona Testing (In-Silico Audits)</h3>
+                        <p>
+                            Rather than recruiting thousands of human participants for early-stage trials, researchers configure LLMs conditioned on empirical demographic priors (such as the NORC General Social Survey) to simulate multi-agent deliberation, measure synthetic algorithmic persuasion, and audit conversational search engines under repeatable conditions.
+                        </p>
+                    </div>
+
+                    <div class="trend-card">
+                        <h3>2. Post-API Data Collection Protocols</h3>
+                        <p>
+                            Following the shutdown of academic API tiers across X, Reddit, and Meta, scholars have pivoted toward client-side auditing: lightweight browser extensions, secure user data-donation protocols, and privacy-preserving data cooperatives that empower citizens to donate their algorithmic feeds directly to researchers.
+                        </p>
+                    </div>
+
+                    <div class="trend-card">
+                        <h3>3. Multi-Platform &amp; Cross-Media Tracing</h3>
+                        <p>
+                            Disinformation, political deepfakes, and meme culture no longer reside in single walled gardens. Modern research protocols trace the cross-media trajectory of synthetic content as it originates on anonymous boards (4chan/Telegram), migrates to video platforms (TikTok/YouTube Shorts), and is recirculated into mainstream discourse.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Banner -->
+            <section class="pedagogy-banner">
+                <span class="track-tag track-tag-lime" style="margin-bottom: 1rem; display: inline-block;">CALIFORNIA LUTHERAN UNIVERSITY &bull; T&amp;S WORKING GROUP</span>
+                <h2>Putting Methodology Into Public Practice</h2>
+                <p>
+                    In our lab, students do not merely memorize these academic methods from textbooks. We deploy them directly in our active research ecosystems: from streaming Census-matched transcripts, to running Boolean QCA simulations, to producing investigative podcasts and community zines.
+                </p>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="projects.html" class="btn-brutalist btn-brutalist-lime">Explore Our Research Ecosystems &rarr;</a>
+                    <a href="sts_ai_society_publishing_venues.html" class="btn-brutalist btn-brutalist-outline" style="color: #fff; border-color: #fff;">Explore Publishing Venues Guide &rarr;</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 José Marichal &bull; Technology and Society Working Group &bull; California Lutheran University</p>
+        </div>
+    </footer>
+</body>
+</html>
