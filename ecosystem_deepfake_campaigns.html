@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem: Deepfake AI &amp; Electoral Integrity | Technology &amp; Society Working Group</title>
+    <meta name="description" content="An interlocking research ecosystem auditing generative AI in political campaigns, creator influencer 'slopaganda', voter epistemic degradation, forensic analysis, and state disclosure laws.">
+    <link rel="stylesheet" href="style.css?v=20261116">
+    <style>
+        .breadcrumb-strip {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 2rem 0 1.5rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .breadcrumb-strip a {
+            color: var(--text-heading);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .ecosystem-hero {
+            background: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            padding: 3rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+        .ecosystem-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--accent-lime);
+        }
+        .ecosystem-badge-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .track-tag {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.6rem;
+            border: 1px solid var(--border-color);
+        }
+        .track-tag-main {
+            background: var(--text-heading);
+            color: #ffffff;
+        }
+        .track-tag-lime {
+            background: var(--accent-lime);
+            color: var(--text-heading);
+        }
+        .ecosystem-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.08;
+            margin-bottom: 1.25rem;
+        }
+        .ecosystem-thesis-box {
+            background: var(--surface-subtle);
+            border: 1.5px solid var(--border-color);
+            padding: 1.5rem 1.75rem;
+            margin-top: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.65;
+        }
+
+        .flow-architecture {
+            background: var(--surface-color);
+            border: 1.5px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .flow-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .flow-header h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+        .flow-diagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+        .flow-node {
+            border: 1.5px solid var(--border-color);
+            padding: 1.25rem;
+            background: var(--bg-color);
+        }
+        .flow-node.track-a {
+            border-top: 4px solid var(--text-heading);
+        }
+        .flow-node.track-b {
+            border-top: 4px solid #1a73e8;
+        }
+        .flow-node.track-creative {
+            border-top: 4px solid #e37400;
+        }
+        .flow-node.track-civic {
+            border-top: 4px solid #137333;
+        }
+        .flow-node-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+        .flow-node h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .flow-node p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+        .flow-arrow-text {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: var(--surface-color);
+            padding: 0.2rem 0.4rem;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+        }
+
+        .ecosystem-section-title {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .ecosystem-section-title span.sub {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .artifacts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        .artifact-card-wide {
+            background: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-ambient);
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+        @media (max-width: 900px) {
+            .artifact-card-wide {
+                grid-template-columns: 1fr;
+            }
+        }
+        .artifact-aside {
+            background: var(--surface-subtle);
+            border-right: 1.5px solid var(--border-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        @media (max-width: 900px) {
+            .artifact-aside {
+                border-right: none;
+                border-bottom: 1.5px solid var(--border-color);
+            }
+        }
+        .artifact-main {
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .artifact-type-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            display: inline-block;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+        .artifact-card-wide h3 {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .artifact-lead {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .interactive-embed-box {
+            background: var(--bg-color);
+            border: 1.5px solid var(--border-color);
+            padding: 1.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .audio-player-mock {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 1.25rem;
+            border: 1.5px solid var(--border-color);
+        }
+        .audio-play-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-lime);
+            color: #0a0a0a;
+            border: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .audio-info {
+            flex-grow: 1;
+        }
+        .audio-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .audio-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: #a0a0a0;
+        }
+        .audio-waveform-bar {
+            height: 6px;
+            background: #333333;
+            margin-top: 0.5rem;
+        }
+        .audio-waveform-progress {
+            width: 51%;
+            height: 100%;
+            background: var(--accent-lime);
+        }
+
+        .data-preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+        .data-preview-table th {
+            text-align: left;
+            background: var(--surface-color);
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem 0.75rem;
+            font-weight: 700;
+        }
+        .data-preview-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .zine-preview-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .zine-page-mock {
+            aspect-ratio: 1 / 1.414;
+            border: 1.5px solid var(--border-color);
+            background: #ffffff;
+            padding: 0.6rem;
+            font-size: 0.62rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
+        .zine-page-mock .page-title {
+            font-weight: 800;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.25rem;
+        }
+
+        .artifact-lineage-box {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            border-top: 1.5px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .lineage-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .lineage-label {
+            font-weight: 700;
+            color: var(--text-muted);
+            min-width: 90px;
+        }
+
+        .cta-button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .btn-brutalist {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1.25rem;
+            border: 1.5px solid var(--border-color);
+            background: var(--text-heading);
+            color: #ffffff;
+            text-decoration: none;
+            box-shadow: var(--shadow-soft);
+            transition: all var(--transition-fast);
+        }
+        .btn-brutalist:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-ambient);
+            background: #000000;
+        }
+        .btn-brutalist-lime {
+            background: var(--accent-lime);
+            color: var(--text-heading);
+        }
+        .btn-brutalist-outline {
+            background: transparent;
+            color: var(--text-heading);
+        }
+
+        .pedagogy-banner {
+            background: #0a0a0a;
+            color: #ffffff;
+            border: 2px solid var(--border-color);
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: var(--shadow-hard);
+        }
+        .pedagogy-banner h2 {
+            color: var(--accent-lime);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        .pedagogy-banner p {
+            color: #dedede;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+        .pedagogy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333333;
+            padding-top: 2rem;
+        }
+        .pedagogy-col h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .pedagogy-col p {
+            font-size: 0.9rem;
+            color: #a8a8a8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">José Marichal<span class="lime-dot-sm" aria-hidden="true"></span></a>
+            </div>
+            <nav aria-label="Primary Navigation">
+                <ul>
+                    <li><a href="projects.html" class="active">T&amp;S Working Group</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="mental_models.html">Mental Models</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumb-strip">
+                <a href="index.html">Home</a> &nbsp;/&nbsp; 
+                <a href="projects.html">T&amp;S Working Group</a> &nbsp;/&nbsp; 
+                <span>Research Ecosystems</span> &nbsp;/&nbsp; 
+                <span style="color: var(--text-heading); font-weight: 700;">Deepfake AI &amp; Electoral Integrity</span>
+            </div>
+
+            <!-- Ecosystem Hero -->
+            <section class="ecosystem-hero">
+                <div class="ecosystem-badge-bar">
+                    <span class="track-tag track-tag-main">RESEARCH ECOSYSTEM // 03</span>
+                    <span class="track-tag track-tag-lime">MIXED-SKILL APPRENTICESHIP</span>
+                    <span class="track-tag">5 INTERLOCKING ARTIFACTS</span>
+                </div>
+                <h1>Synthetic Politics, Influencer "Slopaganda" &amp; Democratic Trust</h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); font-family: var(--font-display);">
+                    Auditing Partisan Creator AI Video Networks, Battleground Voter Polarization, Audio Forensics, and 28-State Disclaimer Legislation.
+                </p>
+
+                <div class="ecosystem-thesis-box">
+                    <p>
+                        <strong>The Ecosystem Thesis:</strong> The danger of political generative AI is not just official campaign ads—it is the explosion of decentralized, partisan social media influencers and creator collectives publishing organic AI "slopaganda" outside formal FEC disclosure regimes. Our working group builds an <em>interlocking public research ecosystem</em>: advanced students harvest YouTube synthetic shorts and Reddit battleground voter debates, while qualitative and creative students investigate creator networks, produce forensic explainers, and publish voter literacy guides.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Flow Architecture -->
+            <section class="flow-architecture">
+                <div class="flow-header">
+                    <div>
+                        <h3>How the Ecosystem Connects</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Data flow and intellectual dependencies across student research roles</p>
+                    </div>
+                    <span class="track-tag track-tag-lime">LIVE FEEDBACK LOOP</span>
+                </div>
+
+                <div class="flow-diagram-grid">
+                    <div class="flow-node track-a">
+                        <div class="flow-node-num">// STAGE 01 &bull; HARVESTING &bull; [ACTIVE]</div>
+                        <h4>Influencer AI Harvester</h4>
+                        <p>Tracks short-form political creator videos, parsing YouTube "altered content" badges and crowd-detection comments.</p>
+                        <span class="flow-arrow-text">Supplies verified video corpus &rarr;</span>
+                    </div>
+
+                    <div class="flow-node track-a">
+                        <div class="flow-node-num">// STAGE 02 &bull; DELIBERATION &bull; [ACTIVE]</div>
+                        <h4>Reddit Battleground Threads</h4>
+                        <p>Harvests 58 state subreddit election threads (~1,200 comments) tracking voter epistemic confusion and the "Liar's Dividend."</p>
+                        <span class="flow-arrow-text">Proves voter skepticism shift &rarr;</span>
+                    </div>
+
+                    <div class="flow-node track-b">
+                        <div class="flow-node-num">// STAGE 03 &bull; FORENSICS &bull; [SAMPLE ROLE]</div>
+                        <h4>Synthetic Forensics Lab</h4>
+                        <p>Undergraduates audit voice clone artifacts, audio spectrograms, and diffusion facial smearing in creator clips.</p>
+                        <span class="flow-arrow-text">Provides technical breakdown &rarr;</span>
+                    </div>
+
+                    <div class="flow-node track-creative">
+                        <div class="flow-node-num">// STAGE 04 &bull; NARRATIVE &bull; [SAMPLE ROLE]</div>
+                        <h4>Investigative Podcast</h4>
+                        <p>Produces narrative audio unmasking the shadow creator networks producing surrogate AI ads for candidates.</p>
+                        <span class="flow-arrow-text">Translates to mass public &rarr;</span>
+                    </div>
+
+                    <div class="flow-node track-civic">
+                        <div class="flow-node-num">// STAGE 05 &bull; POLICY &bull; [ACTIVE DATA / SAMPLE ZINE]</div>
+                        <h4>28-State Disclaimer Toolkit</h4>
+                        <p>Audits 28 state statutory AI disclosure laws and publishes an illustrated voter defense zine against surrogate deepfakes.</p>
+                        <span class="flow-arrow-text">Arms voters &amp; lawmakers &check;</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Artifacts Title -->
+            <div class="ecosystem-section-title">
+                <h2>The 5 Living Artifacts</h2>
+                <span class="sub">// EXPLORE LIVE ARTIFACTS BY ROLE</span>
+            </div>
+
+            <div class="artifacts-container">
+
+                <!-- ARTIFACT 01: ADVANCED COMPUTATIONAL (INFLUENCER AI HARVESTER) -->
+                <article class="artifact-card-wide" id="artifact-influencer-dataset">
+                    <div class="artifact-aside">
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                                <span class="artifact-type-badge" style="background: #0a0a0a; color: #fff; margin-bottom: 0;">EMPIRICAL HARVESTER</span>
+                                <span class="track-tag track-tag-lime" style="font-size: 0.65rem;">ACTIVE RESEARCH</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem;">Political Influencer AI Video Dataset (N=49)</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                Auditing Short-Form Partisan Creator Videos, Platform AI Badges, and Viewer Crowd Detection.
+                            </p>
+                        </div>
+                        <div class="artifact-lineage-box">
+                            <div class="lineage-row">
+                                <span class="lineage-label">TRACK:</span>
+                                <strong>Track A (Advanced Empirical Research)</strong>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">RESEARCHER:</span>
+                                <span>Dr. Jose Marichal [Active / Published]</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">INPUTS:</span>
+                                <span>YouTube API &bull; Crowd Comment Harvester</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">STATUS:</span>
+                                <span style="color: #137333; font-weight: 700;">Live &bull; Fully Published</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artifact-main">
+                        <div>
+                            <p class="artifact-lead">
+                                Political campaigns increasingly rely on third-party influencers and meme creators to circulate hyper-realistic synthetic video attacks, skirting candidate ad-disclaimer laws. This harvester monitors 49 verified short-form political creator videos, tracking which creators declare the YouTube "Altered content" badge (21/49) versus where viewer comments spontaneously detect and debate AI manipulation (17/49).
+                            </p>
+
+                            <div class="interactive-embed-box" style="padding: 0.75rem;">
+                                <table class="data-preview-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Target Candidate</th>
+                                            <th>Creator / Channel</th>
+                                            <th>Synthetic Technique</th>
+                                            <th>Platform Disclosure</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ted Cruz / Colin Allred (TX)</td>
+                                            <td>Partisan Shorts Creator</td>
+                                            <td>Audio Clone + Lip Sync</td>
+                                            <td>Undisclosed (Flagged by Viewers)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jon Ossoff (GA)</td>
+                                            <td>Surrogate PAC Channel</td>
+                                            <td>Full Diffusion Satire Avatar</td>
+                                            <td>YouTube Native Synthetic Badge</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Derrick Van Orden (WI)</td>
+                                            <td>Opponent Surrogate</td>
+                                            <td>Deepfake Audio Call</td>
+                                            <td>Cease-and-Desist Issued</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="cta-button-group">
+                            <a href="deepfake_ai_campaigns_2026.html" class="btn-brutalist btn-brutalist-lime">Launch Live 2026 Portal &rarr;</a>
+                            <a href="projects/deepfake_ai_s_impact_on_political_campaigns/influencer_political_ai_videos_crowd_scored.csv" class="btn-brutalist btn-brutalist-outline" download>Download CSV Dataset &darr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ARTIFACT 02: ADVANCED EMPIRICAL (REDDIT BATTLEGROUND THREADS) -->
+                <article class="artifact-card-wide" id="artifact-reddit-threads">
+                    <div class="artifact-aside">
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                                <span class="artifact-type-badge" style="background: #1a73e8; color: #fff; margin-bottom: 0;">VOTER DELIBERATION</span>
+                                <span class="track-tag track-tag-lime" style="font-size: 0.65rem;">ACTIVE RESEARCH</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem;">Battleground State Reddit Corpus (N=58)</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                ~1,200 Voter Comments Across Swing State Subreddits Evaluating Epistemic Confusion and the Liar's Dividend.
+                            </p>
+                        </div>
+                        <div class="artifact-lineage-box">
+                            <div class="lineage-row">
+                                <span class="lineage-label">TRACK:</span>
+                                <strong>Track A (Computational NLP &amp; Political Behavior)</strong>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">RESEARCHER:</span>
+                                <span>Dr. Jose Marichal [Active / Published]</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">INPUTS:</span>
+                                <span>Arctic Shift API &bull; State Subreddits (TX, GA, WI, OH)</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">STATUS:</span>
+                                <span style="color: #137333; font-weight: 700;">Live &bull; Fully Published</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artifact-main">
+                        <div>
+                            <p class="artifact-lead">
+                                When a deepfake video circulates in a swing state, how do voters actually react? By harvesting 58 election threads across subreddits like <code>r/TexasPolitics</code>, <code>r/Georgia</code>, and <code>r/wisconsin</code>, this project evaluates the psychological erosion of democratic trust. Findings show the "Liar's Dividend" in full effect: genuine embarrassing videos of politicians are now routinely dismissed by partisans as "obviously an AI deepfake."
+                            </p>
+
+                            <div class="interactive-embed-box">
+                                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem;">
+                                    <strong style="font-family: var(--font-mono); font-size: 0.78rem;">OBSERVED VOTER BEHAVIOR PATTERN (BATTLEGROUND REDDIT):</strong>
+                                    <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #1a73e8; font-weight: 700;">N=1,200 COMMENTS</span>
+                                </div>
+                                <code style="display: block; font-family: var(--font-mono); font-size: 0.85rem; background: #ffffff; padding: 0.75rem; border: 1px solid var(--border-color); margin-bottom: 0.5rem;">
+                                    EPISTEMIC_CYNICISM: "I don't even care if it's real or fake anymore, both sides lie anyway."
+                                </code>
+                                <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0;">
+                                    <em>Finding:</em> Synthetic political media degrades democratic participation not by deceiving voters into believing falsehoods, but by making voters distrust all authentic evidence.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="cta-button-group">
+                            <a href="deepfake_ai_campaigns_2026.html#datasets" class="btn-brutalist btn-brutalist-lime">Explore Reddit Thread Corpus &rarr;</a>
+                            <a href="projects/deepfake_ai_s_impact_on_political_campaigns/reddit_political_ai_campaign_threads.csv" class="btn-brutalist btn-brutalist-outline" download>Download Reddit CSV &darr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ARTIFACT 03: QUALITATIVE / MEDIA (INVESTIGATIVE PODCAST - SAMPLE) -->
+                <article class="artifact-card-wide" id="artifact-podcast" style="border-left: 6px solid #e37400;">
+                    <div class="artifact-aside">
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                                <span class="artifact-type-badge" style="background: #e37400; color: #fff; margin-bottom: 0;">INVESTIGATIVE AUDIO</span>
+                                <span class="track-tag" style="background: #e37400; color: #fff; font-size: 0.65rem; font-weight: 800;">SAMPLE ARTIFACT</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem;">[SAMPLE] "Slopaganda: The Shadow Creators"</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                14-Minute Narrative Podcast on the Influencer Collectives Evading Federal Campaign Ad Laws.
+                            </p>
+                        </div>
+                        <div class="artifact-lineage-box">
+                            <div class="lineage-row">
+                                <span class="lineage-label">TRACK:</span>
+                                <strong>Track B (Storytelling &amp; Audio)</strong>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">ROLE:</span>
+                                <span style="color: #e37400; font-weight: 700;">Student Audio Producer Role Open</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">INPUTS:</span>
+                                <span>Influencer Video Corpus &bull; FEC Regulatory Gaps</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">STATUS:</span>
+                                <span>Sample Concept / Prototype</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artifact-main">
+                        <div>
+                            <div style="background: #fff8e1; border: 1px dashed #e37400; padding: 0.5rem 0.75rem; font-family: var(--font-mono); font-size: 0.72rem; color: #b75500; margin-bottom: 1rem; font-weight: 700;">
+                                // SAMPLE STUDENT ARTIFACT &bull; Available for undergraduates interested in investigative journalism, campaign ethics, and digital media production.
+                            </div>
+                            <p class="artifact-lead">
+                                In 2026, political ad spending didn't just go to television; it flowed into decentralized meme networks producing hyper-targeted AI videos designed to look like authentic viral clips. This podcast breaks down the financial ties between Super PACs and third-party digital creators who produce unregistered campaign deepfakes.
+                            </p>
+
+                            <div class="audio-player-mock">
+                                <button class="audio-play-btn" aria-label="Play Episode" onclick="alert('This is a SAMPLE audio player demonstrating how incoming students produce and embed narrative audio based on lab research.')">&#9658;</button>
+                                <div class="audio-info">
+                                    <div class="audio-title">[Sample Preview] Episode 01: Ghost Ads on the Algorithm</div>
+                                    <div class="audio-meta">06:22 / 14:48 &bull; Featuring interviews with digital campaign strategists &bull; Produced with Descript</div>
+                                    <div class="audio-waveform-bar">
+                                        <div class="audio-waveform-progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-button-group">
+                            <a href="#listen" class="btn-brutalist btn-brutalist-lime" onclick="alert('Sample Episode 01 layout: Student audio producers publish episodes with show notes and transcripts here.')">Preview Episode Format (14m) &nearr;</a>
+                            <a href="#script" class="btn-brutalist btn-brutalist-outline" onclick="alert('Sample Script & Production Notes template for incoming student audio producers.')">View Production Guide &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ARTIFACT 04: MEDIA FORENSICS & VERIFICATION LAB (SAMPLE) -->
+                <article class="artifact-card-wide" id="artifact-forensics" style="border-left: 6px solid #6e6e6e;">
+                    <div class="artifact-aside">
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                                <span class="artifact-type-badge" style="background: #6e6e6e; color: #fff; margin-bottom: 0;">MEDIA FORENSICS</span>
+                                <span class="track-tag" style="background: #6e6e6e; color: #fff; font-size: 0.65rem; font-weight: 800;">SAMPLE ARTIFACT</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem;">[SAMPLE] Campaign Synthetic Forensics Lab</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                Side-by-Side Spectrogram Analysis of Voice Clones, Audio Splicing, and Diffusion Lip-Sync Glitches.
+                            </p>
+                        </div>
+                        <div class="artifact-lineage-box">
+                            <div class="lineage-row">
+                                <span class="lineage-label">TRACK:</span>
+                                <strong>Track B (Media Literacy &amp; Visual Forensics)</strong>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">ROLE:</span>
+                                <span style="color: var(--text-heading); font-weight: 700;">Student Media Analyst Role Open</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">INPUTS:</span>
+                                <span>Candidate Speech Audio &bull; Spectral Analysis</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">STATUS:</span>
+                                <span>Sample Concept / Prototype</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artifact-main">
+                        <div>
+                            <div style="background: #f0f0f0; border: 1px dashed #6e6e6e; padding: 0.5rem 0.75rem; font-family: var(--font-mono); font-size: 0.72rem; color: #333333; margin-bottom: 1rem; font-weight: 700;">
+                                // SAMPLE STUDENT ARTIFACT &bull; Available for undergraduates interested in digital forensics, fact-checking journalism, and media studies.
+                            </div>
+                            <p class="artifact-lead">
+                                How can journalists and voters distinguish between authentic hot-mic audio and high-fidelity ElevenLabs voice clones? This forensic laboratory provides visual side-by-side breakdowns: unnatural breath cadences, missing ambient room tone, robotic harmonic frequencies, and telltale diffusion artifacts around collars and teeth.
+                            </p>
+
+                            <div class="interactive-embed-box">
+                                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.75rem;">
+                                    <strong style="font-family: var(--font-mono); font-size: 0.75rem;">[SAMPLE FORENSIC BREAKDOWN] 2026 CANDIDATE VOICE CLONE</strong>
+                                    <span class="track-tag" style="background: #000; color: #fff; font-size: 0.65rem;">SPECTROGRAM</span>
+                                </div>
+                                <p style="font-size: 0.82rem; font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem;">
+                                    "Notice the perfect frequency cutoff at 8 kHz and the total absence of vocal fry during terminal consonants. Authentic speaker records demonstrate variable pitch jitter; the synthetic model exhibits a rigid, flattened pitch track." — Student forensic dossier excerpt.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="cta-button-group">
+                            <a href="#forensic-lab" class="btn-brutalist" onclick="alert('Sample Forensics Archive: Shows how students analyze audio spectrograms and visual artifacts.')">Explore Forensic Case Files &rarr;</a>
+                            <a href="#detection-guide" class="btn-brutalist btn-brutalist-outline" onclick="alert('Sample Verification Guide for newsrooms.')">View Journalist Verification Guide &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ARTIFACT 05: 28-STATE DISCLAIMER LEDGER & VOTER DEFENSE ZINE -->
+                <article class="artifact-card-wide" id="artifact-disclaimer-zine" style="border-left: 6px solid #137333;">
+                    <div class="artifact-aside">
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                                <span class="artifact-type-badge" style="background: #137333; color: #fff; margin-bottom: 0;">POLICY &bull; CIVIC ZINE</span>
+                                <span class="track-tag track-tag-lime" style="font-size: 0.65rem;">ACTIVE DATA // SAMPLE ZINE</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem;">28-State Disclaimer Laws &amp; Voter Zine</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                Comparative Analysis of 28 State Political AI Statutes &bull; Printable Voter Literacy Pamphlet.
+                            </p>
+                        </div>
+                        <div class="artifact-lineage-box">
+                            <div class="lineage-row">
+                                <span class="lineage-label">TRACK:</span>
+                                <strong>Track B (Policy Analysis &amp; Graphic Design)</strong>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">ROLE:</span>
+                                <span style="color: #137333; font-weight: 700;">Active Statute Data &bull; Student Zine Designer Role Open</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">INPUTS:</span>
+                                <span>28-State Statutory Registry (Active)</span>
+                            </div>
+                            <div class="lineage-row">
+                                <span class="lineage-label">STATUS:</span>
+                                <span>Active Statutory Data &bull; Sample Print Zine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artifact-main">
+                        <div>
+                            <div style="background: #e6f4ea; border: 1px dashed #137333; padding: 0.5rem 0.75rem; font-family: var(--font-mono); font-size: 0.72rem; color: #0d652d; margin-bottom: 1rem; font-weight: 700;">
+                                // ACTIVE STATUTE LEDGER (28 STATES) + SAMPLE STUDENT ZINE &bull; Available for undergraduates in pre-law, graphic design, and voting rights advocacy.
+                            </div>
+                            <p class="artifact-lead">
+                                While federal legislation remains stalled in Congress, 28 US states have enacted statutory requirements for political AI disclaimers (e.g., California AB 2839/AB 2655, Texas SB 751). This artifact couples our comprehensive statutory database with an illustrated voter defense zine teaching citizens how to navigate the 2026 synthetic campaign ecosystem.
+                            </p>
+
+                            <!-- Zine Page Preview Mockup -->
+                            <div class="zine-preview-strip">
+                                <div class="zine-page-mock">
+                                    <div class="page-title">P.01 // [SAMPLE]</div>
+                                    <p>Don't Trust Your Feed: The Voter's Guide to AI Ads.</p>
+                                    <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-muted);">ISSUE #03</div>
+                                </div>
+                                <div class="zine-page-mock">
+                                    <div class="page-title">P.02 // [SAMPLE]</div>
+                                    <p>The 4 Telltale Signs of an AI Voice Clone.</p>
+                                    <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-muted);">AUDIO GUIDE</div>
+                                </div>
+                                <div class="zine-page-mock">
+                                    <div class="page-title">P.03 // [SAMPLE]</div>
+                                    <p>Does your state require an AI disclaimer? (Map).</p>
+                                    <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-muted);">50-STATE MAP</div>
+                                </div>
+                                <div class="zine-page-mock">
+                                    <div class="page-title">P.04 // [SAMPLE]</div>
+                                    <p>How to report undisclosed deepfakes to election officials.</p>
+                                    <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-muted);">LEGAL ACTIONS</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-button-group">
+                            <a href="projects/deepfake_ai_s_impact_on_political_campaigns/state_ai_disclaimer_laws_2026.csv" class="btn-brutalist btn-brutalist-lime" download>Download 28-State Law CSV &darr;</a>
+                            <a href="#sample-zine-download" class="btn-brutalist btn-brutalist-outline" onclick="alert('Sample Zine Format: Undergraduates design printable voter guides like this to translate election laws for everyday citizens.')">Preview Voter Guide Zine &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Pedagogy Banner -->
+            <section class="pedagogy-banner">
+                <span class="track-tag track-tag-lime" style="margin-bottom: 1rem; display: inline-block;">THE DETTMERS APPRENTICESHIP PHILOSOPHY</span>
+                <h2>Defending Epistemic Commons in an AI Age</h2>
+                <p>
+                    When artificial intelligence can generate infinite convincing falsehoods at zero marginal cost, the crisis is not just technical—it is fundamentally a political and philosophical battle over shared reality.
+                </p>
+
+                <div class="pedagogy-grid">
+                    <div class="pedagogy-col">
+                        <h4>Media &amp; Narrative Track</h4>
+                        <p>Track viral creator networks, investigate undisclosed Super PAC funding, script audio essays, and expose shadow campaign tactics.</p>
+                    </div>
+
+                    <div class="pedagogy-col">
+                        <h4>Data &amp; Legal Track</h4>
+                        <p>Maintain Python harvesters, audit platform algorithmic compliance, compare 50-state statutory frameworks, and draft model disclosure bills.</p>
+                    </div>
+
+                    <div class="pedagogy-col">
+                        <h4>Tangible Civic Output</h4>
+                        <p>Undergraduates graduate with real published investigative clips, open datasets, and policy analyses that matter in American democracy.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2.5rem; text-align: center;">
+                    <a href="mailto:marichal@callutheran.edu?subject=Joining the Political AI Research Ecosystem" class="btn-brutalist btn-brutalist-lime" style="font-size: 0.95rem; padding: 1rem 2rem;">
+                        Interested in Joining This Ecosystem? Contact Dr. Marichal &rarr;
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 José Marichal &bull; Technology and Society Working Group &bull; California Lutheran University</p>
+        </div>
+    </footer>
+</body>
+</html>

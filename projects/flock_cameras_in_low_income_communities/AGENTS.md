@@ -1,7 +1,7 @@
 # Project: Flock Cameras in Low-Income Communities
 **Category / Focus:** Automated Policing • Civil Liberties  
 **Workspace Location:** `projects/flock_cameras_in_low_income_communities/`  
-**Live Interface / URL:** [`flock_cameras_low_income_dashboard.html`](file:///c:/Users/jfmar/josemarichal/github.io/flock_cameras_low_income_dashboard.html)
+**Live Interface / URL:** [`flock_cameras_low_income_dashboard.html`](file:///c:/Users/jfmar/josemarichal/github.io/flock_cameras_low_income_dashboard.html) &amp; [`ecosystem_flock_cameras.html`](file:///c:/Users/jfmar/josemarichal/github.io/ecosystem_flock_cameras.html)
 
 > **Antigravity Context Rule**: This file is the primary memory and decision log for this project. Whenever the user modifies, reviews, or makes architectural decisions regarding this project, the agent must update this document.
 
@@ -31,6 +31,7 @@ An empirical investigation into the spatial concentration of automated license p
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-11-16 | **Adopted Tim Dettmers "Ecosystem" Architecture (Mixed-Skill / Multimodal)** | Published `ecosystem_flock_cameras.html` connecting active empirical research (Harvard LocalView 3,581-snippet stream, Census ACS poverty matching across 270 jurisdictions, N=500 Monte Carlo simulation) with undergraduate sample roles (investigative audio podcast, street-level camera mapping, community FOIA zine). Updated `projects.html` showcase card. |
 | 2026-11-05 | **Removed Interpretive Analysis from Public Dashboard** | Per user instruction, stripped editorial/interpretive analysis sections so the dashboard presents strictly the Research Question, Methods, Data/Code Downloads, and Descriptive/Empirical Findings. |
 | 2026-11-03 | **Published Interactive GitHub Pages Dashboard (`flock_cameras_low_income_dashboard.html`) & Linked from `projects.html`** | Created `flock_cameras_low_income_dashboard.html` featuring the 4 structural class/metaphor findings, wealth-tier summary matrix, 4-stage zero-bloat streaming architecture, direct download links for CSVs/report/Python scripts, and a 3-tab interactive explorer across all 124 Deborah Stone metaphors, 270 Census-matched municipalities, and council deliberation snippets. |
 | 2026-10-27 | **Census ACS 5-Year Socioeconomic Integration & Cross-Tabulation Completed** | Successfully mapped all 270 deliberation jurisdictions to U.S. Census Bureau ACS 5-Year summary files (B19013 Median Household Income, B01003 Total Population, B17001 Poverty Status) via streaming FTP without saving large raw files. Achieved a 100.0% match rate (95 Low-Income <$60k, 96 Middle-Income $60k-$90k, 79 Affluent >$90k). Core empirical findings: (1) The "Virtual Moat / Fortress" justification is 100% concentrated in low-income jurisdictions seeking federal earmarks (Hopewell, VA; Chester County, SC); (2) "Force Multiplier" acts as an austerity labor-substitute in low-income cities vs. "Smart City" data integration in affluent suburbs; (3) Affluent cities exhibit less than half the deliberative contestation rate (98.1% routine procedural consent). Published full report in `income_equity_narrative_report.md`. |

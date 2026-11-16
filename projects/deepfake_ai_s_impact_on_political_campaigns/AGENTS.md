@@ -1,7 +1,7 @@
 # Project: Deepfake AI's Impact on Political Campaigns
 **Category / Focus:** Synthetic Media • Electoral Integrity  
 **Workspace Location:** `projects/deepfake_ai_s_impact_on_political_campaigns/`  
-**Live Interface / URL:** `deepfake_ai_campaigns_2026.html`
+**Live Interface / URL:** [`deepfake_ai_campaigns_2026.html`](file:///c:/Users/jfmar/josemarichal/github.io/deepfake_ai_campaigns_2026.html) &amp; [`ecosystem_deepfake_campaigns.html`](file:///c:/Users/jfmar/josemarichal/github.io/ecosystem_deepfake_campaigns.html)
 
 > **Antigravity Context Rule**: This file is the primary memory and decision log for this project. Whenever the user modifies, reviews, or makes architectural decisions regarding this project, the agent must update this document.
 
@@ -30,6 +30,7 @@ Tracking and evaluating the weaponization of generative synthetic audio clones, 
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-11-16 | **Adopted Tim Dettmers "Ecosystem" Architecture (Mixed-Skill / Multimodal)** | Published `ecosystem_deepfake_campaigns.html` connecting active empirical research (YouTube influencer AI videos $N=49$, battleground Reddit threads $N=58$, 28-state disclaimer laws) with undergraduate sample roles (investigative audio podcast on creator PACs, visual forensics lab, voter epistemic defense zine). Updated `projects.html` showcase card. |
 | 2026-11-16 | **Removed `political_ai_videos_with_transcripts.csv` from Repo & Dashboard** | After filtering out news broadcasts and non-AI ads left only 3 rows, removed `political_ai_videos_with_transcripts.csv` locally and from `deepfake_ai_campaigns_2026.html` (stat strip, download card, explorer tab, and `TRA_DATA`), focusing the YouTube corpus on the 49 verified short-form political AI videos (`influencer_political_ai_videos_crowd_scored.csv`). |
 | 2026-11-16 | **Audited & Removed News/Commentary & Non-AI Clips from Both YouTube Datasets** | Per user review, filtered out TV news reports, commentary/podcast clips *about* AI, and non-AI standard campaign ads from `influencer_political_ai_videos_crowd_scored.csv` (`99 -> 49` videos; `21` with YouTube synthetic badge, `17` with viewer AI-flagged comments) and `political_ai_videos_with_transcripts.csv` (`89 -> 3` verified AI campaign/satire ads, `1` with transcript), and synced `deepfake_ai_campaigns_2026.html` inline datasets and summary counts. |
 | 2026-11-05 | **Removed Interpretive Analysis from Public Dashboard** | Per user instruction, stripped editorial/interpretive analysis sections so the dashboard presents strictly the Research Question, Methods, Data/Code Downloads, and Descriptive/Empirical Findings. |
