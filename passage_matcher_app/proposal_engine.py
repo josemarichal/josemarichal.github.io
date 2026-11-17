@@ -1,529 +1,564 @@
 import re
 import hashlib
 
+
 def extract_query_focus(query_text):
     clean = query_text.strip()
     if not clean:
-        return "The Contemporary Crisis", "Technology & Human Agency"
-    
+        return "Untitled Research Notes", "Technology & Democratic Agency", ["Algorithms", "Institutions", "Society"]
+
     lines = [line.strip() for line in clean.split("\n") if line.strip()]
-    first_line = lines[0] if lines else "Current Developments"
-    
-    # Check if first line looks like a title or headline
+    first_line = lines[0] if lines else "Research Snippet"
+
+    # Check if first line looks like a title or heading
     if len(first_line) < 110 and not first_line.endswith("."):
         title_cand = first_line
     else:
         sentences = re.split(r'(?<=[.!?])\s+', clean)
         title_cand = sentences[0][:85] if sentences else clean[:85]
-        
-    words = [w.strip(".,!?\"'()[]{}") for w in clean.split() if len(w) > 4]
-    stop_words = {"about", "there", "their", "which", "would", "could", "should", "these", "those", "where", "while", "being", "through", "people", "because", "between"}
-    keywords = [w for w in words if w.lower() not in stop_words]
+
+    words = [w.strip(".,!?\"'()[]{}:;") for w in clean.split() if len(w) > 4]
+    stop_words = {
+        "about", "there", "their", "which", "would", "could", "should", "these",
+        "those", "where", "while", "being", "through", "people", "because",
+        "between", "under", "using", "other", "notes", "class", "reading", "readings"
+    }
+    seen = set()
+    keywords = []
+    for w in words:
+        wl = w.lower()
+        if wl not in stop_words and wl.isalpha() and wl not in seen:
+            seen.add(wl)
+            keywords.append(w.title())
     top_kws = keywords[:5] if keywords else ["Technology", "Institutions", "Society"]
-    topic_summary = " & ".join(top_kws[:3]).title() if top_kws else "The Digital Crisis"
-    
-    return title_cand, topic_summary
+    topic_summary = " & ".join(top_kws[:3])
+
+    return title_cand, topic_summary, top_kws
 
 
 def extract_resonant_quote_or_idea(passage_text):
     """
-    Extracts an evocative sentence from the agency's foundational book passage
-    to ground the pitch in the author's actual theoretical arguments.
+    Extracts an evocative sentence from the book section
+    to ground the research expansion in the author's actual theoretical arguments.
     """
     if not passage_text:
         return "We navigate information overwhelm through an unconscious surrender of our curational autonomy."
-    
+
     sentences = re.split(r'(?<=[.!?])\s+', passage_text)
-    # Prefer sentences with rich theoretical keywords
-    priorities = ["contract", "kipple", "outlier", "locke", "hobbes", "rousseau", "entropy", "voice", "predict", "model fit", "anomaly", "curation", "anxiety"]
-    
+    priorities = [
+        "contract", "kipple", "outlier", "locke", "hobbes", "rousseau",
+        "entropy", "voice", "predict", "model fit", "anomaly", "curation", "anxiety"
+    ]
+
     for sent in sentences:
         s_lower = sent.lower()
         if any(p in s_lower for p in priorities) and 50 < len(sent) < 220:
             return sent.strip()
-            
-    # Fallback to a solid middle sentence
+
     for sent in sentences[2:8]:
         if 60 < len(sent) < 200:
             return sent.strip()
-            
+
     return sentences[0][:180] if sentences else "Digital systems subtly steer citizens to perform predictably."
+
+
+def _suggest_journals(agency, topic_summary):
+    """Suggests academic journals blending the section's domain with the snippet's themes."""
+    base_map = {
+        "Wired": "Big Data & Society",
+        "The Atlantic": "Perspectives on Politics",
+        "The New Yorker": "Theory, Culture & Society",
+        "MIT Technology Review": "Science, Technology, & Human Values",
+        "The Verge": "New Media & Society",
+        "Substack": "Engaging Science, Technology, and Society",
+        "Noema Magazine": "Philosophy & Technology",
+        "Boston Review": "Politics & Society",
+        "The Baffler": "Science as Culture",
+        "Rest of World": "Surveillance & Society",
+    }
+    raw_outlets = agency.get("target_outlets", [])
+    academic = []
+    for o in raw_outlets:
+        mapped = base_map.get(o, o)
+        if mapped not in academic:
+            academic.append(mapped)
+
+    t_lower = topic_summary.lower()
+    if any(k in t_lower for k in ["race", "racial", "segregat", "justice", "colorblind"]):
+        for j in ["Big Data & Society", "New Media & Society", "Perspectives on Politics"]:
+            if j not in academic:
+                academic.insert(0, j)
+    elif any(k in t_lower for k in ["camera", "flock", "surveill", "police", "alpr"]):
+        for j in ["Surveillance & Society", "Law & Society Review", "Journal of Information Technology & Politics"]:
+            if j not in academic:
+                academic.insert(0, j)
+    elif any(k in t_lower for k in ["data", "center", "energy", "water", "climate", "grid"]):
+        for j in ["Energy Research & Social Science", "Environmental Humanities", "Science, Technology, & Human Values"]:
+            if j not in academic:
+                academic.insert(0, j)
+
+    if not academic:
+        academic = ["Science, Technology, & Human Values", "Big Data & Society", "Perspectives on Politics"]
+    return ", ".join(academic[:4])
 
 
 def generate_agency_proposal(agency, query_text):
     """
-    Generates an imaginative, conceptually grounded media proposal.
-    Employs 6 distinct editorial archetypes based on the agency's sector,
-    specialty, and passage corpus, completely eliminating repetitive Mad-Libs.
+    Generates a structured Research Expansion Proposal that merges a book section
+    from *You Must Become an Algorithmic Problem* with the themes in the user's
+    submitted notes/snippet. Employs 6 distinct theoretical/methodological archetypes.
     """
-    title_cand, topic_summary = extract_query_focus(query_text)
-    
-    produce = agency.get("produce_catalog", ["Algorithmic Framework", "Conceptual Model", "Strategic Audit"])
-    p1 = produce[0] if produce else "Systemic Mechanism"
-    p2 = produce[1] if len(produce) > 1 else "Predictive Model"
-    p3 = produce[2] if len(produce) > 2 else "Civic Counterweight"
-    
-    spec = agency.get("agency_specialty", "Strategic Media Relations")
-    perspective = agency.get("agency_perspective", "Structural analysis of algorithmic governance.")
-    outlets = agency.get("target_outlets", ["Wired", "The Atlantic", "Substack"])
-    outlets_str = ", ".join(outlets[:4])
-    
+    title_cand, topic_summary, top_kws = extract_query_focus(query_text)
+    kw1 = top_kws[0] if len(top_kws) > 0 else "Political Agency"
+    kw2 = top_kws[1] if len(top_kws) > 1 else "Institutional Power"
+    kw3 = top_kws[2] if len(top_kws) > 2 else "Democratic Norms"
+
+    produce = agency.get("produce_catalog", ["Algorithmic Legibility", "Model Fit", "Socio-Technical Contract"])
+    p1 = produce[0] if produce else "Algorithmic Legibility"
+    p2 = produce[1] if len(produce) > 1 else "Predictive Model Fit"
+    p3 = produce[2] if len(produce) > 2 else "Curational Autonomy"
+
+    spec = agency.get("agency_specialty", "Socio-Technical Theory")
+    chapter = agency.get("chapter", "Book Section")
+    journals_str = _suggest_journals(agency, query_text)
+
     passage = agency.get("text", "")
     resonant_idea = extract_resonant_quote_or_idea(passage)
-    aid = agency.get("agency_id", agency.get("firm_id", "AGENCY-01"))
-    
-    # Deterministic hash to cycle through 6 distinct rhetorical archetypes
+    aid = agency.get("agency_id", agency.get("firm_id", "SEC-01"))
+    section_name = agency.get("agency_name", agency.get("firm_name", "Book Section"))
+
     hash_val = int(hashlib.md5((aid + spec).encode()).hexdigest(), 16)
     archetype_idx = hash_val % 6
-    
+
     # ---------------------------------------------------------
-    # ARCHETYPE 0: The Cybernetic & Cognitive Entropy Angle (Kipple / Overwhelm)
+    # ARCHETYPE 0: Cognitive Entropy, Kipple & Institutional Overload
     # ---------------------------------------------------------
     if archetype_idx == 0:
         strategic_angle = (
-            f"Mainstream commentary treats '{title_cand[:65]}' as an isolated management or lifestyle failure. "
-            f"{agency['agency_name']} reframes this story as a classic crisis of information entropy: our devices "
-            f"and workflows are designed to maximize cognitive 'kipple' rather than preserve human clarity. "
-            f"By introducing '{p1}', we show that burnout is an architectural outcome of the modern attention economy."
+            f"Merge '{chapter}' ({p1}) with your notes on '{title_cand[:55]}' by theorizing how information entropy "
+            f"and cognitive 'kipple' reshape {kw1.lower()} and {kw2.lower()}. Rather than treating {kw1.lower()} solely "
+            f"as a discursive or institutional debate, this expansion examines how sensory and administrative overload "
+            f"induces citizens and institutions to outsource judgment to automated filters."
         )
-        oped_title = f"The Kipple Economy: What '{title_cand[:50]}' Reveals About Information Entropy"
-        thesis = (
-            f"Behind the headline of '{title_cand[:60]}' lies a profound thermodynamic reality: digital systems "
-            f"inevitably generate useless cognitive waste ('kipple') that paralyzes independent thought. "
-            f"By confronting this dynamic through {p1} and {p2}, we demonstrate that recovery requires redesigning "
-            f"our information architecture, not simply meditating harder."
+        paper_title = f"Entropy and {kw1}: Extending '{p1}' into {topic_summary}"
+        synthesis_thesis = (
+            f"Combining the book's concept of '{p1}' with {topic_summary} reveals that actors facing high informational "
+            f"friction accept automated sorting not out of ideological consensus, but to escape cognitive overwhelm—quietly "
+            f"restructuring {kw2.lower()} and {kw3.lower()} in the process."
         )
-        sample_opening = (
-            f"When Philip K. Dick coined the word 'kipple' in 1968, he meant the useless junk mail, match folders, "
-            f"and clutter that multiplies when no one is watching. Today, as '{title_cand[:55]}' dominates our screens, "
-            f"we are confronting kipple in its purest digital form. The notifications, alerts, and endless threads are not "
-            f"mere noise—they are an aggressive entropic tide eroding our cognitive sovereignty."
+        research_gap = (
+            f"Existing scholarship on {topic_summary} rarely accounts for the thermodynamic/attentional mechanics of "
+            f"digital environments; pairing it with '{resonant_idea}' bridges micro-level cognitive fatigue and macro-level "
+            f"institutional power."
         )
-        sections = [
-            f"1. The Entropy of Everyday Work: Why '{title_cand[:45]}' is fundamentally an informational waste problem.",
-            f"2. The Mechanics of {p1}: How platforms leverage cognitive fatigue to deepen reliance on automated filters.",
-            f"3. Reclaiming the Mind: Deploying {p3} to build deliberate friction into digital consumption."
+        paper_outline = [
+            f"1. Theoretical Bridge: Importing '{p1}' and digital kipple into debates over {kw1} and {kw2}.",
+            f"2. Mechanism Analysis: How {p2} converts everyday informational clutter into silent compliance around {title_cand[:45]}.",
+            f"3. Institutional & Democratic Payoff: Designing deliberate friction ({p3}) to restore public deliberation."
         ]
-        hook_post = (
-            f"We are looking at '{title_cand[:60]}' through completely the wrong lens.\n\n"
-            f"It's not just personal burnout. It's the thermodynamic law of digital kipple: systems designed to maximize engagement will always maximize cognitive clutter.\n\n"
-            f"Here is why '{p1}' is the missing concept in this entire debate: [THREAD] 👇"
-        )
-        carousel_slides = [
-            f"Slide 1: THE DELUSION — Why self-help fixes for '{title_cand[:40]}' miss the structural trap.",
-            f"Slide 2: KIPPLE EXPLAINED — How useless digital clutter relentlessly multiplies in closed systems.",
-            f"Slide 3: THE HIDDEN LEVER — Why {p1} and {p2} quiet our anxiety only by increasing our dependence.",
-            f"Slide 4: INTENTIONAL FRICTION — Why becoming an 'algorithmic outlier' is the only lasting defense."
+        bridging_moves = [
+            f"Map '{p1}' onto {kw1}: Identify where actors in your notes trade autonomy for reduced cognitive/administrative load.",
+            f"Trace '{p2}' inside {kw2}: Show which forms of noise or complexity are amplified versus filtered out.",
+            f"Locate the 'Kipple' Trap: Explain how proliferating dashboards, metrics, or feeds crowd out {kw3.lower()}." ,
+            f"Counter-Design ({p3}): Specify what slow, analog, or high-friction democratic practices resist this drift."
         ]
-        discussion_q = f"How much of your daily mental exhaustion is genuine productive work vs. fighting off digital kipple?"
-        video_title = f"Digital Kipple: The Hidden Architecture Behind {topic_summary}"
-        cold_open = (
-            f"\"Look at your screen right now. The red badges, the unread threads, the endless river of notifications. "
-            f"We're told '{title_cand[:50]}' is our own fault for lacking discipline. But what if the system was engineered "
-            f"from day one to drown your willpower in informational clutter? Enter the concept of {p1}.\""
+        research_questions = [
+            f"Under what conditions does informational overload lead communities dealing with {kw1.lower()} to accept automated governance?",
+            f"How does '{p1}' interact with existing power asymmetries in {kw2.lower()}?"
+        ]
+        case_strategy = (
+            f"Comparative case study pairing two settings from your notes on '{title_cand[:45]}': one high-automation "
+            f"environment and one deliberative/analog counter-example."
         )
-        podcast_hook = f"Why knowledge-economy burnout is an informational architecture crisis, not a personal failure."
-        pod_qs = [
-            f"How does the concept of '{p1}' completely overturn Silicon Valley's productivity mythology?",
-            f"What would an enterprise communication protocol look like if it actively fought information entropy?"
+        methodology = "Qualitative discourse & document analysis (policy memos, meeting transcripts, platform interfaces) coded for friction vs. delegation."
+        abstract_draft = (
+            f"This paper extends the socio-technical framework of '{chapter}' into the domain of {topic_summary}. "
+            f"Drawing on the concept of '{p1}', we argue that contemporary shifts in {kw1.lower()} and {kw2.lower()} "
+            f"cannot be understood solely through formal rules or actor preferences. Instead, informational entropy "
+            f"pressures citizens and decision-makers to surrender curational autonomy to predictive systems. "
+            f"By analyzing {title_cand[:60]}, this study demonstrates how institutionalizing '{p3}' offers a pathway "
+            f"to preserve democratic agency."
+        )
+        next_steps = [
+            f"Pull 3–5 concrete empirical examples from your '{title_cand[:35]}' notes that illustrate cognitive/administrative delegation.",
+            f"Pair the book's kipple/entropy framing with 2 foundational citations from {topic_summary} literature.",
+            f"Draft a 500-word conference abstract targeting a panel on {kw1} and Algorithmic Governance."
         ]
 
     # ---------------------------------------------------------
-    # ARCHETYPE 1: The Algorithmic Social Contract Angle (Locke / Hobbes / Sovereignty)
+    # ARCHETYPE 1: The Socio-Technical Contract & Democratic Sovereignty
     # ---------------------------------------------------------
     elif archetype_idx == 1:
         strategic_angle = (
-            f"While standard reporting asks whether '{title_cand[:65]}' is ethical or legal, "
-            f"{agency['agency_name']} elevates the discussion to political theory: we have entered an unwritten "
-            f"'Algorithmic Contract.' Like Locke's or Hobbes's state of nature, we surrender our curational autonomy "
-            f"to recommendation systems in exchange for protection from the terrifying anxiety of choice."
+            f"Use '{chapter}' to reframe your notes on '{title_cand[:55]}' as a crisis of the unwritten Socio-Technical Contract. "
+            f"Just as social contract theory asks what citizens surrender for security, this expansion asks what {kw1.lower()} "
+            f"and {kw2.lower()} surrender to computational systems in exchange for reduced uncertainty."
         )
-        oped_title = f"The Faustian Curation: Why '{title_cand[:50]}' is a Crisis of the Algorithmic Contract"
-        thesis = (
-            f"The events surrounding '{title_cand[:60]}' are not an accidental breach of trust; they are the logical "
-            f"fruition of our contract with platforms. In exchange for relief from the infinite scroll of information, "
-            f"we have allowed {p1} to make us more predictable consumer subjects and compliant citizens."
+        paper_title = f"Renegotiating the Contract: {p1}, {kw1}, and {kw2}"
+        synthesis_thesis = (
+            f"Applying the book's Algorithmic Contract framework to {topic_summary} shows that technical systems do not merely "
+            f"mediate {kw1.lower()}—they establish pre-political terms of participation that bypass traditional democratic consent."
         )
-        sample_opening = (
-            f"Political philosophers from Locke to Rousseau posited that rational actors will surrender autonomy in a "
-            f"'state of nature' for the security of a commonwealth. In the digital age, as '{title_cand[:55]}' makes clear, "
-            f"we have entered an unwritten algorithmic contract. We did not sign on a dotted line, but every click and "
-            f"curated feed marks an exchange: our curational independence in return for cognitive comfort."
+        research_gap = (
+            f"Normative political theory and {topic_summary} scholarship often treat technology as an external tool; "
+            f"integrating '{p1}' reveals the hidden contractual bargain reshaping {kw2.lower()} and {kw3.lower()}."
         )
-        sections = [
-            f"1. The Terms of Surrender: How '{title_cand[:45]}' reveals the true price of automated curation.",
-            f"2. The Illusion of Free Voice: How {p1} transforms authentic thought into tokenized market intelligence.",
-            f"3. Renegotiating the Contract: Restoring democratic legitimacy through {p3} and public accountability."
+        paper_outline = [
+            f"1. The Unwritten Bargain: Extending Locke/Hobbes and '{p1}' to {topic_summary}.",
+            f"2. Asymmetric Terms: How {p2} redistributes authority and accountability in {kw1.lower()} contexts.",
+            f"3. Renegotiation: Institutional mechanisms to restore democratic voice and '{p3}'."
         ]
-        hook_post = (
-            f"You never signed a terms of service that said you would trade your democratic agency for an easier news feed.\n\n"
-            f"Yet '{title_cand[:60]}' proves that is exactly what has happened. We are living under an 'Algorithmic Contract'.\n\n"
-            f"Here is what Locke, Hobbes, and {p1} teach us about this crisis: [THREAD] 🧵"
-        )
-        carousel_slides = [
-            f"Slide 1: THE THOUGHT EXPERIMENT — Why social contract theory explains modern tech monopolies.",
-            f"Slide 2: THE ANXIETY TRADEOFF — How curational overload makes us willingly submit to {p1}.",
-            f"Slide 3: PREDICTABLE SUBJECTS — Why platforms must reduce human variance to train {p2}.",
-            f"Slide 4: CITIZEN VS. USER — Reclaiming the right to remain un-optimized and unpredictable."
+        bridging_moves = [
+            f"Define the 'State of Nature' in {kw1}: What anxiety or coordination failure makes automated governance attractive?",
+            f"Specify the Tradeoff ({p1}): What local knowledge, discretion, or {kw2.lower()} is surrendered?",
+            f"Identify the Sovereign ({p2}): Who sets the objective function—platforms, vendors, or municipal/state actors?",
+            f"Draft Contract Reforms ({p3}): What contestatory rights or opt-out architectures would renegotiate the terms?"
         ]
-        discussion_q = f"What part of your own decision-making have you happily outsourced to an algorithm this week?"
-        video_title = f"The Algorithmic Contract: The Secret Political Philosophy Behind {topic_summary}"
-        cold_open = (
-            f"\"In 1651, Thomas Hobbes warned that without a sovereign, life would be nasty, brutish, and short. "
-            f"In 2026, without a recommendation algorithm, life on the internet is simply overwhelming. "
-            f"When we look at '{title_cand[:50]}', we are seeing the modern sovereign flex its muscles: {p1}.\""
+        research_questions = [
+            f"What implicit 'anxiety-for-autonomy' bargain underpins technological adoption in {topic_summary}?",
+            f"How can communities contest the terms of '{p1}' when infrastructure is privately owned?"
+        ]
+        case_strategy = (
+            f"Institutional and normative analysis of procurement contracts, public debates, or governance frameworks "
+            f"referenced in your notes on '{title_cand[:45]}'."
         )
-        podcast_hook = f"Why our relationship with Big Tech is best understood as an unwritten, authoritarian social contract."
-        pod_qs = [
-            f"In what ways does '{p1}' function exactly like a modern Hobbesian Leviathan?",
-            f"If citizens want to break or renegotiate the algorithmic contract, what leverage do we actually possess?"
+        methodology = "Interpretive policy analysis + normative political theory synthesis examining public records, vendor claims, and theoretical texts."
+        abstract_draft = (
+            f"How do algorithmic systems alter the terms of democratic consent in {topic_summary}? Extending the "
+            f"socio-technical contract theory developed in '{chapter}', this paper argues that the adoption of {p1} "
+            f"in {kw1.lower()} creates an unwritten bargain: actors gain relief from complexity while ceding interpretive "
+            f"authority over {kw2.lower()}. Through an examination of {title_cand[:60]}, we show how renegotiating this "
+            f"contract requires moving beyond transparency toward enforceable contestability ({p3})."
+        )
+        next_steps = [
+            f"Map the key stakeholders in your '{title_cand[:35]}' notes onto 'citizen/subject' vs. 'algorithmic sovereign' roles.",
+            f"Contrast the book's Lockean/Hobbesian contract framing with the core theorists in your notes.",
+            f"Identify one concrete policy or governance venue where the contract is currently being contested."
         ]
 
     # ---------------------------------------------------------
-    # ARCHETYPE 2: The Machine Learning & Outlier Angle (Model Fitting / Deviance)
+    # ARCHETYPE 2: Statistical Outliers, Model Fit & Marginalization
     # ---------------------------------------------------------
     elif archetype_idx == 2:
         strategic_angle = (
-            f"Conventional coverage views '{title_cand[:65]}' as a glitch or bias problem. "
-            f"{agency['agency_name']} connects this directly to core data science: the relentless drive to 'reduce the cost "
-            f"function' by smoothing out statistical outliers. In modern society, independent human beings are the outliers "
-            f"that predictive models are engineered to suppress."
+            f"Connect the book's machine-learning critique—that systems penalize statistical outliers to improve 'model fit'—directly "
+            f"to your notes on '{title_cand[:55]}'. This expansion asks who gets classified as an 'algorithmic problem' "
+            f"within {kw1.lower()} and {kw2.lower()}, and what democratic capacity is lost when deviance is smoothed out."
         )
-        oped_title = f"The Outlier's Dilemma: How '{title_cand[:50]}' Exposes the Tyranny of Model Fitting"
-        thesis = (
-            f"Machine learning optimizes systems by penalizing nonconforming data points. As '{title_cand[:60]}' reveals, "
-            f"our cultural and political institutions are now governed by the same mathematical logic: individuals are subtly "
-            f"coerced through {p1} to 'fit the model,' eroding the very idiosyncrasies that sustain a healthy democracy."
+        paper_title = f"Who Counts as an Outlier? Model Fit, {kw1}, and the Politics of {kw2}"
+        synthesis_thesis = (
+            f"When predictive systems optimize to reduce cost functions, marginalized or nonconforming practices in {topic_summary} "
+            f"are treated as noise to be corrected—turning '{p1}' into a mechanism of political and social stratification."
         )
-        sample_opening = (
-            f"In supervised machine learning, an outlier is a nuisance. If you curve the regression line to accommodate it, "
-            f"you overfit your training data; if you ignore it, your predictions are flawed. What we are witnessing with "
-            f"'{title_cand[:55]}' is the migration of this statistical dogma into human culture. Society itself is being "
-            f"regularized, and anyone who refuses to fit the predictive pattern is treated as an error to be corrected."
+        research_gap = (
+            f"While {topic_summary} documents disparate outcomes, merging it with '{p1}' and '{p2}' explains the "
+            f"mathematical logic by which systems systematically penalize idiosyncrasy and dissent."
         )
-        sections = [
-            f"1. The Statistical Smoothing of Human Life: Why '{title_cand[:45]}' is a model-fitting crisis.",
-            f"2. The Machinery of {p1}: How {p2} subtly penalizes cultural and political nonconformity.",
-            f"3. The Epistemological Outlier: Why liberal democracy depends on people who refuse to fit the curve."
+        paper_outline = [
+            f"1. The Epistemology of Model Fit: Why optimization regimes in '{chapter}' fear outliers.",
+            f"2. Stratifying {kw1}: How {p1} and {p2} operationalize normality in {title_cand[:45]}.",
+            f"3. Defending the Outlier: Why protecting '{p3}' is essential for democratic innovation and {kw3.lower()}."
         ]
-        hook_post = (
-            f"In data science, an 'outlier' is something you eliminate to improve model fit.\n\n"
-            f"In liberal democracy, an outlier is someone who comes up with a breakthrough idea.\n\n"
-            f"'{title_cand[:60]}' is what happens when machine learning values replace civic values. Let's unpack: 👇"
-        )
-        carousel_slides = [
-            f"Slide 1: THE DATA METAPHOR — How predictive algorithms treat human idiosyncrasy as 'noise'.",
-            f"Slide 2: CURVING THE LINE — Why platforms deploy {p1} to force conformity into like-minded clusters.",
-            f"Slide 3: THE COST FUNCTION OF CIVIC LIFE — What happens when everyone strives to fit the model.",
-            f"Slide 4: REMAIN AN ALGORITHMIC PROBLEM — Why defiant unpredictability is an act of democratic resistance."
+        bridging_moves = [
+            f"Locate the 'Cost Function': What is the system in your notes trying to optimize or predict?",
+            f"Name the Outlier ({p1}): Which groups, arguments, or behaviors in {kw1.lower()} resist clean classification?",
+            f"Trace the Penalty ({p2}): How does failing to 'fit the model' translate into exclusion, surveillance, or erasure?",
+            f"Value the Anomaly ({p3}): Show why those exact outliers carry vital epistemic and democratic insight."
         ]
-        discussion_q = f"Where in your life or work do you feel the strongest pressure to 'fit the predictive model'?"
-        video_title = f"The Outlier Penalty: Why AI Systems Are Engineering Human Conformity in {topic_summary}"
-        cold_open = (
-            f"\"Every data scientist knows the rule: penalize the outliers to minimize the loss function. "
-            f"Now look at '{title_cand[:50]}'. You aren't just looking at software—you're looking at a world that is "
-            f"actively sanding down the rough edges of human individuality using {p1}.\""
+        research_questions = [
+            f"How do classification systems in {topic_summary} convert political or cultural difference into statistical error?",
+            f"What institutional protections allow actors in {kw2.lower()} to remain 'algorithmic problems' without severe penalty?"
+        ]
+        case_strategy = (
+            f"Empirical audit or comparative case study of classification/scoring practices in {topic_summary}, "
+            f"contrasting standardized metrics against outlier lived experiences."
         )
-        podcast_hook = f"Why remaining an 'algorithmic problem' and defying model fitting is essential for democratic survival."
-        pod_qs = [
-            f"How does the mathematics of '{p1}' penalize genuine creativity and intellectual independence?",
-            f"Can an AI-driven society still tolerate people who refuse to be predicted?"
+        methodology = "Mixed-methods: algorithmic/document audit paired with qualitative coding of outlier/dissenting cases."
+        abstract_draft = (
+            f"Machine learning systems improve predictive accuracy by minimizing variance and smoothing out statistical outliers. "
+            f"This paper merges that insight from '{chapter}' with scholarship on {topic_summary} to examine how '{p1}' "
+            f"reshapes {kw1.lower()} and {kw2.lower()}. Focusing on {title_cand[:60]}, we demonstrate that efforts to enforce "
+            f"'{p2}' disproportionately penalize non-standard civic actors, eroding the epistemic diversity required for {kw3.lower()}."
+        )
+        next_steps = [
+            f"List 2–3 concrete 'outliers' or nonconforming actors from your '{title_cand[:35]}' notes.",
+            f"Specify how 'model fit' operates metaphorically or literally in that empirical domain.",
+            f"Target a special issue or journal bridging critical data studies and {kw1.lower()}."
         ]
 
     # ---------------------------------------------------------
-    # ARCHETYPE 3: The Political Economy & Voice vs. Thought Angle (Attention Rents / Bot Networks)
+    # ARCHETYPE 3: Legibility, Resistance & Hidden Transcripts
     # ---------------------------------------------------------
     elif archetype_idx == 3:
         strategic_angle = (
-            f"Mainstream analysts treat '{title_cand[:65]}' as an issue of free speech or online incivility. "
-            f"{agency['agency_name']} exposes the underlying economic incentive: platforms monetize 'voice' (immediate, "
-            f"visceral reaction) because 'thought' (slow, reflective deliberation) generates zero ad inventory. "
-            f"Through '{p1}', speech has been tokenized into speculative financial assets."
+            f"Bridge '{chapter}' with your notes on '{title_cand[:55]}' through the politics of legibility and refusal. "
+            f"Just as states make populations legible to govern them, platforms demand formatted legibility—and your notes "
+            f"point toward how communities in {kw1.lower()} and {kw2.lower()} resist, evade, or counter-frame that gaze."
         )
-        oped_title = f"Voice Without Thought: The Dark Monetization Engine Behind '{title_cand[:50]}'"
-        thesis = (
-            f"The chaos documented in '{title_cand[:60]}' is not a failure of moderation; it is the deliberate outcome "
-            f"of an economic engine that commodifies reactive expression. By privileging voice over reflection via {p1}, "
-            f"platforms extract behavioral surplus while converting public discourse into an automated bot ecosystem."
+        paper_title = f"Refusing Legibility: {p1}, Resistance, and {topic_summary}"
+        synthesis_thesis = (
+            f"Synthesizing the book's critique of '{p1}' with {topic_summary} uncovers a repertoire of 'algorithmic aversion' "
+            f"and counter-public practices through which actors preserve autonomy despite pressure to conform to {p2}."
         )
-        sample_opening = (
-            f"The average person speaks roughly 16,000 words a day. In the early days of the web, this was celebrated as the "
-            f"democratization of voice. But as '{title_cand[:55]}' demonstrates, an economic system that treats voice as a "
-            f"monetizable commodity must constantly stimulate more of it. Reflection is unprofitable; outrage is billable. "
-            f"We have built a digital commons where everyone must speak, but no one has time to think."
+        research_gap = (
+            f"Studies of resistance in {kw1.lower()} often focus on overt protest; pairing them with '{p1}' highlights "
+            f"everyday opacity, obfuscation, and hidden transcripts against computational legibility."
         )
-        sections = [
-            f"1. The Extraction of Voice: Why '{title_cand[:45]}' is driven by behavioral inventory quotas.",
-            f"2. The Tokenization of Opinion: How {p1} and {p2} transform human affect into predictive assets.",
-            f"3. Reviving Slow Deliberation: Structural counter-measures to decouple communication from engagement metrics."
+        paper_outline = [
+            f"1. Seeing Like an Algorithm: Extending legibility theory and '{p1}' to {kw1.lower()}.",
+            f"2. Formats of Compliance: How {p2} solicits self-formatting in {title_cand[:45]}.",
+            f"3. Counter-Publics & Refusal: Reclaiming '{p3}' and strategic illegibility in {kw2.lower()}."
         ]
-        hook_post = (
-            f"The internet didn't break our democracy because of bad ideas. It broke because 'voice' is profitable and 'thought' is not.\n\n"
-            f"'{title_cand[:60]}' is a masterclass in how {p1} turns our most primal reactions into corporate balance sheets.\n\n"
-            f"Here is the economic breakdown that PR firms won't tell you: [THREAD] 📉"
-        )
-        carousel_slides = [
-            f"Slide 1: THE COMMODITY TRAP — Why human expression was tokenized into an attention market.",
-            f"Slide 2: VOICE VS. THOUGHT — Why platforms incentivize instant reaction and punish deliberation.",
-            f"Slide 3: THE SYNTHETIC ILLUSION — How bot networks and {p1} manufacture artificial consensus.",
-            f"Slide 4: DE-COMMODIFYING DISCOURSE — Why reclaiming public life requires disconnecting speech from ad clicks."
+        bridging_moves = [
+            f"Identify the Legibility Demand ({p1}): How must actors in your notes format themselves to be seen or heard?",
+            f"Spot Self-Formatting ({p2}): Where do participants alter behavior or rhetoric to satisfy ranking/filtering rules?",
+            f"Uncover Hidden Transcripts: What oppositional practices in {kw1.lower()} operate below or against the metric?",
+            f"Theorize Collective Refusal ({p3}): How can individual evasion scale into organized {kw3.lower()}?"
         ]
-        discussion_q = f"Do social platforms make you feel like you are expressing yourself, or just performing for an algorithm?"
-        video_title = f"The Attention Monopoly: How {p1} Turned Speech Into Raw Material"
-        cold_open = (
-            f"\"If you speak 16,000 words today, who owns the value of that expression? "
-            f"'{title_cand[:50]}' isn't about public debate—it's about an industrial extraction machine that takes your voice, "
-            f"turns it into training tokens, and sells it back to you via {p1}.\""
+        research_questions = [
+            f"What tactics do communities in {topic_summary} use to evade or subvert demands for '{p1}'?",
+            f"When does strategic illegibility strengthen {kw2.lower()}, and when does it risk political invisibility?"
+        ]
+        case_strategy = (
+            f"Ethnographic, archival, or discourse-analytic study of grassroots/counter-public resistance strategies "
+            f"within '{title_cand[:45]}'."
         )
-        podcast_hook = f"How the commodification of human expression created an ecosystem where reflection cannot survive."
-        pod_qs = [
-            f"Why is '{p1}' economically incompatible with traditional democratic deliberation?",
-            f"How much of what we think is public sentiment on '{topic_summary}' is actually automated engagement harvesting?"
+        methodology = "Qualitative thematic coding of community testimonies, oppositional texts, and digital/analog refusal practices."
+        abstract_draft = (
+            f"Contemporary platforms and administrative systems govern by demanding continuous, standardized legibility. "
+            f"Bringing '{chapter}' into dialogue with {topic_summary}, this article investigates how actors navigating "
+            f"{kw1.lower()} confront '{p1}'. Through an analysis of {title_cand[:60]}, we identify how '{p2}' induces "
+            f"anticipatory conformity—and document emerging strategies of refusal and '{p3}' that sustain {kw2.lower()}."
+        )
+        next_steps = [
+            f"Connect the book's legibility argument to resistance theorists (e.g., James C. Scott, Robin Kelley) if present in your notes.",
+            f"Catalog 3–4 concrete refusal or counter-framing tactics from '{title_cand[:35]}'.",
+            f"Outline an empirical section comparing compliant vs. 'problematic' actors."
         ]
 
     # ---------------------------------------------------------
-    # ARCHETYPE 4: The Surveillance & Manufactured Paranoia Angle (Ring Cameras / Anomaly Detection)
+    # ARCHETYPE 4: Inviolate Personality, Play & Normative Redesign
     # ---------------------------------------------------------
     elif archetype_idx == 4:
         strategic_angle = (
-            f"While standard reporting frames '{title_cand[:65]}' through consumer utility or physical security, "
-            f"{agency['agency_name']} investigates the psychological architecture of 'personal anomaly detection.' "
-            f"By turning ordinary citizens into automated neighborhood watchmen via '{p1}', digital systems cultivate "
-            f"a perpetual state of low-grade suburban paranoia."
+            f"Use the constructive normative core of '{chapter}'—protecting 'inviolate personality,' play, and human potentiality—to "
+            f"generate a positive reform agenda for your notes on '{title_cand[:55]}'. Instead of stopping at critique, "
+            f"this expansion asks what {kw1.lower()} and {kw2.lower()} would look like if designed for flourishing rather than prediction."
         )
-        oped_title = f"The Panoptic Porch: How '{title_cand[:50]}' Turns Anxiety Into an Operating System"
-        thesis = (
-            f"The deployment of {p1} in stories like '{title_cand[:60]}' reveals a darker civic shift: we are being "
-            f"trained to view every un-optimized event or unfamiliar stranger as a menacing anomaly. In exchange for the "
-            f"illusion of safety, we have dismantled the spontaneous trust that makes urban life possible."
+        paper_title = f"Beyond Optimization: {p3}, Play, and the Future of {topic_summary}"
+        synthesis_thesis = (
+            f"Merging the book's call for '{p3}' with {topic_summary} shifts the normative baseline from 'fairness within "
+            f"prediction' to protecting unmeasured potentiality and collective self-determination in {kw1.lower()}."
         )
-        sample_opening = (
-            f"Walk through an American suburb today, and you will see dozens of small black lenses blinking on front doors. "
-            f"The phenomenon surrounding '{title_cand[:55]}' is part of the same quiet revolution. We have installed "
-            f"personal anomaly detectors in our homes and our feeds, training algorithmic scanners to alert us to every minor "
-            f"deviation from the norm. The result is not greater safety, but an engineered epidemic of fear."
+        research_gap = (
+            f"Policy debates in {topic_summary} frequently settle for procedural tweaks; anchoring them in '{p1}' and "
+            f"Warren & Brandeis's 'inviolate personality' provides a richer normative standard for {kw2.lower()}."
         )
-        sections = [
-            f"1. The Anomaly Detection Complex: Why '{title_cand[:45]}' cultivates an economy of ambient suspicion.",
-            f"2. The Feedback Loop of Fear: How {p1} and {p2} amplify threat perception for platform stickiness.",
-            f"3. Restoring Civic Grace: Why living with unpredictability is essential for a free society."
+        paper_outline = [
+            f"1. The Limits of Optimization: Why '{p1}' cannot deliver human flourishing in {kw1.lower()}.",
+            f"2. Inviolate Personality & Potentiality: Re-reading {title_cand[:45]} through '{p3}'.",
+            f"3. Institutional Protections: Concrete design and policy guardrails for {kw2.lower()} and {kw3.lower()}."
         ]
-        hook_post = (
-            f"We traded neighborly trust for personal anomaly detectors, and now everyone looks like a threat.\n\n"
-            f"'{title_cand[:60]}' isn't just about security or tech efficiency—it's about how {p1} monetizes paranoia.\n\n"
-            f"The sociological breakdown of what is happening to our communities: [THREAD] 🚨"
-        )
-        carousel_slides = [
-            f"Slide 1: THE ILLUSION OF SAFETY — How automated alerts manufacture constant low-grade dread.",
-            f"Slide 2: ANOMALY AS ENEMY — How {p1} reframes any unexpected behavior as an imminent danger.",
-            f"Slide 3: THE PRIVATE SURVEILLANCE COMMONS — Why platforms crowdsource social control to users.",
-            f"Slide 4: EMBRACING THE UNCLASSIFIED — Why civil society requires tolerating the unfamiliar."
+        bridging_moves = [
+            f"Diagnose the Narrow Metric ({p1}): What human or civic goods in your notes are excluded by current optimization goals?",
+            f"Define 'Inviolate Personality' Here: What spaces in {kw1.lower()} should remain off-limits to scoring or profiling?",
+            f"Center Play & Unpredictability ({p3}): How can institutions in {kw2.lower()} reward experimentation over conformity?",
+            f"Translate into Policy: Draft 2–3 actionable principles for {kw3.lower()}."
         ]
-        discussion_q = f"Has smart tech in your neighborhood or workplace made you feel safer, or just more suspicious?"
-        video_title = f"The Paranoia Machine: What '{title_cand[:45]}' Tells Us About Digital Telemetry"
-        cold_open = (
-            f"\"Motion detected at front door. Notification sent. Pulse spikes. "
-            f"Stories like '{title_cand[:50]}' are not isolated incidents—they are part of an operating system that feeds on "
-            f"your anxiety. And the core engine making billions off that dread is {p1}.\""
+        research_questions = [
+            f"What happens to {kw1.lower()} when we replace predictive efficiency with '{p3}' as our design criterion?",
+            f"Which legal or institutional mechanisms best protect 'inviolate personality' in {topic_summary}?"
+        ]
+        case_strategy = (
+            f"Normative-institutional design study evaluating existing policy proposals in '{title_cand[:45]}' against "
+            f"the book's three principles for human autonomy."
         )
-        podcast_hook = f"Why personal surveillance and algorithmic anomaly detection are eroding community solidarity."
-        pod_qs = [
-            f"How does the logic of '{p1}' turn ordinary citizens into uncompensated surveillance operatives?",
-            f"Can we rebuild social trust while remaining tethered to automated risk-scoring systems?"
+        methodology = "Normative policy evaluation + comparative institutional analysis of municipal, state, or platform governance models."
+        abstract_draft = (
+            f"Critiques of {topic_summary} often focus on reducing algorithmic error while leaving the imperative of prediction "
+            f"intact. Drawing on '{chapter}', this paper argues that defending {kw1.lower()} requires protecting human "
+            f"potentiality and 'inviolate personality' against '{p1}'. Examining {title_cand[:60]}, we propose concrete "
+            f"institutional guardrails centered on '{p3}' to revitalize {kw2.lower()}."
+        )
+        next_steps = [
+            f"Extract the normative principles from '{chapter}' and test them against a live policy dilemma in your notes.",
+            f"Identify 2 existing regulatory or community proposals in {kw1.lower()} to evaluate.",
+            f"Pitch this as a theory-to-policy article or book chapter proposal."
         ]
 
     # ---------------------------------------------------------
-    # ARCHETYPE 5: The Technofeudalism & Algorithmic Rent Angle (Digital Fiefdoms)
+    # ARCHETYPE 5: Technoliberalism, Platform Power & Public Accountability
     # ---------------------------------------------------------
     else:
         strategic_angle = (
-            f"While traditional media covers '{title_cand[:65]}' as standard antitrust or corporate competition, "
-            f"{agency['agency_name']} reframes this as the consolidation of 'technofeudalism.' "
-            f"Platforms no longer operate within capitalist markets—they are the market, extracting algorithmic rents "
-            f"from every transaction and interaction through proprietary controls like '{p1}'."
+            f"Synthesize '{chapter}' with your notes on '{title_cand[:55]}' by foregrounding political economy and "
+            f"technoliberalism. This expansion traces how private platform architectures and {p1.lower()} convert "
+            f"contested public questions in {kw1.lower()} and {kw2.lower()} into proprietary infrastructural decisions."
         )
-        oped_title = f"The New Digital Fiefdoms: Why '{title_cand[:50]}' Signals the End of Open Markets"
-        thesis = (
-            f"The development highlighted in '{title_cand[:60]}' is not competition at work; it is rentier enclosure. "
-            f"By weaponizing {p1} and {p2}, cloud conglomerates have subordinated traditional commerce and civic life "
-            f"under proprietary algorithmic gatekeepers that operate with quasi-governmental power."
+        paper_title = f"Technoliberalism and {kw1}: {p1} in {topic_summary}"
+        synthesis_thesis = (
+            f"Putting the book's critique of technoliberalism into conversation with {topic_summary} demonstrates how "
+            f"'{p1}' privatizes public governance—making {kw2.lower()} accountable to market calculation rather than {kw3.lower()}."
         )
-        sample_opening = (
-            f"In a feudal economy, lords did not produce goods; they controlled the land, extracting rents from everyone "
-            f"who wished to farm it. Today, as '{title_cand[:55]}' demonstrates, cloud infrastructure and platform gatekeepers "
-            f"occupy that exact structural position. We are no longer operating in free markets of goods or ideas; we are "
-            f"serfs paying digital tithes to private algorithmic landlords."
+        research_gap = (
+            f"Scholarship on {topic_summary} often separates technical design from political economy; '{p1}' and '{p2}' "
+            f"link infrastructural lock-in directly to democratic accountability deficits."
         )
-        sections = [
-            f"1. Enclosing the Digital Commons: Why '{title_cand[:45]}' represents platform rentierism.",
-            f"2. The Extraction Mechanism: How {p1} locks users, workers, and publishers into proprietary fiefdoms.",
-            f"3. Digital Public Infrastructure: Alternative models to reclaim sovereignty from platform lords."
+        paper_outline = [
+            f"1. Infrastructural Privatization: How '{p1}' reshapes public authority in {kw1.lower()}.",
+            f"2. The Technoliberal Frame: Legitimating {p2} in {title_cand[:45]}.",
+            f"3. Public Reclamation: Pathways to democratic oversight and '{p3}' in {kw2.lower()}."
         ]
-        hook_post = (
-            f"Stop calling it 'Big Tech'. Start calling it what it actually is: Technofeudalism.\n\n"
-            f"'{title_cand[:60]}' is not free enterprise competing fairly—it is a private digital fiefdom collecting rent.\n\n"
-            f"Here is why {p1} changes the economic rules forever: [THREAD] 🏰"
-        )
-        carousel_slides = [
-            f"Slide 1: THE MARKET IS DEAD — Why cloud platforms are no longer capitalist firms, but closed territories.",
-            f"Slide 2: ALGORITHMIC RENTS — How {p1} imposes an invisible tax on every human interaction.",
-            f"Slide 3: LOCK-IN AND SUBMISSION — Why opting out has been made deliberately economically impossible.",
-            f"Slide 4: PUBLIC DIGITAL COMMONS — How municipal and democratic infrastructure can break the fiefdoms."
+        bridging_moves = [
+            f"Follow the Infrastructure ({p1}): Which private systems or standards mediate {kw1.lower()} in your notes?",
+            f"Unpack the Legitimating Story ({p2}): How is efficiency, safety, or convenience used to justify depoliticization?",
+            f"Assess Democratic Deficit: Who loses standing or voice in {kw2.lower()} when decisions become proprietary?",
+            f"Specify Public Counterweights ({p3}): What state, municipal, or civic governance tools can restore accountability?"
         ]
-        discussion_q = f"Which tech platform feels less like a service you choose and more like a utility you are forced to pay?"
-        video_title = f"Technofeudalism: How {p1} Replaced the Free Market"
-        cold_open = (
-            f"\"Think you live in a market economy? Look at '{title_cand[:50]}'. "
-            f"When a handful of platform landlords own the digital earth beneath your feet, you aren't a consumer with choice—"
-            f"you are a serf tilling data for {p1}. Let's look at the balance sheets.\" "
+        research_questions = [
+            f"How does '{p1}' shift decision-making authority over {kw1.lower()} from public institutions to private infrastructure?",
+            f"What coalition frames enable communities to challenge technoliberal governance in {topic_summary}?"
+        ]
+        case_strategy = (
+            f"Political-economy and framing analysis of a specific public-private interface in '{title_cand[:45]}' "
+            f"(e.g., municipal vendor contracts, platform rules, or regulatory hearings)."
         )
-        podcast_hook = f"Why platform monopolies are turning capitalism into a new form of digital feudalism."
-        pod_qs = [
-            f"How does '{p1}' allow platforms to extract rents rather than creating genuine economic value?",
-            f"What would antitrust look like if it was built to dismantle digital fiefdoms rather than just price-fixing?"
+        methodology = "Process tracing + frame analysis of public hearings, lobbying disclosures, and technical documentation."
+        abstract_draft = (
+            f"When public institutions rely on proprietary computational infrastructure, political choices are frequently "
+            f"repackaged as neutral optimization. Extending '{chapter}' into {topic_summary}, this paper examines how "
+            f"'{p1}' and '{p2}' restructure authority over {kw1.lower()} and {kw2.lower()}. Through an analysis of "
+            f"{title_cand[:60]}, we show how rebuilding public accountability around '{p3}' challenges technoliberal lock-in."
+        )
+        next_steps = [
+            f"Identify the primary private/platform actor and public institution in your '{title_cand[:35]}' notes.",
+            f"Document the justification frames (safety, efficiency, convenience) used to defend '{p1}'.",
+            f"Map potential coalition partners for democratic oversight."
         ]
 
     return {
-        "agency_name": agency.get("agency_name", agency.get("firm_name")),
+        "agency_name": section_name,
         "agency_id": aid,
         "specialty": spec,
+        "chapter": chapter,
         "strategic_angle": strategic_angle,
         "is_llm_generated": False,
-        "llm_model": "Heuristic Framing Engine",
-        "oped_pitch": {
-            "title": oped_title,
-            "target_publications": outlets_str,
-            "provocative_thesis": thesis,
-            "sample_opening": sample_opening,
-            "editorial_sections": sections,
-            "full_oped_text": f"PROPOSED HEADLINE:\n{oped_title}\n\nTARGET PUBLICATIONS:\n{outlets_str}\n\nPROVOCATIVE THESIS:\n{thesis}\n\nSAMPLE OPENING PARAGRAPH:\n{sample_opening}\n\nEDITORIAL OUTLINE:\n  • {sections[0]}\n  • {sections[1]}\n  • {sections[2]}"
+        "llm_model": "Heuristic Synthesis",
+        "research_pitch": {
+            "title": paper_title,
+            "target_journals": journals_str,
+            "synthesis_thesis": synthesis_thesis,
+            "research_gap": research_gap,
+            "paper_outline": paper_outline,
         },
-        "social_campaign": {
-            "platform_focus": "X (Twitter) Deep Thread + LinkedIn Thought Leadership + Instagram/Visual Carousel",
-            "hook_post": hook_post,
-            "carousel_slides": carousel_slides,
-            "engagement_question": discussion_q
+        "conceptual_bridge": {
+            "core_concepts": produce,
+            "bridging_moves": bridging_moves,
+            "research_questions": research_questions,
         },
-        "video_pitch": {
-            "video_title": video_title,
-            "format": "8-12 Minute High-Production YouTube Video Essay / Documentary Short",
-            "visual_treatment": "High-contrast visual essay blending archival footage, terminal interfaces, and cinematic split-screens set to ambient electronic score.",
-            "cold_open_script": cold_open
-        },
-        "podcast_pitch": {
-            "target_shows": "The Ezra Klein Show, Tech Won't Save Us, Hard Fork, Offline with Jon Favreau, Conversations with Tyler",
-            "interview_hook": podcast_hook,
-            "provocative_questions": pod_qs
+        "empirical_design": {
+            "case_strategy": case_strategy,
+            "methodology": methodology,
+            "abstract_draft": abstract_draft,
+            "next_steps": next_steps,
         },
         "produce_catalog": produce,
-        "whitepaper_excerpt": agency.get("executive_summary", resonant_idea),
-        "full_passage": passage
+        "full_passage": passage,
     }
 
 
 def format_proposal_as_text(proposal):
     """
-    Renders the complete agency proposal in clean, publication-ready text format.
-    Safely iterates through any list without assuming fixed array indices.
+    Renders the complete Research Expansion Proposal in clean, structured text format.
     """
     p = proposal
-    op = p.get("oped_pitch", {})
-    soc = p.get("social_campaign", {})
-    vid = p.get("video_pitch", {})
-    pod = p.get("podcast_pitch", {})
-    
+    rp = p.get("research_pitch", {})
+    cb = p.get("conceptual_bridge", {})
+    ed = p.get("empirical_design", {})
+
     border_main = "=" * 78
     border_sub = "-" * 78
-    
-    llm_badge = f" [AI Drafted by {p.get('llm_model', 'Local LLM')}]" if p.get("is_llm_generated") else " [Strategic Framing Draft]"
+
+    llm_badge = (
+        f" [AI Synthesized by {p.get('llm_model', 'Local LLM')}]"
+        if p.get("is_llm_generated")
+        else " [Heuristic Research Synthesis]"
+    )
     lines = [
         border_main,
-        f"MEDIA RELATIONS CAMPAIGN PROPOSAL: {p.get('agency_name', 'AGENCY').upper()} [{p.get('agency_id', 'ID')}]{llm_badge}",
-        f"Specialty: {p.get('specialty', 'Media Relations')}",
+        f"RESEARCH EXPANSION PROPOSAL: {p.get('agency_name', 'BOOK SECTION').upper()} [{p.get('agency_id', 'ID')}]{llm_badge}",
+        f"Book Chapter: {p.get('chapter', 'Book Section')} | Focus: {p.get('specialty', 'Socio-Technical Theory')}",
         border_main,
         "",
-        "[*] STRATEGIC MEDIA ANGLE & REFRAMING:",
-        p.get('strategic_angle', 'No strategic angle provided.'),
+        "[*] SYNTHESIS ANGLE (MERGING BOOK SECTION + YOUR NOTES):",
+        p.get("strategic_angle", "No synthesis angle provided."),
         "",
         border_sub,
-        "1. LONG-FORM BLOG POST & OP-ED PITCH",
-        f"Headline: {op.get('title', 'Op-Ed Title')}",
-        f"Target Publications: {op.get('target_publications', 'Wired, The Atlantic')}",
+        "1. NEW RESEARCH PAPER / PROJECT PITCH",
+        f"Working Title: {rp.get('title', 'Research Paper Title')}",
+        f"Target Journals / Venues: {rp.get('target_journals', 'Big Data & Society, Perspectives on Politics')}",
         "",
-        "Provocative Core Thesis & Strategy:",
-        op.get('provocative_thesis', ''),
+        "Core Synthesis Thesis:",
+        rp.get("synthesis_thesis", ""),
+        "",
+        "Research Gap & Theoretical Payoff:",
+        rp.get("research_gap", ""),
         "",
     ]
-    
-    if op.get("sample_opening"):
-        lines.extend([
-            "Sample Introductory Paragraph:",
-            op['sample_opening'],
-            ""
-        ])
-        
-    editorial_sections = op.get("editorial_sections", [])
-    if editorial_sections:
-        lines.append("Editorial Outline & Arguments:")
-        for section in editorial_sections:
-            lines.append(f"  • {section}")
+
+    outline = rp.get("paper_outline", [])
+    if outline:
+        lines.append("Proposed 3-Part Paper / Chapter Outline:")
+        for sec in outline:
+            lines.append(f"  • {sec}")
         lines.append("")
-        
+
     lines.extend([
         border_sub,
-        "2. MULTI-PLATFORM VIRAL SOCIAL MEDIA CAMPAIGN",
-        f"Platform Focus: {soc.get('platform_focus', 'X / LinkedIn')}",
-        "",
-        "Opening Hook Post:",
-        soc.get('hook_post', ''),
+        "2. CONCEPTUAL & THEORETICAL BRIDGE",
+        f"Book Concepts Used: {', '.join(cb.get('core_concepts', p.get('produce_catalog', [])))}",
         "",
     ])
-    
-    carousel_slides = soc.get("carousel_slides", [])
-    if carousel_slides:
-        lines.append("Visual Carousel & Thread Breakdown:")
-        for slide in carousel_slides:
-            lines.append(f"  • {slide}")
+
+    moves = cb.get("bridging_moves", [])
+    if moves:
+        lines.append("4-Step Analytical Bridge:")
+        for m in moves:
+            lines.append(f"  • {m}")
         lines.append("")
-        
-    if soc.get("engagement_question"):
-        lines.extend([
-            "Audience Engagement Trigger:",
-            f"\"{soc['engagement_question']}\"",
-            ""
-        ])
-        
-    lines.extend([
-        border_sub,
-        "3. VIDEO & MULTIMEDIA EXPLAINER CONCEPT",
-        f"Video Title: {vid.get('video_title', 'Video Essay')}",
-        f"Format: {vid.get('format', 'Video Essay Short')}",
-        f"Visual Treatment & Aesthetic Cues: {vid.get('visual_treatment', '')}",
-        "",
-        "Cold Open Script:",
-        vid.get('cold_open_script', ''),
-        "",
-        border_sub,
-        "4. PODCAST & BROADCAST INTERVIEW HOOK",
-        f"Target Shows: {pod.get('target_shows', 'The Ezra Klein Show')}",
-        f"Pitch Angle: {pod.get('interview_hook', '')}",
-        ""
-    ])
-    
-    pod_qs = pod.get("provocative_questions", [])
-    if pod_qs:
-        lines.append("Key Questions for Host:")
-        for idx, q in enumerate(pod_qs, 1):
+
+    rqs = cb.get("research_questions", [])
+    if rqs:
+        lines.append("Guiding Research Questions:")
+        for idx, q in enumerate(rqs, 1):
             lines.append(f"  {idx}. {q}")
         lines.append("")
-        
+
     lines.extend([
         border_sub,
-        "5. FOUNDATIONAL INTELLECTUAL WHITEPAPER (~1,000 Words)",
-        f"Research Basis: {p.get('agency_name', 'Agency')} Theoretical Corpus",
+        "3. EMPIRICAL DESIGN, ABSTRACT & NEXT STEPS",
+        f"Empirical Case Strategy: {ed.get('case_strategy', '')}",
+        f"Methodology: {ed.get('methodology', '')}",
+        "",
+        "Draft Abstract / CFP Pitch:",
+        ed.get("abstract_draft", ""),
+        "",
+    ])
+
+    steps = ed.get("next_steps", [])
+    if steps:
+        lines.append("Immediate Next Steps:")
+        for idx, st in enumerate(steps, 1):
+            lines.append(f"  {idx}. {st}")
+        lines.append("")
+
+    lines.extend([
+        border_sub,
+        "4. ORIGINAL BOOK SECTION SOURCE TEXT",
+        f"Source: {p.get('chapter', 'You Must Become an Algorithmic Problem')}",
         border_main,
         "",
-        p.get('full_passage', '')
+        p.get("full_passage", ""),
     ])
-    
+
     return "\n".join(lines)

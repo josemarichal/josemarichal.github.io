@@ -33,27 +33,27 @@ EMBEDDINGS_FILE = os.path.join(BASE_DIR, "firms_embeddings.npy")
 CAMPAIGNS_FILE = os.path.join(BASE_DIR, "campaign_ledger.json")
 ICON_FILE = os.path.join(BASE_DIR, "app_icon.ico")
 
-# Quick Media RFP Presets for testing
+# Quick Research Snippet Presets for testing
 PRESET_RFPS = [
     {
-        "label": "Tech Burnout & Slack Clutter",
-        "text": "Tech workers and knowledge professionals report severe cognitive fatigue and burnout from hundreds of daily Slack notifications, endless emails, and unstructured digital clutter."
+        "label": "Race & Politics Notes",
+        "text": "Notes on Race and Politics: Social construction of race, bonding vs. bridging social capital, hunkering, colorblindness, white racial framing, environmental racism, and carceral/surveillance institutions."
     },
     {
-        "label": "Ring Cameras & Suburban Paranoia",
-        "text": "Suburban homeowners are installing Ring smart cameras and sharing Ring Neighbors telemetry, turning ordinary neighborhood activities into constant perceived crime threats."
+        "label": "Flock ALPR Surveillance",
+        "text": "Municipalities in low-income communities are adopting Flock automated license plate readers (ALPRs), framing surveillance as neutral crime-fighting while residents contest privacy, policing, and vendor lock-in."
     },
     {
-        "label": "Cloud Monopolies & Technofeudalism",
-        "text": "Trillion-dollar cloud platforms now extract algorithmic rents across all commerce, replacing open competitive markets with private digital fiefdoms."
+        "label": "Data Center Resistance",
+        "text": "Local coalitions are resisting hyperscale AI data centers over water extraction, grid strain, and environmental justice—challenging tech companies' promises of clean economic growth."
     },
     {
-        "label": "AI Optimization & Outlier Suppression",
-        "text": "Corporate machine learning systems enforce rigid predictive model fitting, treating creative nonconformists and independent thinkers as problematic outliers to be smoothed out."
+        "label": "Freedom & Tech Policy",
+        "text": "Comparing Hobbesian negative liberty, Arendtian polis-building, Elizabeth Anderson's private government, and Hayek on whether AI regulation protects or undermines human freedom."
     },
     {
-        "label": "Viral Outrage & Social Algorithms",
-        "text": "Recommendation algorithms intentionally amplify tribal rage and affective polarization because moral outrage generates the highest engagement margins."
+        "label": "Higher Ed & AI Framing",
+        "text": "University stakeholders frame AI governance and diversity initiatives through compliance, pressure-valve, or pedagogical frames—shaping which coalitions survive."
     }
 ]
 
@@ -61,7 +61,7 @@ PRESET_RFPS = [
 class MediaRelationsExchangeApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("The Media Relations Exchange — 55 PR Agencies Competing to Pitch Your Ideas")
+        self.title("Algorithmic Problem Research Expansion Studio — Merge Book Sections with New Research Notes")
         self.geometry("1300x900")
         self.minsize(1080, 740)
 
@@ -190,14 +190,14 @@ class MediaRelationsExchangeApp(tk.Tk):
 
         title_lbl = ttk.Label(
             title_box,
-            text="📣 THE MEDIA RELATIONS EXCHANGE",
+            text="🔬 ALGORITHMIC PROBLEM RESEARCH EXPANSION STUDIO",
             style="HeaderTitle.TLabel"
         )
         title_lbl.pack(anchor="w")
 
         subtitle_lbl = ttk.Label(
             title_box,
-            text="55 Strategic Communications Agencies Competing with Tailored PR, Op-Ed, Social & Video Pitches",
+            text="55 Book Sections Ready to Merge with Your Notes & Snippets into New Research Agendas",
             style="HeaderSubtitle.TLabel"
         )
         subtitle_lbl.pack(anchor="w", pady=(2, 0))
@@ -221,19 +221,19 @@ class MediaRelationsExchangeApp(tk.Tk):
         left_frame = ttk.Frame(main_paned, padding=10)
         main_paned.add(left_frame, weight=1)
 
-        lbl_step1 = ttk.Label(left_frame, text="1. SUBMIT MEDIA RFP / PASTE CONTENT", font=("Segoe UI", 11, "bold"), foreground="#1e293b")
+        lbl_step1 = ttk.Label(left_frame, text="1. PASTE RESEARCH NOTES / SNIPPET", font=("Segoe UI", 11, "bold"), foreground="#1e293b")
         lbl_step1.pack(anchor="w", pady=(0, 2))
 
         lbl_instruct = ttk.Label(
             left_frame,
-            text="Paste an article, speech, or concept to solicit competing PR proposals from all 55 agencies:",
+            text="Paste lecture notes, a syllabus excerpt, or a research snippet to see how each book section can expand into a new paper:",
             font=("Segoe UI", 8),
             foreground="#64748b"
         )
         lbl_instruct.pack(anchor="w", pady=(0, 6))
 
         # Presets Bar
-        presets_box = ttk.LabelFrame(left_frame, text="⚡ Quick RFP Presets", padding=6)
+        presets_box = ttk.LabelFrame(left_frame, text="⚡ Quick Research Note Presets", padding=6)
         presets_box.pack(fill=tk.X, pady=(0, 8))
 
         presets_inner = ttk.Frame(presets_box)
@@ -305,7 +305,7 @@ class MediaRelationsExchangeApp(tk.Tk):
 
         self.compete_btn = ttk.Button(
             actions_frame,
-            text="🚀 SOLICIT AGENCY PITCHES (55 AGENCIES COMPETE)",
+            text="🔬 GENERATE RESEARCH EXPANSIONS (55 BOOK SECTIONS)",
             style="Primary.TButton",
             command=self.run_agency_competition
         )
@@ -318,7 +318,7 @@ class MediaRelationsExchangeApp(tk.Tk):
         clear_btn.pack(side=tk.RIGHT)
 
         # =========================================================================
-        # RIGHT PANE: PROPOSAL TABS & PITCH DECKS
+        # RIGHT PANE: RESEARCH EXPANSION TABS
         # =========================================================================
         right_frame = ttk.Frame(main_paned, padding=6)
         main_paned.add(right_frame, weight=2)
@@ -326,24 +326,24 @@ class MediaRelationsExchangeApp(tk.Tk):
         self.notebook = ttk.Notebook(right_frame)
         self.notebook.pack(fill=tk.BOTH, expand=True)
 
-        # Tab 1: Top Agency Pitch Decks
+        # Tab 1: Top Research Expansion Pitches
         self.tab_leaders = ttk.Frame(self.notebook, padding=10)
-        self.notebook.add(self.tab_leaders, text="🏆 Top Agency Pitch Decks")
+        self.notebook.add(self.tab_leaders, text="🏆 Top Research Expansions")
         self.build_leaders_tab()
 
-        # Tab 2: Full 55-Agency Exchange Board
+        # Tab 2: All 55 Book Sections Exchange
         self.tab_exchange = ttk.Frame(self.notebook, padding=10)
-        self.notebook.add(self.tab_exchange, text="📊 All 55 Media Agencies Exchange")
+        self.notebook.add(self.tab_exchange, text="📊 All 55 Book Sections")
         self.build_exchange_tab()
 
-        # Tab 3: PR Angles & Produce Catalog
+        # Tab 3: Book Concepts & Themes Catalog
         self.tab_angles = ttk.Frame(self.notebook, padding=10)
-        self.notebook.add(self.tab_angles, text="📦 PR Angles & Produce Catalog")
+        self.notebook.add(self.tab_angles, text="📦 Book Concepts & Themes")
         self.build_angles_tab()
 
-        # Tab 4: Retained Agencies Ledger
+        # Tab 4: Saved Research Agenda
         self.tab_campaigns = ttk.Frame(self.notebook, padding=10)
-        self.notebook.add(self.tab_campaigns, text="📜 Retained Agencies & Campaign Ledger")
+        self.notebook.add(self.tab_campaigns, text="📜 Saved Research Agenda")
         self.build_campaigns_tab()
 
     def build_leaders_tab(self):
@@ -352,7 +352,7 @@ class MediaRelationsExchangeApp(tk.Tk):
 
         self.competition_status_lbl = ttk.Label(
             top_sub,
-            text="Submit content on the left and click 'Solicit Agency Pitches' to view the top 3 proposals.",
+            text="Paste your notes on the left and click 'Generate Research Expansions' to see the top 3 book-section merges.",
             font=("Segoe UI", 9, "italic"),
             foreground="#475569"
         )
@@ -363,14 +363,14 @@ class MediaRelationsExchangeApp(tk.Tk):
 
         self.leader_cards = []
         ranks = [
-            ("🥇 Rank 1: Lead Agency Pitch", "#059669"),
-            ("🥈 Rank 2: Alternative Angle", "#2563eb"),
-            ("🥉 Rank 3: Challenger Pitch", "#d97706")
+            ("🥇 Rank 1: Primary Book-Section Merge", "#059669"),
+            ("🥈 Rank 2: Secondary Research Bridge", "#2563eb"),
+            ("🥉 Rank 3: Alternative Expansion", "#d97706")
         ]
 
         for idx, (title, color) in enumerate(ranks):
             tab = ttk.Frame(self.leaders_notebook, padding=8)
-            self.leaders_notebook.add(tab, text=f"Agency #{idx+1}")
+            self.leaders_notebook.add(tab, text=f"Match #{idx+1}")
 
             # Top Agency Profile Card
             profile_card = ttk.Frame(tab, relief=tk.SOLID, borderwidth=1, padding=10)
@@ -388,10 +388,10 @@ class MediaRelationsExchangeApp(tk.Tk):
             share_badge = ttk.Label(row1, text="0.0% Proposal Fit", font=("Consolas", 11, "bold"), foreground=color)
             share_badge.pack(side=tk.RIGHT)
 
-            # Row 2: Specialty & Strategic Angle
+            # Row 2: Section Focus & Synthesis Angle
             spec_row = ttk.Frame(profile_card)
             spec_row.pack(fill=tk.X, pady=(4, 2))
-            ttk.Label(spec_row, text="Agency Specialty:", font=("Segoe UI", 8, "bold"), foreground="#64748b").pack(side=tk.LEFT, padx=(0, 6))
+            ttk.Label(spec_row, text="Section Focus:", font=("Segoe UI", 8, "bold"), foreground="#64748b").pack(side=tk.LEFT, padx=(0, 6))
             spec_lbl = ttk.Label(spec_row, text="—", font=("Segoe UI", 9, "bold"), foreground="#1e293b")
             spec_lbl.pack(side=tk.LEFT)
 
@@ -400,14 +400,14 @@ class MediaRelationsExchangeApp(tk.Tk):
 
             angle_row = ttk.Frame(profile_card)
             angle_row.pack(fill=tk.X, pady=(2, 4))
-            ttk.Label(angle_row, text="Strategic Media Angle:", font=("Segoe UI", 8, "bold"), foreground="#64748b").pack(anchor="w")
+            ttk.Label(angle_row, text="Synthesis Angle:", font=("Segoe UI", 8, "bold"), foreground="#64748b").pack(anchor="w")
             angle_lbl = ttk.Label(angle_row, text="—", font=("Segoe UI", 9), wraplength=740)
             angle_lbl.pack(anchor="w")
 
-            # Row 3: Target Outlets
+            # Row 3: Target Journals
             meta_row = ttk.Frame(profile_card)
             meta_row.pack(fill=tk.X, pady=(2, 6))
-            ttk.Label(meta_row, text="Target Outlets:", font=("Segoe UI", 8, "bold"), foreground="#64748b").pack(side=tk.LEFT, padx=(0, 6))
+            ttk.Label(meta_row, text="Target Journals:", font=("Segoe UI", 8, "bold"), foreground="#64748b").pack(side=tk.LEFT, padx=(0, 6))
             outlets_lbl = ttk.Label(meta_row, text="—", font=("Segoe UI", 8, "italic"), foreground="#2563eb")
             outlets_lbl.pack(side=tk.LEFT)
 
@@ -415,12 +415,12 @@ class MediaRelationsExchangeApp(tk.Tk):
             btn_row = ttk.Frame(profile_card)
             btn_row.pack(fill=tk.X, pady=(4, 0))
 
-            sector_lbl = ttk.Label(btn_row, text="Sector: —", font=("Segoe UI", 8), foreground="#64748b")
+            sector_lbl = ttk.Label(btn_row, text="Chapter: —", font=("Segoe UI", 8), foreground="#64748b")
             sector_lbl.pack(side=tk.LEFT)
 
             hire_btn = ttk.Button(
                 btn_row,
-                text="🤝 Retain Agency",
+                text="📌 Save to Agenda",
                 style="Hire.TButton",
                 command=lambda r_idx=idx: self.hire_agency_by_rank(r_idx),
                 state=tk.DISABLED
@@ -429,7 +429,7 @@ class MediaRelationsExchangeApp(tk.Tk):
 
             copy_btn = ttk.Button(
                 btn_row,
-                text="📋 Copy Proposal",
+                text="📋 Copy Expansion",
                 command=lambda r_idx=idx: self.copy_proposal_by_rank(r_idx),
                 state=tk.DISABLED
             )
@@ -444,27 +444,27 @@ class MediaRelationsExchangeApp(tk.Tk):
             )
             llm_btn.pack(side=tk.RIGHT)
 
-            # Proposal Multi-Channel Notebook
+            # Research Expansion Multi-Tab Notebook
             prop_notebook = ttk.Notebook(tab)
             prop_notebook.pack(fill=tk.BOTH, expand=True)
 
             tab_oped = ttk.Frame(prop_notebook, padding=8)
-            prop_notebook.add(tab_oped, text="📰 Op-Ed & Blog Pitch")
+            prop_notebook.add(tab_oped, text="🔬 Research Expansion & Paper Pitch")
             oped_txt = scrolledtext.ScrolledText(tab_oped, wrap=tk.WORD, font=("Georgia", 10), background="#ffffff", relief=tk.FLAT)
             oped_txt.pack(fill=tk.BOTH, expand=True)
 
             tab_social = ttk.Frame(prop_notebook, padding=8)
-            prop_notebook.add(tab_social, text="📱 Social Media Campaign")
+            prop_notebook.add(tab_social, text="🧭 Conceptual & Theoretical Bridge")
             social_txt = scrolledtext.ScrolledText(tab_social, wrap=tk.WORD, font=("Segoe UI", 10), background="#ffffff", relief=tk.FLAT)
             social_txt.pack(fill=tk.BOTH, expand=True)
 
             tab_video = ttk.Frame(prop_notebook, padding=8)
-            prop_notebook.add(tab_video, text="🎥 Video & Multimedia Script")
+            prop_notebook.add(tab_video, text="📋 Empirical Design & Next Steps")
             video_txt = scrolledtext.ScrolledText(tab_video, wrap=tk.WORD, font=("Segoe UI", 10), background="#ffffff", relief=tk.FLAT)
             video_txt.pack(fill=tk.BOTH, expand=True)
 
             tab_paper = ttk.Frame(prop_notebook, padding=8)
-            prop_notebook.add(tab_paper, text="📑 Agency Research Whitepaper (~1,000 Words)")
+            prop_notebook.add(tab_paper, text="📖 Book Section Source Text")
             paper_txt = scrolledtext.ScrolledText(tab_paper, wrap=tk.WORD, font=("Georgia", 10), background="#ffffff", relief=tk.FLAT)
             paper_txt.pack(fill=tk.BOTH, expand=True)
 
@@ -834,85 +834,84 @@ class MediaRelationsExchangeApp(tk.Tk):
 
                 aid = a.get("agency_id", a.get("firm_id", ""))
                 card["name_lbl"].config(text=f"{a.get('agency_name', a['firm_name'])} [{aid}]")
-                card["share_badge"].config(text=f"{fit:.2f}% Proposal Fit (Score: {score:.3f})")
-                card["spec_lbl"].config(text=a.get("agency_specialty", "Strategic Media Relations"))
+                card["share_badge"].config(text=f"{fit:.2f}% Relevance (Score: {score:.3f})")
+                card["spec_lbl"].config(text=a.get("agency_specialty", "Socio-Technical Theory"))
                 card["angle_lbl"].config(text=prop["strategic_angle"])
-                card["outlets_lbl"].config(text=", ".join(a.get("target_outlets", [])))
-                card["sector_lbl"].config(text=f"Sector: {a.get('chapter', 'General')} | Research Corpus: {a.get('word_count', 0)} words")
+                rp = prop.get("research_pitch", {})
+                card["outlets_lbl"].config(text=rp.get("target_journals", ", ".join(a.get("target_outlets", []))))
+                card["sector_lbl"].config(text=f"Chapter: {a.get('chapter', 'General')} | Book Corpus: {a.get('word_count', 0)} words")
 
                 # Status badge
                 if prop.get("is_llm_generated"):
                     card["llm_status_badge"].config(
-                        text=f"✨ Drafted by {prop.get('llm_model', 'Local LLM')}",
+                        text=f"✨ Synthesized by {prop.get('llm_model', 'Local LLM')}",
                         foreground="#7c3aed"
                     )
                 else:
                     card["llm_status_badge"].config(
-                        text="[Draft: Heuristic]",
+                        text="[Draft: Heuristic Synthesis]",
                         foreground="#64748b"
                     )
 
                 # Buttons
                 if a.get("is_retained", False):
-                    card["hire_btn"].config(text="✓ Already Retained", state=tk.DISABLED)
+                    card["hire_btn"].config(text="✓ Saved in Agenda", state=tk.DISABLED)
                 else:
-                    card["hire_btn"].config(text="🤝 Retain Agency", state=tk.NORMAL)
+                    card["hire_btn"].config(text="📌 Save to Agenda", state=tk.NORMAL)
                 card["copy_btn"].config(state=tk.NORMAL)
                 card["llm_btn"].config(state=tk.NORMAL, text="✨ Draft with Local LLM")
 
-                # Populate Op-Ed Pitch
-                op = prop.get("oped_pitch", {})
+                # Populate Tab 1: Research Expansion & Paper Pitch
                 card["oped_txt"].delete("1.0", tk.END)
-                oped_content = (
-                    f"PROPOSED HEADLINE:\n{op.get('title', 'Op-Ed Title')}\n\n"
-                    f"TARGET PUBLICATIONS:\n{op.get('target_publications', 'Wired, The Atlantic')}\n\n"
-                    f"PROVOCATIVE THESIS:\n{op.get('provocative_thesis', '')}\n\n"
+                pitch_content = (
+                    f"PROPOSED ARTICLE / PROJECT TITLE:\n{rp.get('title', 'Research Expansion')}\n\n"
+                    f"TARGET ACADEMIC JOURNALS / VENUES:\n{rp.get('target_journals', 'Big Data & Society, Perspectives on Politics')}\n\n"
+                    f"CORE SYNTHESIS THESIS:\n{rp.get('synthesis_thesis', '')}\n\n"
                 )
-                if op.get("sample_opening"):
-                    oped_content += f"SAMPLE OPENING PARAGRAPH:\n{op['sample_opening']}\n\n"
-                sections = op.get("editorial_sections", [])
-                if sections:
-                    oped_content += "EDITORIAL OUTLINE & ARGUMENTS:\n"
-                    for s in sections:
-                        oped_content += f"  • {s}\n\n"
-                card["oped_txt"].insert(tk.END, oped_content)
+                if rp.get("research_gap"):
+                    pitch_content += f"RESEARCH GAP & THEORETICAL PAYOFF:\n{rp['research_gap']}\n\n"
+                outline = rp.get("paper_outline", [])
+                if outline:
+                    pitch_content += "PROPOSED 3-PART PAPER / CHAPTER OUTLINE:\n"
+                    for s in outline:
+                        pitch_content += f"  • {s}\n\n"
+                card["oped_txt"].insert(tk.END, pitch_content)
 
-                # Populate Social Campaign
-                soc = prop.get("social_campaign", {})
+                # Populate Tab 2: Conceptual & Theoretical Bridge
+                cb = prop.get("conceptual_bridge", {})
                 card["social_txt"].delete("1.0", tk.END)
-                social_content = (
-                    f"PLATFORM STRATEGY:\n{soc.get('platform_focus', 'X / LinkedIn')}\n\n"
-                    f"OPENING VIRAL HOOK POST:\n{soc.get('hook_post', '')}\n\n"
+                concepts = cb.get("core_concepts", prop.get("produce_catalog", []))
+                bridge_content = (
+                    f"BOOK SECTION CONCEPTS:\n{', '.join(concepts)}\n\n"
                 )
-                slides = soc.get("carousel_slides", [])
-                if slides:
-                    social_content += "VISUAL CAROUSEL / THREAD BREAKDOWN:\n"
-                    for s in slides:
-                        social_content += f"  • {s}\n\n"
-                if soc.get("engagement_question"):
-                    social_content += f"AUDIENCE ENGAGEMENT QUESTION:\n\"{soc['engagement_question']}\"\n"
-                card["social_txt"].insert(tk.END, social_content)
+                moves = cb.get("bridging_moves", [])
+                if moves:
+                    bridge_content += "4-STEP ANALYTICAL BRIDGE (BOOK SECTION ↔ YOUR NOTES):\n"
+                    for m in moves:
+                        bridge_content += f"  • {m}\n\n"
+                rqs = cb.get("research_questions", [])
+                if rqs:
+                    bridge_content += "GUIDING RESEARCH QUESTIONS:\n"
+                    for idx_q, q in enumerate(rqs, 1):
+                        bridge_content += f"  {idx_q}. {q}\n\n"
+                card["social_txt"].insert(tk.END, bridge_content)
 
-                # Populate Video Script
-                vid = prop.get("video_pitch", {})
+                # Populate Tab 3: Empirical Design & Next Steps
+                ed = prop.get("empirical_design", {})
                 card["video_txt"].delete("1.0", tk.END)
-                video_content = (
-                    f"VIDEO TITLE:\n{vid.get('video_title', 'Video Essay')}\n\n"
-                    f"PRODUCTION FORMAT:\n{vid.get('format', 'Video Essay Short')}\n\n"
-                    f"VISUAL TREATMENT & CUES:\n{vid.get('visual_treatment', '')}\n\n"
-                    f"COLD OPEN SCRIPT (FIRST 20 SECONDS):\n{vid.get('cold_open_script', '')}\n"
+                design_content = (
+                    f"EMPIRICAL CASE STRATEGY:\n{ed.get('case_strategy', '')}\n\n"
+                    f"PROPOSED METHODOLOGY:\n{ed.get('methodology', '')}\n\n"
+                    f"DRAFT ABSTRACT / CFP PITCH:\n{ed.get('abstract_draft', '')}\n\n"
                 )
-                pod = prop.get("podcast_pitch", {})
-                if pod.get("interview_hook"):
-                    video_content += f"\nPODCAST & BROADCAST HOOK:\n{pod.get('interview_hook', '')}\n\n"
-                    pod_qs = pod.get("provocative_questions", [])
-                    if pod_qs:
-                        video_content += "QUESTIONS FOR HOST:\n"
-                        for q in pod_qs:
-                            video_content += f"  • {q}\n"
-                card["video_txt"].insert(tk.END, video_content)
+                steps = ed.get("next_steps", [])
+                if steps:
+                    design_content += "IMMEDIATE NEXT STEPS:\n"
+                    for idx_s, st in enumerate(steps, 1):
+                        design_content += f"  {idx_s}. {st}\n"
+                card["video_txt"].insert(tk.END, design_content)
 
-                # Populate Whitepaper
+                # Populate Tab 4: Book Section Source Text
                 card["paper_txt"].delete("1.0", tk.END)
                 card["paper_txt"].insert(tk.END, a["text"])
 
@@ -1228,18 +1227,18 @@ class MediaRelationsExchangeApp(tk.Tk):
             return
 
         rfp_query = self.rfp_text.get("1.0", tk.END).strip()
-        rfp_snippet = rfp_query[:180] if rfp_query else "General Concept RFP"
+        rfp_snippet = rfp_query[:180] if rfp_query else "General Research Notes"
         aid = agency.get("agency_id", agency.get("firm_id"))
-        headline = prop["oped_pitch"]["title"] if prop else "Media Campaign"
+        headline = prop.get("research_pitch", {}).get("title", "Research Expansion") if prop else "Research Expansion"
 
         confirmed = messagebox.askyesno(
-            "Retain Agency & Launch Campaign",
-            f"Are you sure you want to retain:\n\n"
-            f"📣 {agency.get('agency_name', agency['firm_name'])} [{aid}]\n"
-            f"📊 Proposal Fit: {share_str}\n"
-            f"🎯 Specialty: {agency.get('agency_specialty', '')}\n"
-            f"📰 Pitch Headline: {headline}\n\n"
-            "This will log the campaign into your Campaign Ledger and retain this agency."
+            "Save Research Expansion to Agenda",
+            f"Are you sure you want to save this expansion:\n\n"
+            f"🔬 {agency.get('agency_name', agency['firm_name'])} [{aid}]\n"
+            f"📊 Relevance: {share_str}\n"
+            f"🎯 Focus: {agency.get('agency_specialty', '')}\n"
+            f"📄 Working Title: {headline}\n\n"
+            "This will log the expansion into your Saved Research Agenda."
         )
 
         if not confirmed:

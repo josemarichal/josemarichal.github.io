@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>November Madness: 2026 U.S. Senate Election Pool</title>
+    <title>2026 U.S. Senate Election Prediction Worksheet</title>
     <style>
         @page {
             size: letter portrait;
@@ -18,1265 +18,1226 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #1e293b;
-            background: #ffffff;
+            color: #0f172a;
+            background: #f1f5f9;
             margin: 0;
-            padding: 0;
-            font-size: 8.5pt;
-            line-height: 1.25;
+            padding: 20px;
+            font-size: 9pt;
+            line-height: 1.3;
         }
 
-        .page {
-            page-break-after: always;
-            height: 10.2in;
+        .worksheet-container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 24px 28px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        /* Screen Toolbar */
+        .screen-toolbar {
+            max-width: 960px;
+            margin: 0 auto 14px auto;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .page:last-child {
-            page-break-after: avoid;
+        .live-tally {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 9.5pt;
+            font-weight: 600;
         }
+
+        .tally-pill {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 9pt;
+        }
+
+        .tally-r { background: #fee2e2; color: #991b1b; }
+        .tally-d { background: #dbeafe; color: #1e40af; }
+        .tally-i { background: #fef3c7; color: #92400e; }
+
+        .toolbar-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.15s;
+        }
+
+        .btn:hover { opacity: 0.9; }
+        .btn-print { background: #38bdf8; color: #0f172a; }
+        .btn-clear { background: #334155; color: #f8fafc; }
 
         /* Header */
         .sheet-header {
-            border-bottom: 2px solid #0f172a;
-            padding-bottom: 6px;
-            margin-bottom: 8px;
+            border-bottom: 2.5px solid #0f172a;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .title-block h1 {
             font-size: 18pt;
             font-weight: 900;
-            margin: 0 0 2px 0;
+            margin: 0 0 3px 0;
             letter-spacing: -0.02em;
             text-transform: uppercase;
             color: #0f172a;
         }
 
         .title-block .subtitle {
-            font-size: 8pt;
+            font-size: 8.5pt;
             color: #475569;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
-        .player-info-card {
-            border: 1.5px solid #0f172a;
-            border-radius: 4px;
-            padding: 4px 10px;
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            gap: 12px;
+        .student-info {
+            display: flex;
+            gap: 16px;
+            align-items: center;
             background: #f8fafc;
-            font-size: 8pt;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 8.5pt;
         }
 
-        .player-field {
+        .student-field {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
         }
 
-        .player-field label {
-            font-weight: 700;
-            color: #334155;
+        .student-field label {
+            font-weight: 800;
             text-transform: uppercase;
-            font-size: 7pt;
+            font-size: 7.5pt;
+            color: #334155;
         }
 
-        .player-line {
-            display: inline-block;
-            border-bottom: 1px solid #64748b;
-            min-width: 80px;
-            height: 14px;
+        .student-field input {
+            border: none;
+            border-bottom: 1.5px solid #64748b;
+            background: transparent;
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: #0f172a;
+            padding: 2px 4px;
+            width: 140px;
         }
 
-        /* Section Banners */
-        .section-banner {
+        .student-field input:focus {
+            outline: none;
+            border-bottom-color: #0f172a;
+        }
+
+        .instructions-bar {
+            background: #f1f5f9;
+            border-left: 4px solid #0f172a;
+            padding: 6px 10px;
+            font-size: 8pt;
+            color: #334155;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Table Styles */
+        table.senate-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8.5pt;
+        }
+
+        table.senate-table th {
             background: #0f172a;
             color: #ffffff;
-            padding: 3px 8px;
-            font-weight: 800;
-            font-size: 8pt;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-radius: 3px;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 7.5pt;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            padding: 7px 8px;
+            text-align: left;
+            border: 1px solid #0f172a;
         }
 
-        .section-banner.secondary {
-            background: #334155;
+        table.senate-table th.col-rep { background: #991b1b; border-color: #7f1d1d; }
+        table.senate-table th.col-dem { background: #1e40af; border-color: #1e3a8a; }
+        table.senate-table th.col-ind { background: #334155; border-color: #1e293b; }
+        table.senate-table th.col-margin {
+            background: #0f172a;
+            text-align: center;
+            width: 115px;
         }
 
-        .section-banner .tagline {
-            font-size: 7pt;
-            font-weight: 500;
-            opacity: 0.85;
-            letter-spacing: 0.02em;
-        }
-
-        /* Grid */
-        .races-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 10px;
-            row-gap: 3.5px;
-            flex-grow: 1;
-        }
-
-        /* Race Card */
-        .race-card {
+        table.senate-table td {
+            padding: 5px 8px;
             border: 1px solid #cbd5e1;
-            border-radius: 4px;
-            padding: 4px 6px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #ffffff;
-            transition: all 0.2s;
+            vertical-align: middle;
         }
 
-        .race-card.battleground {
-            border-left: 3.5px solid #d97706;
-            background: #fffbeb;
+        table.senate-table tbody tr:nth-child(even) {
+            background-color: #f8fafc;
         }
 
-        .race-card.lean {
-            border-left: 3.5px solid #2563eb;
-            background: #eff6ff;
+        table.senate-table tbody tr:hover {
+            background-color: #f1f5f9;
         }
 
-        .race-card.gop-lean {
-            border-left: 3.5px solid #dc2626;
-            background: #fef2f2;
+        /* State Column */
+        .state-cell {
+            width: 22%;
         }
 
-        .race-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-            min-width: 140px;
-        }
-
-        .state-row {
+        .state-title {
+            font-weight: 800;
+            font-size: 9pt;
+            color: #0f172a;
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
-        .state-code {
-            font-weight: 900;
-            font-size: 9.5pt;
-            color: #0f172a;
-        }
-
-        .state-name {
-            font-weight: 700;
-            font-size: 8.5pt;
-            color: #1e293b;
+        .incumbent-sub {
+            font-size: 7pt;
+            color: #64748b;
+            margin-top: 1px;
         }
 
         .badge {
             font-size: 6pt;
             padding: 1px 4px;
-            border-radius: 2px;
+            border-radius: 3px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.03em;
         }
 
-        .badge-tossup {
-            background: #d97706;
-            color: #ffffff;
+        .badge-open { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .badge-special { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; }
+        .badge-rcv { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+
+        /* Candidate Cells */
+        .cand-cell {
+            width: 22%;
         }
 
-        .badge-lean-d {
-            background: #1d4ed8;
-            color: #ffffff;
-        }
-
-        .badge-lean-r {
-            background: #b91c1c;
-            color: #ffffff;
-        }
-
-        .badge-special {
-            background: #7c3aed;
-            color: #ffffff;
-        }
-
-        .incumbent-line {
-            font-size: 7pt;
-            color: #64748b;
-        }
-
-        .incumbent-party {
-            font-weight: 700;
-        }
-        .party-d { color: #1d4ed8; }
-        .party-r { color: #b91c1c; }
-        .party-i { color: #059669; }
-
-        /* Prediction Controls */
-        .prediction-box {
+        .cand-option {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            user-select: none;
         }
 
-        .pick-options {
-            display: flex;
-            gap: 4px;
+        .cand-option + .cand-option {
+            margin-top: 3px;
         }
 
-        .pick-label {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            font-weight: 700;
-            font-size: 7.5pt;
-            padding: 2px 5px;
-            border: 1px solid #94a3b8;
+        .cand-option input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border: 1.75px solid #475569;
             border-radius: 3px;
             background: #ffffff;
+            cursor: pointer;
+            display: inline-grid;
+            place-content: center;
+            flex-shrink: 0;
+            margin: 0;
         }
 
-        .pick-label.d-pick { border-color: #93c5fd; color: #1d4ed8; }
-        .pick-label.r-pick { border-color: #fca5a5; color: #b91c1c; }
-        .pick-label.i-pick { border-color: #cbd5e1; color: #475569; }
+        .cand-option.rep-opt input[type="checkbox"] { border-color: #dc2626; }
+        .cand-option.dem-opt input[type="checkbox"] { border-color: #2563eb; }
+        .cand-option.ind-opt input[type="checkbox"] { border-color: #475569; }
 
-        .checkbox-square {
-            width: 10px;
-            height: 10px;
-            border: 1.5px solid currentColor;
-            border-radius: 2px;
-            display: inline-block;
+        .cand-option input[type="checkbox"]::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            transform: scale(0);
+            transition: 100ms transform ease-in-out;
+            background-color: #0f172a;
+            border-radius: 1px;
         }
 
-        /* Result Verification Columns */
-        .result-group {
-            display: flex;
+        .cand-option.rep-opt input[type="checkbox"]:checked { background-color: #fee2e2; }
+        .cand-option.rep-opt input[type="checkbox"]:checked::before { background-color: #dc2626; transform: scale(1); }
+
+        .cand-option.dem-opt input[type="checkbox"]:checked { background-color: #dbeafe; }
+        .cand-option.dem-opt input[type="checkbox"]:checked::before { background-color: #2563eb; transform: scale(1); }
+
+        .cand-option.ind-opt input[type="checkbox"]:checked { background-color: #fef3c7; }
+        .cand-option.ind-opt input[type="checkbox"]:checked::before { background-color: #d97706; transform: scale(1); }
+
+        .cand-name {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 8.5pt;
+        }
+
+        .cand-note {
+            font-size: 7pt;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .no-cand {
+            color: #94a3b8;
+            font-size: 7.5pt;
+            font-style: italic;
+            padding-left: 4px;
+        }
+
+        /* Margin Column */
+        .margin-cell {
+            text-align: center;
+            width: 12%;
+        }
+
+        .margin-input-wrap {
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
-            border-left: 1px dashed #cbd5e1;
-            padding-left: 6px;
+            justify-content: center;
+            gap: 2px;
+            border: 1.5px solid #94a3b8;
+            border-radius: 4px;
+            padding: 2px 6px;
+            background: #ffffff;
+            width: 82px;
         }
 
-        .actual-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .actual-title {
-            font-size: 5.5pt;
-            text-transform: uppercase;
+        .margin-prefix {
+            font-size: 7.5pt;
             font-weight: 700;
             color: #64748b;
         }
 
-        .actual-line {
-            width: 20px;
-            height: 13px;
-            border-bottom: 1px solid #475569;
-            text-align: center;
-            font-size: 7.5pt;
-            font-weight: 800;
+        .margin-input {
+            width: 44px;
+            border: none;
+            text-align: right;
+            font-weight: 700;
+            font-size: 8.5pt;
+            color: #0f172a;
+            background: transparent;
+            padding: 1px 2px;
         }
 
-        .correct-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .margin-input:focus {
+            outline: none;
         }
 
-        .score-check {
-            width: 12px;
-            height: 12px;
-            border: 1.5px solid #0f172a;
-            border-radius: 2px;
-            background: #ffffff;
-        }
-
-        /* Summary / Scorecard on Page 2 */
-        .bottom-scorecard {
+        /* Bottom Summary Box */
+        .summary-footer {
+            margin-top: 14px;
             border: 2px solid #0f172a;
             border-radius: 6px;
-            padding: 8px 12px;
-            margin-top: 6px;
+            padding: 10px 14px;
             background: #f8fafc;
             display: grid;
-            grid-template-columns: 1.3fr 1.2fr 1fr;
-            gap: 12px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
         }
 
-        .score-block h3 {
-            margin: 0 0 4px 0;
+        .summary-col h3 {
+            margin: 0 0 6px 0;
             font-size: 8pt;
             text-transform: uppercase;
-            font-weight: 800;
+            letter-spacing: 0.04em;
             color: #0f172a;
             border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 2px;
+            padding-bottom: 3px;
         }
 
-        .majority-options {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            font-size: 7.5pt;
-        }
-
-        .majority-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .tiebreaker-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            font-size: 7.5pt;
-        }
-
-        .tiebreaker-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .final-tally-box {
-            background: #ffffff;
-            border: 1.5px solid #0f172a;
-            border-radius: 4px;
-            padding: 4px 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .tally-number {
-            font-size: 16pt;
-            font-weight: 900;
-            color: #0f172a;
-            line-height: 1;
-            margin: 2px 0;
-        }
-
-        .footer-note {
+        .summary-row {
             display: flex;
             justify-content: space-between;
-            font-size: 6.5pt;
-            color: #64748b;
-            margin-top: 4px;
-            padding-top: 2px;
-            border-top: 1px solid #e2e8f0;
+            align-items: center;
+            font-size: 8pt;
+            margin-bottom: 4px;
+        }
+
+        .write-line {
+            display: inline-block;
+            border-bottom: 1.5px solid #0f172a;
+            min-width: 55px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        /* Print adjustments */
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+                font-size: 7.8pt;
+            }
+
+            .screen-toolbar {
+                display: none !important;
+            }
+
+            .worksheet-container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .sheet-header {
+                padding-bottom: 6px;
+                margin-bottom: 6px;
+            }
+
+            .title-block h1 {
+                font-size: 14pt;
+            }
+
+            .instructions-bar {
+                margin-bottom: 6px;
+                padding: 4px 8px;
+                font-size: 7.2pt;
+            }
+
+            table.senate-table th {
+                padding: 4px 6px;
+                font-size: 7pt;
+            }
+
+            table.senate-table td {
+                padding: 2.8px 6px;
+                font-size: 7.6pt;
+            }
+
+            .state-title {
+                font-size: 8pt;
+            }
+
+            .incumbent-sub {
+                font-size: 6.3pt;
+            }
+
+            .cand-name {
+                font-size: 7.6pt;
+            }
+
+            .cand-option input[type="checkbox"] {
+                width: 11px;
+                height: 11px;
+            }
+
+            .margin-input-wrap {
+                width: 68px;
+                padding: 1px 4px;
+            }
+
+            .margin-input {
+                font-size: 7.5pt;
+                width: 36px;
+            }
+
+            .summary-footer {
+                margin-top: 8px;
+                padding: 6px 10px;
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== PAGE 1: MARQUEE & KEY BATTLEGROUNDS ==================== -->
-    <div class="page">
-        <div>
-            <!-- Header -->
-            <div class="sheet-header">
-                <div class="title-block">
-                    <h1>November Madness '26</h1>
-                    <div class="subtitle">Official U.S. Senate Election Prediction Pool &bull; Class II &amp; Specials &bull; 35 Seats to 51</div>
-                </div>
-                <div class="player-info-card">
-                    <div class="player-field">
-                        <label>Player:</label>
-                        <span class="player-line" style="min-width: 95px;"></span>
-                    </div>
-                    <div class="player-field">
-                        <label>Date:</label>
-                        <span class="player-line" style="min-width: 55px;"></span>
-                    </div>
-                    <div class="player-field">
-                        <label>Tiebreaker (Seats):</label>
-                        <span class="player-line" style="min-width: 50px;"></span>
-                    </div>
-                    <div class="player-field">
-                        <label>Score:</label>
-                        <span style="font-weight: 800; font-size: 9pt; min-width: 45px; text-align: right;">____ / 35</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Instructions Strip -->
-            <div style="background: #e2e8f0; border-radius: 3px; padding: 3px 8px; font-size: 7pt; color: #334155; margin-bottom: 6px; display: flex; justify-content: space-between;">
-                <span><strong>HOW TO PLAY:</strong> Check your predicted winning party for each Senate race. On Election Night, enter the actual winner &amp; check (+1 pt).</span>
-                <span><strong>Scoring:</strong> 1 Pt per Correct Call &bull; Tiebreaker: Total Senate Balance</span>
-            </div>
-
-            <!-- Section 1 Banner: Top Battlegrounds -->
-            <div class="section-banner">
-                <span>Part 1: The Marquee Battlegrounds &amp; Flip Opportunities</span>
-                <span class="tagline">Decisive Toss-Up &amp; High-Volatility Senate Contests</span>
-            </div>
-
-            <!-- Grid 1: 18 Races (Battlegrounds & Highly Contested) -->
-            <div class="races-grid">
-
-                <!-- 1. GA -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">GA</span>
-                            <span class="state-name">Georgia</span>
-                            <span class="badge badge-tossup">Toss-Up</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jon Ossoff (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. NC -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">NC</span>
-                            <span class="state-name">North Carolina</span>
-                            <span class="badge badge-tossup">Toss-Up</span>
-                        </div>
-                        <span class="incumbent-line">Open Seat (Tillis Ret.) &bull; <strong class="party-r">GOP Held</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. MI -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">MI</span>
-                            <span class="state-name">Michigan</span>
-                            <span class="badge badge-tossup">Toss-Up</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Gary Peters (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. ME -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">ME</span>
-                            <span class="state-name">Maine</span>
-                            <span class="badge badge-tossup">Toss-Up</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Susan Collins (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                            <span class="pick-label i-pick"><span class="checkbox-square"></span> IND</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. OH (Special) -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">OH</span>
-                            <span class="state-name">Ohio</span>
-                            <span class="badge badge-special">Special</span>
-                            <span class="badge badge-tossup">Toss-Up</span>
-                        </div>
-                        <span class="incumbent-line">Special (Vance Vacancy) &bull; <strong class="party-r">GOP Held</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. NH -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">NH</span>
-                            <span class="state-name">New Hampshire</span>
-                            <span class="badge badge-lean-d">Lean D</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jeanne Shaheen (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7. TX -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">TX</span>
-                            <span class="state-name">Texas</span>
-                            <span class="badge badge-lean-r">Lean R</span>
-                        </div>
-                        <span class="incumbent-line">Open Seat (Cornyn Primary) &bull; <strong class="party-r">GOP Held</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8. AK -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">AK</span>
-                            <span class="state-name">Alaska</span>
-                            <span class="badge badge-lean-r">RCV / Lean R</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Dan Sullivan (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                            <span class="pick-label i-pick"><span class="checkbox-square"></span> IND</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 9. IA -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">IA</span>
-                            <span class="state-name">Iowa</span>
-                            <span class="badge badge-lean-r">Lean R</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Joni Ernst (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 10. FL (Special) -->
-                <div class="race-card battleground">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">FL</span>
-                            <span class="state-name">Florida</span>
-                            <span class="badge badge-special">Special</span>
-                            <span class="badge badge-lean-r">Lean R</span>
-                        </div>
-                        <span class="incumbent-line">Special (Rubio Vacancy) &bull; <strong class="party-r">GOP Held</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 11. MN -->
-                <div class="race-card lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">MN</span>
-                            <span class="state-name">Minnesota</span>
-                            <span class="badge badge-lean-d">Likely D</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Tina Smith (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 12. KS -->
-                <div class="race-card gop-lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">KS</span>
-                            <span class="state-name">Kansas</span>
-                            <span class="badge badge-lean-r">Likely R</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Roger Marshall (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 13. CO -->
-                <div class="race-card lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">CO</span>
-                            <span class="state-name">Colorado</span>
-                            <span class="badge badge-lean-d">Likely D</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">John Hickenlooper (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 14. VA -->
-                <div class="race-card lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">VA</span>
-                            <span class="state-name">Virginia</span>
-                            <span class="badge badge-lean-d">Likely D</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Mark Warner (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 15. NE (Class 2) -->
-                <div class="race-card gop-lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">NE</span>
-                            <span class="state-name">Nebraska</span>
-                            <span class="badge badge-lean-r">Likely R</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Pete Ricketts (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                            <span class="pick-label i-pick"><span class="checkbox-square"></span> IND</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 16. NM -->
-                <div class="race-card lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">NM</span>
-                            <span class="state-name">New Mexico</span>
-                            <span class="badge badge-lean-d">Likely D</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Ben Ray Luján (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 17. NJ -->
-                <div class="race-card lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">NJ</span>
-                            <span class="state-name">New Jersey</span>
-                            <span class="badge badge-lean-d">Likely D</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Cory Booker (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 18. MT -->
-                <div class="race-card gop-lean">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">MT</span>
-                            <span class="state-name">Montana</span>
-                            <span class="badge badge-lean-r">Likely R</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Steve Daines (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <!-- Interactive Screen Bar (Hidden when printing) -->
+    <div class="screen-toolbar">
+        <div class="live-tally">
+            <span>2026 Senate Picks:</span>
+            <span class="tally-pill tally-r" id="repCount">GOP: 0</span>
+            <span class="tally-pill tally-d" id="demCount">DEM: 0</span>
+            <span class="tally-pill tally-i" id="indCount">IND/OTH: 0</span>
+            <span style="font-size: 8.5pt; opacity: 0.85;" id="unpickedCount">(35 remaining)</span>
         </div>
-
-        <div class="footer-note">
-            <span>November Madness 2026 &bull; Page 1 of 2 (Races 1–18)</span>
-            <span>Turn page over for Races 19–35 &bull; Chamber Control &bull; Official Scorecard</span>
+        <div class="toolbar-actions">
+            <button class="btn btn-clear" onclick="clearWorksheet()">Reset All</button>
+            <button class="btn btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
         </div>
     </div>
 
-    <!-- ==================== PAGE 2: MAP COMPLETION & SCORECARD ==================== -->
-    <div class="page">
-        <div>
-            <!-- Header Mini -->
-            <div class="sheet-header" style="margin-bottom: 6px;">
-                <div class="title-block">
-                    <h1 style="font-size: 15pt;">November Madness '26 &bull; Part 2</h1>
-                    <div class="subtitle">Complete the Map &bull; Total Your Accuracy Score</div>
-                </div>
-                <div style="font-size: 8pt; font-weight: 700; color: #475569;">
-                    Target for Majority: <strong>51 Seats</strong>
-                </div>
+    <div class="worksheet-container">
+        <!-- Header -->
+        <div class="sheet-header">
+            <div class="title-block">
+                <h1>2026 U.S. Senate Election Worksheet</h1>
+                <div class="subtitle">33 Class II Regular Elections + 2 Special Elections (35 Total Contests) &bull; Election Day: November 3, 2026</div>
             </div>
-
-            <!-- Section 2 Banner: Full Field Contests -->
-            <div class="section-banner secondary">
-                <span>Part 2: Full Map Contests (Races 19–35)</span>
-                <span class="tagline">Incumbent Solid Defenses &amp; Open Statewide Primaries</span>
-            </div>
-
-            <!-- Grid 2: 17 Races (Races 19 to 35) -->
-            <div class="races-grid">
-
-                <!-- 19. AL -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">AL</span>
-                            <span class="state-name">Alabama</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Tommy Tuberville (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
+            <div class="student-info">
+                <div class="student-field">
+                    <label>Name:</label>
+                    <input type="text" id="studentName" placeholder="Your Name">
                 </div>
-
-                <!-- 20. AR -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">AR</span>
-                            <span class="state-name">Arkansas</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Tom Cotton (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 21. DE -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">DE</span>
-                            <span class="state-name">Delaware</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Chris Coons (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 22. ID -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">ID</span>
-                            <span class="state-name">Idaho</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Jim Risch (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 23. IL -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">IL</span>
-                            <span class="state-name">Illinois</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Dick Durbin (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 24. KY -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">KY</span>
-                            <span class="state-name">Kentucky</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Mitch McConnell (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 25. LA -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">LA</span>
-                            <span class="state-name">Louisiana</span>
-                        </div>
-                        <span class="incumbent-line">Open / Jungle Primary &bull; <strong class="party-r">GOP Held</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 26. MA -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">MA</span>
-                            <span class="state-name">Massachusetts</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Ed Markey (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 27. MS -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">MS</span>
-                            <span class="state-name">Mississippi</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Cindy Hyde-Smith (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 28. OK -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">OK</span>
-                            <span class="state-name">Oklahoma</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Markwayne Mullin (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 29. OR -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">OR</span>
-                            <span class="state-name">Oregon</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jeff Merkley (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 30. RI -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">RI</span>
-                            <span class="state-name">Rhode Island</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-d">Jack Reed (D)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 31. SC -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">SC</span>
-                            <span class="state-name">South Carolina</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Lindsey Graham (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 32. SD -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">SD</span>
-                            <span class="state-name">South Dakota</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Mike Rounds (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 33. TN -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">TN</span>
-                            <span class="state-name">Tennessee</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Bill Hagerty (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 34. WV -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">WV</span>
-                            <span class="state-name">West Virginia</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Shelley Moore Capito (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 35. WY -->
-                <div class="race-card">
-                    <div class="race-meta">
-                        <div class="state-row">
-                            <span class="state-code">WY</span>
-                            <span class="state-name">Wyoming</span>
-                        </div>
-                        <span class="incumbent-line">Incumbent: <strong class="party-r">Cynthia Lummis (R)</strong></span>
-                    </div>
-                    <div class="prediction-box">
-                        <div class="pick-options">
-                            <span class="pick-label d-pick"><span class="checkbox-square"></span> DEM</span>
-                            <span class="pick-label r-pick"><span class="checkbox-square"></span> GOP</span>
-                        </div>
-                        <div class="result-group">
-                            <div class="actual-box"><span class="actual-title">Win</span><span class="actual-line"></span></div>
-                            <div class="correct-box"><span class="actual-title">+1</span><span class="score-check"></span></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Bottom Scorecard, Tiebreakers & Majority Call -->
-            <div class="bottom-scorecard">
-                <!-- Column 1: Predicted Majority -->
-                <div class="score-block">
-                    <h3>1. Predicted Senate Majority</h3>
-                    <div class="majority-options">
-                        <label class="majority-item">
-                            <span class="checkbox-square" style="width: 12px; height: 12px;"></span>
-                            <strong>Republican Majority</strong> (51+ Seats)
-                        </label>
-                        <label class="majority-item">
-                            <span class="checkbox-square" style="width: 12px; height: 12px;"></span>
-                            <strong>Democratic Majority</strong> (51+ Seats or 50 + VP)
-                        </label>
-                        <label class="majority-item">
-                            <span class="checkbox-square" style="width: 12px; height: 12px;"></span>
-                            <strong>50&ndash;50 Tie</strong>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Column 2: Tiebreaker Prediction -->
-                <div class="score-block">
-                    <h3>2. Tiebreaker: Exact Seat Total</h3>
-                    <div class="tiebreaker-grid">
-                        <div class="tiebreaker-row">
-                            <label style="font-weight: 700; width: 85px;">GOP Total:</label>
-                            <span style="display: inline-block; border-bottom: 1.5px solid #0f172a; width: 45px; text-align: center; font-weight: 800;"></span>
-                            <span style="color: #64748b; font-size: 7pt;">/ 100</span>
-                        </div>
-                        <div class="tiebreaker-row">
-                            <label style="font-weight: 700; width: 85px;">Dem/Ind Total:</label>
-                            <span style="display: inline-block; border-bottom: 1.5px solid #0f172a; width: 45px; text-align: center; font-weight: 800;"></span>
-                            <span style="color: #64748b; font-size: 7pt;">/ 100</span>
-                        </div>
-                        <div style="font-size: 6.5pt; color: #64748b; margin-top: 2px;">Closest total seats without going over wins pool tiebreaker.</div>
-                    </div>
-                </div>
-
-                <!-- Column 3: Final Score & Accuracy -->
-                <div class="final-tally-box">
-                    <div style="font-size: 7pt; font-weight: 800; text-transform: uppercase; color: #475569;">Total Races Correct</div>
-                    <div class="tally-number">____ / 35</div>
-                    <div style="font-size: 7pt; font-weight: 700; color: #0284c7;">Accuracy: ______%</div>
+                <div class="student-field">
+                    <label>Predicted Majority:</label>
+                    <input type="text" id="predictedMaj" placeholder="e.g., GOP 52-48" style="width: 95px;">
                 </div>
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="footer-note">
-            <span>November Madness 2026 &bull; Page 2 of 2 (Races 19–35 &amp; Final Scorecard)</span>
-            <span>Technology &amp; Society Working Group &bull; Dr. Jose Marichal &bull; Printable Sheet</span>
+        <div class="instructions-bar">
+            <span><strong>INSTRUCTIONS:</strong> For each race below, check the box <strong>[&#x2610;]</strong> next to the candidate you predict will win tomorrow's election, and write your predicted <strong>Margin of Victory (%)</strong> in the right-hand column.</span>
+            <span style="white-space: nowrap;"><strong>*(i)*</strong> = Incumbent</span>
+        </div>
+
+        <!-- Races Table -->
+        <table class="senate-table">
+            <thead>
+                <tr>
+                    <th>State &amp; 2020 Baseline</th>
+                    <th class="col-rep">Republican Nominee</th>
+                    <th class="col-dem">Democratic Nominee</th>
+                    <th class="col-ind">Independent / Third Party</th>
+                    <th class="col-margin">Predicted Margin</th>
+                </tr>
+            </thead>
+            <tbody id="racesBody">
+                <tr data-row="AL">
+                    <td class="state-cell"><div class="state-title">1. Alabama <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Tuberville (R) retiring • 2020: R 60.1%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_AL" data-race="AL" data-party="R" data-cand="Barry Moore" onchange="handlePickChange(this)"><span><span class="cand-name">Barry Moore</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_AL" data-race="AL" data-party="D" data-cand="Everett Wess" onchange="handlePickChange(this)"><span><span class="cand-name">Everett Wess</span> <span class="cand-note">(Attorney)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="AL" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="AK">
+                    <td class="state-cell"><div class="state-title">2. Alaska <span class="badge badge-rcv">RCV</span></div><div class="incumbent-sub">Dan S. Sullivan (R) • 2020: R 53.9%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_AK" data-race="AK" data-party="R" data-cand="Dan S. Sullivan (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Dan S. Sullivan (i)</span> <span class="cand-note">(Incumbent)</span></span></label><label class="cand-option rep-opt"><input type="checkbox" name="pick_AK" data-race="AK" data-party="R" data-cand="Gerald Heikes" onchange="handlePickChange(this)"><span><span class="cand-name">Gerald Heikes</span> <span class="cand-note">(GOP)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_AK" data-race="AK" data-party="D" data-cand="Mary Peltola" onchange="handlePickChange(this)"><span><span class="cand-name">Mary Peltola</span> <span class="cand-note">(Fmr. U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_AK" data-race="AK" data-party="I" data-cand="Dan J. Sullivan" onchange="handlePickChange(this)"><span><span class="cand-name">Dan J. Sullivan</span> <span class="cand-note">(Nonpartisan)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="AK" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="AR">
+                    <td class="state-cell"><div class="state-title">3. Arkansas </div><div class="incumbent-sub">Tom Cotton (R) • 2020: R 66.5%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_AR" data-race="AR" data-party="R" data-cand="Tom Cotton (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Tom Cotton (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_AR" data-race="AR" data-party="D" data-cand="Hallie Shoffner" onchange="handlePickChange(this)"><span><span class="cand-name">Hallie Shoffner</span> <span class="cand-note">(Farmer)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="AR" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="CO">
+                    <td class="state-cell"><div class="state-title">4. Colorado </div><div class="incumbent-sub">John Hickenlooper (D) • 2020: D 53.5%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_CO" data-race="CO" data-party="R" data-cand="Mark Baisley" onchange="handlePickChange(this)"><span><span class="cand-name">Mark Baisley</span> <span class="cand-note">(State Sen.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_CO" data-race="CO" data-party="D" data-cand="John Hickenlooper (i)" onchange="handlePickChange(this)"><span><span class="cand-name">John Hickenlooper (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="CO" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="DE">
+                    <td class="state-cell"><div class="state-title">5. Delaware </div><div class="incumbent-sub">Chris Coons (D) • 2020: D 59.4%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_DE" data-race="DE" data-party="R" data-cand="Michael Katz" onchange="handlePickChange(this)"><span><span class="cand-name">Michael Katz</span> <span class="cand-note">(Fmr. State Sen.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_DE" data-race="DE" data-party="D" data-cand="Chris Coons (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Chris Coons (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="DE" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="FL">
+                    <td class="state-cell"><div class="state-title">6. Florida <span class="badge badge-special">Special</span></div><div class="incumbent-sub">Rubio vacancy • 2022: R 57.7%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_FL" data-race="FL" data-party="R" data-cand="Ashley Moody (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Ashley Moody (i)</span> <span class="cand-note">(App. Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_FL" data-race="FL" data-party="D" data-cand="Angie Nixon" onchange="handlePickChange(this)"><span><span class="cand-name">Angie Nixon</span> <span class="cand-note">(State Rep.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="FL" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="GA">
+                    <td class="state-cell"><div class="state-title">7. Georgia </div><div class="incumbent-sub">Jon Ossoff (D) • 2021 Runoff: D 50.6%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_GA" data-race="GA" data-party="R" data-cand="Mike Collins" onchange="handlePickChange(this)"><span><span class="cand-name">Mike Collins</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_GA" data-race="GA" data-party="D" data-cand="Jon Ossoff (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Jon Ossoff (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="GA" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="ID">
+                    <td class="state-cell"><div class="state-title">8. Idaho </div><div class="incumbent-sub">Jim Risch (R) • 2020: R 62.6%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_ID" data-race="ID" data-party="R" data-cand="Jim Risch (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Jim Risch (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">No Dem (Roth withdrew)</span></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_ID" data-race="ID" data-party="I" data-cand="Todd Achilles" onchange="handlePickChange(this)"><span><span class="cand-name">Todd Achilles</span> <span class="cand-note">(Ind. / Fmr. State Rep.)</span></span></label><label class="cand-option ind-opt"><input type="checkbox" name="pick_ID" data-race="ID" data-party="I" data-cand="Natalie Fleming / Matt Loesby" onchange="handlePickChange(this)"><span><span class="cand-name">Natalie Fleming / Matt Loesby</span> <span class="cand-note">(Ind. / Lib.)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="ID" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="IL">
+                    <td class="state-cell"><div class="state-title">9. Illinois <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Durbin (D) retiring • 2020: D 54.9%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_IL" data-race="IL" data-party="R" data-cand="Don Tracy" onchange="handlePickChange(this)"><span><span class="cand-name">Don Tracy</span> <span class="cand-note">(Fmr. IL GOP Chair)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_IL" data-race="IL" data-party="D" data-cand="Juliana Stratton" onchange="handlePickChange(this)"><span><span class="cand-name">Juliana Stratton</span> <span class="cand-note">(Lt. Governor)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="IL" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="IA">
+                    <td class="state-cell"><div class="state-title">10. Iowa <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Ernst (R) retiring • 2020: R 51.7%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_IA" data-race="IA" data-party="R" data-cand="Ashley Hinson" onchange="handlePickChange(this)"><span><span class="cand-name">Ashley Hinson</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_IA" data-race="IA" data-party="D" data-cand="Josh Turek" onchange="handlePickChange(this)"><span><span class="cand-name">Josh Turek</span> <span class="cand-note">(State Rep.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="IA" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="KS">
+                    <td class="state-cell"><div class="state-title">11. Kansas </div><div class="incumbent-sub">Roger Marshall (R) • 2020: R 53.2%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_KS" data-race="KS" data-party="R" data-cand="Roger Marshall (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Roger Marshall (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_KS" data-race="KS" data-party="D" data-cand="Adam Hamilton" onchange="handlePickChange(this)"><span><span class="cand-name">Adam Hamilton</span> <span class="cand-note">(Pastor)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="KS" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="KY">
+                    <td class="state-cell"><div class="state-title">12. Kentucky <span class="badge badge-open">Open</span></div><div class="incumbent-sub">McConnell (R) retiring • 2020: R 57.8%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_KY" data-race="KY" data-party="R" data-cand="Andy Barr" onchange="handlePickChange(this)"><span><span class="cand-name">Andy Barr</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_KY" data-race="KY" data-party="D" data-cand="Charles Booker" onchange="handlePickChange(this)"><span><span class="cand-name">Charles Booker</span> <span class="cand-note">(Fmr. State Rep.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="KY" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="LA">
+                    <td class="state-cell"><div class="state-title">13. Louisiana <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Cassidy (R) lost primary • 2020: R 59.3%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_LA" data-race="LA" data-party="R" data-cand="Julia Letlow" onchange="handlePickChange(this)"><span><span class="cand-name">Julia Letlow</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_LA" data-race="LA" data-party="D" data-cand="Jamie Davis" onchange="handlePickChange(this)"><span><span class="cand-name">Jamie Davis</span> <span class="cand-note">(Farmer)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="LA" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="ME">
+                    <td class="state-cell"><div class="state-title">14. Maine </div><div class="incumbent-sub">Susan Collins (R) • 2020: R 51.0%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_ME" data-race="ME" data-party="R" data-cand="Susan Collins (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Susan Collins (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_ME" data-race="ME" data-party="D" data-cand="Troy Jackson" onchange="handlePickChange(this)"><span><span class="cand-name">Troy Jackson</span> <span class="cand-note">(Fmr. State Sen.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="ME" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="MA">
+                    <td class="state-cell"><div class="state-title">15. Massachusetts </div><div class="incumbent-sub">Ed Markey (D) • 2020: D 66.2%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_MA" data-race="MA" data-party="R" data-cand="John Deaton" onchange="handlePickChange(this)"><span><span class="cand-name">John Deaton</span> <span class="cand-note">(Attorney)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_MA" data-race="MA" data-party="D" data-cand="Ed Markey (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Ed Markey (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="MA" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="MI">
+                    <td class="state-cell"><div class="state-title">16. Michigan <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Peters (D) retiring • 2020: D 49.9%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_MI" data-race="MI" data-party="R" data-cand="Mike Rogers" onchange="handlePickChange(this)"><span><span class="cand-name">Mike Rogers</span> <span class="cand-note">(Fmr. U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_MI" data-race="MI" data-party="D" data-cand="Abdul El-Sayed" onchange="handlePickChange(this)"><span><span class="cand-name">Abdul El-Sayed</span> <span class="cand-note">(Fmr. Health Dir.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="MI" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="MN">
+                    <td class="state-cell"><div class="state-title">17. Minnesota <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Smith (DFL) retiring • 2020: D 48.7%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_MN" data-race="MN" data-party="R" data-cand="Michele Tafoya" onchange="handlePickChange(this)"><span><span class="cand-name">Michele Tafoya</span> <span class="cand-note">(Broadcaster)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_MN" data-race="MN" data-party="D" data-cand="Peggy Flanagan" onchange="handlePickChange(this)"><span><span class="cand-name">Peggy Flanagan</span> <span class="cand-note">(Lt. Gov. (DFL))</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="MN" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="MS">
+                    <td class="state-cell"><div class="state-title">18. Mississippi </div><div class="incumbent-sub">Cindy Hyde-Smith (R) • 2020: R 54.1%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_MS" data-race="MS" data-party="R" data-cand="Cindy Hyde-Smith (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Cindy Hyde-Smith (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_MS" data-race="MS" data-party="D" data-cand="Scott Colom" onchange="handlePickChange(this)"><span><span class="cand-name">Scott Colom</span> <span class="cand-note">(District Attorney)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_MS" data-race="MS" data-party="I" data-cand="Ty Pinkins" onchange="handlePickChange(this)"><span><span class="cand-name">Ty Pinkins</span> <span class="cand-note">(Independent)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="MS" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="MT">
+                    <td class="state-cell"><div class="state-title">19. Montana <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Daines (R) retiring • 2020: R 55.0%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_MT" data-race="MT" data-party="R" data-cand="Kurt Alme" onchange="handlePickChange(this)"><span><span class="cand-name">Kurt Alme</span> <span class="cand-note">(U.S. Attorney)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_MT" data-race="MT" data-party="D" data-cand="Alani Bankhead" onchange="handlePickChange(this)"><span><span class="cand-name">Alani Bankhead</span> <span class="cand-note">(Ret. USAF Lt. Col.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_MT" data-race="MT" data-party="I" data-cand="Seth Bodnar" onchange="handlePickChange(this)"><span><span class="cand-name">Seth Bodnar</span> <span class="cand-note">(Ind. / Fmr. UM Pres.)</span></span></label><label class="cand-option ind-opt"><input type="checkbox" name="pick_MT" data-race="MT" data-party="I" data-cand="Kyle Austin" onchange="handlePickChange(this)"><span><span class="cand-name">Kyle Austin</span> <span class="cand-note">(Libertarian)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="MT" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="NE">
+                    <td class="state-cell"><div class="state-title">20. Nebraska </div><div class="incumbent-sub">Pete Ricketts (R) • 2024 Spec.: R</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_NE" data-race="NE" data-party="R" data-cand="Pete Ricketts (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Pete Ricketts (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">No Dem (Endorsed Osborn)</span></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_NE" data-race="NE" data-party="I" data-cand="Dan Osborn" onchange="handlePickChange(this)"><span><span class="cand-name">Dan Osborn</span> <span class="cand-note">(Independent)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="NE" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="NH">
+                    <td class="state-cell"><div class="state-title">21. New Hampshire <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Shaheen (D) retiring • 2020: D 56.6%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_NH" data-race="NH" data-party="R" data-cand="John E. Sununu" onchange="handlePickChange(this)"><span><span class="cand-name">John E. Sununu</span> <span class="cand-note">(Fmr. U.S. Sen.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_NH" data-race="NH" data-party="D" data-cand="Chris Pappas" onchange="handlePickChange(this)"><span><span class="cand-name">Chris Pappas</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="NH" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="NJ">
+                    <td class="state-cell"><div class="state-title">22. New Jersey </div><div class="incumbent-sub">Cory Booker (D) • 2020: D 57.2%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_NJ" data-race="NJ" data-party="R" data-cand="Justin Murphy" onchange="handlePickChange(this)"><span><span class="cand-name">Justin Murphy</span> <span class="cand-note">(Fmr. Mayor)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_NJ" data-race="NJ" data-party="D" data-cand="Cory Booker (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Cory Booker (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="NJ" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="NM">
+                    <td class="state-cell"><div class="state-title">23. New Mexico </div><div class="incumbent-sub">Ben Ray Luján (D) • 2020: D 51.7%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_NM" data-race="NM" data-party="R" data-cand="Larry Marker" onchange="handlePickChange(this)"><span><span class="cand-name">Larry Marker</span> <span class="cand-note">(Write-in GOP)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_NM" data-race="NM" data-party="D" data-cand="Ben Ray Luján (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Ben Ray Luján (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="NM" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="NC">
+                    <td class="state-cell"><div class="state-title">24. North Carolina <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Tillis (R) retiring • 2020: R 48.7%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_NC" data-race="NC" data-party="R" data-cand="Michael Whatley" onchange="handlePickChange(this)"><span><span class="cand-name">Michael Whatley</span> <span class="cand-note">(Fmr. RNC Chair)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_NC" data-race="NC" data-party="D" data-cand="Roy Cooper" onchange="handlePickChange(this)"><span><span class="cand-name">Roy Cooper</span> <span class="cand-note">(Fmr. Governor)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="NC" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="OH">
+                    <td class="state-cell"><div class="state-title">25. Ohio <span class="badge badge-special">Special</span></div><div class="incumbent-sub">Vance vacancy • 2022: R 53.0%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_OH" data-race="OH" data-party="R" data-cand="Jon Husted (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Jon Husted (i)</span> <span class="cand-note">(App. Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_OH" data-race="OH" data-party="D" data-cand="Sherrod Brown" onchange="handlePickChange(this)"><span><span class="cand-name">Sherrod Brown</span> <span class="cand-note">(Fmr. U.S. Sen.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_OH" data-race="OH" data-party="I" data-cand="William Redpath" onchange="handlePickChange(this)"><span><span class="cand-name">William Redpath</span> <span class="cand-note">(Libertarian)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="OH" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="OK">
+                    <td class="state-cell"><div class="state-title">26. Oklahoma <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Mullin resigned / Armstrong (R) not running</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_OK" data-race="OK" data-party="R" data-cand="Kevin Hern" onchange="handlePickChange(this)"><span><span class="cand-name">Kevin Hern</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_OK" data-race="OK" data-party="D" data-cand="N'Kiyla Jasmine Thomas" onchange="handlePickChange(this)"><span><span class="cand-name">N'Kiyla Jasmine Thomas</span> <span class="cand-note">(Nurse)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_OK" data-race="OK" data-party="I" data-cand="R. Meinhardt / C. Stinnett" onchange="handlePickChange(this)"><span><span class="cand-name">R. Meinhardt / C. Stinnett</span> <span class="cand-note">(Ind. / S. White (L))</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="OK" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="OR">
+                    <td class="state-cell"><div class="state-title">27. Oregon </div><div class="incumbent-sub">Jeff Merkley (D) • 2020: D 56.9%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_OR" data-race="OR" data-party="R" data-cand="David Brock Smith" onchange="handlePickChange(this)"><span><span class="cand-name">David Brock Smith</span> <span class="cand-note">(State Sen.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_OR" data-race="OR" data-party="D" data-cand="Jeff Merkley (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Jeff Merkley (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="OR" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="RI">
+                    <td class="state-cell"><div class="state-title">28. Rhode Island </div><div class="incumbent-sub">Jack Reed (D) • 2020: D 66.5%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_RI" data-race="RI" data-party="R" data-cand="Raymond McKay" onchange="handlePickChange(this)"><span><span class="cand-name">Raymond McKay</span> <span class="cand-note">(Fmr. RI GOP Official)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_RI" data-race="RI" data-party="D" data-cand="Jack Reed (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Jack Reed (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="RI" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="SC">
+                    <td class="state-cell"><div class="state-title">29. South Carolina </div><div class="incumbent-sub">L. Graham deceased • 2020: R 54.4%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_SC" data-race="SC" data-party="R" data-cand="Darline Graham (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Darline Graham (i)</span> <span class="cand-note">(App. Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_SC" data-race="SC" data-party="D" data-cand="Annie Andrews" onchange="handlePickChange(this)"><span><span class="cand-name">Annie Andrews</span> <span class="cand-note">(Pediatrician)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_SC" data-race="SC" data-party="I" data-cand="K. Whitener (L) / M. Hackett (C)" onchange="handlePickChange(this)"><span><span class="cand-name">K. Whitener (L) / M. Hackett (C)</span> <span class="cand-note">(Third Party)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="SC" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="SD">
+                    <td class="state-cell"><div class="state-title">30. South Dakota </div><div class="incumbent-sub">Mike Rounds (R) • 2020: R 65.7%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_SD" data-race="SD" data-party="R" data-cand="Mike Rounds (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Mike Rounds (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">No Dem (Beaudion withdrew)</span></td>
+                    <td class="cand-cell"><label class="cand-option ind-opt"><input type="checkbox" name="pick_SD" data-race="SD" data-party="I" data-cand="Brian Bengs" onchange="handlePickChange(this)"><span><span class="cand-name">Brian Bengs</span> <span class="cand-note">(Independent)</span></span></label></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="SD" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="TN">
+                    <td class="state-cell"><div class="state-title">31. Tennessee </div><div class="incumbent-sub">Bill Hagerty (R) • 2020: R 62.2%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_TN" data-race="TN" data-party="R" data-cand="Bill Hagerty (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Bill Hagerty (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_TN" data-race="TN" data-party="D" data-cand="Marquita Bradshaw" onchange="handlePickChange(this)"><span><span class="cand-name">Marquita Bradshaw</span> <span class="cand-note">(Consultant)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="TN" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="TX">
+                    <td class="state-cell"><div class="state-title">32. Texas <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Cornyn (R) lost primary • 2020: R 53.5%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_TX" data-race="TX" data-party="R" data-cand="Ken Paxton" onchange="handlePickChange(this)"><span><span class="cand-name">Ken Paxton</span> <span class="cand-note">(State AG)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_TX" data-race="TX" data-party="D" data-cand="James Talarico" onchange="handlePickChange(this)"><span><span class="cand-name">James Talarico</span> <span class="cand-note">(State Rep.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="TX" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="VA">
+                    <td class="state-cell"><div class="state-title">33. Virginia </div><div class="incumbent-sub">Mark Warner (D) • 2020: D 56.0%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_VA" data-race="VA" data-party="R" data-cand="Bert Mizusawa" onchange="handlePickChange(this)"><span><span class="cand-name">Bert Mizusawa</span> <span class="cand-note">(Ret. Maj. Gen.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_VA" data-race="VA" data-party="D" data-cand="Mark Warner (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Mark Warner (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="VA" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="WV">
+                    <td class="state-cell"><div class="state-title">34. West Virginia </div><div class="incumbent-sub">Shelley Moore Capito (R) • 2020: R 70.3%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_WV" data-race="WV" data-party="R" data-cand="Shelley Moore Capito (i)" onchange="handlePickChange(this)"><span><span class="cand-name">Shelley Moore Capito (i)</span> <span class="cand-note">(Incumbent)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_WV" data-race="WV" data-party="D" data-cand="Rachel Fetty Anderson" onchange="handlePickChange(this)"><span><span class="cand-name">Rachel Fetty Anderson</span> <span class="cand-note">(Fmr. Councilwoman)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="WV" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+                <tr data-row="WY">
+                    <td class="state-cell"><div class="state-title">35. Wyoming <span class="badge badge-open">Open</span></div><div class="incumbent-sub">Lummis (R) retiring • 2020: R 72.8%</div></td>
+                    <td class="cand-cell"><label class="cand-option rep-opt"><input type="checkbox" name="pick_WY" data-race="WY" data-party="R" data-cand="Harriet Hageman" onchange="handlePickChange(this)"><span><span class="cand-name">Harriet Hageman</span> <span class="cand-note">(U.S. Rep.)</span></span></label></td>
+                    <td class="cand-cell"><label class="cand-option dem-opt"><input type="checkbox" name="pick_WY" data-race="WY" data-party="D" data-cand="James W. Byrd" onchange="handlePickChange(this)"><span><span class="cand-name">James W. Byrd</span> <span class="cand-note">(Fmr. State Rep.)</span></span></label></td>
+                    <td class="cand-cell"><span class="no-cand">—</span></td>
+                    <td class="margin-cell"><div class="margin-input-wrap"><span class="margin-prefix">+</span><input type="text" class="margin-input" data-margin="WY" placeholder="0.0" oninput="saveState()"><span class="margin-prefix">%</span></div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Summary Footer -->
+        <div class="summary-footer">
+            <div class="summary-col">
+                <h3>1. Seats Not Up in 2026 (65 Seats)</h3>
+                <div class="summary-row">
+                    <span>Republicans Holding Safe Seats:</span>
+                    <strong>31 Seats</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Democrats / Caucs. Independents:</span>
+                    <strong>34 Seats</strong>
+                </div>
+                <div class="summary-row" style="color:#64748b; font-size:7pt;">
+                    <span>*(51 seats needed for outright majority)*</span>
+                </div>
+            </div>
+
+            <div class="summary-col">
+                <h3>2. Your 2026 Race Picks (35 Contests)</h3>
+                <div class="summary-row">
+                    <span>Republican Wins Picked:</span>
+                    <span class="write-line" id="summaryRep">____</span>
+                </div>
+                <div class="summary-row">
+                    <span>Democratic Wins Picked:</span>
+                    <span class="write-line" id="summaryDem">____</span>
+                </div>
+                <div class="summary-row">
+                    <span>Independent Wins Picked:</span>
+                    <span class="write-line" id="summaryInd">____</span>
+                </div>
+            </div>
+
+            <div class="summary-col">
+                <h3>3. Projected 120th Senate Balance</h3>
+                <div class="summary-row">
+                    <span><strong>Total Republican Seats</strong> (31 + Picks):</span>
+                    <span class="write-line" id="projRep">____ / 100</span>
+                </div>
+                <div class="summary-row">
+                    <span><strong>Total Dem / Ind Seats</strong> (34 + Picks):</span>
+                    <span class="write-line" id="projDem">____ / 100</span>
+                </div>
+                <div class="summary-row">
+                    <span><strong>Closest Race (Tiebreaker):</strong></span>
+                    <span class="write-line">________</span>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+        const RACES = [
+            {
+                id: "AL", state: "1. Alabama", badge: "Open", badgeType: "open",
+                sub: "Tuberville (R) retiring • 2020: R 60.1%",
+                rep: [{ name: "Barry Moore", note: "U.S. Rep." }],
+                dem: [{ name: "Everett Wess", note: "Attorney" }],
+                ind: []
+            },
+            {
+                id: "AK", state: "2. Alaska", badge: "RCV", badgeType: "rcv",
+                sub: "Dan S. Sullivan (R) • 2020: R 53.9%",
+                rep: [
+                    { name: "Dan S. Sullivan (i)", note: "Incumbent" },
+                    { name: "Gerald Heikes", note: "GOP" }
+                ],
+                dem: [{ name: "Mary Peltola", note: "Fmr. U.S. Rep." }],
+                ind: [{ name: "Dan J. Sullivan", note: "Nonpartisan" }]
+            },
+            {
+                id: "AR", state: "3. Arkansas", badge: "", badgeType: "",
+                sub: "Tom Cotton (R) • 2020: R 66.5%",
+                rep: [{ name: "Tom Cotton (i)", note: "Incumbent" }],
+                dem: [{ name: "Hallie Shoffner", note: "Farmer" }],
+                ind: []
+            },
+            {
+                id: "CO", state: "4. Colorado", badge: "", badgeType: "",
+                sub: "John Hickenlooper (D) • 2020: D 53.5%",
+                rep: [{ name: "Mark Baisley", note: "State Sen." }],
+                dem: [{ name: "John Hickenlooper (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "DE", state: "5. Delaware", badge: "", badgeType: "",
+                sub: "Chris Coons (D) • 2020: D 59.4%",
+                rep: [{ name: "Michael Katz", note: "Fmr. State Sen." }],
+                dem: [{ name: "Chris Coons (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "FL", state: "6. Florida", badge: "Special", badgeType: "special",
+                sub: "Rubio vacancy • 2022: R 57.7%",
+                rep: [{ name: "Ashley Moody (i)", note: "App. Incumbent" }],
+                dem: [{ name: "Angie Nixon", note: "State Rep." }],
+                ind: []
+            },
+            {
+                id: "GA", state: "7. Georgia", badge: "", badgeType: "",
+                sub: "Jon Ossoff (D) • 2021 Runoff: D 50.6%",
+                rep: [{ name: "Mike Collins", note: "U.S. Rep." }],
+                dem: [{ name: "Jon Ossoff (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "ID", state: "8. Idaho", badge: "", badgeType: "",
+                sub: "Jim Risch (R) • 2020: R 62.6%",
+                rep: [{ name: "Jim Risch (i)", note: "Incumbent" }],
+                dem: [],
+                demNote: "No Dem (Roth withdrew)",
+                ind: [
+                    { name: "Todd Achilles", note: "Ind. / Fmr. State Rep." },
+                    { name: "Natalie Fleming / Matt Loesby", note: "Ind. / Lib." }
+                ]
+            },
+            {
+                id: "IL", state: "9. Illinois", badge: "Open", badgeType: "open",
+                sub: "Durbin (D) retiring • 2020: D 54.9%",
+                rep: [{ name: "Don Tracy", note: "Fmr. IL GOP Chair" }],
+                dem: [{ name: "Juliana Stratton", note: "Lt. Governor" }],
+                ind: []
+            },
+            {
+                id: "IA", state: "10. Iowa", badge: "Open", badgeType: "open",
+                sub: "Ernst (R) retiring • 2020: R 51.7%",
+                rep: [{ name: "Ashley Hinson", note: "U.S. Rep." }],
+                dem: [{ name: "Josh Turek", note: "State Rep." }],
+                ind: []
+            },
+            {
+                id: "KS", state: "11. Kansas", badge: "", badgeType: "",
+                sub: "Roger Marshall (R) • 2020: R 53.2%",
+                rep: [{ name: "Roger Marshall (i)", note: "Incumbent" }],
+                dem: [{ name: "Adam Hamilton", note: "Pastor" }],
+                ind: []
+            },
+            {
+                id: "KY", state: "12. Kentucky", badge: "Open", badgeType: "open",
+                sub: "McConnell (R) retiring • 2020: R 57.8%",
+                rep: [{ name: "Andy Barr", note: "U.S. Rep." }],
+                dem: [{ name: "Charles Booker", note: "Fmr. State Rep." }],
+                ind: []
+            },
+            {
+                id: "LA", state: "13. Louisiana", badge: "Open", badgeType: "open",
+                sub: "Cassidy (R) lost primary • 2020: R 59.3%",
+                rep: [{ name: "Julia Letlow", note: "U.S. Rep." }],
+                dem: [{ name: "Jamie Davis", note: "Farmer" }],
+                ind: []
+            },
+            {
+                id: "ME", state: "14. Maine", badge: "", badgeType: "",
+                sub: "Susan Collins (R) • 2020: R 51.0%",
+                rep: [{ name: "Susan Collins (i)", note: "Incumbent" }],
+                dem: [{ name: "Troy Jackson", note: "Fmr. State Sen." }],
+                ind: []
+            },
+            {
+                id: "MA", state: "15. Massachusetts", badge: "", badgeType: "",
+                sub: "Ed Markey (D) • 2020: D 66.2%",
+                rep: [{ name: "John Deaton", note: "Attorney" }],
+                dem: [{ name: "Ed Markey (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "MI", state: "16. Michigan", badge: "Open", badgeType: "open",
+                sub: "Peters (D) retiring • 2020: D 49.9%",
+                rep: [{ name: "Mike Rogers", note: "Fmr. U.S. Rep." }],
+                dem: [{ name: "Abdul El-Sayed", note: "Fmr. Health Dir." }],
+                ind: []
+            },
+            {
+                id: "MN", state: "17. Minnesota", badge: "Open", badgeType: "open",
+                sub: "Smith (DFL) retiring • 2020: D 48.7%",
+                rep: [{ name: "Michele Tafoya", note: "Broadcaster" }],
+                dem: [{ name: "Peggy Flanagan", note: "Lt. Gov. (DFL)" }],
+                ind: []
+            },
+            {
+                id: "MS", state: "18. Mississippi", badge: "", badgeType: "",
+                sub: "Cindy Hyde-Smith (R) • 2020: R 54.1%",
+                rep: [{ name: "Cindy Hyde-Smith (i)", note: "Incumbent" }],
+                dem: [{ name: "Scott Colom", note: "District Attorney" }],
+                ind: [{ name: "Ty Pinkins", note: "Independent" }]
+            },
+            {
+                id: "MT", state: "19. Montana", badge: "Open", badgeType: "open",
+                sub: "Daines (R) retiring • 2020: R 55.0%",
+                rep: [{ name: "Kurt Alme", note: "U.S. Attorney" }],
+                dem: [{ name: "Alani Bankhead", note: "Ret. USAF Lt. Col." }],
+                ind: [
+                    { name: "Seth Bodnar", note: "Ind. / Fmr. UM Pres." },
+                    { name: "Kyle Austin", note: "Libertarian" }
+                ]
+            },
+            {
+                id: "NE", state: "20. Nebraska", badge: "", badgeType: "",
+                sub: "Pete Ricketts (R) • 2024 Spec.: R",
+                rep: [{ name: "Pete Ricketts (i)", note: "Incumbent" }],
+                dem: [],
+                demNote: "No Dem (Endorsed Osborn)",
+                ind: [{ name: "Dan Osborn", note: "Independent" }]
+            },
+            {
+                id: "NH", state: "21. New Hampshire", badge: "Open", badgeType: "open",
+                sub: "Shaheen (D) retiring • 2020: D 56.6%",
+                rep: [{ name: "John E. Sununu", note: "Fmr. U.S. Sen." }],
+                dem: [{ name: "Chris Pappas", note: "U.S. Rep." }],
+                ind: []
+            },
+            {
+                id: "NJ", state: "22. New Jersey", badge: "", badgeType: "",
+                sub: "Cory Booker (D) • 2020: D 57.2%",
+                rep: [{ name: "Justin Murphy", note: "Fmr. Mayor" }],
+                dem: [{ name: "Cory Booker (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "NM", state: "23. New Mexico", badge: "", badgeType: "",
+                sub: "Ben Ray Luján (D) • 2020: D 51.7%",
+                rep: [{ name: "Larry Marker", note: "Write-in GOP" }],
+                dem: [{ name: "Ben Ray Luján (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "NC", state: "24. North Carolina", badge: "Open", badgeType: "open",
+                sub: "Tillis (R) retiring • 2020: R 48.7%",
+                rep: [{ name: "Michael Whatley", note: "Fmr. RNC Chair" }],
+                dem: [{ name: "Roy Cooper", note: "Fmr. Governor" }],
+                ind: []
+            },
+            {
+                id: "OH", state: "25. Ohio", badge: "Special", badgeType: "special",
+                sub: "Vance vacancy • 2022: R 53.0%",
+                rep: [{ name: "Jon Husted (i)", note: "App. Incumbent" }],
+                dem: [{ name: "Sherrod Brown", note: "Fmr. U.S. Sen." }],
+                ind: [{ name: "William Redpath", note: "Libertarian" }]
+            },
+            {
+                id: "OK", state: "26. Oklahoma", badge: "Open", badgeType: "open",
+                sub: "Mullin resigned / Armstrong (R) not running",
+                rep: [{ name: "Kevin Hern", note: "U.S. Rep." }],
+                dem: [{ name: "N'Kiyla Jasmine Thomas", note: "Nurse" }],
+                ind: [{ name: "R. Meinhardt / C. Stinnett", note: "Ind. / S. White (L)" }]
+            },
+            {
+                id: "OR", state: "27. Oregon", badge: "", badgeType: "",
+                sub: "Jeff Merkley (D) • 2020: D 56.9%",
+                rep: [{ name: "David Brock Smith", note: "State Sen." }],
+                dem: [{ name: "Jeff Merkley (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "RI", state: "28. Rhode Island", badge: "", badgeType: "",
+                sub: "Jack Reed (D) • 2020: D 66.5%",
+                rep: [{ name: "Raymond McKay", note: "Fmr. RI GOP Official" }],
+                dem: [{ name: "Jack Reed (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "SC", state: "29. South Carolina", badge: "", badgeType: "",
+                sub: "L. Graham deceased • 2020: R 54.4%",
+                rep: [{ name: "Darline Graham (i)", note: "App. Incumbent" }],
+                dem: [{ name: "Annie Andrews", note: "Pediatrician" }],
+                ind: [{ name: "K. Whitener (L) / M. Hackett (C)", note: "Third Party" }]
+            },
+            {
+                id: "SD", state: "30. South Dakota", badge: "", badgeType: "",
+                sub: "Mike Rounds (R) • 2020: R 65.7%",
+                rep: [{ name: "Mike Rounds (i)", note: "Incumbent" }],
+                dem: [],
+                demNote: "No Dem (Beaudion withdrew)",
+                ind: [{ name: "Brian Bengs", note: "Independent" }]
+            },
+            {
+                id: "TN", state: "31. Tennessee", badge: "", badgeType: "",
+                sub: "Bill Hagerty (R) • 2020: R 62.2%",
+                rep: [{ name: "Bill Hagerty (i)", note: "Incumbent" }],
+                dem: [{ name: "Marquita Bradshaw", note: "Consultant" }],
+                ind: []
+            },
+            {
+                id: "TX", state: "32. Texas", badge: "Open", badgeType: "open",
+                sub: "Cornyn (R) lost primary • 2020: R 53.5%",
+                rep: [{ name: "Ken Paxton", note: "State AG" }],
+                dem: [{ name: "James Talarico", note: "State Rep." }],
+                ind: []
+            },
+            {
+                id: "VA", state: "33. Virginia", badge: "", badgeType: "",
+                sub: "Mark Warner (D) • 2020: D 56.0%",
+                rep: [{ name: "Bert Mizusawa", note: "Ret. Maj. Gen." }],
+                dem: [{ name: "Mark Warner (i)", note: "Incumbent" }],
+                ind: []
+            },
+            {
+                id: "WV", state: "34. West Virginia", badge: "", badgeType: "",
+                sub: "Shelley Moore Capito (R) • 2020: R 70.3%",
+                rep: [{ name: "Shelley Moore Capito (i)", note: "Incumbent" }],
+                dem: [{ name: "Rachel Fetty Anderson", note: "Fmr. Councilwoman" }],
+                ind: []
+            },
+            {
+                id: "WY", state: "35. Wyoming", badge: "Open", badgeType: "open",
+                sub: "Lummis (R) retiring • 2020: R 72.8%",
+                rep: [{ name: "Harriet Hageman", note: "U.S. Rep." }],
+                dem: [{ name: "James W. Byrd", note: "Fmr. State Rep." }],
+                ind: []
+            }
+        ];
+
+        function renderCandList(raceId, partyCode, list, optClass, emptyNote) {
+            if (!list || list.length === 0) {
+                return `<span class="no-cand">${emptyNote || "—"}</span>`;
+            }
+            return list.map((c, idx) => `
+                <label class="cand-option ${optClass}">
+                    <input type="checkbox"
+                           name="pick_${raceId}"
+                           data-race="${raceId}"
+                           data-party="${partyCode}"
+                           data-cand="${c.name}"
+                           onchange="handlePickChange(this)">
+                    <span>
+                        <span class="cand-name">${c.name}</span>
+                        ${c.note ? `<span class="cand-note">(${c.note})</span>` : ""}
+                    </span>
+                </label>
+            `).join("");
+        }
+
+        function buildTable() {
+            const tbody = document.getElementById("racesBody");
+            tbody.innerHTML = RACES.map(r => {
+                const badgeHtml = r.badge
+                    ? `<span class="badge badge-${r.badgeType}">${r.badge}</span>`
+                    : "";
+                return `
+                    <tr data-row="${r.id}">
+                        <td class="state-cell">
+                            <div class="state-title">${r.state} ${badgeHtml}</div>
+                            <div class="incumbent-sub">${r.sub}</div>
+                        </td>
+                        <td class="cand-cell">
+                            ${renderCandList(r.id, "R", r.rep, "rep-opt", "—")}
+                        </td>
+                        <td class="cand-cell">
+                            ${renderCandList(r.id, "D", r.dem, "dem-opt", r.demNote || "—")}
+                        </td>
+                        <td class="cand-cell">
+                            ${renderCandList(r.id, "I", r.ind, "ind-opt", "—")}
+                        </td>
+                        <td class="margin-cell">
+                            <div class="margin-input-wrap">
+                                <span class="margin-prefix">+</span>
+                                <input type="text"
+                                       class="margin-input"
+                                       data-margin="${r.id}"
+                                       placeholder="0.0"
+                                       oninput="saveState()">
+                                <span class="margin-prefix">%</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
+            loadState();
+            updateTallies();
+        }
+
+        function handlePickChange(checkbox) {
+            const raceId = checkbox.getAttribute("data-race");
+            if (checkbox.checked) {
+                document.querySelectorAll(`input[name="pick_${raceId}"]`).forEach(cb => {
+                    if (cb !== checkbox) cb.checked = false;
+                });
+            }
+            updateTallies();
+            saveState();
+        }
+
+        function updateTallies() {
+            let r = 0, d = 0, i = 0;
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                const party = cb.getAttribute("data-party");
+                if (party === "R") r++;
+                else if (party === "D") d++;
+                else if (party === "I") i++;
+            });
+
+            const total = r + d + i;
+            const rem = RACES.length - total;
+
+            document.getElementById("repCount").textContent = `GOP: ${r}`;
+            document.getElementById("demCount").textContent = `DEM: ${d}`;
+            document.getElementById("indCount").textContent = `IND/OTH: ${i}`;
+            document.getElementById("unpickedCount").textContent = rem > 0 ? `(${rem} remaining)` : `(All 35 picked!)`;
+
+            document.getElementById("summaryRep").textContent = total > 0 ? r : "____";
+            document.getElementById("summaryDem").textContent = total > 0 ? d : "____";
+            document.getElementById("summaryInd").textContent = total > 0 ? i : "____";
+
+            document.getElementById("projRep").textContent = total > 0 ? `${31 + r} / 100` : "____ / 100";
+            document.getElementById("projDem").textContent = total > 0 ? `${34 + d + i} / 100` : "____ / 100";
+        }
+
+        function saveState() {
+            const state = {
+                name: document.getElementById("studentName").value,
+                maj: document.getElementById("predictedMaj").value,
+                picks: {},
+                margins: {}
+            };
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                state.picks[cb.getAttribute("data-race")] = cb.getAttribute("data-cand");
+            });
+            document.querySelectorAll('.margin-input').forEach(inp => {
+                if (inp.value.trim()) {
+                    state.margins[inp.getAttribute("data-margin")] = inp.value.trim();
+                }
+            });
+            try {
+                localStorage.setItem("senate_worksheet_2026", JSON.stringify(state));
+            } catch (e) {}
+        }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem("senate_worksheet_2026");
+                if (!raw) return;
+                const state = JSON.parse(raw);
+                if (state.name) document.getElementById("studentName").value = state.name;
+                if (state.maj) document.getElementById("predictedMaj").value = state.maj;
+                if (state.picks) {
+                    Object.entries(state.picks).forEach(([raceId, candName]) => {
+                        const cb = document.querySelector(`input[name="pick_${raceId}"][data-cand="${CSS.escape(candName)}"]`);
+                        if (cb) cb.checked = true;
+                    });
+                }
+                if (state.margins) {
+                    Object.entries(state.margins).forEach(([raceId, val]) => {
+                        const inp = document.querySelector(`.margin-input[data-margin="${raceId}"]`);
+                        if (inp) inp.value = val;
+                    });
+                }
+            } catch (e) {}
+        }
+
+        function clearWorksheet() {
+            if (!confirm("Clear all picks and predicted margins?")) return;
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.margin-input').forEach(inp => inp.value = "");
+            document.getElementById("studentName").value = "";
+            document.getElementById("predictedMaj").value = "";
+            try { localStorage.removeItem("senate_worksheet_2026"); } catch (e) {}
+            updateTallies();
+        }
+
+        document.getElementById("studentName").addEventListener("input", saveState);
+        document.getElementById("predictedMaj").addEventListener("input", saveState);
+
+        buildTable();
+    </script>
 </body>
 </html>

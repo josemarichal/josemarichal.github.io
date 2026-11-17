@@ -15,9 +15,9 @@ print(f"Agency 0: {agency_0.get('agency_name')} (Specialty: {agency_0.get('agenc
 assert "agency_name" in agency_0
 assert "agency_specialty" in agency_0
 
-# Test RFP preset
-app.set_preset_rfp("Tech workers report severe cognitive fatigue and burnout from hundreds of daily Slack notifications.")
-print("RFP text set:", app.rfp_text.get("1.0", "end-1c"))
+# Test Research Snippet preset
+app.set_preset_rfp("Notes on Race and Politics: Social construction of race, bonding vs. bridging social capital, hunkering, colorblindness, and carceral surveillance.")
+print("Research snippet set:", app.rfp_text.get("1.0", "end-1c"))
 
 # Run competition
 app.run_agency_competition()
@@ -29,14 +29,14 @@ top1 = app.current_competition_results[0]
 agency_top = top1["agency"]
 prop = top1["proposal"]
 
-print(f"Winner Agency: {agency_top.get('agency_name')} with {top1['proposal_fit']:.2f}% proposal fit!")
-print(f"Op-Ed Headline: {prop['oped_pitch']['title']}")
-print(f"Social Hook: {prop['social_campaign']['hook_post'][:90]}...")
-print(f"Video Pitch: {prop['video_pitch']['video_title']}")
+print(f"Top Book Section: {agency_top.get('agency_name')} with {top1['proposal_fit']:.2f}% relevance!")
+print(f"Paper Title: {prop['research_pitch']['title']}")
+print(f"Bridging Moves: {len(prop['conceptual_bridge']['bridging_moves'])}")
+print(f"Case Strategy: {prop['empirical_design']['case_strategy'][:90]}...")
 
-assert prop["oped_pitch"]["title"]
-assert prop["social_campaign"]["hook_post"]
-assert prop["video_pitch"]["video_title"]
+assert prop["research_pitch"]["title"]
+assert prop["conceptual_bridge"]["bridging_moves"]
+assert prop["empirical_design"]["abstract_draft"]
 
 # Check exchange tree rows
 items = app.exchange_tree.get_children()
