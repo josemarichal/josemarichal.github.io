@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congress Simulator Gem: NOMINATE vs. SCM Methodology | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=5">
+    <style>
+        .method-hero {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .method-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: rgba(16, 185, 129, 0.14);
+            color: var(--accent-color);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .cta-row {
+            display: flex;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
+        .cta-primary {
+            display: inline-block;
+            padding: 0.65rem 1.2rem;
+            background: var(--accent-color);
+            color: #041017;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+        }
+        .cta-secondary {
+            display: inline-block;
+            padding: 0.65rem 1.2rem;
+            border: 1px solid var(--border-color);
+            color: var(--text-heading);
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .panel-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+        }
+        .panel-card.highlight {
+            border-color: var(--accent-color);
+        }
+        .panel-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+        .panel-card ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        .panel-card li {
+            margin-bottom: 0.5rem;
+        }
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0 2rem;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+        }
+        .comp-table th, .comp-table td {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.92rem;
+        }
+        .comp-table th {
+            background: rgba(255, 255, 255, 0.04);
+            font-weight: 700;
+        }
+        .decision-box {
+            background: var(--surface-color);
+            border-left: 4px solid var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html">T&amp;S Working Group</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html" class="active">AI Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+                <p style="margin-bottom: 1rem;"><a href="ai_tools.html" style="text-decoration: none; font-weight: 600;">&larr; Back to AI Tools</a></p>
+
+                <section class="method-hero">
+                    <span class="method-badge">Computational Political Science &bull; Methodology Note</span>
+                    <h1 style="margin-top: 0;">Congress Simulator Gem: Why Structural Causal Models (SCM) Over NOMINATE Silicon Sampling</h1>
+                    <p>When building an AI-powered legislative simulation for political science research and teaching, there are two distinct design paradigms: populating a virtual chamber with historical legislator profiles and DW-NOMINATE scores, or structuring a controlled factorial experiment around an explicit <strong>Structural Causal Model (SCM)</strong> following Manning, Zhu, &amp; Horton (<em>Automated Social Science</em>). Here is how both approaches compare—and why the Congress Simulator Gem uses the SCM architecture.</p>
+                    <div class="cta-row">
+                        <a href="https://gemini.google.com/gem/1r4DE0_Ux_nwAjIuKd1Ilq0Ok4TXoFgCd?usp=sharing" target="_blank" rel="noopener noreferrer" class="cta-primary">Launch Congress Simulator Gem &nearr;</a>
+                        <a href="https://arxiv.org/abs/2404.11794" target="_blank" rel="noopener noreferrer" class="cta-secondary">Read Manning, Zhu, &amp; Horton (arXiv:2404.11794) &nearr;</a>
+                    </div>
+                </section>
+
+                <h2>1. The Two Approaches</h2>
+                <div class="two-col">
+                    <div class="panel-card">
+                        <h3>Approach A: NOMINATE / Silicon-Sampling Congress</h3>
+                        <p style="font-size: 0.93rem;">Inspired by LLM polling and legislative prediction studies (e.g., Stanford/MIT/Harvard preprints and Argyle et al.’s silicon sampling), this approach populates 100 Senators or 435 House members with real names, state demographics, past floor speeches, and DW-NOMINATE ideal-point scores.</p>
+                        <ul>
+                            <li><strong>Pros:</strong> High descriptive and predictive realism; captures real-world partisan sorting, state-level geography, and historical coalition alignments.</li>
+                            <li><strong>Cons:</strong> Vulnerable to <em>training-data leakage</em> (the LLM recalls how a real member voted rather than reasoning from the bill), <em>demographic caricature</em>, and <em>confounding</em> (party, state, and NOMINATE co-vary, hiding which factor actually caused a vote). Often polls members independently rather than modeling floor bargaining.</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-card highlight">
+                        <h3>Approach B: Structural Causal Model (SCM) Lab</h3>
+                        <p style="font-size: 0.93rem;">Modeled on Manning, Zhu, &amp; Horton (2024), this approach starts with an explicit causal DAG before any debate begins: defining one primary outcome (<code>Bill_Passes</code>) and 3&ndash;4 exogenous treatments (e.g., <code>Closed</code> vs. <code>Open Rule</code>, issue framing, swing-district threat, outside PAC/grassroots briefs).</p>
+                        <ul>
+                            <li><strong>Pros:</strong> Guarantees clean causal identification; isolates institutional rules and framing effects; uses minimalist pivotal roles (Chair, Sponsor, Ranking Member, 2 Swing Members, 1 Wing Member) to avoid caricature; enforces sequential bargaining via a Parliamentarian Coordinator.</li>
+                            <li><strong>Cons:</strong> Sacrifices 435-member chamber granularity; in a single-chat Gemini Gem, one context window plays all 6 roles (meaning "private" treatments are not cryptographically isolated as they would be in separate Python API calls).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>2. Head-to-Head Comparison</h2>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>NOMINATE / Silicon-Sampling Congress</th>
+                            <th>SCM Mock Congress (Congress Simulator Gem)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Primary Goal</strong></td>
+                            <td>Roll-call forecasting &amp; historical reconstruction</td>
+                            <td>Causal mechanism testing &amp; institutional counterfactuals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agent Design</strong></td>
+                            <td>Thick real-world personas (names, states, DW-NOMINATE, voting history)</td>
+                            <td>6 minimalist pivotal roles defined by Goal, Constraint, and exogenous treatments</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Interaction Model</strong></td>
+                            <td>Usually parallel/independent polling per legislator</td>
+                            <td>Sequential markup/floor debate moderated by a Parliamentarian Coordinator</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Causal Validity</strong></td>
+                            <td>High confounding &amp; risk of training-data memorization</td>
+                            <td>Ex-ante DAG prevents "bad controls" and isolates treatment effects</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Theory Benchmark</strong></td>
+                            <td>Empirical roll-call accuracy (F1 / % correct)</td>
+                            <td>Krehbiel’s Pivotal Politics, Cox &amp; McCubbins’ Cartel Theory, &amp; <code>predict-&beta;&#770;</code> check</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>3. Why I Ultimately Decided on the SCM Approach</h2>
+                <div class="decision-box">
+                    <p>For both political science research and classroom instruction, the hardest problem isn’t getting an LLM to guess how a named member of Congress usually votes—LLMs already absorb that from news and roll-call archives. The real challenge is <strong>testing counterfactual institutional mechanisms</strong>: what happens when you hold ideology constant and flip a rule from <em>Closed</em> to <em>Open</em>, shift an issue frame from <em>National Security</em> to <em>Local Ratepayers</em>, or expose a pivotal swing member to a primary challenge?</p>
+                    <p>Manning, Zhu, &amp; Horton demonstrate two findings that settled the choice:</p>
+                    <ol style="padding-left: 1.25rem; margin-bottom: 0.75rem;">
+                        <li><strong>Direct prompting inflates effect sizes:</strong> When asked to guess causal coefficients directly without running the interactive simulation, GPT-4 overestimated magnitudes by an average of <strong>13.2&times;</strong>. Running the coordinated debate is what reveals realistic bargaining equilibria.</li>
+                        <li><strong>Ex-ante SCMs prevent "bad control" bias:</strong> Throwing real-world or unstructured transcript variables into post-hoc regressions routinely flips or erases true causal paths. Defining the DAG up front keeps exogenous treatments cleanly separated from endogenous debate outcomes.</li>
+                    </ol>
+                    <p style="margin-bottom: 0;"><strong>The Hybrid Path Forward:</strong> The Congress Simulator Gem brings this SCM workflow into an accessible interactive lab. When scaling to multi-hundred-run Python experiments, the ideal upgrade is to keep the SCM + Coordinator engine while anchoring the 6 pivotal roles with <em>synthetic</em> DW-NOMINATE priors—getting Krehbiel/Cox&ndash;McCubbins realism without data leakage.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025. Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
+
