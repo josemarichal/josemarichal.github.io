@@ -17,6 +17,11 @@ An automated civic intelligence pipeline and interactive knowledge graph trackin
 - **Core File:** `thousand_oaks_civic_graph.html`
 - **Core File:** `to_council_aggregator/scraper.py`
 - **Core File:** `to_council_aggregator/council_sessions.json`
+- **Local Misinfo Audit Claims (`10` TRUE/FALSE pairs):** `projects/thousand_oaks_civic_knowledge_graph/misinfo_audit/to_council_claims.csv`
+- **Hugging Face Audit Runner:** `projects/thousand_oaks_civic_knowledge_graph/misinfo_audit/run_hf_misinfo_audit.py`
+- **Hugging Face Blind Stance Judge:** `projects/thousand_oaks_civic_knowledge_graph/misinfo_audit/classify_stance_hf.py`
+- **Scored Audit Dataset (`n=480`, `470` non-empty):** `projects/thousand_oaks_civic_knowledge_graph/misinfo_audit/hf_misinfo_scored.csv`
+- **Standalone Misinfo Audit Methodology Page:** `thousand_oaks_misinfo_audit.html`
 - **Core File:** `images/to_civic_graph.jpg`
 
 ---
@@ -24,6 +29,9 @@ An automated civic intelligence pipeline and interactive knowledge graph trackin
 ## 3. Decision Log & Project Memory
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
+| 2026-11-18 | **Created Standalone Methodology Page (`thousand_oaks_misinfo_audit.html`)** | Documented the 4-stage `2024 vs 2026` × `TRUE vs FALSE` local municipal misinformation audit methodology, empirical breakdown tables, and data/code downloads. Explicitly kept unlinked from `projects.html` (Technology & Society Working Group) per user request. |
+| 2026-11-18 | **Executed 12-Model × 20-Claim (`2024 vs 2026`) Hugging Face Misinformation Audit (`n=480`)** | Ran `run_hf_misinfo_audit.py --full` (`12` open-weight models, `3B–120B` + `DeepSeek-V3.2` + `Command-A`) and blind 3-class stance classification via `classify_stance_hf.py` (`470` non-empty rows). Key finding: under `direct_verification`, models rarely endorse falsehoods (`1.7%` 2024, `0.0%` 2026) and over-refuse real 2024 facts (`19.0%`); under `false_premise_voter_guide`, models laundered `91.5%` (`54/59`) of fabricated 2024 claims and `52.6%` (`30/57`) of fabricated 2026 claims into authoritative voter-guide prose. |
+| 2026-11-18 | **Built Paired Thousand Oaks Misinformation Audit for Hugging Face + JEV** | Generated 10 matched `TRUE`/`FALSE` claim pairs (`to_council_claims.csv`) from Sept 2026 Thousand Oaks City Council, Planning Commission, and COSCA summaries, plus `run_hf_misinfo_audit.py` (`--pilot` 5 models / 100 calls; `--full` 12 models / 480 calls) outputting JEV-ready CSVs for 3-class stance classification (`AGREES`, `NEUTRAL`, `DISAGREES`) on Hugging Face Spaces. |
 | 2026-10-03 | **Adapted Council Data Project for Thousand Oaks** | Switched from complex cloud infra to a lightweight, zero-dependency local Python aggregator (`to_council_aggregator/`) tracking @ctomeetings. |
 | 2026-10-03 | **Restructured Knowledge Graph by Policy Topics** | Reorganized the visual graph from purely meeting-session nodes to policy domain hubs: Affordable Housing, Open Space, Economic Development, Public Safety, and Governance. |
 | 2026-10-03 | **Deployed Fullscreen Interactive Graph on GitHub Pages** | Added full-screen cytoscape canvas, auto-fit controls, searchable topic dossiers, and timestamped video deep links at `thousand_oaks_civic_graph.html`. |
