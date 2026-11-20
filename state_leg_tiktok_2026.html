@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 State Legislative TikTok Authenticity Database: Methodology &amp; Dataset | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=5">
+    <style>
+        .audit-hero {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .audit-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: rgba(16, 185, 129, 0.14);
+            color: var(--accent-color);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+        }
+        .stat-num {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+        }
+        .section-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+        .section-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.85rem;
+            font-size: 1.28rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .section-card h3 {
+            font-size: 1.02rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+            color: var(--accent-color);
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.1rem;
+            margin-top: 1rem;
+        }
+        .method-step {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.1rem;
+        }
+        .method-step .step-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent-color);
+            margin-bottom: 0.35rem;
+        }
+        table.audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.9rem;
+            font-size: 0.88rem;
+        }
+        table.audit-table th,
+        table.audit-table td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.65rem 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.audit-table th {
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .num-cell {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .pill {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .download-link {
+            display: block;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+            transition: border-color 0.18s ease, background 0.18s ease;
+        }
+        .download-link:hover {
+            border-color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.06);
+        }
+        .download-link strong {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--accent-color);
+        }
+        .download-link span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        code {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.84em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Jose Marichal</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="ai_tools.html">AI Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 1020px; margin: 2.5rem auto; padding: 0 1.25rem;">
+        <section class="audit-hero">
+            <span class="audit-badge">Dataset &amp; Coding Methodology</span>
+            <h1 style="margin: 0 0 0.75rem 0; font-size: 1.95rem;">2026 State Legislative Candidate TikTok Authenticity Database</h1>
+            <p style="color: var(--text-muted); line-height: 1.65; margin: 0;">
+                A multi-state archive of TikTok video URLs and objective metadata from 2026 state legislative incumbents and challengers, built for human rubric coding of <strong>performances of authenticity</strong> during the general-election campaign window (<code>2026-06-03</code> to <code>2026-11-15</code>).
+            </p>
+            <div class="stat-strip">
+                <div class="stat-box">
+                    <div class="stat-num">745</div>
+                    <div class="stat-label">Campaign-window videos (<code>2026-06-03</code> – <code>2026-11-15</code>) out of <code>2,643</code> total archived</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">54</div>
+                    <div class="stat-label">Unique candidates with campaign-window videos (from <code>201</code> discovered handles)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">536 / 209</div>
+                    <div class="stat-label">Challenger vs. Incumbent campaign-window videos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">12,075</div>
+                    <div class="stat-label">State legislative candidates indexed across 50 states &amp; 2026 Ballotpedia overviews</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>1. Research Motivation &amp; Authenticity Framework</h2>
+            <p style="line-height: 1.65;">
+                Existing cross-platform political communication datasets—such as Qi, Dave, &amp; Ling (2025), <em>Adapting Public Personas: A Multimodal Study of U.S. Legislators' Cross-Platform Social Media Strategies</em> (<code>arXiv:2509.10720v2</code>)—rely on TikTok's official API, which omits raw video visuals and forces researchers to analyze only captions and voice-to-text transcripts. Yet visual formality, camera staging, and production polish are central to how candidates perform authenticity.
+            </p>
+            <p style="line-height: 1.65;">
+                This database preserves direct clickable <code>tiktok_url</code> links alongside pre-filled objective metadata so student coders can watch the actual videos and evaluate four authenticity strategies adapted from digital-branding research:
+            </p>
+            <table class="audit-table">
+                <thead>
+                    <tr>
+                        <th>Strategy Type</th>
+                        <th>Typical Political Content &amp; Staging Elements</th>
+                        <th>Perceived Authenticity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Relinquished Control / UGC-Style</strong></td>
+                        <td>Handheld selfie-cam, car or kitchen-counter vlogs, off-camera Gen Z staffer interactions ("intern trend"), unscripted walk-and-talks, stitched/duetted voter Q&amp;As.</td>
+                        <td><span class="pill">Very High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Trend-Jacking</strong></td>
+                        <td>Campaign or candidate accounts adopting viral TikTok audio (<code>is_original_sound = 0</code>), CapCut templates, lip-syncs, or meme formats.</td>
+                        <td><span class="pill">Moderate to High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Campaign-Led Informational</strong></td>
+                        <td>Direct-to-camera policy explainers, numbered legislative breakdowns, voting/deadline updates, town hall clips with moderate editing.</td>
+                        <td><span class="pill">Moderate</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Polished Promotional</strong></td>
+                        <td>Cross-posted horizontal TV ads, rally sizzle reels, drone B-roll, scripted teleprompter monologues, broadcast chyrons and stock music beds.</td>
+                        <td><span class="pill">Low</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <h2>2. Three-Stage Collection Methodology</h2>
+            <div class="method-grid">
+                <div class="method-step">
+                    <div class="step-tag">Stage 1 · Candidate Roster &amp; Handle Discovery</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Combined the 50-state OpenStates legislator dataset (<code>7,323</code> sitting legislators) with 2026 Ballotpedia state-level general-election overviews across 16 states (<code>12,075</code> total indexed candidates). Crawled candidate Ballotpedia profiles, official <code>.gov</code> pages, campaign websites, and Wikidata (<code>P7085</code>) with exponential backoff to discover <strong>201 unique TikTok handles</strong> (<code>253</code> account-candidate rows), tracking <code>account_type</code> (<code>official</code>, <code>campaign</code>, <code>personal</code>).
+                    </p>
+                </div>
+                <div class="method-step">
+                    <div class="step-tag">Stage 2 · Campaign-Window URL Archival</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Ran <code>yt-dlp</code> (<code>2026.10.26</code>) across all deduplicated handles (up to <code>100</code> recent videos per account, <code>90s</code> per-account timeout), storing <strong>2,643</strong> videos in SQLite and flagging <strong>745</strong> posts published between <code>2026-06-03</code> and <code>2026-11-15</code> (matching Qi, Dave, &amp; Ling's Nov 15 election-window endpoint).
+                    </p>
+                </div>
+                <div class="method-step">
+                    <div class="step-tag">Stage 3 · Pre-Filled Student Coding Sheet</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Exported <code>student_coding_view</code> to CSV and clickable HTML with objective fields pre-populated (<code>posted_at</code>, <code>duration_sec</code>, <code>sound_title</code>, <code>is_original_sound</code>, <code>views</code>, <code>likes</code>, <code>comments</code>, <code>shares</code>) alongside blank rubric columns (<code>coder_id</code>, <code>strategy_type</code>, <code>perceived_authenticity_1_5</code>, <code>relinquished_control_yn</code>, <code>coding_notes</code>).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>3. Corpus Breakdown (Campaign Window: 2026-06-03 to 2026-11-15)</h2>
+            <table class="audit-table">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th class="num-cell">Campaign-Window Videos</th>
+                        <th>Share of Corpus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>California (CA)</strong></td><td class="num-cell">267</td><td>35.8%</td></tr>
+                    <tr><td><strong>Florida (FL)</strong></td><td class="num-cell">166</td><td>22.3%</td></tr>
+                    <tr><td><strong>Colorado (CO)</strong></td><td class="num-cell">158</td><td>21.2%</td></tr>
+                    <tr><td><strong>Arizona (AZ)</strong></td><td class="num-cell">124</td><td>16.6%</td></tr>
+                    <tr><td><strong>Connecticut (CT)</strong></td><td class="num-cell">30</td><td>4.0%</td></tr>
+                    <tr><td><strong>Total</strong></td><td class="num-cell"><strong>745</strong></td><td><strong>100.0%</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h3>Methodological Caveats for Student Coders</h3>
+            <ul style="line-height: 1.65; color: var(--text-muted); padding-left: 1.2rem;">
+                <li><strong>Posting-volume skew:</strong> Consistent with Qi, Dave, &amp; Ling (2025), a small subset of highly active candidates accounts for a disproportionate share of videos. When assigning coding batches, stratify or cap videos per candidate so individual "super-posters" do not skew aggregate averages.</li>
+                <li><strong>Platform extraction limits:</strong> Some discovered handles returned private-account errors, zero posted videos, or <code>Unable to extract secondary user ID</code> / <code>90s</code> timeouts during automated extraction.</li>
+                <li><strong>Party label completeness:</strong> Ballotpedia overview tables frequently encode party via cell styling rather than text; OpenStates-matched rows carry full party labels, while some Ballotpedia-only rows leave <code>party</code> blank or <code>Other</code>.</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <h2>4. Dataset &amp; Pipeline Downloads</h2>
+            <div class="download-grid">
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/student_coding_sheet.csv" download>
+                    <strong>student_coding_sheet.csv</strong>
+                    <span>745 campaign-window TikTok URLs + pre-filled metadata &amp; blank student rubric columns</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/student_coding_sheet.html" target="_blank" rel="noopener">
+                    <strong>student_coding_sheet.html</strong>
+                    <span>Interactive browser table with one-click "Open TikTok" links for coders</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/ca_2026_tiktok_handles.csv" download>
+                    <strong>ca_2026_tiktok_handles.csv</strong>
+                    <span>201 unique discovered state legislative TikTok handles &amp; discovery sources</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/ca_2026_tiktok.db" download>
+                    <strong>ca_2026_tiktok.db</strong>
+                    <span>Full SQLite database (12,075 candidates, 201 handles, 2,643 total videos)</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/crawl_ballotpedia_states.py" download>
+                    <strong>crawl_ballotpedia_states.py</strong>
+                    <span>Polite, checkpointed Ballotpedia &amp; campaign-website handle crawler</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/collect_tiktok_urls.py" download>
+                    <strong>collect_tiktok_urls.py</strong>
+                    <span>Deduplicated yt-dlp collector with campaign-window date filtering</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal · Political Science &amp; Technology</p>
+        </div>
+    </footer>
+</body>
+
+</html>
+
