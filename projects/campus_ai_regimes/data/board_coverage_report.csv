@@ -1,0 +1,51 @@
+state,university,minutes_url,http_status,docs_scanned,ai_snippets_found,note
+AK,University of Alaska Fairbanks,https://www.alaska.edu/bor/agendas/,200,23,2,
+AL,University of Alabama,https://uasystem.edu/,200,1,0,Likely JS-rendered portal (BoardDocs/Diligent) or no static links
+AR,University of Arkansas,https://uasys.edu/leadership/board-of-trustees/meetings/,200,31,22,
+AZ,University of Arizona,https://www.azregents.edu/meetings/committees/past-committee-archives,200,31,0,root_fallback:https://www.azregents.edu/meetings/committees/past-committee-archives
+CA,University of California (Berkeley),https://regents.universityofcalifornia.edu/minutes-index/archive/,200,31,15,root_fallback:https://regents.universityofcalifornia.edu/minutes-index/archive/index.html
+CO,University of Colorado Boulder,https://www.cu.edu/regents/meetings,200,3,0,
+CT,University of Connecticut,https://boardoftrustees.uconn.edu/agenda/,200,7,0,root_fallback:https://boardoftrustees.uconn.edu/agenda/
+DE,University of Delaware,https://www.udel.edu/about/leadership/,200,1,0,Likely JS-rendered portal (BoardDocs/Diligent) or no static links
+FL,University of Florida,https://trustees.ufl.edu/meetings/,200,31,26,
+GA,University of Georgia,https://www.usg.edu/regents/meetings/,200,31,23,
+HI,University of Hawaii at Manoa,https://www.hawaii.edu/offices/bor/materials/,200,2,0,
+IA,University of Iowa,https://www.iowaregents.edu/meetings/upcoming-meetings-and-agendas,200,31,0,
+ID,University of Idaho,https://boardofed.idaho.gov/event/,200,31,40,root_fallback:https://boardofed.idaho.gov/event/
+IL,University of Illinois Urbana-Champaign,https://www.bot.uillinois.edu/meetings,403,0,0,HTTP 403
+IN,Indiana University Bloomington,https://trustees.iu.edu/meetings-minutes/agendas/index.html,200,7,0,root_fallback:https://trustees.iu.edu/meetings-minutes/agendas/index.html
+KS,University of Kansas,https://kansasregents.gov/about/technical_education_authority/tea_meeting_dates_agendas_and_minutes,200,31,6,root_fallback:https://kansasregents.gov/about/technical_education_authority/tea_meeting_dates_agendas_and_minutes
+KY,University of Kentucky,https://trustees.uky.edu/meetings,200,6,0,
+LA,Louisiana State University,https://www.lsu.edu/bos/,200,1,0,Likely JS-rendered portal (BoardDocs/Diligent) or no static links
+MA,University of Massachusetts Amherst,https://www.umassp.edu/bot/meetings,200,7,0,root_fallback:https://www.umassp.edu/bot/meetings
+MD,University of Maryland,https://www.usmd.edu/regents/agendas/,200,31,0,
+ME,University of Maine,https://www.maine.edu/board-of-trustees/meeting-agendas-materials/,200,31,7,root_fallback:https://www.maine.edu/board-of-trustees/meeting-agendas-materials/
+MI,University of Michigan,https://regents.umich.edu/,200,31,6,parent_fallback:https://regents.umich.edu/
+MN,University of Minnesota,https://regents.umn.edu/meeting-materials,200,31,27,root_fallback:https://regents.umn.edu/meeting-materials
+MO,University of Missouri,https://www.umsystem.edu/curators/meeting-information,200,31,10,
+MS,University of Mississippi,https://www.mississippi.edu/about/board-meetings,200,5,0,root_fallback:https://www.mississippi.edu/about/board-meetings
+MT,University of Montana,https://www.mus.edu/board/meetings/,200,31,12,
+NC,University of North Carolina at Chapel Hill,https://bot.unc.edu/minutes/,200,31,0,root_fallback:https://bot.unc.edu/minutes/
+ND,University of North Dakota,https://ndus.edu/sbhe-overview/agendas-minutes-videos,200,31,1,root_fallback:https://ndus.edu/sbhe-overview/agendas-minutes-videos
+NE,University of Nebraska-Lincoln,https://nebraska.edu/regents/agendas-minutes/,200,31,5,root_fallback:https://nebraska.edu/regents/agendas-minutes/index
+NH,University of New Hampshire,https://www.usnh.edu/trustees/meeting-schedule-documents/july-2026-june-2027,200,31,0,root_fallback:https://www.usnh.edu/trustees/meeting-schedule-documents/july-2026-june-2027
+NJ,Rutgers University,https://governingboards.rutgers.edu/board-governors/board-governors-meetings,200,31,8,root_fallback:https://governingboards.rutgers.edu/board-governors/board-governors-meetings
+NM,University of New Mexico,https://regents.unm.edu/meetings/,200,31,4,
+NV,University of Nevada Reno,https://nshe.nevada.edu/html/wp-content/uploads/file/BoardOfRegents/Agendas/2026/11-nov-mtgs/HSS112026.pdf,200,1,0,Likely JS-rendered portal (BoardDocs/Diligent) or no static links
+NY,Stony Brook University (SUNY),https://www.suny.edu/about/leadership/board-of-trustees/meetings/meetingNotices.cfm?archivedPage=Y#b,200,29,2,root_fallback:http://www.suny.edu/about/leadership/board-of-trustees/meetings/meetingNotices.cfm?archivedPage=Y#b
+OH,Ohio State University,https://trustees.osu.edu/university-board/meetings,200,8,0,
+OK,University of Oklahoma,https://www.ou.edu/regents/meetings,200,6,1,
+OR,University of Oregon,https://trustees.uoregon.edu/meetings,200,30,6,
+PA,Pennsylvania State University,https://trustees.psu.edu/meetings/,200,5,0,
+RI,University of Rhode Island,https://web.uri.edu/trustees/meetings/,200,29,2,
+SC,University of South Carolina,https://sc.edu/about/offices_and_divisions/board_of_trustees/meetings/,200,31,0,
+SD,University of South Dakota,https://sdbor.edu/meeting-information/,200,31,66,root_fallback:https://sdbor.edu/meeting-information/
+TN,University of Tennessee Knoxville,https://tennessee.edu/about/leadership/board-of-trustees/meeting-archives/,200,29,14,root_fallback:https://tennessee.edu/about/leadership/board-of-trustees/meeting-archives/
+TX,University of Texas at Austin,https://www.utsystem.edu/board-of-regents/meetings,200,31,13,
+UT,University of Utah,https://trustees.utah.edu/meetings/,ERR,0,0,Connection/SSL error on direct & root fallback
+VA,University of Virginia,https://bov.virginia.edu/meetings,403,0,0,HTTP 403
+VT,University of Vermont,https://www.uvm.edu/trustees/committees-and-work-groups-agendas-and-minutes,200,31,26,root_fallback:https://www.uvm.edu/trustees/committees-and-work-groups-agendas-and-minutes
+WA,University of Washington,https://www.washington.edu/regents/minutes/,200,31,14,root_fallback:https://www.washington.edu/regents/minutes/
+WI,University of Wisconsin-Madison,https://www.wisconsin.edu/regents/meetings/,200,30,4,
+WV,West Virginia University,https://bog.wvu.edu/meetings,200,30,7,
+WY,University of Wyoming,https://www.uwyo.edu/trustees/2026-meeting-agendas-materials-and-minutes/index.html,200,31,12,root_fallback:https://www.uwyo.edu/trustees/2026-meeting-agendas-materials-and-minutes/index.html

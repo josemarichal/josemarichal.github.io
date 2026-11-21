@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus AI Regimes: 50-State Regents Minutes Dataset &amp; Methodology | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=5">
+    <style>
+        .audit-hero {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .audit-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: rgba(16, 185, 129, 0.14);
+            color: var(--accent-color);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+        }
+        .stat-num {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+        }
+        .section-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+        .section-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.85rem;
+            font-size: 1.28rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .section-card h3 {
+            font-size: 1.02rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+            color: var(--accent-color);
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.1rem;
+            margin-top: 1rem;
+        }
+        .method-step {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.1rem;
+        }
+        .method-step .step-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent-color);
+            margin-bottom: 0.35rem;
+        }
+        table.audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.9rem;
+            font-size: 0.88rem;
+        }
+        table.audit-table th,
+        table.audit-table td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.65rem 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.audit-table th {
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .num-cell {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .download-link {
+            display: block;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+            transition: border-color 0.18s ease, background 0.18s ease;
+        }
+        .download-link:hover {
+            border-color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.06);
+        }
+        .download-link strong {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--accent-color);
+        }
+        .download-link span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        code {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.84em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Jose Marichal</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="ai_tools.html">AI Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 1020px; margin: 2.5rem auto; padding: 0 1.25rem;">
+        <section class="audit-hero">
+            <span class="audit-badge">Dataset &amp; Coding Methodology</span>
+            <h1 style="margin: 0 0 0.75rem 0; font-size: 1.95rem;">Campus AI Regimes: 50-State Flagship Regents &amp; Trustees Minutes</h1>
+            <p style="color: var(--text-muted); line-height: 1.65; margin: 0;">
+                A public-records text corpus extracting AI-related deliberations, degree approvals, procurement mentions, and governance reports from the official Board of Trustees / Regents minutes and agendas of U.S. flagship public universities across 50 states.
+            </p>
+            <div class="stat-strip">
+                <div class="stat-box">
+                    <div class="stat-num">381</div>
+                    <div class="stat-label">AI context snippets extracted (<code>&plusmn;400/450</code> chars around each match)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">47 / 50</div>
+                    <div class="stat-label">Flagship boards returning HTTP <code>200 OK</code> (<code>28</code> with AI hits)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">1,066</div>
+                    <div class="stat-label">HTML &amp; PDF minutes/agenda documents scanned</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">6-Frame</div>
+                    <div class="stat-label">Designed for supervised coding (Maintenance / Transformational / Excellence)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>1. Theoretical Framework: Campus AI Growth Machines &amp; Anti-Regimes</h2>
+            <p style="line-height: 1.65;">
+                Extending urban regime theory (Clarence Stone) and growth-machine theory (Logan &amp; Molotch) to higher education, this corpus treats Board of Trustees / Regents minutes as an observable institutional proxy for governing coalitions. Rather than relying solely on interviews, public board records capture formal resource commitments, degree launches, task forces, and shared-governance pushback.
+            </p>
+            <table class="audit-table">
+                <thead>
+                    <tr>
+                        <th>2008 Theme</th>
+                        <th>2008 Frame</th>
+                        <th>Campus AI Regime Equivalent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Maintenance</strong></td>
+                        <td>Compliance Tool</td>
+                        <td>Academic integrity policing, FERPA/IP risk management, IT security vetoes, procurement rules.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintenance</strong></td>
+                        <td>Pressure Valve</td>
+                        <td>Ad-hoc task forces or temporary moratoria formed reactively after cheating scandals or vendor pitches.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transformational</strong></td>
+                        <td>Social Remedy</td>
+                        <td>Structural critique: labor/adjunct deskilling, IP harvesting, algorithmic bias, and data-center energy/water costs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transformational</strong></td>
+                        <td>Social Mirror</td>
+                        <td>Participatory governance protecting first-gen, multilingual, and marginalized students from biased detectors/advising.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Excellence</strong></td>
+                        <td>Marketing Tool</td>
+                        <td>"AI-First Campus" branding, new AI degrees/institutes, donor/industry partnerships, and workforce readiness.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Excellence</strong></td>
+                        <td>Pedagogical Tool</td>
+                        <td>AI literacy as core critical thinking, general-education competencies, and civic inquiry.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <h2>2. Collection Methodology</h2>
+            <div class="method-grid">
+                <div class="method-step">
+                    <div class="step-tag">Step 1 · 50-State Flagship Registry</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Indexed all 50 state flagship public university governing boards in <code>flagship_boards_50.csv</code>. Where direct <code>/meetings</code> paths returned <code>404</code> or certificate errors, <code>scrape_regents_ai.py</code> walked parent paths and root-domain navigation links to locate official minutes and agenda archives.
+                    </p>
+                </div>
+                <div class="method-step">
+                    <div class="step-tag">Step 2 · Multi-Format PDF &amp; HTML Extraction</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Crawled up to <code>12</code> year/meeting subpages and <code>25</code> documents per board (<code>1,066</code> total documents scanned), extracting text from HTML pages via <code>BeautifulSoup</code> and PDF packets (up to 80 pages/PDF) via <code>pypdf</code>.
+                    </p>
+                </div>
+                <div class="method-step">
+                    <div class="step-tag">Step 3 · Keyword Windowing</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Matched AI terms (<code>artificial intelligence</code>, <code>generative AI</code>, <code>ChatGPT</code>, <code>Copilot</code>, <code>Gemini</code>, <code>Anthropic</code>, <code>LLM</code>, <code>Turnitin</code>, <code>AI detection</code>, <code>AI task force</code>, <code>chief AI</code>, <code>machine learning</code>) and extracted non-overlapping <code>&plusmn;400/450</code>-character context windows with source document URLs and year hints.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>3. Corpus Coverage &amp; Term Distribution</h2>
+            <p style="line-height: 1.65;">
+                Out of 50 targeted boards, <strong>47</strong> resolved with HTTP <code>200 OK</code> and <strong>28</strong> yielded AI-related snippets (<code>381</code> total). The three boards not retrieved via automated HTTP were <strong>Illinois</strong> (<code>403</code> WAF block), <strong>Virginia</strong> (<code>403</code> bot protection), and <strong>Utah</strong> (<code>ERR</code>; minutes hosted on the JS-rendered Utah Public Notice Portal / BoardDocs).
+            </p>
+            <table class="audit-table">
+                <thead>
+                    <tr>
+                        <th>Top States by Extracted Snippets</th>
+                        <th class="num-cell">Snippets</th>
+                        <th>Top Matched Terms</th>
+                        <th class="num-cell">Matches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>South Dakota (SD)</td><td class="num-cell">66</td><td><code>artificial intelligence</code></td><td class="num-cell">301</td></tr>
+                    <tr><td>Idaho (ID)</td><td class="num-cell">40</td><td><code>machine learning</code></td><td class="num-cell">22</td></tr>
+                    <tr><td>Minnesota (MN)</td><td class="num-cell">27</td><td><code>generative ai</code></td><td class="num-cell">18</td></tr>
+                    <tr><td>Florida (FL)</td><td class="num-cell">26</td><td><code>chatgpt</code></td><td class="num-cell">9</td></tr>
+                    <tr><td>Vermont (VT)</td><td class="num-cell">26</td><td><code>genai</code></td><td class="num-cell">9</td></tr>
+                    <tr><td>Georgia (GA)</td><td class="num-cell">23</td><td><code>llm</code></td><td class="num-cell">8</td></tr>
+                    <tr><td>Arkansas (AR)</td><td class="num-cell">22</td><td><code>large language models</code></td><td class="num-cell">4</td></tr>
+                    <tr><td>California (CA)</td><td class="num-cell">15</td><td><code>ai task force</code></td><td class="num-cell">4</td></tr>
+                    <tr><td>Washington (WA) / Tennessee (TN)</td><td class="num-cell">14 each</td><td><code>openai</code></td><td class="num-cell">3</td></tr>
+                    <tr><td>Texas (TX)</td><td class="num-cell">13</td><td><code>ai detectors</code></td><td class="num-cell">1</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <h2>4. Dataset &amp; Script Downloads</h2>
+            <div class="download-grid">
+                <a class="download-link" href="projects/campus_ai_regimes/data/regents_ai_snippets.csv" download>
+                    <strong>regents_ai_snippets.csv</strong>
+                    <span>381 extracted AI context snippets across 28 state flagship boards</span>
+                </a>
+                <a class="download-link" href="projects/campus_ai_regimes/data/regents_ai_snippets.jsonl" download>
+                    <strong>regents_ai_snippets.jsonl</strong>
+                    <span>Line-delimited JSON corpus for NLP &amp; classifier training</span>
+                </a>
+                <a class="download-link" href="projects/campus_ai_regimes/data/board_coverage_report.csv" download>
+                    <strong>board_coverage_report.csv</strong>
+                    <span>50-state HTTP status, resolved URLs, docs scanned, and hit counts</span>
+                </a>
+                <a class="download-link" href="projects/campus_ai_regimes/flagship_boards_50.csv" download>
+                    <strong>flagship_boards_50.csv</strong>
+                    <span>Registry of 50 flagship public university governing boards</span>
+                </a>
+                <a class="download-link" href="projects/campus_ai_regimes/scrape_regents_ai.py" download>
+                    <strong>scrape_regents_ai.py</strong>
+                    <span>Multi-threaded HTML + PDF scraper with root-domain fallback</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal · Political Science &amp; Technology</p>
+        </div>
+    </footer>
+</body>
+
+</html>
