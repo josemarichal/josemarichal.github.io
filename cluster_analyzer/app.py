@@ -2117,10 +2117,13 @@ CUSTOM_CSS = """
 
 def build_interface():
     blocks_kwargs = {"title": "Multi-Algorithm Cluster Analyzer"}
-    if "theme" in inspect.signature(gr.Blocks.__init__).parameters:
-        blocks_kwargs["theme"] = gr.themes.Soft(primary_hue="indigo", secondary_hue="teal")
-    if "css" in inspect.signature(gr.Blocks.__init__).parameters:
-        blocks_kwargs["css"] = CUSTOM_CSS
+    launch_params = inspect.signature(gr.Blocks.launch).parameters
+    if "theme" not in launch_params:
+        blocks_params = inspect.signature(gr.Blocks.__init__).parameters
+        if "theme" in blocks_params:
+            blocks_kwargs["theme"] = gr.themes.Soft(primary_hue="indigo", secondary_hue="teal")
+        if "css" in blocks_params:
+            blocks_kwargs["css"] = CUSTOM_CSS
 
     with gr.Blocks(**blocks_kwargs) as demo:
         # Persistent session states
