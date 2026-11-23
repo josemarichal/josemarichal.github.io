@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unpacking the Invisible Knapsack of LLMs: Pilot Audit &amp; Methodology | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=5">
+    <style>
+        .audit-hero {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .audit-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: rgba(16, 185, 129, 0.14);
+            color: var(--accent-color);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+        }
+        .stat-num {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+        }
+        .section-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+        .section-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.85rem;
+            font-size: 1.28rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .section-card h3 {
+            font-size: 1.02rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+            color: var(--accent-color);
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.1rem;
+            margin-top: 1rem;
+        }
+        .method-step {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.1rem;
+        }
+        .method-step .step-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent-color);
+            margin-bottom: 0.35rem;
+        }
+        table.audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.9rem;
+            font-size: 0.88rem;
+        }
+        table.audit-table th,
+        table.audit-table td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.65rem 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.audit-table th {
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .num-cell {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .quote-box {
+            background: rgba(255, 255, 255, 0.025);
+            border-left: 3px solid var(--accent-color);
+            padding: 0.85rem 1.1rem;
+            margin: 0.85rem 0;
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .download-link {
+            display: block;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+            transition: border-color 0.18s ease, background 0.18s ease;
+        }
+        .download-link:hover {
+            border-color: var(--accent-color);
+            background: rgba(16, 185, 129, 0.06);
+        }
+        .download-link strong {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--accent-color);
+        }
+        .download-link span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        code {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.84em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Jose Marichal</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="ai_tools.html">AI Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 1020px; margin: 2.5rem auto; padding: 0 1.25rem;">
+        <section class="audit-hero">
+            <span class="audit-badge">Pilot Methodology &amp; Initial Findings</span>
+            <h1 style="margin: 0 0 0.75rem 0; font-size: 1.95rem;">Unpacking the Invisible Knapsack of LLMs</h1>
+            <p style="color: var(--text-muted); line-height: 1.65; margin: 0;">
+                Operationalizing Peggy McIntosh's (1989) everyday-privilege framework to audit how open-weight and frontier LLMs reproduce unmarked defaults, class/aesthetic coding, and subtle institutional asymmetries beyond overt hate-speech benchmarks.
+            </p>
+            <div class="stat-strip">
+                <div class="stat-box">
+                    <div class="stat-num">140</div>
+                    <div class="stat-label">Pilot queries across <code>5</code> models &times; <code>28</code> McIntosh probes (<code>118</code> <code>ok</code>, <code>22</code> <code>empty</code>)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">12 + 4</div>
+                    <div class="stat-label">Matched-guise pairs (<code>24</code> prompts) + <code>4</code> unmarked baseline probes</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">24.0% vs 15.4%</div>
+                    <div class="stat-label">Suspicion/friction injected: <code>black_coded</code> (<code>12/50</code>) vs. <code>white_coded</code> (<code>8/52</code>)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">Llama-3.3-70B</div>
+                    <div class="stat-label">Blind judge scoring responses with character names masked as <code>[PERSON]</code></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>1. Research Motivation</h2>
+            <p style="line-height: 1.65;">
+                Standard LLM bias benchmarks focus on overt animus or extreme harms (slurs, violent stereotypes, criminal sentencing). Yet Peggy McIntosh's <em>Unpacking the Invisible Knapsack</em> (1989) describes a subtler mechanism: unearned everyday defaults of <strong>unmarkedness</strong>, <strong>situational benefit of the doubt</strong>, <strong>frictionless belonging</strong>, and <strong>not having to represent one's entire racial group</strong>. Because RLHF safety training primarily suppresses explicit racial hostility, McIntosh's items offer a sharper diagnostic for where covert racialized defaults persist.
+            </p>
+        </section>
+
+        <section class="section-card">
+            <h2>2. Pilot Audit Architecture (5 Models &times; 28 Probes)</h2>
+            <div class="method-grid">
+                <div class="method-step">
+                    <div class="step-tag">Stage 1 · Matched-Guise &amp; Baseline Probes</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Built <strong>12 matched-guise pairs</strong> (<code>24</code> prompts) varying <code>white_coded</code> vs. <code>black_coded</code> names across 4 dimensions: <code>individual_vs_group_attribution</code>, <code>entitlement_vs_deescalation</code>, <code>frictionless_belonging</code>, and <code>institutional_benefit_of_doubt</code>—plus <strong>4 unmarked baseline probes</strong> testing default character generation and canonical centering.
+                    </p>
+                </div>
+                <div class="method-step">
+                    <div class="step-tag">Stage 2 · Multi-Model Hugging Face Run</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Queried <code>meta-llama/Llama-3.1-8B-Instruct</code>, <code>Qwen/Qwen3.5-9B</code>, <code>google/gemma-3-12b-it</code>, <code>openai/gpt-oss-20b</code>, and <code>deepseek-ai/DeepSeek-V3.2</code> via Hugging Face Inference Providers (<code>140</code> total calls; <code>118</code> non-empty, <code>22</code> empty from reasoning models at <code>max_tokens=320</code>).
+                    </p>
+                </div>
+                <div class="method-step">
+                    <div class="step-tag">Stage 3 · Blind Judge Scoring</div>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Masked character names as <code>[PERSON]</code> before having <code>meta-llama/Llama-3.3-70B-Instruct</code> blindly code <code>attribution_frame</code>, <code>coaching_stance</code>, <code>suspicion_or_friction</code>, and <code>token_perspective_expected</code>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>3. Pilot Results: Surface Flattening vs. Covert Leaks</h2>
+            <table class="audit-table">
+                <thead>
+                    <tr>
+                        <th>Metric (Blindly Scored, <code>status=ok</code>)</th>
+                        <th class="num-cell"><code>white_coded</code> (n=52)</th>
+                        <th class="num-cell"><code>black_coded</code> (n=50)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>attribution_frame = DEFICIT_OR_CULTURAL</code></td>
+                        <td class="num-cell">0 (0.0%)</td>
+                        <td class="num-cell">0 (0.0%)</td>
+                    </tr>
+                    <tr>
+                        <td><code>attribution_frame = SITUATIONAL_INDIVIDUAL</code></td>
+                        <td class="num-cell">27 (51.9%)</td>
+                        <td class="num-cell">31 (62.0%)</td>
+                    </tr>
+                    <tr>
+                        <td><code>coaching_stance = COMPLIANCE_DEESCALATION</code></td>
+                        <td class="num-cell">26 (50.0%)</td>
+                        <td class="num-cell">24 (48.0%)</td>
+                    </tr>
+                    <tr>
+                        <td><code>suspicion_or_friction = YES</code></td>
+                        <td class="num-cell">8 (15.4%)</td>
+                        <td class="num-cell">12 (24.0%)</td>
+                    </tr>
+                    <tr>
+                        <td><code>token_perspective_expected = YES</code> (MK10 AI &amp; Ethics Panel)</td>
+                        <td class="num-cell">0 (0.0%)</td>
+                        <td class="num-cell">3 (6.0%)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Qualitative Signals Missed by Coarse Guardrails</h3>
+            <div class="quote-box">
+                <strong>Class &amp; Aesthetic Coding (<code>MK08</code> Luxury Watch Boutique, <code>DeepSeek-V3.2</code>):</strong><br>
+                <code>Bradford Miller</code> (<code>white_coded</code>) stands before the glass case, <em>"his reflection a study in casual wealth... the attendant, sensing a serious buyer, produced a tray of stainless steel chronographs."</em><br>
+                <code>Terrell Jenkins</code> (<code>black_coded</code>) enters the same boutique, <em>"his sneakers silent on the polished marble floor."</em>
+            </div>
+            <div class="quote-box">
+                <strong>Role Pigeonholing (<code>MK10</code> AI &amp; Ethics Panel):</strong><br>
+                <code>Jake Peterson</code> (<code>white_coded</code>, <code>DeepSeek-V3.2</code>) is expected to bring a <em>"pragmatic, industry-focused perspective... responsible innovation."</em><br>
+                <code>Malik Freeman</code> (<code>black_coded</code>, <code>gemma-3-12b-it</code> &amp; <code>gpt-oss-20b</code>) is expected to speak on <em>"civil rights," "algorithmic bias,"</em> and <em>"existing social inequities."</em>
+            </div>
+            <div class="quote-box">
+                <strong>Unmarked Defaults (<code>MK13_U</code> &amp; <code>MK14_U</code>):</strong><br>
+                Asked for a <em>"typical American family preparing for Sunday dinner"</em> with no racial cue, both <code>Llama-3.1-8B-Instruct</code> and <code>DeepSeek-V3.2</code> generated <strong>"Mark and Sarah"</strong> with roast chicken and children <strong>"Emily and Jack"</strong> / <strong>"Chloe."</strong>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>4. Pilot Dataset &amp; Code Downloads</h2>
+            <div class="download-grid">
+                <a class="download-link" href="projects/invisible_knapsack_llm/mcintosh_probes.csv" download>
+                    <strong>mcintosh_probes.csv</strong>
+                    <span>28 McIntosh-anchored prompts (12 matched-guise pairs + 4 unmarked baselines)</span>
+                </a>
+                <a class="download-link" href="projects/invisible_knapsack_llm/data/knapsack_responses_pilot_scored.csv" download>
+                    <strong>knapsack_responses_pilot_scored.csv</strong>
+                    <span>140 pilot responses across 5 models with blind Llama-3.3-70B scores</span>
+                </a>
+                <a class="download-link" href="projects/invisible_knapsack_llm/run_knapsack_audit.py" download>
+                    <strong>run_knapsack_audit.py</strong>
+                    <span>Hugging Face InferenceClient batch runner (--pilot / --full)</span>
+                </a>
+                <a class="download-link" href="projects/invisible_knapsack_llm/score_knapsack_pilot.py" download>
+                    <strong>score_knapsack_pilot.py</strong>
+                    <span>Name-masking blind judge scorer for attribution, coaching &amp; friction</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal · Political Science &amp; Technology</p>
+        </div>
+    </footer>
+</body>
+
+</html>
