@@ -1,0 +1,61 @@
+tract_id,neighborhood_name,median_income_k,housing_cost_burden_pct,transit_access_score,tree_canopy_pct,broadband_gap_pct,civic_turnout_pct
+T01,Oakridge Heights,142.5,24.1,28.4,46.2,3.1,78.4
+T02,Westlake Terrace,156.2,21.8,24.0,51.0,2.4,81.2
+T03,Sycamore Hills,134.8,26.3,31.2,43.5,3.8,74.9
+T04,Conejo Vista,148.0,22.9,26.5,48.7,2.9,79.1
+T05,Meadowbrook Estates,162.4,19.7,22.1,53.4,1.9,82.6
+T06,Laurel Ridge,138.9,25.0,29.8,44.8,3.4,76.3
+T07,Pinecrest Canyon,151.3,23.2,25.7,49.5,2.6,80.0
+T08,Briarwood Glen,129.6,27.5,33.0,41.2,4.2,73.5
+T09,Alder Creek North,145.7,23.8,27.3,47.1,3.0,77.8
+T10,Silveroak Preserve,159.1,20.5,23.4,52.1,2.2,81.9
+T11,Sunset Foothills,136.4,25.9,30.5,43.9,3.6,75.4
+T12,Hidden Valley Rim,154.0,22.1,24.9,50.3,2.5,80.7
+T13,Cedar Knolls,141.2,24.6,28.9,45.6,3.2,77.1
+T14,Highland Oaks,149.8,22.5,26.1,48.9,2.8,79.5
+T15,Civic Core East,72.4,48.6,84.2,18.5,11.2,61.3
+T16,Station District,68.9,51.2,88.5,16.1,12.4,59.8
+T17,Midtown Promenade,78.3,45.9,81.0,21.4,9.8,64.2
+T18,Boulevard Lofts,75.1,47.3,85.6,19.2,10.7,62.5
+T19,Arts Quarter,82.6,44.1,79.4,22.8,9.1,66.0
+T20,Railroad Commons,65.8,52.8,90.1,15.3,13.1,58.4
+T21,Market Square,74.0,48.0,83.7,19.8,10.9,62.1
+T22,Union Crossing,70.5,49.7,86.9,17.4,11.8,60.6
+T23,Library Row,80.1,45.2,80.5,21.9,9.5,65.1
+T24,Transit Village,67.2,51.9,89.2,15.8,12.7,59.1
+T25,Central Plaza,76.8,46.6,82.3,20.5,10.2,63.4
+T26,Commerce Alley,71.9,49.1,85.0,18.0,11.5,61.0
+T27,Metro Gateway,69.4,50.4,87.4,16.9,12.1,60.1
+T28,Downtown West,79.2,45.5,81.6,21.1,9.6,64.7
+T29,Valley Floor South,46.3,58.4,49.2,12.4,26.8,43.2
+T30,Industrial Corridor,42.1,61.7,45.8,10.2,29.5,39.8
+T31,Eastside Gardens,49.8,56.1,52.6,14.1,24.3,45.9
+T32,Cypress Flats,44.7,59.9,47.5,11.6,27.9,41.7
+T33,Railside Terrace,39.5,63.2,44.1,9.4,31.2,38.4
+T34,Creekbed South,47.9,57.3,50.8,13.2,25.6,44.5
+T35,Freeway Edge,41.2,62.4,46.3,9.9,30.1,39.1
+T36,Arroyo Bajo,48.6,56.8,51.4,13.7,24.9,45.1
+T37,Millworks Tract,43.4,60.8,47.0,10.9,28.7,40.6
+T38,Warehouse Row,40.8,62.9,44.9,9.7,30.6,38.9
+T39,Sunbelt Apartments,51.2,54.9,53.9,14.8,23.1,46.8
+T40,Southgate Annex,45.5,59.1,48.4,12.0,27.3,42.3
+T41,Canal District,42.9,61.2,46.1,10.5,29.0,40.2
+T42,Riverbend South,47.1,57.9,50.1,12.9,26.1,43.8
+T43,Greenbelt Suburb,96.4,35.2,54.0,32.5,8.4,68.2
+T44,Parkside Village,103.8,33.1,58.2,35.1,7.3,70.5
+T45,Cloverdale Commons,91.5,37.4,51.8,30.2,9.6,66.4
+T46,University Terrace,99.2,34.6,56.5,33.8,7.9,69.1
+T47,Maple Grove,107.1,31.9,59.7,36.4,6.8,71.8
+T48,Botanical Row,94.0,36.3,53.1,31.4,9.0,67.3
+T49,Schoolhouse Lane,101.6,33.8,57.3,34.5,7.5,69.8
+T50,Heritage Park,89.7,38.1,50.4,29.6,10.1,65.7
+T51,Orchard Way,105.3,32.5,58.9,35.7,7.1,71.1
+T52,Elmwood Crossing,97.8,34.9,55.2,33.1,8.2,68.7
+T53,Library Hills,93.1,36.7,52.5,30.9,9.2,67.0
+T54,Civic Meadow,100.4,34.2,56.9,34.0,7.7,69.4
+T55,Bayside Corridor,108.5,31.4,60.4,36.9,6.5,72.2
+T56,Fairview Heights,95.2,35.8,53.6,31.9,8.7,67.8
+T57,Tech Campus Enclave,215.0,14.2,72.0,38.0,0.8,88.5
+T58,Airport Cargo Zone,34.0,31.5,18.2,4.1,41.0,22.4
+T59,University Dorm Complex,28.5,74.8,93.5,27.0,4.5,54.0
+T60,Rural Mountain Preserve,118.0,29.0,6.5,78.4,38.5,71.0
