@@ -213,27 +213,42 @@
         </section>
 
         <section class="section-card">
-            <h2>2. Pilot Audit Architecture (5 Models &times; 28 Probes)</h2>
+            <h2>2. Exact Methodology &amp; Pilot Design</h2>
             <div class="method-grid">
                 <div class="method-step">
                     <div class="step-tag">Stage 1 · Matched-Guise &amp; Baseline Probes</div>
                     <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
-                        Built <strong>12 matched-guise pairs</strong> (<code>24</code> prompts) varying <code>white_coded</code> vs. <code>black_coded</code> names across 4 dimensions: <code>individual_vs_group_attribution</code>, <code>entitlement_vs_deescalation</code>, <code>frictionless_belonging</code>, and <code>institutional_benefit_of_doubt</code>—plus <strong>4 unmarked baseline probes</strong> testing default character generation and canonical centering.
+                        Built <strong>12 matched-guise pairs</strong> (<code>24</code> prompts) varying only <code>white_coded</code> vs. <code>black_coded</code> names across 4 McIntosh dimensions: <code>individual_vs_group_attribution</code>, <code>entitlement_vs_deescalation</code>, <code>frictionless_belonging</code>, and <code>institutional_benefit_of_doubt</code>—plus <strong>4 unmarked baseline probes</strong> (<code>MK13_U</code>–<code>MK16_U</code>) testing default character generation and canonical centering.
                     </p>
                 </div>
                 <div class="method-step">
                     <div class="step-tag">Stage 2 · Multi-Model Hugging Face Run</div>
                     <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
-                        Queried <code>meta-llama/Llama-3.1-8B-Instruct</code>, <code>Qwen/Qwen3.5-9B</code>, <code>google/gemma-3-12b-it</code>, <code>openai/gpt-oss-20b</code>, and <code>deepseek-ai/DeepSeek-V3.2</code> via Hugging Face Inference Providers (<code>140</code> total calls; <code>118</code> non-empty, <code>22</code> empty from reasoning models at <code>max_tokens=320</code>).
+                        Queried <code>meta-llama/Llama-3.1-8B-Instruct</code> (8B), <code>Qwen/Qwen3.5-9B</code> (9B), <code>google/gemma-3-12b-it</code> (12B), <code>openai/gpt-oss-20b</code> (20B-OSS), and <code>deepseek-ai/DeepSeek-V3.2</code> (Frontier-MoE) via Hugging Face <code>InferenceClient.chat_completion</code> (<code>temperature=0.3</code>, <code>max_tokens=320</code>). Of <code>140</code> calls, <code>118</code> returned <code>ok</code> and <code>22</code> returned <code>empty</code> (reasoning models exhausting <code>320</code> tokens).
                     </p>
                 </div>
                 <div class="method-step">
                     <div class="step-tag">Stage 3 · Blind Judge Scoring</div>
                     <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
-                        Masked character names as <code>[PERSON]</code> before having <code>meta-llama/Llama-3.3-70B-Instruct</code> blindly code <code>attribution_frame</code>, <code>coaching_stance</code>, <code>suspicion_or_friction</code>, and <code>token_perspective_expected</code>.
+                        Replaced every character name token (&gt;2 chars) with <code>[PERSON]</code> before passing masked responses (plus <code>dimension</code>, without <code>condition</code> or <code>name_cue</code>) to <code>meta-llama/Llama-3.3-70B-Instruct</code> at <code>temperature=0.0</code> for strict JSON classification.
                     </p>
                 </div>
             </div>
+
+            <h3>What <code>white_coded</code>, <code>black_coded</code>, and Matched-Guise Pairs Mean</h3>
+            <p style="line-height: 1.65;">
+                No prompt ever mentions race, skin color, or ethnicity. Instead, each matched-guise pair (<code>MK01</code>–<code>MK12</code>) holds every factual detail, setting, behavior, and length instruction <strong>word-for-word identical</strong> while swapping only a first-and-last name strongly associated in U.S. audit-study and Census research with White versus Black Americans:
+            </p>
+            <ul style="line-height: 1.65; color: var(--text-muted); padding-left: 1.2rem;">
+                <li><strong><code>white_coded</code> (12 probes):</strong> <code>Connor Walsh</code>, <code>Emily Gallagher</code>, <code>Greg Becker</code>, <code>Hannah Meyer</code>, <code>Brett Sullivan</code>, <code>Claire Novak</code>, <code>Ryan O'Connor</code>, <code>Bradford Miller</code>, <code>Megan Anderson</code>, <code>Jake Peterson</code>, <code>Scott Hoffman</code>, <code>Molly Krueger</code>.</li>
+                <li><strong><code>black_coded</code> (12 probes):</strong> <code>DeShawn Washington</code>, <code>Lakisha Robinson</code>, <code>Tyrone Jefferson</code>, <code>Tamika Brooks</code>, <code>Darnell Jackson</code>, <code>Keisha Coleman</code>, <code>Jamal Williams</code>, <code>Terrell Jenkins</code>, <code>Shanice Dorsey</code>, <code>Malik Freeman</code>, <code>Andre Mosley</code>, <code>Ebony Banks</code>.</li>
+                <li><strong><code>unmarked_baseline</code> (4 probes, <code>n=16</code> valid):</strong> Contains zero name cues, measuring who the model generates as a "typical American family," "trustworthy senior financial advisor," "8 essential books," or "neighborhood watch volunteer."</li>
+            </ul>
+
+            <h3>How Percentages &amp; Blind Scoring Work</h3>
+            <p style="line-height: 1.65;">
+                Each matched condition attempted <code>5 models &times; 12 probes = 60</code> queries. After excluding <code>empty</code> responses (<code>8</code> in <code>white_coded</code>, <code>10</code> in <code>black_coded</code>), <strong><code>n=52</code></strong> valid <code>white_coded</code> and <strong><code>n=50</code></strong> valid <code>black_coded</code> responses remained. Every percentage in Section 3 is <code>(count of valid ok responses receiving that blind-judge label) &divide; (n valid responses in that condition)</code>, pooled across all 5 models. Note that while <code>mask_names</code> hides protagonist names from the judge, any racialized concept introduced by the model itself (such as <em>"potentially profiling"</em> or <em>"civil rights"</em>) remains visible to the judge as part of the measured output.
+            </p>
         </section>
 
         <section class="section-card">
@@ -323,3 +338,4 @@
 </body>
 
 </html>
+
