@@ -323,6 +323,33 @@
                 </a>
             </div>
         </section>
+
+        <section class="section-card" id="guide-llm-transparency">
+            <h2>5. AI Transparency &amp; Reporting Checklist (GUIDE-LLM)</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+                Standardized reporting per <strong>GUIDE-LLM</strong> (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <code>10.1038/s41562-026-02492-7</code>). LLMs were used strictly for <strong>research framing and scraper code generation</strong>; per PI decision, 6-frame classification is reserved for PI-trained supervised/human coding rather than zero-shot LLM labeling.
+            </p>
+            <details style="margin-top: 0.75rem;">
+                <summary style="cursor: pointer; font-weight: 700; color: var(--accent-color);">View Complete GUIDE-LLM Reporting Table (Items A.1&ndash;G.1)</summary>
+                <div style="overflow-x: auto; margin-top: 0.9rem;">
+                    <table class="audit-table">
+                        <thead>
+                            <tr><th style="width: 28%;">Checklist Item</th><th>Project Disclosure</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>A.1 Scope of LLM use</strong></td><td><em>Research design &amp; code generation only:</em> Adapting the PI's 2008 3-theme / 6-frame typology to Campus AI Growth Machines &amp; Anti-Regimes, compiling <code>flagship_boards_50.csv</code>, and authoring <code>scrape_regents_ai.py</code>. <strong>No LLMs were used to extract or classify snippets.</strong></td></tr>
+                            <tr><td><strong>A.2 Degree of automation</strong></td><td>Human-in-the-loop oversight by PI (Dr. Jose Marichal), who explicitly directed root-domain fallback discovery and opted out of automated LLM classification in favor of PI-led classifier training.</td></tr>
+                            <tr><td><strong>B.1&ndash;B.5 Model &amp; system details</strong></td><td>Antigravity agentic coding assistant (Google DeepMind, accessed Nov 20&ndash;21, 2026). Corpus extraction itself is 100% deterministic Python (<code>requests</code>, <code>BeautifulSoup</code>, <code>pypdf 6.19.0</code>, regex windowing).</td></tr>
+                            <tr><td><strong>C.1&ndash;C.2 Prompts &amp; instructions</strong></td><td>N/A for corpus extraction or labeling (deterministic regex <code>AI_TERMS_RE</code> in <code>scrape_regents_ai.py</code>).</td></tr>
+                            <tr><td><strong>D.1 Personal/sensitive data &amp; privacy</strong></td><td>Strictly official public meeting minutes and agenda packets of state flagship university governing boards published under state open-meetings laws.</td></tr>
+                            <tr><td><strong>E.1&ndash;E.2 Validation &amp; post-processing</strong></td><td>Automated HTTP status &amp; fallback logging across all 50 boards (<code>47/50</code> HTTP <code>200 OK</code>, <code>1,066</code> docs scanned), whitespace normalization, and non-overlapping <code>&plusmn;400/450</code>-character context windows (<code>381</code> snippets across <code>28</code> states).</td></tr>
+                            <tr><td><strong>F.1 Reproducibility</strong></td><td>Yes &mdash; <code>flagship_boards_50.csv</code>, <code>scrape_regents_ai.py</code>, coverage logs, and extracted CSV/JSONL corpora are shared in Section 4 above.</td></tr>
+                            <tr><td><strong>G.1 Competing interests</strong></td><td>No competing financial or professional relationships with LLM providers.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </section>
     </main>
 
     <footer>
@@ -333,3 +360,4 @@
 </body>
 
 </html>
+

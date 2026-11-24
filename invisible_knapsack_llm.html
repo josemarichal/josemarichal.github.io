@@ -339,6 +339,40 @@
                 </a>
             </div>
         </section>
+
+        <section class="section-card" id="guide-llm-transparency">
+            <h2>5. AI Transparency &amp; Reporting Checklist (GUIDE-LLM)</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+                Standardized reporting per <strong>GUIDE-LLM</strong> (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <code>10.1038/s41562-026-02492-7</code>), separating stimuli/code co-design, audited subject LLMs, and the blind name-masked evaluator LLM.
+            </p>
+            <details style="margin-top: 0.75rem;">
+                <summary style="cursor: pointer; font-weight: 700; color: var(--accent-color);">View Complete GUIDE-LLM Reporting Table (Items A.1&ndash;G.1 &amp; Optional Items)</summary>
+                <div style="overflow-x: auto; margin-top: 0.9rem;">
+                    <table class="audit-table">
+                        <thead>
+                            <tr><th style="width: 28%;">Checklist Item</th><th>Project Disclosure</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>A.1 Scope of LLM use</strong></td><td>(1) <em>Research design &amp; code generation:</em> Operationalizing McIntosh (1989) items into 28 matched-guise/baseline vignettes and authoring Python audit scripts; (2) <em>LLM as research object:</em> Auditing 5 open-weight/frontier LLMs for covert everyday privilege; (3) <em>LLM as evaluator:</em> Blind JSON coding of masked responses.</td></tr>
+                            <tr><td><strong>A.2 Degree of automation</strong></td><td>Human-in-the-loop review of all 28 probes and qualitative outputs by PI (Dr. Jose Marichal); automated stateless API execution (<code>140</code> pilot calls) and blind scoring (<code>118</code> non-empty responses).</td></tr>
+                            <tr><td><strong>B.1 Model details (ID, size, access date)</strong></td><td><em>Audited pilot models (accessed Nov 22&ndash;23, 2026 via Hugging Face):</em> <code>meta-llama/Llama-3.1-8B-Instruct</code> (8B), <code>Qwen/Qwen3.5-9B</code> (9B), <code>google/gemma-3-12b-it</code> (12B), <code>openai/gpt-oss-20b</code> (20B-OSS), <code>deepseek-ai/DeepSeek-V3.2</code> (Frontier-MoE).<br><em>Blind evaluator:</em> <code>meta-llama/Llama-3.3-70B-Instruct</code> (70B).<br><em>Code/design assistant:</em> Antigravity (Google DeepMind).</td></tr>
+                            <tr><td><strong>B.2 Access &amp; context mode</strong></td><td>Hugging Face <code>InferenceClient.chat_completion</code> API; stateless single-turn calls with zero memory across `_W` and `_B` matched-guise pairs.</td></tr>
+                            <tr><td><strong>B.3 Configurations</strong></td><td><em>Audited models:</em> <code>temperature=0.3</code>, <code>max_tokens=320</code>, 1 run per prompt.<br><em>Blind evaluator:</em> <code>temperature=0.0</code>, <code>max_tokens=120</code>.</td></tr>
+                            <tr><td><strong>B.4 Customizations</strong></td><td>Standard instruct/RLHF post-trained models as served on Hugging Face; no fine-tuning, no RAG, and no web search for audited or evaluator models.</td></tr>
+                            <tr><td><strong>B.5 Persistent memory</strong></td><td>No (each prompt evaluated in an isolated stateless API call).</td></tr>
+                            <tr><td><strong>C.1 Exact prompts reported</strong></td><td>Yes &mdash; all 28 prompts in <code>mcintosh_probes.csv</code> and exact <code>JUDGE_PROMPT</code> in <code>score_knapsack_pilot.py</code> are linked in Section 4 above.</td></tr>
+                            <tr><td><strong>C.2 System instructions</strong></td><td>Audited models: <code>"You are a helpful, concise assistant. Follow the user's length instructions."</code> Evaluator: inline JSON rubric prompt (no separate system prompt).</td></tr>
+                            <tr><td><strong>D.1 Personal/sensitive data &amp; privacy</strong></td><td>100% synthetic vignettes using fictional audit-study names; zero human-subjects or personally identifiable data. Protagonist names are masked as <code>[PERSON]</code> prior to evaluator scoring.</td></tr>
+                            <tr><td><strong>E.1 Human validation</strong></td><td>PI qualitative audit of raw paired outputs (identifying class/aesthetic coding in <code>MK08</code> and unmarked defaults in <code>MK13_U</code>&ndash;<code>MK14_U</code> that coarse categorical labels missed).</td></tr>
+                            <tr><td><strong>E.2 Post-processing</strong></td><td>Regex masking of protagonist name tokens (&gt;2 chars) to <code>[PERSON]</code>; regex extraction of JSON block from evaluator output; exclusion of <code>22</code> empty reasoning-truncated responses from valid percentage denominators (<code>n=52</code> <code>white_coded</code>, <code>n=50</code> <code>black_coded</code>, <code>n=16</code> <code>unmarked_baseline</code>).</td></tr>
+                            <tr><td><strong>F.1 Reproducibility</strong></td><td>Yes &mdash; probes, runner, blind scorer, raw pilot responses, and scored dataset are publicly downloadable in Section 4 above.</td></tr>
+                            <tr><td><strong>G.1 Competing interests</strong></td><td>No competing financial or professional relationships with LLM providers.</td></tr>
+                            <tr><td><strong>Optional items (Bias, Ethics &amp; Compute)</strong></td><td><em>Study focus:</em> Bias/privilege asymmetry across matched-guise racial cues is the primary dependent variable.<br><em>Compute &amp; cost:</em> <code>140</code> generation calls + <code>118</code> blind-judge calls (&lt;$0.10 total Hugging Face API compute).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </section>
     </main>
 
     <footer>

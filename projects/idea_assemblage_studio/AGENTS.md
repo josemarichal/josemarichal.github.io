@@ -27,6 +27,7 @@ A tactile writing & thinking crucible inspired by artist Betye Saar. Collide fou
 | 2026-09-29 | **Betye Saar Found-Object Methodology** | Structured the idea collision crucible around 4 liberal arts quadrants: Science, Humanities, Arts, and Social Science. |
 | 2026-09-29 | **Local Desktop App & Web Deployment** | Built standalone HTML/JS canvas application with local python launcher (`launch_assemblage.py`). |
 | 2026-10-06 | **Showcase Realignment to AI Tools** | Realigned from the Technology and Society Working Group research focus in `projects.html` into `ai_tools.html` under Featured Applications and Custom AI Tools & Assistants. |
+| 2026-11-24 | **Appended GUIDE-LLM AI Transparency Checklist (`idea_assemblage.html`)** | Added standardized GUIDE-LLM disclosure (*Feuerriegel et al., 2026*) distinguishing agentic UI authoring via Antigravity from the pure client-side human writing crucible (zero live LLM inference during user sessions). |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

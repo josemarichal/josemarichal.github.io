@@ -22,6 +22,7 @@ A nomadic AI collaborator for non-linear thinking (Gemini Gem).
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
 | 2026-10-04 | **Card Added to Civic AI Portfolio** | Added to projects.html under Civic AI Prototype. |
+| 2026-11-24 | **Appended GUIDE-LLM AI Transparency Checklist (`project_deleuze_rhizome.html`)** | Added standardized GUIDE-LLM disclosure (*Feuerriegel et al., 2026*) documenting the Deleuzian philosophical collaborator Gemini Gem. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

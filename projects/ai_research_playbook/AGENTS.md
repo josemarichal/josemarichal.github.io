@@ -22,6 +22,7 @@ Interactive lab for extracting rigorous reasoning from LLMs (Gemini Gem).
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
 | 2026-10-04 | **Card Added to Civic AI Portfolio** | Added to projects.html under Civic AI Prototype. |
+| 2026-11-24 | **Appended GUIDE-LLM AI Transparency Checklist (`project_ai_research_playbook.html`)** | Added standardized GUIDE-LLM disclosure (*Feuerriegel et al., 2026*) documenting the 5-mode reasoning Gemini Gem and integrated Python verification workflow. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

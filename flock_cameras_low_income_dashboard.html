@@ -753,6 +753,33 @@
             </div>
         </div>
 
+        <section id="guide-llm-transparency" style="margin: 2.5rem 0 1rem 0; padding: 1.5rem; background: var(--surface-color); border: 1.5px solid var(--border-color);">
+            <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">AI Transparency &amp; Reporting Checklist (GUIDE-LLM)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.55;">
+                Standardized disclosure per <strong>GUIDE-LLM</strong> (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <code>10.1038/s41562-026-02492-7</code>). Empirical extraction and Deborah Stone metaphor coding in this study use <strong>deterministic streaming &amp; weighted regex rules</strong> rather than generative LLM inference.
+            </p>
+            <details style="margin-top: 0.75rem;">
+                <summary style="cursor: pointer; font-weight: 700; font-size: 0.88rem;">View Complete GUIDE-LLM Reporting Table (Items A.1&ndash;G.1)</summary>
+                <div style="overflow-x: auto; margin-top: 0.85rem;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.83rem;">
+                        <thead>
+                            <tr style="border-bottom: 1.5px solid var(--border-color); text-align: left;"><th style="padding: 0.5rem; width: 28%;">Checklist Item</th><th style="padding: 0.5rem;">Project Disclosure</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>A.1 Scope of LLM use</strong></td><td style="padding: 0.5rem;"><em>Code generation &amp; research synthesis:</em> Agentic authoring of streaming tar extractor (<code>stream_flock_extractor.py</code>), regex metaphor classifier (<code>classify_stone_metaphors.py</code>), Census FTP matcher (<code>fetch_census_income.py</code>), and interactive dashboard. <strong>No generative LLM calls were used to classify the 3,581 council snippets.</strong></td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>A.2 Degree of automation</strong></td><td style="padding: 0.5rem;">Human-in-the-loop oversight by PI (Dr. Jose Marichal) over Stone's 7-category metaphor lexicon, income-tier thresholds, and removal of editorial interpretation from the public portal.</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>B.1&ndash;B.5 Model &amp; system details</strong></td><td style="padding: 0.5rem;">Antigravity agentic coding assistant (Google DeepMind, Oct&ndash;Nov 2026) for pipeline authoring; empirical coding executed deterministically in local Python (<code>METAPHOR_PATTERNS</code> weighted regex over Harvard Dataverse LocalView V3 + U.S. Census ACS 5-Year tables).</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>C.1&ndash;C.2 Prompts &amp; instructions</strong></td><td style="padding: 0.5rem;">N/A for empirical snippet coding (exact regex patterns published in <code>classify_stone_metaphors.py</code>).</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>D.1 Personal/sensitive data &amp; privacy</strong></td><td style="padding: 0.5rem;">Public municipal council transcripts from Harvard Dataverse LocalView V3 and aggregate U.S. Census ACS 5-Year municipal indicators (<code>B19013</code>, <code>B01003</code>, <code>B17001</code>).</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>E.1&ndash;E.2 Validation &amp; post-processing</strong></td><td style="padding: 0.5rem;"><code>&plusmn;100</code>-word context window extraction around ALPR/Flock mentions across <code>37,655</code> 2025+ meetings (<code>3,581</code> snippets, <code>124</code> Stone metaphor hits across <code>270</code> Census-matched jurisdictions; 100% FIPS match verified).</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>F.1 Reproducibility</strong></td><td style="padding: 0.5rem;">Yes &mdash; all Python scripts, coded CSVs, and Census cross-tabulations are linked for download on this page.</td></tr>
+                            <tr><td style="padding: 0.5rem;"><strong>G.1 Competing interests</strong></td><td style="padding: 0.5rem;">No competing financial or professional relationships with LLM or ALPR vendors.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </section>
+
             </main>
 
     <footer>

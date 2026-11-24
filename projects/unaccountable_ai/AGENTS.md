@@ -28,6 +28,7 @@ Should we let AI go rogue? Investigating opaque automated moderation, algorithmi
 | 2026-11-17 | **Linked Meta Takedown Study (`n=429`) from `projects.html`** | Added direct link to `projects/unaccountable_ai/meta_takedowns_map.html` and summary of the Google News RSS, Reddit, and Bluesky takedown exhaust study to the Unaccountable AI card on the Technology and Society Working Group page (`projects.html`). |
 | 2026-10-04 | **Card Added to Civic AI Portfolio** | Added to projects.html under Civic AI Prototype. |
 | 2026-11-02 | **Meta Page Takedown Exhaust Harvester & UMAP Clustering** | Built a multi-source "takedown exhaust" pipeline (`harvest_meta_takedowns.py` + `cluster_meta_takedowns.py`) harvesting 429 press/community reports of Facebook & Instagram pages shut down or suspended by Meta's automated moderation, embedding them with `all-MiniLM-L6-v2` + UMAP, and clustering into 7 page-type & moderation-trigger archetypes (`meta_takedowns_map.html`). |
+| 2026-11-24 | **Appended GUIDE-LLM AI Transparency Checklist (`projects/unaccountable_ai/meta_takedowns_map.html`)** | Added standardized GUIDE-LLM disclosure (*Feuerriegel et al., 2026*) documenting local `sentence-transformers/all-MiniLM-L6-v2` embeddings + UMAP + K-Means (`k=7`) + regex taxonomy coding and agentic authoring via Antigravity. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

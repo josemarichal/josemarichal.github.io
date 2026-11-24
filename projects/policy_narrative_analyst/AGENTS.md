@@ -22,6 +22,7 @@ Decomposing political speeches into Structure, Valence, and Causality (Gemini Ge
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
 | 2026-10-04 | **Card Added to Civic AI Portfolio** | Added to projects.html under Civic AI Prototype. |
+| 2026-11-24 | **Appended GUIDE-LLM AI Transparency Checklist (`project_policy_narrative.html`)** | Added standardized GUIDE-LLM disclosure (*Feuerriegel et al., 2026*) documenting the hosted Google Gemini Gem narrative decomposition assistant. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 

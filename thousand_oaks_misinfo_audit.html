@@ -396,6 +396,40 @@
                     </div>
                 </section>
 
+                <section class="section-card" id="guide-llm-transparency" style="margin-top: 2rem;">
+                    <h2>5. AI Transparency &amp; Reporting Checklist (GUIDE-LLM)</h2>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+                        Standardized reporting per <strong>GUIDE-LLM</strong> (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <code>10.1038/s41562-026-02492-7</code>), separating agentic pipeline authoring from audited models and the blind stance evaluator.
+                    </p>
+                    <details style="margin-top: 0.75rem;">
+                        <summary style="cursor: pointer; font-weight: 700; color: var(--accent-color);">View Complete GUIDE-LLM Reporting Table (Items A.1&ndash;G.1 &amp; Optional Items)</summary>
+                        <div style="overflow-x: auto; margin-top: 0.9rem;">
+                            <table class="audit-table">
+                                <thead>
+                                    <tr><th style="width: 28%;">Checklist Item</th><th>Project Disclosure</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>A.1 Scope of LLM use</strong></td><td>(1) <em>Code &amp; stimuli assistance:</em> Agentic authoring of runner/scorer scripts and matched TRUE/FALSE claim pairs grounded in verified Sept 2026 &amp; 2024 Thousand Oaks records; (2) <em>LLM as research object:</em> Auditing 12 open-weight LLMs on municipal misinformation; (3) <em>LLM as evaluator:</em> Blind 3-class stance &amp; fabrication classification.</td></tr>
+                                    <tr><td><strong>A.2 Degree of automation</strong></td><td>Human-in-the-loop oversight by PI (Dr. Jose Marichal) on all 20 ground-truth municipal claims and rubric design; automated batch inference and blind scoring across <code>n=480</code> model calls.</td></tr>
+                                    <tr><td><strong>B.1 Model details (ID, size, access date)</strong></td><td><em>Audited models (accessed Nov 18, 2026 via Hugging Face):</em> <code>meta-llama/Llama-3.2-3B-Instruct</code> (3B), <code>google/gemma-3-4b-it</code> (4B), <code>meta-llama/Llama-3.1-8B-Instruct</code> (8B), <code>Qwen/Qwen3.5-9B</code> (9B), <code>google/gemma-3-12b-it</code> (12B), <code>microsoft/phi-4</code> (14B), <code>openai/gpt-oss-20b</code> (20B), <code>Qwen/Qwen3-32B</code> (32B), <code>meta-llama/Llama-3.3-70B-Instruct</code> (70B), <code>openai/gpt-oss-120b</code> (120B), <code>deepseek-ai/DeepSeek-V3.2</code> (MoE), <code>CohereLabs/c4ai-command-a-03-2025</code> (Command-A).<br><em>Blind evaluator:</em> <code>meta-llama/Llama-3.3-70B-Instruct</code>.<br><em>Code assistant:</em> Antigravity (Google DeepMind).</td></tr>
+                                    <tr><td><strong>B.2 Access &amp; context mode</strong></td><td>Hugging Face <code>InferenceClient</code> API (<code>huggingface_hub</code>); strictly stateless, independent single-turn calls (zero cross-query conversation context).</td></tr>
+                                    <tr><td><strong>B.3 Configurations</strong></td><td><em>Audited models:</em> <code>temperature=0.0</code>, <code>max_tokens=180</code> (<code>1024</code> for reasoning models <code>Qwen3.5-9B</code>, <code>Qwen3-32B</code>, <code>gpt-oss-20b</code>, <code>gpt-oss-120b</code>), 1 run per cell.<br><em>Blind evaluator:</em> <code>temperature=0.0</code>, <code>max_tokens=60</code>.</td></tr>
+                                    <tr><td><strong>B.4 Customizations</strong></td><td>Base/instruct post-trained weights as hosted on Hugging Face; no fine-tuning, no RAG, and no web-search access enabled for audited or evaluator models.</td></tr>
+                                    <tr><td><strong>B.5 Persistent memory</strong></td><td>No (stateless API calls for all 480 audit queries and 470 evaluator calls).</td></tr>
+                                    <tr><td><strong>C.1 Exact prompts reported</strong></td><td>Yes &mdash; exact <code>direct_verification</code> and <code>false_premise_voter_guide</code> prompt templates and judge prompt are shared in <code>run_hf_misinfo_audit.py</code>, <code>classify_stance_hf.py</code>, and <code>to_council_claims.csv</code>.</td></tr>
+                                    <tr><td><strong>C.2 System instructions</strong></td><td>Audited models received <code>SYSTEM_PROMPT</code> instructing concise answers and explicit uncertainty when local votes cannot be verified; evaluator received <code>JUDGE_SYSTEM</code> defining <code>AGREES</code>, <code>NEUTRAL</code>, <code>DISAGREES</code>, and <code>contains_fabricated_detail</code>.</td></tr>
+                                    <tr><td><strong>D.1 Personal/sensitive data &amp; privacy</strong></td><td>None. Inputs consist solely of public municipal actions and official votes of the Thousand Oaks City Council, Planning Commission, and COSCA.</td></tr>
+                                    <tr><td><strong>E.1 Human validation</strong></td><td>PI verified all 20 municipal ground-truth claims against official Thousand Oaks agendas/minutes and inspected pilot outputs prior to full-grid execution.</td></tr>
+                                    <tr><td><strong>E.2 Post-processing</strong></td><td><code>parse_json_reply()</code> extracts JSON keys via regex with deterministic keyword fallback; <code>10</code> empty responses (<code>Qwen/Qwen3.5-9B</code>) were labeled <code>EMPTY</code> and excluded from scored denominators (<code>n=470</code> valid).</td></tr>
+                                    <tr><td><strong>F.1 Reproducibility</strong></td><td>Yes &mdash; full code, prompts, claims, raw responses, and scored CSVs are publicly linked in Section 4 above (API tokens excluded).</td></tr>
+                                    <tr><td><strong>G.1 Competing interests</strong></td><td>No competing financial or professional relationships with LLM providers.</td></tr>
+                                    <tr><td><strong>Optional items (Rationale, Leakage &amp; Compute)</strong></td><td><em>Temporal leakage control:</em> Paired <code>2024</code> (pre-cutoff) vs. <code>2026</code> (post-cutoff) claims explicitly test parametric memory vs. post-cutoff fabrication.<br><em>Compute &amp; cost:</em> <code>480</code> generation calls + <code>470</code> judge calls via Hugging Face Serverless/Inference Providers (&lt;$0.25 total API compute).</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                </section>
+
             </div>
         </div>
     </main>

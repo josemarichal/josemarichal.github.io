@@ -1135,6 +1135,33 @@
             </div>
         </div>
 
+        <section id="guide-llm-transparency" style="margin: 2.5rem 0 1rem 0; padding: 1.5rem; background: var(--surface-color); border: 1.5px solid var(--border-color);">
+            <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">AI Transparency &amp; Reporting Checklist (GUIDE-LLM)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.55;">
+                Standardized disclosure per <strong>GUIDE-LLM</strong> (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <code>10.1038/s41562-026-02492-7</code>). Council transcript coding (<code>N=1,629</code>), GSS 2022 clustering (<code>N=3,784</code>), and Boolean QCA minimization run via <strong>deterministic Python rules and statistical algorithms</strong>.
+            </p>
+            <details style="margin-top: 0.75rem;">
+                <summary style="cursor: pointer; font-weight: 700; font-size: 0.88rem;">View Complete GUIDE-LLM Reporting Table (Items A.1&ndash;G.1)</summary>
+                <div style="overflow-x: auto; margin-top: 0.85rem;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.83rem;">
+                        <thead>
+                            <tr style="border-bottom: 1.5px solid var(--border-color); text-align: left;"><th style="padding: 0.5rem; width: 28%;">Checklist Item</th><th style="padding: 0.5rem;">Project Disclosure</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>A.1 Scope of LLM use</strong></td><td style="padding: 0.5rem;"><em>Code generation &amp; template authoring:</em> Agentic authoring of transcript harvesters (<code>fetch_council_transcripts.py</code>), Stone 4-cell regex classifier (<code>classify_stone_causal_stories.py</code>), GSS clustering/QCA scripts, and dashboard UI. Empirical classification of the <code>1,629</code> hearing records uses deterministic weighted regex (<code>STONE_CAUSAL_PATTERNS</code>), and QCA uses Quine-McCluskey Boolean minimization.</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>A.2 Degree of automation</strong></td><td style="padding: 0.5rem;">Human-in-the-loop oversight by PI (Dr. Jose Marichal) over Stone's 2&times;2 causal taxonomy (<code>INTENTIONAL</code>, <code>INADVERTENT</code>, <code>MECHANICAL</code>, <code>ACCIDENTAL</code>, plus <code>DOES_NOT_FIT</code> sub-categories), GSS variable selection, and descriptive reporting.</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>B.1&ndash;B.5 Model &amp; system details</strong></td><td style="padding: 0.5rem;">Antigravity agentic coding assistant (Google DeepMind, Oct&ndash;Nov 2026) for script/UI development; local deterministic Python execution for GSS clustering, 500-episode calibrated NPF simulation, and regex transcript coding.</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>C.1&ndash;C.2 Prompts &amp; instructions</strong></td><td style="padding: 0.5rem;">N/A for empirical transcript coding (exact weighted regex patterns published in <code>classify_stone_causal_stories.py</code>).</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>D.1 Personal/sensitive data &amp; privacy</strong></td><td style="padding: 0.5rem;">Public municipal hearing transcripts (LocalView V3 / YouTube public council channels), public municipal moratorium records (<code>n=428</code>), and de-identified NORC GSS 2022 public-use microdata.</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>E.1&ndash;E.2 Validation &amp; post-processing</strong></td><td style="padding: 0.5rem;">Deduplication of <code>1,201</code> verbatim hearing snippets + <code>428</code> moratorium records (<code>N=1,629</code>) and disaggregation of <code>DOES_NOT_FIT</code> (<code>n=547</code>) into General Scope, Parliamentary Procedure, and Pro-Development Denial.</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.5rem;"><strong>F.1 Reproducibility</strong></td><td style="padding: 0.5rem;">Yes &mdash; all CSV/JSONL datasets, QCA truth tables, and Python scripts are shared for download on this portal.</td></tr>
+                            <tr><td style="padding: 0.5rem;"><strong>G.1 Competing interests</strong></td><td style="padding: 0.5rem;">No competing financial or professional relationships with LLM or data-center providers.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </section>
+
             </main>
 
     <footer>

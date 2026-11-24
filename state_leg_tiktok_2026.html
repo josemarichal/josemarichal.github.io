@@ -344,6 +344,33 @@
                 </a>
             </div>
         </section>
+
+        <section class="section-card" id="guide-llm-transparency">
+            <h2>5. AI Transparency &amp; Reporting Checklist (GUIDE-LLM)</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+                Standardized reporting per <strong>GUIDE-LLM</strong> (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <code>10.1038/s41562-026-02492-7</code>). In this project, LLMs were used strictly for <strong>agentic pipeline &amp; schema authoring</strong>; all video authenticity coding is reserved for human student coders.
+            </p>
+            <details style="margin-top: 0.75rem;">
+                <summary style="cursor: pointer; font-weight: 700; color: var(--accent-color);">View Complete GUIDE-LLM Reporting Table (Items A.1&ndash;G.1)</summary>
+                <div style="overflow-x: auto; margin-top: 0.9rem;">
+                    <table class="audit-table">
+                        <thead>
+                            <tr><th style="width: 28%;">Checklist Item</th><th>Project Disclosure</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>A.1 Scope of LLM use</strong></td><td><em>Code generation &amp; workflow scaffolding only:</em> Authoring Python scrapers (<code>discover_50_states.py</code>, <code>crawl_ballotpedia_states.py</code>, <code>collect_tiktok_urls.py</code>, <code>discover_ig_for_54.py</code>), SQLite schema, and student coding HTML/CSV exports. <strong>No LLMs were used to generate, transcribe, or score candidate videos.</strong></td></tr>
+                            <tr><td><strong>A.2 Degree of automation</strong></td><td>Human-in-the-loop direction and review by PI (Dr. Jose Marichal) over cohort selection, campaign date window (<code>2026-06-03</code> to <code>2026-11-15</code>), and rubric design; authenticity judgments are performed manually by undergraduate student coders.</td></tr>
+                            <tr><td><strong>B.1&ndash;B.5 Model &amp; system details</strong></td><td>Antigravity agentic coding assistant (Google DeepMind, accessed Nov 19&ndash;24, 2026) with tool-calling enabled in an interactive workspace session. N/A for dataset labeling (deterministic Python + <code>yt-dlp 2026.10.26</code> + <code>BeautifulSoup</code> + SQLite).</td></tr>
+                            <tr><td><strong>C.1&ndash;C.2 Prompts &amp; instructions</strong></td><td>N/A for empirical data generation/scoring (no LLM inference calls in data pipeline).</td></tr>
+                            <tr><td><strong>D.1 Personal/sensitive data &amp; privacy</strong></td><td>Publicly accessible campaign accounts and metadata of candidates seeking public state legislative office (OpenStates, Ballotpedia, Wikidata, public TikTok/Instagram profiles). Private accounts were skipped automatically.</td></tr>
+                            <tr><td><strong>E.1&ndash;E.2 Validation &amp; post-processing</strong></td><td>Automated deduplication by <code>tiktok_handle</code>, removal of Ballotpedia footer social links (<code>@ballotpedia</code>), and ISO date filtering to <code>2026-06-03..2026-11-15</code> (<code>745</code> of <code>2,643</code> TikTok videos; <code>51/54</code> paired Instagram handles). Subjective authenticity labels are validated via human student rubric coding.</td></tr>
+                            <tr><td><strong>F.1 Reproducibility</strong></td><td>Yes &mdash; all Python collection scripts, SQLite database, and CSV/HTML coding sheets are shared in Section 4 above.</td></tr>
+                            <tr><td><strong>G.1 Competing interests</strong></td><td>No competing financial or professional relationships with LLM providers.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </section>
     </main>
 
     <footer>

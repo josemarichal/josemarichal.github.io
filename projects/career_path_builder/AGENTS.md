@@ -23,6 +23,7 @@ Navigate career transitions by "acting like a local" using a 7-step framework (G
 | Date | Decision / Architectural Choice | Rationale & Context |
 | :--- | :--- | :--- |
 | 2026-10-04 | **Card Added to Civic AI Portfolio** | Added to projects.html under Civic AI Prototype. |
+| 2026-11-24 | **Appended GUIDE-LLM AI Transparency Checklist (`project_career_builder.html` & `project_career_navigator.html`)** | Added standardized GUIDE-LLM disclosures (*Feuerriegel et al., 2026*) documenting the 7-module "Acting Like a Local" Gemini Gem coaching workflow. |
 
 *(Agent instruction: When the user makes key decisions, adds dependencies, or changes project directions, append a new row above).* 
 
