@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 State Legislative TikTok Authenticity Database: Methodology &amp; Dataset | Jose Marichal</title>
+    <title>2026 State Legislative TikTok / Instagram Authenticity Database: Methodology &amp; Dataset | Jose Marichal</title>
     <link rel="stylesheet" href="style.css?v=5">
     <style>
         .audit-hero {
@@ -182,9 +182,9 @@
     <main class="container" style="max-width: 1020px; margin: 2.5rem auto; padding: 0 1.25rem;">
         <section class="audit-hero">
             <span class="audit-badge">Dataset &amp; Coding Methodology</span>
-            <h1 style="margin: 0 0 0.75rem 0; font-size: 1.95rem;">2026 State Legislative Candidate TikTok Authenticity Database</h1>
+            <h1 style="margin: 0 0 0.75rem 0; font-size: 1.95rem;">2026 State Legislative Candidate TikTok / Instagram Authenticity Database</h1>
             <p style="color: var(--text-muted); line-height: 1.65; margin: 0;">
-                A multi-state archive of TikTok video URLs and objective metadata from 2026 state legislative incumbents and challengers, built for human rubric coding of <strong>performances of authenticity</strong> during the general-election campaign window (<code>2026-06-03</code> to <code>2026-11-15</code>).
+                A multi-state archive of TikTok video URLs, paired Instagram profile/Reels links (<code>51/54</code> candidates matched), and objective metadata from 2026 state legislative incumbents and challengers, built for human rubric coding of <strong>performances of authenticity</strong> during the general-election campaign window (<code>2026-06-03</code> to <code>2026-11-15</code>).
             </p>
             <div class="stat-strip">
                 <div class="stat-box">
@@ -325,6 +325,22 @@
                 <a class="download-link" href="projects/ca_2026_tiktok_authenticity/collect_tiktok_urls.py" download>
                     <strong>collect_tiktok_urls.py</strong>
                     <span>Deduplicated yt-dlp collector with campaign-window date filtering</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/paired_ig_student_sheet.html" target="_blank" rel="noopener">
+                    <strong>paired_ig_student_sheet.html</strong>
+                    <span>51 paired Instagram profile &amp; Reels-tab links for manual cross-platform student coding</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/paired_ig_student_sheet.csv" download>
+                    <strong>paired_ig_student_sheet.csv</strong>
+                    <span>51 paired Instagram handles with blank student rubric &amp; post-URL columns</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/data/paired_54_instagram_handles.csv" download>
+                    <strong>paired_54_instagram_handles.csv</strong>
+                    <span>54 TikTok-active candidates cross-matched to Instagram handles &amp; discovery sources</span>
+                </a>
+                <a class="download-link" href="projects/ca_2026_tiktok_authenticity/discover_ig_for_54.py" download>
+                    <strong>discover_ig_for_54.py</strong>
+                    <span>Matches TikTok-active candidates to Instagram handles via OpenStates, campaign sites &amp; Ballotpedia</span>
                 </a>
             </div>
         </section>
