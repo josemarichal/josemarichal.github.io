@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>POLS 427: American Political Institutions Syllabus | Jose Marichal</title>
+    <link href="style.css?v=5" rel="stylesheet" />
+    <style>
+        /* Syllabus Specific Styles */
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .syllabus-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color, #0a0a0a);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display, 'Inter Tight', sans-serif);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .syllabus-header .course-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-muted, #475569);
+            margin-bottom: 0.75rem;
+        }
+
+        .syllabus-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.25rem;
+            text-align: left;
+            background: #ffffff;
+            padding: 1.5rem;
+            border: 2px solid var(--border-color, #0a0a0a);
+            box-shadow: 4px 4px 0px var(--border-color, #0a0a0a);
+            margin-top: 2rem;
+            color: var(--text-heading, #0a0a0a);
+        }
+
+        .meta-item {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--text-heading, #0a0a0a);
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-family: var(--font-mono, monospace);
+        }
+
+        .syllabus-unit {
+            margin-bottom: 3.5rem;
+        }
+
+        .syllabus-unit h2 {
+            font-family: var(--font-display, 'Inter Tight', sans-serif);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--primary-color, #0a0a0a);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 5px solid var(--accent-lime, #bdf000);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .syllabus-unit h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-color, #0a0a0a);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light, #deded8);
+            padding-bottom: 0.5rem;
+        }
+
+        .syllabus-unit p,
+        .syllabus-unit li {
+            line-height: 1.7;
+            color: var(--text-main, #2e2e2e);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .goal-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            padding: 1.25rem 1.5rem;
+            box-shadow: 3px 3px 0px var(--border-color, #0a0a0a);
+        }
+
+        .goal-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            font-family: var(--font-display, sans-serif);
+            color: var(--text-heading, #0a0a0a);
+            border-bottom: 1px solid var(--border-light, #deded8);
+            padding-bottom: 0.4rem;
+        }
+
+        .goal-card ul {
+            margin: 0;
+            padding-left: 1.25rem;
+            font-size: 0.92rem;
+        }
+
+        .goal-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        table.syllabus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background: #ffffff;
+            border: 2px solid var(--border-color, #0a0a0a);
+            box-shadow: 4px 4px 0px var(--border-color, #0a0a0a);
+            color: #0a0a0a;
+        }
+
+        table.syllabus-table th,
+        table.syllabus-table td {
+            padding: 0.9rem 1.1rem;
+            border: 1px solid var(--border-light, #deded8);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table.syllabus-table th {
+            background-color: #f6f6f4;
+            color: #0a0a0a;
+            font-weight: 700;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color, #0a0a0a);
+        }
+
+        table.syllabus-table tr:nth-child(even) {
+            background-color: #fafaf8;
+        }
+
+        .week-block {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            margin-bottom: 2rem;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 3px 3px 0px var(--border-color, #0a0a0a);
+        }
+
+        .week-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid var(--border-color, #0a0a0a);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .week-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary-color, #0a0a0a);
+            margin: 0;
+            font-family: var(--font-display, sans-serif);
+        }
+
+        .week-dates {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.88rem;
+            color: #555555;
+            background: #eeeeea;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid var(--border-light, #deded8);
+        }
+
+        .day-entry {
+            margin-bottom: 1.35rem;
+            padding-bottom: 1.1rem;
+            border-bottom: 1px dashed var(--border-light, #deded8);
+        }
+
+        .day-entry:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .day-entry .date {
+            font-weight: 700;
+            font-family: var(--font-mono, monospace);
+            background: var(--text-heading, #0a0a0a);
+            color: #ffffff;
+            padding: 0.15rem 0.55rem;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .day-entry .topic {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--primary-color, #0a0a0a);
+        }
+
+        .day-entry .speaker-tag {
+            background: #bdf000;
+            color: #0a0a0a;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.45rem;
+            font-family: var(--font-mono, monospace);
+            border: 1px solid #0a0a0a;
+            text-transform: uppercase;
+        }
+
+        .readings-list {
+            list-style: none;
+            padding-left: 0.75rem;
+            margin-top: 0.6rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .readings-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.45rem;
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+
+        .readings-list li::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted, #6e6e6e);
+            font-size: 0.9rem;
+        }
+
+        .readings-list a {
+            color: #0a0a0a;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .readings-list a:hover {
+            background-color: var(--accent-lime, #bdf000);
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .slide-link {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #0a0a0a;
+            border: 1px solid #0a0a0a;
+            padding: 0.1rem 0.45rem;
+            font-size: 0.75rem;
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .slide-link:hover {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .assignment-callout {
+            background: #fdfae7;
+            border-left: 4px solid #eab308;
+            padding: 0.85rem 1.1rem;
+            margin: 0.75rem 0;
+            font-size: 0.92rem;
+        }
+
+        .policy-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 2px 2px 0px var(--border-color, #0a0a0a);
+        }
+
+        .policy-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary-color, #0a0a0a);
+            font-family: var(--font-display, sans-serif);
+        }
+
+        .apd-reading-item {
+            margin-bottom: 0.85rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--border-light, #deded8);
+            font-size: 0.93rem;
+            line-height: 1.6;
+        }
+
+        .apd-reading-item a {
+            font-weight: 600;
+            color: #0a0a0a;
+            text-decoration: underline;
+        }
+
+        .apd-reading-item a:hover {
+            background: #bdf000;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .syllabus-header h1 {
+                font-size: 2rem;
+            }
+
+            .syllabus-meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .day-header {
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html" class="active">Teaching</a></li>
+                    <li><a href="projects.html">T&amp;S Working Group</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content-page">
+
+                <!-- Header -->
+                <div class="syllabus-header">
+                    <img alt="José Marichal" src="images/profile_sharpened.png"
+                        style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary-color, #0a0a0a);" />
+                    <h1>POLS 427: American Political Institutions</h1>
+                    <div class="course-subtitle">An American Political Development (APD) Perspective</div>
+
+                    <div class="syllabus-meta-grid">
+                        <div class="meta-item">
+                            <strong>Class Time &amp; Location</strong>
+                            Tuesday &amp; Thursday: 12:25pm &ndash; 2:05pm<br />
+                            HUM 117
+                        </div>
+                        <div class="meta-item">
+                            <strong>Instructor</strong>
+                            Jose Marichal, Ph.D.<br />
+                            Department of Political Science
+                        </div>
+                        <div class="meta-item">
+                            <strong>Office Hours</strong>
+                            Swenson 228<br />
+                            2:15pm &ndash; 3:15pm &amp; by appointment
+                        </div>
+                        <div class="meta-item">
+                            <strong>Contact</strong>
+                            E-mail: <a href="mailto:marichal@callutheran.edu">marichal@callutheran.edu</a><br />
+                            Level: Upper-Division (400-Level)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Description & Goals -->
+                <section class="syllabus-unit">
+                    <h2>Course Goals &amp; Overview</h2>
+                    <p>
+                        The study of American political institutions provides important context for understanding contemporary debates over critical policy issues. This class takes an <strong>American Political Development (APD)</strong> perspective to structure a semester-long exploration into why our political institutions behave the way they do. The course is organized in three distinct phases:
+                    </p>
+                    <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li><strong>Current Critiques of American Institutions:</strong> An examination of modern dysfunctions, with particular focus on gridlock, partisan sorting, democratic backsliding, and legislative inaction.</li>
+                        <li><strong>The Historical Evolution of the American State:</strong> Tracing key developmental ideas and inflection points over time, including the primacy of industry, American exceptionalism, race, and civil rights, with intensive emphasis on constitutional design and federalism.</li>
+                        <li><strong>Theories of Institutional Function &amp; Interaction:</strong> Explaining how core American institutions operate—including the legislative branch (House and Senate), executive and bureaucracy, judiciaries, political parties, and interest groups—with special attention paid to inter-branch relationships and coalitions.</li>
+                    </ol>
+                    <p>
+                        <em>Prerequisite Note:</em> Because this is a 400-level Political Science course, a foundational understanding of American government (akin to what one receives in an introductory American government or AP Government course) is assumed.
+                    </p>
+
+                    <!-- Learning Goals Grid -->
+                    <div class="goals-grid">
+                        <div class="goal-card">
+                            <h4>CLU General Education Goals</h4>
+                            <ul>
+                                <li>Written Communication Skills</li>
+                                <li>Understanding of Cultural and Global Diversity</li>
+                                <li>Critical Thinking</li>
+                                <li>Growth in Identity and Values</li>
+                                <li>Interpersonal and Teamwork Skills</li>
+                                <li>Service to the Community</li>
+                            </ul>
+                        </div>
+                        <div class="goal-card">
+                            <h4>Political Science Department Goals</h4>
+                            <ul>
+                                <li>Critical Thinking</li>
+                                <li>Civic Engagement</li>
+                                <li>Institutional &amp; Structural Analysis</li>
+                                <li>Evidence-Based Policy Assessment</li>
+                            </ul>
+                        </div>
+                        <div class="goal-card">
+                            <h4>Student Learning Outcomes (SLOs)</h4>
+                            <ul>
+                                <li>Employ multiple theoretical approaches to evaluate American political institutions.</li>
+                                <li>Exhibit rigorous critical thinking and effective scholarly writing through reflective essay assignments.</li>
+                                <li>Demonstrate the ability to utilize archival and empirical data to produce and present policy research.</li>
+                                <li>Find, evaluate, synthesize, and communicate complex institutional analysis in oral and written formats.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Course Assignments & Assessment -->
+                <section class="syllabus-unit">
+                    <h2>Course Assignments &amp; Grading</h2>
+                    <p>Your semester grade will be determined by performance across four core assignments totaling 100 points:</p>
+
+                    <div class="policy-card">
+                        <h4>1. Discussion Leadership &bull; 10 Points</h4>
+                        <p>
+                            One Friday during the semester, you will be responsible for leading class discussion on the readings assigned for that day. You will lead a discussion that draws out the central theoretical arguments and empirical claims from the readings. To guide your peers, you will prepare a set of thought-provoking questions for group discussion. In addition, you will write and submit a 
+                            <a href="http://www2.southeastern.edu/Academics/Faculty/elejeune/critique.htm" target="_blank">5&ndash;7 page critical analysis paper based on the readings</a>. Questions and responses will be evaluated on intellectual thoughtfulness, rigor, and clarity.
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>2. Class &amp; Discussion Participation &bull; 10 Points</h4>
+                        <p>
+                            Prior to class periods, you will post your reflections on the assigned readings as a comment on the class discussion forum. You will be expected to arrive in class prepared to actively discuss your reflections with peers, serving as the springboard for deeper inquiry into the topic. Evaluation focuses on consistent engagement, evidence of completed readings, and critical reflection.
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>3. Mid-Term &amp; Final Essay Exams &bull; 50 Points (2 &times; 25 pts)</h4>
+                        <p>
+                            We will evaluate our study of American political institutions through two comprehensive essay exams requiring you to apply foundational theories and APD concepts to current institutional dilemmas:
+                        </p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong><a href="https://docs.google.com/document/d/1PnzC_50xC4d8DQFKlfynixPhm4mx5mvQ6ZJ2DG_Ytsc/pub" target="_blank">Exam #1 (Take-Home Essay)</a> &bull; 25 Points:</strong> Handed out on March 6; due March 13. Covers foundational definitions of democracy, democratic backsliding, critiques of the state, exceptionalism, and legislative gridlock.</li>
+                            <li><strong><a href="https://docs.google.com/document/d/1ubS6NoYHXO_TbZP9ACWOB3TP7fqtYU3WQZojkllTlzY/pub" target="_blank">Exam #2 (Take-Home Essay)</a> &bull; 25 Points:</strong> Handed out on April 26; due May 5. Covers the presidency, bureaucracy, judicial politics, political parties, and interest-group mobilization.</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>4. Institutions Advocacy Project &amp; Presentation &bull; 30 Points</h4>
+                        <p>
+                            At the close of the semester, you will author a research-based policy brief addressed to an advocacy organization on a policy issue of your choosing detailing the institutional challenges and opportunities for achieving policy goals at the national level (<a href="https://docs.google.com/document/d/1vZbWsnqyvl1qnn31h7JHVB_2SM-R_4QpVArHBCR_iO0/pub" target="_blank">View Project Guidelines</a>).
+                        </p>
+                        <p>
+                            Acting as an institutional consultant, you will analyze why past efforts may have stalled (e.g., explaining why gun violence prevention legislation faces persistent congressional gridlock) and provide an actionable roadmap rooted in institutional design, history, and rules. The final paper is 10&ndash;15 pages in length, accompanied by a 5&ndash;10 minute conference-style presentation.
+                        </p>
+                    </div>
+
+                    <!-- Grading Scale Table -->
+                    <h3>Grading Scale &amp; Summary</h3>
+                    <table class="syllabus-table">
+                        <thead>
+                            <tr>
+                                <th>Assignment Component</th>
+                                <th>Point Value</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Discussion Leadership &amp; Critical Essay</td>
+                                <td>10 points</td>
+                                <td>10%</td>
+                            </tr>
+                            <tr>
+                                <td>Class Discussion &amp; Forum Participation</td>
+                                <td>10 points</td>
+                                <td>10%</td>
+                            </tr>
+                            <tr>
+                                <td>Exam #1 (Foundations &amp; Congress)</td>
+                                <td>25 points</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>Exam #2 (Presidency, Courts &amp; Parties)</td>
+                                <td>25 points</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>Institutions Advocacy Project &amp; Presentation</td>
+                                <td>30 points</td>
+                                <td>30%</td>
+                            </tr>
+                            <tr style="font-weight: 700; background-color: #f6f6f4;">
+                                <td>Total Accumulated Points</td>
+                                <td>100 points</td>
+                                <td>100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="syllabus-table">
+                        <thead>
+                            <tr>
+                                <th>Grade</th>
+                                <th>Points Range</th>
+                                <th>Grade</th>
+                                <th>Points Range</th>
+                                <th>Grade</th>
+                                <th>Points Range</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>A</strong></td>
+                                <td>92 &ndash; 100</td>
+                                <td><strong>B</strong></td>
+                                <td>82 &ndash; 87</td>
+                                <td><strong>C</strong></td>
+                                <td>72 &ndash; 77</td>
+                            </tr>
+                            <tr>
+                                <td><strong>A-</strong></td>
+                                <td>90 &ndash; 91</td>
+                                <td><strong>B-</strong></td>
+                                <td>80 &ndash; 81</td>
+                                <td><strong>C-</strong></td>
+                                <td>70 &ndash; 71</td>
+                            </tr>
+                            <tr>
+                                <td><strong>B+</strong></td>
+                                <td>88 &ndash; 89</td>
+                                <td><strong>C+</strong></td>
+                                <td>78 &ndash; 79</td>
+                                <td><strong>D+</strong></td>
+                                <td>68 &ndash; 69</td>
+                            </tr>
+                            <tr>
+                                <td><strong>D</strong></td>
+                                <td>62 &ndash; 67</td>
+                                <td><strong>D-</strong></td>
+                                <td>60 &ndash; 61</td>
+                                <td><strong>F</strong></td>
+                                <td>59 or below</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Class Requirements & Policies -->
+                <section class="syllabus-unit">
+                    <h2>Class Requirements &amp; University Policies</h2>
+
+                    <div class="policy-card">
+                        <h4>Classroom Environment, Safe Place &amp; Mutual Respect</h4>
+                        <p>
+                            Talking, working, and thinking with others are essential components of this seminar. We will discuss controversial issues of power, ideology, race, and governance. Expression of thoughtful opinions is encouraged; however, rude interruptions, hurtful insults (including racial, gender, or sexual identity slurs), and personal attacks will not be tolerated. Our classroom is a respectful learning environment. For details on student rights and harassment policies, consult the <a href="http://www.callutheran.edu/student_life/student_handbook/" target="_blank">CLU Student Life Handbook</a>.
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>Title IX &amp; Sexual Misconduct Policy</h4>
+                        <p>
+                            California Lutheran University does not tolerate sexual misconduct on or off campus. If you report an incident of sexual harassment, misconduct, or assault to a faculty member, university policy requires that the faculty member notify Cal Lutheran’s Title IX Coordinator. For confidential resources and reporting options, visit <a href="http://www.callutheran.edu/title-ix/" target="_blank">CLU Title IX</a>.
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>Disability Support Services (DSS)</h4>
+                        <p>
+                            Cal Lutheran is committed to providing reasonable aids and services to students with disabilities in compliance with Section 504 of the Rehabilitation Act of 1973 and the Americans with Disabilities Act (ADA). To request accommodations, please register with Disability Support Services in Academic Services (Phone: 805-493-3464, Email: <a href="mailto:DSS@callutheran.edu">DSS@callutheran.edu</a>).
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>Academic Honesty &amp; Integrity</h4>
+                        <p>
+                            Academic excellence requires complete honesty. Deceitful behavior—including plagiarism, cheating, or unethical computer use—results in disciplinary sanctions including course failure or dismissal. Plagiarism includes verbatim copying without quotation marks, presenting another’s work or ideas as your own, or failing to cite sources for non-common knowledge. Review the <a href="http://www.callutheran.edu/ctl/services/academic-honesty.php" target="_blank">Academic Honesty Policy</a> and <a href="http://www.callutheran.edu/student_life/student_handbook/" target="_blank">Student Handbook</a>.
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>Submission Standards, Deadlines &amp; Late Work</h4>
+                        <p>
+                            All quizzes, exams, activities, and papers must be turned in on time; no make-ups or re-writes are offered. Take-home papers must be typed, double-spaced, 1-inch margins, spell-checked, with accurate citations. Late submissions will not be accepted without documented emergency. Missed quizzes will be recorded as zeroes. Course evaluations are administered online via <a href="http://courseval.callutheran.edu" target="_blank">CLU CoursEval</a>.
+                        </p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h4>Campus Support Services: Library, Writing Center &amp; Help Desk</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Pearson Library:</strong> Scholarly books, journals, and databases (<a href="http://www.callutheran.edu/library/research/" target="_blank">Research Portal</a>). Chat online, email <a href="mailto:CLUlibrary@callutheran.edu">CLUlibrary@callutheran.edu</a>, or call 805-493-3250.</li>
+                            <li><strong>The Writing Center:</strong> One-on-one consultations in the Darling Collaboration Suite (Pearson Library). Appointments via MyCLU or call 805-493-3257 (<a href="http://www.callutheran.edu/writing_center" target="_blank">Writing Center</a>).</li>
+                            <li><strong>Veterans Resources:</strong> Support and free tutoring for student veterans and dependents. Contact Jenn Zimmerman (<a href="mailto:veterans@callutheran.edu">veterans@callutheran.edu</a>, 805-493-3648; <a href="http://www.callutheran.edu/veterans/" target="_blank">Veterans Page</a>).</li>
+                            <li><strong>Co-Curricular &amp; Athletic Absences:</strong> Furnish written notification and schedule conflicts at the earliest opportunity; assignments due on absence dates must still be submitted on time.</li>
+                            <li><strong>ITS Help Desk:</strong> Technical issues with Blackboard, networks, or passwords. Contact <a href="mailto:helpdesk@callutheran.edu">helpdesk@callutheran.edu</a> or call 805-493-3698 (<a href="http://www.callutheran.edu/iss/technology_services/helpdesk.php" target="_blank">Help Desk Portal</a>).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Detailed Schedule of Readings -->
+                <section class="syllabus-unit">
+                    <h2>Schedule of Readings &amp; Seminar Modules</h2>
+
+                    <!-- Module 1: Intro -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Phase I &bull; Module 1: Course Orientation &amp; The Fragility of Democratic Norms</h3>
+                            <span class="week-dates">Jan 18 &ndash; Jan 20</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Jan 18</span>
+                                <span class="topic">Course Introduction &amp; Syllabus Review</span>
+                            </div>
+                            <p>Overview of course themes, American Political Development (APD), seminar expectations, and assignments.</p>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Jan 20</span>
+                                <span class="topic">Introduction to American Institutional Dynamics</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/101F1OJadEiXBph2HaMv5LI4OZchdgPK92rVMwhoy8-0/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Lawless and Fox (2015). <a href="https://www.washingtonpost.com/news/book-party/wp/2015/05/20/why-we-may-never-have-a-millennial-president/?utm_term=.2b0adb3b9863" target="_blank">Why We May Never Have a Millennial President</a> &amp; <a href="https://www.brookings.edu/blog/fixgov/2015/07/07/just-say-run-how-to-overcome-cynicism-and-inspire-young-people-to-run-for-office/" target="_blank">Just Say Run: How to Overcome Cynicism and Inspire Young People to Run for Office</a>. <em>Brookings</em>.</li>
+                                <li>Masket (2016). <a href="https://psmag.com/the-toughest-death-of-2016-the-democratic-norms-that-used-to-guide-our-political-system-cc7f6b4361fa#.3vkdp3u9g" target="_blank">The Toughest Death of 2016: The Democratic Norms That Used to Guide Our Political System</a>. <em>Pacific Standard</em>.</li>
+                                <li>Noel (2012). <a href="http://faculty.georgetown.edu/hcn4/Downloads/Noel_Forum.PDF" target="_blank">10 Things Political Scientists Know that You Don't</a>. <em>The Forum</em>.</li>
+                                <li>Dart-Throwing Chimp (2011). <a href="https://dartthrowingchimp.wordpress.com/2011/11/30/daniel-ortega-shows-us-how-to-dismantle-a-democracy-21st-century-style/" target="_blank">Dismantling a Democracy in the 21st Century</a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 2: Definitions of Democracy -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 2: Theoretical Definitions of Democracy</h3>
+                            <span class="week-dates">Jan 23 &ndash; Jan 27</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Jan 23</span>
+                                <span class="topic">Polyarchy and Participation</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Dahl (1972). <a href="http://dispes.units.it/sites/dispes.units.it/files/all_pers/Dahl%20Poliarchy001.pdf" target="_blank">Polyarchy: Participation and Opposition</a>.</li>
+                                <li><em>Optional:</em> <a href="http://iipdigital.usembassy.gov/media/pdf/books/governed.pdf" target="_blank">How the US is Governed</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Jan 25</span>
+                                <span class="topic">Substantive and Procedural Democracy</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Schmitter and Lynn Karl (1995). <a href="http://www.ned.org/docs/Philippe-C-Schmitter-and-Terry-Lynn-Karl-What-Democracy-is-and-Is-Not.pdf" target="_blank">What Democracy Is... and What It Is Not</a>. <em>Journal of Democracy</em>.</li>
+                                <li><em>Optional:</em> <a href="https://usa.usembassy.de/etexts/gov/constitution.pdf" target="_blank">The U.S. Constitution Explained</a> &amp; <a href="http://billmoyers.com/story/federalism-explained/" target="_blank">Federalism Explained (Bill Moyers)</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Jan 27</span>
+                                <span class="topic">Minimalist Conceptions of Democracy</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Przeworski (1999). <a href="http://www.u.arizona.edu/~zshipley/pol437/docs/Przeworski.pdf" target="_blank">Minimalist Conception of Democracy: A Defense</a>.</li>
+                                <li><em>Optional:</em> <a href="https://usa.usembassy.de/etexts/gov/peoplerights.pdf" target="_blank">Rights of the People</a> &bull; PBS Frontline: <em>Divided States</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 3: Threats to Democracy -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 3: Threats to Democracy &amp; Democratic Backsliding</h3>
+                            <span class="week-dates">Jan 30 &ndash; Feb 3</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Jan 30</span>
+                                <span class="topic">Evaluating Democratic Backsliding</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Lust and Waldner (2015). <a href="http://pdf.usaid.gov/pdf_docs/PBAAD635.pdf" target="_blank">Unwelcome Change: Evaluating Democratic Backsliding</a> (pages 1&ndash;15 and 44&ndash;48). USAID.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 1</span>
+                                <span class="topic">Democratic Durability &amp; Resilience</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Mainwaring and P&eacute;rez-Li&ntilde;&aacute;n (2013). <a href="http://d-scholarship.pitt.edu/23142/1/24.2.mainwaring.pdf" target="_blank">Why Democracies Survive</a>. <em>Journal of Democracy</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 3</span>
+                                <span class="topic">Institutional Breakdown and Failure</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Kapstein and Converse (2008). <a href="http://cddrl.fsi.stanford.edu/sites/default/files/19.4.kapstein.pdf" target="_blank">Why Democracies Fail</a>. <em>Journal of Democracy</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: Critiques of the American State -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 4: Critiques of the American State &amp; Institutional Decay</h3>
+                            <span class="week-dates">Feb 6 &ndash; Feb 10</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 6</span>
+                                <span class="topic">Institutional Decay and Vetocracy</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1aC0oAjPbSYPRoGQAYtJnIt7SRK4pSwdK9QI0Ot42oAA/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Fukuyama (2013). <a href="http://www.the-american-interest.com/articles/2013/12/08/the-decay-of-american-political-institutions/" target="_blank">The Decay of American Political Institutions</a>. <em>The American Interest</em>, with response by Kevin Drum (<a href="http://www.motherjones.com/kevin-drum/2013/12/conservative-diagnoses-decay-american-political-institutions" target="_blank">Mother Jones</a>).</li>
+                                <li>Brands (2014). <a href="http://www.strategicstudiesinstitute.army.mil/pubs/parameters/issues/Winter_2015-16/4_Brands.pdf" target="_blank">Rethinking America's Grand Strategy</a>. <em>Parameters</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 8</span>
+                                <span class="topic">Dysfunctional Intermediaries &amp; Chaos</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1dTKSJluMSnmU4NVtN2UOaj0JJRDBuHZXyNBOWjm2DSE/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Rauch (2016). <a href="http://www.theatlantic.com/magazine/archive/2016/07/how-american-politics-went-insane/485570/" target="_blank">How American Politics Went Insane</a>. <em>The Atlantic</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 10</span>
+                                <span class="topic">Polarization vs. Sorting</span>
+                                <span class="speaker-tag">Discussion Leader: Morgan</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1sL9SKDrGCaxd6q2Grx_IX5DGVZydTMjfRkaDSCPQke8/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Fiorina (2013). <a href="http://www.twc.edu/sites/default/files/assets/America%E2%80%99s_Missing_Moderates_%20Hiding_in_Plain_Sight_The_American_Interest.pdf" target="_blank">America's Missing Moderates: Hiding in Plain Sight</a>. <em>The American Interest</em>.</li>
+                                <li>Abramowitz and Fiorina (2013). <a href="http://www.twc.edu/sites/default/files/assets/Polarized_or_Sorted_%20Just_Whats_Wrong_With_Our_Politics_Anyway_The_American_Interest.pdf" target="_blank">Polarized or Sorted? Just What's Wrong With Our Politics Anyway?</a> <em>The American Interest</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 5: American Exceptionalism -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Phase II &bull; Module 5: Features of the American State &mdash; Exceptionalism</h3>
+                            <span class="week-dates">Feb 13 &ndash; Feb 17</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 13</span>
+                                <span class="topic">Debating the Exceptional Nation</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/17sJMI8btbki7nkzA70XIZKY0o63LKmOcWuUxpY7UTe4/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Karabel and Laurelson (2012). <a href="http://webcache.googleusercontent.com/search?q=cache:b-X6C2foqWQJ:irle.berkeley.edu/files/2012/Prices-Matter.pdf+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us" target="_blank">An Exceptional Nation?</a> UC Berkeley IRLE.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 15</span>
+                                <span class="topic">Why No Socialism in America? &amp; The Two Foundings</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1B5Xv5-7_sqojppsyLdYS6HlGnDnJPphD3iXrJLjXHaA/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides 1 &nearr;</a>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1IAobF1MGXQny0RU7FMqbKIPwGt31y7br45XIpB4zTNI/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides 2 &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Lowi (1985). <a href="https://ezproxy.callutheran.edu/login?url=http://search.ebscohost.com/login.aspx?direct=true&amp;db=s3h&amp;AN=10867912&amp;site=ehost-live&amp;scope=site" target="_blank">Why Is There No Socialism in the United States?</a> (CLU Proxy Login Required).</li>
+                                <li>Lipset (2000). <a href="http://www.ropercenter.uconn.edu/public-perspective/ppscan/112/112031.pdf" target="_blank">Socialism: Not in the United States</a>. <em>Public Perspective</em>.</li>
+                                <li>Lim (2014). <a href="http://elvinlim.com/APT.pdf" target="_blank">America's Two Foundings</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 17</span>
+                                <span class="topic">Exceptionalism in the Trump Era</span>
+                                <span class="speaker-tag">Discussion Leader: Olivia</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Wertheim (2017). <a href="http://www.columbia.edu/~saw2156/TrumpVExceptionalism.pdf" target="_blank">Trump and American Exceptionalism</a>. Columbia University.</li>
+                                <li>Publius Decius Mus (2017). <a href="http://www.claremont.org/crb/basicpage/the-flight-93-election/" target="_blank">The Flight 93 Election</a>. <em>Claremont Review of Books</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 6: Development of the American State -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 6: The Development of the American State</h3>
+                            <span class="week-dates">Feb 20 &ndash; Feb 24</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 20</span>
+                                <span class="topic">Presidents' Day &mdash; No Class</span>
+                            </div>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 22</span>
+                                <span class="topic">Foreign Policy Traditions &amp; State Building</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1f53s8E7Yd-SYlEFf-64Z5Zr9jV5btlpKUsW430IyGJo/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <div class="assignment-callout">
+                                <strong>Milestone:</strong> Start formulating your Advocacy Project proposal. Topic selection due next week.
+                            </div>
+                            <ul class="readings-list">
+                                <li>O'Connor (2009). <a href="http://ussc.edu.au/ussc/assets/media/docs/publications/0910_oconnor_usforeignpolicy.pdf" target="_blank">American Foreign Policy Traditions</a>. USSC.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 24</span>
+                                <span class="topic">The Paranoid Style and Conspiracy in American Politics</span>
+                                <span class="speaker-tag">Discussion Leader: Anson</span>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Hofstadter (1964). <a href="https://blog.lix.cc/wp-content/uploads/2011/05/Hofstadter-Paranoid-Style-American-Politics.pdf" target="_blank">The Paranoid Style in American Politics</a>. <em>Harper's Magazine</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 7: Change in the American State -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 7: Change, Racial Orders &amp; Realignment</h3>
+                            <span class="week-dates">Feb 27 &ndash; Mar 3</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Feb 27</span>
+                                <span class="topic">Racial Orders in American Political Development</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1x-GKEMKqndftobuhfjo2s29OFnYNHQvr181FOJZbLVA/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>King and Smith (2005). <a href="http://web1.millercenter.org/apd/colloquia/pdf/col_2004_0408_smith.pdf" target="_blank">Racial Orders in American Political Development</a>. Miller Center / <em>APSR</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 1</span>
+                                <span class="topic">American Ideals vs. American Institutions</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1WaOdBcmpmJXqRD8CXs8z4WMGKjIC5FCIkJrFNOOhsUs/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Huntington (1982). <a href="http://spot.colorado.edu/~mcguire/IVI.htm" target="_blank">American Ideals vs. American Institutions</a>. <em>Political Science Quarterly</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 3</span>
+                                <span class="topic">Electoral Realignments and Critical Elections</span>
+                                <span class="speaker-tag">Discussion Leader: Peter</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1YJS-UttXPwhelZfylrvawMeWvJRA_smVg7kaADqRHUE/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Mayhew (2007). <a href="http://www.uvm.edu/~dguber/POLS125/articles/mayhew.pdf" target="_blank">Electoral Realignments</a>. <em>Annual Review of Political Science</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 8: Congress - The House -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Phase III &bull; Module 8: Congress &mdash; The House of Representatives</h3>
+                            <span class="week-dates">Mar 6 &ndash; Mar 10</span>
+                        </div>
+                        <div class="assignment-callout">
+                            <strong>Exam Handout:</strong> <a href="https://docs.google.com/document/d/1PnzC_50xC4d8DQFKlfynixPhm4mx5mvQ6ZJ2DG_Ytsc/pub" target="_blank">Exam #1 Distributed Monday, March 6</a> (Due March 13).
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 6</span>
+                                <span class="topic">Reforming and Fixing the House</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/107MBSBbO9IBi_dDjxNlNu_BCtMo-l-Jl0NLgkxYhU04/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Cooper (2014). <a href="http://bostonreview.net/cooper-fixing-congress" target="_blank">Fixing Congress</a>. <em>Boston Review</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 8</span>
+                                <span class="topic">Theorizing About Congressional Behavior</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1U4tZluPv7ZonMiNL4dlKlfaG3PtoLAzl5oBu1Qf0NfY/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Mayhew. <a href="http://campuspress.yale.edu/davidmayhew/files/2013/04/mayhew_theorizingaboutcongress.pdf" target="_blank">Theorizing About Congress</a>. Yale University.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 10</span>
+                                <span class="topic">Pork Barrel Politics &amp; Distributive Coalitions</span>
+                                <span class="speaker-tag">Discussion Leader: Joel</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1lwvNQ7RmADFJCKtqrfxJHqsRgji1m-Faf8iFAuEvT6Y/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Sciara (2012). <a href="http://www.uctc.net/access/41/access-41-pork.pdf" target="_blank">Peering Inside the Pork Barrel</a>. <em>ACCESS Magazine</em>.</li>
+                                <li>Evans (2004). <a href="http://catdir.loc.gov/catdir/samples/cam041/2003069688.pdf" target="_blank">Greasing the Wheels: Using Earmarks to Build Legislative Coalitions</a>. Cambridge University Press.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 9: Congress - Senate and Gridlock -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 9: Congress &mdash; The Senate &amp; Legislative Gridlock</h3>
+                            <span class="week-dates">Mar 13 &ndash; Mar 17</span>
+                        </div>
+                        <div class="assignment-callout">
+                            <strong>Deadline:</strong> Exam #1 Due Monday, March 13.
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 13</span>
+                                <span class="topic">The Senate's Slide into Paralysis</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1GeeO47iWzTx0Oabr3459FdtiAEOUgZsnC-eC5D5POv4/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>New York Times (2012). <a href="http://www.nytimes.com/2012/11/25/us/politics/new-senates-first-task-will-likely-be-trying-to-fix-itself.html?pagewanted=all&amp;_r=0" target="_blank">The Senate's Long Slide to Gridlock</a>.</li>
+                                <li>Packer (2010). <a href="http://www.newyorker.com/magazine/2010/08/09/the-empty-chamber" target="_blank">The Empty Chamber</a>. <em>The New Yorker</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 15</span>
+                                <span class="topic">Filibuster Evolution and Supermajority Rules</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1KofLc8fH0Pm_OjYLLCm6CQ_gR8kfXHnVBgXqtGLRQf8/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Koger. <a href="http://works.bepress.com/cgi/viewcontent.cgi?article=1026&amp;context=gregorykoger" target="_blank">The Rise of the 60 Vote Senate</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 17</span>
+                                <span class="topic">The Dysfunctional Congress</span>
+                                <span class="speaker-tag">Discussion Leader: Matthew</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/107MBSBbO9IBi_dDjxNlNu_BCtMo-l-Jl0NLgkxYhU04/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Binder. <a href="http://sarahbinder.weebly.com/uploads/3/1/8/8/31889891/binder_page_proof_arps_dysfunctional_congress.pdf" target="_blank">The Dysfunctional Congress</a>. <em>Annual Review of Political Science</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 10: Spring Break -->
+                    <div class="week-block" style="background: #fafaf8;">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Spring Recess</h3>
+                            <span class="week-dates">Mar 20 &ndash; Mar 24</span>
+                        </div>
+                        <p style="margin: 0; color: #555555; font-style: italic;">No Classes &bull; Spring Break</p>
+                    </div>
+
+                    <!-- Module 11: The Presidency and Bureaucracy -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 11: The Presidency &amp; The Administrative State</h3>
+                            <span class="week-dates">Mar 27 &ndash; Mar 31</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 27</span>
+                                <span class="topic">Taxonomy of Executive Power</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/11RcviOoPH_oz1nMPJpedRwFxuadr1pdr8xyg7YnAyZo/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Fallows (2012). <a href="http://www.theatlantic.com/magazine/archive/2012/03/obama-explained/308874/" target="_blank">Obama, Explained</a>. <em>The Atlantic</em>.</li>
+                                <li>Prakash (2008). <a href="https://www.bu.edu/law/central/jd/organizations/journals/bulr/documents/PRAKASH.pdf" target="_blank">A Taxonomy of Presidential Powers</a>. <em>Boston University Law Review</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 29</span>
+                                <span class="topic">Going Public, Rhetorical Presidency &amp; Unilateral Action</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1Wa5aYMe02FATDPZOBYRC8dS23BRQYc9-D8G-ukpcZtg/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Tulis. <a href="https://politicalscience.nd.edu/assets/59090/plausible_futures_publ.pdf" target="_blank">Plausible Futures of the Rhetorical Presidency</a>.</li>
+                                <li>Kernell. <a href="http://www.uvm.edu/~dguber/POLS293/articles/kernell.pdf" target="_blank">Going Public: New Strategies of Presidential Leadership</a>.</li>
+                                <li>Druckman and Jacobs (2008). <a href="http://faculty.wcas.northwestern.edu/~jnd260/pub/Druckman%20Jacobs%20in%20Edwards%20Howell%202009.pdf" target="_blank">Presidential Responses to Public Opinion</a>.</li>
+                                <li><em>In-Class Screening:</em> Frontline: <em>Obama's Deal</em> (<a class="slide-link" href="https://docs.google.com/presentation/d/1atydDAAuwQaqNL8d2poQfYoLE1JSpU6-fU7AabdvEas/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>).</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Mar 31</span>
+                                <span class="topic">Executive Orders and Unilateral Power</span>
+                                <span class="speaker-tag">Discussion Leader: Ryan</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1Wa5aYMe02FATDPZOBYRC8dS23BRQYc9-D8G-ukpcZtg/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Reeves and Rogowski (2016). <a href="http://spia.uga.edu/faculty_pages/mlynch/Rogowski.pdf" target="_blank">Public Responsiveness Towards Presidential Policy Making</a>.</li>
+                                <li>Davis (2014). <a href="http://www.nytimes.com/2014/08/19/us/politics/behind-closed-doors-obama-crafts-executive-actions.html?_r=0" target="_blank">Behind Closed Doors, Obama Crafts Executive Action</a>. <em>The New York Times</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 12: Judicial Process -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 12: The Judicial Process &amp; Strategic Decision-Making</h3>
+                            <span class="week-dates">Apr 3 &ndash; Apr 7</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 3</span>
+                                <span class="topic">Judicial Independence in Polarized Times</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1M6OFXqTfeI2C85XenRddFm6dR3QEGPXscn0FcsAWFKc/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>New York Times (2010). <a href="http://www.nytimes.com/2010/01/29/us/politics/29scotus.html?_r=0" target="_blank">Supreme Court Gets a Rare Rebuke</a>.</li>
+                                <li>Howard and Carey (2004). <a href="http://search.proquest.com.ezproxy.callutheran.edu/docview/274662553/fulltext?accountid=9839" target="_blank">Is an Independent Judiciary Necessary for Democracy?</a> (CLU Proxy Required).</li>
+                                <li>Keck (2015). <a href="http://www.academia.edu/9429949/Judicial_Politics_in_Polarized_Times" target="_blank">Judicial Politics in Polarized Times</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 5</span>
+                                <span class="topic">Strategic Policymaking &amp; Supreme Court Lobbying</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1-g8W3mzGg8BrpaVL2KbJsDWlhOm2c-D9grQwQXJ8lMU/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Epstein, Knight, and Martin (2001). <a href="http://epstein.wustl.edu/research/strategic.pdf" target="_blank">The Supreme Court as a Strategic Policymaker</a>.</li>
+                                <li>Collins (2007). <a href="http://www.psci.unt.edu/~pmcollins/PRQ2007.pdf" target="_blank">Lobbyists Before the U.S. Supreme Court: An Investigation of Amicus Curiae Briefs</a>. <em>PRQ</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 7</span>
+                                <span class="topic">The Limits and Nature of Judicial Power</span>
+                                <span class="speaker-tag">Discussion Leader: America</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1Zwcq6im8zvTr4fmZgxAgimgRrzMDGeTFTCvO4UBXfBA/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Hall. <a href="http://www.thedivineconspiracy.org/Z5272N.pdf" target="_blank">The Nature of Supreme Court Power</a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 13: Political Parties -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 13: Political Parties &amp; Coalitional Dynamics</h3>
+                            <span class="week-dates">Apr 10 &ndash; Apr 14</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 10</span>
+                                <span class="topic">Parties in American Political Development</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1PPavMYt-egImtqQ0MGOY5jpFDiqpaekQ5DLwyXiQOXY/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Karol (2014). <a href="http://www.gvpt.umd.edu/sites/gvpt.umd.edu/files/pubs/Political_Parties_in_American_Political_Development.pdf" target="_blank">Political Parties in American Political Development</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 12</span>
+                                <span class="topic">Asymmetrical Parties, Brand Strategy &amp; Polarization</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1QepMhY19RCVibM6eMuhGttmHDinwAIomj0uiaGtAM4g/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Noel (2011). <a href="http://faculty.georgetown.edu/hcn4/Downloads/Noel_CM09.pdf" target="_blank">The Coalition Merchants: The Ideological Origins of Modern American Parties</a> (skip mathematical derivations).</li>
+                                <li>Grossmann and Hopkins (2015). <a href="http://www.matthewg.org/ideologicalrepublicans.pdf" target="_blank">Asymmetrical Politics: Ideological Republicans and Group Interest Democrats</a>.</li>
+                                <li>Butler and Neff Powell (2010). <a href="http://www.eleanorneffpowell.com/uploads/8/3/9/3/8393347/butler_and_powell_-_party_labels_-_june_2012.pdf" target="_blank">Understanding the Party Brand</a>.</li>
+                                <li>Brady and McCubbins (2010). <a href="https://webcache.googleusercontent.com/search?q=cache:GSSIdoqi2e8J:www.researchgate.net/profile/Mathew_Mccubbins2/publication/37702518_Party_Process_and_Political_Change_in_Congress_Volume_2_Further_New_Perspectives_on_the_History_of_Congress/links/02e7e523245c79b673000000.pdf+&amp;cd=18&amp;hl=en&amp;ct=clnk&amp;gl=us" target="_blank">Party, Process and Political Change</a>.</li>
+                                <li>Muirhead (2015). <a href="https://www.washingtonpost.com/opinions/russell-muirhead-obama-needs-to-be-the-partisan-in-chief/2014/11/27/796bd692-74c0-11e4-9d9b-86d397daad27_story.html?utm_term=.2e38d504479b" target="_blank">Obama Needs to Be the Partisan in Chief</a>. <em>The Washington Post</em> &amp; <a href="http://tpr.org/post/source-advocating-more-better-partisanship-congress-first-day#stream/0" target="_blank">Texas Public Radio Interview</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 14</span>
+                                <span class="topic">Good Friday &mdash; Easter Holiday (No Class)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 14: Parties and Elections -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 14: Political Parties, Regional Realignment &amp; Elections</h3>
+                            <span class="week-dates">Apr 17 &ndash; Apr 21</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 17</span>
+                                <span class="topic">Easter Monday &mdash; No Class</span>
+                            </div>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 19</span>
+                                <span class="topic">The Demise of Southern Democrats &amp; Rise of the Tea Party</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1aJ1x67MGVW_rs4hFCGdiJPpwW6XhAF3ienQ6s65A3t4/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Democracy Journal (2014). <a href="http://www.democracyjournal.org/31/is-the-party-over.php" target="_blank">Symposium on the Tea Party: Is the Party Over?</a></li>
+                                <li>Chait (2014). <a href="http://nymag.com/daily/intelligencer/2014/12/overdue-death-of-the-southern-democrats.html" target="_blank">The Long Overdue Death of Southern Democrats</a>. <em>New York Magazine</em>.</li>
+                                <li>Schaller (2006). <a href="http://www.nytimes.com/2006/10/01/books/chapters/1001-1st-scha.html" target="_blank">Whistling Past Dixie: How Democrats Can Win Without the South</a> (Excerpt). <em>NYT</em>.</li>
+                                <li><em>Optional:</em> Mayhew. <a href="http://davidmayhew.commons.yale.edu/files/uploads/mayhew_patternsinamericanelections.pdf" target="_blank">Patterns in American Elections</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 21</span>
+                                <span class="topic">Party Transformation in Contemporary Politics</span>
+                                <span class="speaker-tag">Discussion Leader: Mabel</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1FSq1jrGkXvfP5UhM82A31veOaSbr-jvIAOkEFaaPt_g/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Miller and Schofield (2008). <a href="http://polisci.wustl.edu/files/polisci/imce/z.1152008.2.pop_.published.pdf" target="_blank">The Transformation of the Democratic and Republican Parties</a>. <em>Perspectives on Politics</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 15: Mobilization and Interest Groups -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 15: Mobilization, Campaign Finance &amp; Interest Groups</h3>
+                            <span class="week-dates">Apr 24 &ndash; Apr 28</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 24</span>
+                                <span class="topic">Festival of Scholars (Nygreen 2) &mdash; Undergraduate Research</span>
+                            </div>
+                            <p>Students attend and engage with University-wide scholarly presentations.</p>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 26</span>
+                                <span class="topic">Where Money Matters &amp; Testing Theories of Oligarchy</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1SS8Y_caRZ1QPWAG3CG9bKfRdm78ZaCjrK-xdlL1ugsw/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <div class="assignment-callout">
+                                <strong>Exam Handout:</strong> <a href="https://docs.google.com/document/d/1ubS6NoYHXO_TbZP9ACWOB3TP7fqtYU3WQZojkllTlzY/pub" target="_blank">Exam #2 Distributed Wednesday, April 26</a> (Due May 5).
+                            </div>
+                            <ul class="readings-list">
+                                <li>Neff Powell (2010). <a href="http://www.researchgate.net/profile/Eleanor_Powell/publication/229029908_Where_Money_Matters_in_Congress/links/53cef5f80cf25dc05cfad7b1.pdf" target="_blank">Where Money Matters in Congress</a>.</li>
+                                <li>Gilens and Page (2014). <a href="http://scholar.princeton.edu/sites/default/files/mgilens/files/gilens_and_page_2014_-testing_theories_of_american_politics.doc.pdf" target="_blank">Testing Theories of American Politics: Elites, Interest Groups, and Average Citizens</a>. <em>Perspectives on Politics</em>.</li>
+                            </ul>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">Apr 28</span>
+                                <span class="topic">Grassroots Mobilization &amp; Conservative Resurgence</span>
+                                <span class="speaker-tag">Discussion Leader: Jake</span>
+                                <a class="slide-link" href="https://docs.google.com/presentation/d/1V2DIcZhwy0a3XHVP1hlBtYhe5gaZsM0dhK39BZnxnUo/pub?start=false&amp;loop=false&amp;delayms=3000" target="_blank">Slides &nearr;</a>
+                            </div>
+                            <ul class="readings-list">
+                                <li>Williamson, Skocpol, and Coggin (2011). <a href="http://scholar.harvard.edu/files/williamson/files/tea_party_pop.pdf" target="_blank">The Tea Party and the Remaking of Republican Conservatism</a>. <em>Perspectives on Politics</em>.</li>
+                                <li><em>Course Feedback:</em> Please complete <a href="http://courseval.callutheran.edu" target="_blank">Online Course Evaluations</a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 16: Workshops, Presentations, and Final Briefs -->
+                    <div class="week-block">
+                        <div class="week-header-bar">
+                            <h3 class="week-title">Module 16: Research Workshops, Presentations &amp; Policy Briefs</h3>
+                            <span class="week-dates">May 1 &ndash; May 12</span>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">May 1</span>
+                                <span class="topic">Workshop on Final Policy Brief (Peer Review &amp; Strategy)</span>
+                            </div>
+                            <p>Bring working drafts of institutional advocacy policy briefs for in-class peer critique and strategy alignment.</p>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">May 3</span>
+                                <span class="topic">Workshop on Final Policy Brief (Evidence &amp; Rebuttal)</span>
+                            </div>
+                            <p>Refining institutional diagnostic roadmaps and tailoring recommendations to real-world advocacy constraints.</p>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">May 5</span>
+                                <span class="topic">Exam #2 Due &amp; Student Presentations (Part I)</span>
+                            </div>
+                            <div class="assignment-callout">
+                                <strong>Exam Due:</strong> Exam #2 submitted at the beginning of class. Student policy briefs presentations begin.
+                            </div>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">May 8</span>
+                                <span class="topic">Final Student Presentations (10:30 AM Session)</span>
+                            </div>
+                            <p>Culminating 5&ndash;10 minute presentations of institutional advocacy findings and recommendations.</p>
+                        </div>
+                        <div class="day-entry">
+                            <div class="day-header">
+                                <span class="date">May 12</span>
+                                <span class="topic">Final Advocacy Policy Brief Papers Due</span>
+                            </div>
+                            <div class="assignment-callout">
+                                <strong>Final Submission:</strong> 10&ndash;15 page research policy briefs submitted electronically.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Foundational APD Archive & Extended Bibliography -->
+                <section class="syllabus-unit">
+                    <h2>Foundational APD Literature &amp; Thematic Research Archive</h2>
+                    <p>
+                        For students conducting advanced research for their Advocacy Project, the following foundational literature and thematic clusters in American Political Development offer crucial empirical and theoretical models:
+                    </p>
+
+                    <h3>American Political Development Classics &amp; State Building</h3>
+                    <div class="apd-reading-item">
+                        Suzanne Mettler (2005). <a href="http://www.ssc.wisc.edu/~wright/Soc924-2011/924-2011-book-project/Mettler.pdf" target="_blank">From Soldiers to Citizens: The G.I. Bill and the Making of the Greatest Generation</a>. Oxford University Press.
+                    </div>
+                    <div class="apd-reading-item">
+                        Ken I. Kersch (2004). <a href="http://catdir.loc.gov/catdir/samples/cam051/2003060534.pdf" target="_blank">Constructing Civil Liberties: Discontinuities in the Development of American Constitutional Law</a>. Cambridge University Press.
+                    </div>
+                    <div class="apd-reading-item">
+                        S.M. Amadae (2003). <a href="http://www.sscnet.ucla.edu/polisci/faculty/chwe/austen/amadae.pdf" target="_blank">Rationalizing Capitalist Democracy: The Cold War Origins of Rational Choice Liberalism</a>. University of Chicago Press.
+                    </div>
+                    <div class="apd-reading-item">
+                        Richard Bensel (2000). <a href="http://catdir.loc.gov/catdir/samples/cam031/00023677.pdf" target="_blank">The Political Economy of American Industrialization, 1877&ndash;1900</a>. Cambridge University Press.
+                    </div>
+                    <div class="apd-reading-item">
+                        Julian Go (2012). <a href="http://assets.cambridge.org/97811070/11830/excerpt/9781107011830_excerpt.pdf" target="_blank">Patterns of Empire: The British and American Empires, 1688 to the Present</a>. Cambridge University Press.
+                    </div>
+                    <div class="apd-reading-item">
+                        Robert C. Lieberman. <a href="http://users.polisci.wisc.edu/apw/archives/lieberman.pdf" target="_blank">Ideas, Institutions, and Political Order: Explaining Political Change</a>. <em>APSR</em>.
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond S. King. <a href="http://www.greatwhitedesert.org/monographs/2005_-_King.pdf" target="_blank">The American State and Social Engineering</a>.
+                    </div>
+                    <div class="apd-reading-item">
+                        John Lapinski (2008). <a href="http://www.polisci.upenn.edu/~lapins/Perspectives%20on%20Politics%20Congress%20and%20APD.pdf" target="_blank">Congress and American Political Development</a>. <em>Perspectives on Politics</em>.
+                    </div>
+
+                    <h3>Selected Research by Desmond King &amp; Robert Lieberman on the American State</h3>
+                    <div class="apd-reading-item">
+                        Lawrence R. Jacobs and Desmond S. King, eds. (2009). <a href="http://www.oup.com/us/catalog/general/subject/Politics/AmericanPolitics/HistoryPolitics/?view=usa&amp;ci=9780195392142" target="_blank">The Unsustainable American State</a>. Oxford University Press. Includes foundational essays:
+                        <ul style="margin-top: 0.25rem; padding-left: 1.25rem;">
+                            <li>"The Missing State in Postwar American Political Thought" (Desmond King &amp; Marc Stears)</li>
+                            <li>"American State Building: The Theoretical Challenge" (Desmond King &amp; Robert C. Lieberman)</li>
+                            <li>Contributions by John Ferejohn, Gary Gerstle, Lizabeth Cohen, Stephen Skowronek, Cathy J. Cohen, Benjamin Page, Lee Ann Banaszak, Kimberley S. Johnson, and Suzanne Mettler.</li>
+                        </ul>
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond King (2007). <a href="http://www.oup.com/us/catalog/general/subject/Politics/AmericanPolitics/MinorityEthnicPolitics/?view=usa&amp;ci=9780195336221" target="_blank">Separate and Unequal: Black Americans and the US Federal Government</a>. Oxford University Press.
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond King and Robert C. Lieberman (2009). <a href="http://asp.politics.ox.ac.uk/images/stories/PDF/KingLiebermaWP.pdf" target="_blank">Ironies of the American State</a>. <em>World Politics</em>, 61(3): 547&ndash;588.
+                    </div>
+                    <div class="apd-reading-item">
+                        Lawrence R. Jacobs and Desmond S. King (2009). <a href="http://asp.politics.ox.ac.uk/images/stories/PDF/JacobsKingPS09.pdf" target="_blank">America's Political Crisis: The Unsustainable State in a Time of Unraveling</a>. <em>PS: Political Science &amp; Politics</em>, 42(2): 277&ndash;285.
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond King and Robert C. Lieberman (2008). <a href="http://asp.politics.ox.ac.uk/images/stories/PDF/KingLiebermanPOLITY08.pdf" target="_blank">Finding the American State: Transcending the 'Statelessness' Account</a>. <em>Polity</em>, 40(3): 368&ndash;378.
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond King and Stephen Tuck (2007). "De-Centering the South: America's Nationwide White Supremacist Order after Reconstruction." <em>Past &amp; Present</em>, 194: 219&ndash;257.
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond King (2007). <a href="http://asp.politics.ox.ac.uk/images/stories/PDF/KingGOV.pdf" target="_blank">The American State and Social Engineering: Policy Instruments in Affirmative Action</a>. <em>Governance</em>, 20(1): 109&ndash;126.
+                    </div>
+                    <div class="apd-reading-item">
+                        Desmond King (2006). <a href="http://asp.politics.ox.ac.uk/images/stories/PDF/KingEMPIRE.pdf" target="_blank">When an Empire Is Not an Empire: The US Case</a>. <em>Government and Opposition</em>, 41(2): 163&ndash;196.
+                    </div>
+                    <div class="apd-reading-item">
+                        Paul Frymer. <a href="http://www.princeton.edu/~pfrymer/pfrymer/Welcome_files/1UCILR913.pdf" target="_blank">Acting When Elected Officials Won't: Federal Courts and Civil Rights Enforcement</a>. <em>UC Irvine Law Review</em>.
+                    </div>
+
+                    <h3>Core Thematic Inquiries</h3>
+                    <div class="goals-grid" style="margin-top: 1rem;">
+                        <div class="goal-card">
+                            <h4>Representation &amp; Pledges</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                Do campaign appeals constrain or direct legislative action once in office?
+                            </p>
+                            <div class="apd-reading-item" style="border: none; padding-left: 0;">
+                                Tracy Sulkin. <a href="http://users.polisci.wisc.edu/apw/archives/Sulkin_Campaign_Appeals.pdf" target="_blank">Campaign Appeals and Legislative Action</a>.
+                            </div>
+                        </div>
+
+                        <div class="goal-card">
+                            <h4>Polarization vs. Centrist Norms</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                Is polarization structural or exaggerated by elite media narratives?
+                            </p>
+                            <div class="apd-reading-item" style="border: none; padding-left: 0;">
+                                Connolly. <a href="http://www.uakron.edu/dotAsset/9a154d5d-3e6a-4c51-b6d0-301dfba31b5e.pdf" target="_blank">Partisanship Isn't a Big Deal: Mayhew's Divided We Govern Revisited</a>.
+                            </div>
+                        </div>
+
+                        <div class="goal-card">
+                            <h4>Judicial Power &amp; Roe</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                Strategic actors vs. attitudinal purists: How do Supreme Court majorities coalesce?
+                            </p>
+                            <div class="apd-reading-item" style="border: none; padding-left: 0;">
+                                Lee Epstein &amp; Jack Knight. <a href="http://epstein.wustl.edu/research/strategic.pdf" target="_blank">The Strategic Choices of Supreme Court Justices</a>.
+                            </div>
+                        </div>
+
+                        <div class="goal-card">
+                            <h4>Coalitions vs. Ideology</h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                What precedes what: do party networks construct ideology, or do coalitions form around ideas?
+                            </p>
+                            <div class="apd-reading-item" style="border: none; padding-left: 0;">
+                                Michael T. Heaney et al. <a href="http://www-personal.umich.edu/~mheaney/Networking_the_Parties.pdf" target="_blank">Networking the Parties</a>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="policy-card" style="margin-top: 1.5rem; background-color: #fcfcfb; border-left: 4px solid var(--primary-color);">
+                        <h4>On Political Power, Hybris, and Democratic Resilience</h4>
+                        <p style="font-style: italic; color: #333333; margin-bottom: 0.5rem;">
+                            &ldquo;The greatest mistake made by those in power, like Darius, was the sin of <em>hybris</em>. That Greek word means 'outrageous arrogance.' Hybris is the outrageous arrogance that marks the abuse of power. Only those invested with enormous power can commit the sin of hybris. Hybris is the imposition of your will, at all costs. The Greeks believed that hybris was preceded by <em>at&eacute;</em>, or moral blindness that makes you believe that you can do anything you want to and there will be no consequences from either Gods or men.&rdquo;
+                        </p>
+                        <p style="font-size: 0.88rem; color: #666666; margin: 0;">
+                            A central lesson across American political development: institutions, veto gates, and constitutional checks exist precisely to constrain hybris and protect democratic resilience against moral blindness in governance.
+                        </p>
+                    </div>
+                </section>
+
+            </div> <!-- End content-page -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
