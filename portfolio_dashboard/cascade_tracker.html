@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cascade Liquidation Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #06090f;
+  --s1:       #0d1117;
+  --s2:       #161b22;
+  --s3:       #21262d;
+  --border:   #30363d;
+  --text:     #e6edf3;
+  --muted:    #7d8590;
+  --dim:      #484f58;
+  --accent:   #58a6ff;
+  --green:    #3fb950;
+  --red:      #f85149;
+  --yellow:   #d29922;
+  --orange:   #e3704a;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  padding: 20px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.hdr {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+.hdr h1 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.hdr p {
+  font-size: 10px;
+  color: var(--muted);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  position: relative;
+}
+.card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.ca-red { background: var(--red); }
+.ca-orange { background: var(--orange); }
+.ca-yellow { background: var(--yellow); }
+.ca-green { background: var(--green); }
+.ca-blue { background: var(--accent); }
+.card-name {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.big-val {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.mrow {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--s3);
+  font-size: 10px;
+}
+.mrow:last-child { border-bottom: none; }
+.mrow-k { color: var(--muted); }
+.mrow-v { font-weight: 600; }
+.pos { color: var(--green); }
+.neg { color: var(--red); }
+.warn { color: var(--yellow); }
+.muted { color: var(--muted); }
+
+.stage-banner {
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid;
+}
+.stage-0 { background:rgba(63,185,80,.1); border-left-color:var(--green); }
+.stage-1 { background:rgba(210,153,34,.1); border-left-color:var(--yellow); }
+.stage-2 { background:rgba(210,153,34,.1); border-left-color:var(--yellow); }
+.stage-3 { background:rgba(227,112,74,.1); border-left-color:var(--orange); }
+.stage-4 { background:rgba(227,112,74,.1); border-left-color:var(--orange); }
+.stage-5 { background:rgba(248,81,73,.1); border-left-color:var(--red); }
+.stage-6 { background:rgba(248,81,73,.1); border-left-color:var(--red); }
+.stage-7 { background:rgba(248,81,73,.2); border-left-color:var(--red); }
+
+.stage-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.stage-signals {
+  font-size: 10px;
+  line-height: 1.6;
+}
+.signal-item {
+  margin-bottom: 6px;
+  padding: 4px 8px;
+  background: var(--s2);
+  border-radius: 4px;
+}
+
+.card-stable { background: #dcfce7 !important; border-color: #86efac !important; color: #14532d !important; }
+.card-stable .card-name, .card-stable .mrow-k, .card-stable div[style*="color:var(--dim)"], .card-stable div[style*="color:var(--muted)"] { color: #166534 !important; }
+.card-stable .big-val, .card-stable .mrow-v { color: #14532d !important; }
+.card-stable svg path { stroke: #166534 !important; }
+
+.card-stress { background: #ffedd5 !important; border-color: #fdba74 !important; color: #7c2d12 !important; }
+.card-stress .card-name, .card-stress .mrow-k, .card-stress div[style*="color:var(--dim)"], .card-stress div[style*="color:var(--muted)"] { color: #9a3412 !important; }
+.card-stress .big-val, .card-stress .mrow-v { color: #7c2d12 !important; }
+.card-stress svg path { stroke: #9a3412 !important; }
+
+.card-crisis { background: #fee2e2 !important; border-color: #fca5a5 !important; color: #7f1d1d !important; }
+.card-crisis .card-name, .card-crisis .mrow-k, .card-crisis div[style*="color:var(--dim)"], .card-crisis div[style*="color:var(--muted)"] { color: #991b1b !important; }
+.card-crisis .big-val, .card-crisis .mrow-v { color: #7f1d1d !important; }
+.card-crisis svg path { stroke: #991b1b !important; }
+
+.footer {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 9px;
+  color: var(--dim);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="hdr" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+  <div>
+    <h1>⚠ Cascade Liquidation Tracker</h1>
+    <p>Real-time monitoring of forced liquidation sequence and EM contagion dynamics</p>
+    <p style="margin-top:6px;color:var(--dim);">Last update: November 25, 2026  ·  06:49 UTC</p>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="cascade_tracker.html" style="padding:6px 12px;border-radius:6px;background:var(--accent);color:#06090f;font-weight:700;text-decoration:none;font-size:11px;">1. Macro &amp; Cascade Tracker</a>
+    <a href="portfolio_ratings.html" style="padding:6px 12px;border-radius:6px;background:var(--s2);border:1px solid var(--border);color:var(--text);font-weight:600;text-decoration:none;font-size:11px;">2. Portfolio Ratings</a>
+    <a href="impact_on_assets.html" style="padding:6px 12px;border-radius:6px;background:rgba(63,185,80,.16);border:1px solid var(--green);color:var(--green);font-weight:700;text-decoration:none;font-size:11px;">3. Impact on Your Assets Report →</a>
+  </div>
+</div>
+
+<!-- STAGE BANNER -->
+<div class="stage-banner stage-3">
+  <div class="stage-title" style="color:var(--orange);">
+    STAGE 3: CREDIT STRESS
+  </div>
+  <div class="stage-signals">
+    <div class="signal-item">Credit spreads 418bps (repricing risk)</div>
+  </div>
+</div>
+
+<!-- MACRO HEALTH OVERVIEW -->
+<div style="display:flex; gap:12px; margin-bottom:18px;">
+  <div style="flex:1; background:#dcfce7; border:1px solid #86efac; border-radius:6px; padding:12px; text-align:center;">
+    <div style="font-size:10px; color:#166534; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; font-weight:600;">Stable</div>
+    <div style="font-size:28px; font-weight:700; color:#14532d;">30</div>
+  </div>
+  <div style="flex:1; background:#ffedd5; border:1px solid #fdba74; border-radius:6px; padding:12px; text-align:center;">
+    <div style="font-size:10px; color:#9a3412; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; font-weight:600;">Stress</div>
+    <div style="font-size:28px; font-weight:700; color:#7c2d12;">12</div>
+  </div>
+  <div style="flex:1; background:#fee2e2; border:1px solid #fca5a5; border-radius:6px; padding:12px; text-align:center;">
+    <div style="font-size:10px; color:#991b1b; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; font-weight:600;">Crisis</div>
+    <div style="font-size:28px; font-weight:700; color:#7f1d1d;">17</div>
+  </div>
+</div>
+
+<!-- EXECUTIVE NARRATIVE SUMMARY & OVERALL ASSESSMENT -->
+<div style="background:var(--s1);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin-bottom:22px;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);">Overall Macro Assessment &amp; Synthesis</div>
+      <div style="font-size:16px;font-weight:700;color:#fff;margin-top:2px;">LOCALIZED CREDIT & SOVEREIGN STRESS (PRE-CASCADE)</div>
+    </div>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--s2);border:1px solid var(--border);color:var(--orange);">
+      Posture: Defensive Tilt — Trim High Beta, Hold Core Quality
+    </span>
+  </div>
+  <p style="font-size:13px;line-height:1.65;color:var(--text);margin-bottom:14px;">
+    High-yield credit spreads and sovereign debt metrics are flashing active repricing stress, and multiple EM currencies have breached crisis levels. Crucially, however, downstream forced-liquidation gates—US equity margin calls (SPY -7% / QQQ -10%) and indiscriminate flight-to-gold—have NOT triggered. Markets are experiencing selective risk repricing rather than an acute margin cascade. Across all <strong>59</strong> monitored macro, FX, yield, and commodity gauges, <strong>30 (51%)</strong> remain Stable while <strong>29 (49%)</strong> are in Stress (12) or Crisis (17). Notably, equity volatility (<strong>VIX 26.4</strong>) is elevated while Treasury market volatility (<strong>MOVE 98.8</strong>) remains calm (&lt;100)—confirming that bond-market plumbing is still functioning and preventing a 2020-style dash-for-cash.
+  </p>
+
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:8px;">
+    Narrative Summary of Key Indicators
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-bottom:14px;">
+    <div style="background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:11px 13px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin-bottom:5px;">1. Canary Sequence & Credit Transmission</div>
+      <div style="font-size:12px;line-height:1.55;color:#c9d1d9;"><strong>Credit Spreads (418 bps)</strong> sit above the 400 bps crisis mark, acting as the primary Stage 3 driver. Meanwhile, <strong>USD/KRW is at 1343.0 (4.2% buffer below 1400 crisis trigger)</strong>, and US equity drawdowns (<strong>SPY -0.49%</strong>, <strong>QQQ -1.99%</strong>) remain well shy of the -7% / -10% margin-call triggers. Gold (-2.27% daily) and Bitcoin (-0.90% daily) show synchronized de-risking rather than panic flight-to-safety.</div>
+    </div>
+<div style="background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:11px 13px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin-bottom:5px;">2. FX Carry & EM Contagion</div>
+      <div style="font-size:12px;line-height:1.55;color:#c9d1d9;"><strong>USD/JPY at 159.35</strong> keeps the yen carry trade in the elevated 152–160 watch zone, while the US Dollar (UUP -0.50%) is stable today, easing immediate dollar-squeeze velocity. Beneath the surface, EM FX contagion is active: <strong>INR, TRY, BRL, IDR</strong> trade past crisis thresholds (with MXN, CLP in stress), and EM equities are underperforming US stocks by <strong>-1.49%</strong> today.</div>
+    </div>
+<div style="background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:11px 13px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin-bottom:5px;">3. Sovereign Debt, Volatility & Doom Loop</div>
+      <div style="font-size:12px;line-height:1.55;color:#c9d1d9;">Long-end sovereign yields remain structurally heavy (<strong>US 10Y 4.92%</strong>, <strong>30Y 5.29%</strong>; 10s-2s curve at <strong>+0.28%</strong>), with parallel pressure across JGBs, UK Gilts, and German Bunds. The <strong>Doom Loop Spread (10Y TIPS Real Yield 2.79% minus Real GDP 2.1%) is +0.69%</strong> — positive territory where real borrowing costs exceed real growth, compounding Federal Interest/GDP (3.94%).</div>
+    </div>
+<div style="background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:11px 13px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin-bottom:5px;">4. Inflation, Labor & Real-Asset Pulse</div>
+      <div style="font-size:12px;line-height:1.55;color:#c9d1d9;"><strong>CPI Inflation (3.7% YoY)</strong> paired with <strong>4.1% Unemployment</strong> boxes the Federal Reserve between sticky above-target inflation and a softening >4.0% labor market. In commodities, WTI ($80.61) and Brent ($87.39) remain below the $110 energy-shock threshold, though sharp intraday moves in Natural Gas (+10.2%) and Silver (-1.4%) reflect elevated real-asset volatility.</div>
+    </div>
+  </div>
+
+  <div style="background:rgba(88,166,255,0.07);border:1px solid rgba(88,166,255,0.25);border-radius:6px;padding:10px 13px;font-size:11.5px;line-height:1.55;color:var(--text);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px;">Regime Transition Watchlist</div>
+    <div style="margin-bottom:3px;">• <strong>Escalation to Stage 4–5:</strong> USD/KRW breaking above <strong>1,400</strong>, S&P 500 single-session/acute drop exceeding <strong>-7%</strong> (QQQ <strong>-10%</strong>), or MOVE bond volatility surging past <strong>115–120</strong>.</div>
+<div style="margin-bottom:3px;">• <strong>De-Escalation to Stage 1–2:</strong> HYG implied credit spreads compressing back below <strong>340 bps</strong>, VIX settling under <strong>20</strong>, and stabilization in Asian/LatAm FX (USD/JPY &lt; 155, BRL &amp; INR stabilizing).</div>
+  </div>
+</div>
+
+<!-- CANARY SIGNALS: THE FORCED LIQUIDATION SEQUENCE -->
+<h2 style="font-size:12px;color:var(--yellow);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Canary Signals (Cascade Order)
+</h2>
+
+<div class="grid">
+  <!-- Korean Won (Stage 2 trigger) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Stage 1→2: Korean Won</div>
+    <div class="big-val">1343.0</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">Crisis level: 1400 (1997 precedent)</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 0.15%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      When KRW breaks 1400: EM crisis cascades, capital controls activate, forced repatriation
+    </div>
+    
+  </div>
+
+  <!-- HYG Credit Spreads (Stage 3 trigger) -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Stage 2→3: Credit Spreads</div>
+    <div class="big-val">418bps</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">HYG-tracked corporate spreads</div>
+    <div class="mrow">
+      <span class="mrow-k">HYG Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.12%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v neg">CRISIS</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      >350bps = market repricing carry unwind, >400bps = crisis
+    </div>
+    <svg width="200" height="32" viewBox="0 0 200 32" style="display:block;margin-top:6px;"><path d="M0.0,29.8 L6.9,21.2 L13.8,28.5 L20.7,29.3 L27.6,29.3 L34.5,25.2 L41.4,22.0 L48.3,23.4 L55.2,19.4 L62.1,8.7 L69.0,8.9 L75.9,9.2 L82.8,13.2 L89.7,16.9 L96.6,14.5 L103.4,0.0 L110.3,6.5 L117.2,7.8 L124.1,0.3 L131.0,9.1 L137.9,4.6 L144.8,14.5 L151.7,15.6 L158.6,21.2 L165.5,23.9 L172.4,23.4 L179.3,26.6 L186.2,32.0 L193.1,26.9 L200.0,29.3" fill="none" stroke="#e3704a" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- QQQ Tech (Stage 5 trigger) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Nasdaq</div>
+    <div class="big-val">$638.1</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 1.99%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      -10% trigger = tech forced selling (highest leverage positions)
+    </div>
+    
+  </div>
+
+  <!-- Correlation Break: Bitcoin vs Stocks (Stage 6 trigger) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Correlation Break</div>
+    <div class="big-val">59160</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">Bitcoin vs stocks divergence</div>
+    <div class="mrow">
+      <span class="mrow-k">Bitcoin Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.90%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">SPY Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.49%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      When BTC down 15% + SPY down 12% = leverage unwinding, not selling
+    </div>
+  </div>
+
+  <!-- Flight to Safety: Gold (Stage 7 trigger) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-green"></div>
+    <div class="card-name">Gold (Flight to Safety)</div>
+    <div class="big-val">$325.5</div>
+    <div class="mrow">
+      <span class="mrow-k">Gold Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 2.27%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">SPY Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.49%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Gold +3% with stocks -7% = true cascade, not noise
+    </div>
+    
+  </div>
+</div>
+
+<!-- EM CURRENCIES: Contagion Monitor -->
+<h2 style="font-size:12px;color:var(--red);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  EM Currency Contagion Watch
+</h2>
+
+<div class="grid">
+  
+        <div class="card card-stable">
+            <div class="card-accent ca-red"></div>
+            <div class="card-name">KRW (Korean Won) Crisis at 1400</div>
+            <div class="big-val">1343.00</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px;">Crisis level: 1400</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="pos">▲ 0.15%</span></span>
+            </div>
+            <div style="color:#f85149;font-weight:700;font-size:10px;margin-top:4px;">4.2% to crisis level</div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,13.7 L5.2,12.8 L10.3,17.2 L15.5,19.2 L20.7,22.7 L25.9,21.8 L31.0,21.5 L36.2,24.0 L41.4,22.2 L46.6,21.0 L51.7,13.1 L56.9,14.5 L62.1,21.8 L67.2,10.5 L72.4,11.6 L77.6,13.3 L82.8,3.7 L87.9,0.0 L93.1,11.1 L98.3,12.2 L103.4,15.5 L108.6,17.0 L113.8,17.3 L119.0,15.8 L124.1,17.4 L129.3,18.9 L134.5,16.4 L139.7,10.8 L144.8,12.7 L150.0,11.5" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-red"></div>
+            <div class="card-name">INR (Indian Rupee) Weakening</div>
+            <div class="big-val">92.44</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px;">Crisis level: 85</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 0.51%</span></span>
+            </div>
+            <div style="color:#f85149;font-weight:700;font-size:10px;margin-top:4px;">-8.1% to crisis level</div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,0.5 L5.2,5.9 L10.3,2.0 L15.5,1.9 L20.7,4.3 L25.9,7.8 L31.0,4.3 L36.2,2.4 L41.4,0.2 L46.6,0.3 L51.7,0.0 L56.9,0.5 L62.1,2.6 L67.2,4.2 L72.4,4.0 L77.6,6.0 L82.8,6.5 L87.9,11.3 L93.1,11.0 L98.3,11.1 L103.4,13.1 L108.6,10.2 L113.8,8.4 L119.0,10.8 L124.1,15.0 L129.3,15.1 L134.5,16.6 L139.7,22.0 L144.8,19.9 L150.0,24.0" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-red"></div>
+            <div class="card-name">TRY (Turkish Lira) Collapse</div>
+            <div class="big-val">50.66</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px;">Crisis level: 35</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="pos">▲ 0.12%</span></span>
+            </div>
+            <div style="color:#f85149;font-weight:700;font-size:10px;margin-top:4px;">-30.9% to crisis level</div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,24.0 L5.2,21.7 L10.3,21.8 L15.5,20.9 L20.7,20.6 L25.9,19.9 L31.0,17.8 L36.2,17.6 L41.4,16.8 L46.6,16.5 L51.7,15.9 L56.9,13.7 L62.1,13.3 L67.2,12.9 L72.4,12.5 L77.6,11.9 L82.8,9.7 L87.9,10.3 L93.1,8.5 L98.3,8.7 L103.4,7.8 L108.6,7.3 L113.8,6.2 L119.0,4.7 L124.1,4.3 L129.3,3.8 L134.5,1.9 L139.7,1.7 L144.8,1.2 L150.0,0.0" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-red"></div>
+            <div class="card-name">BRL (Brazilian Real) Pressure</div>
+            <div class="big-val">5.90</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px;">Crisis level: 5.5</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 0.43%</span></span>
+            </div>
+            <div style="color:#f85149;font-weight:700;font-size:10px;margin-top:4px;">-6.8% to crisis level</div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,22.1 L5.2,20.7 L10.3,21.5 L15.5,22.1 L20.7,22.5 L25.9,22.5 L31.0,21.8 L36.2,24.0 L41.4,14.0 L46.6,14.5 L51.7,14.6 L56.9,13.7 L62.1,12.5 L67.2,12.4 L72.4,11.2 L77.6,11.9 L82.8,10.8 L87.9,10.8 L93.1,10.7 L98.3,8.9 L103.4,8.9 L108.6,7.5 L113.8,6.9 L119.0,4.0 L124.1,4.2 L129.3,1.6 L134.5,0.4 L139.7,0.0 L144.8,0.5 L150.0,1.1" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-stress">
+            <div class="card-accent ca-red"></div>
+            <div class="card-name">MXN (Mexican Peso) Pressure</div>
+            <div class="big-val">19.48</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px;">Crisis level: 20</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="pos">▲ 1.62%</span></span>
+            </div>
+            <div style="color:#f85149;font-weight:700;font-size:10px;margin-top:4px;">2.6% to crisis level</div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,22.8 L5.2,23.3 L10.3,23.3 L15.5,24.0 L20.7,23.7 L25.9,18.0 L31.0,17.0 L36.2,17.1 L41.4,20.9 L46.6,17.8 L51.7,19.0 L56.9,14.1 L62.1,15.4 L67.2,20.4 L72.4,14.9 L77.6,19.6 L82.8,15.7 L87.9,18.9 L93.1,21.2 L98.3,19.8 L103.4,19.4 L108.6,19.9 L113.8,21.4 L119.0,21.6 L124.1,23.9 L129.3,14.1 L134.5,8.8 L139.7,9.1 L144.8,6.9 L150.0,0.0" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-red"></div>
+            <div class="card-name">IDR (Indonesian Rupiah) Weakness</div>
+            <div class="big-val">18290.00</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px;">Crisis level: 16000</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="pos">▲ 0.59%</span></span>
+            </div>
+            <div style="color:#f85149;font-weight:700;font-size:10px;margin-top:4px;">-12.5% to crisis level</div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,13.7 L5.2,7.9 L10.3,6.9 L15.5,7.3 L20.7,8.9 L25.9,8.3 L31.0,7.0 L36.2,6.1 L41.4,4.3 L46.6,4.4 L51.7,6.6 L56.9,6.4 L62.1,5.2 L67.2,24.0 L72.4,22.1 L77.6,22.9 L82.8,23.8 L87.9,5.7 L93.1,6.8 L98.3,4.4 L103.4,23.5 L108.6,19.3 L113.8,2.0 L119.0,20.4 L124.1,18.5 L129.3,19.2 L134.5,1.1 L139.7,0.1 L144.8,3.2 L150.0,0.0" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+</div>
+
+<!-- COMMODITIES -->
+<h2 style="font-size:12px;color:var(--accent);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Commodities
+</h2>
+
+<div class="grid">
+  
+        <div class="card card-stress">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Gold <span style="color:var(--dim)">| GC</span></div>
+            <div class="big-val">3519.6001</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 1.19%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,0.0 L5.4,0.8 L10.7,1.4 L16.1,1.1 L21.4,4.4 L26.8,6.2 L32.1,5.1 L37.5,3.8 L42.9,4.7 L48.2,5.4 L53.6,10.2 L58.9,7.6 L64.3,8.7 L69.6,3.9 L75.0,2.4 L80.4,3.8 L85.7,2.4 L91.1,5.4 L96.4,6.5 L101.8,10.7 L107.1,10.6 L112.5,11.8 L117.9,11.4 L123.2,15.8 L128.6,17.9 L133.9,24.0 L139.3,19.1 L144.6,22.3 L150.0,23.8" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-stress">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Silver <span style="color:var(--dim)">| SI</span></div>
+            <div class="big-val">40.1700</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 1.45%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,1.0 L5.4,1.0 L10.7,0.0 L16.1,0.4 L21.4,4.0 L26.8,5.5 L32.1,4.9 L37.5,4.7 L42.9,5.8 L48.2,7.5 L53.6,11.8 L58.9,9.6 L64.3,11.1 L69.6,7.6 L75.0,7.5 L80.4,8.1 L85.7,7.0 L91.1,9.0 L96.4,8.0 L101.8,10.6 L107.1,11.9 L112.5,14.9 L117.9,14.3 L123.2,17.4 L128.6,18.3 L133.9,22.8 L139.3,19.9 L144.6,23.2 L150.0,24.0" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-stable">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Copper <span style="color:var(--dim)">| HG</span></div>
+            <div class="big-val">5.3915</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="pos">▲ 0.54%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,2.1 L5.4,1.9 L10.7,1.4 L16.1,1.8 L21.4,5.2 L26.8,3.1 L32.1,2.5 L37.5,0.4 L42.9,0.0 L48.2,1.1 L53.6,3.4 L58.9,1.8 L64.3,4.9 L69.6,4.5 L75.0,7.4 L80.4,7.9 L85.7,5.9 L91.1,7.9 L96.4,6.9 L101.8,8.6 L107.1,10.5 L112.5,12.1 L117.9,12.5 L123.2,18.4 L128.6,19.1 L133.9,21.9 L139.3,19.0 L144.6,24.0 L150.0,23.5" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-stress">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Crude Oil WTI <span style="color:var(--dim)">| CL</span></div>
+            <div class="big-val">80.6100</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 1.76%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,2.7 L5.4,0.5 L10.7,2.3 L16.1,7.0 L21.4,4.7 L26.8,0.9 L32.1,2.4 L37.5,4.2 L42.9,1.3 L48.2,2.1 L53.6,0.0 L58.9,7.7 L64.3,8.0 L69.6,16.0 L75.0,13.6 L80.4,13.3 L85.7,17.3 L91.1,18.1 L96.4,17.6 L101.8,15.4 L107.1,15.6 L112.5,18.4 L117.9,18.1 L123.2,20.9 L128.6,21.0 L133.9,20.2 L139.3,24.0 L144.6,22.1 L150.0,23.6" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Brent Oil <span style="color:var(--dim)">| LCO</span></div>
+            <div class="big-val">87.3900</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 4.39%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,6.2 L5.4,6.4 L10.7,7.0 L16.1,7.0 L21.4,3.5 L26.8,0.7 L32.1,1.5 L37.5,3.0 L42.9,1.8 L48.2,2.2 L53.6,0.0 L58.9,10.2 L64.3,11.1 L69.6,18.3 L75.0,15.4 L80.4,15.3 L85.7,19.9 L91.1,20.7 L96.4,19.7 L101.8,17.3 L107.1,17.3 L112.5,20.0 L117.9,19.4 L123.2,20.4 L128.6,20.4 L133.9,19.9 L139.3,22.4 L144.6,20.8 L150.0,24.0" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Natural Gas <span style="color:var(--dim)">| NG</span></div>
+            <div class="big-val">3.6610</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="pos">▲ 10.17%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,12.4 L5.4,13.7 L10.7,15.8 L16.1,19.7 L21.4,19.6 L26.8,23.1 L32.1,24.0 L37.5,21.8 L42.9,19.1 L48.2,16.1 L53.6,17.3 L58.9,18.2 L64.3,17.4 L69.6,15.9 L75.0,16.2 L80.4,15.0 L85.7,10.0 L91.1,8.3 L96.4,10.1 L101.8,7.3 L107.1,9.8 L112.5,12.2 L117.9,10.3 L123.2,6.5 L128.6,8.9 L133.9,5.7 L139.3,10.8 L144.6,7.7 L150.0,0.0" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+        <div class="card card-crisis">
+            <div class="card-accent ca-blue"></div>
+            <div class="card-name">Gasoline RBOB <span style="color:var(--dim)">| GPR</span></div>
+            <div class="big-val">2.4010</div>
+            <div class="mrow">
+                <span class="mrow-k">Daily Change</span>
+                <span class="mrow-v"><span class="neg">▼ 2.17%</span></span>
+            </div>
+            <svg width="150" height="24" viewBox="0 0 150 24" style="display:block;margin-top:6px;"><path d="M0.0,2.0 L5.4,3.2 L10.7,5.1 L16.1,5.0 L21.4,3.6 L26.8,2.6 L32.1,2.5 L37.5,4.6 L42.9,3.7 L48.2,3.3 L53.6,0.0 L58.9,10.9 L64.3,9.9 L69.6,15.4 L75.0,14.5 L80.4,14.1 L85.7,17.4 L91.1,18.5 L96.4,18.6 L101.8,16.9 L107.1,18.2 L112.5,20.4 L117.9,20.5 L123.2,21.9 L128.6,21.5 L133.9,21.3 L139.3,23.9 L144.6,22.6 L150.0,24.0" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        
+</div>
+
+<!-- RESERVE CURRENCY STATUS -->
+<h2 style="font-size:12px;color:var(--blue);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Reserve Currencies Status
+</h2>
+
+<div class="grid">
+  <!-- US Dollar -->
+  <div class="card card-stable">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">US Dollar (UUP)</div>
+    <div class="big-val">29.63</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.50%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">STABLE</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      >1% daily jump = stress, >2% = crisis (Wrecking ball effect)
+    </div>
+  </div>
+
+  <!-- British Pound -->
+  <div class="card card-stable">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">British Pound (GBP/USD)</div>
+    <div class="big-val">0.7644</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.36%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Former reserve currency (19th century - 1944)
+    </div>
+  </div>
+
+  <!-- Euro (Guilder Successor) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">Euro (EUR/USD)</div>
+    <div class="big-val">0.9139</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.31%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Modern successor to the Dutch Guilder (17th century)
+    </div>
+  </div>
+</div>
+
+<!-- REGIONAL CONTAGION MONITOR -->
+<h2 style="font-size:12px;color:var(--orange);margin:24px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Regional Contagion Spread
+</h2>
+
+<h3 style="font-size:10px;color:var(--muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">Asia / Pacific</h3>
+<div class="grid">
+  <!-- JPY -->
+  <div class="card card-stress">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">USD/JPY (Yen Carry)</div>
+    <div class="big-val">159.35</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 0.21%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">STRESS</span>
+    </div>
+  </div>
+  <!-- INR -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">USD/INR (India)</div>
+    <div class="big-val">92.44</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.51%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">CRISIS</span>
+    </div>
+  </div>
+  <!-- IDR -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">USD/IDR (Indonesia)</div>
+    <div class="big-val">18290</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 0.59%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">CRISIS</span>
+    </div>
+  </div>
+</div>
+
+<h3 style="font-size:10px;color:var(--muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">Latin America</h3>
+<div class="grid">
+  <!-- BRL -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">USD/BRL (Brazil)</div>
+    <div class="big-val">5.9028</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.43%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">CRISIS</span>
+    </div>
+  </div>
+  <!-- MXN -->
+  <div class="card card-stress">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">USD/MXN (Mexico)</div>
+    <div class="big-val">19.4840</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 1.62%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">STRESS</span>
+    </div>
+  </div>
+  <!-- CLP -->
+  <div class="card card-stress">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">USD/CLP (Chile)</div>
+    <div class="big-val">1016.3</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 2.64%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">STRESS</span>
+    </div>
+  </div>
+</div>
+
+<h3 style="font-size:10px;color:var(--muted);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">EMEA</h3>
+<div class="grid">
+  <!-- TRY -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-yellow"></div>
+    <div class="card-name">USD/TRY (Turkey)</div>
+    <div class="big-val">50.6631</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 0.12%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">CRISIS</span>
+    </div>
+  </div>
+  <!-- ZAR -->
+  <div class="card card-stable">
+    <div class="card-accent ca-yellow"></div>
+    <div class="card-name">USD/ZAR (South Africa)</div>
+    <div class="big-val">17.6220</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 1.25%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v">STABLE</span>
+    </div>
+  </div>
+</div>
+
+<!-- SOVEREIGN YIELD CURVES -->
+<h2 style="font-size:12px;color:var(--orange);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Sovereign Debt & Yield Curve Stress
+</h2>
+<div class="grid">
+  <!-- US Treasury Curve -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">United States</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">1-Week Change Tracker (bps)</div>
+    <div class="mrow"><span class="mrow-k">2Y Yield: 4.63%</span><span class="mrow-v neg">-20 bps</span></div>
+    <div class="mrow"><span class="mrow-k">10Y Yield: 4.92%</span><span class="mrow-v neg">-20 bps</span></div>
+    <div class="mrow"><span class="mrow-k">30Y Yield: 5.29%</span><span class="mrow-v neg">-17 bps</span></div>
+    <div class="mrow" style="margin-top:4px;"><span class="mrow-k">Status</span><span class="mrow-v">CRISIS</span></div>
+  </div>
+
+  <!-- Japan JGB Curve -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Japan (JGB)</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">Daily Change Tracker (bps)</div>
+    <div class="mrow"><span class="mrow-k">2Y Yield: 1.734%</span><span class="mrow-v neg">-4.9 bps</span></div>
+    <div class="mrow"><span class="mrow-k">10Y Yield: 2.646%</span><span class="mrow-v neg">-0.6 bps</span></div>
+    <div class="mrow"><span class="mrow-k">30Y Yield: 3.939%</span><span class="mrow-v neg">0.0 bps</span></div>
+    <div class="mrow" style="margin-top:4px;"><span class="mrow-k">Status</span><span class="mrow-v">CRISIS</span></div>
+  </div>
+
+  <!-- UK Gilt Curve -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">United Kingdom (Gilts)</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">Daily Change Tracker (bps)</div>
+    <div class="mrow"><span class="mrow-k">2Y Yield: 4.874%</span><span class="mrow-v pos">1.3 bps</span></div>
+    <div class="mrow"><span class="mrow-k">10Y Yield: 5.194%</span><span class="mrow-v pos">0.2 bps</span></div>
+    <div class="mrow"><span class="mrow-k">30Y Yield: 5.658%</span><span class="mrow-v pos">0.4 bps</span></div>
+    <div class="mrow" style="margin-top:4px;"><span class="mrow-k">Status</span><span class="mrow-v">CRISIS</span></div>
+  </div>
+
+  <!-- Germany Bund Curve -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Germany (Bunds)</div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">Daily Change Tracker (bps)</div>
+    <div class="mrow"><span class="mrow-k">2Y Yield: 3.060%</span><span class="mrow-v neg">-0.4 bps</span></div>
+    <div class="mrow"><span class="mrow-k">10Y Yield: 3.281%</span><span class="mrow-v pos">1.5 bps</span></div>
+    <div class="mrow"><span class="mrow-k">30Y Yield: 3.658%</span><span class="mrow-v pos">1.3 bps</span></div>
+    <div class="mrow" style="margin-top:4px;"><span class="mrow-k">Status</span><span class="mrow-v">CRISIS</span></div>
+  </div>
+</div>
+
+<!-- SUPPORTING INDICATORS -->
+<h2 style="font-size:12px;color:var(--yellow);margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Supporting Indicators
+</h2>
+
+<div class="grid">
+  <!-- EM Equities vs US -->
+  <div class="card card-stress">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">EM vs US Divergence</div>
+    <div class="big-val"><span class="neg">▼ 1.49%</span></div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">Daily Return Spread (EEM - SPY)</div>
+    <div class="mrow">
+      <span class="mrow-k">EEM Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 1.97%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">SPY Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.49%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Negative spread means EM is selling off faster than the US (capital flight).
+    </div>
+  </div>
+
+
+  <!-- Volatility -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Volatility (VIX)</div>
+    <div class="big-val">26.4</div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v neg">critical</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      VIX >20 = stage 1-2, >25 = stage 3+, >35 = full cascade
+    </div>
+  </div>
+
+  <!-- Bond Volatility (MOVE) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Bond Vol (MOVE)</div>
+    <div class="big-val">98.8</div>
+    <div class="mrow">
+      <span class="mrow-k">Status</span>
+      <span class="mrow-v pos">calm</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;line-height:1.4;">
+      <strong>The "VIX for Bonds"</strong>. Measures expected 1-mo Treasury yield volatility (in basis points).<br>
+      • ~60-80: Normal/Calm<br>
+      • >100: High Stress<br>
+      • >120: Bond panic (liquidity danger)
+    </div>
+  </div>
+
+  <!-- Yield Curve -->
+  <div class="card card-stable">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Yield Curve (10y-2y)</div>
+    <div class="big-val">0.28%</div>
+    <div class="mrow">
+      <span class="mrow-k">Trend</span>
+      <span class="mrow-v pos">-3 bps</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      &lt;0 = recession warning. Rapid steepening = active crisis
+    </div>
+  </div>
+
+
+
+
+  <!-- Oil Price (Hormuz) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Brent Crude (Hormuz)</div>
+    <div class="big-val">$57.8</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 1.92%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      >$110 = energy crisis active, >$120 = transmission visible
+    </div>
+  </div>
+
+  <!-- 20yr Treasury (TLT) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">20yr Treasury (TLT)</div>
+    <div class="big-val">$81.49</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.24%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Long duration bond proxy for supply/demand fears
+    </div>
+  </div>
+
+  <!-- Consumer Staples (XLP) -->
+  <div class="card card-stress">
+    <div class="card-accent ca-green"></div>
+    <div class="card-name">Consumer Staples (XLP)</div>
+    <div class="big-val">$91.88</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 1.66%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      <strong>Crisis:</strong> Safe haven (people still buy essentials).<br>
+      <strong>Inflation:</strong> Pass costs to consumers (acts as a hedge).
+    </div>
+  </div>
+
+  <!-- CPI YoY -->
+  <div class="card card-stress">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Inflation (CPI YoY)</div>
+    <div class="big-val">3.7%</div>
+    <div class="mrow">
+      <span class="mrow-k">Previous</span>
+      <span class="mrow-v">3.4%</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Drives Fed hiking path expectations
+    </div>
+  </div>
+
+  <!-- Unemployment Rate -->
+  <div class="card card-stress">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Unemployment Rate</div>
+    <div class="big-val">4.1%</div>
+    <div class="mrow">
+      <span class="mrow-k">Previous</span>
+      <span class="mrow-v">4.2%</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      >4.0% = Fed boxed in (too soft to hike into)
+    </div>
+  </div>
+</div>
+
+<!-- ENERGY BUFFERS & RETAIL DISCONNECT -->
+<h2 style="font-size:12px;color:var(--orange);margin:24px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Energy Buffers & Retail Disconnect
+</h2>
+
+<div class="grid">
+  <!-- US Crude Inventories -->
+  <div class="card card-stable">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">US Crude Inventories</div>
+    <div class="big-val">
+      —M
+      <span style="font-size:12px;font-weight:normal;color:var(--muted)">bbls</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Previous Weekly</span>
+      <span class="mrow-v">—M</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Falling inventory = artificial supply cushioning true prices
+    </div>
+    
+  </div>
+
+  <!-- Retail Gas Prices -->
+  <div class="card card-stable">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">US Retail Gas</div>
+    <div class="big-val">
+      $3.64
+      <span style="font-size:12px;font-weight:normal;color:var(--muted)">/gal</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Previous</span>
+      <span class="mrow-v">$3.81</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Consumer-level pain monitor, decouples from spot crude
+    </div>
+    
+  </div>
+</div>
+
+<!-- SOVEREIGN DEBT RISK -->
+<h2 style="font-size:12px;color:var(--red);margin:24px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Sovereign Debt Risk
+</h2>
+
+<div class="grid">
+  <!-- Federal Interest to GDP -->
+  <div class="card card-stress">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Federal Interest / GDP</div>
+    <div class="big-val">3.94%</div>
+    <div class="mrow">
+      <span class="mrow-k">Previous</span>
+      <span class="mrow-v">3.86%</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Debt burden relative to economic size
+    </div>
+  </div>
+
+  <!-- Real GDP Growth (YoY) -->
+  <div class="card card-stable">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-name">Real GDP Growth (YoY)</div>
+    <div class="big-val">2.1%</div>
+    <div class="mrow">
+      <span class="mrow-k">Previous</span>
+      <span class="mrow-v">2.2%</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Economic engine's inflation-adjusted output
+    </div>
+  </div>
+
+  <!-- Doom Loop Spread -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Doom Loop Spread</div>
+    <div class="big-val">0.69%</div>
+    <div class="mrow">
+      <span class="mrow-k">Real Rates (10y TIPS)</span>
+      <span class="mrow-v">2.79%</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      >0% = Real rates exceed growth (Death Spiral territory)
+    </div>
+  </div>
+</div>
+
+<!-- STRUCTURAL ECONOMY VS STOCK MARKET -->
+<h2 style="font-size:12px;color:var(--yellow);margin:24px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  Structural Economy vs Stock Market
+</h2>
+
+<div class="grid">
+  <!-- Government Social Benefits -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-red"></div>
+    <div class="card-name">Gov Social Benefits</div>
+    <div class="big-val">$5.12T</div>
+    <div class="mrow">
+      <span class="mrow-k">Annualized rate</span>
+      <span class="mrow-v">Fueling consumption</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Deficit-funded transfers masking core economic weakness
+    </div>
+  </div>
+
+  <!-- Corporate Profits / GDP -->
+  <div class="card card-crisis">
+    <div class="card-accent ca-green"></div>
+    <div class="card-name">Corp Profits / GDP</div>
+    <div class="big-val">13.0%</div>
+    <div class="mrow">
+      <span class="mrow-k">Profit Pool</span>
+      <span class="mrow-v">$4.28T</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      Capturing the borrowed consumption flows
+    </div>
+  </div>
+
+  <!-- Net Domestic Investment -->
+  <div class="card card-stable">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">Net Domestic Investment</div>
+    <div class="big-val">$1834B</div>
+    <div class="mrow">
+      <span class="mrow-k">Previous Qtr</span>
+      <span class="mrow-v">$1609B</span>
+    </div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      True capital stock growth (after massive depreciation)
+    </div>
+  </div>
+</div>
+
+<!-- DE-DOLLARIZATION MONITOR -->
+<h2 style="font-size:12px;color:var(--accent);margin:24px 0 8px;text-transform:uppercase;letter-spacing:1px;">
+  De-Dollarization Monitor
+</h2>
+
+<div class="grid">
+  <!-- 1. Central Bank Reserve Diversification -->
+  <div class="card card-stable">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-name">1. CB Reserve Diversification</div>
+    <div class="big-val">
+      $4.59T
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">3-Month Change</span>
+      <span class="mrow-v"><span class="pos">▲ 0.99%</span></span>
+    </div>
+    <div style="font-size:9px;color:var(--muted);margin:4px 0;">US Treasuries held by RoW central banks</div>
+    <div style="font-size:9px;color:var(--dim);margin-top:8px;">
+      <b>Watch Signal:</b> If falls >5% in a quarter = panic selling.<br/>If falls >10% = reserve currency status challenged.
+    </div>
+    <svg width="200" height="32" viewBox="0 0 200 32" style="display:block;margin-top:6px;"><path d="M0.0,32.0 L8.7,29.8 L17.4,29.6 L26.1,28.3 L34.8,25.2 L43.5,23.0 L52.2,21.3 L60.9,20.1 L69.6,17.1 L78.3,14.6 L87.0,13.4 L95.7,12.2 L104.3,10.4 L113.0,10.4 L121.7,9.8 L130.4,8.6 L139.1,6.9 L147.8,6.2 L156.5,4.9 L165.2,4.3 L173.9,3.1 L182.6,2.5 L191.3,0.2 L200.0,0.0" fill="none" stroke="#e3704a" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Cascade Liquidation Tracker — Real-time forced liquidation sequence monitoring</p>
+  <p>Updated November 25, 2026  ·  06:49 UTC — Refresh page or re-run script for latest data</p>
+  <p style="margin-top:6px;color:var(--dim);">
+    Stage 0-2: Position defensively | Start deploying cash | Stage 5+: Full deployment window
+  </p>
+</div>
+
+</body>
+</html>

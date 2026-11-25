@@ -1,0 +1,77 @@
+{
+  "total_snippets_classified": 1629,
+  "by_source_corpus": {
+    "VERBATIM_COUNCIL_TRANSCRIPT": 1201,
+    "MUNICIPAL_HEARING_RECORD": 428
+  },
+  "overall_causal_story_distribution": {
+    "MECHANICAL": 709,
+    "DOES_NOT_FIT": 547,
+    "INADVERTENT": 242,
+    "INTENTIONAL": 120,
+    "ACCIDENTAL": 11
+  },
+  "overall_causal_story_pct": {
+    "MECHANICAL": 43.52,
+    "DOES_NOT_FIT": 33.58,
+    "INADVERTENT": 14.86,
+    "INTENTIONAL": 7.37,
+    "ACCIDENTAL": 0.68
+  },
+  "non_fit_subtypes": {
+    "GENERAL_SCOPE_OR_TURNOUT": 492,
+    "PROCEDURAL_PARLIAMENTARY": 46,
+    "PRO_DEVELOPMENT_PROBLEM_DENIAL": 9
+  },
+  "fits_stone_framework_count": 1082,
+  "does_not_fit_count": 547,
+  "by_corpus_breakdown": {
+    "MUNICIPAL_HEARING_RECORD": {
+      "total": 428,
+      "fits_stone_count": 337,
+      "fits_stone_pct": 78.74,
+      "counts": {
+        "MECHANICAL": 193,
+        "INADVERTENT": 118,
+        "DOES_NOT_FIT": 91,
+        "INTENTIONAL": 20,
+        "ACCIDENTAL": 6
+      },
+      "percentages": {
+        "MECHANICAL": 45.09,
+        "INADVERTENT": 27.57,
+        "DOES_NOT_FIT": 21.26,
+        "INTENTIONAL": 4.67,
+        "ACCIDENTAL": 1.4
+      },
+      "non_fit_subtypes": {
+        "GENERAL_SCOPE_OR_TURNOUT": 87,
+        "PROCEDURAL_PARLIAMENTARY": 4
+      }
+    },
+    "VERBATIM_COUNCIL_TRANSCRIPT": {
+      "total": 1201,
+      "fits_stone_count": 745,
+      "fits_stone_pct": 62.03,
+      "counts": {
+        "MECHANICAL": 516,
+        "DOES_NOT_FIT": 456,
+        "INADVERTENT": 124,
+        "INTENTIONAL": 100,
+        "ACCIDENTAL": 5
+      },
+      "percentages": {
+        "MECHANICAL": 42.96,
+        "DOES_NOT_FIT": 37.97,
+        "INADVERTENT": 10.32,
+        "INTENTIONAL": 8.33,
+        "ACCIDENTAL": 0.42
+      },
+      "non_fit_subtypes": {
+        "GENERAL_SCOPE_OR_TURNOUT": 405,
+        "PROCEDURAL_PARLIAMENTARY": 42,
+        "PRO_DEVELOPMENT_PROBLEM_DENIAL": 9
+      }
+    }
+  }
+}

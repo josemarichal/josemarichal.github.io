@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Macro Research Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #06090f;
+  --s1:       #0d1117;
+  --s2:       #161b22;
+  --s3:       #21262d;
+  --border:   #30363d;
+  --text:     #e6edf3;
+  --muted:    #7d8590;
+  --dim:      #484f58;
+  --accent:   #58a6ff;
+  --green:    #3fb950;
+  --red:      #f85149;
+  --yellow:   #d29922;
+  --orange:   #e3704a;
+  --purple:   #bc8cff;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 20px 24px 40px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hdr-left h1 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+.hdr-left p {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+  max-width: 600px;
+}
+.hdr-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+.hdr-ts {
+  font-size: 11px;
+  color: var(--dim);
+}
+.live-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50%      { opacity:0.3; }
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 1200px) {
+  .grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+  .grid-5, .grid-2 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.ca-red    { background: var(--red); }
+.ca-orange { background: var(--orange); }
+.ca-yellow { background: var(--yellow); }
+.ca-blue   { background: var(--accent); }
+.ca-green  { background: var(--green); }
+.ca-purple { background: var(--purple); }
+.ca-dim    { background: var(--dim); }
+
+.card-tag {
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.card-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.big-val {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.big-label {
+  font-size: 10px;
+  color: var(--dim);
+  margin-top: 3px;
+  margin-bottom: 12px;
+}
+
+.mrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--s3);
+  font-size: 11px;
+}
+.mrow:last-of-type { border-bottom: none; }
+.mrow-k { color: var(--muted); }
+.mrow-v { font-weight: 600; color: var(--text); }
+
+.pos  { color: var(--green); }
+.neg  { color: var(--red); }
+.warn { color: var(--yellow); }
+.muted { color: var(--muted); }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+.badge-red    { background:rgba(248,81,73,.15);  color:var(--red);    border:1px solid rgba(248,81,73,.3); }
+.badge-yellow { background:rgba(210,153,34,.15); color:var(--yellow); border:1px solid rgba(210,153,34,.3); }
+.badge-green  { background:rgba(63,185,80,.15);  color:var(--green);  border:1px solid rgba(63,185,80,.3); }
+
+.signal {
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: var(--s2);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--muted);
+  border-left: 2px solid var(--dim);
+  line-height: 1.6;
+}
+.signal.warn  { border-left-color: var(--yellow); color: var(--yellow); }
+.signal.alert { border-left-color: var(--red);    color: var(--red); }
+.signal.ok    { border-left-color: var(--green);  color: var(--green); }
+
+.alert-banner {
+  background: rgba(248,81,73,.12);
+  border: 1px solid rgba(248,81,73,.4);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border-left: 4px solid #f85149;
+}
+.alert-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f85149;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.alert-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.alert-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+.alert-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+.alert-value {
+  font-weight: 700;
+  color: #fff;
+}
+.alert-value.alert {
+  color: #f85149;
+}
+.alert-detail {
+  color: var(--dim);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 10px;
+}
+
+.etf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.etf-chip {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+.etf-chip-name  { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+.etf-chip-price { font-size: 15px; font-weight: 700; color: #fff; }
+.etf-chip-change { font-size: 10px; margin-top: 2px; }
+
+.footer {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--dim);
+}
+
+.config-banner {
+  background: rgba(210,153,34,.08);
+  border: 1px solid rgba(210,153,34,.3);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: var(--yellow);
+  margin-bottom: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <h1><span class="live-dot"></span>Macro Research Terminal</h1>
+    <p>10 Key Relationships: Carry Trade · Energy · K-Consumer · Treasury Stress · De-Dollar · Dragons · EM Reserves · Treasury Demand · Refined Prod · AI ROI</p>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-ts">Last run: June 30, 2026  ·  22:03 UTC</div>
+    <div style="font-size:10px;color:var(--dim);margin-top:3px;">Data is static — re-run to refresh</div>
+    <div style="font-size:10px;color:var(--dim);margin-top:1px;">Run: <code style="background:var(--s3);padding:1px 5px;border-radius:3px;">python dashboard_updated.py</code></div>
+  </div>
+</div>
+
+
+
+<!-- ── The 10 Key Relationships ── -->
+<div class="grid-5">
+
+  <!-- 1. Carry Trade -->
+  <div class="card">
+    <div class="card-accent ca-red"></div>
+    <div class="card-tag">Relationship 1</div>
+    <div class="card-name">Yen Carry Trade</div>
+    <div class="big-val">162.60</div>
+    <div class="big-label">USD / JPY</div>
+    <div class="mrow">
+      <span class="mrow-k">Risk Level</span>
+      <span class="mrow-v neg">CRITICAL — past intervention zone</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">CFTC Net Short</span>
+      <span class="mrow-v neg">—</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Carry Spread (10yr)</span>
+      <span class="mrow-v warn">1.74%</span>
+    </div>
+    <div class="signal warn">MODERATE — spread narrowing, monitor closely</div>
+    
+  </div>
+
+  <!-- 2. Energy Crisis -->
+  <div class="card">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-tag">Relationship 2</div>
+    <div class="card-name">Hormuz Energy Crisis</div>
+    <div class="big-val">$73.37</div>
+    <div class="big-label">Brent Crude (USD/bbl)</div>
+    <div class="mrow">
+      <span class="mrow-k">Risk Level</span>
+      <span class="mrow-v positive">MODERATE <$90</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Extra Japan Import Bill</span>
+      <span class="mrow-v warn">~$0B/yr</span>
+    </div>
+    <div class="signal warn">Every $10 oil rise = $8-10B structural yen selling pressure/yr</div>
+    
+  </div>
+
+  <!-- 3. K-Shaped Consumer -->
+  <div class="card">
+    <div class="card-accent ca-yellow"></div>
+    <div class="card-tag">Relationship 3</div>
+    <div class="card-name">K-Shaped Consumer</div>
+    <div class="big-val">0.7083</div>
+    <div class="big-label">XLP / XLY ratio (↑ = lower K stress)</div>
+    <div class="mrow">
+      <span class="mrow-k">Savings Rate</span>
+      <span class="mrow-v neg">3.0%</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Consumer Sentiment</span>
+      <span class="mrow-v">44.8</span>
+    </div>
+    <div class="signal alert">Savings rate critical — below shock absorption threshold</div>
+  </div>
+
+  <!-- 4. Treasury Stress (SILENT STRESS) -->
+  <div class="card">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-tag">Relationship 4</div>
+    <div class="card-name">Treasury Stress</div>
+    <div class="big-val">$86.42</div>
+    <div class="big-label">TLT 20yr Treasury (↓ = yields rising)</div>
+    <div class="mrow">
+      <span class="mrow-k">Daily Change</span>
+      <span class="mrow-v"><span class="neg">▼ 1.18%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">EEM Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 1.45%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">VIX</span>
+      <span class="mrow-v pos">16.5</span>
+    </div>
+    <div class="signal ">No safe haven stress detected</div>
+    
+  </div>
+
+  <!-- 5. De-Dollarization -->
+  <div class="card">
+    <div class="card-accent ca-green"></div>
+    <div class="card-tag">Relationship 5</div>
+    <div class="card-name">De-Dollarization</div>
+    <div class="big-val">$368.38</div>
+    <div class="big-label">GLD Gold ETF</div>
+    <div class="mrow">
+      <span class="mrow-k">Gold Daily</span>
+      <span class="mrow-v"><span class="neg">▼ 0.05%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">UUP Dollar Daily</span>
+      <span class="mrow-v"><span class="pos">▲ 0.14%</span></span>
+    </div>
+    <div class="signal ">No divergence signal</div>
+    
+  </div>
+
+  <!-- 6. Dragons (UN - INF) -->
+  <div class="card">
+    <div class="card-accent ca-red"></div>
+    <div class="card-tag">Early Warning</div>
+    <div class="card-name">Dragons: Unemployment - Inflation</div>
+    <div class="big-val">-329.68%</div>
+    <div class="big-label">When negative, system equilibrium is breaking</div>
+    <div class="mrow">
+      <span class="mrow-k">Unemployment</span>
+      <span class="mrow-v">4.30%</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">CPI YoY</span>
+      <span class="mrow-v">333.98%</span>
+    </div>
+    <div class="badge badge-green">BENIGN — inflation well below unemployment...</div>
+    <svg width="300" height="36" viewBox="0 0 300 36" style="display:block;margin-top:6px;"><path d="M0.0,0.0 L13.6,0.7 L27.3,1.6 L40.9,2.9 L54.5,4.5 L68.2,5.9 L81.8,7.9 L95.5,10.4 L109.1,11.3 L122.7,11.5 L136.4,12.4 L150.0,12.8 L163.6,14.6 L177.3,15.5 L190.9,17.4 L204.5,18.9 L218.2,20.2 L231.8,22.0 L245.5,23.2 L259.1,24.5 L272.7,29.6 L286.4,33.3 L300.0,36.0" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- 7. EM Reserve Depletion -->
+  <div class="card">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-tag">Relationship 7</div>
+    <div class="card-name">EM Reserve Depletion</div>
+    <div class="big-val">$5.2B</div>
+    <div class="big-label">Extra monthly oil import cost vs $70 baseline</div>
+    <div class="mrow">
+      <span class="mrow-k">India Reserves</span>
+      <span class="mrow-v">$1B (11.4mo)</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Indonesia Reserves</span>
+      <span class="mrow-v">$0B (5.4mo)</span>
+    </div>
+    <div class="badge pos">LOW</div>
+    <div class="signal warn">India <7mo cover = emergency threshold approaching</div>
+  </div>
+
+  <!-- 8. Treasury Foreign Demand -->
+  <div class="card">
+    <div class="card-accent ca-blue"></div>
+    <div class="card-tag">Relationship 8</div>
+    <div class="card-name">Treasury Demand Quality</div>
+    <div class="big-val">$9271B</div>
+    <div class="big-label">Total Foreign Treasury Holdings</div>
+    <div class="mrow">
+      <span class="mrow-k">China Holdings</span>
+      <span class="mrow-v pos">$651B <span class="neg">▼ 0.19%</span></span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Japan Holdings</span>
+      <span class="mrow-v pos">$1210B <span class="pos">▲ 1.54%</span></span>
+    </div>
+    <div class="badge pos">NORMAL...</div>
+  </div>
+
+  <!-- 9. Refined Products Constraint -->
+  <div class="card">
+    <div class="card-accent ca-orange"></div>
+    <div class="card-tag">Relationship 9</div>
+    <div class="card-name">Refined Products Constraint</div>
+    <div class="big-val">94.5%</div>
+    <div class="big-label">Refinery Operating Rate (can't process more)</div>
+    <div class="mrow">
+      <span class="mrow-k">Brent Crude</span>
+      <span class="mrow-v">$73/bbl</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Constraint Status</span>
+      <span class="mrow-v neg">At physical capacity</span>
+    </div>
+    <div class="badge neg">CRITICAL</div>
+    <div class="signal warn">Diesel/jet fuel expensive even if crude falls — refineries are the bottleneck</div>
+  </div>
+
+  <!-- 10. AI Capex ROI -->
+  <div class="card">
+    <div class="card-accent ca-purple"></div>
+    <div class="card-tag">Relationship 10</div>
+    <div class="card-name">AI Capex ROI & Debt</div>
+    <div class="big-val">$5.2B</div>
+    <div class="big-label">Data center debt rolling to 6.5%+</div>
+    <div class="mrow">
+      <span class="mrow-k">Extra Annual Interest</span>
+      <span class="mrow-v neg">$0.16B</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Open Model Adoption</span>
+      <span class="mrow-v warn">70% of startups</span>
+    </div>
+    <div class="badge neg">CRITICAL</div>
+    <div class="signal alert">Circular investing breaks if capex ROI < debt cost</div>
+  </div>
+
+</div>
+
+<!-- ── Extended Analysis Cards ── -->
+<div class="grid-2">
+
+  <div class="card">
+    <div class="card-accent ca-dim"></div>
+    <div class="card-name">ETF Monitor</div>
+    <div class="etf-grid">
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">S&P 500</div>
+          <div class="etf-chip-price">$746.77</div>
+          <div class="etf-chip-change"><span class="pos">▲ 0.78%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,14.7 L3.1,18.2 L6.2,12.9 L9.3,11.8 L12.4,9.8 L15.5,6.3 L18.6,6.4 L21.7,3.5 L24.8,2.2 L27.9,0.7 L31.0,0.0 L34.1,3.7 L37.2,1.7 L40.3,15.5 L43.4,14.3 L46.6,15.8 L49.7,24.0 L52.8,15.3 L55.9,12.5 L59.0,3.3 L62.1,6.5 L65.2,13.1 L68.3,7.7 L71.4,9.3 L74.5,16.9 L77.6,17.2 L80.7,16.4 L83.8,20.2 L86.9,11.7 L90.0,7.6" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Nasdaq</div>
+          <div class="etf-chip-price">$736.40</div>
+          <div class="etf-chip-change"><span class="pos">▲ 1.70%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,18.4 L3.1,20.4 L6.2,15.1 L9.3,14.5 L12.4,13.1 L15.5,7.3 L18.6,7.6 L21.7,4.8 L24.8,3.6 L27.9,1.6 L31.0,0.0 L34.1,0.9 L37.2,2.5 L40.3,18.8 L43.4,13.8 L46.6,17.5 L49.7,24.0 L52.8,13.3 L55.9,11.4 L59.0,1.0 L62.1,7.5 L65.2,10.8 L68.3,2.5 L71.4,3.4 L74.5,14.5 L77.6,15.9 L80.7,13.3 L83.8,17.8 L86.9,9.7 L90.0,4.1" fill="none" stroke="#bc8cff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Gold</div>
+          <div class="etf-chip-price">$368.38</div>
+          <div class="etf-chip-change"><span class="neg">▼ 0.05%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,0.0 L3.1,3.2 L6.2,0.5 L9.3,0.7 L12.4,2.1 L15.5,2.0 L18.6,4.5 L21.7,2.6 L24.8,0.6 L27.9,3.3 L31.0,3.0 L34.1,4.8 L37.2,3.3 L40.3,10.1 L43.4,9.7 L46.6,12.6 L49.7,20.0 L52.8,14.7 L55.9,14.6 L59.0,10.0 L62.1,9.5 L65.2,13.6 L68.3,14.3 L71.4,15.5 L74.5,18.8 L77.6,24.0 L80.7,22.4 L83.8,20.5 L86.9,22.8 L90.0,22.9" fill="none" stroke="#3fb950" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">20yr Treasury</div>
+          <div class="etf-chip-price">$86.42</div>
+          <div class="etf-chip-change"><span class="neg">▼ 1.18%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,21.3 L3.1,24.0 L6.2,19.5 L9.3,18.0 L12.4,15.7 L15.5,13.5 L18.6,12.5 L21.7,10.3 L24.8,10.2 L27.9,10.0 L31.0,9.1 L34.1,10.8 L37.2,9.8 L40.3,12.1 L43.4,14.3 L46.6,11.8 L49.7,13.0 L52.8,7.4 L55.9,8.5 L59.0,8.7 L62.1,6.4 L65.2,5.7 L68.3,3.5 L71.4,6.9 L74.5,6.3 L77.6,0.4 L80.7,0.5 L83.8,0.5 L86.9,0.0 L90.0,5.2" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Brent Oil</div>
+          <div class="etf-chip-price">$40.69</div>
+          <div class="etf-chip-change"><span class="neg">▼ 0.39%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,1.5 L3.1,0.0 L6.2,4.1 L9.3,4.2 L12.4,4.9 L15.5,7.4 L18.6,10.0 L21.7,9.7 L24.8,10.7 L27.9,8.2 L31.0,7.7 L34.1,6.3 L37.2,8.2 L40.3,9.9 L43.4,9.0 L46.6,10.8 L49.7,9.5 L52.8,12.6 L55.9,14.3 L59.0,16.6 L62.1,19.4 L65.2,19.9 L68.3,19.4 L71.4,20.4 L74.5,21.1 L77.6,23.4 L80.7,22.0 L83.8,24.0 L86.9,23.3 L90.0,23.5" fill="none" stroke="#e3704a" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Japanese Yen</div>
+          <div class="etf-chip-price">$56.44</div>
+          <div class="etf-chip-change"><span class="neg">▼ 0.39%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,0.0 L3.1,1.4 L6.2,0.4 L9.3,0.5 L12.4,1.8 L15.5,3.0 L18.6,4.6 L21.7,2.6 L24.8,3.2 L27.9,5.1 L31.0,6.5 L34.1,8.1 L37.2,7.9 L40.3,8.6 L43.4,9.2 L46.6,10.1 L49.7,11.1 L52.8,6.5 L55.9,9.5 L59.0,9.9 L62.1,10.8 L65.2,12.5 L68.3,16.8 L71.4,17.8 L74.5,17.6 L77.6,19.4 L80.7,19.6 L83.8,19.2 L86.9,20.1 L90.0,24.0" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Emerging Markets</div>
+          <div class="etf-chip-price">$68.41</div>
+          <div class="etf-chip-change"><span class="pos">▲ 1.45%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,21.7 L3.1,24.0 L6.2,20.1 L9.3,18.2 L12.4,18.7 L15.5,10.4 L18.6,10.5 L21.7,9.7 L24.8,9.8 L27.9,4.9 L31.0,2.6 L34.1,5.4 L37.2,8.1 L40.3,22.9 L43.4,19.1 L46.6,18.9 L49.7,22.7 L52.8,13.4 L55.9,12.1 L59.0,4.8 L62.1,8.5 L65.2,8.7 L68.3,1.4 L71.4,0.0 L74.5,13.3 L77.6,13.1 L80.7,10.7 L83.8,13.2 L86.9,12.5 L90.0,9.2" fill="none" stroke="#d29922" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Consumer Staples</div>
+          <div class="etf-chip-price">$83.07</div>
+          <div class="etf-chip-change"><span class="neg">▼ 1.54%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,1.1 L3.1,0.0 L6.2,3.2 L9.3,8.1 L12.4,7.3 L15.5,13.9 L18.6,8.5 L21.7,9.4 L24.8,17.9 L27.9,22.9 L31.0,24.0 L34.1,22.1 L37.2,22.8 L40.3,14.9 L43.4,17.0 L46.6,11.2 L49.7,3.4 L52.8,4.6 L55.9,1.5 L59.0,3.4 L62.1,2.8 L65.2,13.6 L68.3,15.7 L71.4,18.8 L74.5,10.1 L77.6,6.0 L80.7,8.8 L83.8,4.5 L86.9,6.4 L90.0,13.8" fill="none" stroke="#d29922" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">High Yield Credit</div>
+          <div class="etf-chip-price">$79.97</div>
+          <div class="etf-chip-change"><span class="neg">▼ 0.05%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,19.9 L3.1,24.0 L6.2,12.9 L9.3,12.0 L12.4,11.8 L15.5,5.9 L18.6,7.0 L21.7,4.8 L24.8,3.0 L27.9,4.4 L31.0,3.1 L34.1,7.9 L37.2,4.6 L40.3,13.4 L43.4,11.0 L46.6,9.2 L49.7,12.5 L52.8,2.2 L55.9,2.2 L59.0,0.0 L62.1,0.2 L65.2,6.8 L68.3,0.7 L71.4,2.2 L74.5,3.7 L77.6,4.2 L80.7,3.5 L83.8,4.6 L86.9,0.7 L90.0,1.5" fill="none" stroke="#bc8cff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+      
+        <div class="etf-chip">
+          <div class="etf-chip-name">Volatility (VIX)</div>
+          <div class="etf-chip-price">$16.45</div>
+          <div class="etf-chip-change"><span class="neg">▼ 6.80%</span></div>
+          <svg width="90" height="24" viewBox="0 0 90 24" style="display:block;margin-top:6px;"><path d="M0.0,14.5 L3.1,16.6 L6.2,19.0 L9.3,19.2 L12.4,19.6 L15.5,18.1 L18.6,20.6 L21.7,22.5 L24.8,24.0 L27.9,21.5 L31.0,22.4 L34.1,21.4 L37.2,23.7 L40.3,2.5 L43.4,11.5 L46.6,8.2 L49.7,0.0 L52.8,9.7 L55.9,15.8 L59.0,20.9 L62.1,20.2 L65.2,13.1 L68.3,20.2 L71.4,17.2 L74.5,9.5 L77.6,12.5 L80.7,11.6 L83.8,13.3 L86.9,15.9 L90.0,20.1" fill="none" stroke="#f85149" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-accent ca-dim"></div>
+    <div class="card-name">JGB Carry Trade Funding Cost</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+      <div style="background:var(--s2);border-radius:6px;padding:8px;text-align:center;">
+        <div style="font-size:9px;color:var(--muted);">JGB 10yr</div>
+        <div style="font-size:16px;font-weight:700;">2.679%</div>
+      </div>
+      <div style="background:var(--s2);border:1px solid #f85149;border-radius:6px;padding:8px;text-align:center;">
+        <div style="font-size:9px;color:#f85149;">JGB 30yr</div>
+        <div style="font-size:16px;font-weight:700;color:#f85149;">3.938%</div>
+      </div>
+      <div style="background:var(--s2);border:1px solid #f85149;border-radius:6px;padding:8px;text-align:center;">
+        <div style="font-size:9px;color:#f85149;">JGB 40yr</div>
+        <div style="font-size:16px;font-weight:700;color:#f85149;">3.779%</div>
+      </div>
+      <div style="background:var(--s2);border-radius:6px;padding:8px;text-align:center;">
+        <div style="font-size:9px;color:var(--muted);">US 30yr</div>
+        <div style="font-size:16px;font-weight:700;">4.902%</div>
+      </div>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">10yr Repatriation Risk</span>
+      <span class="mrow-v warn">ELEVATED — gap narrowing</span>
+    </div>
+    <div class="signal alert">JGB yields at all-time highs. Japanese pensions/insurers can now earn equivalent yields at home with zero currency risk — triggers $3-4T repatriation.</div>
+  </div>
+
+</div>
+
+<div class="grid-2">
+
+  <div class="card">
+    <div class="card-accent ca-purple"></div>
+    <div class="card-tag">Global Liquidity</div>
+    <div class="card-name">Global M2 Money Supply (USD Terms)</div>
+    <div class="big-val">$1821028367.4T</div>
+    <div class="big-label">Combined G5 economies</div>
+    <div class="mrow">
+      <span class="mrow-k">YoY Change</span>
+      <span class="mrow-v warn">+2.3%</span>
+    </div>
+    <div class="mrow"><span class="mrow-k">US</span><span class="mrow-v">$20767400.0T <span class="muted">(1%)</span></span></div><div class="mrow"><span class="mrow-k">China</span><span class="mrow-v">$183756962.6T <span class="muted">(10%)</span></span></div><div class="mrow"><span class="mrow-k">Japan</span><span class="mrow-v">$1597003700.0T <span class="muted">(88%)</span></span></div><div class="mrow"><span class="mrow-k">Eurozone</span><span class="mrow-v">$16025573.8T <span class="muted">(1%)</span></span></div><div class="mrow"><span class="mrow-k">UK</span><span class="mrow-v">$3474731.0T <span class="muted">(0%)</span></span></div>
+    <div class="signal warn" style="margin-top:8px;font-size:10px;">
+      Watch: carry unwind shrinks global M2 directly
+    </div>
+    <svg width="300" height="36" viewBox="0 0 300 36" style="display:block;margin-top:6px;"><path d="M0.0,36.0 L13.0,33.9 L26.1,31.9 L39.1,30.0 L52.2,28.4 L65.2,26.7 L78.3,24.9 L91.3,22.9 L104.3,20.9 L117.4,19.6 L130.4,17.9 L143.5,16.4 L156.5,14.5 L169.6,13.7 L182.6,12.9 L195.7,11.6 L208.7,10.4 L221.7,8.8 L234.8,6.7 L247.8,5.7 L260.9,4.0 L273.9,3.1 L287.0,1.2 L300.0,0.0" fill="none" stroke="#3fb950" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+
+  <div class="card">
+    <div class="card-accent ca-yellow"></div>
+    <div class="card-tag">Fed Trap Indicator</div>
+    <div class="card-name">PPI Final Demand YoY (CPI Lead by 2-3mo)</div>
+    <div class="big-val neg">158.0%</div>
+    <div class="big-label">Producer prices — business cost pressure</div>
+    <div class="mrow">
+      <span class="mrow-k">MoM Change</span>
+      <span class="mrow-v neg">+1.03%</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Fed Funds Rate</span>
+      <span class="mrow-v">3.63%</span>
+    </div>
+    <div class="badge badge-red">CRITICAL — PPI above 6%, CPI surge incoming in 2-3 months</div>
+    <div class="signal alert" style="margin-top:8px;font-size:10px;">
+      <strong>Fed Trap:</strong> SEVERE — PPI above 5% AND JGB yields spiking. Rising PPI locks Fed out of cutting.
+    </div>
+    <svg width="300" height="36" viewBox="0 0 300 36" style="display:block;margin-top:6px;"><path d="M0.0,35.8 L13.0,36.0 L26.1,35.1 L39.1,34.9 L52.2,33.1 L65.2,33.9 L78.3,33.4 L91.3,29.4 L104.3,27.8 L117.4,27.4 L130.4,28.2 L143.5,27.1 L156.5,25.9 L169.6,22.9 L182.6,24.1 L195.7,22.3 L208.7,21.4 L221.7,21.0 L234.8,20.4 L247.8,16.6 L260.9,13.6 L273.9,9.5 L287.0,4.6 L300.0,0.0" fill="none" stroke="#d29922" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+
+</div>
+
+<div class="grid-2">
+
+  <div class="card">
+    <div class="card-accent ca-purple"></div>
+    <div class="card-tag">Fiscal Credibility</div>
+    <div class="card-name">10yr Term Premium (ACM)</div>
+    <div class="big-val">0.68%</div>
+    <div class="big-label">Investor risk compensation for fiscal risk</div>
+    <div class="mrow">
+      <span class="mrow-k">Deficit / GDP</span>
+      <span class="mrow-v neg">-5.8%</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">Interest / Revenue</span>
+      <span class="mrow-v neg">33.4%</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">30yr Yield</span>
+      <span class="mrow-v">4.86%</span>
+    </div>
+    <div class="badge badge-yellow">ELEVATED - investors demanding more premium</div>
+    <svg width="300" height="36" viewBox="0 0 300 36" style="display:block;margin-top:6px;"><path d="M0.0,4.1 L13.6,8.6 L27.3,12.8 L40.9,15.7 L54.5,13.2 L68.2,14.5 L81.8,10.1 L95.5,12.4 L109.1,1.8 L122.7,0.0 L136.4,3.0 L150.0,2.1 L163.6,13.1 L177.3,11.9 L190.9,14.7 L204.5,20.0 L218.2,12.1 L231.8,16.3 L245.5,12.6 L259.1,14.9 L272.7,26.4 L286.4,31.9 L300.0,36.0" fill="none" stroke="#bc8cff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+
+  <div class="card">
+    <div class="card-accent ca-purple"></div>
+    <div class="card-tag">Bond Vigilante Watch</div>
+    <div class="card-name">Auction Demand & Vigilante Activation</div>
+    <div class="mrow">
+      <span class="mrow-k">10yr Bid-to-Cover</span>
+      <span class="mrow-v">2.57</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">30yr Bid-to-Cover</span>
+      <span class="mrow-v">2.33</span>
+    </div>
+    <div class="mrow">
+      <span class="mrow-k">30yr - Fed Funds</span>
+      <span class="mrow-v">1.23%</span>
+    </div>
+    <div class="signal warn" style="margin-top:8px;font-size:10px;">
+      <strong>Vigilante Signal:</strong> Below 2.0 bid-to-cover = demand crisis. Spread >3% = credibility premium activation. Watch foreign holder exits.
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-bottom:14px;">
+  <div class="card">
+    <div class="card-accent ca-dim"></div>
+    <div class="card-name" style="margin-bottom:10px;">Data Sources &amp; Freshness — Last Run: June 30, 2026  ·  22:03 UTC</div>
+    <div style="display:flex;justify-content:space-between;padding:4px 8px;background:var(--s2);border-radius:4px;margin-bottom:3px;">
+          <span style="color:var(--muted);font-size:10px;">Yahoo Finance (prices)</span>
+          <span style="color:var(--dim);font-size:10px;">ETFs · Forex · JGB yields · VIX</span>
+          <span style="color:var(--green);font-size:10px;font-weight:600;">22:03:30 UTC</span>
+        </div><div style="display:flex;justify-content:space-between;padding:4px 8px;background:var(--s2);border-radius:4px;margin-bottom:3px;">
+          <span style="color:var(--muted);font-size:10px;">FRED — All Series</span>
+          <span style="color:var(--dim);font-size:10px;">Monthly/weekly observation dates</span>
+          <span style="color:var(--green);font-size:10px;font-weight:600;">22:03:38 UTC</span>
+        </div><div style="display:flex;justify-content:space-between;padding:4px 8px;background:var(--s2);border-radius:4px;margin-bottom:3px;">
+          <span style="color:var(--muted);font-size:10px;">CFTC Yen Report</span>
+          <span style="color:var(--dim);font-size:10px;">Week ending</span>
+          <span style="color:var(--dim);font-size:10px;font-weight:600;">—</span>
+        </div><div style="display:flex;justify-content:space-between;padding:4px 8px;background:var(--s2);border-radius:4px;margin-bottom:3px;">
+          <span style="color:var(--muted);font-size:10px;">EIA / Yahoo (Brent)</span>
+          <span style="color:var(--dim);font-size:10px;">Spot price fetch time</span>
+          <span style="color:var(--green);font-size:10px;font-weight:600;">22:03:38 UTC</span>
+        </div><div style="display:flex;justify-content:space-between;padding:4px 8px;background:var(--s2);border-radius:4px;margin-bottom:3px;">
+          <span style="color:var(--muted);font-size:10px;">Treasury Direct</span>
+          <span style="color:var(--dim);font-size:10px;">Auction bid-to-cover</span>
+          <span style="color:var(--green);font-size:10px;font-weight:600;">On run</span>
+        </div>
+    <div style="margin-top:10px;padding:8px 10px;background:var(--s2);border-radius:4px;border-left:2px solid var(--accent);font-size:10px;color:var(--dim);">
+      <strong style="color:var(--text);">How to update:</strong> Run <code style="background:var(--s3);padding:1px 6px;border-radius:3px;">python dashboard_updated.py</code> in your terminal.
+      Data is <strong>not live</strong> — each run fetches fresh data from Yahoo Finance, FRED, CFTC, EIA, and Treasury Direct.
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Data: Yahoo Finance · FRED · EIA · CFTC · Treasury Direct</span>
+  <span>Research use only — not financial advice</span>
+  <span>Updated: June 30, 2026  ·  22:03 UTC</span>
+</div>
+
+</body>
+</html>

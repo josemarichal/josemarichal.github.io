@@ -8,7 +8,7 @@ sdk_version: 6.5.1
 app_file: app.py
 pinned: false
 license: mit
-short_description: Rapid 3-stage text labeling (Train -> Test Validation -> Bulk Inference)
+short_description: Rapid 3-stage calibrated text labeling (Train/Test/Bulk)
 ---
 
 # 🏷️ JEV & Clef Decision Labeler (Hugging Face Space)

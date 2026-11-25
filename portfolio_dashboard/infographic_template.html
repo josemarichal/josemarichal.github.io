@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 World Cup: Continental Competitions Experience</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-glow: rgba(56, 189, 248, 0.5);
+            
+            --color-ucl: #38bdf8;
+            --color-libertadores: #f59e0b;
+            --color-afcon: #10b981;
+            --color-concacaf: #ec4899;
+            --color-afc: #8b5cf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .shape-1 {
+            position: absolute; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+            border-radius: 50%; z-index: -1; filter: blur(60px); pointer-events: none;
+        }
+
+        .shape-2 {
+            position: fixed; bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+            border-radius: 50%; z-index: -1; filter: blur(80px); pointer-events: none;
+        }
+
+        header {
+            text-align: center; margin-bottom: 2rem;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #38bdf8, #8b5cf6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        p.subtitle {
+            font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .tab-btn {
+            background: transparent; color: var(--text-muted); font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem; font-weight: 600; padding: 0.5rem 1rem; border: none;
+            border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.3s;
+        }
+        .tab-btn:hover { color: white; }
+        .tab-btn.active { color: white; border-bottom: 2px solid #38bdf8; }
+
+        .dashboard-container {
+            width: 100%; max-width: 1600px; background: var(--card-bg);
+            border: 1px solid var(--card-border); border-radius: 24px;
+            padding: 2rem; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0; animation-delay: 0.1s;
+        }
+
+        /* Toggles */
+        .controls {
+            display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .toggle-btn {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border);
+            padding: 0.75rem 1.5rem; border-radius: 30px; cursor: pointer;
+            font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--text-muted);
+            transition: all 0.3s ease; user-select: none;
+        }
+
+        .toggle-btn:hover { background: rgba(255, 255, 255, 0.1); }
+        .toggle-btn.active { color: white; background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.3); }
+
+        .indicator { width: 12px; height: 12px; border-radius: 50%; opacity: 0.5; transition: opacity 0.3s; }
+        .toggle-btn.active .indicator { opacity: 1; box-shadow: 0 0 10px currentColor; }
+
+        /* Chart View with Details Panel */
+        .chart-layout {
+            display: flex; gap: 2rem; width: 100%;
+        }
+        .chart-container {
+            flex: 3; position: relative; height: 70vh;
+        }
+        .details-panel {
+            flex: 1; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 1.5rem; height: 70vh; overflow-y: auto;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .details-panel h2 {
+            font-family: 'Outfit', sans-serif; color: #38bdf8; margin-bottom: 1rem;
+            font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;
+        }
+        .player-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.75rem 0; border-bottom: 1px dashed rgba(255,255,255,0.05);
+        }
+        .player-item:last-child { border-bottom: none; }
+        .player-info { display: flex; flex-direction: column; gap: 0.25rem; }
+        .player-name { font-weight: 600; font-size: 1rem; color: #f8fafc; }
+        .player-club { font-size: 0.85rem; color: #94a3b8; }
+        .confidence-badge {
+            font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 12px; font-weight: 600;
+        }
+        .conf-100 { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+        .conf-50 { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); }
+
+        /* Group Stage Styles */
+        #bracket-view { display: none; }
+        .groups-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; padding: 1rem 0; max-height: 70vh; overflow-y: auto;
+        }
+        .group-table {
+            background: rgba(15, 23, 42, 0.8); border: 1px solid var(--card-border);
+            border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .group-table h3 {
+            background: rgba(255,255,255,0.05); padding: 0.75rem 1rem;
+            font-family: 'Outfit'; font-size: 1.2rem; color: #38bdf8;
+            border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;
+        }
+        .group-row {
+            display: flex; justify-content: space-between; padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem;
+        }
+        .group-row:last-child { border-bottom: none; }
+        .group-row.header { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .group-row.advancing { background: rgba(16, 185, 129, 0.1); font-weight: 600; }
+        .group-row .score { font-family: monospace; font-size: 1rem; background: rgba(0,0,0,0.5); padding: 0.1rem 0.5rem; border-radius: 4px;}
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+</head>
+<body>
+    <div class="shape-1"></div>
+    <div class="shape-2"></div>
+
+    <header>
+        <h1>Global Continental Experience</h1>
+        <p class="subtitle">Filter the competitions below to automatically re-rank the teams and simulate the Group Stage.</p>
+        <p style="font-size: 0.9rem; color: #64748b; margin-top: 0.5rem;">Click on a bar to view the full, scrollable list of players and their clubs.</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-target="chart-view">Ranking Chart</button>
+        <button class="tab-btn" data-target="bracket-view">Group Stage Predictor</button>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="controls">
+            <div class="toggle-btn active" data-comp="ucl">
+                <div class="indicator" style="background: var(--color-ucl); color: var(--color-ucl);"></div> UEFA Champions League
+            </div>
+            <div class="toggle-btn active" data-comp="libertadores">
+                <div class="indicator" style="background: var(--color-libertadores); color: var(--color-libertadores);"></div> Copa Libertadores
+            </div>
+            <div class="toggle-btn active" data-comp="afcon">
+                <div class="indicator" style="background: var(--color-afcon); color: var(--color-afcon);"></div> Africa Cup of Nations
+            </div>
+            <div class="toggle-btn active" data-comp="concacaf">
+                <div class="indicator" style="background: var(--color-concacaf); color: var(--color-concacaf);"></div> CONCACAF Champions Cup
+            </div>
+            <div class="toggle-btn active" data-comp="afc">
+                <div class="indicator" style="background: var(--color-afc); color: var(--color-afc);"></div> AFC Champions League
+            </div>
+        </div>
+
+        <div id="chart-view" class="view-panel">
+            <div class="chart-layout">
+                <div class="chart-container">
+                    <canvas id="rankingChart"></canvas>
+                </div>
+                <div class="details-panel" id="detailsPanel">
+                    <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: #64748b; text-align: center;">
+                        Hover over or click a team's bar<br>to view the full player list here.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bracket-view" class="view-panel">
+            <div class="groups-grid" id="groups-container">
+                <!-- Groups generated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // __INJECT_DATA_HERE__
+        
+        let chartInstance = null;
+        let sortedDataGlobal = [];
+        let groupDraw = []; // Persist the random draw across filter clicks
+
+        const compConfig = {
+            'ucl': { label: 'UEFA Champions League', color: '#38bdf8', key: 'ucl_count', listKey: 'ucl_list' },
+            'libertadores': { label: 'Copa Libertadores', color: '#f59e0b', key: 'libertadores_count', listKey: 'libertadores_list' },
+            'afcon': { label: 'Africa Cup of Nations', color: '#10b981', key: 'afcon_count', listKey: 'afcon_list' },
+            'concacaf': { label: 'CONCACAF Champions Cup', color: '#ec4899', key: 'concacaf_count', listKey: 'concacaf_list' },
+            'afc': { label: 'AFC Champions League', color: '#8b5cf6', key: 'afc_count', listKey: 'afc_list' }
+        };
+
+        let activeComps = new Set(Object.keys(compConfig));
+
+        function initGroupDraw() {
+            let teams = [...window.appData].map(d => d.team);
+            // Deterministic shuffle using a simple seed so it stays consistent on refresh
+            let seed = 1;
+            function random() {
+                var x = Math.sin(seed++) * 10000;
+                return x - Math.floor(x);
+            }
+            for (let i = teams.length - 1; i > 0; i--) {
+                const j = Math.floor(random() * (i + 1));
+                [teams[i], teams[j]] = [teams[j], teams[i]];
+            }
+            
+            // 12 Groups of 4
+            for(let i=0; i<12; i++) {
+                groupDraw.push({
+                    name: String.fromCharCode(65 + i), // A, B, C...
+                    teams: teams.slice(i*4, i*4 + 4)
+                });
+            }
+        }
+
+        function processData() {
+            sortedDataGlobal = [...window.appData].map(team => {
+                let activeTotal = 0;
+                activeComps.forEach(comp => {
+                    activeTotal += team[compConfig[comp].key];
+                });
+                return { ...team, activeTotal };
+            }).sort((a, b) => {
+                if(b.activeTotal !== a.activeTotal) return b.activeTotal - a.activeTotal;
+                return a.team.localeCompare(b.team);
+            });
+        }
+
+        function populateDetailsPanel(teamData) {
+            const panel = document.getElementById('detailsPanel');
+            panel.innerHTML = `<h2>${teamData.team}</h2>`;
+            
+            let totalPlayersFound = 0;
+            
+            Object.keys(compConfig).forEach(comp => {
+                if(activeComps.has(comp)) {
+                    const players = teamData[compConfig[comp].listKey];
+                    if(players && players.length > 0) {
+                        totalPlayersFound += players.length;
+                        panel.innerHTML += `<div style="color: ${compConfig[comp].color}; font-weight: bold; margin: 1rem 0 0.5rem 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">${compConfig[comp].label}</div>`;
+                        
+                        players.forEach(p => {
+                            const confClass = p.conf === 100 ? 'conf-100' : 'conf-50';
+                            const confText = p.conf === 100 ? '100% Validated' : '50% Validated';
+                            panel.innerHTML += `
+                                <div class="player-item">
+                                    <div class="player-info">
+                                        <div class="player-name">${p.name}</div>
+                                        <div class="player-club">${p.club}</div>
+                                    </div>
+                                    <div class="confidence-badge ${confClass}">${confText}</div>
+                                </div>
+                            `;
+                        });
+                    }
+                }
+            });
+            
+            if(totalPlayersFound === 0) {
+                panel.innerHTML += `<div style="color: var(--text-muted); margin-top: 2rem;">No players found for the active competitions.</div>`;
+            }
+        }
+
+        function renderChart() {
+            const labels = sortedDataGlobal.map(d => d.team);
+            const datasets = [];
+            
+            Object.keys(compConfig).forEach(comp => {
+                if(activeComps.has(comp)) {
+                    datasets.push({
+                        label: compConfig[comp].label,
+                        data: sortedDataGlobal.map(d => d[compConfig[comp].key]),
+                        backgroundColor: compConfig[comp].color,
+                        borderWidth: 1,
+                        borderColor: 'rgba(0,0,0,0.2)'
+                    });
+                }
+            });
+
+            if(chartInstance) {
+                chartInstance.destroy();
+            }
+
+            const ctx = document.getElementById('rankingChart').getContext('2d');
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    onHover: (e, activeEls) => {
+                        if (activeEls.length > 0) {
+                            const dataIndex = activeEls[0].index;
+                            populateDetailsPanel(sortedDataGlobal[dataIndex]);
+                        }
+                    },
+                    onClick: (e, activeEls) => {
+                        if (activeEls.length > 0) {
+                            const dataIndex = activeEls[0].index;
+                            populateDetailsPanel(sortedDataGlobal[dataIndex]);
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false } // Disable default tooltip in favor of side panel
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: { display: false },
+                            ticks: { color: '#e2e8f0', font: { family: 'Inter', size: 11 }, maxRotation: 90, minRotation: 90 }
+                        },
+                        y: {
+                            stacked: true, beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8', stepSize: 5 },
+                            title: { display: true, text: 'Active Competitions Experience', color: '#94a3b8', font: { family: 'Outfit', size: 14 } }
+                        }
+                    },
+                    animation: { duration: 800, easing: 'easeOutQuart' }
+                }
+            });
+        }
+
+        function generateGroupStage() {
+            const container = document.getElementById('groups-container');
+            container.innerHTML = '';
+            
+            groupDraw.forEach(g => {
+                const groupTeams = g.teams.map(tName => sortedDataGlobal.find(d => d.team === tName));
+                
+                // Sort within group by activeTotal (highest wins)
+                groupTeams.sort((a, b) => b.activeTotal - a.activeTotal);
+                
+                let html = `
+                <div class="group-table">
+                    <h3>Group ${g.name}</h3>
+                    <div class="group-row header"><span>Team</span><span>Score</span></div>
+                `;
+                
+                groupTeams.forEach((t, i) => {
+                    const cl = i < 2 ? 'advancing' : '';
+                    html += `<div class="group-row ${cl}">
+                        <span>${i+1}. ${t.team}</span>
+                        <span class="score">${t.activeTotal}</span>
+                    </div>`;
+                });
+                
+                html += `</div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function updateAll() {
+            processData();
+            renderChart();
+            generateGroupStage();
+        }
+
+        // Toggles
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const comp = e.currentTarget.getAttribute('data-comp');
+                if(activeComps.has(comp)) {
+                    if(activeComps.size > 1) {
+                        activeComps.delete(comp);
+                        e.currentTarget.classList.remove('active');
+                    }
+                } else {
+                    activeComps.add(comp);
+                    e.currentTarget.classList.add('active');
+                }
+                updateAll();
+            });
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+                
+                document.querySelectorAll('.view-panel').forEach(v => v.style.display = 'none');
+                document.getElementById(e.currentTarget.getAttribute('data-target')).style.display = 'block';
+            });
+        });
+
+        window.initApp = function() {
+            initGroupDraw();
+            updateAll();
+        };
+        
+        if(window.appData) {
+            window.initApp();
+        }
+    </script>
+</body>
+</html>

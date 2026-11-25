@@ -28,6 +28,7 @@
 | **Techno-Pessimism** | [`projects/techno_pessimism/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/techno_pessimism/AGENTS.md) | `In Development` | Active |
 | **Pluralist AI** | [`projects/pluralist_ai/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/pluralist_ai/AGENTS.md) | `In Development` | Active |
 | **Civic AI** | [`projects/civic_ai/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/civic_ai/AGENTS.md) | `civic_digital_twinning_dashboard.html` | Active |
+| **Performative Authenticity on Social Media** | [`projects/ca_2026_tiktok_authenticity/AGENTS.md`](file:///c:/Users/jfmar/josemarichal/github.io/projects/ca_2026_tiktok_authenticity/AGENTS.md) | `state_leg_tiktok_2026.html` | Active |
 
 ---
 
