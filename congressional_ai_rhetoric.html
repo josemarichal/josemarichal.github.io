@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative Presentation of AI in Congressional Hearings | Jose Marichal</title>
+    <link rel="stylesheet" href="style.css?v=6">
+    <style>
+        .hero-banner {
+            background: #ffffff;
+            border: 2px solid var(--border-color, #0a0a0a);
+            padding: 2.25rem 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 6px 6px 0px var(--border-color, #0a0a0a);
+            position: relative;
+        }
+
+        .badge-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag-pill {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.65rem;
+            border: 1px solid var(--border-color, #0a0a0a);
+            background: #f6f6f4;
+            color: #0a0a0a;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-pill.accent {
+            background: var(--accent-lime, #bdf000);
+            color: #0a0a0a;
+        }
+
+        .tag-pill.dark {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            color: var(--text-heading, #0a0a0a);
+            font-family: var(--font-display, sans-serif);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted, #475569);
+            line-height: 1.55;
+            max-width: 950px;
+            margin-bottom: 1.25rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            padding: 1.5rem;
+            box-shadow: 4px 4px 0px var(--border-color, #0a0a0a);
+        }
+
+        .stat-num {
+            font-size: 2.3rem;
+            font-weight: 900;
+            font-family: var(--font-display, sans-serif);
+            color: var(--text-heading, #0a0a0a);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-label {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted, #6e6e6e);
+            font-weight: 700;
+        }
+
+        .stat-desc {
+            font-size: 0.88rem;
+            color: var(--text-main, #2e2e2e);
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .section-box {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            padding: 2rem 2.25rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 4px 4px 0px var(--border-color, #0a0a0a);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-heading, #0a0a0a);
+            font-family: var(--font-display, sans-serif);
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color, #0a0a0a);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .framework-card {
+            background: #fafaf8;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            padding: 1.25rem 1.4rem;
+            box-shadow: 2px 2px 0px var(--border-color, #0a0a0a);
+        }
+
+        .framework-card h4 {
+            margin-top: 0;
+            font-size: 1.15rem;
+            color: var(--text-heading, #0a0a0a);
+            font-family: var(--font-display, sans-serif);
+            border-bottom: 1px solid var(--border-light, #deded8);
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .framework-card p {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--text-main, #2e2e2e);
+            margin-bottom: 0.5rem;
+        }
+
+        .framework-card .stone-badge {
+            display: inline-block;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            background: #0a0a0a;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+        }
+
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: #ffffff;
+        }
+
+        table.data-table th,
+        table.data-table td {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-light, #deded8);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table.data-table th {
+            background-color: #f6f6f4;
+            color: #0a0a0a;
+            font-weight: 800;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color, #0a0a0a);
+        }
+
+        table.data-table tr:nth-child(even) {
+            background-color: #fafaf8;
+        }
+
+        .party-tag {
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.45rem;
+            border: 1px solid #0a0a0a;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .party-dem {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .party-rep {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .party-ind {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .party-wit {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .chamber-tag {
+            font-family: var(--font-mono, monospace);
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 0.1rem 0.4rem;
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: #fafaf8;
+            padding: 1.25rem;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .filter-group label {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #555555;
+        }
+
+        .filter-select,
+        .filter-input {
+            padding: 0.45rem 0.75rem;
+            font-family: var(--font-body, sans-serif);
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color, #0a0a0a);
+            background: #ffffff;
+            outline: none;
+        }
+
+        .filter-input {
+            min-width: 260px;
+        }
+
+        .download-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .download-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #0a0a0a);
+            padding: 1.5rem;
+            box-shadow: 4px 4px 0px var(--border-color, #0a0a0a);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .download-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            font-family: var(--font-display, sans-serif);
+            color: var(--text-heading, #0a0a0a);
+        }
+
+        .download-card p {
+            font-size: 0.9rem;
+            color: var(--text-main, #2e2e2e);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 0.6rem 1.1rem;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1.5px solid #0a0a0a;
+            box-shadow: 2px 2px 0px var(--accent-lime, #bdf000);
+            transition: all 0.15s ease;
+            text-align: center;
+        }
+
+        .btn-download:hover {
+            background: var(--accent-lime, #bdf000);
+            color: #0a0a0a;
+            box-shadow: 2px 2px 0px #0a0a0a;
+        }
+
+        .guide-box {
+            background: #f8fafc;
+            border: 1.5px solid #0284c7;
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .guide-box h3 {
+            margin-top: 0;
+            color: #0369a1;
+            font-size: 1.3rem;
+            font-family: var(--font-display, sans-serif);
+            margin-bottom: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-banner {
+                padding: 1.5rem;
+            }
+
+            .section-box {
+                padding: 1.5rem;
+            }
+
+            .filter-input {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Jose Marichal</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="projects.html" class="active">T&amp;S Working Group</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="invited_talks.html">Invited Talks</a></li>
+                    <li><a href="ai_tools.html">AI Tools</a></li>
+                    <li><a href="just_for_fun.html">Just for Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="badge-bar">
+                    <span class="tag-pill dark">TECHNOLOGY &amp; SOCIETY WORKING GROUP</span>
+                    <span class="tag-pill accent">COMPUTATIONAL DISCOURSE ANALYSIS</span>
+                    <span class="tag-pill">GOVINFO CHRG CORPUS</span>
+                    <span class="tag-pill">N = 805 HEARINGS</span>
+                    <span class="tag-pill">N = 4,198 AI SPEECH TURNS</span>
+                </div>
+                <h1 class="hero-title">Narrative Presentation of AI in Congressional Hearings</h1>
+                <p class="hero-subtitle">
+                    A computational policy discourse and narrative framing analysis of artificial intelligence deliberation across the 118th and 119th United States Congresses (November 15, 2023 &ndash; November 15, 2026).
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+                    Lead Investigator: <strong>Jose Marichal, Ph.D.</strong> &bull; California Lutheran University &bull; 
+                    <a href="projects.html" style="color: var(--text-heading); text-decoration: underline;">T&amp;S Working Group Portfolio &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-num">805</div>
+                    <div class="stat-label">Published Hearings</div>
+                    <div class="stat-desc">Complete Congressional hearing transcripts harvested via the GPO GovInfo API across House (489), Senate (304), and Joint (12) committees.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-num">4,198</div>
+                    <div class="stat-label">Substantive AI Speech Turns</div>
+                    <div class="stat-desc">Diarized and speaker-attributed paragraph turns explicitly addressing AI, generative models, algorithmic bias, deepfakes, or machine learning.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-num">1,018</div>
+                    <div class="stat-label">Unique Attributed Speakers</div>
+                    <div class="stat-desc">Enriched with Member party, state, and bioguide IDs (897 Republican, 813 Democratic, 23 Independent turns) alongside 752 expert witness statements.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-num">3 Years</div>
+                    <div class="stat-label">Temporal Window</div>
+                    <div class="stat-desc">Tracking legislative discourse evolution from late 2023 foundation model booms through the 2024–2026 regulatory, antitrust, and national security debates.</div>
+                </div>
+            </div>
+
+            <!-- Section 1: Overview & Theoretical Framework -->
+            <div class="section-box">
+                <h2 class="section-title">
+                    <span>1. Research Questions &amp; Theoretical Architecture</span>
+                    <span style="font-size: 0.85rem; font-family: var(--font-mono); font-weight: 600;">NPF &amp; CAUSAL STORIES</span>
+                </h2>
+                <p>
+                    Congressional hearings serve as the primary institutional crucible where emerging technologies are translated from technical abstraction into actionable policy problems. When artificial intelligence is debated on Capitol Hill, legislators and expert witnesses do not merely describe technical benchmarks; they construct <strong>policy narratives</strong> designed to allocate moral blame, define victims, celebrate heroes, and justify either government intervention or deregulation.
+                </p>
+                <p>
+                    This project investigates the narrative structure of Congressional AI discourse through two complementary political science frameworks:
+                </p>
+
+                <!-- Framework 4-Card Grid -->
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <span class="stone-badge">Deborah Stone (1989) &bull; Mechanical Story</span>
+                        <h4>Mechanical Causal Stories</h4>
+                        <p>
+                            <strong>Consequences Intended / Actions Unguided:</strong> Treating AI as a deterministic, runaway machine operating without human intervention.
+                        </p>
+                        <p>
+                            <em>Congressional Framing:</em> "Algorithmic black boxes," autonomous weapons targeting loops, hallucinating LLMs, and opaque credit/hiring bots. Blame is placed on the mechanical apparatus itself, with calls for engineering circuit-breakers, technical audits, and automated watermarking.
+                        </p>
+                    </div>
+
+                    <div class="framework-card">
+                        <span class="stone-badge">Deborah Stone (1989) &bull; Inadvertent Story</span>
+                        <h4>Inadvertent Causal Stories</h4>
+                        <p>
+                            <strong>Consequences Unintended / Actions Guided:</strong> Well-meaning actors deploying AI for efficiency or growth, inadvertently generating systemic societal harms.
+                        </p>
+                        <p>
+                            <em>Congressional Framing:</em> Unforeseen algorithmic discrimination in tenant screening, training-data ingestion of copyrighted creative works, and inadvertent workforce displacement. Blame is mitigated as an "unfortunate side effect" requiring gentle regulatory guardrails or workforce reskilling.
+                        </p>
+                    </div>
+
+                    <div class="framework-card">
+                        <span class="stone-badge">Deborah Stone (1989) &bull; Intentional Story</span>
+                        <h4>Intentional Causal Stories</h4>
+                        <p>
+                            <strong>Consequences Intended / Actions Guided:</strong> AI harms framed as purposeful exploitation by self-interested or malicious actors.
+                        </p>
+                        <p>
+                            <em>Congressional Framing:</em> Big Tech platform monopolization, predatory deepfake child exploitation, intentional wage theft, algorithmic price-fixing, and foreign adversary cyber warfare (e.g., CCP and Russian disinformation campaigns). Demands criminal penalties, antitrust breakups, and strict export controls.
+                        </p>
+                    </div>
+
+                    <div class="framework-card">
+                        <span class="stone-badge">Stone &amp; NPF &bull; Accidental Story</span>
+                        <h4>Accidental &amp; Competitive Frames</h4>
+                        <p>
+                            <strong>Consequences Unintended / Actions Unguided:</strong> Random technological shocks, stochastic hallucinations, or unavoidable global races.
+                        </p>
+                        <p>
+                            <em>Congressional Framing:</em> Framing AI supremacy as an existential geopolitical race against China where any domestic regulation is framed as unilateral disarmament. The "hero" is the domestic startup; the "villain" is regulatory overreach.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>Key Partisan &amp; Institutional Findings</h3>
+                <ul style="line-height: 1.7; margin-left: 1.5rem; color: var(--text-main);">
+                    <li><strong>Partisan Divergence:</strong> Republican Members disproportionately frame AI through <em>Strategic Competition &amp; Innovation Primacy</em> (focusing on China competition, red-tape elimination, and military superiority), whereas Democratic Members concentrate heavily on <em>Inadvertent &amp; Intentional Harms</em> (algorithmic bias, deepfake election manipulation, algorithmic wage suppression, and copyright infringement).</li>
+                    <li><strong>Committee Jurisdiction as Narrative Prism:</strong>
+                        <strong>Senate Commerce &amp; House Science</strong> focus on technical verification and NIST standards; 
+                        <strong>Senate Judiciary</strong> centers IP theft, synthetic likeness rights, and section 230 carve-outs; 
+                        <strong>Senate HELP</strong> interrogates automated workplace surveillance and job displacement; and 
+                        <strong>Senate Armed Services &amp; Intelligence</strong> focus on autonomous cyber operations and sovereign foundation models.
+                    </li>
+                    <li><strong>Witness Sector Insulation:</strong> Industry witnesses predominantly rely on <em>Inadvertent Causal Stories</em> (promising self-regulatory safety frameworks while warning that strict liability would stifle domestic competitiveness), whereas academic and civil society witnesses demand <em>Mechanical Transparency</em> and statutory algorithmic impact assessments.</li>
+                </ul>
+            </div>
+
+            <!-- Section 2: Corpus Architecture & Lexical Metrics -->
+            <div class="section-box">
+                <h2 class="section-title">
+                    <span>2. Corpus Architecture &amp; Lexical Taxonomy</span>
+                    <span style="font-size: 0.85rem; font-family: var(--font-mono); font-weight: 600;">LEXICAL DISTRIBUTION</span>
+                </h2>
+                <p>
+                    The corpus was compiled using the official GPO GovInfo API across all hearing packages (`CHRG`) published between November 15, 2023, and November 15, 2026. Transcripts were diarized into speaker turns, enriched with legislator metadata from <code>unitedstates/congress-legislators</code>, and mapped against witness witness rosters.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Lexical Search Term</th>
+                                <th>Occurrences in Corpus</th>
+                                <th>Primary Committee Loci</th>
+                                <th>Dominant Rhetorical Association</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>AI</code></td>
+                                <td><strong>3,493</strong></td>
+                                <td>Commerce, Homeland Security, Armed Services</td>
+                                <td>General technological shorthand, regulatory scope, competitiveness.</td>
+                            </tr>
+                            <tr>
+                                <td><code>artificial intelligence</code></td>
+                                <td><strong>1,616</strong></td>
+                                <td>Judiciary, HELP, Finance, Science</td>
+                                <td>Formal statutory definitions, executive orders, algorithmic accountability.</td>
+                            </tr>
+                            <tr>
+                                <td><code>machine learning</code></td>
+                                <td><strong>344</strong></td>
+                                <td>Homeland Security, Transportation, Veterans</td>
+                                <td>Predictive maintenance, cybersecurity defense, diagnostic healthcare tools.</td>
+                            </tr>
+                            <tr>
+                                <td><code>generative AI</code></td>
+                                <td><strong>283</strong></td>
+                                <td>Judiciary, Commerce, Aging</td>
+                                <td>Synthetic text/imagery, copyright ingestion, voice cloning, consumer scams.</td>
+                            </tr>
+                            <tr>
+                                <td><code>deepfake</code></td>
+                                <td><strong>215</strong></td>
+                                <td>Judiciary, Rules, Homeland Security</td>
+                                <td>Election interference, non-consensual imagery, criminal impersonation.</td>
+                            </tr>
+                            <tr>
+                                <td><code>algorithmic</code></td>
+                                <td><strong>167</strong></td>
+                                <td>Banking, HELP, Consumer Protection</td>
+                                <td>Tenant screening, automated credit scoring, price-fixing, hiring bias.</td>
+                            </tr>
+                            <tr>
+                                <td><code>large language model / LLM</code></td>
+                                <td><strong>195</strong></td>
+                                <td>Judiciary, Science, Intelligence</td>
+                                <td>Compute clusters, open-weight vs. closed-source weights, web scraping.</td>
+                            </tr>
+                            <tr>
+                                <td><code>foundation model</code></td>
+                                <td><strong>20</strong></td>
+                                <td>Commerce, Science &amp; Competitiveness</td>
+                                <td>NIST testing, dual-use frontier capabilities, catastrophic risk tiers.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 3: Interactive Evidence Explorer -->
+            <div class="section-box" id="explorer">
+                <h2 class="section-title">
+                    <span>3. Interactive Evidence &amp; Speech Turn Explorer</span>
+                    <span style="font-size: 0.85rem; font-family: var(--font-mono); font-weight: 600;">N = 120 CURATED SAMPLE</span>
+                </h2>
+                <p>
+                    Filter and inspect verbatim Congressional speech turns. Use the controls below to isolate chambers, political parties, causal story frames, or keyword topics.
+                </p>
+
+                <!-- Filter Controls -->
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="filter-chamber">Chamber</label>
+                        <select id="filter-chamber" class="filter-select">
+                            <option value="ALL">All Chambers</option>
+                            <option value="SENATE">Senate</option>
+                            <option value="HOUSE">House</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-party">Speaker Affiliation</label>
+                        <select id="filter-party" class="filter-select">
+                            <option value="ALL">All Affiliations</option>
+                            <option value="Democrat">Democrat</option>
+                            <option value="Republican">Republican</option>
+                            <option value="Witness">Expert Witness</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-frame">Causal Story Frame</label>
+                        <select id="filter-frame" class="filter-select">
+                            <option value="ALL">All Causal Frames</option>
+                            <option value="Mechanical">Mechanical (Algorithmic / Auto)</option>
+                            <option value="Inadvertent">Inadvertent (Bias / Harm / Risk)</option>
+                            <option value="Intentional">Intentional (Disinformation / China)</option>
+                            <option value="Regulatory / Evaluative">Regulatory / Evaluative</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group" style="flex-grow: 1;">
+                        <label for="search-input">Search Speaker, Committee, or Text</label>
+                        <input type="text" id="search-input" class="filter-input" placeholder="e.g. Klobuchar, cybersecurity, copyright, China...">
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table class="data-table" id="explorer-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 140px;">Speaker &amp; Role</th>
+                                <th style="width: 120px;">Affiliation</th>
+                                <th style="width: 220px;">Hearing &amp; Committee</th>
+                                <th style="width: 120px;">Causal Story</th>
+                                <th>Verbatim Speech Turn</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="result-count" style="font-family: var(--font-mono); font-size: 0.82rem; color: #666; margin-top: 0.5rem;">
+                    Showing <span id="count-display">120</span> speech turns
+                </div>
+            </div>
+
+            <!-- Section 4: Downloads & Data Center -->
+            <div class="section-box" id="downloads">
+                <h2 class="section-title">
+                    <span>4. Open Science Data &amp; Replication Code</span>
+                    <span style="font-size: 0.85rem; font-family: var(--font-mono); font-weight: 600;">RESEARCH ARTIFACTS</span>
+                </h2>
+                <p>
+                    In accordance with open scholarship and computational reproducibility standards, the complete segmented transcripts, hearing metadata, and stratified human-coding samples are provided below for academic researchers.
+                </p>
+
+                <div class="download-card-grid">
+                    <div class="download-card">
+                        <div>
+                            <span class="tag-pill dark" style="margin-bottom: 0.5rem; display: inline-block;">CSV &bull; 59.6 MB</span>
+                            <h4>Master AI Speech Segments</h4>
+                            <p>
+                                <strong>N = 4,198 speech turns.</strong> 23 variables including package IDs, turn numbers, speaker names, roles, bioguide IDs, party, state, matched AI terms, preceding and succeeding context paragraphs, and verbatim text.
+                            </p>
+                        </div>
+                        <a href="projects/congressional_ai_rhetoric/data/ai_segments_all_published.csv" class="btn-download" download>Download Master Corpus CSV &darr;</a>
+                    </div>
+
+                    <div class="download-card">
+                        <div>
+                            <span class="tag-pill accent" style="margin-bottom: 0.5rem; display: inline-block;">CSV &bull; 191 KB</span>
+                            <h4>Hearing Dockets Metadata</h4>
+                            <p>
+                                <strong>N = 805 hearing packages.</strong> Package IDs, official hearing titles, Congress number (118th/119th), chamber, committee name, date issued, held date, total paragraph count, and AI-positive paragraph counts.
+                            </p>
+                        </div>
+                        <a href="projects/congressional_ai_rhetoric/data/hearings_metadata.csv" class="btn-download" download>Download Metadata CSV &darr;</a>
+                    </div>
+
+                    <div class="download-card">
+                        <div>
+                            <span class="tag-pill" style="margin-bottom: 0.5rem; display: inline-block;">CSV &bull; 3.2 MB</span>
+                            <h4>Stratified Causal Coding Sample</h4>
+                            <p>
+                                <strong>N = 200 stratified turns.</strong> Representative sample balanced across chambers, parties, and statement types with manual coding rubrics for Deborah Stone's primary and secondary causal stories.
+                            </p>
+                        </div>
+                        <a href="projects/congressional_ai_rhetoric/data/preliminary_coding_sample.csv" class="btn-download" download>Download Coding Sample CSV &darr;</a>
+                    </div>
+                </div>
+
+                <div style="background: #fafaf8; border: 1px solid var(--border-light); padding: 1.25rem; margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.85rem;">
+                    <strong>Pipeline Scripts:</strong>
+                    <ul style="margin: 0.5rem 0 0 1.25rem;">
+                        <li><code>01_fetch_govinfo.py</code>: Asynchronous GovInfo API harvester with query filtering across CHRG collections.</li>
+                        <li><code>02_prepare_corpus.py</code>: HTML transcript parser, speaker regex extractor, and Bioguide legislator roster enrichment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 5: GUIDE-LLM AI Transparency Checklist -->
+            <div class="section-box">
+                <div class="guide-box">
+                    <h3>GUIDE-LLM AI Transparency Checklist</h3>
+                    <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1rem;">
+                        Reporting standards for generative and agentic AI in computational social science research (Feuerriegel et al., 2026, <em>Nature Human Behaviour</em>, DOI: <a href="https://doi.org/10.1038/s41562-026-02492-7" target="_blank">10.1038/s41562-026-02492-7</a>).
+                    </p>
+
+                    <div class="table-responsive" style="border: 1px solid #cbd5e1; background: #ffffff;">
+                        <table class="data-table" style="font-size: 0.86rem;">
+                            <thead>
+                                <tr style="background: #f1f5f9;">
+                                    <th style="width: 180px;">Dimension</th>
+                                    <th style="width: 240px;">GUIDE-LLM Requirement</th>
+                                    <th>Project Implementation &amp; Verification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. Model Specification</strong></td>
+                                    <td>Model family, architecture, version, release date</td>
+                                    <td>Corpus extraction and regex diarization performed via deterministic Python scripts (Python 3.11/3.13, Beautiful Soup, Pandas). Code assistance and dashboard compilation facilitated by Antigravity (Gemini 2.5 Flash / Pro).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. Prompt Engineering</strong></td>
+                                    <td>Full prompt text, system prompts, few-shot examples</td>
+                                    <td>GovInfo API queries used deterministic boolean logic: <code>collection:CHRG AND publishdate:range(2023-11-15,2026-11-15) AND ("artificial intelligence" OR "generative AI" OR "large language model" OR "foundation model" OR "machine learning" OR deepfake OR algorithmic OR "AI")</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. Hyperparameters</strong></td>
+                                    <td>Temperature, top-p, seed, penalties, context window</td>
+                                    <td>Not applicable for deterministic regex and Bioguide roster matching; zero hallucination risk in data harvesting.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. Data Preprocessing</strong></td>
+                                    <td>Tokenization, cleaning, truncation, encoding</td>
+                                    <td>HTML hearing transcripts stripped of line-numbering and formatting artifacts; regex-based speaker detection anchored to Congressional honorific titles and Senate/House presiding officer tokens.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5. Validation &amp; Evaluation</strong></td>
+                                    <td>Human audit, inter-rater reliability, benchmarks</td>
+                                    <td>$N = 200$ stratified preliminary sample manually coded across Deborah Stone's 4 causal story categories to establish inter-coder agreement benchmarks before full-corpus scaling.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6. Reproducibility</strong></td>
+                                    <td>Code availability, public seeds, environment specs</td>
+                                    <td>All harvester scripts (`01_fetch_govinfo.py`, `02_prepare_corpus.py`) and datasets are mirrored directly in the open GitHub repository.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End container -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jose Marichal. Technology and Society Working Group.</p>
+        </div>
+    </footer>
+
+    <!-- Load Interactive Explorer Data -->
+    <script src="projects/congressional_ai_rhetoric/data/curated_explorer_segments.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.getElementById('table-body');
+            const chamberFilter = document.getElementById('filter-chamber');
+            const partyFilter = document.getElementById('filter-party');
+            const frameFilter = document.getElementById('filter-frame');
+            const searchInput = document.getElementById('search-input');
+            const countDisplay = document.getElementById('count-display');
+
+            if (!window.CONGRESSIONAL_AI_DATA) {
+                tableBody.innerHTML = '<tr><td colspan="5">Explorer data could not be loaded.</td></tr>';
+                return;
+            }
+
+            const data = window.CONGRESSIONAL_AI_DATA;
+
+            function renderTable() {
+                const chamber = chamberFilter.value;
+                const party = partyFilter.value;
+                const frame = frameFilter.value;
+                const query = searchInput.value.toLowerCase().trim();
+
+                const filtered = data.filter(item => {
+                    if (chamber !== 'ALL' && item.chamber !== chamber) return false;
+                    if (party !== 'ALL') {
+                        if (party === 'Witness' && item.speaker_role !== 'Witness') return false;
+                        if (party !== 'Witness' && item.party !== party) return false;
+                    }
+                    if (frame !== 'ALL' && item.causal_heuristic !== frame) return false;
+                    if (query) {
+                        const hay = (item.speaker_name + ' ' + item.committee + ' ' + item.full_text + ' ' + item.matched_terms).toLowerCase();
+                        if (!hay.includes(query)) return false;
+                    }
+                    return true;
+                });
+
+                countDisplay.textContent = filtered.length;
+
+                if (filtered.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem;">No speech turns matched the selected filters.</td></tr>';
+                    return;
+                }
+
+                tableBody.innerHTML = filtered.map((item, idx) => {
+                    let partyClass = 'party-wit';
+                    if (item.party === 'Democrat') partyClass = 'party-dem';
+                    else if (item.party === 'Republican') partyClass = 'party-rep';
+                    else if (item.party === 'Independent') partyClass = 'party-ind';
+
+                    const partyLabel = item.speaker_role === 'Witness' ? 'Witness' : (item.party + (item.state ? ' (' + item.state + ')' : ''));
+
+                    return `
+                        <tr>
+                            <td>
+                                <strong>${item.speaker_name}</strong><br>
+                                <span class="chamber-tag">${item.chamber}</span>
+                                <span style="font-size:0.75rem; color:#666;">${item.held_date}</span>
+                            </td>
+                            <td>
+                                <span class="party-tag ${partyClass}">${partyLabel}</span>
+                            </td>
+                            <td>
+                                <strong style="font-size:0.88rem;">${item.committee}</strong><br>
+                                <span style="font-size:0.78rem; color:#555;">${item.title.substring(0, 70)}...</span>
+                            </td>
+                            <td>
+                                <span style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; background:#eeeeea; padding:0.15rem 0.4rem; border:1px solid #ccc; display:inline-block;">
+                                    ${item.causal_heuristic}
+                                </span><br>
+                                <span style="font-size:0.72rem; color:#666;">${item.matched_terms}</span>
+                            </td>
+                            <td>
+                                <div id="snippet-${idx}" style="font-size:0.9rem; line-height:1.5;">
+                                    ${item.snippet}
+                                    ${item.full_text.length > 320 ? `<br><a href="javascript:void(0)" onclick="toggleExpand(${idx})" style="font-size:0.78rem; font-weight:700; color:#0a0a0a; text-decoration:underline;">Read Full Turn &darr;</a>` : ''}
+                                </div>
+                                <div id="full-${idx}" style="display:none; font-size:0.9rem; line-height:1.5; background:#fafaf8; padding:0.75rem; border-left:3px solid #0a0a0a; margin-top:0.4rem;">
+                                    ${item.full_text}
+                                    <br><a href="javascript:void(0)" onclick="toggleExpand(${idx})" style="font-size:0.78rem; font-weight:700; color:#0a0a0a; text-decoration:underline;">Show Less &uarr;</a>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            window.toggleExpand = function(idx) {
+                const full = document.getElementById(`full-${idx}`);
+                const snip = document.getElementById(`snippet-${idx}`);
+                if (full.style.display === 'none') {
+                    full.style.display = 'block';
+                    snip.style.display = 'none';
+                } else {
+                    full.style.display = 'none';
+                    snip.style.display = 'block';
+                }
+            };
+
+            chamberFilter.addEventListener('change', renderTable);
+            partyFilter.addEventListener('change', renderTable);
+            frameFilter.addEventListener('change', renderTable);
+            searchInput.addEventListener('input', renderTable);
+
+            renderTable();
+        });
+    </script>
+</body>
+
+</html>
