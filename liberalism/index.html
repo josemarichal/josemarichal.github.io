@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Liberalism Wiki Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Editorial Reading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+</head>
+<body class="theme-ivory font-serif-mode">
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+        <div class="brand-section">
+            <span style="font-size: 1.25rem;">📖</span>
+            <span>Liberalism Wiki</span>
+            <span class="brand-badge" id="total-badge">3,224</span>
+        </div>
+
+        <!-- History & Navigation Controls -->
+        <div class="header-actions">
+            <button class="icon-btn" id="btn-back" title="Go Back (Alt + Left)" disabled>&larr;</button>
+            <button class="icon-btn" id="btn-forward" title="Go Forward (Alt + Right)" disabled>&rarr;</button>
+            <button class="icon-btn" id="btn-random" title="Surprise Me / Random Article (Ctrl + R)">🎲 Random</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" class="search-input" placeholder="Search 3,200+ topics, theorists, concepts..." autocomplete="off">
+            <span class="search-shortcut">/</span>
+        </div>
+
+        <!-- Appearance & Reading Controls -->
+        <div class="header-actions">
+            <!-- Theme Selector -->
+            <select id="theme-select" class="dropdown-select" title="Color Theme">
+                <option value="ivory">Ivory (Classic)</option>
+                <option value="white">White (Modern)</option>
+                <option value="dark">Dark Slate</option>
+                <option value="sepia">Warm Sepia</option>
+            </select>
+
+            <!-- Font Family -->
+            <select id="font-select" class="dropdown-select" title="Typography">
+                <option value="serif">Serif (Newsreader)</option>
+                <option value="sans">Sans (Inter)</option>
+                <option value="mono">Mono (Code)</option>
+            </select>
+
+            <!-- Font Size -->
+            <button class="icon-btn" id="btn-font-dec" title="Decrease font size">A-</button>
+            <button class="icon-btn" id="btn-font-inc" title="Increase font size">A+</button>
+
+            <!-- Zen Mode Toggle -->
+            <button class="icon-btn" id="btn-zen" title="Toggle Sidebar (Distraction Free)">◧</button>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="app-layout">
+
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <!-- Tabs -->
+            <div class="sidebar-tabs">
+                <button class="tab-btn active" data-tab="all">All</button>
+                <button class="tab-btn" data-tab="wiki">Wiki (3,080)</button>
+                <button class="tab-btn" data-tab="liberalism">Core (144)</button>
+                <button class="tab-btn" data-tab="favorites">★ Saved (<span id="fav-count">0</span>)</button>
+                <button class="tab-btn" data-tab="history">History</button>
+            </div>
+
+            <!-- Alphabet Jump Bar -->
+            <div class="alpha-bar" id="alpha-bar">
+                <button class="alpha-btn active" data-letter="ALL">ALL</button>
+                <button class="alpha-btn" data-letter="#">#</button>
+                <!-- Generated A-Z via JS -->
+            </div>
+
+            <!-- Live Article Count / Filter Status -->
+            <div style="padding: 0.35rem 0.8rem; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between;">
+                <span>Articles: <strong id="filter-count">3,224</strong></span>
+                <span id="active-filter-label">All Entries</span>
+            </div>
+
+            <!-- Scrollable Article List -->
+            <ul class="article-list" id="article-list">
+                <!-- Populated via JS -->
+            </ul>
+        </aside>
+
+        <!-- Center Reading Content Area -->
+        <main class="content-area" id="content-area">
+            <!-- Reading Progress Bar -->
+            <div class="reading-progress-bar" id="reading-progress"></div>
+
+            <div class="article-wrapper" id="article-wrapper">
+                <!-- Article Header -->
+                <div class="article-header" id="article-header">
+                    <div class="article-header-meta">
+                        <span class="article-item-badge" id="art-folder-badge">WIKI</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+                            <span id="art-word-count">0</span> words &bull; ~<span id="art-read-time">1</span> min read
+                        </span>
+                    </div>
+
+                    <div class="article-title-row">
+                        <h1 class="article-title" id="art-title">Select an Article</h1>
+                        <button class="star-btn" id="btn-favorite" title="Save to Favorites">☆</button>
+                    </div>
+
+                    <!-- On-page TOC Pills -->
+                    <div class="toc-pills" id="toc-pills" style="display: none;"></div>
+                </div>
+
+                <!-- Markdown Content Body -->
+                <div class="article-body" id="article-body">
+                    <div class="loading-indicator">
+                        Select a topic from the sidebar or search to start reading.
+                    </div>
+                </div>
+
+                <!-- Connected Knowledge: Backlinks & Outgoing Links -->
+                <div class="connected-knowledge" id="connected-knowledge" style="display: none;">
+                    <!-- Backlinks -->
+                    <div class="connected-heading">
+                        <span>🔗 Linked Mentions &amp; Backlinks</span>
+                        <span class="brand-badge" id="backlinks-count" style="font-size: 0.72rem;">0</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Other wiki articles in the knowledge base that directly cite or reference this topic:
+                    </p>
+                    <div class="backlinks-grid" id="backlinks-grid">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <!-- Outgoing Wikilinks -->
+                    <div class="connected-heading" style="margin-top: 2rem;">
+                        <span>↗ Outgoing References</span>
+                        <span class="brand-badge" id="outgoing-count" style="font-size: 0.72rem;">0</span>
+                    </div>
+                    <div class="outgoing-tags" id="outgoing-tags">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
