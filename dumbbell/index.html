@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dumbbell, Bodyweight &amp; Mobility Exercise Library</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Top Sticky Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand">
+                <div class="brand-icon">🏋️</div>
+                <div class="brand-text">
+                    <h1>Dumbbell &amp; Bodyweight Library</h1>
+                    <span class="subtitle">1,550+ PPL, Calisthenics &amp; Mobility Movements</span>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search exercises, movements, or muscle groups..." autocomplete="off">
+                <button id="search-clear" class="clear-btn" title="Clear search" style="display: none;">✕</button>
+            </div>
+
+            <!-- Quick Stats & Actions -->
+            <div class="header-tools">
+                <button id="btn-open-random" class="btn-primary">
+                    🎲 Generate Workout
+                </button>
+                <button id="btn-view-favs" class="btn-secondary" title="View Saved Exercises">
+                    ★ Saved (<span id="fav-count">0</span>)
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Day Tabs -->
+        <nav class="day-tabs-wrapper">
+            <div class="day-tabs" id="day-tabs">
+                <!-- Populated via JS -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Subheader Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <h2 id="current-day-title" class="current-title">Push Day</h2>
+                <span id="current-day-count" class="badge-count">0 Exercises</span>
+            </div>
+            <div class="status-right">
+                <button id="btn-expand-all" class="text-btn">Expand All</button>
+                <button id="btn-collapse-all" class="text-btn">Collapse All</button>
+            </div>
+        </div>
+
+        <!-- Exercise Category Groups -->
+        <div class="exercise-grid" id="exercise-container">
+            <!-- Populated via JS -->
+        </div>
+    </main>
+
+    <!-- Random Workout Modal -->
+    <div class="modal-overlay" id="workout-modal" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-eyebrow" id="modal-eyebrow">CUSTOM ROUTINE</span>
+                    <h3 id="modal-title" class="modal-title">Push Day Workout</h3>
+                </div>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+
+            <!-- Workout Generator Controls -->
+            <div class="modal-toolbar">
+                <div class="toolbar-left">
+                    <label for="exercises-per-cat">Exercises per group:</label>
+                    <select id="exercises-per-cat">
+                        <option value="1">1 (Short Circuit)</option>
+                        <option value="2" selected>2 (Standard Routine)</option>
+                        <option value="3">3 (Full Volume)</option>
+                    </select>
+                </div>
+                <div class="toolbar-right">
+                    <button id="btn-reroll" class="btn-sm btn-accent">🔄 Re-Roll</button>
+                    <button id="btn-copy-workout" class="btn-sm btn-secondary">📋 Copy List</button>
+                </div>
+            </div>
+
+            <!-- Rest Timer Widget -->
+            <div class="rest-timer-box">
+                <div class="timer-display">
+                    <span class="timer-label">⏱ REST TIMER:</span>
+                    <span class="timer-digits" id="timer-display">01:00</span>
+                </div>
+                <div class="timer-presets">
+                    <button class="timer-btn" data-sec="30">30s</button>
+                    <button class="timer-btn active" data-sec="60">60s</button>
+                    <button class="timer-btn" data-sec="90">90s</button>
+                    <button class="timer-btn" data-sec="120">2m</button>
+                    <button id="btn-timer-toggle" class="btn-timer-action">Start</button>
+                    <button id="btn-timer-reset" class="btn-timer-action reset">Reset</button>
+                </div>
+            </div>
+
+            <!-- Interactive Workout List -->
+            <div class="modal-body" id="modal-workout-body">
+                <!-- Checkable exercise routine populated by JS -->
+            </div>
+
+            <div class="modal-footer">
+                <span class="modal-footer-note">💡 Click any exercise to open its form video tutorial.</span>
+                <button class="btn-secondary" id="modal-close-bottom">Done Workout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data & Application Logic -->
+    <script src="workout_data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
